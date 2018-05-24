@@ -17,6 +17,7 @@ namespace Game1
 
     }
 
+    //The ICommand Interace pattern is much more readable
     public interface ICommand
     {
         void Execute();
