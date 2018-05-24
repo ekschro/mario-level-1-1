@@ -25,18 +25,6 @@
 /processorParam:TextureFormat=Color
 /build:goomba.png
 
-#begin mario.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:mario.png
-
 #begin koopa.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -72,4 +60,16 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:tiles.png
+
+#begin mario.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:mario.png
 
