@@ -16,34 +16,162 @@ namespace Game1
         void Draw();
     }
 
-    public class NonMovingNonAnimated : ISprite
-    {
-        private Game1 myGame;
+    /* public class NonMovingNonAnimated : ISprite
+     {
+         private Game1 myGame;
 
-        public NonMovingNonAnimated(Game1 game)
-        {
-            myGame = game;
-        }
+         public NonMovingNonAnimated(Game1 game)
+         {
+             myGame = game;
+         }
 
-        public void Update() { }
+         public void Update() { }
 
-        public void Draw()
-        {
-            int width = myGame.Texture.Width / myGame.totalFrames;
+         public void Draw()
+         {
+             int width = myGame.Texture.Width / myGame.totalFrames;
 
-            myGame.currentLocation.Y = myGame.startingLocation.Y;
-            myGame.currentLocation.X = myGame.startingLocation.X;
+             myGame.currentLocation.Y = myGame.startingLocation.Y;
+             myGame.currentLocation.X = myGame.startingLocation.X;
 
-            Rectangle sourceRectangle = new Rectangle(width * 4, 0, width, myGame.Texture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)myGame.startingLocation.X, (int)myGame.startingLocation.Y, width, myGame.Texture.Height);
+             Rectangle sourceRectangle = new Rectangle(width * 4, 0, width, myGame.Texture.Height);
+             Rectangle destinationRectangle = new Rectangle((int)myGame.startingLocation.X, (int)myGame.startingLocation.Y, width, myGame.Texture.Height);
 
-            myGame.spriteBatch.Begin();
-            myGame.spriteBatch.Draw(myGame.Texture, destinationRectangle, sourceRectangle, Color.White);
-            myGame.spriteBatch.End();
-        }
-    }
+             myGame.spriteBatch.Begin();
+             myGame.spriteBatch.Draw(myGame.Texture, destinationRectangle, sourceRectangle, Color.White);
+             myGame.spriteBatch.End();
+         }
+     }
 
-    public class NonMovingAnimated : ISprite
+     public class NonMovingAnimated : ISprite
+     {
+         private Game1 myGame;
+         private int currentFrame;
+         private int cyclePosition = 0;
+         private int cycleLength = 16;
+         private int startFrame;
+         private int endFrame;
+
+         public NonMovingAnimated(Game1 game)
+         {
+             myGame = game;
+             startFrame = 6;
+             endFrame = 7;
+             currentFrame = startFrame;
+         }
+
+         public void Update()
+         {
+             cyclePosition = cyclePosition + 1;
+             if (cyclePosition < .5 * cycleLength)
+                 currentFrame = startFrame;
+             else 
+                 currentFrame = startFrame + 1;
+
+             if (cyclePosition == cycleLength)
+                 cyclePosition = 0;
+         }
+
+         public void Draw()
+         {
+             int width = myGame.Texture.Width / myGame.totalFrames;
+
+             myGame.currentLocation.Y = myGame.startingLocation.Y;
+             myGame.currentLocation.X = myGame.startingLocation.X;
+
+             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.Texture.Height);
+             Rectangle destinationRectangle = new Rectangle((int)myGame.startingLocation.X, (int)myGame.startingLocation.Y, width, myGame.Texture.Height);
+
+             myGame.spriteBatch.Begin();
+             myGame.spriteBatch.Draw(myGame.Texture, destinationRectangle, sourceRectangle, Color.White);
+             myGame.spriteBatch.End();
+         }
+     }
+
+     public class MovingNonAnimated : ISprite
+     {
+         private Game1 myGame;
+
+         public MovingNonAnimated(Game1 game)
+         {
+             myGame = game;
+         }
+
+         public void Update()
+         {
+             myGame.currentLocation.Y = myGame.currentLocation.Y + 2;
+             if (myGame.currentLocation.Y > 600)
+                 myGame.currentLocation.Y = -100;
+         }
+
+         public void Draw()
+         {
+             int width = myGame.Texture.Width / myGame.totalFrames;
+
+             myGame.currentLocation.X = myGame.startingLocation.X;
+
+             Rectangle sourceRectangle = new Rectangle(width * 5, 0, width, myGame.Texture.Height);
+             Rectangle destinationRectangle = new Rectangle((int)myGame.currentLocation.X, (int)myGame.currentLocation.Y, width, myGame.Texture.Height);
+
+             myGame.spriteBatch.Begin();
+             myGame.spriteBatch.Draw(myGame.Texture, destinationRectangle, sourceRectangle, Color.White);
+             myGame.spriteBatch.End();
+         }
+     }
+
+     public class MovingAnimated : ISprite
+     {
+         private Game1 myGame;
+         private int currentFrame;
+         private int cyclePosition = 0;
+         private int cycleLength = 32;
+         private int startFrame;
+         private int endFrame;
+
+         public MovingAnimated(Game1 game)
+         {
+             myGame = game;
+             startFrame = 0;
+             endFrame = 3;
+             currentFrame = startFrame;
+         }
+
+         public void Update()
+         {
+             cyclePosition = cyclePosition + 1;
+             if (cyclePosition < .25 * cycleLength)
+                 currentFrame = startFrame;
+             else if (cyclePosition < .5 * cycleLength)
+                 currentFrame = startFrame + 1;
+             else if (cyclePosition < .75 * cycleLength)
+                 currentFrame = startFrame + 2;
+             else
+                 currentFrame = startFrame + 3;
+
+             if (cyclePosition == cycleLength)
+                 cyclePosition = 0;
+
+             myGame.currentLocation.X = myGame.currentLocation.X - 3;
+             if (myGame.currentLocation.X < -10)
+                 myGame.currentLocation.X = 1000;
+         }
+
+         public void Draw()
+         {
+             int width = myGame.Texture.Width / myGame.totalFrames;
+
+             myGame.currentLocation.Y = myGame.startingLocation.Y;
+
+             Rectangle sourceRectangle = new Rectangle(width * (int)currentFrame, 0, width, myGame.Texture.Height);
+             Rectangle destinationRectangle = new Rectangle((int)myGame.currentLocation.X, (int)myGame.currentLocation.Y, width, myGame.Texture.Height);
+
+             myGame.spriteBatch.Begin();
+             myGame.spriteBatch.Draw(myGame.Texture, destinationRectangle, sourceRectangle, Color.White);
+             myGame.spriteBatch.End();
+         }
+     }
+     */
+    public class MarioSmallCrouching : ISprite
     {
         private Game1 myGame;
         private int currentFrame;
@@ -52,7 +180,7 @@ namespace Game1
         private int startFrame;
         private int endFrame;
 
-        public NonMovingAnimated(Game1 game)
+        public MarioSmallCrouching(Game1 game)
         {
             myGame = game;
             startFrame = 6;
@@ -65,7 +193,7 @@ namespace Game1
             cyclePosition = cyclePosition + 1;
             if (cyclePosition < .5 * cycleLength)
                 currentFrame = startFrame;
-            else 
+            else
                 currentFrame = startFrame + 1;
 
             if (cyclePosition == cycleLength)
@@ -87,73 +215,33 @@ namespace Game1
             myGame.spriteBatch.End();
         }
     }
-
-    public class MovingNonAnimated : ISprite
-    {
-        private Game1 myGame;
-
-        public MovingNonAnimated(Game1 game)
-        {
-            myGame = game;
-        }
-
-        public void Update()
-        {
-            myGame.currentLocation.Y = myGame.currentLocation.Y + 2;
-            if (myGame.currentLocation.Y > 600)
-                myGame.currentLocation.Y = -100;
-        }
-
-        public void Draw()
-        {
-            int width = myGame.Texture.Width / myGame.totalFrames;
-
-            myGame.currentLocation.X = myGame.startingLocation.X;
-
-            Rectangle sourceRectangle = new Rectangle(width * 5, 0, width, myGame.Texture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)myGame.currentLocation.X, (int)myGame.currentLocation.Y, width, myGame.Texture.Height);
-
-            myGame.spriteBatch.Begin();
-            myGame.spriteBatch.Draw(myGame.Texture, destinationRectangle, sourceRectangle, Color.White);
-            myGame.spriteBatch.End();
-        }
-    }
-
-    public class MovingAnimated : ISprite
+    public class MarioSmallIdle : ISprite
     {
         private Game1 myGame;
         private int currentFrame;
         private int cyclePosition = 0;
-        private int cycleLength = 32;
+        private int cycleLength = 16;
         private int startFrame;
         private int endFrame;
 
-        public MovingAnimated(Game1 game)
+        public MarioSmallIdle(Game1 game)
         {
             myGame = game;
-            startFrame = 0;
-            endFrame = 3;
+            startFrame = 6;
+            endFrame = 7;
             currentFrame = startFrame;
         }
 
         public void Update()
         {
             cyclePosition = cyclePosition + 1;
-            if (cyclePosition < .25 * cycleLength)
+            if (cyclePosition < .5 * cycleLength)
                 currentFrame = startFrame;
-            else if (cyclePosition < .5 * cycleLength)
-                currentFrame = startFrame + 1;
-            else if (cyclePosition < .75 * cycleLength)
-                currentFrame = startFrame + 2;
             else
-                currentFrame = startFrame + 3;
+                currentFrame = startFrame + 1;
 
             if (cyclePosition == cycleLength)
                 cyclePosition = 0;
-
-            myGame.currentLocation.X = myGame.currentLocation.X - 3;
-            if (myGame.currentLocation.X < -10)
-                myGame.currentLocation.X = 1000;
         }
 
         public void Draw()
@@ -161,14 +249,322 @@ namespace Game1
             int width = myGame.Texture.Width / myGame.totalFrames;
 
             myGame.currentLocation.Y = myGame.startingLocation.Y;
+            myGame.currentLocation.X = myGame.startingLocation.X;
 
-            Rectangle sourceRectangle = new Rectangle(width * (int)currentFrame, 0, width, myGame.Texture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)myGame.currentLocation.X, (int)myGame.currentLocation.Y, width, myGame.Texture.Height);
+            Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.Texture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)myGame.startingLocation.X, (int)myGame.startingLocation.Y, width, myGame.Texture.Height);
 
             myGame.spriteBatch.Begin();
             myGame.spriteBatch.Draw(myGame.Texture, destinationRectangle, sourceRectangle, Color.White);
             myGame.spriteBatch.End();
         }
     }
+    public class MarioSmallJumping: ISprite
+    {
+        private Game1 myGame;
+        private int currentFrame;
+        private int cyclePosition = 0;
+        private int cycleLength = 16;
+        private int startFrame;
+        private int endFrame;
 
+        public MarioSmallJumping(Game1 game)
+        {
+            myGame = game;
+            startFrame = 6;
+            endFrame = 7;
+            currentFrame = startFrame;
+        }
+
+        public void Update()
+        {
+            cyclePosition = cyclePosition + 1;
+            if (cyclePosition < .5 * cycleLength)
+                currentFrame = startFrame;
+            else
+                currentFrame = startFrame + 1;
+
+            if (cyclePosition == cycleLength)
+                cyclePosition = 0;
+        }
+
+        public void Draw()
+        {
+            int width = myGame.Texture.Width / myGame.totalFrames;
+
+            myGame.currentLocation.Y = myGame.startingLocation.Y;
+            myGame.currentLocation.X = myGame.startingLocation.X;
+
+            Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.Texture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)myGame.startingLocation.X, (int)myGame.startingLocation.Y, width, myGame.Texture.Height);
+
+            myGame.spriteBatch.Begin();
+            myGame.spriteBatch.Draw(myGame.Texture, destinationRectangle, sourceRectangle, Color.White);
+            myGame.spriteBatch.End();
+        }
+    }
+    public class MarioBigCrouching : ISprite
+    {
+        private Game1 myGame;
+        private int currentFrame;
+        private int cyclePosition = 0;
+        private int cycleLength = 16;
+        private int startFrame;
+        private int endFrame;
+
+        public MarioBigCrouching(Game1 game)
+        {
+            myGame = game;
+            startFrame = 6;
+            endFrame = 7;
+            currentFrame = startFrame;
+        }
+
+        public void Update()
+        {
+            cyclePosition = cyclePosition + 1;
+            if (cyclePosition < .5 * cycleLength)
+                currentFrame = startFrame;
+            else
+                currentFrame = startFrame + 1;
+
+            if (cyclePosition == cycleLength)
+                cyclePosition = 0;
+        }
+
+        public void Draw()
+        {
+            int width = myGame.Texture.Width / myGame.totalFrames;
+
+            myGame.currentLocation.Y = myGame.startingLocation.Y;
+            myGame.currentLocation.X = myGame.startingLocation.X;
+
+            Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.Texture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)myGame.startingLocation.X, (int)myGame.startingLocation.Y, width, myGame.Texture.Height);
+
+            myGame.spriteBatch.Begin();
+            myGame.spriteBatch.Draw(myGame.Texture, destinationRectangle, sourceRectangle, Color.White);
+            myGame.spriteBatch.End();
+        }
+    }
+    public class MarioBigIdle : ISprite
+    {
+        private Game1 myGame;
+        private int currentFrame;
+        private int cyclePosition = 0;
+        private int cycleLength = 16;
+        private int startFrame;
+        private int endFrame;
+
+        public MarioBigIdle(Game1 game)
+        {
+            myGame = game;
+            startFrame = 6;
+            endFrame = 7;
+            currentFrame = startFrame;
+        }
+
+        public void Update()
+        {
+            cyclePosition = cyclePosition + 1;
+            if (cyclePosition < .5 * cycleLength)
+                currentFrame = startFrame;
+            else
+                currentFrame = startFrame + 1;
+
+            if (cyclePosition == cycleLength)
+                cyclePosition = 0;
+        }
+
+        public void Draw()
+        {
+            int width = myGame.Texture.Width / myGame.totalFrames;
+
+            myGame.currentLocation.Y = myGame.startingLocation.Y;
+            myGame.currentLocation.X = myGame.startingLocation.X;
+
+            Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.Texture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)myGame.startingLocation.X, (int)myGame.startingLocation.Y, width, myGame.Texture.Height);
+
+            myGame.spriteBatch.Begin();
+            myGame.spriteBatch.Draw(myGame.Texture, destinationRectangle, sourceRectangle, Color.White);
+            myGame.spriteBatch.End();
+        }
+    }
+    public class MarioBigJumping : ISprite
+    {
+        private Game1 myGame;
+        private int currentFrame;
+        private int cyclePosition = 0;
+        private int cycleLength = 16;
+        private int startFrame;
+        private int endFrame;
+
+        public MarioBigJumping(Game1 game)
+        {
+            myGame = game;
+            startFrame = 6;
+            endFrame = 7;
+            currentFrame = startFrame;
+        }
+
+        public void Update()
+        {
+            cyclePosition = cyclePosition + 1;
+            if (cyclePosition < .5 * cycleLength)
+                currentFrame = startFrame;
+            else
+                currentFrame = startFrame + 1;
+
+            if (cyclePosition == cycleLength)
+                cyclePosition = 0;
+        }
+
+        public void Draw()
+        {
+            int width = myGame.Texture.Width / myGame.totalFrames;
+
+            myGame.currentLocation.Y = myGame.startingLocation.Y;
+            myGame.currentLocation.X = myGame.startingLocation.X;
+
+            Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.Texture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)myGame.startingLocation.X, (int)myGame.startingLocation.Y, width, myGame.Texture.Height);
+
+            myGame.spriteBatch.Begin();
+            myGame.spriteBatch.Draw(myGame.Texture, destinationRectangle, sourceRectangle, Color.White);
+            myGame.spriteBatch.End();
+        }
+    }
+    public class MarioFireCrouching : ISprite
+    {
+        private Game1 myGame;
+        private int currentFrame;
+        private int cyclePosition = 0;
+        private int cycleLength = 16;
+        private int startFrame;
+        private int endFrame;
+
+        public MarioFireCrouching(Game1 game)
+        {
+            myGame = game;
+            startFrame = 6;
+            endFrame = 7;
+            currentFrame = startFrame;
+        }
+
+        public void Update()
+        {
+            cyclePosition = cyclePosition + 1;
+            if (cyclePosition < .5 * cycleLength)
+                currentFrame = startFrame;
+            else
+                currentFrame = startFrame + 1;
+
+            if (cyclePosition == cycleLength)
+                cyclePosition = 0;
+        }
+
+        public void Draw()
+        {
+            int width = myGame.Texture.Width / myGame.totalFrames;
+
+            myGame.currentLocation.Y = myGame.startingLocation.Y;
+            myGame.currentLocation.X = myGame.startingLocation.X;
+
+            Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.Texture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)myGame.startingLocation.X, (int)myGame.startingLocation.Y, width, myGame.Texture.Height);
+
+            myGame.spriteBatch.Begin();
+            myGame.spriteBatch.Draw(myGame.Texture, destinationRectangle, sourceRectangle, Color.White);
+            myGame.spriteBatch.End();
+        }
+    }
+    public class MarioFireIdle : ISprite
+    {
+        private Game1 myGame;
+        private int currentFrame;
+        private int cyclePosition = 0;
+        private int cycleLength = 16;
+        private int startFrame;
+        private int endFrame;
+
+        public MarioFireIdle(Game1 game)
+        {
+            myGame = game;
+            startFrame = 6;
+            endFrame = 7;
+            currentFrame = startFrame;
+        }
+
+        public void Update()
+        {
+            cyclePosition = cyclePosition + 1;
+            if (cyclePosition < .5 * cycleLength)
+                currentFrame = startFrame;
+            else
+                currentFrame = startFrame + 1;
+
+            if (cyclePosition == cycleLength)
+                cyclePosition = 0;
+        }
+
+        public void Draw()
+        {
+            int width = myGame.Texture.Width / myGame.totalFrames;
+
+            myGame.currentLocation.Y = myGame.startingLocation.Y;
+            myGame.currentLocation.X = myGame.startingLocation.X;
+
+            Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.Texture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)myGame.startingLocation.X, (int)myGame.startingLocation.Y, width, myGame.Texture.Height);
+
+            myGame.spriteBatch.Begin();
+            myGame.spriteBatch.Draw(myGame.Texture, destinationRectangle, sourceRectangle, Color.White);
+            myGame.spriteBatch.End();
+        }
+    }
+    public class MarioFireJumping : ISprite
+    {
+        private Game1 myGame;
+        private int currentFrame;
+        private int cyclePosition = 0;
+        private int cycleLength = 16;
+        private int startFrame;
+        private int endFrame;
+
+        public MarioFireJumping(Game1 game)
+        {
+            myGame = game;
+            startFrame = 6;
+            endFrame = 7;
+            currentFrame = startFrame;
+        }
+
+        public void Update()
+        {
+            cyclePosition = cyclePosition + 1;
+            if (cyclePosition < .5 * cycleLength)
+                currentFrame = startFrame;
+            else
+                currentFrame = startFrame + 1;
+
+            if (cyclePosition == cycleLength)
+                cyclePosition = 0;
+        }
+
+        public void Draw()
+        {
+            int width = myGame.Texture.Width / myGame.totalFrames;
+
+            myGame.currentLocation.Y = myGame.startingLocation.Y;
+            myGame.currentLocation.X = myGame.startingLocation.X;
+
+            Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.Texture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)myGame.startingLocation.X, (int)myGame.startingLocation.Y, width, myGame.Texture.Height);
+
+            myGame.spriteBatch.Begin();
+            myGame.spriteBatch.Draw(myGame.Texture, destinationRectangle, sourceRectangle, Color.White);
+            myGame.spriteBatch.End();
+        }
+    }
 }
