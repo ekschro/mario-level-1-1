@@ -14,12 +14,12 @@ namespace Game1
     {
         GraphicsDeviceManager graphics;
         public SpriteBatch spriteBatch;
-        public ISprite luigiSprite;
+        public ISprite marioSprite;
         ArrayList controllerList;
-        public int totalFrames = 8;
-        public Vector2 startingLocation = new Vector2(400, 200);
-        public Vector2 currentLocation = new Vector2(400, 200);
-        public Texture2D Texture;
+        //public int totalFrames = 8; <= might be better in indiviual classes? Since each item will have its own spritesheet
+        //public Vector2 startingLocation = new Vector2(400, 200); <= same here
+        //public Vector2 currentLocation = new Vector2(400, 200);  <= same here
+        public Texture2D marioTexture;
 
         public Game1()
         {
@@ -37,7 +37,7 @@ namespace Game1
         {
             // TODO: Add your initialization logic here
             controllerList = new ArrayList();
-            controllerList.Add(new GamePadController(this));
+            //controllerList.Add(new GamePadController(this));
             controllerList.Add(new KeyboardController(this));
 
             base.Initialize();
@@ -51,9 +51,11 @@ namespace Game1
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            Texture = Content.Load<Texture2D>("luigi2");
+            // LOAD ALL TEXTURES HERE
+            marioTexture = Content.Load<Texture2D>("luigi2");
 
-            luigiSprite = new NonMovingNonAnimated(this);
+            // INITIALIZE ALL SPRITES HERE
+            marioSprite = new WhateverYouWantToStartOnLikeSmallIdleRightMarioOrSomething(this);
 
         }
 
@@ -73,11 +75,10 @@ namespace Game1
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-
             foreach (IController controller in controllerList)
                 controller.Update();
 
-            luigiSprite.Update();
+            marioSprite.Update();
 
             base.Update(gameTime);
         }
@@ -90,7 +91,7 @@ namespace Game1
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             
-            luigiSprite.Draw();
+            marioSprite.Draw();
 
             base.Draw(gameTime);
         }

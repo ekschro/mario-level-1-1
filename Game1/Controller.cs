@@ -30,10 +30,23 @@ namespace Game1
         {
             controllerMappings = new Dictionary<Keys, ICommand>();
             controllerMappings.Add(Keys.Q, new ExitGameCommand(game));
-            controllerMappings.Add(Keys.W, new NonMovingNonAnimatedCommand(game));
-            controllerMappings.Add(Keys.E, new NonMovingAnimatedCommand(game));
-            controllerMappings.Add(Keys.R, new MovingNonAnimatedCommand(game));
-            controllerMappings.Add(Keys.T, new MovingAnimatedCommand(game));
+            controllerMappings.Add(Keys.W, new UpCommand(game));
+            controllerMappings.Add(Keys.S, new DownCommand(game));
+            controllerMappings.Add(Keys.A, new LeftCommand(game));
+            controllerMappings.Add(Keys.D, new RightCommand(game));
+            controllerMappings.Add(Keys.Up, new UpCommand(game));
+            controllerMappings.Add(Keys.Down, new DownCommand(game));
+            controllerMappings.Add(Keys.Left, new LeftCommand(game));
+            controllerMappings.Add(Keys.Right, new RightCommand(game));
+            controllerMappings.Add(Keys.Y, new SmallMarioCommand(game));
+            controllerMappings.Add(Keys.U, new BigMarioCommand(game));
+            controllerMappings.Add(Keys.I, new FireMarioCommand(game));
+            controllerMappings.Add(Keys.O, new DeadMarioCommand(game));
+            controllerMappings.Add(Keys.Z, new QuestionToUsedCommand(game));
+            controllerMappings.Add(Keys.X, new BrickDisappearCommand(game));
+            controllerMappings.Add(Keys.C, new HiddenToUsedCommand(game));
+            controllerMappings.Add(Keys.R, new ResetCommand(game));
+
         }
 
         public void Update()
@@ -47,6 +60,8 @@ namespace Game1
         }
 
     }
+
+    /*
 
     public class GamePadController : IController
     {
@@ -91,6 +106,7 @@ namespace Game1
         }
     }
 
+    */
 
     public class ExitGameCommand : ICommand
     {
@@ -107,70 +123,184 @@ namespace Game1
         }
     }
 
-    public class NonMovingNonAnimatedCommand : ICommand
+    public class UpCommand : ICommand
     {
         private Game1 myGame;
 
-        public NonMovingNonAnimatedCommand(Game1 game)
+        public UpCommand(Game1 game)
         {
             myGame = game;
         }
 
         public void Execute()
         {
-            if (!(myGame.luigiSprite is NonMovingNonAnimated))
-                myGame.luigiSprite = new NonMovingNonAnimated(myGame);
-        }
-        
-    }
-
-    public class NonMovingAnimatedCommand : ICommand
-    {
-        private Game1 myGame;
-
-        public NonMovingAnimatedCommand(Game1 game)
-        {
-            myGame = game;
-        }
-
-        public void Execute()
-        {
-            if (!(myGame.luigiSprite is NonMovingAnimated))
-                myGame.luigiSprite = new NonMovingAnimated(myGame);
-        }
-        
-    }
-
-    public class MovingNonAnimatedCommand : ICommand
-    {
-        private Game1 myGame;
-
-        public MovingNonAnimatedCommand(Game1 game)
-        {
-            myGame = game;
-        }
-        
-
-        public void Execute()
-        {
-            if (!(myGame.luigiSprite is MovingNonAnimated))
-                myGame.luigiSprite = new MovingNonAnimated(myGame);
+            myGame.marioSprite.UpCommandCalled();
         }
     }
 
-    public class MovingAnimatedCommand : ICommand
+    public class DownCommand : ICommand
     {
         private Game1 myGame;
 
-        public MovingAnimatedCommand(Game1 game)
+        public DownCommand(Game1 game)
         {
             myGame = game;
         }
 
         public void Execute()
         {
-            if (!(myGame.luigiSprite is MovingAnimated))
-                myGame.luigiSprite = new MovingAnimated(myGame);
+            myGame.marioSprite.DownCommandCalled();
+        }
+    }
+
+    public class LeftCommand : ICommand
+    {
+        private Game1 myGame;
+
+        public LeftCommand(Game1 game)
+        {
+            myGame = game;
+        }
+
+        public void Execute()
+        {
+            myGame.marioSprite.LeftCommandCalled();
+        }
+    }
+
+    public class RightCommand : ICommand
+    {
+        private Game1 myGame;
+
+        public RightCommand(Game1 game)
+        {
+            myGame = game;
+        }
+
+        public void Execute()
+        {
+            myGame.marioSprite.RightCommandCalled();
+        }
+    }
+
+    public class SmallMarioCommand : ICommand
+    {
+        private Game1 myGame;
+
+        public SmallMarioCommand(Game1 game)
+        {
+            myGame = game;
+        }
+
+        public void Execute()
+        {
+            myGame.marioSprite.SmallMarioCommandCalled();
+        }
+    }
+
+    public class BigMarioCommand : ICommand
+    {
+        private Game1 myGame;
+
+        public BigMarioCommand(Game1 game)
+        {
+            myGame = game;
+        }
+
+        public void Execute()
+        {
+            myGame.marioSprite.BigMarioCommandCalled();
+        }
+    }
+
+    public class FireMarioCommand : ICommand
+    {
+        private Game1 myGame;
+
+        public FireMarioCommand(Game1 game)
+        {
+            myGame = game;
+        }
+
+        public void Execute()
+        {
+            myGame.marioSprite.FireMarioCommandCalled();
+        }
+    }
+
+    public class DeadMarioCommand : ICommand
+    {
+        private Game1 myGame;
+
+        public DeadMarioCommand(Game1 game)
+        {
+            myGame = game;
+        }
+
+        public void Execute()
+        {
+            myGame.marioSprite.DeadMarioCommandCalled();
+        }
+    }
+
+    public class QuestionToUsedCommand : ICommand
+    {
+        private Game1 myGame;
+
+        public QuestionToUsedCommand(Game1 game)
+        {
+            myGame = game;
+        }
+
+        public void Execute()
+        {
+            
+        }
+    }
+
+    public class BrickDisappearCommand : ICommand
+    {
+        private Game1 myGame;
+
+        public BrickDisappearCommand(Game1 game)
+        {
+            myGame = game;
+        }
+
+        public void Execute()
+        {
+
+        }
+    }
+
+    public class HiddenToUsedCommand : ICommand
+    {
+        private Game1 myGame;
+
+        public HiddenToUsedCommand(Game1 game)
+        {
+            myGame = game;
+        }
+
+        public void Execute()
+        {
+
+        }
+    }
+
+    public class ResetCommand : ICommand
+    {
+        private Game1 myGame;
+
+        public ResetCommand(Game1 game)
+        {
+            myGame = game;
+        }
+
+        public void Execute()
+        {
+
         }
     }
 }
+    
