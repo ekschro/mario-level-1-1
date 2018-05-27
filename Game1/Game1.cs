@@ -98,7 +98,7 @@ namespace Game1
             foreach (IController controller in controllerList)
                 controller.Update();
 
-            marioSprite.Update();
+            //marioSprite.Update();
             FireflowerSprite.Update();
             CoinSprite.Update();
             RedMushroomSprite.Update();
