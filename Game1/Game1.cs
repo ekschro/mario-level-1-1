@@ -5,7 +5,7 @@ using System.Collections;
 
 namespace Game1
 {
-    ///Dorothy was here
+    
     /// Tim was here
     /// <summary>
     /// This is the main type for your game.
@@ -15,11 +15,23 @@ namespace Game1
         GraphicsDeviceManager graphics;
         public SpriteBatch spriteBatch;
         public ISprite marioSprite;
+
+        public IPickupSprite FireflowerSprite;
+        public IPickupSprite CoinSprite;
+        public IPickupSprite RedMushroomSprite;
+        public IPickupSprite GreenMushroomSprite;
+        public IPickupSprite StarSprite;
+
         ArrayList controllerList;
         //public int totalFrames = 8; <= might be better in indiviual classes? Since each item will have its own spritesheet
         public Vector2 startingLocation = new Vector2(400, 200); 
         public Vector2 currentLocation = new Vector2(400, 200); 
+        public int totalPickupFrames = 14; //if there is individual class later will change later
+        //public Vector2 startingLocation = new Vector2(400, 200); <= same here
+        //public Vector2 currentLocation = new Vector2(400, 200);  <= same here
         public Texture2D marioTexture;
+        public Texture2D PickupTexture;
+
         public int totalMarioColumns = 28;
         public int totalMarioRows = 3;
         public Game1()
@@ -53,10 +65,17 @@ namespace Game1
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // LOAD ALL TEXTURES HERE
+            marioTexture = Content.Load<Texture2D>("luigi2");
+            PickupTexture = Content.Load<Texture2D>("pickup");
             marioTexture = Content.Load<Texture2D>("mario");
 
             // INITIALIZE ALL SPRITES HERE
             marioSprite = new WhateverYouWantToStartOnLikeSmallIdleRightMarioOrSomething(this);
+            FireflowerSprite = new FireflowerSprite(this);
+            CoinSprite = new CoinSprite(this);
+            RedMushroomSprite = new RedMushroomSprite(this);
+            GreenMushroomSprite = new GreenMushroomSprite(this);
+            StarSprite = new StarSprite(this);
 
         }
 
@@ -80,6 +99,11 @@ namespace Game1
                 controller.Update();
 
             marioSprite.Update();
+            FireflowerSprite.Update();
+            CoinSprite.Update();
+            RedMushroomSprite.Update();
+            GreenMushroomSprite.Update();
+            StarSprite.Update();
 
             base.Update(gameTime);
         }
@@ -93,6 +117,11 @@ namespace Game1
             GraphicsDevice.Clear(Color.CornflowerBlue);
             
             marioSprite.Draw();
+            FireflowerSprite.Draw();
+            CoinSprite.Draw();
+            RedMushroomSprite.Draw();
+            GreenMushroomSprite.Draw();
+            StarSprite.Draw();
 
             base.Draw(gameTime);
         }
