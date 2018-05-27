@@ -65,12 +65,12 @@ namespace Game1
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // LOAD ALL TEXTURES HERE
-            marioTexture = Content.Load<Texture2D>("luigi2");
+            
             PickupTexture = Content.Load<Texture2D>("pickup");
             marioTexture = Content.Load<Texture2D>("mario");
 
             // INITIALIZE ALL SPRITES HERE
-            marioSprite = new WhateverYouWantToStartOnLikeSmallIdleRightMarioOrSomething(this);
+            marioSprite = new MarioSmallIdleRight(this);
             FireflowerSprite = new FireflowerSprite(this);
             CoinSprite = new CoinSprite(this);
             RedMushroomSprite = new RedMushroomSprite(this);

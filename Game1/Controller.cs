@@ -25,6 +25,7 @@ namespace Game1
 
     public class KeyboardController : IController
     {
+        public int timer = 0;
         private Dictionary<Keys, ICommand> controllerMappings;
         public KeyboardController(Game1 game)
         {
@@ -51,11 +52,19 @@ namespace Game1
 
         public void Update()
         {
-            Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
-            foreach (Keys key in pressedKeys)
+            
+            if (timer == 50)
             {
-                if (controllerMappings.ContainsKey(key))
-                    controllerMappings[key].Execute();
+                Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
+                foreach (Keys key in pressedKeys)
+                {
+                    if (controllerMappings.ContainsKey(key))
+                        controllerMappings[key].Execute();
+                }
+                timer = 0;
+            } else
+            {
+                timer++;
             }
         }
 

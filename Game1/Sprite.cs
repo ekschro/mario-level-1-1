@@ -11,7 +11,8 @@ using Microsoft.Xna.Framework.Input;
 namespace Game1
 {
     public interface ISprite
-    { 
+    {
+        void Update();
         void Draw();
         void UpCommandCalled();
         void DownCommandCalled();
@@ -27,7 +28,7 @@ namespace Game1
     {
         private Game1 myGame;
 
-        private int currentFrame = 43;
+        private int currentFrame = 14 + 28;
 
         public MarioSmallIdleRight(Game1 game)
         {
@@ -60,7 +61,7 @@ namespace Game1
 
         public void DownCommandCalled()
         {
-            myGame.marioSprite = new MarioSmallCrouchingRight(myGame)
+            myGame.marioSprite = new MarioSmallCrouchingRight(myGame);
         }
 
         public void LeftCommandCalled()
@@ -92,12 +93,17 @@ namespace Game1
         {
             myGame.marioSprite = new MarioSmallDeadRight(myGame);
         }
+
+        public void Update()
+        {
+           
+        }
     }
     public class MarioSmallIdleLeft : ISprite
     {
         private Game1 myGame;
 
-        private int currentFrame = 42;
+        private int currentFrame = 41;
 
         public MarioSmallIdleLeft(Game1 game)
         {
@@ -130,7 +136,7 @@ namespace Game1
 
         public void DownCommandCalled()
         {
-            myGame.marioSprite = new MarioSmallCrouchingLeft(myGame)
+            myGame.marioSprite = new MarioSmallCrouchingLeft(myGame);
         }
 
         public void LeftCommandCalled()
@@ -162,13 +168,18 @@ namespace Game1
         {
             myGame.marioSprite = new MarioSmallDeadLeft(myGame);
         }
+
+        public void Update()
+        {
+            
+        }
     }
 
     public class MarioSmallWalkRight : ISprite
     {
         private Game1 myGame;
 
-        private int currentFrame = 19 + 28;
+        private int currentFrame = 16 + 28;
 
         public MarioSmallWalkRight(Game1 game)
         {
@@ -201,7 +212,7 @@ namespace Game1
 
         public void DownCommandCalled()
         {
-            myGame.marioSprite = new MarioSmallCrouchingRight(myGame)
+            myGame.marioSprite = new MarioSmallCrouchingRight(myGame);
         }
 
         public void LeftCommandCalled()
@@ -232,6 +243,11 @@ namespace Game1
         public void DeadMarioCommandCalled()
         {
             myGame.marioSprite = new MarioSmallDeadRight(myGame);
+        }
+
+        public void Update()
+        {
+            
         }
     }
     public class MarioSmallWalkLeft : ISprite
@@ -271,7 +287,7 @@ namespace Game1
 
         public void DownCommandCalled()
         {
-            myGame.marioSprite = new MarioSmallCrouchingLeft(myGame)
+            myGame.marioSprite = new MarioSmallCrouchingLeft(myGame);
         }
 
         public void LeftCommandCalled()
@@ -303,12 +319,17 @@ namespace Game1
         {
             myGame.marioSprite = new MarioSmallDeadLeft(myGame);
         }
+
+        public void Update()
+        {
+            
+        }
     }
     public class MarioSmallJumpingLeft : ISprite
     {
         private Game1 myGame;
 
-        private int currentFrame = 8 + 28;
+        private int currentFrame = 7 + 28;
 
         public MarioSmallJumpingLeft(Game1 game)
         {
@@ -341,7 +362,7 @@ namespace Game1
 
         public void DownCommandCalled()
         {
-            myGame.marioSprite = new MarioSmallIdleLeft(myGame)
+            myGame.marioSprite = new MarioSmallIdleLeft(myGame);
         }
 
         public void LeftCommandCalled()
@@ -373,12 +394,17 @@ namespace Game1
         {
             myGame.marioSprite = new MarioSmallDeadLeft(myGame);
         }
+
+        public void Update()
+        {
+            
+        }
     }
     public class MarioSmallJumpingRight : ISprite
     {
         private Game1 myGame;
 
-        private int currentFrame = 21 + 28;
+        private int currentFrame = 20 + 28;
 
         public MarioSmallJumpingRight(Game1 game)
         {
@@ -411,7 +437,7 @@ namespace Game1
 
         public void DownCommandCalled()
         {
-            myGame.marioSprite = new MarioSmallIdleRight(myGame)
+            myGame.marioSprite = new MarioSmallIdleRight(myGame);
         }
 
         public void LeftCommandCalled()
@@ -443,12 +469,17 @@ namespace Game1
         {
             myGame.marioSprite = new MarioSmallDeadRight(myGame);
         }
+
+        public void Update()
+        {
+            
+        }
     }
     public class MarioSmallCrouchingLeft : ISprite
     {
         private Game1 myGame;
 
-        private int currentFrame = 13 + 28;
+        private int currentFrame = 12+ 28;
 
         public MarioSmallCrouchingLeft(Game1 game)
         {
@@ -513,12 +544,17 @@ namespace Game1
         {
             myGame.marioSprite = new MarioSmallDeadLeft(myGame);
         }
+
+        public void Update()
+        {
+            
+        }
     }
     public class MarioSmallCrouchingRight : ISprite
     {
         private Game1 myGame;
 
-        private int currentFrame = 16 + 28;
+        private int currentFrame = 15 + 28;
 
         public MarioSmallCrouchingRight(Game1 game)
         {
@@ -546,7 +582,7 @@ namespace Game1
 
         public void UpCommandCalled()
         {
-            myGame.marioSprite = new MarioSmallIdleLeft(myGame);
+            myGame.marioSprite = new MarioSmallIdleRight(myGame);
         }
 
         public void DownCommandCalled()
@@ -582,6 +618,11 @@ namespace Game1
         public void DeadMarioCommandCalled()
         {
             myGame.marioSprite = new MarioSmallDeadRight(myGame);
+        }
+
+        public void Update()
+        {
+            
         }
     }
     public class MarioSmallDeadLeft : ISprite
@@ -653,12 +694,17 @@ namespace Game1
         {
             
         }
+
+        public void Update()
+        {
+            
+        }
     }
     public class MarioSmallDeadRight : ISprite
     {
         private Game1 myGame;
 
-        private int currentFrame = 28 + 28;
+        private int currentFrame = 28 + 27;
 
         public MarioSmallDeadRight(Game1 game)
         {
@@ -723,12 +769,17 @@ namespace Game1
         {
 
         }
+
+        public void Update()
+        {
+            
+        }
     }
     public class MarioBigIdleRight : ISprite
     {
         private Game1 myGame;
 
-        private int currentFrame = 43 - 28;
+        private int currentFrame = 42 - 28;
 
         public MarioBigIdleRight(Game1 game)
         {
@@ -761,7 +812,7 @@ namespace Game1
 
         public void DownCommandCalled()
         {
-            myGame.marioSprite = new MarioBigCrouchingRight(myGame)
+            myGame.marioSprite = new MarioBigCrouchingRight(myGame);
         }
 
         public void LeftCommandCalled()
@@ -793,12 +844,17 @@ namespace Game1
         {
             myGame.marioSprite = new MarioBigDeadRight(myGame);
         }
+
+        public void Update()
+        {
+            
+        }
     }
     public class MarioBigIdleLeft : ISprite
     {
         private Game1 myGame;
 
-        private int currentFrame = 42- 28;
+        private int currentFrame = 41- 28;
 
         public MarioBigIdleLeft(Game1 game)
         {
@@ -831,7 +887,7 @@ namespace Game1
 
         public void DownCommandCalled()
         {
-            myGame.marioSprite = new MarioBigCrouchingLeft(myGame)
+            myGame.marioSprite = new MarioBigCrouchingLeft(myGame);
         }
 
         public void LeftCommandCalled()
@@ -863,13 +919,18 @@ namespace Game1
         {
             myGame.marioSprite = new MarioBigDeadLeft(myGame);
         }
+
+        public void Update()
+        {
+            
+        }
     }
 
     public class MarioBigWalkRight : ISprite
     {
         private Game1 myGame;
 
-        private int currentFrame = 19;
+        private int currentFrame = 16;
 
         public MarioBigWalkRight(Game1 game)
         {
@@ -902,7 +963,7 @@ namespace Game1
 
         public void DownCommandCalled()
         {
-            myGame.marioSprite = new MarioBigCrouchingRight(myGame)
+            myGame.marioSprite = new MarioBigCrouchingRight(myGame);
         }
 
         public void LeftCommandCalled()
@@ -933,6 +994,11 @@ namespace Game1
         public void DeadMarioCommandCalled()
         {
             myGame.marioSprite = new MarioBigDeadRight(myGame);
+        }
+
+        public void Update()
+        {
+           
         }
     }
     public class MarioBigWalkLeft : ISprite
@@ -972,7 +1038,7 @@ namespace Game1
 
         public void DownCommandCalled()
         {
-            myGame.marioSprite = new MarioBigCrouchingLeft(myGame)
+            myGame.marioSprite = new MarioBigCrouchingLeft(myGame);
         }
 
         public void LeftCommandCalled()
@@ -1004,12 +1070,17 @@ namespace Game1
         {
             myGame.marioSprite = new MarioBigDeadLeft(myGame);
         }
+
+        public void Update()
+        {
+            
+        }
     }
     public class MarioBigJumpingLeft : ISprite
     {
         private Game1 myGame;
 
-        private int currentFrame = 8;
+        private int currentFrame = 7;
 
         public MarioBigJumpingLeft(Game1 game)
         {
@@ -1042,7 +1113,7 @@ namespace Game1
 
         public void DownCommandCalled()
         {
-            myGame.marioSprite = new MarioBigIdleLeft(myGame)
+            myGame.marioSprite = new MarioBigIdleLeft(myGame);
         }
 
         public void LeftCommandCalled()
@@ -1074,12 +1145,16 @@ namespace Game1
         {
             myGame.marioSprite = new MarioBigDeadLeft(myGame);
         }
+
+        public void Update()
+        {
+        }
     }
     public class MarioBigJumpingRight : ISprite
     {
         private Game1 myGame;
 
-        private int currentFrame = 21;
+        private int currentFrame = 20;
 
         public MarioBigJumpingRight(Game1 game)
         {
@@ -1112,7 +1187,7 @@ namespace Game1
 
         public void DownCommandCalled()
         {
-            myGame.marioSprite = new MarioBigIdleRight(myGame)
+            myGame.marioSprite = new MarioBigIdleRight(myGame);
         }
 
         public void LeftCommandCalled()
@@ -1144,12 +1219,17 @@ namespace Game1
         {
             myGame.marioSprite = new MarioBigDeadRight(myGame);
         }
+
+        public void Update()
+        {
+            
+        }
     }
     public class MarioBigCrouchingLeft : ISprite
     {
         private Game1 myGame;
 
-        private int currentFrame = 13;
+        private int currentFrame = 12;
 
         public MarioBigCrouchingLeft(Game1 game)
         {
@@ -1214,12 +1294,17 @@ namespace Game1
         {
             myGame.marioSprite = new MarioBigDeadLeft(myGame);
         }
+
+        public void Update()
+        {
+            
+        }
     }
     public class MarioBigCrouchingRight : ISprite
     {
         private Game1 myGame;
 
-        private int currentFrame = 16;
+        private int currentFrame = 15;
 
         public MarioBigCrouchingRight(Game1 game)
         {
@@ -1247,7 +1332,7 @@ namespace Game1
 
         public void UpCommandCalled()
         {
-            myGame.marioSprite = new MarioBigIdleLeft(myGame);
+            myGame.marioSprite = new MarioBigIdleRight(myGame);
         }
 
         public void DownCommandCalled()
@@ -1283,6 +1368,11 @@ namespace Game1
         public void DeadMarioCommandCalled()
         {
             myGame.marioSprite = new MarioBigDeadRight(myGame);
+        }
+
+        public void Update()
+        {
+            
         }
     }
     public class MarioBigDeadLeft : ISprite
@@ -1354,12 +1444,17 @@ namespace Game1
         {
 
         }
+
+        public void Update()
+        {
+            
+        }
     }
     public class MarioBigDeadRight : ISprite
     {
         private Game1 myGame;
 
-        private int currentFrame = 28;
+        private int currentFrame = 27;
 
         public MarioBigDeadRight(Game1 game)
         {
@@ -1424,12 +1519,17 @@ namespace Game1
         {
 
         }
+
+        public void Update()
+        {
+            
+        }
     }
     public class MarioFireIdleRight : ISprite
     {
         private Game1 myGame;
 
-        private int currentFrame = 43 + 28;
+        private int currentFrame = 42 + 28;
 
         public MarioFireIdleRight(Game1 game)
         {
@@ -1462,7 +1562,7 @@ namespace Game1
 
         public void DownCommandCalled()
         {
-            myGame.marioSprite = new MarioFireCrouchingRight(myGame)
+            myGame.marioSprite = new MarioFireCrouchingRight(myGame);
         }
 
         public void LeftCommandCalled()
@@ -1494,12 +1594,17 @@ namespace Game1
         {
             myGame.marioSprite = new MarioFireDeadRight(myGame);
         }
+
+        public void Update()
+        {
+            
+        }
     }
     public class MarioFireIdleLeft : ISprite
     {
         private Game1 myGame;
 
-        private int currentFrame = 42 + 28;
+        private int currentFrame = 41 + 28;
 
         public MarioFireIdleLeft(Game1 game)
         {
@@ -1532,7 +1637,7 @@ namespace Game1
 
         public void DownCommandCalled()
         {
-            myGame.marioSprite = new MarioFireCrouchingLeft(myGame)
+            myGame.marioSprite = new MarioFireCrouchingLeft(myGame);
         }
 
         public void LeftCommandCalled()
@@ -1564,13 +1669,18 @@ namespace Game1
         {
             myGame.marioSprite = new MarioFireDeadLeft(myGame);
         }
+
+        public void Update()
+        {
+            
+        }
     }
 
     public class MarioFireWalkRight : ISprite
     {
         private Game1 myGame;
 
-        private int currentFrame = 19 + 56;
+        private int currentFrame = 16 + 56;
 
         public MarioFireWalkRight(Game1 game)
         {
@@ -1603,7 +1713,7 @@ namespace Game1
 
         public void DownCommandCalled()
         {
-            myGame.marioSprite = new MarioFireCrouchingRight(myGame)
+            myGame.marioSprite = new MarioFireCrouchingRight(myGame);
         }
 
         public void LeftCommandCalled()
@@ -1634,6 +1744,11 @@ namespace Game1
         public void DeadMarioCommandCalled()
         {
             myGame.marioSprite = new MarioFireDeadRight(myGame);
+        }
+
+        public void Update()
+        {
+            
         }
     }
     public class MarioFireWalkLeft : ISprite
@@ -1673,7 +1788,7 @@ namespace Game1
 
         public void DownCommandCalled()
         {
-            myGame.marioSprite = new MarioFireCrouchingLeft(myGame)
+            myGame.marioSprite = new MarioFireCrouchingLeft(myGame);
         }
 
         public void LeftCommandCalled()
@@ -1705,12 +1820,17 @@ namespace Game1
         {
             myGame.marioSprite = new MarioFireDeadLeft(myGame);
         }
+
+        public void Update()
+        {
+            
+        }
     }
     public class MarioFireJumpingLeft : ISprite
     {
         private Game1 myGame;
 
-        private int currentFrame = 8 + 56;
+        private int currentFrame = 7 + 56;
 
         public MarioFireJumpingLeft(Game1 game)
         {
@@ -1743,7 +1863,7 @@ namespace Game1
 
         public void DownCommandCalled()
         {
-            myGame.marioSprite = new MarioFireIdleLeft(myGame)
+            myGame.marioSprite = new MarioFireIdleLeft(myGame);
         }
 
         public void LeftCommandCalled()
@@ -1775,12 +1895,17 @@ namespace Game1
         {
             myGame.marioSprite = new MarioFireDeadLeft(myGame);
         }
+
+        public void Update()
+        {
+           
+        }
     }
     public class MarioFireJumpingRight : ISprite
     {
         private Game1 myGame;
 
-        private int currentFrame = 21 + 56;
+        private int currentFrame = 20 + 56;
 
         public MarioFireJumpingRight(Game1 game)
         {
@@ -1813,7 +1938,7 @@ namespace Game1
 
         public void DownCommandCalled()
         {
-            myGame.marioSprite = new MarioFireIdleRight(myGame)
+            myGame.marioSprite = new MarioFireIdleRight(myGame);
         }
 
         public void LeftCommandCalled()
@@ -1845,12 +1970,17 @@ namespace Game1
         {
             myGame.marioSprite = new MarioFireDeadRight(myGame);
         }
+
+        public void Update()
+        {
+            
+        }
     }
     public class MarioFireCrouchingLeft : ISprite
     {
         private Game1 myGame;
 
-        private int currentFrame = 13 + 56;
+        private int currentFrame = 12+ 56;
 
         public MarioFireCrouchingLeft(Game1 game)
         {
@@ -1915,12 +2045,17 @@ namespace Game1
         {
             myGame.marioSprite = new MarioFireDeadLeft(myGame);
         }
+
+        public void Update()
+        {
+          
+        }
     }
     public class MarioFireCrouchingRight : ISprite
     {
         private Game1 myGame;
 
-        private int currentFrame = 16 + 56;
+        private int currentFrame = 15 + 56;
 
         public MarioFireCrouchingRight(Game1 game)
         {
@@ -1948,7 +2083,7 @@ namespace Game1
 
         public void UpCommandCalled()
         {
-            myGame.marioSprite = new MarioFireIdleLeft(myGame);
+            myGame.marioSprite = new MarioFireIdleRight(myGame);
         }
 
         public void DownCommandCalled()
@@ -1984,6 +2119,11 @@ namespace Game1
         public void DeadMarioCommandCalled()
         {
             myGame.marioSprite = new MarioFireDeadRight(myGame);
+        }
+
+        public void Update()
+        {
+           
         }
     }
     public class MarioFireDeadLeft : ISprite
@@ -2055,12 +2195,17 @@ namespace Game1
         {
 
         }
+
+        public void Update()
+        {
+           
+        }
     }
     public class MarioFireDeadRight : ISprite
     {
         private Game1 myGame;
 
-        private int currentFrame = 28 + 56;
+        private int currentFrame = 27 + 56;
 
         public MarioFireDeadRight(Game1 game)
         {
@@ -2124,6 +2269,11 @@ namespace Game1
         public void DeadMarioCommandCalled()
         {
 
+        }
+
+        public void Update()
+        {
+            
         }
     }
 }
