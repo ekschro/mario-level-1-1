@@ -17,10 +17,11 @@ namespace Game1
         public ISprite marioSprite;
         ArrayList controllerList;
         //public int totalFrames = 8; <= might be better in indiviual classes? Since each item will have its own spritesheet
-        //public Vector2 startingLocation = new Vector2(400, 200); <= same here
-        //public Vector2 currentLocation = new Vector2(400, 200);  <= same here
+        public Vector2 startingLocation = new Vector2(400, 200); 
+        public Vector2 currentLocation = new Vector2(400, 200); 
         public Texture2D marioTexture;
-
+        public int totalMarioColumns = 28;
+        public int totalMarioRows = 3;
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -52,7 +53,7 @@ namespace Game1
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // LOAD ALL TEXTURES HERE
-            marioTexture = Content.Load<Texture2D>("luigi2");
+            marioTexture = Content.Load<Texture2D>("mario");
 
             // INITIALIZE ALL SPRITES HERE
             marioSprite = new WhateverYouWantToStartOnLikeSmallIdleRightMarioOrSomething(this);
