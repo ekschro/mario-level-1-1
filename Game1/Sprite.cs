@@ -1053,7 +1053,7 @@ namespace Game1
 
         public void SmallMarioCommandCalled()
         {
-            myGame.marioSprite = new MarioBigWalkLeft(myGame);
+            myGame.marioSprite = new MarioSmallWalkLeft(myGame);
         }
 
         public void BigMarioCommandCalled()
@@ -1803,7 +1803,7 @@ namespace Game1
 
         public void SmallMarioCommandCalled()
         {
-            myGame.marioSprite = new MarioFireWalkLeft(myGame);
+            myGame.marioSprite = new MarioSmallWalkLeft(myGame);
         }
 
         public void BigMarioCommandCalled()
