@@ -16,8 +16,7 @@ namespace Game1
         void Update();
 
     }
-
-    //The ICommand Interace pattern is much more readable
+    
     public interface ICommand
     {
         void Execute();
@@ -47,7 +46,8 @@ namespace Game1
             controllerMappings.Add(Keys.X, new BrickDisappearCommand(game));
             controllerMappings.Add(Keys.C, new HiddenToUsedCommand(game));
             controllerMappings.Add(Keys.R, new ResetCommand(game));
-
+            controllerMappings.Add(Keys.K, new GoombaStompedCommand(game));
+            controllerMappings.Add(Keys.L, new KoopaStompedCommand(game));
         }
 
         public void Update()
@@ -262,7 +262,7 @@ namespace Game1
 
         public void Execute()
         {
-            myGame.
+            myGame = new Game1();
         }
     }
 
@@ -277,7 +277,22 @@ namespace Game1
 
         public void Execute()
         {
-            myGame.;
+            myGame.GoombaSprite.BeStomped();
+        }
+    }
+
+    public class KoopaStompedCommand : ICommand
+    {
+        private Game1 myGame;
+
+        public KoopaStompedCommand(Game1 game)
+        {
+            myGame = game;
+        }
+
+        public void Execute()
+        {
+            myGame.KoopaSprite.BeStomped();
         }
     }
 }
