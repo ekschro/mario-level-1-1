@@ -17,7 +17,7 @@ namespace Game1
 
     }
 
-    //The ICommand Interace pattern is much more readable
+    
     public interface ICommand
     {
         void Execute();
@@ -53,19 +53,14 @@ namespace Game1
         public void Update()
         {
 
-            if (timer == 20)
-            {
+            
                 Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
                 foreach (Keys key in pressedKeys)
                 {
                     if (controllerMappings.ContainsKey(key))
                         controllerMappings[key].Execute();
                 }
-                timer = 0;
-            } else
-            {
-                timer++;
-            }
+                
            
         }
 
