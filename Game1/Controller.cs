@@ -308,7 +308,22 @@ namespace Game1
 
         public void Execute()
         {
+            myGame.
+        }
+    }
 
+    public class GoombaStompedCommand : ICommand
+    {
+        private Game1 myGame;
+
+        public GoombaStompedCommand(Game1 game)
+        {
+            myGame = game;
+        }
+
+        public void Execute()
+        {
+            myGame.;
         }
     }
 }

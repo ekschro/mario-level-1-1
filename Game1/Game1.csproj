@@ -57,6 +57,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Controller.cs" />
+    <Compile Include="BlockSprite.cs" />
     <Compile Include="PickupSprite.cs" />
     <Compile Include="Sprite.cs" />
     <Compile Include="Game1.cs" />

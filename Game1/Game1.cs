@@ -22,6 +22,17 @@ namespace Game1
         public IPickupSprite GreenMushroomSprite;
         public IPickupSprite StarSprite;
 
+        public IBlockSprite Block1Sprite;
+        public IBlockSprite Block2Sprite;
+        public IBlockSprite Block3Sprite;
+        public IBlockSprite Block4Sprite;
+        public IBlockSprite Block5Sprite;
+        public IBlockSprite PipeBlock1Sprite;
+        public IBlockSprite PipeBlock2Sprite;
+        public IBlockSprite PipeBlock3Sprite;
+        public IBlockSprite PipeBlock4Sprite;
+
+
         ArrayList controllerList;
         //public int totalFrames = 8; <= might be better in indiviual classes? Since each item will have its own spritesheet
         public Vector2 startingLocation = new Vector2(400, 200); 
@@ -31,6 +42,7 @@ namespace Game1
         //public Vector2 currentLocation = new Vector2(400, 200);  <= same here
         public Texture2D marioTexture;
         public Texture2D PickupTexture;
+        public Texture2D blockTexture;
 
         public int totalMarioColumns = 28;
         public int totalMarioRows = 3;
@@ -68,14 +80,27 @@ namespace Game1
             
             PickupTexture = Content.Load<Texture2D>("pickup");
             marioTexture = Content.Load<Texture2D>("mario");
+            blockTexture = Content.Load<Texture2D>("tiles");
 
             // INITIALIZE ALL SPRITES HERE
             marioSprite = new MarioSmallIdleRight(this);
+
             FireflowerSprite = new FireflowerSprite(this);
             CoinSprite = new CoinSprite(this);
             RedMushroomSprite = new RedMushroomSprite(this);
             GreenMushroomSprite = new GreenMushroomSprite(this);
             StarSprite = new StarSprite(this);
+
+
+            Block1Sprite = new StairBlockSprite(this);
+            Block2Sprite = new UsedBlockSprite(this);
+            Block3Sprite = new QuestionBlockSprite(this);
+            Block4Sprite = new BrickBlockSprite(this);
+            Block5Sprite = new StoneBlockSprite(this);
+            PipeBlock1Sprite = new TopLeftPipeSprite(this);
+            PipeBlock2Sprite = new TopRightPipeSprite(this);
+            PipeBlock3Sprite = new BottomLeftPipeSprite(this);
+            PipeBlock4Sprite = new BottomRightPipeSprite(this);
 
         }
 
