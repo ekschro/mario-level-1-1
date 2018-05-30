@@ -52,8 +52,8 @@ namespace Game1
 
         public void Update()
         {
-            
-            if (timer == 50)
+
+            if (timer == 20)
             {
                 Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
                 foreach (Keys key in pressedKeys)
@@ -66,56 +66,10 @@ namespace Game1
             {
                 timer++;
             }
+           
         }
 
     }
-
-    /*
-
-    public class GamePadController : IController
-    {
-        private Dictionary<Buttons, ICommand> controllerMappings;
-        public GamePadController(Game1 game)
-        {
-            controllerMappings = new Dictionary<Buttons, ICommand>();
-
-            controllerMappings.Add(Buttons.Start, new ExitGameCommand(game));
-            controllerMappings.Add(Buttons.A, new NonMovingNonAnimatedCommand(game));
-            controllerMappings.Add(Buttons.B, new NonMovingAnimatedCommand(game));
-            controllerMappings.Add(Buttons.X, new MovingNonAnimatedCommand(game));
-            controllerMappings.Add(Buttons.Y, new MovingAnimatedCommand(game));
-
-        }
-
-        public void Update()
-        {
-            Buttons[] pressedButtons = GetControllerButtons();
-            foreach (Buttons button in pressedButtons)
-            {
-                if(controllerMappings.ContainsKey(button))
-                    controllerMappings[button].Execute();
-            }
-        }
-
-        private Buttons[] GetControllerButtons()
-        {
-            Buttons[] PressedButtons = new Buttons[5];
-
-            if (GamePad.GetState(PlayerIndex.One).Buttons.A == ButtonState.Pressed)
-                PressedButtons[0] = Buttons.A;
-            if (GamePad.GetState(PlayerIndex.One).Buttons.B == ButtonState.Pressed)
-                PressedButtons[1] = Buttons.B;
-            if (GamePad.GetState(PlayerIndex.One).Buttons.X == ButtonState.Pressed)
-                PressedButtons[2] = Buttons.X;
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Y == ButtonState.Pressed)
-                PressedButtons[3] = Buttons.Y;
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed)
-                PressedButtons[4] = Buttons.Start;
-            return PressedButtons;
-        }
-    }
-
-    */
 
     public class ExitGameCommand : ICommand
     {

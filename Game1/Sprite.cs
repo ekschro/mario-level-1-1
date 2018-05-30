@@ -222,7 +222,7 @@ namespace Game1
 
         public void RightCommandCalled()
         {
-            
+            myGame.marioSprite = new MarioSmallIdleRight(myGame);
         }
 
         public void SmallMarioCommandCalled()
@@ -292,7 +292,7 @@ namespace Game1
 
         public void LeftCommandCalled()
         {
-            
+            myGame.marioSprite = new MarioSmallIdleLeft(myGame);
         }
 
         public void RightCommandCalled()
@@ -973,7 +973,7 @@ namespace Game1
 
         public void RightCommandCalled()
         {
-
+            myGame.marioSprite = new MarioBigIdleRight(myGame);
         }
 
         public void SmallMarioCommandCalled()
@@ -1043,7 +1043,7 @@ namespace Game1
 
         public void LeftCommandCalled()
         {
-
+            myGame.marioSprite = new MarioBigIdleLeft(myGame);
         }
 
         public void RightCommandCalled()
@@ -1053,7 +1053,7 @@ namespace Game1
 
         public void SmallMarioCommandCalled()
         {
-            myGame.marioSprite = new MarioBigWalkLeft(myGame);
+            myGame.marioSprite = new MarioSmallWalkLeft(myGame);
         }
 
         public void BigMarioCommandCalled()
@@ -1723,7 +1723,7 @@ namespace Game1
 
         public void RightCommandCalled()
         {
-
+            myGame.marioSprite = new MarioFireIdleRight(myGame);
         }
 
         public void SmallMarioCommandCalled()
@@ -1793,7 +1793,7 @@ namespace Game1
 
         public void LeftCommandCalled()
         {
-
+            myGame.marioSprite = new MarioFireIdleLeft(myGame);
         }
 
         public void RightCommandCalled()
@@ -1803,7 +1803,7 @@ namespace Game1
 
         public void SmallMarioCommandCalled()
         {
-            myGame.marioSprite = new MarioFireWalkLeft(myGame);
+            myGame.marioSprite = new MarioSmallWalkLeft(myGame);
         }
 
         public void BigMarioCommandCalled()

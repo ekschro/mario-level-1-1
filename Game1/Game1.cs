@@ -6,10 +6,7 @@ using System.Collections;
 namespace Game1
 {
     
-    /// Tim was here
-    /// <summary>
-    /// This is the main type for your game.
-    /// </summary>
+
     public class Game1 : Game
     {
         GraphicsDeviceManager graphics;
@@ -21,6 +18,9 @@ namespace Game1
         public IPickupSprite RedMushroomSprite;
         public IPickupSprite GreenMushroomSprite;
         public IPickupSprite StarSprite;
+
+        public IEnemy KoopaSprite;
+        public IEnemy GoombaSprite;
 
         public IBlockSprite Block1Sprite;
         public IBlockSprite Block2Sprite;
@@ -34,14 +34,14 @@ namespace Game1
 
 
         ArrayList controllerList;
-        //public int totalFrames = 8; <= might be better in indiviual classes? Since each item will have its own spritesheet
+        
         public Vector2 startingLocation = new Vector2(400, 200); 
         public Vector2 currentLocation = new Vector2(400, 200); 
-        public int totalPickupFrames = 14; //if there is individual class later will change later
-        //public Vector2 startingLocation = new Vector2(400, 200); <= same here
-        //public Vector2 currentLocation = new Vector2(400, 200);  <= same here
+        public int totalPickupFrames = 14;
         public Texture2D marioTexture;
         public Texture2D PickupTexture;
+        public Texture2D koopaTexture;
+        public Texture2D goombaTexture;
         public Texture2D blockTexture;
 
         public int totalMarioColumns = 28;
@@ -52,37 +52,32 @@ namespace Game1
             Content.RootDirectory = "Content";
         }
 
-        /// <summary>
-        /// Allows the game to perform any initialization it needs to before starting to run.
-        /// This is where it can query for any required services and load any non-graphic
-        /// related content.  Calling base.Initialize will enumerate through any components
-        /// and initialize them as well.
-        /// </summary>
+        
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+            
             controllerList = new ArrayList();
-            //controllerList.Add(new GamePadController(this));
+            
             controllerList.Add(new KeyboardController(this));
 
             base.Initialize();
         }
 
-        /// <summary>
-        /// LoadContent will be called once per game and is the place to load
-        /// all of your content.
-        /// </summary>
+       
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // LOAD ALL TEXTURES HERE
+            
             
             PickupTexture = Content.Load<Texture2D>("pickup");
             marioTexture = Content.Load<Texture2D>("mario");
-            blockTexture = Content.Load<Texture2D>("tiles");
+            koopaTexture = Content.Load<Texture2D>("koopa1");
+            goombaTexture = Content.Load<Texture2D>("goomba1");
 
-            // INITIALIZE ALL SPRITES HERE
+            
+            blockTexture = Content.Load<Texture2D>("tiles");
+            
             marioSprite = new MarioSmallIdleRight(this);
 
             FireflowerSprite = new FireflowerSprite(this);
@@ -91,6 +86,8 @@ namespace Game1
             GreenMushroomSprite = new GreenMushroomSprite(this);
             StarSprite = new StarSprite(this);
 
+            KoopaSprite = new Koopa(this);
+            GoombaSprite = new Goomba(this);
 
             Block1Sprite = new StairBlockSprite(this);
             Block2Sprite = new UsedBlockSprite(this);
@@ -104,20 +101,13 @@ namespace Game1
 
         }
 
-        /// <summary>
-        /// UnloadContent will be called once per game and is the place to unload
-        /// game-specific content.
-        /// </summary>
+        
         protected override void UnloadContent()
         {
-            // TODO: Unload any non ContentManager content here
+            
         }
 
-        /// <summary>
-        /// Allows the game to run logic such as updating the world,
-        /// checking for collisions, gathering input, and playing audio.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
+        
         protected override void Update(GameTime gameTime)
         {
             foreach (IController controller in controllerList)
@@ -130,13 +120,17 @@ namespace Game1
             GreenMushroomSprite.Update();
             StarSprite.Update();
 
+            KoopaSprite.BeStomped();
+            GoombaSprite.BeStomped();
+            KoopaSprite.Update();
+            GoombaSprite.Update();
+            
+            
+
             base.Update(gameTime);
         }
 
-        /// <summary>
-        /// This is called when the game should draw itself.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
+       
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
@@ -147,6 +141,10 @@ namespace Game1
             RedMushroomSprite.Draw();
             GreenMushroomSprite.Draw();
             StarSprite.Draw();
+
+            KoopaSprite.Draw();
+            GoombaSprite.Draw();
+            
 
             base.Draw(gameTime);
         }
