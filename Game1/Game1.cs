@@ -120,8 +120,8 @@ namespace Game1
             GreenMushroomSprite.Update();
             StarSprite.Update();
 
-            KoopaSprite.BeStomped();
-            GoombaSprite.BeStomped();
+            //KoopaSprite.BeStomped();
+            //GoombaSprite.BeStomped();
             KoopaSprite.Update();
             GoombaSprite.Update();
             
