@@ -27,22 +27,40 @@ namespace Game1
         public IBlockSprite Block3Sprite;
         public IBlockSprite Block4Sprite;
         public IBlockSprite Block5Sprite;
+        public IBlockSprite Block6Sprite;
         public IBlockSprite PipeBlock1Sprite;
         public IBlockSprite PipeBlock2Sprite;
         public IBlockSprite PipeBlock3Sprite;
         public IBlockSprite PipeBlock4Sprite;
 
+        public Vector2 Block1Location = new Vector2(200, 200);
+        public Vector2 Block2Location = new Vector2(220, 200);
+        public Vector2 Block3Location = new Vector2(240, 200);
+        public Vector2 Block4Location = new Vector2(260, 200);
+        public Vector2 Block5Location = new Vector2(280, 200);
+        public Vector2 Block6Location = new Vector2(300, 200);
 
-        ArrayList controllerList;
+        public Vector2 Pipe1Location = new Vector2(340, 200);
+        public Vector2 Pipe2Location = new Vector2(356, 200);
+        public Vector2 Pipe3Location = new Vector2(340, 216);
+        public Vector2 Pipe4Location = new Vector2(356, 216);
+
+        public ArrayList controllerList;
         
         public Vector2 startingLocation = new Vector2(400, 200); 
         public Vector2 currentLocation = new Vector2(400, 200); 
         public int totalPickupFrames = 14;
+        public int totalBlockFrames = 12;
         public Texture2D marioTexture;
         public Texture2D PickupTexture;
         public Texture2D koopaTexture;
         public Texture2D goombaTexture;
         public Texture2D blockTexture;
+
+        public bool LeftPressed;
+        public bool RightPressed;
+        public bool UpPressed;
+        public bool DownPressed;
 
         public int totalMarioColumns = 28;
         public int totalMarioRows = 3;
@@ -50,6 +68,11 @@ namespace Game1
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+
+            LeftPressed = false;
+            RightPressed = false;
+            UpPressed = false;
+            DownPressed = false;
         }
 
         
@@ -94,6 +117,7 @@ namespace Game1
             Block3Sprite = new QuestionBlockSprite(this);
             Block4Sprite = new BrickBlockSprite(this);
             Block5Sprite = new StoneBlockSprite(this);
+            Block6Sprite = new HiddenBlockSprite(this);
             PipeBlock1Sprite = new TopLeftPipeSprite(this);
             PipeBlock2Sprite = new TopRightPipeSprite(this);
             PipeBlock3Sprite = new BottomLeftPipeSprite(this);
@@ -114,18 +138,27 @@ namespace Game1
                 controller.Update();
 
             marioSprite.Update();
+
+
             FireflowerSprite.Update();
             CoinSprite.Update();
             RedMushroomSprite.Update();
             GreenMushroomSprite.Update();
             StarSprite.Update();
 
-            //KoopaSprite.BeStomped();
-            //GoombaSprite.BeStomped();
             KoopaSprite.Update();
             GoombaSprite.Update();
-            
-            
+
+            Block1Sprite.Update();
+            Block2Sprite.Update();
+            Block3Sprite.Update();
+            Block4Sprite.Update();
+            Block5Sprite.Update();
+            Block6Sprite.Update();
+            PipeBlock1Sprite.Update();
+            PipeBlock2Sprite.Update();
+            PipeBlock3Sprite.Update();
+            PipeBlock4Sprite.Update();
 
             base.Update(gameTime);
         }
@@ -144,7 +177,17 @@ namespace Game1
 
             KoopaSprite.Draw();
             GoombaSprite.Draw();
-            
+
+            Block1Sprite.Draw(Block1Location);
+            Block2Sprite.Draw(Block2Location);
+            Block3Sprite.Draw(Block3Location);
+            Block4Sprite.Draw(Block4Location);
+            Block5Sprite.Draw(Block5Location);
+            Block6Sprite.Draw(Block6Location);
+            PipeBlock1Sprite.Draw(Pipe1Location);
+            PipeBlock2Sprite.Draw(Pipe2Location);
+            PipeBlock3Sprite.Draw(Pipe3Location);
+            PipeBlock4Sprite.Draw(Pipe4Location);
 
             base.Draw(gameTime);
         }
