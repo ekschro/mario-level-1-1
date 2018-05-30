@@ -178,9 +178,9 @@ namespace Game1
     public class MarioSmallWalkRight : ISprite
     {
         private Game1 myGame;
-
+        private int counter = 1;
         private int currentFrame = 16 + 28;
-
+        private Boolean forward = true;
         public MarioSmallWalkRight(Game1 game)
         {
             myGame = game;
@@ -222,7 +222,7 @@ namespace Game1
 
         public void RightCommandCalled()
         {
-            myGame.marioSprite = new MarioSmallIdleRight(myGame);
+            myGame.marioSprite.Update();
         }
 
         public void SmallMarioCommandCalled()
@@ -247,14 +247,36 @@ namespace Game1
 
         public void Update()
         {
-            
+            if (forward && counter < 3)
+            {
+                currentFrame++;
+                counter++;
+            }
+            else if (forward && counter == 3)
+            {
+                counter = 1;
+                forward = false;
+                currentFrame = currentFrame--;
+            }
+            else if (!forward && counter < 3)
+            {
+                currentFrame--;
+                counter++;
+            }
+            else
+            {
+                forward = true;
+                counter = 1;
+                currentFrame = 16 + 28;
+            }
         }
     }
     public class MarioSmallWalkLeft : ISprite
     {
         private Game1 myGame;
-
+        private Boolean forward = true;
         private int currentFrame = 11 + 28;
+        private int counter = 1;
 
         public MarioSmallWalkLeft(Game1 game)
         {
@@ -292,7 +314,7 @@ namespace Game1
 
         public void LeftCommandCalled()
         {
-            myGame.marioSprite = new MarioSmallIdleLeft(myGame);
+            myGame.marioSprite.Update();
         }
 
         public void RightCommandCalled()
@@ -322,7 +344,28 @@ namespace Game1
 
         public void Update()
         {
-            
+            if (forward && counter < 3)
+            {
+                currentFrame--;
+                counter++;
+            }
+            else if (forward && counter == 3)
+            {
+                counter = 1;
+                forward = false;
+                currentFrame = currentFrame++;
+            }
+            else if (!forward && counter < 3)
+            {
+                currentFrame++;
+                counter++;
+            }
+            else
+            {
+                forward = true;
+                counter = 1;
+                currentFrame = 11 + 28;
+            }
         }
     }
     public class MarioSmallJumpingLeft : ISprite
@@ -931,6 +974,8 @@ namespace Game1
         private Game1 myGame;
 
         private int currentFrame = 16;
+        private int counter = 1;
+        private bool forward = true;
 
         public MarioBigWalkRight(Game1 game)
         {
@@ -973,7 +1018,7 @@ namespace Game1
 
         public void RightCommandCalled()
         {
-            myGame.marioSprite = new MarioBigIdleRight(myGame);
+            myGame.marioSprite.Update();
         }
 
         public void SmallMarioCommandCalled()
@@ -998,14 +1043,38 @@ namespace Game1
 
         public void Update()
         {
-           
-        }
+            if (forward && counter < 3)
+            {
+                currentFrame++;
+                counter++;
+            }
+            else if (forward && counter == 3)
+            {
+                counter = 1;
+                forward = false;
+                currentFrame = currentFrame--;
+            }
+            else if (!forward && counter < 3)
+            {
+                currentFrame--;
+                counter++;
+            }
+            else
+            {
+                forward = true;
+                counter = 1;
+                currentFrame = 16 ;
+            }
+        
+         }
     }
     public class MarioBigWalkLeft : ISprite
     {
         private Game1 myGame;
 
         private int currentFrame = 11;
+        private bool forward = true;
+        private int counter = 1;
 
         public MarioBigWalkLeft(Game1 game)
         {
@@ -1043,7 +1112,7 @@ namespace Game1
 
         public void LeftCommandCalled()
         {
-            myGame.marioSprite = new MarioBigIdleLeft(myGame);
+            myGame.marioSprite.Update();
         }
 
         public void RightCommandCalled()
@@ -1073,7 +1142,28 @@ namespace Game1
 
         public void Update()
         {
-            
+            if (forward && counter < 3)
+            {
+                currentFrame--;
+                counter++;
+            }
+            else if (forward && counter == 3)
+            {
+                counter = 1;
+                forward = false;
+                currentFrame = currentFrame++;
+            }
+            else if (!forward && counter < 3)
+            {
+                currentFrame++;
+                counter++;
+            }
+            else
+            {
+                forward = true;
+                counter = 1;
+                currentFrame = 11;
+            }
         }
     }
     public class MarioBigJumpingLeft : ISprite
@@ -1681,6 +1771,8 @@ namespace Game1
         private Game1 myGame;
 
         private int currentFrame = 16 + 56;
+        private bool forward = true;
+        private int counter = 1;
 
         public MarioFireWalkRight(Game1 game)
         {
@@ -1723,7 +1815,7 @@ namespace Game1
 
         public void RightCommandCalled()
         {
-            myGame.marioSprite = new MarioFireIdleRight(myGame);
+            myGame.marioSprite.Update();
         }
 
         public void SmallMarioCommandCalled()
@@ -1738,7 +1830,7 @@ namespace Game1
 
         public void FireMarioCommandCalled()
         {
-            
+
         }
 
         public void DeadMarioCommandCalled()
@@ -1748,14 +1840,38 @@ namespace Game1
 
         public void Update()
         {
-            
+            if (forward && counter < 3)
+            {
+                currentFrame++;
+                counter++;
+            }
+            else if (forward && counter == 3)
+            {
+                counter = 1;
+                forward = false;
+                currentFrame = currentFrame--;
+            }
+            else if (!forward && counter < 3)
+            {
+                currentFrame--;
+                counter++;
+            }
+            else
+            {
+                forward = true;
+                counter = 1;
+                currentFrame = 16 + 56;
+            }
         }
+
     }
     public class MarioFireWalkLeft : ISprite
     {
         private Game1 myGame;
 
         private int currentFrame = 11 + 56;
+        private bool forward = true;
+        private int counter = 1;
 
         public MarioFireWalkLeft(Game1 game)
         {
@@ -1793,7 +1909,7 @@ namespace Game1
 
         public void LeftCommandCalled()
         {
-            myGame.marioSprite = new MarioFireIdleLeft(myGame);
+            myGame.marioSprite.Update();
         }
 
         public void RightCommandCalled()
@@ -1823,7 +1939,28 @@ namespace Game1
 
         public void Update()
         {
-            
+            if (forward && counter < 3)
+            {
+                currentFrame--;
+                counter++;
+            }
+            else if (forward && counter == 3)
+            {
+                counter = 1;
+                forward = false;
+                currentFrame = currentFrame++;
+            }
+            else if (!forward && counter < 3)
+            {
+                currentFrame++;
+                counter++;
+            }
+            else
+            {
+                forward = true;
+                counter = 1;
+                currentFrame = 11 + 56;
+            }
         }
     }
     public class MarioFireJumpingLeft : ISprite
