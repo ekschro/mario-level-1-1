@@ -21,11 +21,11 @@ namespace Game1
         private Game1 myGame;
         private int currentFrame;
         private int cyclePosition = 0;
-        private int cycleLength = 16;
+        private int cycleLength = 8;
+        private bool direction = true;
         private int startFrame;
         private int endFrame;
-        private Vector2 location;
-
+        public Vector2 location;
         public Koopa(Game1 game)
         {
             stateMachine = new KoopaStateMachine();
@@ -38,7 +38,6 @@ namespace Game1
 
         public void ChangeDirection()
         {
-
             stateMachine.ChangeDirection();
         }
 
@@ -50,28 +49,48 @@ namespace Game1
             startFrame = 5;
             endFrame = 6;
             stateMachine.BeStomped();
+            location.X += 1;
         }
 
         public void BeFlipped()
         {
-            
             stateMachine.BeFlipped();
         }
         public void Update()
         {
             stateMachine.Update();
             cyclePosition++;
-            if (cyclePosition == cycleLength)
+            if (cyclePosition == cycleLength && direction == true)
             {
+                startFrame = 2;
+                endFrame = 3;
+                currentFrame = startFrame;
+                location.X += 1;
+                if (location.X == 420)
+                    direction = false;
                 cyclePosition = 0;
+
                 currentFrame++;
                 if (currentFrame == endFrame)
                     currentFrame = startFrame;
             }
+            else if (cyclePosition == cycleLength && direction == false)
+            {
+                startFrame = 0;
+                endFrame = 1;
+                currentFrame = startFrame;
+                location.X -= 1;
+                if (location.X == 380)
+                    direction = true;
+                cyclePosition = 0;
 
+                currentFrame++;
+                if (currentFrame == endFrame)
+                    currentFrame = startFrame;
+            }
         }
 
-        public void Draw()
+            public void Draw()
         {
             int width = myGame.koopaTexture.Width / 6;
 
@@ -89,10 +108,11 @@ namespace Game1
         private Game1 myGame;
         private int currentFrame;
         private int cyclePosition = 0;
-        private int cycleLength = 16;
+        private int cycleLength = 8;
+        private bool direction = true;
         private int startFrame;
         private int endFrame;
-        private Vector2 location;
+        public Vector2 location;
 
         public Goomba(Game1 game)
         {
@@ -103,7 +123,10 @@ namespace Game1
             currentFrame = startFrame;
             location = new Vector2(450, 100);
         }
-
+        public Vector2 Getlocation()
+        {
+            return location;
+        }
         public void ChangeDirection()
         {
 
@@ -115,6 +138,9 @@ namespace Game1
             startFrame = 2;
             endFrame = 3;
             stateMachine.BeStomped();
+            startFrame = 3;
+            endFrame = 4;
+            stateMachine.BeStomped();
         }
 
         public void BeFlipped()
@@ -125,19 +151,31 @@ namespace Game1
         {
             stateMachine.Update();
             cyclePosition++;
-            if (cyclePosition == cycleLength)
+            if (cyclePosition == cycleLength && direction == true)
             {
+                location.X += 1;
+                if (location.X == 500)
+                    direction = false;
                 cyclePosition = 0;
                 currentFrame++;
                 if (currentFrame == endFrame)
                     currentFrame = startFrame;
             }
-            
+            else if (cyclePosition == cycleLength && direction == false)
+            {
+                location.X -= 1;
+                if (location.X == 400)
+                    direction = true;
+                cyclePosition = 0;
+                currentFrame++;
+                if (currentFrame == endFrame)
+                    currentFrame = startFrame;
+            }
         }
 
         public void Draw()
         {
-            int width = myGame.goombaTexture.Width / 3;
+            int width = myGame.goombaTexture.Width / 4;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.goombaTexture.Height);
             Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width, myGame.goombaTexture.Height);

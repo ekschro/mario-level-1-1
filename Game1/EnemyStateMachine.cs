@@ -65,6 +65,7 @@ namespace Game1
             facingLeft = !facingLeft;
         }
 
+        
         public void BeStomped()
         {
             if (health != KoopaHealth.Stomped) // Note: the if is needed so we only do the transition once
@@ -89,6 +90,10 @@ namespace Game1
             {
                 ChangeDirection();
                 health = KoopaHealth.Normal;
+            }
+            if (health == KoopaHealth.Stomped)
+            {
+
             }
             // if-else logic based on the current values of facingLeft and health to determine how to move
         }
