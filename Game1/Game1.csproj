@@ -56,10 +56,33 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="MarioFireCrouchingRight.cs" />
+    <Compile Include="MarioFireCrouchingLeft.cs" />
+    <Compile Include="MarioFireJumpingRight.cs" />
+    <Compile Include="MarioFireJumpingLeft.cs" />
+    <Compile Include="MarioFireWalkLeft.cs" />
+    <Compile Include="MarioFireWalkRight.cs" />
+    <Compile Include="MarioFireIdleLeft.cs" />
+    <Compile Include="MarioFireIdleRight.cs" />
+    <Compile Include="MarioBigCrouchingRight.cs" />
+    <Compile Include="MarioBigCrouchingLeft.cs" />
+    <Compile Include="MarioBigJumpingRight.cs" />
+    <Compile Include="MarioBigJumpingLeft.cs" />
+    <Compile Include="MarioBigWalkLeft.cs" />
+    <Compile Include="MarioBigWalkRight.cs" />
+    <Compile Include="MarioBigIdleLeft.cs" />
+    <Compile Include="DeadMario.cs" />
+    <Compile Include="MarioBigIdleRight.cs" />
+    <Compile Include="MarioSmallJumpingRight.cs" />
+    <Compile Include="MarioSmallJumpingLeft.cs" />
+    <Compile Include="MarioSmallWalkLeft.cs" />
+    <Compile Include="MarioSmallWalkRight.cs" />
     <Compile Include="Controller.cs" />
     <Compile Include="BlockSprite.cs" />
     <Compile Include="EnemyStateMachine.cs" />
     <Compile Include="Enemy.cs" />
+    <Compile Include="MarioSmallIdleLeft.cs" />
+    <Compile Include="MarioSmallIdleRight.cs" />
     <Compile Include="PickupSprite.cs" />
     <Compile Include="Sprite.cs" />
     <Compile Include="Game1.cs" />
