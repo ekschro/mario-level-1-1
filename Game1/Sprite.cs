@@ -222,7 +222,7 @@ namespace Game1
 
         public void RightCommandCalled()
         {
-            myGame.marioSprite.Update();
+            
         }
 
         public void SmallMarioCommandCalled()
@@ -314,7 +314,7 @@ namespace Game1
 
         public void LeftCommandCalled()
         {
-            myGame.marioSprite.Update();
+            
         }
 
         public void RightCommandCalled()
@@ -1018,7 +1018,7 @@ namespace Game1
 
         public void RightCommandCalled()
         {
-            myGame.marioSprite.Update();
+            
         }
 
         public void SmallMarioCommandCalled()
@@ -1112,7 +1112,7 @@ namespace Game1
 
         public void LeftCommandCalled()
         {
-            myGame.marioSprite.Update();
+            
         }
 
         public void RightCommandCalled()
@@ -1815,7 +1815,7 @@ namespace Game1
 
         public void RightCommandCalled()
         {
-            myGame.marioSprite.Update();
+            
         }
 
         public void SmallMarioCommandCalled()
@@ -1909,7 +1909,7 @@ namespace Game1
 
         public void LeftCommandCalled()
         {
-            myGame.marioSprite.Update();
+            
         }
 
         public void RightCommandCalled()

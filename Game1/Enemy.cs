@@ -24,6 +24,7 @@ namespace Game1
         private int cycleLength = 16;
         private int startFrame;
         private int endFrame;
+        private Vector2 location;
 
         public Koopa(Game1 game)
         {
@@ -32,6 +33,7 @@ namespace Game1
             startFrame = 2;
             endFrame = 4;
             currentFrame = startFrame;
+            location = new Vector2(400, 100);
         }
 
         public void ChangeDirection()
@@ -45,10 +47,14 @@ namespace Game1
             startFrame = 4;
             endFrame = 6;
             stateMachine.BeStomped();
+            startFrame = 5;
+            endFrame = 6;
+            stateMachine.BeStomped();
         }
 
         public void BeFlipped()
         {
+            
             stateMachine.BeFlipped();
         }
         public void Update()
@@ -70,7 +76,7 @@ namespace Game1
             int width = myGame.koopaTexture.Width / 6;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.koopaTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)400, (int)100, width, myGame.koopaTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width, myGame.koopaTexture.Height);
 
             myGame.spriteBatch.Begin();
             myGame.spriteBatch.Draw(myGame.koopaTexture, destinationRectangle, sourceRectangle, Color.White);
@@ -86,6 +92,7 @@ namespace Game1
         private int cycleLength = 16;
         private int startFrame;
         private int endFrame;
+        private Vector2 location;
 
         public Goomba(Game1 game)
         {
@@ -94,6 +101,7 @@ namespace Game1
             startFrame = 0;
             endFrame = 2;
             currentFrame = startFrame;
+            location = new Vector2(450, 100);
         }
 
         public void ChangeDirection()
@@ -132,7 +140,7 @@ namespace Game1
             int width = myGame.goombaTexture.Width / 3;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.goombaTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)450, (int)100, width, myGame.goombaTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width, myGame.goombaTexture.Height);
 
             myGame.spriteBatch.Begin();
             myGame.spriteBatch.Draw(myGame.goombaTexture, destinationRectangle, sourceRectangle, Color.White);
