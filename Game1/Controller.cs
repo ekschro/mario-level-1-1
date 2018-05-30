@@ -31,26 +31,28 @@ namespace Game1
         public KeyboardController(Game1 game)
         {
             myGame = game;
-            controllerMappings = new Dictionary<Keys, ICommand>();
-            controllerMappings.Add(Keys.Q, new ExitGameCommand(myGame));
-            controllerMappings.Add(Keys.W, new UpCommand(myGame));
-            controllerMappings.Add(Keys.S, new DownCommand(myGame));
-            controllerMappings.Add(Keys.A, new LeftCommand(myGame));
-            controllerMappings.Add(Keys.D, new RightCommand(myGame));
-            controllerMappings.Add(Keys.Up, new UpCommand(myGame));
-            controllerMappings.Add(Keys.Down, new DownCommand(myGame));
-            controllerMappings.Add(Keys.Left, new LeftCommand(myGame));
-            controllerMappings.Add(Keys.Right, new RightCommand(myGame));
-            controllerMappings.Add(Keys.Y, new SmallMarioCommand(myGame));
-            controllerMappings.Add(Keys.U, new BigMarioCommand(myGame));
-            controllerMappings.Add(Keys.I, new FireMarioCommand(myGame));
-            controllerMappings.Add(Keys.O, new DeadMarioCommand(myGame));
-            controllerMappings.Add(Keys.Z, new QuestionToUsedCommand(myGame));
-            controllerMappings.Add(Keys.X, new BrickDisappearCommand(myGame));
-            controllerMappings.Add(Keys.C, new HiddenToUsedCommand(myGame));
-            controllerMappings.Add(Keys.R, new ResetCommand(myGame));
-            controllerMappings.Add(Keys.K, new GoombaStompedCommand(myGame));
-            controllerMappings.Add(Keys.L, new KoopaStompedCommand(myGame));
+            controllerMappings = new Dictionary<Keys, ICommand>
+            {
+                { Keys.Q, new ExitGameCommand(myGame) },
+                { Keys.W, new UpCommand(myGame) },
+                { Keys.S, new DownCommand(myGame) },
+                { Keys.A, new LeftCommand(myGame) },
+                { Keys.D, new RightCommand(myGame) },
+                { Keys.Up, new UpCommand(myGame) },
+                { Keys.Down, new DownCommand(myGame) },
+                { Keys.Left, new LeftCommand(myGame) },
+                { Keys.Right, new RightCommand(myGame) },
+                { Keys.Y, new SmallMarioCommand(myGame) },
+                { Keys.U, new BigMarioCommand(myGame) },
+                { Keys.I, new FireMarioCommand(myGame) },
+                { Keys.O, new DeadMarioCommand(myGame) },
+                { Keys.Z, new QuestionToUsedCommand(myGame) },
+                { Keys.X, new BrickDisappearCommand(myGame) },
+                { Keys.C, new HiddenToUsedCommand(myGame) },
+                { Keys.R, new ResetCommand(myGame) },
+                { Keys.K, new GoombaStompedCommand(myGame) },
+                { Keys.L, new KoopaStompedCommand(myGame) }
+            };
 
         }
 
