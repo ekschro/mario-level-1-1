@@ -56,15 +56,22 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CoinSprite.cs" />
     <Compile Include="Controller.cs" />
     <Compile Include="BlockSprite.cs" />
+    <Compile Include="GoombaSprite.cs" />
+    <Compile Include="GreenMushroomSprite.cs" />
+    <Compile Include="KoopaSprite.cs" />
+    <Compile Include="RedMushroonSprite.cs" />
     <Compile Include="EnemyStateMachine.cs" />
-    <Compile Include="Enemy.cs" />
-    <Compile Include="PickupSprite.cs" />
+    <Compile Include="EnemyInterface.cs" />
+    <Compile Include="FireflowerSprite.cs" />
+    <Compile Include="PickupInterface.cs" />
     <Compile Include="Sprite.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StarSprite.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
