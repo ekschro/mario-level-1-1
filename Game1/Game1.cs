@@ -19,6 +19,9 @@ namespace Game1
         public IPickupSprite GreenMushroomSprite;
         public IPickupSprite StarSprite;
 
+        public IEnemy KoopaSprite;
+        public IEnemy GoombaSprite;
+
         ArrayList controllerList;
         
         public Vector2 startingLocation = new Vector2(400, 200); 
@@ -26,6 +29,8 @@ namespace Game1
         public int totalPickupFrames = 14;
         public Texture2D marioTexture;
         public Texture2D PickupTexture;
+        public Texture2D koopaTexture;
+        public Texture2D goombaTexture;
 
         public int totalMarioColumns = 28;
         public int totalMarioRows = 3;
@@ -55,6 +60,8 @@ namespace Game1
             
             PickupTexture = Content.Load<Texture2D>("pickup");
             marioTexture = Content.Load<Texture2D>("mario");
+            koopaTexture = Content.Load<Texture2D>("koopa1");
+            goombaTexture = Content.Load<Texture2D>("goomba1");
 
             
             marioSprite = new MarioSmallIdleRight(this);
@@ -63,7 +70,9 @@ namespace Game1
             RedMushroomSprite = new RedMushroomSprite(this);
             GreenMushroomSprite = new GreenMushroomSprite(this);
             StarSprite = new StarSprite(this);
-
+            KoopaSprite = new Koopa(this);
+            GoombaSprite = new Goomba(this);
+            
         }
 
         
@@ -85,6 +94,13 @@ namespace Game1
             GreenMushroomSprite.Update();
             StarSprite.Update();
 
+            KoopaSprite.BeStomped();
+            GoombaSprite.BeStomped();
+            KoopaSprite.Update();
+            GoombaSprite.Update();
+            
+            
+
             base.Update(gameTime);
         }
 
@@ -99,6 +115,10 @@ namespace Game1
             RedMushroomSprite.Draw();
             GreenMushroomSprite.Draw();
             StarSprite.Draw();
+
+            KoopaSprite.Draw();
+            GoombaSprite.Draw();
+            
 
             base.Draw(gameTime);
         }
