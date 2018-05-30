@@ -14,7 +14,6 @@ namespace Game1
     public interface IController
     {
         void Update();
-
     }
 
     
@@ -25,46 +24,69 @@ namespace Game1
 
     public class KeyboardController : IController
     {
-        public int timer = 0;
         private Dictionary<Keys, ICommand> controllerMappings;
+
+        private Game1 myGame;
+
         public KeyboardController(Game1 game)
         {
+            myGame = game;
             controllerMappings = new Dictionary<Keys, ICommand>();
-            controllerMappings.Add(Keys.Q, new ExitGameCommand(game));
-            controllerMappings.Add(Keys.W, new UpCommand(game));
-            controllerMappings.Add(Keys.S, new DownCommand(game));
-            controllerMappings.Add(Keys.A, new LeftCommand(game));
-            controllerMappings.Add(Keys.D, new RightCommand(game));
-            controllerMappings.Add(Keys.Up, new UpCommand(game));
-            controllerMappings.Add(Keys.Down, new DownCommand(game));
-            controllerMappings.Add(Keys.Left, new LeftCommand(game));
-            controllerMappings.Add(Keys.Right, new RightCommand(game));
-            controllerMappings.Add(Keys.Y, new SmallMarioCommand(game));
-            controllerMappings.Add(Keys.U, new BigMarioCommand(game));
-            controllerMappings.Add(Keys.I, new FireMarioCommand(game));
-            controllerMappings.Add(Keys.O, new DeadMarioCommand(game));
-            controllerMappings.Add(Keys.Z, new QuestionToUsedCommand(game));
-            controllerMappings.Add(Keys.X, new BrickDisappearCommand(game));
-            controllerMappings.Add(Keys.C, new HiddenToUsedCommand(game));
-            controllerMappings.Add(Keys.R, new ResetCommand(game));
-            controllerMappings.Add(Keys.K, new GoombaStompedCommand(game));
-            controllerMappings.Add(Keys.L, new KoopaStompedCommand(game));
+            controllerMappings.Add(Keys.Q, new ExitGameCommand(myGame));
+            controllerMappings.Add(Keys.W, new UpCommand(myGame));
+            controllerMappings.Add(Keys.S, new DownCommand(myGame));
+            controllerMappings.Add(Keys.A, new LeftCommand(myGame));
+            controllerMappings.Add(Keys.D, new RightCommand(myGame));
+            controllerMappings.Add(Keys.Up, new UpCommand(myGame));
+            controllerMappings.Add(Keys.Down, new DownCommand(myGame));
+            controllerMappings.Add(Keys.Left, new LeftCommand(myGame));
+            controllerMappings.Add(Keys.Right, new RightCommand(myGame));
+            controllerMappings.Add(Keys.Y, new SmallMarioCommand(myGame));
+            controllerMappings.Add(Keys.U, new BigMarioCommand(myGame));
+            controllerMappings.Add(Keys.I, new FireMarioCommand(myGame));
+            controllerMappings.Add(Keys.O, new DeadMarioCommand(myGame));
+            controllerMappings.Add(Keys.Z, new QuestionToUsedCommand(myGame));
+            controllerMappings.Add(Keys.X, new BrickDisappearCommand(myGame));
+            controllerMappings.Add(Keys.C, new HiddenToUsedCommand(myGame));
+            controllerMappings.Add(Keys.R, new ResetCommand(myGame));
+            controllerMappings.Add(Keys.K, new GoombaStompedCommand(myGame));
+            controllerMappings.Add(Keys.L, new KoopaStompedCommand(myGame));
+
         }
 
         public void Update()
         {
+            Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
+            foreach (Keys key in pressedKeys)
+            {
+            if (controllerMappings.ContainsKey(key))
+                    controllerMappings[key].Execute();
+            }
 
-            
-                Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
-                foreach (Keys key in pressedKeys)
-                {
-                    if (controllerMappings.ContainsKey(key))
-                        controllerMappings[key].Execute();
-                }
-                
-           
+            if (!pressedKeys.Contains(Keys.W) && !pressedKeys.Contains(Keys.S))
+            {
+                myGame.UpPressed = false;
+                myGame.DownPressed = false;
+            }
+
+            if (!pressedKeys.Contains(Keys.Up) && !pressedKeys.Contains(Keys.Down))
+            {
+                myGame.UpPressed = false;
+                myGame.DownPressed = false;
+            }
+
+            if (!pressedKeys.Contains<Keys>(Keys.A) && !pressedKeys.Contains<Keys>(Keys.D))
+            {
+                myGame.LeftPressed = false;
+                myGame.RightPressed = false;
+            }
+
+            if (!pressedKeys.Contains<Keys>(Keys.Left) && !pressedKeys.Contains<Keys>(Keys.Right))
+            {
+                myGame.LeftPressed = false;
+                myGame.RightPressed = false;
+            }
         }
-
     }
 
     public class ExitGameCommand : ICommand
@@ -93,7 +115,12 @@ namespace Game1
 
         public void Execute()
         {
-            myGame.marioSprite.UpCommandCalled();
+
+            if(!myGame.UpPressed)
+                myGame.marioSprite.UpCommandCalled();
+
+            myGame.UpPressed = true;
+
         }
     }
 
@@ -108,7 +135,10 @@ namespace Game1
 
         public void Execute()
         {
-            myGame.marioSprite.DownCommandCalled();
+            if (!myGame.DownPressed)
+                myGame.marioSprite.DownCommandCalled();
+
+            myGame.DownPressed = true;
         }
     }
 
@@ -123,7 +153,10 @@ namespace Game1
 
         public void Execute()
         {
-            myGame.marioSprite.LeftCommandCalled();
+            if (!myGame.LeftPressed)
+                myGame.marioSprite.LeftCommandCalled();
+
+            myGame.LeftPressed = true;
         }
     }
 
@@ -138,7 +171,10 @@ namespace Game1
 
         public void Execute()
         {
-            myGame.marioSprite.RightCommandCalled();
+            if (!myGame.RightPressed)
+                myGame.marioSprite.RightCommandCalled();
+
+            myGame.RightPressed = true;
         }
     }
 
@@ -213,7 +249,7 @@ namespace Game1
 
         public void Execute()
         {
-            
+            myGame.Block3Sprite.QuestionToUsed();
         }
     }
 
@@ -228,7 +264,7 @@ namespace Game1
 
         public void Execute()
         {
-
+            myGame.Block4Sprite.BrickToEmpty();
         }
     }
 
@@ -243,7 +279,7 @@ namespace Game1
 
         public void Execute()
         {
-
+            myGame.Block6Sprite.HiddenToUsed();
         }
     }
 

@@ -13,7 +13,11 @@ namespace Game1
     public interface IBlockSprite
     {
         void Update();
-        void Draw();
+        void Draw(Vector2 location);
+        void QuestionToUsed();
+        void BrickToEmpty();
+        void HiddenToUsed();
+        
     }
 
     public class StairBlockSprite : IBlockSprite
@@ -32,16 +36,28 @@ namespace Game1
 
         }
 
-        public void Draw()
+        public void Draw(Vector2 location)
         {
-            int width = myGame.PickupTexture.Width / myGame.totalPickupFrames;
+            int width = myGame.blockTexture.Width / myGame.totalBlockFrames;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.blockTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)100, (int)100, width, myGame.blockTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int) location.X, (int) location.Y, width, myGame.blockTexture.Height);
 
             myGame.spriteBatch.Begin();
-            myGame.spriteBatch.Draw(myGame.PickupTexture, destinationRectangle, sourceRectangle, Color.White);
+            myGame.spriteBatch.Draw(myGame.blockTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.spriteBatch.End();
+        }
+        public void QuestionToUsed()
+        {
+
+        }
+        public void BrickToEmpty()
+        {
+
+        }
+        public void HiddenToUsed()
+        {
+
         }
     }
 
@@ -61,16 +77,28 @@ namespace Game1
 
         }
 
-        public void Draw()
+        public void Draw(Vector2 location)
         {
-            int width = myGame.PickupTexture.Width / myGame.totalPickupFrames;
+            int width = myGame.blockTexture.Width / myGame.totalBlockFrames;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.blockTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)100, (int)100, width, myGame.blockTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width, myGame.blockTexture.Height);
 
             myGame.spriteBatch.Begin();
-            myGame.spriteBatch.Draw(myGame.PickupTexture, destinationRectangle, sourceRectangle, Color.White);
+            myGame.spriteBatch.Draw(myGame.blockTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.spriteBatch.End();
+        }
+        public void QuestionToUsed()
+        {
+
+        }
+        public void BrickToEmpty()
+        {
+
+        }
+        public void HiddenToUsed()
+        {
+
         }
     }
 
@@ -103,16 +131,28 @@ namespace Game1
             }
         }
 
-        public void Draw()
+        public void Draw(Vector2 location)
         {
-            int width = myGame.PickupTexture.Width / myGame.totalPickupFrames;
+            int width = myGame.blockTexture.Width / myGame.totalBlockFrames;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.blockTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)100, (int)100, width, myGame.blockTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width, myGame.blockTexture.Height);
 
             myGame.spriteBatch.Begin();
-            myGame.spriteBatch.Draw(myGame.PickupTexture, destinationRectangle, sourceRectangle, Color.White);
+            myGame.spriteBatch.Draw(myGame.blockTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.spriteBatch.End();
+        }
+        public void QuestionToUsed()
+        {
+            myGame.Block3Sprite = new UsedBlockSprite(myGame);
+        }
+        public void BrickToEmpty()
+        {
+
+        }
+        public void HiddenToUsed()
+        {
+
         }
     }
 
@@ -132,16 +172,28 @@ namespace Game1
 
         }
 
-        public void Draw()
+        public void Draw(Vector2 location)
         {
-            int width = myGame.PickupTexture.Width / myGame.totalPickupFrames;
+            int width = myGame.blockTexture.Width / myGame.totalBlockFrames;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.blockTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)100, (int)100, width, myGame.blockTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width, myGame.blockTexture.Height);
 
             myGame.spriteBatch.Begin();
-            myGame.spriteBatch.Draw(myGame.PickupTexture, destinationRectangle, sourceRectangle, Color.White);
+            myGame.spriteBatch.Draw(myGame.blockTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.spriteBatch.End();
+        }
+        public void QuestionToUsed()
+        {
+
+        }
+        public void BrickToEmpty()
+        {
+            myGame.Block4Sprite = new EmptyBlockSprite(myGame);
+        }
+        public void HiddenToUsed()
+        {
+
         }
     }
 
@@ -161,16 +213,110 @@ namespace Game1
 
         }
 
-        public void Draw()
+        public void Draw(Vector2 location)
         {
-            int width = myGame.PickupTexture.Width / myGame.totalPickupFrames;
+            int width = myGame.blockTexture.Width / myGame.totalBlockFrames;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.blockTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)100, (int)100, width, myGame.blockTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width, myGame.blockTexture.Height);
 
             myGame.spriteBatch.Begin();
-            myGame.spriteBatch.Draw(myGame.PickupTexture, destinationRectangle, sourceRectangle, Color.White);
+            myGame.spriteBatch.Draw(myGame.blockTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.spriteBatch.End();
+        }
+        public void QuestionToUsed()
+        {
+
+        }
+        public void BrickToEmpty()
+        {
+
+        }
+        public void HiddenToUsed()
+        {
+
+        }
+    }
+    
+    public class HiddenBlockSprite : IBlockSprite
+    {
+        private Game1 myGame;
+        private int currentFrame;
+
+        public HiddenBlockSprite(Game1 game)
+        {
+            myGame = game;
+            currentFrame = 0;
+        }
+
+        public void Update()
+        {
+
+        }
+
+        public void Draw(Vector2 location)
+        {
+            int width = myGame.blockTexture.Width / myGame.totalBlockFrames;
+
+            Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.blockTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width, myGame.blockTexture.Height);
+
+            myGame.spriteBatch.Begin();
+            myGame.spriteBatch.Draw(myGame.blockTexture, destinationRectangle, sourceRectangle, Color.Transparent);
+            myGame.spriteBatch.End();
+        }
+        public void QuestionToUsed()
+        {
+
+        }
+        public void BrickToEmpty()
+        {
+
+        }
+        public void HiddenToUsed()
+        {
+            myGame.Block6Sprite = new UsedBlockSprite(myGame);
+        }
+    }
+
+    public class EmptyBlockSprite : IBlockSprite
+    {
+        private Game1 myGame;
+        private int currentFrame;
+
+        public EmptyBlockSprite(Game1 game)
+        {
+            myGame = game;
+            currentFrame = 0;
+        }
+
+        public void Update()
+        {
+
+        }
+
+        public void Draw(Vector2 location)
+        {
+            int width = myGame.blockTexture.Width / myGame.totalBlockFrames;
+
+            Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.blockTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width, myGame.blockTexture.Height);
+
+            myGame.spriteBatch.Begin();
+            myGame.spriteBatch.Draw(myGame.blockTexture, destinationRectangle, sourceRectangle, Color.Transparent);
+            myGame.spriteBatch.End();
+        }
+        public void QuestionToUsed()
+        {
+
+        }
+        public void BrickToEmpty()
+        {
+
+        }
+        public void HiddenToUsed()
+        {
+
         }
     }
 
@@ -190,16 +336,28 @@ namespace Game1
 
         }
 
-        public void Draw()
+        public void Draw(Vector2 location)
         {
-            int width = myGame.PickupTexture.Width / myGame.totalPickupFrames;
+            int width = myGame.blockTexture.Width / myGame.totalBlockFrames;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.blockTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)100, (int)100, width, myGame.blockTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width, myGame.blockTexture.Height);
 
             myGame.spriteBatch.Begin();
-            myGame.spriteBatch.Draw(myGame.PickupTexture, destinationRectangle, sourceRectangle, Color.White);
+            myGame.spriteBatch.Draw(myGame.blockTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.spriteBatch.End();
+        }
+        public void QuestionToUsed()
+        {
+
+        }
+        public void BrickToEmpty()
+        {
+
+        }
+        public void HiddenToUsed()
+        {
+
         }
     }
 
@@ -219,16 +377,28 @@ namespace Game1
 
         }
 
-        public void Draw()
+        public void Draw(Vector2 location)
         {
-            int width = myGame.PickupTexture.Width / myGame.totalPickupFrames;
+            int width = myGame.blockTexture.Width / myGame.totalBlockFrames;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.blockTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)100, (int)100, width, myGame.blockTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width, myGame.blockTexture.Height);
 
             myGame.spriteBatch.Begin();
-            myGame.spriteBatch.Draw(myGame.PickupTexture, destinationRectangle, sourceRectangle, Color.White);
+            myGame.spriteBatch.Draw(myGame.blockTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.spriteBatch.End();
+        }
+        public void QuestionToUsed()
+        {
+
+        }
+        public void BrickToEmpty()
+        {
+
+        }
+        public void HiddenToUsed()
+        {
+
         }
     }
 
@@ -248,16 +418,28 @@ namespace Game1
 
         }
 
-        public void Draw()
+        public void Draw(Vector2 location)
         {
-            int width = myGame.PickupTexture.Width / myGame.totalPickupFrames;
+            int width = myGame.blockTexture.Width / myGame.totalBlockFrames;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.blockTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)100, (int)100, width, myGame.blockTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width, myGame.blockTexture.Height);
 
             myGame.spriteBatch.Begin();
-            myGame.spriteBatch.Draw(myGame.PickupTexture, destinationRectangle, sourceRectangle, Color.White);
+            myGame.spriteBatch.Draw(myGame.blockTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.spriteBatch.End();
+        }
+        public void QuestionToUsed()
+        {
+
+        }
+        public void BrickToEmpty()
+        {
+
+        }
+        public void HiddenToUsed()
+        {
+
         }
     }
 
@@ -277,16 +459,28 @@ namespace Game1
 
         }
 
-        public void Draw()
+        public void Draw(Vector2 location)
         {
-            int width = myGame.PickupTexture.Width / myGame.totalPickupFrames;
+            int width = myGame.blockTexture.Width / myGame.totalBlockFrames;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.blockTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)100, (int)100, width, myGame.blockTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width, myGame.blockTexture.Height);
 
             myGame.spriteBatch.Begin();
-            myGame.spriteBatch.Draw(myGame.PickupTexture, destinationRectangle, sourceRectangle, Color.White);
+            myGame.spriteBatch.Draw(myGame.blockTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.spriteBatch.End();
+        }
+        public void QuestionToUsed()
+        {
+
+        }
+        public void BrickToEmpty()
+        {
+
+        }
+        public void HiddenToUsed()
+        {
+
         }
     }
 
