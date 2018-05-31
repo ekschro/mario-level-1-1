@@ -5,10 +5,10 @@ namespace Game1
     public class MarioFireWalkRight : ISprite
     {
         private Game1 myGame;
-
+        private int counter = 0;
         private int currentFrame = 16 + 56;
         private bool forward = true;
-        private int counter = 1;
+       
 
         public MarioFireWalkRight(Game1 game)
         {
@@ -76,7 +76,8 @@ namespace Game1
 
         public void Update()
         {
-            if (forward)
+
+            if (forward && counter == 5)
             {
                 currentFrame++;
                 counter++;
