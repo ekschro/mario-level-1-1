@@ -56,18 +56,33 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Controller.cs" />
+    <Compile Include="BigMarioCommand.cs" />
+    <Compile Include="BrickDisappearCommand.cs" />
+    <Compile Include="Class1 - Copy %288%29 - Copy %284%29.cs" />
+    <Compile Include="DeadMarioCommand.cs" />
+    <Compile Include="DownCommand.cs" />
+    <Compile Include="ExitGameCommand.cs" />
     <Compile Include="BlockSprite.cs" />
     <Compile Include="EnemyStateMachine.cs" />
     <Compile Include="Enemy.cs" />
+    <Compile Include="FireMarioCommand.cs" />
+    <Compile Include="GoombaStompedCommand.cs" />
+    <Compile Include="HiddenToUsedCommand.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="IController.cs" />
     <Compile Include="KeyboardController.cs" />
+    <Compile Include="KoopaStompedCommand.cs" />
+    <Compile Include="LeftCommand.cs" />
     <Compile Include="PickupSprite.cs" />
-    <Compile Include="Sprite.cs" />
+    <Compile Include="QuestionToUsedCommand.cs" />
+    <Compile Include="ResetCommand.cs" />
+    <Compile Include="RightCommand.cs" />
+    <Compile Include="SmallMarioCommand.cs" />
+    <Compile Include="ISprite.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UpCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
