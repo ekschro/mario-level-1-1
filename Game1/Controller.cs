@@ -11,85 +11,11 @@ using System.Collections;
 
 namespace Game1
 {
-    public interface IController
-    {
-        void Update();
-    }
+
 
     
-    public interface ICommand
-    {
-        void Execute();
-    }
 
-    public class KeyboardController : IController
-    {
-        private Dictionary<Keys, ICommand> controllerMappings;
 
-        private Game1 myGame;
-
-        public KeyboardController(Game1 game)
-        {
-            myGame = game;
-            controllerMappings = new Dictionary<Keys, ICommand>
-            {
-                { Keys.Q, new ExitGameCommand(myGame) },
-                { Keys.W, new UpCommand(myGame) },
-                { Keys.S, new DownCommand(myGame) },
-                { Keys.A, new LeftCommand(myGame) },
-                { Keys.D, new RightCommand(myGame) },
-                { Keys.Up, new UpCommand(myGame) },
-                { Keys.Down, new DownCommand(myGame) },
-                { Keys.Left, new LeftCommand(myGame) },
-                { Keys.Right, new RightCommand(myGame) },
-                { Keys.Y, new SmallMarioCommand(myGame) },
-                { Keys.U, new BigMarioCommand(myGame) },
-                { Keys.I, new FireMarioCommand(myGame) },
-                { Keys.O, new DeadMarioCommand(myGame) },
-                { Keys.Z, new QuestionToUsedCommand(myGame) },
-                { Keys.X, new BrickDisappearCommand(myGame) },
-                { Keys.C, new HiddenToUsedCommand(myGame) },
-                { Keys.R, new ResetCommand(myGame) },
-                { Keys.K, new GoombaStompedCommand(myGame) },
-                { Keys.L, new KoopaStompedCommand(myGame) }
-            };
-
-        }
-
-        public void Update()
-        {
-            Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
-            foreach (Keys key in pressedKeys)
-            {
-            if (controllerMappings.ContainsKey(key))
-                    controllerMappings[key].Execute();
-            }
-
-            if (!pressedKeys.Contains(Keys.W) && !pressedKeys.Contains(Keys.S))
-            {
-                myGame.UpPressed = false;
-                myGame.DownPressed = false;
-            }
-
-            if (!pressedKeys.Contains(Keys.Up) && !pressedKeys.Contains(Keys.Down))
-            {
-                myGame.UpPressed = false;
-                myGame.DownPressed = false;
-            }
-
-            if (!pressedKeys.Contains<Keys>(Keys.A) && !pressedKeys.Contains<Keys>(Keys.D))
-            {
-                myGame.LeftPressed = false;
-                myGame.RightPressed = false;
-            }
-
-            if (!pressedKeys.Contains<Keys>(Keys.Left) && !pressedKeys.Contains<Keys>(Keys.Right))
-            {
-                myGame.LeftPressed = false;
-                myGame.RightPressed = false;
-            }
-        }
-    }
 
     public class ExitGameCommand : ICommand
     {
@@ -116,13 +42,8 @@ namespace Game1
         }
 
         public void Execute()
-        {
-
-            if(!myGame.UpPressed)
-                myGame.marioSprite.UpCommandCalled();
-
-            myGame.UpPressed = true;
-
+        { 
+            myGame.marioSprite.UpCommandCalled();
         }
     }
 
@@ -137,10 +58,7 @@ namespace Game1
 
         public void Execute()
         {
-            if (!myGame.DownPressed)
-                myGame.marioSprite.DownCommandCalled();
-
-            myGame.DownPressed = true;
+            myGame.marioSprite.DownCommandCalled();
         }
     }
 
@@ -155,10 +73,7 @@ namespace Game1
 
         public void Execute()
         {
-            if (!myGame.LeftPressed)
-                myGame.marioSprite.LeftCommandCalled();
-
-            myGame.LeftPressed = true;
+            myGame.marioSprite.LeftCommandCalled();
         }
     }
 
@@ -173,10 +88,7 @@ namespace Game1
 
         public void Execute()
         {
-            if (!myGame.RightPressed)
-                myGame.marioSprite.RightCommandCalled();
-
-            myGame.RightPressed = true;
+            myGame.marioSprite.RightCommandCalled();
         }
     }
 
@@ -296,7 +208,7 @@ namespace Game1
 
         public void Execute()
         {
-            myGame = new Game1();
+            myGame.Reset();
         }
     }
 

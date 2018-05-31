@@ -13,7 +13,7 @@ namespace Game1
     public interface IBlockSprite
     {
         void Update();
-        void Draw(Vector2 location);
+        void Draw();
         void QuestionToUsed();
         void BrickToEmpty();
         void HiddenToUsed();
@@ -24,11 +24,13 @@ namespace Game1
     {
         private Game1 myGame;
         private int currentFrame;
+        private Vector2 blockLocation;
 
-        public StairBlockSprite(Game1 game)
+        public StairBlockSprite(Game1 game, Vector2 location)
         {
             myGame = game;
             currentFrame = 1;
+            blockLocation = location;
         }
 
         public void Update()
@@ -36,12 +38,12 @@ namespace Game1
 
         }
 
-        public void Draw(Vector2 location)
+        public void Draw()
         {
             int width = myGame.blockTexture.Width / myGame.totalBlockFrames;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.blockTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int) location.X, (int) location.Y, width, myGame.blockTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int) blockLocation.X, (int) blockLocation.Y, width, myGame.blockTexture.Height);
 
             myGame.spriteBatch.Begin();
             myGame.spriteBatch.Draw(myGame.blockTexture, destinationRectangle, sourceRectangle, Color.White);
@@ -65,11 +67,13 @@ namespace Game1
     {
         private Game1 myGame;
         private int currentFrame;
+        private Vector2 blockLocation;
 
-        public UsedBlockSprite(Game1 game)
+        public UsedBlockSprite(Game1 game, Vector2 location)
         {
             myGame = game;
             currentFrame = 3;
+            blockLocation = location;
         }
 
         public void Update()
@@ -77,12 +81,12 @@ namespace Game1
 
         }
 
-        public void Draw(Vector2 location)
+        public void Draw()
         {
             int width = myGame.blockTexture.Width / myGame.totalBlockFrames;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.blockTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width, myGame.blockTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)blockLocation.X, (int)blockLocation.Y, width, myGame.blockTexture.Height);
 
             myGame.spriteBatch.Begin();
             myGame.spriteBatch.Draw(myGame.blockTexture, destinationRectangle, sourceRectangle, Color.White);
@@ -110,13 +114,15 @@ namespace Game1
         private int cycleLength = 32;
         private int startFrame;
         private int endFrame;
+        private Vector2 blockLocation;
 
-        public QuestionBlockSprite(Game1 game)
+        public QuestionBlockSprite(Game1 game, Vector2 location)
         {
             myGame = game;
             startFrame = 4;
             endFrame = 6;
             currentFrame = startFrame;
+            blockLocation = location;
         }
 
         public void Update()
@@ -131,12 +137,12 @@ namespace Game1
             }
         }
 
-        public void Draw(Vector2 location)
+        public void Draw()
         {
             int width = myGame.blockTexture.Width / myGame.totalBlockFrames;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.blockTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width, myGame.blockTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)blockLocation.X, (int)blockLocation.Y, width, myGame.blockTexture.Height);
 
             myGame.spriteBatch.Begin();
             myGame.spriteBatch.Draw(myGame.blockTexture, destinationRectangle, sourceRectangle, Color.White);
@@ -144,7 +150,7 @@ namespace Game1
         }
         public void QuestionToUsed()
         {
-            myGame.Block3Sprite = new UsedBlockSprite(myGame);
+            myGame.Block3Sprite = new UsedBlockSprite(myGame, blockLocation);
         }
         public void BrickToEmpty()
         {
@@ -160,11 +166,13 @@ namespace Game1
     {
         private Game1 myGame;
         private int currentFrame;
+        private Vector2 blockLocation;
 
-        public BrickBlockSprite(Game1 game)
+        public BrickBlockSprite(Game1 game, Vector2 location)
         {
             myGame = game;
             currentFrame = 2;
+            blockLocation = location;
         }
 
         public void Update()
@@ -172,12 +180,12 @@ namespace Game1
 
         }
 
-        public void Draw(Vector2 location)
+        public void Draw()
         {
             int width = myGame.blockTexture.Width / myGame.totalBlockFrames;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.blockTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width, myGame.blockTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)blockLocation.X, (int)blockLocation.Y, width, myGame.blockTexture.Height);
 
             myGame.spriteBatch.Begin();
             myGame.spriteBatch.Draw(myGame.blockTexture, destinationRectangle, sourceRectangle, Color.White);
@@ -189,7 +197,7 @@ namespace Game1
         }
         public void BrickToEmpty()
         {
-            myGame.Block4Sprite = new EmptyBlockSprite(myGame);
+            myGame.Block4Sprite = new EmptyBlockSprite(myGame, blockLocation);
         }
         public void HiddenToUsed()
         {
@@ -201,11 +209,13 @@ namespace Game1
     {
         private Game1 myGame;
         private int currentFrame;
+        private Vector2 blockLocation;
 
-        public StoneBlockSprite(Game1 game)
+        public StoneBlockSprite(Game1 game, Vector2 location)
         {
             myGame = game;
             currentFrame = 0;
+            blockLocation = location;
         }
 
         public void Update()
@@ -213,12 +223,12 @@ namespace Game1
 
         }
 
-        public void Draw(Vector2 location)
+        public void Draw()
         {
             int width = myGame.blockTexture.Width / myGame.totalBlockFrames;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.blockTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width, myGame.blockTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)blockLocation.X, (int)blockLocation.Y, width, myGame.blockTexture.Height);
 
             myGame.spriteBatch.Begin();
             myGame.spriteBatch.Draw(myGame.blockTexture, destinationRectangle, sourceRectangle, Color.White);
@@ -242,11 +252,13 @@ namespace Game1
     {
         private Game1 myGame;
         private int currentFrame;
+        private Vector2 blockLocation;
 
-        public HiddenBlockSprite(Game1 game)
+        public HiddenBlockSprite(Game1 game, Vector2 location)
         {
             myGame = game;
             currentFrame = 0;
+            blockLocation = location;
         }
 
         public void Update()
@@ -254,12 +266,12 @@ namespace Game1
 
         }
 
-        public void Draw(Vector2 location)
+        public void Draw()
         {
             int width = myGame.blockTexture.Width / myGame.totalBlockFrames;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.blockTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width, myGame.blockTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)blockLocation.X, (int)blockLocation.Y, width, myGame.blockTexture.Height);
 
             myGame.spriteBatch.Begin();
             myGame.spriteBatch.Draw(myGame.blockTexture, destinationRectangle, sourceRectangle, Color.Transparent);
@@ -275,7 +287,7 @@ namespace Game1
         }
         public void HiddenToUsed()
         {
-            myGame.Block6Sprite = new UsedBlockSprite(myGame);
+            myGame.Block6Sprite = new UsedBlockSprite(myGame, blockLocation);
         }
     }
 
@@ -283,11 +295,13 @@ namespace Game1
     {
         private Game1 myGame;
         private int currentFrame;
+        private Vector2 blockLocation;
 
-        public EmptyBlockSprite(Game1 game)
+        public EmptyBlockSprite(Game1 game, Vector2 location)
         {
             myGame = game;
             currentFrame = 0;
+            blockLocation = location;
         }
 
         public void Update()
@@ -295,12 +309,12 @@ namespace Game1
 
         }
 
-        public void Draw(Vector2 location)
+        public void Draw()
         {
             int width = myGame.blockTexture.Width / myGame.totalBlockFrames;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.blockTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width, myGame.blockTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)blockLocation.X, (int)blockLocation.Y, width, myGame.blockTexture.Height);
 
             myGame.spriteBatch.Begin();
             myGame.spriteBatch.Draw(myGame.blockTexture, destinationRectangle, sourceRectangle, Color.Transparent);
@@ -324,11 +338,13 @@ namespace Game1
     {
         private Game1 myGame;
         private int currentFrame;
+        private Vector2 blockLocation;
 
-        public TopLeftPipeSprite(Game1 game)
+        public TopLeftPipeSprite(Game1 game, Vector2 location)
         {
             myGame = game;
             currentFrame = 8;
+            blockLocation = location;
         }
 
         public void Update()
@@ -336,12 +352,12 @@ namespace Game1
 
         }
 
-        public void Draw(Vector2 location)
+        public void Draw()
         {
             int width = myGame.blockTexture.Width / myGame.totalBlockFrames;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.blockTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width, myGame.blockTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)blockLocation.X, (int)blockLocation.Y, width, myGame.blockTexture.Height);
 
             myGame.spriteBatch.Begin();
             myGame.spriteBatch.Draw(myGame.blockTexture, destinationRectangle, sourceRectangle, Color.White);
@@ -365,11 +381,13 @@ namespace Game1
     {
         private Game1 myGame;
         private int currentFrame;
+        private Vector2 blockLocation;
 
-        public TopRightPipeSprite(Game1 game)
+        public TopRightPipeSprite(Game1 game, Vector2 location)
         {
             myGame = game;
             currentFrame = 9;
+        blockLocation = location;
         }
 
         public void Update()
@@ -377,12 +395,12 @@ namespace Game1
 
         }
 
-        public void Draw(Vector2 location)
+        public void Draw()
         {
             int width = myGame.blockTexture.Width / myGame.totalBlockFrames;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.blockTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width, myGame.blockTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)blockLocation.X, (int)blockLocation.Y, width, myGame.blockTexture.Height);
 
             myGame.spriteBatch.Begin();
             myGame.spriteBatch.Draw(myGame.blockTexture, destinationRectangle, sourceRectangle, Color.White);
@@ -406,11 +424,13 @@ namespace Game1
     {
         private Game1 myGame;
         private int currentFrame;
+        private Vector2 blockLocation;
 
-        public BottomLeftPipeSprite(Game1 game)
+        public BottomLeftPipeSprite(Game1 game, Vector2 location)
         {
             myGame = game;
             currentFrame = 10;
+            blockLocation = location;
         }
 
         public void Update()
@@ -418,12 +438,12 @@ namespace Game1
 
         }
 
-        public void Draw(Vector2 location)
+        public void Draw()
         {
             int width = myGame.blockTexture.Width / myGame.totalBlockFrames;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.blockTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width, myGame.blockTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)blockLocation.X, (int)blockLocation.Y, width, myGame.blockTexture.Height);
 
             myGame.spriteBatch.Begin();
             myGame.spriteBatch.Draw(myGame.blockTexture, destinationRectangle, sourceRectangle, Color.White);
@@ -447,11 +467,13 @@ namespace Game1
     {
         private Game1 myGame;
         private int currentFrame;
+        private Vector2 blockLocation;
 
-        public BottomRightPipeSprite(Game1 game)
+        public BottomRightPipeSprite(Game1 game, Vector2 location)
         {
             myGame = game;
             currentFrame = 11;
+            blockLocation = location;
         }
 
         public void Update()
@@ -459,12 +481,12 @@ namespace Game1
 
         }
 
-        public void Draw(Vector2 location)
+        public void Draw()
         {
             int width = myGame.blockTexture.Width / myGame.totalBlockFrames;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.blockTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width, myGame.blockTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)blockLocation.X, (int)blockLocation.Y, width, myGame.blockTexture.Height);
 
             myGame.spriteBatch.Begin();
             myGame.spriteBatch.Draw(myGame.blockTexture, destinationRectangle, sourceRectangle, Color.White);

@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace Game1
 {
@@ -33,19 +34,7 @@ namespace Game1
         public IBlockSprite PipeBlock3Sprite;
         public IBlockSprite PipeBlock4Sprite;
 
-        public Vector2 Block1Location = new Vector2(200, 200);
-        public Vector2 Block2Location = new Vector2(220, 200);
-        public Vector2 Block3Location = new Vector2(240, 200);
-        public Vector2 Block4Location = new Vector2(260, 200);
-        public Vector2 Block5Location = new Vector2(280, 200);
-        public Vector2 Block6Location = new Vector2(300, 200);
-
-        public Vector2 Pipe1Location = new Vector2(340, 200);
-        public Vector2 Pipe2Location = new Vector2(356, 200);
-        public Vector2 Pipe3Location = new Vector2(340, 216);
-        public Vector2 Pipe4Location = new Vector2(356, 216);
-
-        public ArrayList controllerList;
+        public IList<IController> controllerList;
         
         public Vector2 startingLocation = new Vector2(400, 200); 
         public Vector2 currentLocation = new Vector2(400, 200); 
@@ -74,12 +63,11 @@ namespace Game1
             UpPressed = false;
             DownPressed = false;
         }
-
-        
+      
         protected override void Initialize()
         {
-            
-            controllerList = new ArrayList();
+
+            controllerList = new List<IController>();
             
             controllerList.Add(new KeyboardController(this));
 
@@ -112,20 +100,24 @@ namespace Game1
             KoopaSprite = new Koopa(this);
             GoombaSprite = new Goomba(this);
 
-            Block1Sprite = new StairBlockSprite(this);
-            Block2Sprite = new UsedBlockSprite(this);
-            Block3Sprite = new QuestionBlockSprite(this);
-            Block4Sprite = new BrickBlockSprite(this);
-            Block5Sprite = new StoneBlockSprite(this);
-            Block6Sprite = new HiddenBlockSprite(this);
-            PipeBlock1Sprite = new TopLeftPipeSprite(this);
-            PipeBlock2Sprite = new TopRightPipeSprite(this);
-            PipeBlock3Sprite = new BottomLeftPipeSprite(this);
-            PipeBlock4Sprite = new BottomRightPipeSprite(this);
+            Block1Sprite = new StairBlockSprite(this, new Vector2(200, 200));
+            Block2Sprite = new UsedBlockSprite(this, new Vector2(220, 200));
+            Block3Sprite = new QuestionBlockSprite(this, new Vector2(240, 200));
+            Block4Sprite = new BrickBlockSprite(this, new Vector2(260, 200));
+            Block5Sprite = new StoneBlockSprite(this, new Vector2(280, 200));
+            Block6Sprite = new HiddenBlockSprite(this, new Vector2(300, 200));
+            PipeBlock1Sprite = new TopLeftPipeSprite(this, new Vector2(340, 200));
+            PipeBlock2Sprite = new TopRightPipeSprite(this, new Vector2(356, 200));
+            PipeBlock3Sprite = new BottomLeftPipeSprite(this, new Vector2(340, 216));
+            PipeBlock4Sprite = new BottomRightPipeSprite(this, new Vector2(356, 216));
 
+    }
+
+        public void Reset()
+        {
+            LoadContent();
         }
 
-        
         protected override void UnloadContent()
         {
             
@@ -178,16 +170,16 @@ namespace Game1
             KoopaSprite.Draw();
             GoombaSprite.Draw();
 
-            Block1Sprite.Draw(Block1Location);
-            Block2Sprite.Draw(Block2Location);
-            Block3Sprite.Draw(Block3Location);
-            Block4Sprite.Draw(Block4Location);
-            Block5Sprite.Draw(Block5Location);
-            Block6Sprite.Draw(Block6Location);
-            PipeBlock1Sprite.Draw(Pipe1Location);
-            PipeBlock2Sprite.Draw(Pipe2Location);
-            PipeBlock3Sprite.Draw(Pipe3Location);
-            PipeBlock4Sprite.Draw(Pipe4Location);
+            Block1Sprite.Draw();
+            Block2Sprite.Draw();
+            Block3Sprite.Draw();
+            Block4Sprite.Draw();
+            Block5Sprite.Draw();
+            Block6Sprite.Draw();
+            PipeBlock1Sprite.Draw();
+            PipeBlock2Sprite.Draw();
+            PipeBlock3Sprite.Draw();
+            PipeBlock4Sprite.Draw();
 
             base.Draw(gameTime);
         }
