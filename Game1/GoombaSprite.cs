@@ -28,12 +28,6 @@ namespace Game1
             currentFrame = startFrame;
             location = new Vector2(450, 100);
         }
-        /*
-        public Vector2 Getlocation()
-        {
-            return location;
-        }
-        */
         public void ChangeDirection()
         {
 
