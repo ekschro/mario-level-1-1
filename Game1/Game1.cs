@@ -138,8 +138,6 @@ namespace Game1
             GreenMushroomSprite.Update();
             StarSprite.Update();
 
-            //KoopaSprite.BeStomped();
-            //GoombaSprite.BeStomped();
             KoopaSprite.Update();
             GoombaSprite.Update();
 
@@ -182,7 +180,6 @@ namespace Game1
             PipeBlock2Sprite.Draw();
             PipeBlock3Sprite.Draw();
             PipeBlock4Sprite.Draw();
-
 
             base.Draw(gameTime);
         }
