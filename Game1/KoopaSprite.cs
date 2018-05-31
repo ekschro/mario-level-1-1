@@ -17,6 +17,8 @@ namespace Game1
         private bool direction = true;
         private int startFrame;
         private int endFrame;
+        private int leftStartFrame;
+        private int leftEndFrame;
         public Vector2 location;
         public Koopa(Game1 game)
         {
@@ -24,6 +26,8 @@ namespace Game1
             myGame = game;
             startFrame = 2;
             endFrame = 4;
+            leftStartFrame = 0;
+            leftEndFrame = 2;
             currentFrame = startFrame;
             location = new Vector2(400, 100);
         }
@@ -35,13 +39,12 @@ namespace Game1
 
         public void BeStomped()
         {
-            startFrame = 4;
-            endFrame = 6;
+            startFrame = leftStartFrame = 4;
+            endFrame = leftEndFrame = 6;
             stateMachine.BeStomped();
-            startFrame = 5;
-            endFrame = 6;
+            startFrame = leftStartFrame = 5;
+            endFrame = leftEndFrame = 6;
             stateMachine.BeStomped();
-            location.X += 1;
         }
 
         public void BeFlipped()
@@ -54,32 +57,28 @@ namespace Game1
             cyclePosition++;
             if (cyclePosition == cycleLength && direction == true)
             {
-                startFrame = 2;
-                endFrame = 3;
-                currentFrame = startFrame;
                 location.X += 1;
                 if (location.X == 420)
+                {
                     direction = false;
+                    currentFrame = 0;
+                }
                 cyclePosition = 0;
-
                 currentFrame++;
                 if (currentFrame == endFrame)
                     currentFrame = startFrame;
             }
             else if (cyclePosition == cycleLength && direction == false)
             {
-                startFrame = 0;
-                endFrame = 1;
-                currentFrame = startFrame;
                 location.X -= 1;
                 if (location.X == 380)
                     direction = true;
                 cyclePosition = 0;
-
                 currentFrame++;
-                if (currentFrame == endFrame)
-                    currentFrame = startFrame;
+                if (currentFrame == leftEndFrame)
+                    currentFrame = leftStartFrame;
             }
+            
         }
 
         public void Draw()

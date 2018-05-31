@@ -30,7 +30,6 @@ namespace Game1
         }
         public void ChangeDirection()
         {
-
             stateMachine.ChangeDirection();
         }
 
@@ -55,23 +54,21 @@ namespace Game1
             if (cyclePosition == cycleLength && direction == true)
             {
                 location.X += 1;
-                if (location.X == 500)
+                if (location.X == 480)
                     direction = false;
                 cyclePosition = 0;
                 currentFrame++;
-                if (currentFrame == endFrame)
-                    currentFrame = startFrame;
             }
             else if (cyclePosition == cycleLength && direction == false)
             {
                 location.X -= 1;
-                if (location.X == 400)
+                if (location.X == 430)
                     direction = true;
                 cyclePosition = 0;
                 currentFrame++;
-                if (currentFrame == endFrame)
-                    currentFrame = startFrame;
             }
+            if (currentFrame == endFrame)
+                currentFrame = startFrame;
         }
 
         public void Draw()
