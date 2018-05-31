@@ -8,6 +8,8 @@ namespace Game1
         private int counter = 1;
         private int currentFrame = 16 + 28;
         private bool forward = true;
+        private int delay = 0;
+
         public MarioSmallWalkRight(Game1 game)
         {
             myGame = game;
@@ -74,7 +76,11 @@ namespace Game1
 
         public void Update()
         {
-            if (forward)
+            if (delay < 3)
+            {
+                delay++;
+            }
+            else if (forward)
             {
                 currentFrame++;
                 counter++;
@@ -83,6 +89,7 @@ namespace Game1
                     counter = 1;
                     forward = false;
                 }
+                delay = 0;
             }
             else
             {
@@ -93,6 +100,7 @@ namespace Game1
                     counter = 1;
                     forward = true;
                 }
+                delay = 0;
             }
         }
     }
