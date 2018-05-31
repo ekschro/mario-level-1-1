@@ -15,13 +15,14 @@ namespace Game1
     public class KeyboardController : IController
     {
         private Dictionary<Keys, ICommand> controllerMappings;
-
+        private Dictionary<Keys, int> recentKeys;
         private Game1 myGame;
 
         public KeyboardController(Game1 game)
         {
             myGame = game;
             controllerMappings = new Dictionary<Keys, ICommand>();
+            recentKeys = new Dictionary<Keys, int>();
             controllerMappings.Add(Keys.Q, new ExitGameCommand(myGame));
             controllerMappings.Add(Keys.W, new UpCommand(myGame));
             controllerMappings.Add(Keys.S, new DownCommand(myGame));
@@ -41,41 +42,31 @@ namespace Game1
             controllerMappings.Add(Keys.R, new ResetCommand(myGame));
             controllerMappings.Add(Keys.K, new GoombaStompedCommand(myGame));
             controllerMappings.Add(Keys.L, new KoopaStompedCommand(myGame));
-
-        }
+            
+    }
 
         public void Update()
         {
             Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
             foreach (Keys key in pressedKeys)
             {
-                if (controllerMappings.ContainsKey(key))
-                    controllerMappings[key].Execute();
-            }
-
-            if (!pressedKeys.Contains(Keys.W) && !pressedKeys.Contains(Keys.S))
-            {
-                myGame.UpPressed = false;
-                myGame.DownPressed = false;
-            }
-
-            if (!pressedKeys.Contains(Keys.Up) && !pressedKeys.Contains(Keys.Down))
-            {
-                myGame.UpPressed = false;
-                myGame.DownPressed = false;
-            }
-
-            if (!pressedKeys.Contains<Keys>(Keys.A) && !pressedKeys.Contains<Keys>(Keys.D))
-            {
-                myGame.LeftPressed = false;
-                myGame.RightPressed = false;
-            }
-
-            if (!pressedKeys.Contains<Keys>(Keys.Left) && !pressedKeys.Contains<Keys>(Keys.Right))
-            {
-                myGame.LeftPressed = false;
-                myGame.RightPressed = false;
+                if (!recentKeys.ContainsKey(key))
+                {
+                    if (controllerMappings.ContainsKey(key))
+                        controllerMappings[key].Execute();
+                    recentKeys.Add(key, 7);
+                }
+                else
+                {
+                    int ticksRemaining = recentKeys[key] - 1;
+                    recentKeys.Remove(key);
+                    if (ticksRemaining != 0)
+                    {
+                        recentKeys.Add(key, ticksRemaining);
+                    }
+                }
             }
         }
     }
 }
+

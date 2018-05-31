@@ -77,7 +77,7 @@ namespace Game1
         public void Update()
         {
 
-            if (forward && counter == 5)
+            if (forward)
             {
                 currentFrame++;
                 counter++;

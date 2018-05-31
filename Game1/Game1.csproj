@@ -57,21 +57,33 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BigMarioCommand.cs" />
+    <Compile Include="BottomLeftPipeSprite.cs" />
+    <Compile Include="BottomRightPipeSprite.cs" />
+    <Compile Include="BrickBlockSprite.cs" />
     <Compile Include="BrickDisappearCommand.cs" />
-    <Compile Include="Class1 - Copy %288%29 - Copy %284%29.cs" />
+    <Compile Include="boi.cs" />
+    <Compile Include="CoinSprite.cs" />
     <Compile Include="DeadMarioCommand.cs" />
     <Compile Include="DownCommand.cs" />
+    <Compile Include="EmptyBlockSprite.cs" />
+    <Compile Include="EnemyInterface.cs" />
     <Compile Include="ExitGameCommand.cs" />
-    <Compile Include="BlockSprite.cs" />
     <Compile Include="EnemyStateMachine.cs" />
-    <Compile Include="Enemy.cs" />
+    <Compile Include="FireflowerSprite.cs" />
     <Compile Include="FireMarioCommand.cs" />
+    <Compile Include="GoombaSprite.cs" />
     <Compile Include="GoombaStompedCommand.cs" />
+    <Compile Include="GreenMushroomSprite.cs" />
+    <Compile Include="HiddenBlockSprite.cs" />
     <Compile Include="HiddenToUsedCommand.cs" />
+    <Compile Include="IBlockSprite.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="IController.cs" />
+    <Compile Include="ISprite.cs" />
     <Compile Include="KeyboardController.cs" />
     <Compile Include="KoopaSprite.cs" />
+    <Compile Include="KoopaStompedCommand.cs" />
+    <Compile Include="LeftCommand.cs" />
     <Compile Include="MarioFireCrouchingRight.cs" />
     <Compile Include="MarioFireCrouchingLeft.cs" />
     <Compile Include="MarioFireJumpingRight.cs" />
@@ -93,17 +105,25 @@
     <Compile Include="MarioSmallJumpingLeft.cs" />
     <Compile Include="MarioSmallWalkLeft.cs" />
     <Compile Include="MarioSmallWalkRight.cs" />
-    <Compile Include="Controller.cs" />
-    <Compile Include="BlockSprite.cs" />
     <Compile Include="MarioSmallIdleLeft.cs" />
     <Compile Include="MarioSmallIdleRight.cs" />
     <Compile Include="PickupInterface.cs" />
+    <Compile Include="QuestionBlockSprite.cs" />
+    <Compile Include="QuestionToUsedCommand.cs" />
     <Compile Include="RedMushroonSprite.cs" />
-    <Compile Include="Sprite.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResetCommand.cs" />
+    <Compile Include="RightCommand.cs" />
+    <Compile Include="SmallMarioCommand.cs" />
+    <Compile Include="StairBlockSprite.cs" />
     <Compile Include="StarSprite.cs" />
+    <Compile Include="StoneBlockSprite.cs" />
+    <Compile Include="TopLeftPipeSprite.cs" />
+    <Compile Include="TopRightPipeSprite.cs" />
+    <Compile Include="UpCommand.cs" />
+    <Compile Include="UsedBlockSprite.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
