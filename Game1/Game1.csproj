@@ -56,6 +56,13 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CoinSprite.cs" />
+    <Compile Include="EnemyInterface.cs" />
+    <Compile Include="EnemyStateMachine.cs" />
+    <Compile Include="FireflowerSprite.cs" />
+    <Compile Include="GoombaSprite.cs" />
+    <Compile Include="GreenMushroomSprite.cs" />
+    <Compile Include="KoopaSprite.cs" />
     <Compile Include="MarioFireCrouchingRight.cs" />
     <Compile Include="MarioFireCrouchingLeft.cs" />
     <Compile Include="MarioFireJumpingRight.cs" />
@@ -79,11 +86,10 @@
     <Compile Include="MarioSmallWalkRight.cs" />
     <Compile Include="Controller.cs" />
     <Compile Include="BlockSprite.cs" />
-    <Compile Include="EnemyStateMachine.cs" />
-    <Compile Include="Enemy.cs" />
     <Compile Include="MarioSmallIdleLeft.cs" />
     <Compile Include="MarioSmallIdleRight.cs" />
-    <Compile Include="PickupSprite.cs" />
+    <Compile Include="PickupInterface.cs" />
+    <Compile Include="RedMushroonSprite.cs" />
     <Compile Include="Sprite.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Program.cs" />
