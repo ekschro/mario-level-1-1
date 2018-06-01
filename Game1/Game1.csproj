@@ -61,7 +61,6 @@
     <Compile Include="BottomRightPipeSprite.cs" />
     <Compile Include="BrickBlockSprite.cs" />
     <Compile Include="BrickDisappearCommand.cs" />
-    <Compile Include="boi.cs" />
     <Compile Include="CoinSprite.cs" />
     <Compile Include="DeadMarioCommand.cs" />
     <Compile Include="DownCommand.cs" />
