@@ -61,7 +61,7 @@ namespace Game1
                 if (location.X == 420)
                 {
                     direction = false;
-                    currentFrame = 0;
+                    currentFrame = leftStartFrame;
                 }
                 cyclePosition = 0;
                 currentFrame++;
