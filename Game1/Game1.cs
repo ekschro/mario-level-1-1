@@ -41,15 +41,15 @@ namespace Game1
         public int totalPickupFrames = 14;
         public int totalBlockFrames = 12;
         public Texture2D marioTexture;
-        public Texture2D PickupTexture;
+        public Texture2D pickupTexture;
         public Texture2D koopaTexture;
         public Texture2D goombaTexture;
         public Texture2D blockTexture;
 
-        public bool LeftPressed;
-        public bool RightPressed;
-        public bool UpPressed;
-        public bool DownPressed;
+        public bool leftPressed;
+        public bool rightPressed;
+        public bool upPressed;
+        public bool downPressed;
 
         public int totalMarioColumns = 28;
         public int totalMarioRows = 3;
@@ -58,10 +58,10 @@ namespace Game1
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
-            LeftPressed = false;
-            RightPressed = false;
-            UpPressed = false;
-            DownPressed = false;
+            leftPressed = false;
+            rightPressed = false;
+            upPressed = false;
+            downPressed = false;
         }
       
         protected override void Initialize()
@@ -81,7 +81,7 @@ namespace Game1
 
             
             
-            PickupTexture = Content.Load<Texture2D>("pickup");
+            pickupTexture = Content.Load<Texture2D>("pickup");
             marioTexture = Content.Load<Texture2D>("mario");
             koopaTexture = Content.Load<Texture2D>("koopa1");
             goombaTexture = Content.Load<Texture2D>("goomba1");
@@ -98,7 +98,7 @@ namespace Game1
             StarSprite = new StarSprite(this);
 
             KoopaSprite = new Koopa(this);
-            GoombaSprite = new Goomba(this);
+            GoombaSprite = new Goomba(this, new Vector2(450, 100));
 
             Block1Sprite = new StairBlockSprite(this, new Vector2(200, 200));
             Block2Sprite = new UsedBlockSprite(this, new Vector2(220, 200));

@@ -17,16 +17,17 @@ namespace Game1
         private bool direction = true;
         private int startFrame;
         private int endFrame;
-        public Vector2 location;
+        public Vector2 goombaLocation;
 
-        public Goomba(Game1 game)
+        public Goomba(Game1 game, Vector2 location)
         {
             stateMachine = new GoombaStateMachine();
             myGame = game;
             startFrame = 0;
             endFrame = 2;
             currentFrame = startFrame;
-            location = new Vector2(450, 100);
+            goombaLocation = location;
+            //location = new Vector2(450, 100);
         }
         public void ChangeDirection()
         {
@@ -37,7 +38,6 @@ namespace Game1
         {
             startFrame = 2;
             endFrame = 3;
-            stateMachine.BeStomped();
             startFrame = 3;
             endFrame = 4;
             stateMachine.BeStomped();
@@ -53,16 +53,16 @@ namespace Game1
             cyclePosition++;
             if (cyclePosition == cycleLength && direction == true)
             {
-                location.X += 1;
-                if (location.X == 480)
+                goombaLocation.X += 1;
+                if (goombaLocation.X == 480)
                     direction = false;
                 cyclePosition = 0;
                 currentFrame++;
             }
             else if (cyclePosition == cycleLength && direction == false)
             {
-                location.X -= 1;
-                if (location.X == 430)
+                goombaLocation.X -= 1;
+                if (goombaLocation.X == 430)
                     direction = true;
                 cyclePosition = 0;
                 currentFrame++;
@@ -76,7 +76,7 @@ namespace Game1
             int width = myGame.goombaTexture.Width / 4;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.goombaTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width, myGame.goombaTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)goombaLocation.X, (int)goombaLocation.Y, width, myGame.goombaTexture.Height);
 
             myGame.spriteBatch.Begin();
             myGame.spriteBatch.Draw(myGame.goombaTexture, destinationRectangle, sourceRectangle, Color.White);
