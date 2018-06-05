@@ -14,25 +14,25 @@ namespace Game1
         public SpriteBatch spriteBatch;
         public ISprite marioSprite;
 
-        public IPickupSprite FireflowerSprite;
-        public IPickupSprite CoinSprite;
-        public IPickupSprite RedMushroomSprite;
-        public IPickupSprite GreenMushroomSprite;
-        public IPickupSprite StarSprite;
+        public IPickupSprite fireflowerSprite;
+        public IPickupSprite coinSprite;
+        public IPickupSprite redMushroomSprite;
+        public IPickupSprite greenMushroomSprite;
+        public IPickupSprite starSprite;
 
-        public IEnemy KoopaSprite;
-        public IEnemy GoombaSprite;
+        public IEnemy koopaSprite;
+        public IEnemy goombaSprite;
 
-        public IBlockSprite Block1Sprite;
-        public IBlockSprite Block2Sprite;
-        public IBlockSprite Block3Sprite;
-        public IBlockSprite Block4Sprite;
-        public IBlockSprite Block5Sprite;
-        public IBlockSprite Block6Sprite;
-        public IBlockSprite PipeBlock1Sprite;
-        public IBlockSprite PipeBlock2Sprite;
-        public IBlockSprite PipeBlock3Sprite;
-        public IBlockSprite PipeBlock4Sprite;
+        public IBlockSprite blockStairSprite;
+        public IBlockSprite blockUsedSprite;
+        public IBlockSprite blockQuestionSprite;
+        public IBlockSprite blockBrickSprite;
+        public IBlockSprite blockStoneSprite;
+        public IBlockSprite blockHiddenSprite;
+        public IBlockSprite pipeBlockTopRightSprite;
+        public IBlockSprite pipeBlockTopLeftSprite;
+        public IBlockSprite pipeBlockBottomRightSprite;
+        public IBlockSprite pipeBlockBottomLeftSprite;
 
         public IList<IController> controllerList;
         
@@ -91,25 +91,25 @@ namespace Game1
             
             marioSprite = new MarioSmallIdleRight(this);
 
-            FireflowerSprite = new FireflowerSprite(this);
-            CoinSprite = new CoinSprite(this);
-            RedMushroomSprite = new RedMushroomSprite(this);
-            GreenMushroomSprite = new GreenMushroomSprite(this);
-            StarSprite = new StarSprite(this);
+            fireflowerSprite = new FireflowerSprite(this);
+            coinSprite = new CoinSprite(this);
+            redMushroomSprite = new RedMushroomSprite(this);
+            greenMushroomSprite = new GreenMushroomSprite(this);
+            starSprite = new StarSprite(this);
 
-            KoopaSprite = new Koopa(this);
-            GoombaSprite = new Goomba(this, new Vector2(450, 100));
+            koopaSprite = new Koopa(this);
+            goombaSprite = new Goomba(this, new Vector2(450, 100));
 
-            Block1Sprite = new StairBlockSprite(this, new Vector2(200, 200));
-            Block2Sprite = new UsedBlockSprite(this, new Vector2(220, 200));
-            Block3Sprite = new QuestionBlockSprite(this, new Vector2(240, 200));
-            Block4Sprite = new BrickBlockSprite(this, new Vector2(260, 200));
-            Block5Sprite = new StoneBlockSprite(this, new Vector2(280, 200));
-            Block6Sprite = new HiddenBlockSprite(this, new Vector2(300, 200));
-            PipeBlock1Sprite = new TopLeftPipeSprite(this, new Vector2(340, 200));
-            PipeBlock2Sprite = new TopRightPipeSprite(this, new Vector2(356, 200));
-            PipeBlock3Sprite = new BottomLeftPipeSprite(this, new Vector2(340, 216));
-            PipeBlock4Sprite = new BottomRightPipeSprite(this, new Vector2(356, 216));
+            blockStairSprite = new StairBlockSprite(this, new Vector2(200, 200));
+            blockUsedSprite = new UsedBlockSprite(this, new Vector2(220, 200));
+            blockQuestionSprite = new QuestionBlockSprite(this, new Vector2(240, 200));
+            blockBrickSprite = new BrickBlockSprite(this, new Vector2(260, 200));
+            blockStoneSprite = new StoneBlockSprite(this, new Vector2(280, 200));
+            blockHiddenSprite = new HiddenBlockSprite(this, new Vector2(300, 200));
+            pipeBlockTopLeftSprite = new TopLeftPipeSprite(this, new Vector2(340, 200));
+            pipeBlockTopRightSprite = new TopRightPipeSprite(this, new Vector2(356, 200));
+            pipeBlockBottomLeftSprite = new BottomLeftPipeSprite(this, new Vector2(340, 216));
+            pipeBlockBottomRightSprite = new BottomRightPipeSprite(this, new Vector2(356, 216));
 
     }
 
@@ -132,25 +132,25 @@ namespace Game1
             marioSprite.Update();
 
 
-            FireflowerSprite.Update();
-            CoinSprite.Update();
-            RedMushroomSprite.Update();
-            GreenMushroomSprite.Update();
-            StarSprite.Update();
+            fireflowerSprite.Update();
+            coinSprite.Update();
+            redMushroomSprite.Update();
+            greenMushroomSprite.Update();
+            starSprite.Update();
 
-            KoopaSprite.Update();
-            GoombaSprite.Update();
+            koopaSprite.Update();
+            goombaSprite.Update();
 
-            Block1Sprite.Update();
-            Block2Sprite.Update();
-            Block3Sprite.Update();
-            Block4Sprite.Update();
-            Block5Sprite.Update();
-            Block6Sprite.Update();
-            PipeBlock1Sprite.Update();
-            PipeBlock2Sprite.Update();
-            PipeBlock3Sprite.Update();
-            PipeBlock4Sprite.Update();
+            blockStairSprite.Update();
+            blockUsedSprite.Update();
+            blockQuestionSprite.Update();
+            blockBrickSprite.Update();
+            blockStoneSprite.Update();
+            blockHiddenSprite.Update();
+            pipeBlockTopRightSprite.Update();
+            pipeBlockTopLeftSprite.Update();
+            pipeBlockBottomRightSprite.Update();
+            pipeBlockBottomLeftSprite.Update();
 
             base.Update(gameTime);
         }
@@ -161,25 +161,25 @@ namespace Game1
             GraphicsDevice.Clear(Color.CornflowerBlue);
             
             marioSprite.Draw();
-            FireflowerSprite.Draw();
-            CoinSprite.Draw();
-            RedMushroomSprite.Draw();
-            GreenMushroomSprite.Draw();
-            StarSprite.Draw();
+            fireflowerSprite.Draw();
+            coinSprite.Draw();
+            redMushroomSprite.Draw();
+            greenMushroomSprite.Draw();
+            starSprite.Draw();
 
-            KoopaSprite.Draw();
-            GoombaSprite.Draw();
+            koopaSprite.Draw();
+            goombaSprite.Draw();
 
-            Block1Sprite.Draw();
-            Block2Sprite.Draw();
-            Block3Sprite.Draw();
-            Block4Sprite.Draw();
-            Block5Sprite.Draw();
-            Block6Sprite.Draw();
-            PipeBlock1Sprite.Draw();
-            PipeBlock2Sprite.Draw();
-            PipeBlock3Sprite.Draw();
-            PipeBlock4Sprite.Draw();
+            blockStairSprite.Draw();
+            blockUsedSprite.Draw();
+            blockQuestionSprite.Draw();
+            blockBrickSprite.Draw();
+            blockStoneSprite.Draw();
+            blockHiddenSprite.Draw();
+            pipeBlockTopRightSprite.Draw();
+            pipeBlockTopLeftSprite.Draw();
+            pipeBlockBottomRightSprite.Draw();
+            pipeBlockBottomLeftSprite.Draw();
 
             base.Draw(gameTime);
         }

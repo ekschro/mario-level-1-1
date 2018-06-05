@@ -55,7 +55,7 @@ namespace Game1
         }
         public void QuestionToUsed()
         {
-            myGame.Block3Sprite = new UsedBlockSprite(myGame, blockLocation);
+            myGame.blockQuestionSprite = new UsedBlockSprite(myGame, blockLocation);
         }
         public void BrickToEmpty()
         {

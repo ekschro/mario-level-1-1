@@ -22,7 +22,7 @@ namespace Game1
 
         public void Execute()
         {
-            myGame.Block3Sprite.QuestionToUsed();
+            myGame.blockQuestionSprite.QuestionToUsed();
         }
     }
 }

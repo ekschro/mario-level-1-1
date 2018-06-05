@@ -46,7 +46,7 @@ namespace Game1
         }
         public void BrickToEmpty()
         {
-            myGame.Block4Sprite = new EmptyBlockSprite(myGame, blockLocation);
+            myGame.blockBrickSprite = new EmptyBlockSprite(myGame, blockLocation);
         }
         public void HiddenToUsed()
         {
