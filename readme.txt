@@ -1,0 +1,1 @@
+One task that my team is currently unable to correct is our usage of public fields in the Game1 class. Given time, we would convert these to either properties or change the access.
