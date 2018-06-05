@@ -15,13 +15,15 @@ namespace Game1
         private int cycleLength = 16;
         private int startFrame;
         private int endFrame;
+        private Vector2 redMushroomLocation;
 
-        public RedMushroomSprite(Game1 game)
+        public RedMushroomSprite(Game1 game, Vector2 location)
         {
             myGame = game;
             startFrame = 0;
             endFrame = 1;
             currentFrame = startFrame;
+            redMushroomLocation = location;
         }
 
         public void Update()
@@ -41,7 +43,7 @@ namespace Game1
             int width = myGame.pickupTexture.Width / myGame.totalPickupFrames;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.pickupTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)200, (int)100, width, myGame.pickupTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)redMushroomLocation.X, (int)redMushroomLocation.Y, width, myGame.pickupTexture.Height);
 
             myGame.spriteBatch.Begin();
             myGame.spriteBatch.Draw(myGame.pickupTexture, destinationRectangle, sourceRectangle, Color.White);

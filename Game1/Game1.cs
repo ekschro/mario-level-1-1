@@ -91,13 +91,13 @@ namespace Game1
             
             marioSprite = new MarioSmallIdleRight(this);
 
-            fireflowerSprite = new FireflowerSprite(this);
-            coinSprite = new CoinSprite(this);
-            redMushroomSprite = new RedMushroomSprite(this);
-            greenMushroomSprite = new GreenMushroomSprite(this);
-            starSprite = new StarSprite(this);
+            fireflowerSprite = new FireflowerSprite(this, new Vector2(100,100));
+            coinSprite = new CoinSprite(this, new Vector2(150,100));
+            redMushroomSprite = new RedMushroomSprite(this, new Vector2(200,100));
+            greenMushroomSprite = new GreenMushroomSprite(this, new Vector2(250,100));
+            starSprite = new StarSprite(this, new Vector2(300,100));
 
-            koopaSprite = new Koopa(this);
+            koopaSprite = new Koopa(this, new Vector2(400,100));
             goombaSprite = new Goomba(this, new Vector2(450, 100));
 
             blockStairSprite = new StairBlockSprite(this, new Vector2(200, 200));

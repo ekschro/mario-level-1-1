@@ -19,8 +19,8 @@ namespace Game1
         private int endFrame;
         private int leftStartFrame;
         private int leftEndFrame;
-        public Vector2 location;
-        public Koopa(Game1 game)
+        public Vector2 koopaLocation;
+        public Koopa(Game1 game, Vector2 location)
         {
             stateMachine = new KoopaStateMachine();
             myGame = game;
@@ -29,7 +29,7 @@ namespace Game1
             leftStartFrame = 0;
             leftEndFrame = 2;
             currentFrame = startFrame;
-            location = new Vector2(400, 100);
+            koopaLocation = location;
         }
 
         public void ChangeDirection()
@@ -57,8 +57,8 @@ namespace Game1
             cyclePosition++;
             if (cyclePosition == cycleLength && direction == true)
             {
-                location.X += 1;
-                if (location.X == 420)
+                koopaLocation.X += 1;
+                if (koopaLocation.X == 420)
                 {
                     direction = false;
                     currentFrame = leftStartFrame;
@@ -70,8 +70,8 @@ namespace Game1
             }
             else if (cyclePosition == cycleLength && direction == false)
             {
-                location.X -= 1;
-                if (location.X == 380)
+                koopaLocation.X -= 1;
+                if (koopaLocation.X == 380)
                     direction = true;
                 cyclePosition = 0;
                 currentFrame++;
@@ -86,7 +86,7 @@ namespace Game1
             int width = myGame.koopaTexture.Width / 6;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.koopaTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width, myGame.koopaTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)koopaLocation.X, (int)koopaLocation.Y, width, myGame.koopaTexture.Height);
 
             myGame.spriteBatch.Begin();
             myGame.spriteBatch.Draw(myGame.koopaTexture, destinationRectangle, sourceRectangle, Color.White);

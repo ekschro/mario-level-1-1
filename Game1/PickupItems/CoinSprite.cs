@@ -15,13 +15,15 @@ namespace Game1
         private int cycleLength = 32;
         private int startFrame;
         private int endFrame;
+        private Vector2 coinLocation;
 
-        public CoinSprite(Game1 game)
+        public CoinSprite(Game1 game, Vector2 location)
         {
             myGame = game;
             startFrame = 10;
             endFrame = 14;
             currentFrame = startFrame;
+            coinLocation = location;
         }
 
         public void Update()
@@ -41,7 +43,7 @@ namespace Game1
             int width = myGame.pickupTexture.Width / myGame.totalPickupFrames;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.pickupTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)150, (int)100, width, myGame.pickupTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)coinLocation.X, (int)coinLocation.Y, width, myGame.pickupTexture.Height);
 
             myGame.spriteBatch.Begin();
             myGame.spriteBatch.Draw(myGame.pickupTexture, destinationRectangle, sourceRectangle, Color.White);

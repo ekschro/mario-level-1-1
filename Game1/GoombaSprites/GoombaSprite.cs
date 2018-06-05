@@ -27,7 +27,6 @@ namespace Game1
             endFrame = 2;
             currentFrame = startFrame;
             goombaLocation = location;
-            //location = new Vector2(450, 100);
         }
         public void ChangeDirection()
         {

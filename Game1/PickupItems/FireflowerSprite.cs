@@ -15,13 +15,15 @@ namespace Game1
         private int cycleLength = 32;
         private int startFrame;
         private int endFrame;
+        private Vector2 fireflowerLocation;
 
-        public FireflowerSprite(Game1 game)
+        public FireflowerSprite(Game1 game, Vector2 location)
         {
             myGame = game;
             startFrame = 2;
             endFrame = 6;
             currentFrame = startFrame;
+            fireflowerLocation = location;
         }
 
         public void Update()
@@ -41,7 +43,7 @@ namespace Game1
             int width = myGame.pickupTexture.Width / myGame.totalPickupFrames;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.pickupTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)100, (int)100, width, myGame.pickupTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)fireflowerLocation.X, (int)fireflowerLocation.Y, width, myGame.pickupTexture.Height);
 
             myGame.spriteBatch.Begin();
             myGame.spriteBatch.Draw(myGame.pickupTexture, destinationRectangle, sourceRectangle, Color.White);
