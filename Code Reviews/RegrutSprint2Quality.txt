@@ -3,5 +3,6 @@ Author: Tim Regrut
 Sprint 2
 KeyboardController.cs
 Will Freeman
+
 Correctly used the IController Interface to implement Keyboard Controller. The cyclomatic complexity is really high in the update method. The excessive branching is a code smell. Additional methods could be used for the if-else statements.
 The implementation could easily support the change. All that needs to be done is the creation and implementation of helper methods.
