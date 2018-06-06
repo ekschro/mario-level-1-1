@@ -12,7 +12,7 @@ namespace Game1
         void BeStomped();
         void BeFlipped();
         void Update();
-        void hitMario();
+
     }
     
     

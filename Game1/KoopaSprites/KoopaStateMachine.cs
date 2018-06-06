@@ -47,7 +47,5 @@ namespace Game1
 
             }
         }
-        public void hitMario()
-        { }
     }
 }

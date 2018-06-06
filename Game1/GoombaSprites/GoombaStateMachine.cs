@@ -44,7 +44,5 @@ namespace Game1
                 health = GoombaHealth.Normal;
             }
         }
-        public void hitMario()
-        { }
     }
 }
