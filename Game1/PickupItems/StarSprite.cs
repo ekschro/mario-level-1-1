@@ -25,6 +25,11 @@ namespace Game1
             currentFrame = startFrame;
             starLocation = location;
         }
+        public void picked()
+        {
+            //myGame.marioSprite.starMarioCommandCalled();
+            //disapper code
+        }
 
         public void Update()
         {

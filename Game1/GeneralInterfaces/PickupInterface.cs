@@ -12,6 +12,7 @@ namespace Game1
 {
     public interface IPickupSprite
     {
+        void picked();
         void Update();
         void Draw();
     }

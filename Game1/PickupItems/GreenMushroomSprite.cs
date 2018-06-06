@@ -25,7 +25,11 @@ namespace Game1
             currentFrame = startFrame;
             greenMushroonLocation = location;
         }
-
+        public void picked()
+        {
+            //one life up called
+            //disapper green mushroomcode
+        }
         public void Update()
         {
             cyclePosition++;
