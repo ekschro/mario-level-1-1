@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Game1
 {
-    public interface IPickupSprite
+    public interface IPickupSprite : IGameObject
     {
         void Update();
         void Draw();

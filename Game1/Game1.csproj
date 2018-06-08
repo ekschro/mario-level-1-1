@@ -57,6 +57,13 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="IGameObject.cs" />
+    <Compile Include="ICollision.cs" />
+    <Compile Include="ILevel.cs" />
+    <Compile Include="ILoader.cs" />
+    <Compile Include="Level1.cs" />
+    <Compile Include="LevelLoader.cs" />
+    <Compile Include="MarioBlockCollisionHandler.cs" />
     <Compile Include="PipeSprites\BottomLeftPipeSprite.cs" />
     <Compile Include="PipeSprites\BottomRightPipeSprite.cs" />
     <Compile Include="BlockSprites\BrickBlockSprite.cs" />
@@ -140,6 +147,7 @@
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
     <None Include="app.manifest" />
+    <None Include="LevelInfo.csv" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">

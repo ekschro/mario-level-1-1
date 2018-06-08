@@ -15,14 +15,14 @@ namespace Game1
     public class KeyboardController : IController
     {
         private Dictionary<Keys, ICommand> controllerMappings;
-        private Dictionary<Keys, int> recentKeys;
+        private List<Keys> recentKeys;
         private Game1 myGame;
 
         public KeyboardController(Game1 game)
         {
             myGame = game;
             controllerMappings = new Dictionary<Keys, ICommand>();
-            recentKeys = new Dictionary<Keys, int>();
+            recentKeys = new List<Keys>();
             controllerMappings.Add(Keys.Q, new ExitGameCommand(myGame));
             controllerMappings.Add(Keys.W, new UpCommand(myGame));
             controllerMappings.Add(Keys.S, new DownCommand(myGame));
@@ -48,22 +48,32 @@ namespace Game1
         public void Update()
         {
             Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
+            Keys[] removeKeys = new Keys[10];
             foreach (Keys key in pressedKeys)
             {
-                if (!recentKeys.ContainsKey(key))
+                if (!recentKeys.Contains(key))
                 {
                     if (controllerMappings.ContainsKey(key))
                         controllerMappings[key].Execute();
-                    recentKeys.Add(key, 7);
+                    recentKeys.Add(key);
                 }
-                else
+
+            }
+            int i = 0;
+            foreach (Keys key in recentKeys)
+            {
+                if (!pressedKeys.Contains(key))
                 {
-                    int ticksRemaining = recentKeys[key] - 1;
-                    recentKeys.Remove(key);
-                    if (ticksRemaining != 0)
-                    {
-                        recentKeys.Add(key, ticksRemaining);
-                    }
+                    removeKeys[i] = key;
+                    i++;
+                }
+            }
+            for (i = 0; i < removeKeys.Length; i++)
+            {
+                Keys toBeRemoved = removeKeys[i];
+                if (recentKeys.Contains(toBeRemoved))
+                {
+                    recentKeys.Remove(toBeRemoved);
                 }
             }
         }
