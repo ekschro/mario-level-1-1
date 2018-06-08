@@ -22,7 +22,7 @@ namespace Game1
 
         public IEnemy koopaSprite;
         public IEnemy goombaSprite;
-
+        public IPlayer marioObject;
         public IBlockSprite blockStairSprite;
         public IBlockSprite blockUsedSprite;
         public IBlockSprite blockQuestionSprite;
@@ -89,7 +89,7 @@ namespace Game1
 
             koopaSprite = new Koopa(this, new Vector2(400,100));
             goombaSprite = new Goomba(this, new Vector2(450, 100));
-
+            marioObject = new Mario(this, currentLocation);
             blockStairSprite = new StairBlockSprite(this, new Vector2(200, 200));
             blockUsedSprite = new UsedBlockSprite(this, new Vector2(220, 200));
             blockQuestionSprite = new QuestionBlockSprite(this, new Vector2(240, 200));

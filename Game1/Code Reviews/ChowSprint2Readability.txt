@@ -1,0 +1,12 @@
+Dorothy Chow (.140)
+6/1/18
+Sprint 2
+QuestionBlockSprite.cs
+William Freeman
+20
+
+The file is clear and readable. 
+Names conventions are good. Also using meaningful names for variable and methods, don't need comments to explain them.
+Formatting are good, spacing were given to categorize different code.
+All function simple with minimum of lines.
+There are some methods don't have any implementation with it, I believe is because the question Block don't need that method.

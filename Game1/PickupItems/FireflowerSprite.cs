@@ -25,6 +25,11 @@ namespace Game1
             currentFrame = startFrame;
             fireflowerLocation = location;
         }
+        public void picked()
+        {
+            myGame.marioSprite.FireMarioCommandCalled();
+            //disapper code
+        }
 
         public void Update()
         {

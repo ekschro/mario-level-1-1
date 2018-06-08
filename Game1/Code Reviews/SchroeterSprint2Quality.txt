@@ -1,0 +1,11 @@
+Ericsson Schroeter (.12)
+6/5/18
+Sprint 2
+MarioBigWalkLeft.cs
+Tim Regrut
+10
+
+In the Draw method of this I noticed one small code smell.  Line 31 is pretty long and almost to the
+point of being a 'God line'.  In order to shorten this line and lines like it arguments like
+'(int)myGame.startingLocation.X' could first be saved to a shorter variable within the scope of the
+method and then past as an argument.

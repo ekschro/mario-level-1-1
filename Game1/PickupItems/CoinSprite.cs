@@ -25,6 +25,11 @@ namespace Game1
             currentFrame = startFrame;
             coinLocation = location;
         }
+        public void picked()
+        {
+            //money up
+            //disappear 
+        }
 
         public void Update()
         {
