@@ -17,9 +17,11 @@ namespace Game1
         private Dictionary<Keys, ICommand> controllerMappings;
         private List<Keys> recentKeys;
         private Game1 myGame;
+        private int timer;
 
         public KeyboardController(Game1 game)
         {
+            timer = 0;
             myGame = game;
             controllerMappings = new Dictionary<Keys, ICommand>();
             recentKeys = new List<Keys>();
@@ -48,34 +50,19 @@ namespace Game1
         public void Update()
         {
             Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
-            Keys[] removeKeys = new Keys[10];
+
             foreach (Keys key in pressedKeys)
             {
-                if (!recentKeys.Contains(key))
+                for (int i = 0; i < 50; i++)
                 {
-                    if (controllerMappings.ContainsKey(key))
+                    if (i == 0 && controllerMappings.ContainsKey(key))
+                    {
                         controllerMappings[key].Execute();
-                    recentKeys.Add(key);
+                    }
                 }
 
             }
-            int i = 0;
-            foreach (Keys key in recentKeys)
-            {
-                if (!pressedKeys.Contains(key))
-                {
-                    removeKeys[i] = key;
-                    i++;
-                }
-            }
-            for (i = 0; i < removeKeys.Length; i++)
-            {
-                Keys toBeRemoved = removeKeys[i];
-                if (recentKeys.Contains(toBeRemoved))
-                {
-                    recentKeys.Remove(toBeRemoved);
-                }
-            }
+            
         }
     }
 }

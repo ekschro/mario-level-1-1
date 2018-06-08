@@ -23,6 +23,8 @@ namespace Game1
         public void Execute()
         {
             myGame.marioSprite.RightCommandCalled();
+            myGame.marioObject.RightHeld();
+            myGame.marioObject.Update();
         }
     }
 }
