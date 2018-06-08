@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace Game1
 {
+    //turn to big mario
     public class RedMushroomSprite : IPickupSprite
     {
         private Game1 myGame;
@@ -24,6 +25,11 @@ namespace Game1
             endFrame = 1;
             currentFrame = startFrame;
             redMushroomLocation = location;
+        }
+        public void picked()
+        {
+            myGame.marioSprite.BigMarioCommandCalled();
+            //disapper code
         }
 
         public void Update()
