@@ -29,6 +29,8 @@ namespace Game1
         {
             up = false;
             down = true;
+            right = false;
+            left = false;
             
         }
 
@@ -51,12 +53,16 @@ namespace Game1
         {
             right = false;
             left = true;
+            up = false;
+            down = false;
         }
 
         public void RightHeld()
         {
             right = true;
             left = false;
+            up = false;
+            down = false;
         }
 
         public void SetCurrentXPositon(float x)
@@ -71,29 +77,31 @@ namespace Game1
 
         public void Update()
         {
-            if (up && right)
+            if (up)
+            {
+                
+                SetCurrentYPosition(GetCurrentYPosition() - 1);
+            } else if (down)
+            {
+                
+                SetCurrentYPosition(GetCurrentYPosition() + 1);
+            } else if(right)
             {
                 SetCurrentXPositon(GetCurrentXPosition() + 1);
-                SetCurrentYPosition(GetCurrentYPosition() - 1);
-            } else if (up && left)
+                
+            } else if (left)
             {
                 SetCurrentXPositon(GetCurrentXPosition() - 1);
-                SetCurrentYPosition(GetCurrentYPosition() - 1);
-            } else if(down && right)
-            {
-                SetCurrentXPositon(GetCurrentXPosition() + 1);
-                SetCurrentYPosition(GetCurrentYPosition() + 1);
-            } else if (down && left)
-            {
-                SetCurrentXPositon(GetCurrentXPosition() - 1);
-                SetCurrentYPosition(GetCurrentYPosition() + 1);
+                
             }
         }
 
-        public void UpdHeld()
+        public void UpHeld()
         {
             up = true;
             down = false;
+            right = false;
+            left = false;
         }
     }
 }

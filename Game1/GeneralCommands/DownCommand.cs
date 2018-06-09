@@ -23,6 +23,8 @@ namespace Game1
         public void Execute()
         {
             myGame.marioSprite.DownCommandCalled();
+            myGame.marioObject.DownHeld();
+            myGame.marioObject.Update();
         }
     }
 }

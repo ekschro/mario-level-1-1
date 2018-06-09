@@ -24,6 +24,8 @@ namespace Game1
         public void Execute()
         {
             myGame.marioSprite.LeftCommandCalled();
+            myGame.marioObject.LeftHeld();
+            myGame.marioObject.Update();
         }
     }
 }
