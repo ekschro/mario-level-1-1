@@ -1,14 +1,18 @@
 ﻿using System;
 
-public interface IPlayer
+namespace Game1
 {
-    float GetCurrentXPosition();
-    void SetCurrentXPositon(float x);
-    float GetCurrentYPosition();
-    void SetCurrentYPosition(float y);
-    void Draw();
-    void UpdHeld();
-    void DownHeld();
-    void RightHeld();
-    void LeftHeld();
+    public interface IPlayer : IGameObject
+    {
+        float GetCurrentXPosition();
+        void SetCurrentXPositon(float x);
+        float GetCurrentYPosition();
+        void SetCurrentYPosition(float y);
+        void Update();
+        void Draw();
+        void UpdHeld();
+        void DownHeld();
+        void RightHeld();
+        void LeftHeld();
+    }
 }

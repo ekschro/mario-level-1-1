@@ -4,12 +4,14 @@ namespace Game1 {
 public class MarioDead : ISprite
 {
     private Game1 myGame;
+    private Mario marioObject;
 
-    private int currentFrame = 12 + 28;
+        private int currentFrame = 12 + 28;
 
-    public MarioDead(Game1 game)
+    public MarioDead(Game1 game, Mario mario)
     {
         myGame = game;
+        marioObject = mario;
     }
 
 
@@ -23,7 +25,7 @@ public class MarioDead : ISprite
         
 
         Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-        Rectangle destinationRectangle = new Rectangle((int)myGame.marioObject.GetCurrentXPosition(), (int)myGame.currentLocation.Y, width, height);
+        Rectangle destinationRectangle = new Rectangle((int)marioObject.GetCurrentXPosition(), (int)myGame.currentLocation.Y, width, height);
 
         myGame.spriteBatch.Begin();
         myGame.spriteBatch.Draw(myGame.marioTexture, destinationRectangle, sourceRectangle, Color.White);
@@ -51,22 +53,22 @@ public class MarioDead : ISprite
         }
     public void SmallMarioCommandCalled()
     {
-        myGame.marioSprite = new MarioSmallIdleRight(myGame);
+        marioObject.MarioSprite = new MarioSmallIdleRight(myGame, marioObject);
     }
 
     public void BigMarioCommandCalled()
     {
-               myGame.marioSprite = new MarioBigIdleRight(myGame);
+               marioObject.MarioSprite = new MarioBigIdleRight(myGame, marioObject);
     }
 
     public void FireMarioCommandCalled()
     {
-        myGame.marioSprite = new MarioFireIdleRight(myGame);
+        marioObject.MarioSprite = new MarioFireIdleRight(myGame, marioObject);
     }
 
     public void DeadMarioCommandCalled()
     {
-        myGame.marioSprite = new MarioDead(myGame);
+        marioObject.MarioSprite = new MarioDead(myGame, marioObject);
     }
 
     public void Update()

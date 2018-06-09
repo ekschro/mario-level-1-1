@@ -10,10 +10,10 @@ namespace Game1
     {
         public List<IGameObject> levelObjects;
 
-        public Level1(string fileName)
+        public Level1(string fileName, Game1 game)
         {
             levelObjects = new List<IGameObject>();
-            ILoader loader = new LevelLoader();
+            ILoader loader = new LevelLoader(game);
 
             loader.Load(fileName, levelObjects);
         }

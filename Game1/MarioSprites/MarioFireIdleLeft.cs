@@ -5,12 +5,14 @@ namespace Game1
     public class MarioFireIdleLeft : ISprite
     {
         private Game1 myGame;
+        private Mario marioObject;
 
         private int currentFrame = 41 + 28;
 
-        public MarioFireIdleLeft(Game1 game)
+        public MarioFireIdleLeft(Game1 game, Mario mario)
         {
             myGame = game;
+            marioObject = mario;
         }
 
 
@@ -25,7 +27,7 @@ namespace Game1
             
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)myGame.marioObject.GetCurrentXPosition(), (int)myGame.currentLocation.Y, width, height);
+            Rectangle destinationRectangle = new Rectangle((int)marioObject.GetCurrentXPosition(), (int)marioObject.GetCurrentYPosition(), width, height);
 
             myGame.spriteBatch.Begin();
             myGame.spriteBatch.Draw(myGame.marioTexture, destinationRectangle, sourceRectangle, Color.White);
@@ -34,32 +36,32 @@ namespace Game1
 
         public void UpCommandCalled()
         {
-            myGame.marioSprite = new MarioFireJumpingLeft(myGame);
+            marioObject.MarioSprite = new MarioFireJumpingLeft(myGame, marioObject);
         }
 
         public void DownCommandCalled()
         {
-            myGame.marioSprite = new MarioFireCrouchingLeft(myGame);
+            marioObject.MarioSprite = new MarioFireCrouchingLeft(myGame, marioObject);
         }
 
         public void LeftCommandCalled()
         {
-            myGame.marioSprite = new MarioFireWalkLeft(myGame);
+            marioObject.MarioSprite = new MarioFireWalkLeft(myGame, marioObject);
         }
 
         public void RightCommandCalled()
         {
-            myGame.marioSprite = new MarioFireIdleRight(myGame);
+            marioObject.MarioSprite = new MarioFireIdleRight(myGame, marioObject);
         }
 
         public void SmallMarioCommandCalled()
         {
-            myGame.marioSprite = new MarioSmallIdleLeft(myGame);
+            marioObject.MarioSprite = new MarioSmallIdleLeft(myGame, marioObject);
         }
 
         public void BigMarioCommandCalled()
         {
-            myGame.marioSprite = new MarioBigIdleLeft(myGame);
+            marioObject.MarioSprite = new MarioBigIdleLeft(myGame, marioObject);
         }
 
         public void FireMarioCommandCalled()
@@ -69,7 +71,7 @@ namespace Game1
 
         public void DeadMarioCommandCalled()
         {
-            myGame.marioSprite = new MarioDead(myGame);
+            marioObject.MarioSprite = new MarioDead(myGame, marioObject);
         }
 
         public void Update()

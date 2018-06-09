@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Game1
 {
-    interface ILoader
+    public interface ILoader
     {
         void Load(string fileName, List<IGameObject> gameObjects);
     }

@@ -5,12 +5,14 @@ namespace Game1
     public class MarioBigCrouchingRight : ISprite
     {
         private Game1 myGame;
+        private Mario marioObject;
 
         private int currentFrame = 15;
 
-        public MarioBigCrouchingRight(Game1 game)
+        public MarioBigCrouchingRight(Game1 game, Mario mario)
         {
             myGame = game;
+            marioObject = mario;
         }
 
 
@@ -24,7 +26,7 @@ namespace Game1
             
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)myGame.marioObject.GetCurrentXPosition(), (int)myGame.currentLocation.Y, width, height);
+            Rectangle destinationRectangle = new Rectangle((int)marioObject.GetCurrentXPosition(), (int)marioObject.GetCurrentYPosition(), width, height);
 
             myGame.spriteBatch.Begin();
             myGame.spriteBatch.Draw(myGame.marioTexture, destinationRectangle, sourceRectangle, Color.White);
@@ -33,7 +35,7 @@ namespace Game1
 
         public void UpCommandCalled()
         {
-            myGame.marioSprite = new MarioBigIdleRight(myGame);
+            marioObject.MarioSprite = new MarioBigIdleRight(myGame, marioObject);
         }
 
         public void DownCommandCalled()
@@ -53,7 +55,7 @@ namespace Game1
 
         public void SmallMarioCommandCalled()
         {
-            myGame.marioSprite = new MarioSmallIdleRight(myGame);
+            marioObject.MarioSprite = new MarioSmallIdleRight(myGame, marioObject);
         }
 
         public void BigMarioCommandCalled()
@@ -63,12 +65,12 @@ namespace Game1
 
         public void FireMarioCommandCalled()
         {
-            myGame.marioSprite = new MarioFireCrouchingRight(myGame);
+            marioObject.MarioSprite = new MarioFireCrouchingRight(myGame, marioObject);
         }
 
         public void DeadMarioCommandCalled()
         {
-            myGame.marioSprite = new MarioDead(myGame);
+            marioObject.MarioSprite = new MarioDead(myGame, marioObject);
         }
 
         public void Update()
