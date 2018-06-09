@@ -20,9 +20,11 @@ namespace Game1
         public IPickupSprite greenMushroomSprite;
         public IPickupSprite starSprite;
 
-        public IEnemy koopaSprite;
-        public IEnemy goombaSprite;
+        public IEnemy koopa;
+        public IEnemy goomba;
+
         public IPlayer marioObject;
+
         public IBlockSprite blockStairSprite;
         public IBlockSprite blockUsedSprite;
         public IBlockSprite blockQuestionSprite;
@@ -97,9 +99,11 @@ namespace Game1
             greenMushroomSprite = new GreenMushroomSprite(this, new Vector2(250,100));
             starSprite = new StarSprite(this, new Vector2(300,100));
 
-            koopaSprite = new Koopa(this, new Vector2(400,100));
-            goombaSprite = new Goomba(this, new Vector2(450, 100));
+            koopa = new Koopa(this, new Vector2(400,100));
+            goomba = new Goomba(this, new Vector2(450, 100));
+
             marioObject = new Mario(this, currentLocation);
+
             blockStairSprite = new StairBlockSprite(this, new Vector2(200, 200));
             blockUsedSprite = new UsedBlockSprite(this, new Vector2(220, 200));
             blockQuestionSprite = new QuestionBlockSprite(this, new Vector2(240, 200));
@@ -138,8 +142,8 @@ namespace Game1
             greenMushroomSprite.Update();
             starSprite.Update();
 
-            koopaSprite.Update();
-            goombaSprite.Update();
+            koopa.Update();
+            goomba.Update();
 
             blockStairSprite.Update();
             blockUsedSprite.Update();
@@ -167,8 +171,8 @@ namespace Game1
             greenMushroomSprite.Draw();
             starSprite.Draw();
 
-            koopaSprite.Draw();
-            goombaSprite.Draw();
+            koopa.Draw();
+            goomba.Draw();
 
             blockStairSprite.Draw();
             blockUsedSprite.Draw();

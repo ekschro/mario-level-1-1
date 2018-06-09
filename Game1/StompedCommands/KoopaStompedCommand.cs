@@ -22,7 +22,7 @@ namespace Game1
 
         public void Execute()
         {
-            myGame.koopaSprite.BeStomped();
+            myGame.koopa.BeStomped();
         }
     }
 }
