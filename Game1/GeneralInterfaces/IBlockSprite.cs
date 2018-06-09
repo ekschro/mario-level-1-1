@@ -9,7 +9,7 @@ using System.Collections;
 
 namespace Game1
 {
-    public interface IBlockSprite
+    public interface IBlockSprite : IGameObject
     {
         void Update();
         void Draw();

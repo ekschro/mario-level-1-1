@@ -7,8 +7,9 @@ public interface IPlayer
     float GetCurrentYPosition();
     void SetCurrentYPosition(float y);
     void Draw();
-    void UpdHeld();
+    void UpHeld();
     void DownHeld();
     void RightHeld();
     void LeftHeld();
+    void Update();
 }

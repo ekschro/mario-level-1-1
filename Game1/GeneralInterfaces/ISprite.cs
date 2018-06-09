@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Game1
 {
-    public interface ISprite
+    public interface ISprite : IGameObject
     {
         void Update();
         void Draw();

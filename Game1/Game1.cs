@@ -48,22 +48,12 @@ namespace Game1
         public Texture2D goombaTexture;
         public Texture2D blockTexture;
 
-        public bool leftPressed;
-        public bool rightPressed;
-        public bool upPressed;
-        public bool downPressed;
-
         public int totalMarioColumns = 28;
         public int totalMarioRows = 3;
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-
-            leftPressed = false;
-            rightPressed = false;
-            upPressed = false;
-            downPressed = false;
         }
       
         protected override void Initialize()
