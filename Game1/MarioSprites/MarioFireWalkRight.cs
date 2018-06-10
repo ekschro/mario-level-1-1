@@ -7,9 +7,9 @@ namespace Game1
         private Game1 myGame;
 
         private int currentFrame = 16 + 56;
-        private bool forward = true;
-        private int counter = 1;
-        private int delay = 0;
+       
+        
+        
 
         public MarioFireWalkRight(Game1 game)
         {
@@ -52,7 +52,7 @@ namespace Game1
 
         public void RightCommandCalled()
         {
-
+            myGame.marioSprite = new MarioFireWalkRightPart2(myGame);
         }
 
         public void SmallMarioCommandCalled()
@@ -77,32 +77,7 @@ namespace Game1
 
         public void Update()
         {
-            if (delay < 3)
-            {
-                delay++;
-            }
-            else if (forward)
-            {
-                currentFrame++;
-                counter++;
-                if (counter == 3)
-                {
-                    counter = 1;
-                    forward = false;
-                }
-                delay = 0;
-            }
-            else
-            {
-                currentFrame--;
-                counter++;
-                if (counter == 3)
-                {
-                    counter = 1;
-                    forward = true;
-                }
-                delay = 0;
-            }
+            
         }
 
     }

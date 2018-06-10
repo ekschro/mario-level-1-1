@@ -8,8 +8,8 @@ namespace Game1
 
         private int currentFrame = 11;
         private bool forward = true;
-        private int counter = 1;
-        private int delay = 0;
+        
+        
 
         public MarioBigWalkLeft(Game1 game)
         {
@@ -47,7 +47,7 @@ namespace Game1
 
         public void LeftCommandCalled()
         {
-
+            myGame.marioSprite = new MarioBigWalkLeftPart2(myGame);
         }
 
         public void RightCommandCalled()
@@ -77,46 +77,7 @@ namespace Game1
 
         public void Update()
         {
-            if (delay < 3) {
-                delay++;
-            }
-            else if (forward)
-            {
-                currentFrame--;
-                counter++;
-                if (counter == 3)
-                {
-                    counter = 1;
-                    forward = false;
-                }
-                delay = 0;
-            }
-            else
-            {
-                currentFrame++;
-                counter++;
-                if (counter == 3)
-                {
-                    counter = 1;
-                    forward = true;
-                }
-                delay = 0;
-            }
-
-            //if (currentFrame < 9 || currentFrame > 11) {
-            //    forward = !forward;
-            //}
-            //else if (delay != 3) {
-            //    delay++;
-            //}
-            //else if (forward) {
-            //    currentFrame--;
-            //    delay = 0;
-            //}
-            //else {
-            //    currentFrame++;
-            //    delay = 0;
-            //}
+            
         }
     }
 }

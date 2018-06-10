@@ -2,15 +2,15 @@
 
 namespace Game1
 {
-    public class MarioSmallWalkRight : ISprite
+    public class MarioSmallWalkRightPart4 : ISprite
     {
         private Game1 myGame;
         
-        private int currentFrame = 16 + 28;
+        private int currentFrame = 17 + 28;
         private bool forward = true;
         
 
-        public MarioSmallWalkRight(Game1 game)
+        public MarioSmallWalkRightPart4(Game1 game)
         {
             myGame = game;
         }
@@ -51,7 +51,7 @@ namespace Game1
 
         public void RightCommandCalled()
         {
-            myGame.marioSprite = new MarioSmallWalkRightPart2(myGame);
+            myGame.marioSprite = new MarioSmallWalkRight(myGame);
         }
 
         public void SmallMarioCommandCalled()
@@ -76,7 +76,6 @@ namespace Game1
 
         public void Update()
         {
-            
             
         }
     }

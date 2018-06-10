@@ -1,16 +1,17 @@
 ﻿using Microsoft.Xna.Framework;
-
+using System;
 namespace Game1
 {
-    public class MarioSmallWalkRight : ISprite
+    public class MarioBigWalkRightPart3 : ISprite
     {
         private Game1 myGame;
+
+        private int currentFrame = 18;
         
-        private int currentFrame = 16 + 28;
         private bool forward = true;
         
 
-        public MarioSmallWalkRight(Game1 game)
+        public MarioBigWalkRightPart3(Game1 game)
         {
             myGame = game;
         }
@@ -36,32 +37,32 @@ namespace Game1
 
         public void UpCommandCalled()
         {
-            myGame.marioSprite = new MarioSmallJumpingRight(myGame);
+            myGame.marioSprite = new MarioBigJumpingRight(myGame);
         }
 
         public void DownCommandCalled()
         {
-
+            myGame.marioSprite = new MarioBigCrouchingRight(myGame);
         }
 
         public void LeftCommandCalled()
         {
-            myGame.marioSprite = new MarioSmallIdleRight(myGame);
+            myGame.marioSprite = new MarioBigIdleRight(myGame);
         }
 
         public void RightCommandCalled()
         {
-            myGame.marioSprite = new MarioSmallWalkRightPart2(myGame);
+            myGame.marioSprite = new MarioBigWalkRightPart4(myGame);
         }
 
         public void SmallMarioCommandCalled()
         {
-
+            myGame.marioSprite = new MarioSmallWalkRight(myGame);
         }
 
         public void BigMarioCommandCalled()
         {
-            myGame.marioSprite = new MarioBigWalkRight(myGame);
+
         }
 
         public void FireMarioCommandCalled()
@@ -76,8 +77,8 @@ namespace Game1
 
         public void Update()
         {
-            
-            
+
         }
     }
+
 }

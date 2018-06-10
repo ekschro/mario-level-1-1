@@ -6,10 +6,10 @@ namespace Game1
     public class MarioSmallWalkLeft : ISprite
     {
         private Game1 myGame;
-        private Boolean forward = true;
+        
         private int currentFrame = 11 + 28;
-        private int counter = 1;
-        private int delay = 0;
+        
+        
 
         public MarioSmallWalkLeft(Game1 game)
         {
@@ -47,7 +47,7 @@ namespace Game1
 
         public void LeftCommandCalled()
         {
-
+            myGame.marioSprite = new MarioSmallWalkLeftPart2(myGame);
         }
 
         public void RightCommandCalled()
@@ -77,32 +77,7 @@ namespace Game1
 
         public void Update()
         {
-            if (delay < 3)
-            {
-                delay++;
-            }
-            else if (forward)
-            {
-                currentFrame--;
-                counter++;
-                if (counter == 3)
-                {
-                    counter = 1;
-                    forward = false;
-                }
-                delay = 0;
-            }
-            else
-            {
-                currentFrame++;
-                counter++;
-                if (counter == 3)
-                {
-                    counter = 1;
-                    forward = true;
-                }
-                delay = 0;
-            }
+            
         }
     }
 }

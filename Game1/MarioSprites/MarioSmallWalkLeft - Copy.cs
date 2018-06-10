@@ -1,16 +1,17 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
 
 namespace Game1
 {
-    public class MarioSmallWalkRight : ISprite
+    public class MarioSmallWalkLeft : ISprite
     {
         private Game1 myGame;
-        
-        private int currentFrame = 16 + 28;
-        private bool forward = true;
-        
+        private Boolean forward = true;
+        private int currentFrame = 11 + 28;
+        private int counter = 1;
+        private int delay = 0;
 
-        public MarioSmallWalkRight(Game1 game)
+        public MarioSmallWalkLeft(Game1 game)
         {
             myGame = game;
         }
@@ -36,7 +37,7 @@ namespace Game1
 
         public void UpCommandCalled()
         {
-            myGame.marioSprite = new MarioSmallJumpingRight(myGame);
+            myGame.marioSprite = new MarioSmallJumpingLeft(myGame);
         }
 
         public void DownCommandCalled()
@@ -46,12 +47,12 @@ namespace Game1
 
         public void LeftCommandCalled()
         {
-            myGame.marioSprite = new MarioSmallIdleRight(myGame);
+
         }
 
         public void RightCommandCalled()
         {
-            myGame.marioSprite = new MarioSmallWalkRightPart2(myGame);
+            myGame.marioSprite = new MarioSmallIdleLeft(myGame);
         }
 
         public void SmallMarioCommandCalled()
@@ -61,12 +62,12 @@ namespace Game1
 
         public void BigMarioCommandCalled()
         {
-            myGame.marioSprite = new MarioBigWalkRight(myGame);
+            myGame.marioSprite = new MarioBigWalkLeft(myGame);
         }
 
         public void FireMarioCommandCalled()
         {
-            myGame.marioSprite = new MarioFireWalkRight(myGame);
+            myGame.marioSprite = new MarioFireWalkLeft(myGame);
         }
 
         public void DeadMarioCommandCalled()
@@ -76,8 +77,32 @@ namespace Game1
 
         public void Update()
         {
-            
-            
+            if (delay < 3)
+            {
+                delay++;
+            }
+            else if (forward)
+            {
+                currentFrame--;
+                counter++;
+                if (counter == 3)
+                {
+                    counter = 1;
+                    forward = false;
+                }
+                delay = 0;
+            }
+            else
+            {
+                currentFrame++;
+                counter++;
+                if (counter == 3)
+                {
+                    counter = 1;
+                    forward = true;
+                }
+                delay = 0;
+            }
         }
     }
 }

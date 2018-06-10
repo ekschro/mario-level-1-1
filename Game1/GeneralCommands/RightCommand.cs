@@ -14,15 +14,24 @@ namespace Game1
     public class RightCommand : ICommand
     {
         private Game1 myGame;
-
+        private int timer;
         public RightCommand(Game1 game)
         {
             myGame = game;
+            timer = 0;
         }
 
         public void Execute()
         {
-            myGame.marioSprite.RightCommandCalled();
+            if (timer == 5)
+            {
+                myGame.marioSprite.RightCommandCalled();
+                timer = 0;
+            } else
+            {
+                timer++;
+            }
+            
             myGame.marioObject.RightHeld();
             myGame.marioObject.Update();
         }

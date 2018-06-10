@@ -15,15 +15,28 @@ namespace Game1
     public class LeftCommand : ICommand
     {
         private Game1 myGame;
+        private int timer;
 
         public LeftCommand(Game1 game)
         {
             myGame = game;
+            timer = 0;
         }
 
         public void Execute()
         {
-            myGame.marioSprite.LeftCommandCalled();
+
+            if (timer == 5)
+            {
+                myGame.marioSprite.LeftCommandCalled();
+                timer = 0;
+            }else
+            {
+                timer++;
+            }
+                
+                
+                   
             myGame.marioObject.LeftHeld();
             myGame.marioObject.Update();
         }
