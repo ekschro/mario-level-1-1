@@ -8,8 +8,7 @@ namespace Game1
         private Game1 myGame;
         
         private int currentFrame = 11 + 28;
-        private int counter = 1;
-        private int delay = 0;
+        
         private Mario marioObject;
 
         public MarioSmallWalkLeft(Game1 game, Mario mario)
@@ -39,7 +38,7 @@ namespace Game1
 
         public void UpCommandCalled()
         {
-            marioObject.MarioSprite = new MarioSmallJumpingLeft(myGame, marioObject);
+            marioObject.marioSprite = new MarioSmallJumpingLeft(myGame, marioObject);
         }
 
         public void DownCommandCalled()
@@ -49,12 +48,12 @@ namespace Game1
 
         public void LeftCommandCalled()
         {
-            myGame.marioSprite = new MarioSmallWalkLeftPart2(myGame);
+            marioObject.marioSprite = new MarioSmallWalkLeftPart2(myGame, marioObject);
         }
 
         public void RightCommandCalled()
         {
-            marioObject.MarioSprite = new MarioSmallIdleLeft(myGame, marioObject);
+            marioObject.marioSprite = new MarioSmallIdleLeft(myGame, marioObject);
         }
 
         public void SmallMarioCommandCalled()
@@ -64,17 +63,17 @@ namespace Game1
 
         public void BigMarioCommandCalled()
         {
-            marioObject.MarioSprite = new MarioBigWalkLeft(myGame, marioObject);
+            marioObject.marioSprite = new MarioBigWalkLeft(myGame, marioObject);
         }
 
         public void FireMarioCommandCalled()
         {
-            marioObject.MarioSprite = new MarioFireWalkLeft(myGame, marioObject);
+            marioObject.marioSprite = new MarioFireWalkLeft(myGame, marioObject);
         }
 
         public void DeadMarioCommandCalled()
         {
-            marioObject.MarioSprite = new MarioDead(myGame, marioObject);
+            marioObject.marioSprite = new MarioDead(myGame, marioObject);
         }
 
         public void Update()

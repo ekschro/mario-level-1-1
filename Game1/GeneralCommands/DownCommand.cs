@@ -15,17 +15,19 @@ namespace Game1
     {
         private int timer;
         private Game1 myGame;
+        private Mario marioObject;
 
-        public DownCommand(Game1 game)
+        public DownCommand(Game1 game, Mario mario)
         {
             myGame = game;
             timer = 0;
+            marioObject = mario;
         }
 
         public void Execute()
         {
             if (timer == 5) {
-                myGame.marioSprite.DownCommandCalled();
+                marioObject.marioSprite.DownCommandCalled();
                 timer = 0;
             }
             else
@@ -33,8 +35,8 @@ namespace Game1
                 timer++;
             }
                 
-            myGame.marioObject.DownHeld();
-            myGame.marioObject.Update();
+            marioObject.DownHeld();
+            marioObject.Update();
         }
     }
 }

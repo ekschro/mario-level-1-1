@@ -14,15 +14,17 @@ namespace Game1
     public class FireMarioCommand : ICommand
     {
         private Game1 myGame;
+        private Mario marioObject;
 
-        public FireMarioCommand(Game1 game)
+        public FireMarioCommand(Game1 game, Mario mario)
         {
             myGame = game;
+            marioObject = mario;
         }
 
         public void Execute()
         {
-            myGame.marioSprite.FireMarioCommandCalled();
+            marioObject.marioSprite.FireMarioCommandCalled();
         }
     }
 }

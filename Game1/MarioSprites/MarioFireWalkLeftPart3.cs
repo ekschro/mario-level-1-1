@@ -7,13 +7,14 @@ namespace Game1
         private Game1 myGame;
 
         private int currentFrame = 9 + 56;
-        
-        
+
+        private Mario marioObject;
         
 
-        public MarioFireWalkLeftPart3(Game1 game)
+        public MarioFireWalkLeftPart3(Game1 game, Mario mario)
         {
             myGame = game;
+            marioObject = mario;
         }
 
 
@@ -28,7 +29,7 @@ namespace Game1
             
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)myGame.marioObject.GetCurrentXPosition(), (int)myGame.marioObject.GetCurrentYPosition(), width, height);
+            Rectangle destinationRectangle = new Rectangle((int)marioObject.GetCurrentXPosition(), (int)marioObject.GetCurrentYPosition(), width, height);
 
             myGame.spriteBatch.Begin();
             myGame.spriteBatch.Draw(myGame.marioTexture, destinationRectangle, sourceRectangle, Color.White);
@@ -37,32 +38,32 @@ namespace Game1
 
         public void UpCommandCalled()
         {
-            myGame.marioSprite = new MarioFireJumpingLeft(myGame);
+            marioObject.marioSprite = new MarioFireJumpingLeft(myGame, marioObject);
         }
 
         public void DownCommandCalled()
         {
-            myGame.marioSprite = new MarioFireCrouchingLeft(myGame);
+            marioObject.marioSprite = new MarioFireCrouchingLeft(myGame, marioObject);
         }
 
         public void LeftCommandCalled()
         {
-            myGame.marioSprite = new MarioFireWalkLeftPart4(myGame);
+            marioObject.marioSprite = new MarioFireWalkLeftPart4(myGame, marioObject);
         }
 
         public void RightCommandCalled()
         {
-            myGame.marioSprite = new MarioFireIdleLeft(myGame);
+            marioObject.marioSprite = new MarioFireIdleLeft(myGame, marioObject);
         }
 
         public void SmallMarioCommandCalled()
         {
-            myGame.marioSprite = new MarioSmallWalkLeft(myGame);
+            marioObject.marioSprite = new MarioSmallWalkLeft(myGame, marioObject);
         }
 
         public void BigMarioCommandCalled()
         {
-            myGame.marioSprite = new MarioBigWalkLeft(myGame);
+            marioObject.marioSprite = new MarioBigWalkLeft(myGame, marioObject);
         }
 
         public void FireMarioCommandCalled()
@@ -72,7 +73,7 @@ namespace Game1
 
         public void DeadMarioCommandCalled()
         {
-            myGame.marioSprite = new MarioDead(myGame);
+            marioObject.marioSprite = new MarioDead(myGame, marioObject);
         }
 
         public void Update()

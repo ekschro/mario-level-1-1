@@ -12,7 +12,7 @@ namespace Game1
         private Boolean left;
         private Boolean down;
 
-        public ISprite MarioSprite;
+        public ISprite marioSprite;
         public Mario(Game1 game, Vector2 vector)
         {
             up = false;
@@ -22,7 +22,7 @@ namespace Game1
             myGame = game;
             currentXPositon = vector.X;
             currentYPosition = vector.Y;
-            MarioSprite = new MarioSmallIdleRight(myGame, this);
+            marioSprite = new MarioSmallIdleRight(myGame, this);
         }
 
         public void DownHeld()
@@ -36,7 +36,7 @@ namespace Game1
 
         public void Draw()
         {
-            MarioSprite.Draw();
+            marioSprite.Draw();
         }
 
         public float GetCurrentXPosition()
