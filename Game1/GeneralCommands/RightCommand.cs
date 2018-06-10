@@ -15,27 +15,29 @@ namespace Game1
     {
         private Game1 myGame;
         private int timer;
-        private Mario marioObject;
-        public RightCommand(Game1 game, Mario mario)
+        
+        public RightCommand(Game1 game)
         {
             myGame = game;
             timer = 0;
-            marioObject = mario;
         }
 
         public void Execute()
         {
             if (timer == 5)
             {
-                marioObject.marioSprite.RightCommandCalled();
+                Mario.marioSprite.RightCommandCalled();
                 timer = 0;
             } else
             {
                 timer++;
             }
-            
-            marioObject.RightHeld();
-            marioObject.Update();
+
+            Mario.up = false;
+            Mario.down = false;
+            Mario.right = true;
+            Mario.left = false;
+            Mario.currentYPosition = Mario.currentXPosition + 1;
         }
     }
 }

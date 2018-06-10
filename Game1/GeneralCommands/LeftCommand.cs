@@ -16,12 +16,12 @@ namespace Game1
     {
         private Game1 myGame;
         private int timer;
-        private Mario marioObject;
-        public LeftCommand(Game1 game, Mario mario)
+        
+        public LeftCommand(Game1 game)
         {
             myGame = game;
             timer = 0;
-            marioObject = mario;
+            
         }
 
         public void Execute()
@@ -29,17 +29,20 @@ namespace Game1
 
             if (timer == 5)
             {
-                marioObject.marioSprite.LeftCommandCalled();
+                Mario.marioSprite.LeftCommandCalled();
                 timer = 0;
             }else
             {
                 timer++;
             }
-                
-                
-                   
-            marioObject.LeftHeld();
-            marioObject.Update();
+
+
+
+            Mario.up = false;
+            Mario.down = false;
+            Mario.right = false;
+            Mario.left = true;
+            Mario.currentXPosition = Mario.currentXPosition - 1;
         }
     }
 }

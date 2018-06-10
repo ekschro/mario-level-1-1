@@ -27,7 +27,7 @@ namespace Game1
             
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)marioObject.GetCurrentXPosition(), (int)marioObject.GetCurrentYPosition(), width, height);
+            Rectangle destinationRectangle = new Rectangle((int)Mario.currentXPosition, (int)Mario.currentYPosition, width, height);
 
             myGame.spriteBatch.Begin();
             myGame.spriteBatch.Draw(myGame.marioTexture, destinationRectangle, sourceRectangle, Color.White);
@@ -36,32 +36,32 @@ namespace Game1
 
         public void UpCommandCalled()
         {
-            marioObject.marioSprite = new MarioFireJumpingLeft(myGame, marioObject);
+            Mario.marioSprite = new MarioFireJumpingLeft(myGame, marioObject);
         }
 
         public void DownCommandCalled()
         {
-            marioObject.marioSprite = new MarioFireCrouchingLeft(myGame, marioObject);
+            Mario.marioSprite = new MarioFireCrouchingLeft(myGame, marioObject);
         }
 
         public void LeftCommandCalled()
         {
-            marioObject.marioSprite = new MarioFireWalkLeft(myGame, marioObject);
+            Mario.marioSprite = new MarioFireWalkLeft(myGame, marioObject);
         }
 
         public void RightCommandCalled()
         {
-            marioObject.marioSprite = new MarioFireIdleRight(myGame, marioObject);
+            Mario.marioSprite = new MarioFireIdleRight(myGame, marioObject);
         }
 
         public void SmallMarioCommandCalled()
         {
-            marioObject.marioSprite = new MarioSmallIdleLeft(myGame, marioObject);
+            Mario.marioSprite = new MarioSmallIdleLeft(myGame, marioObject);
         }
 
         public void BigMarioCommandCalled()
         {
-            marioObject.marioSprite = new MarioBigIdleLeft(myGame, marioObject);
+            Mario.marioSprite = new MarioBigIdleLeft(myGame, marioObject);
         }
 
         public void FireMarioCommandCalled()
@@ -71,7 +71,7 @@ namespace Game1
 
         public void DeadMarioCommandCalled()
         {
-            marioObject.marioSprite = new MarioDead(myGame, marioObject);
+            Mario.marioSprite = new MarioDead(myGame, marioObject);
         }
 
         public void Update()

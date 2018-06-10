@@ -27,7 +27,7 @@ namespace Game1
         }
         public void picked()
         {
-            marioObject.marioSprite.FireMarioCommandCalled();
+            Mario.marioSprite.FireMarioCommandCalled();
             //disapper code
         }
 
