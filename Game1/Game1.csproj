@@ -57,6 +57,13 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Block.cs" />
+    <Compile Include="GeneralCommands\EnemyInterface.cs" />
+    <Compile Include="GeneralCommands\EnemyStateMachine.cs" />
+    <Compile Include="GeneralCommands\GoombaSprite.cs" />
+    <Compile Include="GeneralCommands\IEnemySprite.cs" />
+    <Compile Include="GeneralCommands\KoopaSprite.cs" />
+    <Compile Include="IBlock.cs" />
     <Compile Include="IPlayer.cs" />
     <Compile Include="Mario.cs" />
     <Compile Include="IGameObject.cs" />
@@ -87,30 +94,20 @@
     <Compile Include="PipeSprites\BottomLeftPipeSprite.cs" />
     <Compile Include="PipeSprites\BottomRightPipeSprite.cs" />
     <Compile Include="BlockSprites\BrickBlockSprite.cs" />
-    <Compile Include="BlockCommands\BrickDisappearCommand.cs" />
-    <Compile Include="PickupItems\CoinSprite.cs" />
+    <Compile Include="PipeSprites\PickupItems\CoinSprite.cs" />
     <Compile Include="MarioCommands\DeadMarioCommand.cs" />
     <Compile Include="GeneralCommands\DownCommand.cs" />
     <Compile Include="BlockSprites\EmptyBlockSprite.cs" />
-    <Compile Include="GeneralInterfaces\EnemyInterface.cs" />
     <Compile Include="GeneralCommands\ExitGameCommand.cs" />
-    <Compile Include="GeneralInterfaces\EnemyStateMachine.cs" />
-    <Compile Include="PickupItems\FireflowerSprite.cs" />
+    <Compile Include="PipeSprites\PickupItems\FireflowerSprite.cs" />
     <Compile Include="MarioCommands\FireMarioCommand.cs" />
-    <Compile Include="GoombaSprites\GoombaSprite.cs" />
-    <Compile Include="GoombaSprites\GoombaStateMachine.cs" />
-    <Compile Include="StompedCommands\GoombaStompedCommand.cs" />
-    <Compile Include="PickupItems\GreenMushroomSprite.cs" />
+    <Compile Include="PipeSprites\PickupItems\GreenMushroomSprite.cs" />
     <Compile Include="BlockSprites\HiddenBlockSprite.cs" />
-    <Compile Include="BlockCommands\HiddenToUsedCommand.cs" />
     <Compile Include="GeneralInterfaces\IBlockSprite.cs" />
     <Compile Include="GeneralInterfaces\ICommand.cs" />
     <Compile Include="GeneralInterfaces\IController.cs" />
     <Compile Include="GeneralInterfaces\ISprite.cs" />
     <Compile Include="Controllers\KeyboardController.cs" />
-    <Compile Include="KoopaSprites\KoopaSprite.cs" />
-    <Compile Include="KoopaSprites\KoopaStateMachine.cs" />
-    <Compile Include="StompedCommands\KoopaStompedCommand.cs" />
     <Compile Include="GeneralCommands\LeftCommand.cs" />
     <Compile Include="MarioCommands\BigMarioCommand.cs" />
     <Compile Include="MarioSprites\MarioFireCrouchingRight.cs" />
@@ -136,10 +133,9 @@
     <Compile Include="MarioSprites\MarioSmallWalkRight.cs" />
     <Compile Include="MarioSprites\MarioSmallIdleLeft.cs" />
     <Compile Include="MarioSprites\MarioSmallIdleRight.cs" />
-    <Compile Include="GeneralInterfaces\PickupInterface.cs" />
     <Compile Include="BlockSprites\QuestionBlockSprite.cs" />
-    <Compile Include="BlockCommands\QuestionToUsedCommand.cs" />
-    <Compile Include="PickupItems\RedMushroonSprite.cs" />
+    <Compile Include="PipeSprites\PickupItems\IPickup.cs" />
+    <Compile Include="PipeSprites\PickupItems\RedMushroonSprite.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -147,7 +143,7 @@
     <Compile Include="GeneralCommands\RightCommand.cs" />
     <Compile Include="MarioCommands\SmallMarioCommand.cs" />
     <Compile Include="BlockSprites\StairBlockSprite.cs" />
-    <Compile Include="PickupItems\StarSprite.cs" />
+    <Compile Include="PipeSprites\PickupItems\StarSprite.cs" />
     <Compile Include="BlockSprites\StoneBlockSprite.cs" />
     <Compile Include="PipeSprites\TopLeftPipeSprite.cs" />
     <Compile Include="PipeSprites\TopRightPipeSprite.cs" />

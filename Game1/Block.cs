@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Game1
 {
-    public interface ILoader
+    public class Block : IBlock
     {
-        void Load(string fileName, List<IGameObject> gameObjects);
+
     }
 }

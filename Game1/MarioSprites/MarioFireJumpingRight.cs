@@ -5,12 +5,14 @@ namespace Game1
     public class MarioFireJumpingRight : ISprite
     {
         private Game1 myGame;
+        private Mario marioObject;
 
         private int currentFrame = 20 + 56;
 
-        public MarioFireJumpingRight(Game1 game)
+        public MarioFireJumpingRight(Game1 game, Mario mario)
         {
             myGame = game;
+            marioObject = mario;
         }
 
 
@@ -25,7 +27,7 @@ namespace Game1
             
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)myGame.marioObject.GetCurrentXPosition(), (int)myGame.marioObject.GetCurrentYPosition(), width, height);
+            Rectangle destinationRectangle = new Rectangle((int)marioObject.GetCurrentXPosition(), (int)marioObject.GetCurrentYPosition(), width, height);
 
             myGame.spriteBatch.Begin();
             myGame.spriteBatch.Draw(myGame.marioTexture, destinationRectangle, sourceRectangle, Color.White);
@@ -39,7 +41,7 @@ namespace Game1
 
         public void DownCommandCalled()
         {
-            myGame.marioSprite = new MarioFireIdleRight(myGame);
+            marioObject.MarioSprite = new MarioFireIdleRight(myGame, marioObject);
         }
 
         public void LeftCommandCalled()
@@ -54,12 +56,12 @@ namespace Game1
 
         public void SmallMarioCommandCalled()
         {
-            myGame.marioSprite = new MarioSmallJumpingRight(myGame);
+            marioObject.MarioSprite = new MarioSmallJumpingRight(myGame, marioObject);
         }
 
         public void BigMarioCommandCalled()
         {
-            myGame.marioSprite = new MarioBigJumpingRight(myGame);
+            marioObject.MarioSprite = new MarioBigJumpingRight(myGame, marioObject);
         }
 
         public void FireMarioCommandCalled()
@@ -69,7 +71,7 @@ namespace Game1
 
         public void DeadMarioCommandCalled()
         {
-            myGame.marioSprite = new MarioDead(myGame);
+            marioObject.MarioSprite = new MarioDead(myGame, marioObject);
         }
 
         public void Update()

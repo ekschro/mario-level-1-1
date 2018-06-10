@@ -38,12 +38,7 @@ namespace Game1
             controllerMappings.Add(Keys.U, new BigMarioCommand(myGame));
             controllerMappings.Add(Keys.I, new FireMarioCommand(myGame));
             controllerMappings.Add(Keys.O, new DeadMarioCommand(myGame));
-            controllerMappings.Add(Keys.Z, new QuestionToUsedCommand(myGame));
-            controllerMappings.Add(Keys.X, new BrickDisappearCommand(myGame));
-            controllerMappings.Add(Keys.C, new HiddenToUsedCommand(myGame));
             controllerMappings.Add(Keys.R, new ResetCommand(myGame));
-            controllerMappings.Add(Keys.K, new GoombaStompedCommand(myGame));
-            controllerMappings.Add(Keys.L, new KoopaStompedCommand(myGame));
             
     }
 
