@@ -6,10 +6,9 @@ namespace Game1
     public class MarioSmallWalkLeft : ISprite
     {
         private Game1 myGame;
-        private Boolean forward = true;
+        
         private int currentFrame = 11 + 28;
-        private int counter = 1;
-        private int delay = 0;
+        
         private Mario marioObject;
 
         public MarioSmallWalkLeft(Game1 game, Mario mario)
@@ -30,7 +29,7 @@ namespace Game1
             
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)marioObject.GetCurrentXPosition(), (int)marioObject.GetCurrentYPosition(), width, height);
+            Rectangle destinationRectangle = new Rectangle((int)Mario.currentXPosition, (int)Mario.currentYPosition, width, height);
 
             myGame.spriteBatch.Begin();
             myGame.spriteBatch.Draw(myGame.marioTexture, destinationRectangle, sourceRectangle, Color.White);
@@ -39,7 +38,7 @@ namespace Game1
 
         public void UpCommandCalled()
         {
-            marioObject.MarioSprite = new MarioSmallJumpingLeft(myGame, marioObject);
+            Mario.marioSprite = new MarioSmallJumpingLeft(myGame, marioObject);
         }
 
         public void DownCommandCalled()
@@ -49,12 +48,12 @@ namespace Game1
 
         public void LeftCommandCalled()
         {
-
+            Mario.marioSprite = new MarioSmallWalkLeftPart2(myGame, marioObject);
         }
 
         public void RightCommandCalled()
         {
-            marioObject.MarioSprite = new MarioSmallIdleLeft(myGame, marioObject);
+            Mario.marioSprite = new MarioSmallIdleLeft(myGame, marioObject);
         }
 
         public void SmallMarioCommandCalled()
@@ -64,47 +63,22 @@ namespace Game1
 
         public void BigMarioCommandCalled()
         {
-            marioObject.MarioSprite = new MarioBigWalkLeft(myGame, marioObject);
+            Mario.marioSprite = new MarioBigWalkLeft(myGame, marioObject);
         }
 
         public void FireMarioCommandCalled()
         {
-            marioObject.MarioSprite = new MarioFireWalkLeft(myGame, marioObject);
+            Mario.marioSprite = new MarioFireWalkLeft(myGame, marioObject);
         }
 
         public void DeadMarioCommandCalled()
         {
-            marioObject.MarioSprite = new MarioDead(myGame, marioObject);
+            Mario.marioSprite = new MarioDead(myGame, marioObject);
         }
 
         public void Update()
         {
-            if (delay < 3)
-            {
-                delay++;
-            }
-            else if (forward)
-            {
-                currentFrame--;
-                counter++;
-                if (counter == 3)
-                {
-                    counter = 1;
-                    forward = false;
-                }
-                delay = 0;
-            }
-            else
-            {
-                currentFrame++;
-                counter++;
-                if (counter == 3)
-                {
-                    counter = 1;
-                    forward = true;
-                }
-                delay = 0;
-            }
+            
         }
     }
 }

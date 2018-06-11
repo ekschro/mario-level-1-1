@@ -14,15 +14,17 @@ namespace Game1
     public class BigMarioCommand : ICommand
     {
         private Game1 myGame;
+        
 
         public BigMarioCommand(Game1 game)
         {
             myGame = game;
+            
         }
 
         public void Execute()
         {
-            myGame.marioSprite.BigMarioCommandCalled();
+            Mario.marioSprite.BigMarioCommandCalled();
         }
     }
 }

@@ -4,6 +4,9 @@ namespace Game1
 {
     public interface IPlayer : IGameObject
     {
+       
+        void Draw();
+        void Update();
         float GetCurrentXPosition();
         void SetCurrentXPositon(float x);
         float GetCurrentYPosition();

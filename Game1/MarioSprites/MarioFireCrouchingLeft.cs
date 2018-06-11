@@ -27,7 +27,7 @@ namespace Game1
             
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)marioObject.GetCurrentXPosition(), (int)marioObject.GetCurrentYPosition(), width, height);
+            Rectangle destinationRectangle = new Rectangle((int)Mario.currentXPosition, (int)Mario.currentYPosition, width, height);
 
             myGame.spriteBatch.Begin();
             myGame.spriteBatch.Draw(myGame.marioTexture, destinationRectangle, sourceRectangle, Color.White);
@@ -36,7 +36,7 @@ namespace Game1
 
         public void UpCommandCalled()
         {
-            marioObject.MarioSprite = new MarioFireIdleLeft(myGame, marioObject);
+            Mario.marioSprite = new MarioFireIdleLeft(myGame, marioObject);
         }
 
         public void DownCommandCalled()
@@ -56,12 +56,12 @@ namespace Game1
 
         public void SmallMarioCommandCalled()
         {
-            marioObject.MarioSprite = new MarioSmallIdleLeft(myGame, marioObject);
+            Mario.marioSprite = new MarioSmallIdleLeft(myGame, marioObject);
         }
 
         public void BigMarioCommandCalled()
         {
-            marioObject.MarioSprite = new MarioBigCrouchingLeft(myGame, marioObject);
+            Mario.marioSprite = new MarioBigCrouchingLeft(myGame, marioObject);
         }
 
         public void FireMarioCommandCalled()
@@ -71,7 +71,7 @@ namespace Game1
 
         public void DeadMarioCommandCalled()
         {
-            marioObject.MarioSprite = new MarioDead(myGame, marioObject);
+            Mario.marioSprite = new MarioDead(myGame, marioObject);
         }
 
         public void Update()

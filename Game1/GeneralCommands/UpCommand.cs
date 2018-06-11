@@ -14,17 +14,33 @@ namespace Game1
     public class UpCommand : ICommand
     {
         private Game1 myGame;
-
+        private int timer;
+        
         public UpCommand(Game1 game)
         {
             myGame = game;
+            timer = 0;
+            
         }
 
         public void Execute()
         {
-            myGame.marioSprite.UpCommandCalled();
-            myGame.marioObject.UpHeld();
-            myGame.marioObject.Update();
+            if (timer == 5)
+            {
+                Mario.marioSprite.UpCommandCalled();
+                timer = 0;
+            }
+            else
+            {
+                timer++;
+            }
+
+
+            Mario.up = true;
+            Mario.down = false;
+            Mario.right = false;
+            Mario.left = false;
+            Mario.currentYPosition = Mario.currentYPosition - 1;
         }
     }
 }

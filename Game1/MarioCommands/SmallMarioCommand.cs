@@ -14,15 +14,18 @@ namespace Game1
     public class SmallMarioCommand : ICommand
     {
         private Game1 myGame;
+        
 
         public SmallMarioCommand(Game1 game)
         {
             myGame = game;
+           
+            
         }
 
         public void Execute()
         {
-            myGame.marioSprite.SmallMarioCommandCalled();
+            Mario.marioSprite.SmallMarioCommandCalled();
         }
     }
 }

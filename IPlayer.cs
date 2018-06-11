@@ -6,5 +6,5 @@ public interface IPlayer
     void SetCurrentXPositon(int x);
     int GetCurrentYPosition();
     void SetCurrentYPosition(int y);
-    ISprite
+    
 }

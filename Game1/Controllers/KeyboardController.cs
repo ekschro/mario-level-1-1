@@ -17,11 +17,12 @@ namespace Game1
         private Dictionary<Keys, ICommand> controllerMappings;
         private List<Keys> recentKeys;
         private Game1 myGame;
-        private int timer;
+        
 
+        
         public KeyboardController(Game1 game)
         {
-            timer = 0;
+            
             myGame = game;
             controllerMappings = new Dictionary<Keys, ICommand>();
             recentKeys = new List<Keys>();

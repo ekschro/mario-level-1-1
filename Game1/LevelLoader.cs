@@ -11,9 +11,12 @@ namespace Game1
     public class LevelLoader : ILoader
     {
         Game1 myGame;
+        public IGameObject mario;
+       
         public LevelLoader(Game1 game)
         {
             myGame = game;
+            
         }
 
         public void Load(string fileName, List<IGameObject> gameObjects)
@@ -48,9 +51,11 @@ namespace Game1
         {
             Vector2 Position = new Vector2(positionX, positionY);
             IGameObject GameObject = new Mario(myGame, Position);
+            mario = GameObject;
             switch (objectName) {
                 case "Mario" :
                     GameObject = new Mario(myGame, Position);
+                    mario = GameObject;
                     break;
                 case "FireFlower":
                     GameObject = new FireflowerSprite(myGame, Position);
