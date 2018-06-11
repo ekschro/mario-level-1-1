@@ -8,8 +8,6 @@ namespace Game1
         void SetCurrentXPositon(float x);
         float GetCurrentYPosition();
         void SetCurrentYPosition(float y);
-        void Update();
-        void Draw();
         void UpHeld();
         void DownHeld();
         void RightHeld();

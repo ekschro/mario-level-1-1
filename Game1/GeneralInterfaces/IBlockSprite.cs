@@ -11,8 +11,6 @@ namespace Game1
 {
     public interface IBlockSprite : IGameObject
     {
-        void Update();
-        void Draw();
         void QuestionToUsed();
         void BrickToEmpty();
         void HiddenToUsed();

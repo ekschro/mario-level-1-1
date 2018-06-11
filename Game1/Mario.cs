@@ -13,15 +13,15 @@ namespace Game1
         private Boolean down;
 
         public ISprite MarioSprite;
-        public Mario(Game1 game, Vector2 vector)
+        public Mario(Game1 game, Vector2 position)
         {
             up = false;
             down = false;
             right = false;
             left = false;
             myGame = game;
-            currentXPositon = vector.X;
-            currentYPosition = vector.Y;
+            currentXPositon = position.X;
+            currentYPosition = position.Y;
             MarioSprite = new MarioSmallIdleRight(myGame, this);
         }
 
