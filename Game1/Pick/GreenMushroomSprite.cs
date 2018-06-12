@@ -47,5 +47,10 @@ namespace Game1
             myGame.spriteBatch.Draw(myGame.PickupTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.spriteBatch.End();
         }
+
+        public void picked()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
