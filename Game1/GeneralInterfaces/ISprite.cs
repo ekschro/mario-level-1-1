@@ -12,8 +12,7 @@ namespace Game1
 {
     public interface ISprite : IGameObject
     {
-        void Update();
-        void Draw();
+       
         void UpCommandCalled();
         void DownCommandCalled();
         void LeftCommandCalled();

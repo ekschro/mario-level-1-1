@@ -13,7 +13,6 @@ namespace Game1
     public interface IPickupSprite : IGameObject
     {
         void picked();
-        void Update();
-        void Draw();
+        
     }
 }
