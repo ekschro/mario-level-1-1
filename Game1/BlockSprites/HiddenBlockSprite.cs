@@ -50,7 +50,7 @@ namespace Game1
         }
         public void HiddenToUsed()
         {
-             = new UsedBlockSprite(myGame, new Block(myGame, blockObject.BlockLocation()));
+             //= new UsedBlockSprite(myGame, new Block(myGame, blockObject.BlockLocation()));
         }
     }
 }

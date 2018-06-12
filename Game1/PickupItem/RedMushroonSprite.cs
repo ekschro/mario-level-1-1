@@ -9,15 +9,15 @@ namespace Game1
 {
     public class RedMushroomSprite : IPickupSprite
     {
-        private Pickup pickupObject;
+        private RedMushroom redMushroomObject;
         private Game1 myGame;
         private int currentFrame;
         private int startFrame;
         private int endFrame;
 
-        public RedMushroomSprite(Game1 game, Pickup pickup)
+        public RedMushroomSprite(Game1 game, RedMushroom redMushroom)
         {
-            pickupObject = pickup;
+            redMushroomObject = redMushroom;
             myGame = game;
             startFrame = 0;
             endFrame = 1;

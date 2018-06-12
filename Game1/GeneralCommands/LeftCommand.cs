@@ -38,11 +38,8 @@ namespace Game1
 
 
 
-            Mario.up = false;
-            Mario.down = false;
-            Mario.right = false;
-            Mario.left = true;
-            Mario.currentXPosition = Mario.currentXPosition - 1;
+           
+            Mario.CurrentXPosition = Mario.CurrentXPosition - 1;
         }
     }
 }

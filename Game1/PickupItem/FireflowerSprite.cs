@@ -9,15 +9,15 @@ namespace Game1
 {
     public class FireflowerSprite : IPickupSprite
     {
-        private Pickup pickupObject;
+        private Fireflower fireflowerObject;
         private Game1 myGame;
         private int currentFrame;
         private int startFrame;
         private int endFrame;
 
-        public FireflowerSprite(Game1 game, Pickup pickup)
+        public FireflowerSprite(Game1 game, Fireflower fireflower)
         {
-            pickupObject = pickup;
+            fireflowerObject = fireflower;
             myGame = game;
             startFrame = 2;
             endFrame = 6;

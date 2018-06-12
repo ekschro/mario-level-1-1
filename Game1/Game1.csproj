@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Block.cs" />
     <Compile Include="Controllers\GamePadController.cs" />
+    <Compile Include="BlockStateMachine.cs" />
     <Compile Include="Enemy\goomba\Goomba.cs" />
     <Compile Include="Enemy\goomba\GoombaSprite.cs" />
     <Compile Include="Enemy\goomba\GoombaStateMachine.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="GeneralInterfaces\IEnemyStateMachine.cs" />
     <Compile Include="GeneralInterfaces\IPickupSprite.cs" />
     <Compile Include="IBlock.cs" />
+    <Compile Include="IPickup.cs" />
     <Compile Include="IPlayer.cs" />
     <Compile Include="Mario.cs" />
     <Compile Include="IGameObject.cs" />
@@ -97,11 +99,15 @@
     <Compile Include="MarioSprites\MarioSmallWalkRightPart4.cs" />
     <Compile Include="MarioSprites\MarioSmallWalkRightPart3.cs" />
     <Compile Include="MarioSprites\MarioSmallWalkRightPart2.cs" />
+    <Compile Include="PickupItem\Coin.cs" />
     <Compile Include="PickupItem\CoinSprite.cs" />
+    <Compile Include="PickupItem\Fireflower.cs" />
     <Compile Include="PickupItem\FireflowerSprite.cs" />
+    <Compile Include="PickupItem\GreenMushroom.cs" />
     <Compile Include="PickupItem\GreenMushroomSprite.cs" />
-    <Compile Include="PickupItem\Pickup.cs" />
+    <Compile Include="PickupItem\RedMushroom.cs" />
     <Compile Include="PickupItem\RedMushroonSprite.cs" />
+    <Compile Include="PickupItem\Star.cs" />
     <Compile Include="PickupItem\StarSprite.cs" />
     <Compile Include="PipeSprites\BottomLeftPipeSprite.cs" />
     <Compile Include="PipeSprites\BottomRightPipeSprite.cs" />
