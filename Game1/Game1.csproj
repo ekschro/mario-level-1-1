@@ -58,11 +58,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Block.cs" />
+    <Compile Include="Enemy\goomba\GoombaSprite.cs" />
+    <Compile Include="Enemy\goomba\GoombaStateMachine.cs" />
+    <Compile Include="Enemy\koopa\KoopaSprite.cs" />
+    <Compile Include="Enemy\koopa\KoopaStateMachine.cs" />
     <Compile Include="GeneralCommands\EnemyInterface.cs" />
     <Compile Include="GeneralCommands\EnemyStateMachine.cs" />
-    <Compile Include="GeneralCommands\GoombaSprite.cs" />
     <Compile Include="GeneralCommands\IEnemySprite.cs" />
-    <Compile Include="GeneralCommands\KoopaSprite.cs" />
     <Compile Include="IBlock.cs" />
     <Compile Include="IPlayer.cs" />
     <Compile Include="Mario.cs" />
