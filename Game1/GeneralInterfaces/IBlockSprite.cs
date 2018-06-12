@@ -9,10 +9,11 @@ using System.Collections;
 
 namespace Game1
 {
-    public interface IBlockSprite : IGameObject
+    public interface IBlockSprite
     {
         void ToEmpty();
         void ToUsed();
-
+        void Update();
+        void Draw();
     }
 }

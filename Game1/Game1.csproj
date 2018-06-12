@@ -57,7 +57,14 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Block.cs" />
+    <Compile Include="Blocks\BottomLeftPipeBlock.cs" />
+    <Compile Include="Blocks\BottomRightPipeBlock.cs" />
+    <Compile Include="Blocks\Sprites\BottomLeftPipeBlockSprite.cs" />
+    <Compile Include="Blocks\Sprites\BottomRightPipeBlockSprite.cs" />
+    <Compile Include="Blocks\Sprites\TopRightPipeBlockSprite.cs" />
+    <Compile Include="Blocks\Sprites\TopLeftPipeBlockSprite.cs" />
+    <Compile Include="Blocks\TopLeftPipeBlock.cs" />
+    <Compile Include="Blocks\TopRightPipeBlock.cs" />
     <Compile Include="Blocks\BrickBlock.cs" />
     <Compile Include="Blocks\EmptyBlock.cs" />
     <Compile Include="Blocks\HIddenBlock.cs" />
@@ -122,8 +129,6 @@
     <Compile Include="PickupItem\Sprite\RedMushroonSprite.cs" />
     <Compile Include="PickupItem\Sprite\StarSprite.cs" />
     <Compile Include="PickupItem\Star.cs" />
-    <Compile Include="PipeSprites\BottomLeftPipeSprite.cs" />
-    <Compile Include="PipeSprites\BottomRightPipeSprite.cs" />
     <Compile Include="MarioCommands\DeadMarioCommand.cs" />
     <Compile Include="GeneralCommands\DownCommand.cs" />
     <Compile Include="GeneralCommands\ExitGameCommand.cs" />
@@ -164,8 +169,6 @@
     <Compile Include="GeneralCommands\ResetCommand.cs" />
     <Compile Include="GeneralCommands\RightCommand.cs" />
     <Compile Include="MarioCommands\SmallMarioCommand.cs" />
-    <Compile Include="PipeSprites\TopLeftPipeSprite.cs" />
-    <Compile Include="PipeSprites\TopRightPipeSprite.cs" />
     <Compile Include="GeneralCommands\UpCommand.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -54,6 +54,7 @@ namespace Game1
             goombaTexture = Content.Load<Texture2D>("goomba1");
 
             blockTexture = Content.Load<Texture2D>("tiles");
+
             PlatformerLevel = new Level1("LevelInfo.csv", this);
 
         }

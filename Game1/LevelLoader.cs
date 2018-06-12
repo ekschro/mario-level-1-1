@@ -51,7 +51,6 @@ namespace Game1
         {
             Vector2 Position = new Vector2(positionX, positionY);
             IGameObject GameObject = new Mario(myGame, Position);
-            mario = GameObject;
             switch (objectName) {
                 case "Mario" :
                     GameObject = new Mario(myGame, Position);
@@ -79,37 +78,37 @@ namespace Game1
                     GameObject = new Koopa(myGame, Position);
                     break;
                 case "HiddenBlock":
-                    GameObject = new Block(Position, new HiddenBlockSprite());
+                    GameObject = new HiddenBlock(myGame, Position);
                     break;
                 case "StairBlock":
-                    GameObject = new Block(new StairBlockSprite(myGame, Position));
+                    GameObject = new StairBlock(myGame, Position);
                     break;
                 case "UsedBlock":
-                    GameObject = new Block(new UsedBlockSprite(myGame, Position));
+                    GameObject = new UsedBlock(myGame, Position);
                     break;
                 case "QuestionBlockWithPowerUp":
-                    GameObject = new Block(new QuestionBlockSprite(myGame, Position));
+                    GameObject = new QuestionBlock(myGame, Position);
                     break;
                 case "QuestionBlockWithCoin":
-                    GameObject = new Block(new QuestionBlockSprite(myGame, Position));
+                    GameObject = new QuestionBlock(myGame, Position);
                     break;
                 case "BrickBlock":
-                    GameObject = new Block(new BrickBlockSprite(myGame, Position));
+                    GameObject = new BrickBlock(myGame, Position);
                     break;
                 case "StoneBlock":
-                    GameObject = new Block(new StoneBlockSprite(myGame, Position));
+                    GameObject = new StoneBlock(myGame, Position);
                     break;
                 case "TopLeftPipeBlock":
-                    GameObject = new Block(new TopLeftPipeSprite(myGame, Position));
+                    GameObject = new TopLeftPipeBlock(myGame, Position);
                     break;
                 case "TopRightPipeBlock":
-                    GameObject = new Block(new TopRightPipeSprite(myGame, Position));
+                    GameObject = new TopRightPipeBlock(myGame, Position);
                     break;
                 case "BottomLeftPipeBlock":
-                    GameObject = new Block(new BottomLeftPipeSprite(myGame, Position));
+                    GameObject = new BottomLeftPipeBlock(myGame, Position);
                     break;
                 case "BottomRightPipeBlock":
-                    GameObject = new Block(new BottomRightPipeSprite(myGame, Position));
+                    GameObject = new BottomRightPipeBlock(myGame, Position);
                     break;
             }
             return GameObject;
