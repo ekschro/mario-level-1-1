@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace Game1
 {
-    public class CoinSprite : IPickupSprite
+    public class FireflowerSprite : IPickupSprite
     {
         private Game1 myGame;
         private int currentFrame;
@@ -15,20 +15,13 @@ namespace Game1
         private int cycleLength = 32;
         private int startFrame;
         private int endFrame;
-        private Vector2 coinLocation;
 
-        public CoinSprite(Game1 game, Vector2 location)
+        public FireflowerSprite(Game1 game)
         {
             myGame = game;
-            startFrame = 10;
-            endFrame = 14;
+            startFrame = 2;
+            endFrame = 6;
             currentFrame = startFrame;
-            coinLocation = location;
-        }
-        public void picked()
-        {
-            //money up
-            //disappear 
         }
 
         public void Update()
@@ -45,13 +38,13 @@ namespace Game1
 
         public void Draw()
         {
-            int width = myGame.pickupTexture.Width / myGame.totalPickupFrames;
+            int width = myGame.PickupTexture.Width / myGame.totalPickupFrames;
 
-            Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.pickupTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)coinLocation.X, (int)coinLocation.Y, width, myGame.pickupTexture.Height);
+            Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.PickupTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)100, (int)100, width, myGame.PickupTexture.Height);
 
             myGame.spriteBatch.Begin();
-            myGame.spriteBatch.Draw(myGame.pickupTexture, destinationRectangle, sourceRectangle, Color.White);
+            myGame.spriteBatch.Draw(myGame.PickupTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.spriteBatch.End();
         }
     }

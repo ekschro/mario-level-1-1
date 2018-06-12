@@ -7,8 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace Game1
 {
-    //turn to big mario
-    public class RedMushroomSprite : IPickupSprite
+    public class GreenMushroomSprite : IPickupSprite
     {
         private Game1 myGame;
         private int currentFrame;
@@ -16,20 +15,13 @@ namespace Game1
         private int cycleLength = 16;
         private int startFrame;
         private int endFrame;
-        private Vector2 redMushroomLocation;
 
-        public RedMushroomSprite(Game1 game, Vector2 location)
+        public GreenMushroomSprite(Game1 game)
         {
             myGame = game;
-            startFrame = 0;
-            endFrame = 1;
+            startFrame = 1;
+            endFrame = 2;
             currentFrame = startFrame;
-            redMushroomLocation = location;
-        }
-        public void picked()
-        {
-            Mario.marioSprite.BigMarioCommandCalled();
-            //disapper code
         }
 
         public void Update()
@@ -46,13 +38,13 @@ namespace Game1
 
         public void Draw()
         {
-            int width = myGame.pickupTexture.Width / myGame.totalPickupFrames;
+            int width = myGame.PickupTexture.Width / myGame.totalPickupFrames;
 
-            Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.pickupTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)redMushroomLocation.X, (int)redMushroomLocation.Y, width, myGame.pickupTexture.Height);
+            Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.PickupTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)250, (int)100, width, myGame.PickupTexture.Height);
 
             myGame.spriteBatch.Begin();
-            myGame.spriteBatch.Draw(myGame.pickupTexture, destinationRectangle, sourceRectangle, Color.White);
+            myGame.spriteBatch.Draw(myGame.PickupTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.spriteBatch.End();
         }
     }

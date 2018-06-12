@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace Game1
 {
-    public class FireflowerSprite : IPickupSprite
+    public class CoinSprite : IPickupSprite
     {
         private Game1 myGame;
         private int currentFrame;
@@ -15,20 +15,13 @@ namespace Game1
         private int cycleLength = 32;
         private int startFrame;
         private int endFrame;
-        private Vector2 fireflowerLocation;
 
-        public FireflowerSprite(Game1 game, Vector2 location)
+        public CoinSprite(Game1 game)
         {
             myGame = game;
-            startFrame = 2;
-            endFrame = 6;
+            startFrame = 10;
+            endFrame = 14;
             currentFrame = startFrame;
-            fireflowerLocation = location;
-        }
-        public void picked()
-        {
-            Mario.marioSprite.FireMarioCommandCalled();
-            //disapper code
         }
 
         public void Update()
@@ -45,13 +38,13 @@ namespace Game1
 
         public void Draw()
         {
-            int width = myGame.pickupTexture.Width / myGame.totalPickupFrames;
+            int width = myGame.PickupTexture.Width / myGame.totalPickupFrames;
 
-            Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.pickupTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)fireflowerLocation.X, (int)fireflowerLocation.Y, width, myGame.pickupTexture.Height);
+            Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.PickupTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)150, (int)100, width, myGame.PickupTexture.Height);
 
             myGame.spriteBatch.Begin();
-            myGame.spriteBatch.Draw(myGame.pickupTexture, destinationRectangle, sourceRectangle, Color.White);
+            myGame.spriteBatch.Draw(myGame.PickupTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.spriteBatch.End();
         }
     }
