@@ -9,15 +9,15 @@ namespace Game1
 {
     public class StarSprite : IPickupSprite
     {
-        private Pickup pickupObject;
+        private Star starObject;
         private Game1 myGame;
         private int currentFrame;
         private int startFrame;
         private int endFrame;
 
-        public StarSprite(Game1 game, Pickup pickup)
+        public StarSprite(Game1 game, Star star)
         {
-            pickupObject = pickup;
+            starObject = star;
             myGame = game;
             startFrame = 6;
             endFrame = 10;

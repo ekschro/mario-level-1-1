@@ -9,15 +9,15 @@ namespace Game1
 {
     public class CoinSprite : IPickupSprite
     {
-        private Pickup pickupObject;
+        private Coin coinObject;
         private Game1 myGame;
         private int currentFrame;
         private int startFrame;
         private int endFrame;
 
-        public CoinSprite(Game1 game, Pickup pickup)
+        public CoinSprite(Game1 game, Coin coin)
         {
-            pickupObject = pickup;
+            coinObject = coin;
             myGame = game;
             startFrame = 10;
             endFrame = 14;
