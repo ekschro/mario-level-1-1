@@ -13,21 +13,23 @@ namespace Game1
 {
     public class QuestionBlockSprite : IBlockSprite
     {
+        private QuestionBlock questionBlockObject;
         private Game1 myGame;
         private int currentFrame;
         private int cyclePosition = 0;
         private int cycleLength = 32;
         private int startFrame;
         private int endFrame;
-        private Vector2 blockLocation;
+        //private Vector2 blockLocation;
 
-        public QuestionBlockSprite(Game1 game, Vector2 location)
+        public QuestionBlockSprite(Game1 game, QuestionBlock questionBlock)
         {
+            questionBlockObject = questionBlock;
             myGame = game;
             startFrame = 4;
             endFrame = 6;
             currentFrame = startFrame;
-            blockLocation = location;
+            //blockLocation = location;
         }
 
         public void Update()
@@ -47,21 +49,19 @@ namespace Game1
             int width = myGame.blockTexture.Width / myGame.totalBlockFrames;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.blockTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)blockLocation.X, (int)blockLocation.Y, width, myGame.blockTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)questionBlockObject.GetBlockCurrentLocation().X, (int)questionBlockObject.GetBlockCurrentLocation().Y, width, myGame.blockTexture.Height);
 
             myGame.spriteBatch.Begin();
             myGame.spriteBatch.Draw(myGame.blockTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.spriteBatch.End();
         }
-        public void QuestionToUsed()
+        public void ToUsed()
         {
-            myGame.blockQuestionSprite = new UsedBlockSprite(myGame, blockLocation);
+            startFrame = 3;
+            endFrame = 4;
+            //myGame.blockQuestionSprite = new UsedBlockSprite(myGame, blockLocation);
         }
-        public void BrickToEmpty()
-        {
-
-        }
-        public void HiddenToUsed()
+        public void ToEmpty()
         {
 
         }

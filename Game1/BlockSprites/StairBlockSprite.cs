@@ -13,15 +13,17 @@ namespace Game1
 {
     public class StairBlockSprite : IBlockSprite
     {
+        private StairBlock stairBlockObject;
         private Game1 myGame;
         private int currentFrame;
-        private Vector2 blockLocation;
+        //private Vector2 blockLocation;
 
-        public StairBlockSprite(Game1 game, Vector2 location)
+        public StairBlockSprite(Game1 game, StairBlock stairBlock)
         {
+            stairBlockObject = stairBlock;
             myGame = game;
             currentFrame = 1;
-            blockLocation = location;
+            //blockLocation = location;
         }
 
         public void Update()
@@ -34,21 +36,17 @@ namespace Game1
             int width = myGame.blockTexture.Width / myGame.totalBlockFrames;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.blockTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)blockLocation.X, (int)blockLocation.Y, width, myGame.blockTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)stairBlockObject.GetBlockCurrentLocation().X, (int)stairBlockObject.GetBlockCurrentLocation().Y, width, myGame.blockTexture.Height);
 
             myGame.spriteBatch.Begin();
             myGame.spriteBatch.Draw(myGame.blockTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.spriteBatch.End();
         }
-        public void QuestionToUsed()
+        public void ToEmpty()
         {
 
         }
-        public void BrickToEmpty()
-        {
-
-        }
-        public void HiddenToUsed()
+        public void ToUsed()
         {
 
         }

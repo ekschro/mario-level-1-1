@@ -11,10 +11,8 @@ namespace Game1
 {
     public interface IBlockSprite : IGameObject
     {
-       
-        void QuestionToUsed();
-        void BrickToEmpty();
-        void HiddenToUsed();
+        void ToEmpty();
+        void ToUsed();
 
     }
 }

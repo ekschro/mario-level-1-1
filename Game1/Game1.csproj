@@ -58,8 +58,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Block.cs" />
+    <Compile Include="BlockSprites\BrickBlock.cs" />
+    <Compile Include="BlockSprites\EmptyBlock.cs" />
+    <Compile Include="BlockSprites\HIddenBlock.cs" />
+    <Compile Include="BlockSprites\QuestionBlock.cs" />
+    <Compile Include="BlockSprites\StairBlock.cs" />
+    <Compile Include="BlockSprites\StoneBlock.cs" />
+    <Compile Include="BlockSprites\UsedBlock.cs" />
     <Compile Include="Controllers\GamePadController.cs" />
-    <Compile Include="BlockStateMachine.cs" />
     <Compile Include="Enemy\goomba\Goomba.cs" />
     <Compile Include="Enemy\goomba\GoombaSprite.cs" />
     <Compile Include="Enemy\goomba\GoombaStateMachine.cs" />
@@ -69,9 +75,9 @@
     <Compile Include="GeneralInterfaces\IEnemy.cs" />
     <Compile Include="GeneralInterfaces\IEnemySprite.cs" />
     <Compile Include="GeneralInterfaces\IEnemyStateMachine.cs" />
+    <Compile Include="GeneralInterfaces\IPickup.cs" />
     <Compile Include="GeneralInterfaces\IPickupSprite.cs" />
     <Compile Include="IBlock.cs" />
-    <Compile Include="IPickup.cs" />
     <Compile Include="IPlayer.cs" />
     <Compile Include="Mario.cs" />
     <Compile Include="IGameObject.cs" />
