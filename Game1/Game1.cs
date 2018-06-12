@@ -38,6 +38,7 @@ namespace Game1
             controllerList = new List<IController>();
             
             controllerList.Add(new KeyboardController(this));
+            controllerList.Add(new GamePadController(this));
 
             base.Initialize();
         }
