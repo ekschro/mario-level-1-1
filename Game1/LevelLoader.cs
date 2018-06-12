@@ -73,43 +73,43 @@ namespace Game1
                     GameObject = new StarSprite(myGame, Position);
                     break;
                 case "Goomba":
-                    GameObject = new Goomba(myGame, Position);
+                    GameObject = new GoombaSprite(myGame, Position);
                     break;
                 case "Koopa":
-                    GameObject = new Koopa(myGame, Position);
+                    GameObject = new KoopaSprite(myGame, Position);
                     break;
                 case "HiddenBlock":
-                    GameObject = new HiddenBlockSprite(myGame, Position);
+                    GameObject = new Block(Position, new HiddenBlockSprite());
                     break;
                 case "StairBlock":
-                    GameObject = new StairBlockSprite(myGame, Position);
+                    GameObject = new Block(new StairBlockSprite(myGame, Position));
                     break;
                 case "UsedBlock":
-                    GameObject = new UsedBlockSprite(myGame, Position);
+                    GameObject = new Block(new UsedBlockSprite(myGame, Position));
                     break;
                 case "QuestionBlockWithPowerUp":
-                    GameObject = new QuestionBlockSprite(myGame, Position);
+                    GameObject = new Block(new QuestionBlockSprite(myGame, Position));
                     break;
                 case "QuestionBlockWithCoin":
-                    GameObject = new QuestionBlockSprite(myGame, Position);
+                    GameObject = new Block(new QuestionBlockSprite(myGame, Position));
                     break;
                 case "BrickBlock":
-                    GameObject = new BrickBlockSprite(myGame, Position);
+                    GameObject = new Block(new BrickBlockSprite(myGame, Position));
                     break;
                 case "StoneBlock":
-                    GameObject = new StoneBlockSprite(myGame, Position);
+                    GameObject = new Block(new StoneBlockSprite(myGame, Position));
                     break;
                 case "TopLeftPipeBlock":
-                    GameObject = new TopLeftPipeSprite(myGame, Position);
+                    GameObject = new Block(new TopLeftPipeSprite(myGame, Position));
                     break;
                 case "TopRightPipeBlock":
-                    GameObject = new TopRightPipeSprite(myGame, Position);
+                    GameObject = new Block(new TopRightPipeSprite(myGame, Position));
                     break;
                 case "BottomLeftPipeBlock":
-                    GameObject = new BottomLeftPipeSprite(myGame, Position);
+                    GameObject = new Block(new BottomLeftPipeSprite(myGame, Position));
                     break;
                 case "BottomRightPipeBlock":
-                    GameObject = new BottomRightPipeSprite(myGame, Position);
+                    GameObject = new Block(new BottomRightPipeSprite(myGame, Position));
                     break;
             }
             return GameObject;

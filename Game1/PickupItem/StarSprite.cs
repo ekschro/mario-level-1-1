@@ -7,40 +7,27 @@ using Microsoft.Xna.Framework;
 
 namespace Game1
 {
-    public class CoinSprite : IPickupSprite
+    public class StarSprite : IPickupSprite
     {
+        private Pickup pickupObject;
         private Game1 myGame;
         private int currentFrame;
-        private int cyclePosition = 0;
-        private int cycleLength = 32;
         private int startFrame;
         private int endFrame;
-        private Vector2 coinLocation;
 
-        public CoinSprite(Game1 game, Vector2 location)
+        public StarSprite(Game1 game, Pickup pickup)
         {
+            pickupObject = pickup;
             myGame = game;
-            startFrame = 10;
-            endFrame = 14;
+            startFrame = 6;
+            endFrame = 10;
             currentFrame = startFrame;
-            coinLocation = location;
         }
-        public void picked()
-        {
-            //money up
-            //disappear 
-        }
-
         public void Update()
         {
-            cyclePosition++;
-            if (cyclePosition == cycleLength)
-            {
-                cyclePosition = 0;
-                currentFrame++;
-                if (currentFrame == endFrame)
-                    currentFrame = startFrame;
-            }
+            currentFrame++;
+            if (currentFrame == endFrame)
+                currentFrame = startFrame;
         }
 
         public void Draw()
@@ -48,11 +35,16 @@ namespace Game1
             int width = myGame.pickupTexture.Width / myGame.totalPickupFrames;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.pickupTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)coinLocation.X, (int)coinLocation.Y, width, myGame.pickupTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)300, (int)100, width, myGame.pickupTexture.Height);
 
             myGame.spriteBatch.Begin();
             myGame.spriteBatch.Draw(myGame.pickupTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.spriteBatch.End();
+        }
+        public void picked()
+        {
+            startFrame = 14;
+            endFrame = 15;
         }
     }
 }

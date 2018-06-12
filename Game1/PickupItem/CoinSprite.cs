@@ -7,40 +7,33 @@ using Microsoft.Xna.Framework;
 
 namespace Game1
 {
-    public class FireflowerSprite : IPickupSprite
+    public class CoinSprite : IPickupSprite
     {
+        private Pickup pickupObject;
         private Game1 myGame;
         private int currentFrame;
-        private int cyclePosition = 0;
-        private int cycleLength = 32;
         private int startFrame;
         private int endFrame;
-        private Vector2 fireflowerLocation;
 
-        public FireflowerSprite(Game1 game, Vector2 location)
+        public CoinSprite(Game1 game, Pickup pickup)
         {
+            pickupObject = pickup;
             myGame = game;
-            startFrame = 2;
-            endFrame = 6;
+            startFrame = 10;
+            endFrame = 14;
             currentFrame = startFrame;
-            fireflowerLocation = location;
         }
-        public void picked()
+        public void ChangeFrame(int start, int end)
         {
-            Mario.marioSprite.FireMarioCommandCalled();
-            //disapper code
+            startFrame = start;
+            endFrame = end;
         }
 
         public void Update()
         {
-            cyclePosition++;
-            if (cyclePosition == cycleLength)
-            {
-                cyclePosition = 0;
-                currentFrame++;
-                if (currentFrame == endFrame)
-                    currentFrame = startFrame;
-            }
+            currentFrame++;
+            if (currentFrame == endFrame)
+                currentFrame = startFrame;
         }
 
         public void Draw()
@@ -48,11 +41,16 @@ namespace Game1
             int width = myGame.pickupTexture.Width / myGame.totalPickupFrames;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.pickupTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)fireflowerLocation.X, (int)fireflowerLocation.Y, width, myGame.pickupTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)150, (int)100, width, myGame.pickupTexture.Height);
 
             myGame.spriteBatch.Begin();
             myGame.spriteBatch.Draw(myGame.pickupTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.spriteBatch.End();
+        }
+        public void picked()
+        {
+            startFrame = 14;
+            endFrame = 15;
         }
     }
 }

@@ -7,41 +7,27 @@ using Microsoft.Xna.Framework;
 
 namespace Game1
 {
-    //turn to big mario
     public class RedMushroomSprite : IPickupSprite
     {
+        private Pickup pickupObject;
         private Game1 myGame;
         private int currentFrame;
-        private int cyclePosition = 0;
-        private int cycleLength = 16;
         private int startFrame;
         private int endFrame;
-        private Vector2 redMushroomLocation;
 
-        public RedMushroomSprite(Game1 game, Vector2 location)
+        public RedMushroomSprite(Game1 game, Pickup pickup)
         {
+            pickupObject = pickup;
             myGame = game;
             startFrame = 0;
             endFrame = 1;
             currentFrame = startFrame;
-            redMushroomLocation = location;
         }
-        public void picked()
-        {
-            Mario.marioSprite.BigMarioCommandCalled();
-            //disapper code
-        }
-
         public void Update()
         {
-            cyclePosition++;
-            if (cyclePosition == cycleLength)
-            {
-                cyclePosition = 0;
-                currentFrame++;
-                if (currentFrame == endFrame)
-                    currentFrame = startFrame;
-            }
+            currentFrame++;
+            if (currentFrame == endFrame)
+                currentFrame = startFrame;
         }
 
         public void Draw()
@@ -49,11 +35,17 @@ namespace Game1
             int width = myGame.pickupTexture.Width / myGame.totalPickupFrames;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.pickupTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)redMushroomLocation.X, (int)redMushroomLocation.Y, width, myGame.pickupTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)200, (int)100, width, myGame.pickupTexture.Height);
 
             myGame.spriteBatch.Begin();
             myGame.spriteBatch.Draw(myGame.pickupTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.spriteBatch.End();
+        }
+
+        public void picked()
+        {
+            startFrame = 14;
+            endFrame = 15;
         }
     }
 }

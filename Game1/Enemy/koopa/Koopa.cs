@@ -9,18 +9,22 @@ namespace Game1
 {
     public class Koopa : IEnemy
     {
-        private KoopaSprite koopaSprite;
+        public static KoopaSprite koopaSprite;
+        public static KoopaSprite KoopaSprite { get => koopaSprite; set => koopaSprite = value; }
         private KoopaStateMachine stateMachine;
+
         private Game1 myGame;
         private bool direction = true;
         private int cyclePosition = 0;
         private int cycleLength = 8;
         public Vector2 koopaLocation;
 
+
+
         public Koopa(Game1 game, Vector2 location)
         {
             stateMachine = new KoopaStateMachine();
-            koopaSprite = new KoopaSprite(game);
+            KoopaSprite = new KoopaSprite(game,this);
             myGame = game;
             koopaLocation = location;
         }
@@ -32,8 +36,8 @@ namespace Game1
 
         public void BeStomped()
         {
-            koopaSprite.ChangeFrame(4, 5);
-            koopaSprite.ChangeFrame(5, 6);
+            KoopaSprite.ChangeFrame(4, 5);
+            KoopaSprite.ChangeFrame(5, 6);
             stateMachine.BeStomped();
         }
 
@@ -44,10 +48,10 @@ namespace Game1
 
         public void Draw()
         {
-            koopaSprite.Draw();
+            KoopaSprite.Draw();
         }
 
-        public Vector2 GetCurrentXLocation()
+        public Vector2 GetCurrentLocation()
         {
             return koopaLocation;
         }
@@ -58,7 +62,7 @@ namespace Game1
             if (cyclePosition == cycleLength)
             {
                 cyclePosition = 0;
-                koopaSprite.Update();
+                KoopaSprite.Update();
                 stateMachine.Update();
                 if (koopaLocation.X == 420 || koopaLocation.X == 380)
                     direction = !direction;

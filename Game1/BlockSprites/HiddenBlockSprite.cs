@@ -15,13 +15,13 @@ namespace Game1
     {
         private Game1 myGame;
         private int currentFrame;
-        private Vector2 blockLocation;
+        private IBlock blockObject;
 
-        public HiddenBlockSprite(Game1 game, Vector2 location)
+        public HiddenBlockSprite(Game1 game, IBlock block)
         {
             myGame = game;
             currentFrame = 0;
-            blockLocation = location;
+            blockObject = block;
         }
 
         public void Update()
@@ -34,7 +34,7 @@ namespace Game1
             int width = myGame.blockTexture.Width / myGame.totalBlockFrames;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.blockTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)blockLocation.X, (int)blockLocation.Y, width, myGame.blockTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)blockObject.BlockLocation().X, (int)blockObject.BlockLocation().X, width, myGame.blockTexture.Height);
 
             myGame.spriteBatch.Begin();
             myGame.spriteBatch.Draw(myGame.blockTexture, destinationRectangle, sourceRectangle, Color.Transparent);
@@ -50,7 +50,7 @@ namespace Game1
         }
         public void HiddenToUsed()
         {
-            myGame.blockHiddenSprite = new UsedBlockSprite(myGame, blockLocation);
+             = new UsedBlockSprite(myGame, new Block(myGame, blockObject.BlockLocation()));
         }
     }
 }

@@ -9,7 +9,8 @@ namespace Game1
 {
     public class Goomba : IEnemy
     {
-        private GoombaSprite goombaSprite;
+        public static GoombaSprite goombaSprite;
+        public static GoombaSprite GoombaSprite { get => goombaSprite; set => goombaSprite = value; }
         private GoombaStateMachine stateMachine;
         private Game1 myGame;
         private bool direction = true;
@@ -20,7 +21,7 @@ namespace Game1
         public Goomba(Game1 game, Vector2 location)
         {
             stateMachine = new GoombaStateMachine();
-            goombaSprite = new GoombaSprite(game);
+            GoombaSprite = new GoombaSprite(game,this);
             myGame = game;
             goombaLocation = location;
         }
@@ -32,8 +33,8 @@ namespace Game1
 
         public void BeStomped()
         {
-            goombaSprite.ChangeFrame(2, 3);
-            goombaSprite.ChangeFrame(3, 4);
+            GoombaSprite.ChangeFrame(2, 3);
+            GoombaSprite.ChangeFrame(3, 4);
             stateMachine.BeStomped();
         }
 
@@ -44,10 +45,10 @@ namespace Game1
 
         public void Draw()
         {
-            goombaSprite.Draw();
+            GoombaSprite.Draw();
         }
 
-        public Vector2 GetCurrentXLocation()
+        public Vector2 GetCurrentLocation()
         {
             return goombaLocation;
         }
@@ -58,7 +59,7 @@ namespace Game1
             if (cyclePosition == cycleLength)
             {
                 cyclePosition = 0;
-                goombaSprite.Update();
+                GoombaSprite.Update();
                 stateMachine.Update();
                 if (goombaLocation.X == 480 || goombaLocation.X == 430)
                     direction = !direction;
