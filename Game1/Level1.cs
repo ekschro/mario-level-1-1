@@ -8,7 +8,10 @@ namespace Game1
 {
     public class Level1 : ILevel
     {
-        public List<IGameObject> levelObjects;
+        private List<IGameObject> levelObjects;
+
+        private List<IGameObject> enemyObjects;
+        private List<IGameObject> pickupObjects;
 
         public Level1(string fileName, Game1 game)
         {
@@ -32,6 +35,43 @@ namespace Game1
             {
                 GameObject.Draw();
             }
+        }
+
+        public IGameObject GetPlayerObject()
+        {
+            IGameObject playerObject = null;
+            foreach(IPlayer player in levelObjects)
+            {
+                playerObject = player;
+            }
+            return playerObject;
+        }
+        public List<IGameObject> GetBlockObjects()
+        {
+            List<IGameObject> blockObjects = new List<IGameObject>();
+            foreach (IBlock block in levelObjects)
+            {
+                blockObjects.Add(block);
+            }
+            return blockObjects;
+        }
+        public List<IGameObject> GetEnemyObjects()
+        {
+            List<IGameObject> enemyObjects = new List<IGameObject>();
+            foreach (IEnemy enemy in levelObjects)
+            {
+                enemyObjects.Add(enemy);
+            }
+            return enemyObjects;
+        }
+        public List<IGameObject> GetPickupObjects()
+        {
+            List<IGameObject> pickupObjects = new List<IGameObject>();
+            foreach (IPickupSprite pickup in levelObjects)
+            {
+                pickupObjects.Add(pickup);
+            }
+            return pickupObjects;
         }
     }
 }
