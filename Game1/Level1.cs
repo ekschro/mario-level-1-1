@@ -67,7 +67,7 @@ namespace Game1
         public List<IGameObject> GetPickupObjects()
         {
             List<IGameObject> pickupObjects = new List<IGameObject>();
-            foreach (IPickupSprite pickup in levelObjects)
+            foreach (IPickup pickup in levelObjects)
             {
                 pickupObjects.Add(pickup);
             }

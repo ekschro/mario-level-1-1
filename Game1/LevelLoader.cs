@@ -58,25 +58,25 @@ namespace Game1
                     mario = GameObject;
                     break;
                 case "FireFlower":
-                    GameObject = new FireflowerSprite(myGame, Position);
+                    GameObject = new Fireflower(myGame, Position);
                     break;
                 case "Coin":
-                    GameObject = new CoinSprite(myGame, Position);
+                    GameObject = new Coin(myGame, Position);
                     break;
                 case "RedMushroom":
-                    GameObject = new RedMushroomSprite(myGame, Position);
+                    GameObject = new RedMushroom(myGame, Position);
                     break;
                 case "GreenMushroom":
-                    GameObject = new GreenMushroomSprite(myGame, Position);
+                    GameObject = new GreenMushroom(myGame, Position);
                     break;
                 case "Star":
-                    GameObject = new StarSprite(myGame, Position);
+                    GameObject = new Star(myGame, Position);
                     break;
                 case "Goomba":
-                    GameObject = new GoombaSprite(myGame, Position);
+                    GameObject = new Goomba(myGame, Position);
                     break;
                 case "Koopa":
-                    GameObject = new KoopaSprite(myGame, Position);
+                    GameObject = new Koopa(myGame, Position);
                     break;
                 case "HiddenBlock":
                     GameObject = new Block(Position, new HiddenBlockSprite());

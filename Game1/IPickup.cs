@@ -7,11 +7,9 @@ using Microsoft.Xna.Framework;
 
 namespace Game1
 {
-    public interface IPickup
+    public interface IPickup : IGameObject
     {
-        void Draw();
         Vector2 GetCurrentLocation();
-        void Update();
 
     }
 }
