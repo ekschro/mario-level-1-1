@@ -25,23 +25,33 @@ namespace Game1
 
             while (!LoaderInput.EndOfStream)
             {
-                int NextChar;
+                char NextChar;
                 string GameObjectString = "";
+                string PositionXString = "";
+                string PositionYString = "";
                 int PositionX;
                 int PositionY;
                 
-                while((NextChar = LoaderInput.Read()) != ',' && !LoaderInput.EndOfStream)
+                while(LoaderInput.Peek() >= 0 && (NextChar = (char)LoaderInput.Read()) != ',')
                 {
                     GameObjectString = GameObjectString + NextChar;
                 }
 
+                while (LoaderInput.Peek() >= 0 && (NextChar = (char)LoaderInput.Read()) != ',')
+                {
+                    PositionXString = PositionXString + NextChar;
+                }
+
+                while (LoaderInput.Peek() >= 0 && (NextChar = (char)LoaderInput.Read()) != '\n')
+                {
+                    PositionYString = PositionYString + NextChar;
+                }
+
+                PositionX = Convert.ToInt32(PositionXString);
+                PositionY = Convert.ToInt32(PositionYString);
+
                 if (LoaderInput.EndOfStream)
                     break;
-
-                PositionX = Convert.ToInt32(LoaderInput.Read());
-                LoaderInput.Read();
-                PositionY = Convert.ToInt32(LoaderInput.Read());
-                LoaderInput.Read();
 
                 gameObjects.Add(GenerateObject(GameObjectString, PositionX, PositionY));
             }
