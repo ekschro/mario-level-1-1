@@ -9,7 +9,7 @@ namespace Game1
 {
     public interface IEnemy : IGameObject
     {
-        Vector2 GetCurrentXLocation();
+        Vector2 GetCurrentLocation();
         void ChangeDirection();
         void BeStomped();
         void BeFlipped();

@@ -64,8 +64,6 @@
     <Compile Include="Enemy\koopa\Koopa.cs" />
     <Compile Include="Enemy\koopa\KoopaSprite.cs" />
     <Compile Include="Enemy\koopa\KoopaStateMachine.cs" />
-    <Compile Include="GeneralCommands\EnemyInterface.cs" />
-    <Compile Include="GeneralCommands\IEnemySprite.cs" />
     <Compile Include="GeneralInterfaces\IEnemy.cs" />
     <Compile Include="GeneralInterfaces\IEnemySprite.cs" />
     <Compile Include="GeneralInterfaces\IEnemyStateMachine.cs" />
@@ -98,11 +96,12 @@
     <Compile Include="MarioSprites\MarioSmallWalkRightPart4.cs" />
     <Compile Include="MarioSprites\MarioSmallWalkRightPart3.cs" />
     <Compile Include="MarioSprites\MarioSmallWalkRightPart2.cs" />
-    <Compile Include="Pick\CoinSprite.cs" />
-    <Compile Include="Pick\FireflowerSprite.cs" />
-    <Compile Include="Pick\GreenMushroomSprite.cs" />
-    <Compile Include="Pick\RedMushroonSprite.cs" />
-    <Compile Include="Pick\StarSprite.cs" />
+    <Compile Include="PickupItem\CoinSprite.cs" />
+    <Compile Include="PickupItem\FireflowerSprite.cs" />
+    <Compile Include="PickupItem\GreenMushroomSprite.cs" />
+    <Compile Include="PickupItem\Pickup.cs" />
+    <Compile Include="PickupItem\RedMushroonSprite.cs" />
+    <Compile Include="PickupItem\StarSprite.cs" />
     <Compile Include="PipeSprites\BottomLeftPipeSprite.cs" />
     <Compile Include="PipeSprites\BottomRightPipeSprite.cs" />
     <Compile Include="BlockSprites\BrickBlockSprite.cs" />

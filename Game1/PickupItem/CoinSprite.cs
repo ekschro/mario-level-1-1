@@ -7,20 +7,20 @@ using Microsoft.Xna.Framework;
 
 namespace Game1
 {
-    public class GoombaSprite : IEnemySprite
+    public class CoinSprite : IPickupSprite
     {
-        private Goomba goombaObject;
+        private Pickup pickupObject;
         private Game1 myGame;
         private int currentFrame;
         private int startFrame;
         private int endFrame;
 
-        public GoombaSprite(Game1 game,Goomba goomba)
+        public CoinSprite(Game1 game, Pickup pickup)
         {
-            goombaObject = goomba;
+            pickupObject = pickup;
             myGame = game;
-            startFrame = 0;
-            endFrame = 2;
+            startFrame = 10;
+            endFrame = 14;
             currentFrame = startFrame;
         }
         public void ChangeFrame(int start, int end)
@@ -28,6 +28,7 @@ namespace Game1
             startFrame = start;
             endFrame = end;
         }
+
         public void Update()
         {
             currentFrame++;
@@ -37,14 +38,19 @@ namespace Game1
 
         public void Draw()
         {
-            int width = myGame.goombaTexture.Width / 4;
+            int width = myGame.pickupTexture.Width / myGame.totalPickupFrames;
 
-            Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.goombaTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)goombaObject.GetCurrentLocation().X, (int)goombaObject.GetCurrentLocation().Y, width, myGame.goombaTexture.Height);
+            Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.pickupTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)150, (int)100, width, myGame.pickupTexture.Height);
 
             myGame.spriteBatch.Begin();
-            myGame.spriteBatch.Draw(myGame.goombaTexture, destinationRectangle, sourceRectangle, Color.White);
+            myGame.spriteBatch.Draw(myGame.pickupTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.spriteBatch.End();
+        }
+        public void picked()
+        {
+            startFrame = 14;
+            endFrame = 15;
         }
     }
 }

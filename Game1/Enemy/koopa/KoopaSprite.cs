@@ -9,7 +9,7 @@ namespace Game1
 {
     public class KoopaSprite : IEnemySprite
     {
-       
+        private Koopa koopaObject;
         private Game1 myGame;
         private int currentFrame;
         private bool goingLeft = true;
@@ -17,9 +17,9 @@ namespace Game1
         private int endFrame;
         private int leftStartFrame;
         private int leftEndFrame;
-        public KoopaSprite(Game1 game)
+        public KoopaSprite(Game1 game, Koopa koopa)
         {
-            
+            koopaObject = koopa;
             myGame = game;
             startFrame = 2;
             endFrame = 4;
@@ -48,7 +48,7 @@ namespace Game1
         {
             if (goingLeft == true)
             {
-                if (myGame.koopa.GetCurrentXLocation().X == 420)
+                if (koopaObject.GetCurrentLocation().X == 420)
                 {
                     goingLeft = false;
                     currentFrame = leftStartFrame;
@@ -59,7 +59,7 @@ namespace Game1
             }
             else if (goingLeft == false)
             {
-                if (myGame.koopa.GetCurrentXLocation().X == 380)
+                if (koopaObject.GetCurrentLocation().X == 380)
                     goingLeft = true;
                 currentFrame++;
                 if (currentFrame == leftEndFrame)
@@ -73,7 +73,7 @@ namespace Game1
             int width = myGame.koopaTexture.Width / 6;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.koopaTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)myGame.koopa.GetCurrentXLocation().X, (int)myGame.koopa.GetCurrentXLocation().Y, width, myGame.koopaTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)koopaObject.GetCurrentLocation().X, (int)koopaObject.GetCurrentLocation().Y, width, myGame.koopaTexture.Height);
 
             myGame.spriteBatch.Begin();
             myGame.spriteBatch.Draw(myGame.koopaTexture, destinationRectangle, sourceRectangle, Color.White);
