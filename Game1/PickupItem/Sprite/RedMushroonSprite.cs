@@ -9,15 +9,15 @@ namespace Game1
 {
     public class RedMushroomSprite : IPickupSprite
     {
-        private Pickup pickupObject;
+        private RedMushroom redMushroomObject;
         private Game1 myGame;
         private int currentFrame;
         private int startFrame;
         private int endFrame;
 
-        public RedMushroomSprite(Game1 game, Pickup pickup)
+        public RedMushroomSprite(Game1 game, RedMushroom redMushroom)
         {
-            pickupObject = pickup;
+            redMushroomObject = redMushroom;
             myGame = game;
             startFrame = 0;
             endFrame = 1;
@@ -35,7 +35,7 @@ namespace Game1
             int width = myGame.pickupTexture.Width / myGame.totalPickupFrames;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.pickupTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)200, (int)100, width, myGame.pickupTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)redMushroomObject.GetCurrentLocation().X, (int)redMushroomObject.GetCurrentLocation().Y, width, myGame.pickupTexture.Height);
 
             myGame.spriteBatch.Begin();
             myGame.spriteBatch.Draw(myGame.pickupTexture, destinationRectangle, sourceRectangle, Color.White);

@@ -7,23 +7,22 @@ using Microsoft.Xna.Framework;
 
 namespace Game1
 {
-    public class GreenMushroomSprite : IPickupSprite
+    public class StarSprite : IPickupSprite
     {
-        private Pickup pickupObject;
+        private Star starObject;
         private Game1 myGame;
         private int currentFrame;
         private int startFrame;
         private int endFrame;
 
-        public GreenMushroomSprite(Game1 game, Pickup pickup)
+        public StarSprite(Game1 game, Star star)
         {
-            pickupObject = pickup;
+            starObject = star;
             myGame = game;
-            startFrame = 1;
-            endFrame = 2;
+            startFrame = 6;
+            endFrame = 10;
             currentFrame = startFrame;
         }
-
         public void Update()
         {
             currentFrame++;
@@ -36,7 +35,7 @@ namespace Game1
             int width = myGame.pickupTexture.Width / myGame.totalPickupFrames;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.pickupTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)250, (int)100, width, myGame.pickupTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)starObject.GetCurrentLocation().X, (int)starObject.GetCurrentLocation().Y, width, myGame.pickupTexture.Height);
 
             myGame.spriteBatch.Begin();
             myGame.spriteBatch.Draw(myGame.pickupTexture, destinationRectangle, sourceRectangle, Color.White);

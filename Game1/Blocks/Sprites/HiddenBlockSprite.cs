@@ -11,17 +11,18 @@ using System.Collections;
 
 namespace Game1
 {
-    public class StairBlockSprite : IBlockSprite
+    public class HiddenBlockSprite : IBlockSprite
     {
+        private HiddenBlock hiddenBlockObject;
         private Game1 myGame;
         private int currentFrame;
-        private Vector2 blockLocation;
+        private IBlock blockObject;
 
-        public StairBlockSprite(Game1 game, Vector2 location)
+        public HiddenBlockSprite(Game1 game, HiddenBlock hiddenBlock)
         {
+            hiddenBlockObject = hiddenBlock;
             myGame = game;
-            currentFrame = 1;
-            blockLocation = location;
+            currentFrame = 0;
         }
 
         public void Update()
@@ -34,23 +35,20 @@ namespace Game1
             int width = myGame.blockTexture.Width / myGame.totalBlockFrames;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.blockTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)blockLocation.X, (int)blockLocation.Y, width, myGame.blockTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)hiddenBlockObject.GetBlockCurrentLocation().X, (int)hiddenBlockObject.GetBlockCurrentLocation().Y, width, myGame.blockTexture.Height);
 
             myGame.spriteBatch.Begin();
-            myGame.spriteBatch.Draw(myGame.blockTexture, destinationRectangle, sourceRectangle, Color.White);
+            myGame.spriteBatch.Draw(myGame.blockTexture, destinationRectangle, sourceRectangle, Color.Transparent);
             myGame.spriteBatch.End();
         }
-        public void QuestionToUsed()
+
+        public void ToEmpty()
         {
 
         }
-        public void BrickToEmpty()
+        public void ToUsed()
         {
-
-        }
-        public void HiddenToUsed()
-        {
-
+             //= new UsedBlockSprite(myGame, new Block(myGame, blockObject.BlockLocation()));
         }
     }
 }

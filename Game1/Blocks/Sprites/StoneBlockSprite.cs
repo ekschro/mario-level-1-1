@@ -11,17 +11,19 @@ using System.Collections;
 
 namespace Game1
 {
-    public class BrickBlockSprite : IBlockSprite
+    public class StoneBlockSprite : IBlockSprite
     {
+        private StoneBlock stoneBlockObject;
         private Game1 myGame;
         private int currentFrame;
-        private Vector2 blockLocation;
+        //private Vector2 blockLocation;
 
-        public BrickBlockSprite(Game1 game, Vector2 location)
+        public StoneBlockSprite(Game1 game, StoneBlock stoneBlock)
         {
+            stoneBlockObject = stoneBlock;
             myGame = game;
-            currentFrame = 2;
-            blockLocation = location;
+            currentFrame = 0;
+            //blockLocation = location;
         }
 
         public void Update()
@@ -34,21 +36,17 @@ namespace Game1
             int width = myGame.blockTexture.Width / myGame.totalBlockFrames;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.blockTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)blockLocation.X, (int)blockLocation.Y, width, myGame.blockTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)stoneBlockObject.GetBlockCurrentLocation().X, (int)stoneBlockObject.GetBlockCurrentLocation().Y, width, myGame.blockTexture.Height);
 
             myGame.spriteBatch.Begin();
             myGame.spriteBatch.Draw(myGame.blockTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.spriteBatch.End();
         }
-        public void QuestionToUsed()
+        public void ToEmpty()
         {
 
         }
-        public void BrickToEmpty()
-        {
-            myGame.blockBrickSprite = new EmptyBlockSprite(myGame, blockLocation);
-        }
-        public void HiddenToUsed()
+        public void ToUsed()
         {
 
         }

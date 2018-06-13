@@ -9,6 +9,6 @@ namespace Game1
 {
     public interface IBlock : IGameObject
     {
-        Vector2 BlockLocation();
+        Vector2 GetBlockCurrentLocation();
     }
 }

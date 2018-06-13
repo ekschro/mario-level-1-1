@@ -11,17 +11,18 @@ using System.Collections;
 
 namespace Game1
 {
-    public class StoneBlockSprite : IBlockSprite
+    public class BottomLeftPipeBlockSprite : IBlockSprite
     {
+        private BottomLeftPipeBlock bottomLeftPipeBlockObject;
         private Game1 myGame;
         private int currentFrame;
-        private Vector2 blockLocation;
+        //private Vector2 blockLocation;
 
-        public StoneBlockSprite(Game1 game, Vector2 location)
+        public BottomLeftPipeBlockSprite(Game1 game, BottomLeftPipeBlock bottomLeftPipe)
         {
+            bottomLeftPipeBlockObject = bottomLeftPipe;
             myGame = game;
-            currentFrame = 0;
-            blockLocation = location;
+            currentFrame = 2;
         }
 
         public void Update()
@@ -34,23 +35,17 @@ namespace Game1
             int width = myGame.blockTexture.Width / myGame.totalBlockFrames;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.blockTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)blockLocation.X, (int)blockLocation.Y, width, myGame.blockTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)bottomLeftPipeBlockObject.GetBlockCurrentLocation().X, (int)bottomLeftPipeBlockObject.GetBlockCurrentLocation().Y, width, myGame.blockTexture.Height);
 
             myGame.spriteBatch.Begin();
             myGame.spriteBatch.Draw(myGame.blockTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.spriteBatch.End();
         }
-        public void QuestionToUsed()
+        public void ToEmpty()
         {
-
         }
-        public void BrickToEmpty()
+        public void ToUsed()
         {
-
-        }
-        public void HiddenToUsed()
-        {
-
         }
     }
 }

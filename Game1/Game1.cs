@@ -38,6 +38,7 @@ namespace Game1
             controllerList = new List<IController>();
             
             controllerList.Add(new KeyboardController(this));
+            controllerList.Add(new GamePadController(this));
 
             base.Initialize();
         }
@@ -53,6 +54,7 @@ namespace Game1
             goombaTexture = Content.Load<Texture2D>("goomba1");
 
             blockTexture = Content.Load<Texture2D>("tiles");
+
             PlatformerLevel = new Level1("LevelInfo.csv", this);
 
         }

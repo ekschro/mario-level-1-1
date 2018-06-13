@@ -7,22 +7,28 @@ using Microsoft.Xna.Framework;
 
 namespace Game1
 {
-    public class StarSprite : IPickupSprite
+    public class CoinSprite : IPickupSprite
     {
-        private Pickup pickupObject;
+        private Coin coinObject;
         private Game1 myGame;
         private int currentFrame;
         private int startFrame;
         private int endFrame;
 
-        public StarSprite(Game1 game, Pickup pickup)
+        public CoinSprite(Game1 game, Coin coin)
         {
-            pickupObject = pickup;
+            coinObject = coin;
             myGame = game;
-            startFrame = 6;
-            endFrame = 10;
+            startFrame = 10;
+            endFrame = 14;
             currentFrame = startFrame;
         }
+        public void ChangeFrame(int start, int end)
+        {
+            startFrame = start;
+            endFrame = end;
+        }
+
         public void Update()
         {
             currentFrame++;
@@ -35,7 +41,7 @@ namespace Game1
             int width = myGame.pickupTexture.Width / myGame.totalPickupFrames;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.pickupTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)300, (int)100, width, myGame.pickupTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)coinObject.GetCurrentLocation().X, (int)coinObject.GetCurrentLocation().Y, width, myGame.pickupTexture.Height);
 
             myGame.spriteBatch.Begin();
             myGame.spriteBatch.Draw(myGame.pickupTexture, destinationRectangle, sourceRectangle, Color.White);

@@ -25,23 +25,33 @@ namespace Game1
 
             while (!LoaderInput.EndOfStream)
             {
-                int NextChar;
+                char NextChar;
                 string GameObjectString = "";
+                string PositionXString = "";
+                string PositionYString = "";
                 int PositionX;
                 int PositionY;
                 
-                while((NextChar = LoaderInput.Read()) != ',' && !LoaderInput.EndOfStream)
+                while(LoaderInput.Peek() >= 0 && (NextChar = (char)LoaderInput.Read()) != ',')
                 {
                     GameObjectString = GameObjectString + NextChar;
                 }
 
+                while (LoaderInput.Peek() >= 0 && (NextChar = (char)LoaderInput.Read()) != ',')
+                {
+                    PositionXString = PositionXString + NextChar;
+                }
+
+                while (LoaderInput.Peek() >= 0 && (NextChar = (char)LoaderInput.Read()) != '\n')
+                {
+                    PositionYString = PositionYString + NextChar;
+                }
+
+                PositionX = Convert.ToInt32(PositionXString);
+                PositionY = Convert.ToInt32(PositionYString);
+
                 if (LoaderInput.EndOfStream)
                     break;
-
-                PositionX = Convert.ToInt32(LoaderInput.Read());
-                LoaderInput.Read();
-                PositionY = Convert.ToInt32(LoaderInput.Read());
-                LoaderInput.Read();
 
                 gameObjects.Add(GenerateObject(GameObjectString, PositionX, PositionY));
             }
@@ -51,65 +61,64 @@ namespace Game1
         {
             Vector2 Position = new Vector2(positionX, positionY);
             IGameObject GameObject = new Mario(myGame, Position);
-            mario = GameObject;
             switch (objectName) {
                 case "Mario" :
                     GameObject = new Mario(myGame, Position);
                     mario = GameObject;
                     break;
                 case "FireFlower":
-                    GameObject = new FireflowerSprite(myGame, Position);
+                    GameObject = new Fireflower(myGame, Position);
                     break;
                 case "Coin":
-                    GameObject = new CoinSprite(myGame, Position);
+                    GameObject = new Coin(myGame, Position);
                     break;
                 case "RedMushroom":
-                    GameObject = new RedMushroomSprite(myGame, Position);
+                    GameObject = new RedMushroom(myGame, Position);
                     break;
                 case "GreenMushroom":
-                    GameObject = new GreenMushroomSprite(myGame, Position);
+                    GameObject = new GreenMushroom(myGame, Position);
                     break;
                 case "Star":
-                    GameObject = new StarSprite(myGame, Position);
+                    GameObject = new Star(myGame, Position);
                     break;
                 case "Goomba":
-                    GameObject = new GoombaSprite(myGame, Position);
+                    GameObject = new Goomba(myGame, Position);
                     break;
                 case "Koopa":
-                    GameObject = new KoopaSprite(myGame, Position);
+                    GameObject = new Koopa(myGame, Position);
                     break;
                 case "HiddenBlock":
-                    GameObject = new Block(Position, new HiddenBlockSprite());
+                    GameObject = new HiddenBlock(myGame, Position);
                     break;
                 case "StairBlock":
-                    GameObject = new Block(new StairBlockSprite(myGame, Position));
+                    GameObject = new StairBlock(myGame, Position);
                     break;
                 case "UsedBlock":
-                    GameObject = new Block(new UsedBlockSprite(myGame, Position));
+                    GameObject = new UsedBlock(myGame, Position);
                     break;
                 case "QuestionBlockWithPowerUp":
-                    GameObject = new Block(new QuestionBlockSprite(myGame, Position));
+                    GameObject = new QuestionBlock(myGame, Position);
                     break;
                 case "QuestionBlockWithCoin":
-                    GameObject = new Block(new QuestionBlockSprite(myGame, Position));
+                    GameObject = new QuestionBlock(myGame, Position);
                     break;
                 case "BrickBlock":
-                    GameObject = new Block(new BrickBlockSprite(myGame, Position));
+                    GameObject = new BrickBlock(myGame, Position);
                     break;
                 case "StoneBlock":
-                    GameObject = new Block(new StoneBlockSprite(myGame, Position));
+                    GameObject = new StoneBlock(myGame, Position);
                     break;
                 case "TopLeftPipeBlock":
-                    GameObject = new Block(new TopLeftPipeSprite(myGame, Position));
+                    GameObject = new TopLeftPipeBlock(myGame, Position);
                     break;
                 case "TopRightPipeBlock":
-                    GameObject = new Block(new TopRightPipeSprite(myGame, Position));
+                    GameObject = new TopRightPipeBlock(myGame, Position);
                     break;
                 case "BottomLeftPipeBlock":
-                    GameObject = new Block(new BottomLeftPipeSprite(myGame, Position));
+                    GameObject = new BottomLeftPipeBlock(myGame, Position);
                     break;
                 case "BottomRightPipeBlock":
-                    GameObject = new Block(new BottomRightPipeSprite(myGame, Position));
+                    GameObject = new BottomRightPipeBlock(myGame, Position);
                     break;
             }
             return GameObject;

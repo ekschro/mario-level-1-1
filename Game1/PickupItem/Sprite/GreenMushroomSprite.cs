@@ -7,27 +7,23 @@ using Microsoft.Xna.Framework;
 
 namespace Game1
 {
-    public class FireflowerSprite : IPickupSprite
+    public class GreenMushroomSprite : IPickupSprite
     {
-        private Pickup pickupObject;
+        private GreenMushroom greenMushroomOject;
         private Game1 myGame;
         private int currentFrame;
         private int startFrame;
         private int endFrame;
 
-        public FireflowerSprite(Game1 game, Pickup pickup)
+        public GreenMushroomSprite(Game1 game, GreenMushroom greenMushroom)
         {
-            pickupObject = pickup;
+            greenMushroomOject = greenMushroom;
             myGame = game;
-            startFrame = 2;
-            endFrame = 6;
+            startFrame = 1;
+            endFrame = 2;
             currentFrame = startFrame;
         }
-        public void ChangeFrame(int start, int end)
-        {
-            startFrame = start;
-            endFrame = end;
-        }
+
         public void Update()
         {
             currentFrame++;
@@ -40,7 +36,7 @@ namespace Game1
             int width = myGame.pickupTexture.Width / myGame.totalPickupFrames;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.pickupTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)100, (int)100, width, myGame.pickupTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)greenMushroomOject.GetCurrentLocation().X, (int)greenMushroomOject.GetCurrentLocation().Y, width, myGame.pickupTexture.Height);
 
             myGame.spriteBatch.Begin();
             myGame.spriteBatch.Draw(myGame.pickupTexture, destinationRectangle, sourceRectangle, Color.White);

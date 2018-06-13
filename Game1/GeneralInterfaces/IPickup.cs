@@ -7,11 +7,9 @@ using Microsoft.Xna.Framework;
 
 namespace Game1
 {
-    public interface IEnemy : IGameObject
+    public interface IPickup : IGameObject
     {
         Vector2 GetCurrentLocation();
-        void ChangeDirection();
-        void BeStomped();
-        void BeFlipped();
+
     }
 }

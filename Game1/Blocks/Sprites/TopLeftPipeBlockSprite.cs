@@ -11,17 +11,18 @@ using System.Collections;
 
 namespace Game1
 {
-    public class HiddenBlockSprite : IBlockSprite
+    public class TopLeftPipeBlockSprite : IBlockSprite
     {
+        private TopLeftPipeBlock topLeftPipeBlockObject;
         private Game1 myGame;
         private int currentFrame;
-        private IBlock blockObject;
+        //private Vector2 blockLocation;
 
-        public HiddenBlockSprite(Game1 game, IBlock block)
+        public TopLeftPipeBlockSprite(Game1 game, TopLeftPipeBlock topLeftPipe)
         {
+            topLeftPipeBlockObject = topLeftPipe;
             myGame = game;
-            currentFrame = 0;
-            blockObject = block;
+            currentFrame = 2;
         }
 
         public void Update()
@@ -34,23 +35,17 @@ namespace Game1
             int width = myGame.blockTexture.Width / myGame.totalBlockFrames;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.blockTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)blockObject.BlockLocation().X, (int)blockObject.BlockLocation().X, width, myGame.blockTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)topLeftPipeBlockObject.GetBlockCurrentLocation().X, (int)topLeftPipeBlockObject.GetBlockCurrentLocation().Y, width, myGame.blockTexture.Height);
 
             myGame.spriteBatch.Begin();
-            myGame.spriteBatch.Draw(myGame.blockTexture, destinationRectangle, sourceRectangle, Color.Transparent);
+            myGame.spriteBatch.Draw(myGame.blockTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.spriteBatch.End();
         }
-        public void QuestionToUsed()
+        public void ToEmpty()
         {
-
         }
-        public void BrickToEmpty()
+        public void ToUsed()
         {
-
-        }
-        public void HiddenToUsed()
-        {
-             = new UsedBlockSprite(myGame, new Block(myGame, blockObject.BlockLocation()));
         }
     }
 }
