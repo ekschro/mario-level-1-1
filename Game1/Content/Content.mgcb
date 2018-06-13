@@ -98,7 +98,5 @@
 /build:koopa1.png
 
 #begin LevelInfo.csv
-/importer:
-/processor:
-/build:LevelInfo.csv
+/copy:LevelInfo.csv
 
