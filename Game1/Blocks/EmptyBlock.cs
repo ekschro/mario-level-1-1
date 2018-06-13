@@ -10,9 +10,9 @@ namespace Game1
     public class EmptyBlock : IBlock
     {
 
-        public static EmptyBlockSprite emptyBlockSprite;
+        private static IBlockSprite emptyBlockSprite;
 
-        public static EmptyBlockSprite EmptyBlockSprite { get => emptyBlockSprite; set => emptyBlockSprite = value; }
+        public static IBlockSprite EmptyBlockSprite { get => emptyBlockSprite; set => emptyBlockSprite = value; }
 
         private Game1 myGame;
         public Vector2 blockLocation;

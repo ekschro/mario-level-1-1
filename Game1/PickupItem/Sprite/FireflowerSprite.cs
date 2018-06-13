@@ -37,7 +37,7 @@ namespace Game1
 
         public void Draw()
         {
-            int width = myGame.pickupTexture.Width / myGame.totalPickupFrames;
+            int width = myGame.pickupTexture.Width / 14;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.pickupTexture.Height);
             Rectangle destinationRectangle = new Rectangle((int)fireflowerObject.GetCurrentLocation().X, (int)fireflowerObject.GetCurrentLocation().Y, width, myGame.pickupTexture.Height);
