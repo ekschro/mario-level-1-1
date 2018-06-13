@@ -9,7 +9,7 @@ namespace Game1
         private Game1 myGame;
         
 
-       public static ISprite marioSprite;
+        public static ISprite marioSprite;
 
         public static ISprite MarioSprite { get => marioSprite; set => marioSprite = value; }
         public static float CurrentXPosition { get => currentXPosition; set => currentXPosition = value; }
