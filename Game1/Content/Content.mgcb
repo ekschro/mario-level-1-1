@@ -97,3 +97,6 @@
 /processorParam:TextureFormat=Color
 /build:koopa1.png
 
+#begin LevelInfo.csv
+/copy:LevelInfo.csv
+

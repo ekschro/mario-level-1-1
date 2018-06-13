@@ -33,7 +33,6 @@ namespace Game1
       
         protected override void Initialize()
         {
-            
             controllerList = new List<IController>();
             
             controllerList.Add(new KeyboardController(this));
@@ -55,7 +54,6 @@ namespace Game1
             blockTexture = Content.Load<Texture2D>("tiles");
 
             PlatformerLevel = new Level1("LevelInfo.csv", this);
-
         }
 
         public void Reset()

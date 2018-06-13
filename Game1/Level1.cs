@@ -9,10 +9,7 @@ namespace Game1
     public class Level1 : ILevel
     {
         private List<IGameObject> levelObjects;
-
-        private List<IGameObject> enemyObjects;
-        private List<IGameObject> pickupObjects;
-
+        
         public Level1(string fileName, Game1 game)
         {
             levelObjects = new List<IGameObject>();
