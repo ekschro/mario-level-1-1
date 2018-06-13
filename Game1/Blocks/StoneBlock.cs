@@ -10,9 +10,9 @@ namespace Game1
     public class StoneBlock : IBlock
     {
 
-        public static StoneBlockSprite stoneBlockSprite;
+        private static IBlockSprite stoneBlockSprite;
 
-        public static StoneBlockSprite StoneBlockSprite { get => stoneBlockSprite; set => stoneBlockSprite = value; }
+        public static IBlockSprite StoneBlockSprite { get => stoneBlockSprite; set => stoneBlockSprite = value; }
 
         private Game1 myGame;
         public Vector2 blockLocation;

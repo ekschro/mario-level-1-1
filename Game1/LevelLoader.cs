@@ -29,8 +29,8 @@ namespace Game1
                 string GameObjectString = "";
                 string PositionXString = "";
                 string PositionYString = "";
-                int PositionX;
-                int PositionY;
+                int PositionX = 0;
+                int PositionY = 0;
                 
                 while(LoaderInput.Peek() >= 0 && (NextChar = (char)LoaderInput.Read()) != ',')
                 {
@@ -46,13 +46,9 @@ namespace Game1
                 {
                     PositionYString = PositionYString + NextChar;
                 }
-
-
+                
                 PositionX = Convert.ToInt32(PositionXString);
                 PositionY = Convert.ToInt32(PositionYString);
-
-                if (LoaderInput.EndOfStream)
-                    break;
 
                 gameObjects.Add(GenerateObject(GameObjectString, PositionX, PositionY));
             }

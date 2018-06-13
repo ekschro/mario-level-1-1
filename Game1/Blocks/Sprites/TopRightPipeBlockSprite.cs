@@ -22,7 +22,7 @@ namespace Game1
         {
             topRightPipeBlockObject = topRightPipe;
             myGame = game;
-            currentFrame = 2;
+            currentFrame = 9;
         }
 
         public void Update()
