@@ -38,7 +38,7 @@ namespace Game1
 
         public void Draw()
         {
-            int width = TextureWareHouse.pickupTexture.Width / myGame.totalPickupFrames;
+            int width = TextureWareHouse.pickupTexture.Width / 15;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, TextureWareHouse.pickupTexture.Height);
             Rectangle destinationRectangle = new Rectangle((int)coinObject.GetCurrentLocation().X, (int)coinObject.GetCurrentLocation().Y, width, TextureWareHouse.pickupTexture.Height);
