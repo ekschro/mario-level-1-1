@@ -19,10 +19,10 @@ namespace Game1
 
         public void Draw()
         {
-            int width = myGame.marioTexture.Width / myGame.totalMarioColumns;
-            int height = myGame.marioTexture.Height / myGame.totalMarioRows;
-            int row = (int)((float)currentFrame / (float)myGame.totalMarioColumns);
-            int column = currentFrame % myGame.totalMarioColumns;
+            int width = myGame.marioTexture.Width / Mario.TotalMarioColumns;
+            int height = myGame.marioTexture.Height / Mario.TotalMarioRows;
+            int row = (int)((float)currentFrame / (float)Mario.TotalMarioColumns);
+            int column = currentFrame % Mario.TotalMarioColumns;
 
             
             
@@ -78,6 +78,15 @@ namespace Game1
         public void Update()
         {
 
+        }
+        public bool isSmall()
+        {
+            return true;
+        }
+
+        public bool isFire()
+        {
+            return false;
         }
     }
 }
