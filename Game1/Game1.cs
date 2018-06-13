@@ -15,15 +15,15 @@ namespace Game1
 
         public IList<IController> controllerList;
         public ILevel PlatformerLevel;
-        
-        public int totalPickupFrames = 14;
         public int totalBlockFrames = 12;
+        public TextureWareHouse warehouse;
+        /*
         public Texture2D marioTexture;
         public Texture2D pickupTexture;
         public Texture2D koopaTexture;
         public Texture2D goombaTexture;
         public Texture2D blockTexture;
-
+        */
         
         public Game1()
         {
@@ -44,15 +44,8 @@ namespace Game1
        
         protected override void LoadContent()
         {
-            spriteBatch = new SpriteBatch(GraphicsDevice);
-            
-            pickupTexture = Content.Load<Texture2D>("pickup");
-            marioTexture = Content.Load<Texture2D>("mario");
-            koopaTexture = Content.Load<Texture2D>("koopa1");
-            goombaTexture = Content.Load<Texture2D>("goomba1");
 
-            blockTexture = Content.Load<Texture2D>("tiles");
-
+            warehouse = new TextureWareHouse(this);
             PlatformerLevel = new Level1("LevelInfo.csv", this);
         }
 

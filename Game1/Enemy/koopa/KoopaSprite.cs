@@ -70,13 +70,13 @@ namespace Game1
 
         public void Draw()
         {
-            int width = myGame.koopaTexture.Width / 6;
+            int width = TextureWareHouse.koopaTexture.Width / 6;
 
-            Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.koopaTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)koopaObject.GetCurrentLocation().X, (int)koopaObject.GetCurrentLocation().Y, width, myGame.koopaTexture.Height);
+            Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, TextureWareHouse.koopaTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)koopaObject.GetCurrentLocation().X, (int)koopaObject.GetCurrentLocation().Y, width, TextureWareHouse.koopaTexture.Height);
 
             myGame.spriteBatch.Begin();
-            myGame.spriteBatch.Draw(myGame.koopaTexture, destinationRectangle, sourceRectangle, Color.White);
+            myGame.spriteBatch.Draw(TextureWareHouse.koopaTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.spriteBatch.End();
         }
     }

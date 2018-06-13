@@ -32,13 +32,13 @@ namespace Game1
 
         public void Draw()
         {
-            int width = myGame.pickupTexture.Width / myGame.totalPickupFrames;
+            int width = TextureWareHouse.pickupTexture.Width / myGame.totalPickupFrames;
 
-            Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.pickupTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)starObject.GetCurrentLocation().X, (int)starObject.GetCurrentLocation().Y, width, myGame.pickupTexture.Height);
+            Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, TextureWareHouse.pickupTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)starObject.GetCurrentLocation().X, (int)starObject.GetCurrentLocation().Y, width, TextureWareHouse.pickupTexture.Height);
 
             myGame.spriteBatch.Begin();
-            myGame.spriteBatch.Draw(myGame.pickupTexture, destinationRectangle, sourceRectangle, Color.White);
+            myGame.spriteBatch.Draw(TextureWareHouse.pickupTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.spriteBatch.End();
         }
         public void picked()

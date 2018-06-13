@@ -32,13 +32,13 @@ namespace Game1
 
         public void Draw()
         {
-            int width = myGame.blockTexture.Width / myGame.totalBlockFrames;
+            int width = TextureWareHouse.blockTexture.Width / myGame.totalBlockFrames;
 
-            Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.blockTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)bottomRightPipeBlockObject.GetBlockCurrentLocation().X, (int)bottomRightPipeBlockObject.GetBlockCurrentLocation().Y, width, myGame.blockTexture.Height);
+            Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, TextureWareHouse.blockTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)bottomRightPipeBlockObject.GetBlockCurrentLocation().X, (int)bottomRightPipeBlockObject.GetBlockCurrentLocation().Y, width, TextureWareHouse.blockTexture.Height);
 
             myGame.spriteBatch.Begin();
-            myGame.spriteBatch.Draw(myGame.blockTexture, destinationRectangle, sourceRectangle, Color.White);
+            myGame.spriteBatch.Draw(TextureWareHouse.blockTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.spriteBatch.End();
         }
         public void ToEmpty()

@@ -170,6 +170,7 @@
     <Compile Include="GeneralCommands\RightCommand.cs" />
     <Compile Include="MarioCommands\SmallMarioCommand.cs" />
     <Compile Include="GeneralCommands\UpCommand.cs" />
+    <Compile Include="TextureWarehouse.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">

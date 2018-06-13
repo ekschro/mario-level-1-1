@@ -17,8 +17,8 @@ public class MarioDead : ISprite
 
     public void Draw()
     {
-        int width = myGame.marioTexture.Width / Mario.TotalMarioColumns;
-        int height = myGame.marioTexture.Height / Mario.TotalMarioRows;
+        int width = TextureWareHouse.marioTexture.Width / Mario.TotalMarioColumns;
+        int height = TextureWareHouse.marioTexture.Height / Mario.TotalMarioRows;
         int row = (int)((float)currentFrame / (float)Mario.TotalMarioColumns);
         int column = currentFrame % Mario.TotalMarioColumns;
 
@@ -28,7 +28,7 @@ public class MarioDead : ISprite
         Rectangle destinationRectangle = new Rectangle((int)Mario.CurrentXPosition, (int)Mario.CurrentYPosition, width, height);
 
         myGame.spriteBatch.Begin();
-        myGame.spriteBatch.Draw(myGame.marioTexture, destinationRectangle, sourceRectangle, Color.White);
+        myGame.spriteBatch.Draw(TextureWareHouse.marioTexture, destinationRectangle, sourceRectangle, Color.White);
         myGame.spriteBatch.End();
     }
 
