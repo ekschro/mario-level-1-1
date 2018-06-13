@@ -10,9 +10,9 @@ namespace Game1
     public class BottomLeftPipeBlock : IBlock
     {
 
-        public static BottomLeftPipeBlockSprite bottomLeftPipeBlockSprite;
+        private static IBlockSprite bottomLeftPipeBlockSprite;
 
-        public static BottomLeftPipeBlockSprite BottomLeftPipeBlockSprite { get => bottomLeftPipeBlockSprite; set => bottomLeftPipeBlockSprite = value; }
+        public static IBlockSprite BottomLeftPipeBlockSprite { get => bottomLeftPipeBlockSprite; set => bottomLeftPipeBlockSprite = value; }
 
         private Game1 myGame;
         public Vector2 blockLocation;

@@ -10,9 +10,9 @@ namespace Game1
     public class StairBlock : IBlock
     {
 
-        public static StairBlockSprite stairBlockSprite;
+        private static IBlockSprite stairBlockSprite;
 
-        public static StairBlockSprite StairBlockSprite { get => stairBlockSprite; set => stairBlockSprite = value; }
+        public static IBlockSprite StairBlockSprite { get => stairBlockSprite; set => stairBlockSprite = value; }
 
         private Game1 myGame;
         public Vector2 blockLocation;

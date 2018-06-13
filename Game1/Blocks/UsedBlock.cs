@@ -10,9 +10,9 @@ namespace Game1
     public class UsedBlock : IBlock
     {
 
-        public static UsedBlockSprite usedBlockSprite;
+        private static IBlockSprite usedBlockSprite;
 
-        public static UsedBlockSprite UsedBlockSprite { get => usedBlockSprite; set => usedBlockSprite = value; }
+        public static IBlockSprite UsedBlockSprite { get => usedBlockSprite; set => usedBlockSprite = value; }
 
         private Game1 myGame;
         public Vector2 blockLocation;

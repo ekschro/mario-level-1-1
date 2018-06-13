@@ -32,7 +32,7 @@ namespace Game1
 
         public void Draw()
         {
-            int width = myGame.blockTexture.Width / myGame.totalBlockFrames;
+            int width = myGame.blockTexture.Width / 13;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.blockTexture.Height);
             Rectangle destinationRectangle = new Rectangle((int)emptyBlockObject.GetBlockCurrentLocation().X, (int)emptyBlockObject.GetBlockCurrentLocation().Y, width, myGame.blockTexture.Height);
