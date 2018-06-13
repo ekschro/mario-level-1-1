@@ -47,6 +47,7 @@ namespace Game1
                     PositionYString = PositionYString + NextChar;
                 }
 
+
                 PositionX = Convert.ToInt32(PositionXString);
                 PositionY = Convert.ToInt32(PositionYString);
 
