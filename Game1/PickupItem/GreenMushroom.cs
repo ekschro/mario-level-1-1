@@ -9,9 +9,6 @@ namespace Game1
 {
     public class GreenMushroom : IPickup
     {
-        private int cyclePosition = 0;
-        private int cycleLength = 16;
-
         private static IPickupSprite greenMushroomSprite;
 
         public static IPickupSprite GreenMushroomSprite { get => greenMushroomSprite; set => greenMushroomSprite = value; }
@@ -28,12 +25,7 @@ namespace Game1
 
         public void Draw()
         {
-            cyclePosition++;
-            if (cyclePosition == cycleLength)
-            {
-                cyclePosition = 0;
-                GreenMushroomSprite.Draw();
-            }
+            GreenMushroomSprite.Draw();
         }
 
         public Vector2 GetCurrentLocation()

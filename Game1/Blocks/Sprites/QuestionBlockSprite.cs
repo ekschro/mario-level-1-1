@@ -27,21 +27,19 @@ namespace Game1
             questionBlockObject = questionBlock;
             myGame = game;
             startFrame = 4;
-            endFrame = 6;
+            endFrame = 7;
             currentFrame = startFrame;
             //blockLocation = location;
         }
 
         public void Update()
         {
-            cyclePosition++;
-            if (cyclePosition == cycleLength)
-            {
+            
                 cyclePosition = 0;
                 currentFrame++;
                 if (currentFrame == endFrame)
                     currentFrame = startFrame;
-            }
+            
         }
 
         public void Draw()

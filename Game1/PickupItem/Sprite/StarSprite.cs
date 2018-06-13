@@ -43,8 +43,8 @@ namespace Game1
         }
         public void picked()
         {
-            startFrame = 14;
-            endFrame = 15;
+            //startFrame = 14;
+            //endFrame = 15;
         }
     }
 }

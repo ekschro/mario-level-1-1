@@ -22,7 +22,7 @@ namespace Game1
         {
             emptyBlockObject = emptyBlock;
             myGame = game;
-            currentFrame = 0;
+            currentFrame = 12;
             //blockLocation = location;
         }
 
@@ -47,7 +47,6 @@ namespace Game1
         }
         public void ToUsed()
         {
-            currentFrame = 3;
         }
     }
 

@@ -16,6 +16,8 @@ namespace Game1
 
         private Game1 myGame;
         public Vector2 blockLocation;
+        private int cyclePosition = 0;
+        private int cycleLength = 16;
 
         public QuestionBlock(Game1 game, Vector2 location)
         {
@@ -36,7 +38,13 @@ namespace Game1
 
         public void Update()
         {
-            QuestionBlockSprite.Update();
+            cyclePosition++;
+            if (cyclePosition == cycleLength)
+            {
+                QuestionBlockSprite.Update();
+                cyclePosition = 0;
+            }
+            
         }
     }
 }

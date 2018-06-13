@@ -28,12 +28,7 @@ namespace Game1
 
         public void Draw()
         {
-            cyclePosition++;
-            if (cyclePosition == cycleLength)
-            {
-                cyclePosition = 0;
-                FireflowerSprite.Draw();
-            }
+            FireflowerSprite.Draw();
         }
 
         public Vector2 GetCurrentLocation()
@@ -43,7 +38,12 @@ namespace Game1
 
         public void Update()
         {
-            FireflowerSprite.Update();
+            cyclePosition++;
+            if (cyclePosition == cycleLength)
+            {
+                FireflowerSprite.Update();
+                cyclePosition = 0;
+            }
         }
     }
 }
