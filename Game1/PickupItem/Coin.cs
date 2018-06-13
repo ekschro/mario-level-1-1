@@ -12,9 +12,9 @@ namespace Game1
         private int cyclePosition = 0;
         private int cycleLength = 16;
 
-        public static CoinSprite coinSprite;
+        private static IPickupSprite coinSprite;
 
-        public static CoinSprite CoinSprite { get => coinSprite; set => coinSprite = value; }
+        public static IPickupSprite CoinSprite { get => coinSprite; set => coinSprite = value; }
 
         private Game1 myGame;
         public Vector2 pickupLocation;
