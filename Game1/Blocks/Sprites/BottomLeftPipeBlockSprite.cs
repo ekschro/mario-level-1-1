@@ -22,7 +22,7 @@ namespace Game1
         {
             bottomLeftPipeBlockObject = bottomLeftPipe;
             myGame = game;
-            currentFrame = 2;
+            currentFrame = 10;
         }
 
         public void Update()
@@ -32,7 +32,7 @@ namespace Game1
 
         public void Draw()
         {
-            int width = myGame.blockTexture.Width / myGame.totalBlockFrames;
+            int width = myGame.blockTexture.Width / 13;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.blockTexture.Height);
             Rectangle destinationRectangle = new Rectangle((int)bottomLeftPipeBlockObject.GetBlockCurrentLocation().X, (int)bottomLeftPipeBlockObject.GetBlockCurrentLocation().Y, width, myGame.blockTexture.Height);
