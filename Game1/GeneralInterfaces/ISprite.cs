@@ -12,7 +12,8 @@ namespace Game1
 {
     public interface ISprite : IGameObject
     {
-       
+        Boolean isSmall();
+        Boolean isFire();
         void UpCommandCalled();
         void DownCommandCalled();
         void LeftCommandCalled();

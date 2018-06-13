@@ -24,8 +24,7 @@ namespace Game1
         public Texture2D goombaTexture;
         public Texture2D blockTexture;
 
-        public int totalMarioColumns = 28;
-        public int totalMarioRows = 3;
+        
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
