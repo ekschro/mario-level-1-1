@@ -12,9 +12,9 @@ namespace Game1
         private int cyclePosition = 0;
         private int cycleLength = 16;
 
-        public static StarSprite starSprite;
+        private static IPickupSprite starSprite;
 
-        public static StarSprite StarSprite { get => starSprite; set => starSprite = value; }
+        public static IPickupSprite StarSprite { get => starSprite; set => starSprite = value; }
 
         private Game1 myGame;
         public Vector2 pickupLocation;
