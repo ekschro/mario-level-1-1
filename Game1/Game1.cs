@@ -15,7 +15,7 @@ namespace Game1
 
         public IList<IController> controllerList;
         public ILevel PlatformerLevel;
-        public int totalBlockFrames = 12;
+        //public int totalBlockFrames = 12;
         public TextureWareHouse warehouse;
         /*
         public Texture2D marioTexture;
@@ -44,7 +44,7 @@ namespace Game1
        
         protected override void LoadContent()
         {
-
+            spriteBatch = new SpriteBatch(GraphicsDevice);
             warehouse = new TextureWareHouse(this);
             PlatformerLevel = new Level1("LevelInfo.csv", this);
         }
