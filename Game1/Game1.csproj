@@ -58,6 +58,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Block.cs" />
+    <Compile Include="Controllers\MouseController.cs" />
     <Compile Include="Enemy\goomba\Goomba.cs" />
     <Compile Include="Enemy\goomba\GoombaSprite.cs" />
     <Compile Include="Enemy\goomba\GoombaStateMachine.cs" />
