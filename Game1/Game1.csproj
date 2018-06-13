@@ -99,7 +99,9 @@
     <Compile Include="ILevel.cs" />
     <Compile Include="ILoader.cs" />
     <Compile Include="Level1.cs" />
-    <Compile Include="LevelLoader.cs" />
+    <Compile Include="..\..\..\..\Desktop\LevelLoader.cs">
+      <Link>LevelLoader.cs</Link>
+    </Compile>
     <Compile Include="MarioBlockCollisionHandler.cs" />
     <Compile Include="MarioSprites\MarioBigWalkLeftPart3.cs" />
     <Compile Include="MarioSprites\MarioBigWalkLeftPart4.cs" />
@@ -184,7 +186,9 @@
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
     <None Include="app.manifest" />
-    <None Include="LevelInfo.csv" />
+    <None Include="..\..\..\..\Desktop\LevelInfo.csv">
+      <Link>LevelInfo.csv</Link>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">

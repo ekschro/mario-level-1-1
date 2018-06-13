@@ -34,7 +34,7 @@ namespace Game1
             }
 
             
-            Mario.CurrentYPosition = Mario.CurrentXPosition + 1;
+            Mario.CurrentXPosition = Mario.CurrentXPosition + 1;
         }
     }
 }
