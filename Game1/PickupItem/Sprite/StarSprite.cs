@@ -32,7 +32,7 @@ namespace Game1
 
         public void Draw()
         {
-            int width = myGame.pickupTexture.Width / 14;
+            int width = myGame.pickupTexture.Width / 15;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, myGame.pickupTexture.Height);
             Rectangle destinationRectangle = new Rectangle((int)starObject.GetCurrentLocation().X, (int)starObject.GetCurrentLocation().Y, width, myGame.pickupTexture.Height);
