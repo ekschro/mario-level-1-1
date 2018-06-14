@@ -10,6 +10,6 @@ namespace Game1
     public interface IPickup : IGameObject
     {
         Vector2 GetCurrentLocation();
-
+        void Picked();
     }
 }

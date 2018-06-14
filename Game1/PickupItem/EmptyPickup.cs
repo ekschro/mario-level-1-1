@@ -7,25 +7,25 @@ using Microsoft.Xna.Framework;
 
 namespace Game1
 {
-    public class RedMushroom : IPickup
+    public class EmptyPickup : IPickup
     {
-        private static IPickupSprite redMushroomSprite;
+        private static IPickupSprite emptySprite;
 
-        public static IPickupSprite RedMushroomSprite { get => redMushroomSprite; set => redMushroomSprite = value; }
+        public static IPickupSprite EmptySprite { get => emptySprite; set => emptySprite = value; }
 
         private Game1 myGame;
         public Vector2 pickupLocation;
 
-        public RedMushroom(Game1 game, Vector2 location)
+        public EmptyPickup(Game1 game, Vector2 location)
         {
-            RedMushroomSprite = new RedMushroomSprite(game, this);
+            EmptySprite = new EmptyPickupSprite(game, this);
             myGame = game;
             pickupLocation = location;
         }
 
         public void Draw()
         {
-            RedMushroomSprite.Draw();  
+            EmptySprite.Draw();
         }
 
         public Vector2 GetCurrentLocation()
@@ -35,11 +35,8 @@ namespace Game1
 
         public void Update()
         {
-            RedMushroomSprite.Update();
         }
         public void Picked()
-        {
-            RedMushroomSprite = new EmptyPickupSprite(myGame, new EmptyPickup(myGame, pickupLocation));
-        }
+        { }
     }
 }

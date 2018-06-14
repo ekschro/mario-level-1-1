@@ -45,5 +45,9 @@ namespace Game1
                 CoinSprite.Update();
             }
         }
+        public void Picked()
+        {
+            CoinSprite = new EmptyPickupSprite(myGame, new EmptyPickup(myGame,pickupLocation));
+        }
     }
 }

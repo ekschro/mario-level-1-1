@@ -37,5 +37,9 @@ namespace Game1
         {
             GreenMushroomSprite.Update();
         }
+        public void Picked()
+        {
+            GreenMushroomSprite = new EmptyPickupSprite(myGame, new EmptyPickup(myGame, pickupLocation));
+        }
     }
 }
