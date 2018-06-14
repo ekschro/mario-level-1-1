@@ -12,21 +12,15 @@ namespace Game1
         private RedMushroom redMushroomObject;
         private Game1 myGame;
         private int currentFrame;
-        private int startFrame;
-        private int endFrame;
 
         public RedMushroomSprite(Game1 game, RedMushroom redMushroom)
         {
             redMushroomObject = redMushroom;
             myGame = game;
-            startFrame = 0;
-            endFrame = 1;
-            currentFrame = startFrame;
+            currentFrame = 0;
         }
         public void Update()
-        {
-
-        }
+        {}
 
         public void Draw()
         {
@@ -42,8 +36,7 @@ namespace Game1
 
         public void picked()
         {
-            startFrame = 14;
-            endFrame = 15;
+            currentFrame = 14;
         }
     }
 }

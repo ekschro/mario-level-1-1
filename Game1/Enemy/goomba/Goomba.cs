@@ -9,8 +9,8 @@ namespace Game1
 {
     public class Goomba : IEnemy
     {
-        public static GoombaSprite goombaSprite;
-        public static GoombaSprite GoombaSprite { get => goombaSprite; set => goombaSprite = value; }
+        private static IEnemySprite goombaSprite;
+        public static IEnemySprite GoombaSprite { get => goombaSprite; set => goombaSprite = value; }
         private GoombaStateMachine stateMachine;
         private Game1 myGame;
         private bool direction = true;

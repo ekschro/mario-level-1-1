@@ -48,7 +48,7 @@ namespace Game1
         {
             if (goingLeft == true)
             {
-                if (koopaObject.GetCurrentLocation().X == 420)
+                if (koopaObject.GetCurrentLocation().X == 480)
                 {
                     goingLeft = false;
                     currentFrame = leftStartFrame;
@@ -59,7 +59,7 @@ namespace Game1
             }
             else if (goingLeft == false)
             {
-                if (koopaObject.GetCurrentLocation().X == 380)
+                if (koopaObject.GetCurrentLocation().X == 420)
                     goingLeft = true;
                 currentFrame++;
                 if (currentFrame == leftEndFrame)

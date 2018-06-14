@@ -9,8 +9,8 @@ namespace Game1
 {
     public class Koopa : IEnemy
     {
-        public static KoopaSprite koopaSprite;
-        public static KoopaSprite KoopaSprite { get => koopaSprite; set => koopaSprite = value; }
+        private static IEnemySprite koopaSprite;
+        public static IEnemySprite KoopaSprite { get => koopaSprite; set => koopaSprite = value; }
         private KoopaStateMachine stateMachine;
 
         private Game1 myGame;
@@ -18,6 +18,7 @@ namespace Game1
         private int cyclePosition = 0;
         private int cycleLength = 8;
         public Vector2 koopaLocation;
+        private Vector2 koopaOriginalLocation;
 
 
 
@@ -27,6 +28,7 @@ namespace Game1
             KoopaSprite = new KoopaSprite(game,this);
             myGame = game;
             koopaLocation = location;
+            koopaOriginalLocation = location;
         }
 
         public void BeFlipped()
@@ -64,7 +66,7 @@ namespace Game1
                 cyclePosition = 0;
                 KoopaSprite.Update();
                 stateMachine.Update();
-                if (koopaLocation.X == 420 || koopaLocation.X == 380)
+                if (koopaLocation.X == (koopaOriginalLocation.X -20) || koopaLocation.X == koopaOriginalLocation.X + 20)
                     direction = !direction;
                 if (direction == true)
                     koopaLocation.X += 1;

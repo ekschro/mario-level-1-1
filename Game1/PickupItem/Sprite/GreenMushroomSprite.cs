@@ -12,23 +12,16 @@ namespace Game1
         private GreenMushroom greenMushroomOject;
         private Game1 myGame;
         private int currentFrame;
-        private int startFrame;
-        private int endFrame;
 
         public GreenMushroomSprite(Game1 game, GreenMushroom greenMushroom)
         {
             greenMushroomOject = greenMushroom;
             myGame = game;
-            startFrame = 1;
-            endFrame = 2;
-            currentFrame = startFrame;
+            currentFrame = 1;
         }
 
         public void Update()
         {
-            currentFrame++;
-            if (currentFrame == endFrame)
-                currentFrame = startFrame;
         }
 
         public void Draw()
@@ -44,8 +37,7 @@ namespace Game1
         }
         public void picked()
         {
-            startFrame = 14;
-            endFrame = 15;
+            currentFrame = 14;
         }
     }
 }
