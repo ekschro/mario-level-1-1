@@ -38,5 +38,13 @@ namespace Game1
         {
             TopRightPipeBlockSprite.Update();
         }
+
+        public void ToEmpty()
+        {
+        }
+
+        public void ToUsed()
+        {
+        }
     }
 }

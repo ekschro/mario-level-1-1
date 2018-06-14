@@ -38,5 +38,13 @@ namespace Game1
         {
             EmptyBlockSprite.Update();
         }
+
+        public void ToEmpty()
+        {
+        }
+
+        public void ToUsed()
+        {
+        }
     }
 }

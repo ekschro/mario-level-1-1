@@ -7,17 +7,17 @@ using Microsoft.Xna.Framework;
 
 namespace Game1
 {
-    public class CoinSprite : IPickupSprite
+    public class EmptyPickupSprite : IPickupSprite
     {
-        private Coin coinObject;
+        private EmptyPickup emptyObject;
         private Game1 myGame;
         private int currentFrame;
         private int startFrame;
         private int endFrame;
 
-        public CoinSprite(Game1 game, Coin coin)
+        public EmptyPickupSprite(Game1 game, EmptyPickup empty)
         {
-            coinObject = coin;
+            emptyObject = empty;
             myGame = game;
             startFrame = 10;
             endFrame = 14;
@@ -41,10 +41,10 @@ namespace Game1
             int width = TextureWareHouse.pickupTexture.Width / 15;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, TextureWareHouse.pickupTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)coinObject.GetCurrentLocation().X, (int)coinObject.GetCurrentLocation().Y, width, TextureWareHouse.pickupTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)emptyObject.GetCurrentLocation().X, (int)emptyObject.GetCurrentLocation().Y, width, TextureWareHouse.pickupTexture.Height);
 
             myGame.spriteBatch.Begin();
-            myGame.spriteBatch.Draw(TextureWareHouse.pickupTexture, destinationRectangle, sourceRectangle, Color.White);
+            myGame.spriteBatch.Draw(TextureWareHouse.pickupTexture, destinationRectangle, sourceRectangle, Color.Transparent);
             myGame.spriteBatch.End();
         }
         public void Picked()

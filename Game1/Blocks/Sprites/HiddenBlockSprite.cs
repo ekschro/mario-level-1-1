@@ -42,13 +42,5 @@ namespace Game1
             myGame.spriteBatch.End();
         }
 
-        public void ToEmpty()
-        {
-
-        }
-        public void ToUsed()
-        {
-             //= new UsedBlockSprite(myGame, new Block(myGame, blockObject.BlockLocation()));
-        }
     }
 }

@@ -122,10 +122,12 @@
     <Compile Include="MarioSprites\MarioSmallWalkRightPart2.cs" />
     <Compile Include="MouseController.cs" />
     <Compile Include="PickupItem\Coin.cs" />
+    <Compile Include="PickupItem\EmptyPickup.cs" />
     <Compile Include="PickupItem\Fireflower.cs" />
     <Compile Include="PickupItem\GreenMushroom.cs" />
     <Compile Include="PickupItem\RedMushroom.cs" />
     <Compile Include="PickupItem\Sprite\CoinSprite.cs" />
+    <Compile Include="PickupItem\Sprite\EmptyPickupSprite.cs" />
     <Compile Include="PickupItem\Sprite\FireflowerSprite.cs" />
     <Compile Include="PickupItem\Sprite\GreenMushroomSprite.cs" />
     <Compile Include="PickupItem\Sprite\RedMushroonSprite.cs" />

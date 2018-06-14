@@ -17,6 +17,7 @@ namespace Game1
         private int cyclePosition = 0;
         private int cycleLength = 8;
         public Vector2 goombaLocation;
+        private Vector2 goombaOriginalLocation;
 
         public Goomba(Game1 game, Vector2 location)
         {
@@ -24,6 +25,7 @@ namespace Game1
             GoombaSprite = new GoombaSprite(game,this);
             myGame = game;
             goombaLocation = location;
+            goombaOriginalLocation = location;
         }
 
         public void BeFlipped()
@@ -61,7 +63,7 @@ namespace Game1
                 cyclePosition = 0;
                 GoombaSprite.Update();
                 stateMachine.Update();
-                if (goombaLocation.X == 480 || goombaLocation.X == 430)
+                if (goombaLocation.X == (goombaOriginalLocation.X-20) || goombaLocation.X == (goombaOriginalLocation.X + 20))
                     direction = !direction;
                 if (direction == true)
                     goombaLocation.X += 1;

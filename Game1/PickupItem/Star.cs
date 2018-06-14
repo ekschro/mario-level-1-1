@@ -45,5 +45,9 @@ namespace Game1
                 cyclePosition = 0;
             }
         }
+        public void Picked()
+        {
+            StarSprite = new EmptyPickupSprite(myGame, new EmptyPickup(myGame, pickupLocation));
+        }
     }
 }

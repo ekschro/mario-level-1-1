@@ -46,5 +46,15 @@ namespace Game1
             }
             
         }
+
+        public void ToEmpty()
+        {
+            //throw new NotImplementedException();
+        }
+
+        public void ToUsed()
+        {
+            QuestionBlockSprite = new UsedBlockSprite(myGame, new UsedBlock(myGame, blockLocation));
+        }
     }
 }
