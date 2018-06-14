@@ -38,5 +38,14 @@ namespace Game1
         {
             HiddenBlockSprite.Update();
         }
+        public void ToUsed()
+        {
+            HiddenBlockSprite = new UsedBlockSprite(myGame, new UsedBlock(myGame,blockLocation));
+        }
+
+        public void ToEmpty()
+        {
+            //throw new NotImplementedException();
+        }
     }
 }

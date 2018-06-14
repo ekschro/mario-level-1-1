@@ -16,11 +16,9 @@ namespace Game1
         private QuestionBlock questionBlockObject;
         private Game1 myGame;
         private int currentFrame;
-        private int cyclePosition = 0;
-        private int cycleLength = 32;
         private int startFrame;
         private int endFrame;
-        //private Vector2 blockLocation;
+        private int numberOfFrame = 13;
 
         public QuestionBlockSprite(Game1 game, QuestionBlock questionBlock)
         {
@@ -29,22 +27,18 @@ namespace Game1
             startFrame = 4;
             endFrame = 7;
             currentFrame = startFrame;
-            //blockLocation = location;
         }
 
         public void Update()
         {
-            
-                cyclePosition = 0;
-                currentFrame++;
-                if (currentFrame == endFrame)
-                    currentFrame = startFrame;
-            
+            currentFrame++;
+            if (currentFrame == endFrame)
+                currentFrame = startFrame;
         }
 
         public void Draw()
         {
-            int width = TextureWareHouse.blockTexture.Width / 13;
+            int width = TextureWareHouse.blockTexture.Width / numberOfFrame;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, TextureWareHouse.blockTexture.Height);
             Rectangle destinationRectangle = new Rectangle((int)questionBlockObject.GetBlockCurrentLocation().X, (int)questionBlockObject.GetBlockCurrentLocation().Y, width, TextureWareHouse.blockTexture.Height);
@@ -52,16 +46,6 @@ namespace Game1
             myGame.spriteBatch.Begin();
             myGame.spriteBatch.Draw(TextureWareHouse.blockTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.spriteBatch.End();
-        }
-        public void ToUsed()
-        {
-            startFrame = 3;
-            endFrame = 4;
-            //myGame.blockQuestionSprite = new UsedBlockSprite(myGame, blockLocation);
-        }
-        public void ToEmpty()
-        {
-
         }
     }
 }

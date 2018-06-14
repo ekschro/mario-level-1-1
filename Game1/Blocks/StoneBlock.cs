@@ -38,5 +38,13 @@ namespace Game1
         {
             StoneBlockSprite.Update();
         }
+
+        public void ToEmpty()
+        {
+        }
+
+        public void ToUsed()
+        {
+        }
     }
 }

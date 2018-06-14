@@ -37,6 +37,15 @@ namespace Game1
         public void Update()
         {
             BrickBlockSprite.Update();
+            
+        }
+        public void ToEmpty()
+        {
+            BrickBlockSprite = new EmptyBlockSprite(myGame, new EmptyBlock(myGame, blockLocation));
+        }
+
+        public void ToUsed()
+        {
         }
     }
 }

@@ -41,13 +41,6 @@ namespace Game1
             myGame.spriteBatch.Draw(TextureWareHouse.blockTexture, destinationRectangle, sourceRectangle, Color.Transparent);
             myGame.spriteBatch.End();
         }
-        public void ToEmpty()
-        {
-
-        }
-        public void ToUsed()
-        {
-        }
     }
 
 }

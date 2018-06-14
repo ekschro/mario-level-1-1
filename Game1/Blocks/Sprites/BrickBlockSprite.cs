@@ -44,6 +44,7 @@ namespace Game1
         public void ToEmpty()
         {
             currentFrame = 12;
+
         }
         public void ToUsed()
         {

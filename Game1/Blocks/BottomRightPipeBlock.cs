@@ -38,5 +38,15 @@ namespace Game1
         {
             BottomRightPipeBlockSprite.Update();
         }
+
+        public void ToEmpty()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ToUsed()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
