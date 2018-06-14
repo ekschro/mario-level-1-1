@@ -40,6 +40,7 @@ namespace Game1
             controllerMappings.Add(Keys.I, new FireMarioCommand(myGame));
             controllerMappings.Add(Keys.O, new DeadMarioCommand(myGame));
             controllerMappings.Add(Keys.R, new ResetCommand(myGame));
+            controllerMappings.Add(Keys.M, new MouseToggleCommand(myGame));
             
     }
 

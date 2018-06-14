@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Game1
 {
@@ -63,7 +64,7 @@ namespace Game1
         
         protected override void Update(GameTime gameTime)
         {
-            foreach (IController controller in controllerList)
+            foreach (IController controller in controllerList.ToArray())
                 controller.Update();
 
             PlatformerLevel.Update();

@@ -86,6 +86,7 @@
     <Compile Include="Enemy\koopa\Koopa.cs" />
     <Compile Include="Enemy\koopa\KoopaSprite.cs" />
     <Compile Include="Enemy\koopa\KoopaStateMachine.cs" />
+    <Compile Include="GeneralCommands\MouseToggleCommand.cs" />
     <Compile Include="GeneralInterfaces\IBlock.cs" />
     <Compile Include="GeneralInterfaces\IEnemy.cs" />
     <Compile Include="GeneralInterfaces\IEnemySprite.cs" />
