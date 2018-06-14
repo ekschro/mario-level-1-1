@@ -12,7 +12,7 @@ namespace Game1
     {
         GraphicsDeviceManager graphics;
         public SpriteBatch spriteBatch;
-
+        public IController mouseController;
         public IList<IController> controllerList;
         public ILevel PlatformerLevel;
         //public int totalBlockFrames = 12;
@@ -24,7 +24,7 @@ namespace Game1
         public Texture2D goombaTexture;
         public Texture2D blockTexture;
         */
-        
+       
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -37,6 +37,7 @@ namespace Game1
             
             controllerList.Add(new KeyboardController(this));
             controllerList.Add(new GamePadController(this));
+            mouseController = new MouseController(this);
 
             base.Initialize();
         }

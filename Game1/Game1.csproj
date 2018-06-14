@@ -119,6 +119,7 @@
     <Compile Include="MarioSprites\MarioSmallWalkRightPart4.cs" />
     <Compile Include="MarioSprites\MarioSmallWalkRightPart3.cs" />
     <Compile Include="MarioSprites\MarioSmallWalkRightPart2.cs" />
+    <Compile Include="MouseController.cs" />
     <Compile Include="PickupItem\Coin.cs" />
     <Compile Include="PickupItem\Fireflower.cs" />
     <Compile Include="PickupItem\GreenMushroom.cs" />
