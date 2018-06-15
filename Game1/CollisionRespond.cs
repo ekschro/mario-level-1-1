@@ -57,10 +57,30 @@ namespace Game1
         public void PickupCollisionRespondTop(IPlayer player, IPickup pickup)
         {
             pickup.Picked();
-            
+
             if (pickup is Fireflower)
             {
                 Mario.marioSprite.FireMarioCommandCalled();
+            }
+            else if (pickup is GreenMushroom)
+            {
+                Mario.marioSprite.BigMarioCommandCalled();
+            }
+            else if (pickup is RedMushroom)
+            {
+                Mario.marioSprite.BigMarioCommandCalled();
+            }
+            else if (pickup is Coin)
+            {
+
+            }
+            else if (pickup is EmptyPickup)
+            {
+
+            }
+            else if (pickup is Star)
+            {
+
             }
         }
 
@@ -72,6 +92,26 @@ namespace Game1
             {
                 Mario.marioSprite.FireMarioCommandCalled();
             }
+            else if (pickup is GreenMushroom)
+            {
+                Mario.marioSprite.BigMarioCommandCalled();
+            }
+            else if (pickup is RedMushroom)
+            {
+                Mario.marioSprite.BigMarioCommandCalled();
+            }
+            else if (pickup is Coin)
+            {
+
+            }
+            else if (pickup is EmptyPickup)
+            {
+
+            }
+            else if (pickup is Star)
+            {
+
+            }
         }
 
         public void PickupCollisionRespondLeft(IPlayer player, IPickup pickup)
@@ -82,6 +122,26 @@ namespace Game1
             {
                 Mario.marioSprite.FireMarioCommandCalled();
             }
+            else if (pickup is GreenMushroom)
+            {
+                Mario.marioSprite.BigMarioCommandCalled();
+            }
+            else if (pickup is RedMushroom)
+            {
+                Mario.marioSprite.BigMarioCommandCalled();
+            }
+            else if (pickup is Coin)
+            {
+
+            }
+            else if (pickup is EmptyPickup)
+            {
+
+            }
+            else if (pickup is Star)
+            {
+
+            }
         }
 
         public void PickupCollisionRespondRight(IPlayer player, IPickup pickup)
@@ -91,6 +151,26 @@ namespace Game1
             if (pickup is Fireflower)
             {
                 Mario.marioSprite.FireMarioCommandCalled();
+            }
+            else if (pickup is GreenMushroom)
+            {
+                Mario.marioSprite.BigMarioCommandCalled();
+            }
+            else if (pickup is RedMushroom)
+            {
+                Mario.marioSprite.BigMarioCommandCalled();
+            }
+            else if (pickup is Coin)
+            {
+                
+            }
+            else if (pickup is EmptyPickup)
+            {
+                
+            }
+            else if (pickup is Star)
+            {
+                
             }
         }
 
