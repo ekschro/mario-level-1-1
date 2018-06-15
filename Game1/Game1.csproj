@@ -105,7 +105,6 @@
     <Compile Include="ILevel.cs" />
     <Compile Include="ILoader.cs" />
     <Compile Include="Level1.cs" />
-    <Compile Include="MarioBlockCollisionHandler.cs" />
     <Compile Include="MarioSprites\MarioBigWalkLeftPart3.cs" />
     <Compile Include="MarioSprites\MarioBigWalkLeftPart4.cs" />
     <Compile Include="MarioSprites\MarioBigWalkLeftPart2.cs" />

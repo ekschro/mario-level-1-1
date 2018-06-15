@@ -9,5 +9,6 @@ namespace Game1
     public interface ICollision
     {
         void Update();
+        List<IBlock> BlockObjects { get; set; }
     }
 }
