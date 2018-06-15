@@ -43,6 +43,11 @@ namespace Game1
         {
             return new Vector2(currentXPosition, currentYPosition);
         }
+
+        public bool IsStar()
+        {
+            return false;
+        }
         
 
         
