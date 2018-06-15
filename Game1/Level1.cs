@@ -42,36 +42,40 @@ namespace Game1
         public IGameObject GetPlayerObject()
         {
             IGameObject playerObject = null;
-            foreach(IPlayer player in levelObjects)
+            foreach(IGameObject player in levelObjects)
             {
-                playerObject = player;
+                if(player is IPlayer)
+                    playerObject = player;
             }
             return playerObject;
         }
         public List<IGameObject> GetBlockObjects()
         {
             List<IGameObject> blockObjects = new List<IGameObject>();
-            foreach (IBlock block in levelObjects)
+            foreach (IGameObject block in levelObjects)
             {
-                blockObjects.Add(block);
+                if(block is IBlock)
+                    blockObjects.Add(block);
             }
             return blockObjects;
         }
         public List<IGameObject> GetEnemyObjects()
         {
             List<IGameObject> enemyObjects = new List<IGameObject>();
-            foreach (IEnemy enemy in levelObjects)
+            foreach (IGameObject enemy in levelObjects)
             {
-                enemyObjects.Add(enemy);
+                if(enemy is IEnemy)
+                    enemyObjects.Add(enemy);
             }
             return enemyObjects;
         }
         public List<IGameObject> GetPickupObjects()
         {
             List<IGameObject> pickupObjects = new List<IGameObject>();
-            foreach (IPickup pickup in levelObjects)
+            foreach (IGameObject pickup in levelObjects)
             {
-                pickupObjects.Add(pickup);
+                if(pickup is IPickup)
+                    pickupObjects.Add(pickup);
             }
             return pickupObjects;
         }
