@@ -9,18 +9,19 @@ namespace Game1 {
         public static Texture2D koopaTexture;
         public static Texture2D goombaTexture;
         public static Texture2D blockTexture;
+        public static Texture2D backgroundTexture;
+
         Game1 myGame;
         public TextureWareHouse(Game1 game)
         {
             myGame = game;
-           
 
             pickupTexture = myGame.Content.Load<Texture2D>("pickup");
             marioTexture = myGame.Content.Load<Texture2D>("mario");
             koopaTexture = myGame.Content.Load<Texture2D>("koopa1");
             goombaTexture = myGame.Content.Load<Texture2D>("goomba1");
-
             blockTexture = myGame.Content.Load<Texture2D>("tiles");
+            backgroundTexture = myGame.Content.Load<Texture2D>("background");
 
         }
     }
