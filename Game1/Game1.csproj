@@ -79,6 +79,7 @@
     <Compile Include="Blocks\StairBlock.cs" />
     <Compile Include="Blocks\StoneBlock.cs" />
     <Compile Include="Blocks\UsedBlock.cs" />
+    <Compile Include="CollisionRespond.cs" />
     <Compile Include="CollisionDetect.cs" />
     <Compile Include="Controllers\GamePadController.cs" />
     <Compile Include="Enemy\goomba\Goomba.cs" />
