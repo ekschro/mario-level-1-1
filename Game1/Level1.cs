@@ -39,43 +39,43 @@ namespace Game1
             }
         }
 
-        public IGameObject GetPlayerObject()
+        public IPlayer GetPlayerObject()
         {
-            IGameObject playerObject = null;
+            IPlayer playerObject = null;
             foreach(IGameObject player in levelObjects)
             {
                 if(player is IPlayer)
-                    playerObject = player;
+                    playerObject = (IPlayer)player;
             }
             return playerObject;
         }
-        public List<IGameObject> GetBlockObjects()
+        public List<IBlock> GetBlockObjects()
         {
-            List<IGameObject> blockObjects = new List<IGameObject>();
+            List<IBlock> blockObjects = new List<IBlock>();
             foreach (IGameObject block in levelObjects)
             {
                 if(block is IBlock)
-                    blockObjects.Add(block);
+                    blockObjects.Add((IBlock)block);
             }
             return blockObjects;
         }
-        public List<IGameObject> GetEnemyObjects()
+        public List<IEnemy> GetEnemyObjects()
         {
-            List<IGameObject> enemyObjects = new List<IGameObject>();
+            List<IEnemy> enemyObjects = new List<IEnemy>();
             foreach (IGameObject enemy in levelObjects)
             {
                 if(enemy is IEnemy)
-                    enemyObjects.Add(enemy);
+                    enemyObjects.Add((IEnemy)enemy);
             }
             return enemyObjects;
         }
-        public List<IGameObject> GetPickupObjects()
+        public List<IPickup> GetPickupObjects()
         {
-            List<IGameObject> pickupObjects = new List<IGameObject>();
+            List<IPickup> pickupObjects = new List<IPickup>();
             foreach (IGameObject pickup in levelObjects)
             {
                 if(pickup is IPickup)
-                    pickupObjects.Add(pickup);
+                    pickupObjects.Add((IPickup)pickup);
             }
             return pickupObjects;
         }
