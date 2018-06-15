@@ -46,6 +46,7 @@ namespace Game1
         public void ChangeDirection()
         {
             stateMachine.ChangeDirection();
+            direction = !direction;
         }
 
         public void Draw()
@@ -70,8 +71,8 @@ namespace Game1
                 cyclePosition = 0;
                 KoopaSprite.Update();
                 stateMachine.Update();
-                if (koopaLocation.X == (koopaOriginalLocation.X -20) || koopaLocation.X == koopaOriginalLocation.X + 20)
-                    direction = !direction;
+                if (koopaLocation.X == (koopaOriginalLocation.X - 20) || koopaLocation.X == koopaOriginalLocation.X + 20)
+                    ChangeDirection();
                 if (direction == true)
                     koopaLocation.X += 1;
                 else if (direction == false)
