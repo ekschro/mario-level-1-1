@@ -6,5 +6,4 @@ public interface IPlayer : IGameObject
     void SetCurrentXPositon(int x);
     int GetCurrentYPosition();
     void SetCurrentYPosition(int y);
-    
 }

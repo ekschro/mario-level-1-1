@@ -46,7 +46,7 @@ namespace Game1
 
         public void EnemyCollisionRespondLeft(IPlayer player, IEnemy enemy)
         {
-
+            
         }
 
         public void EnemyCollisionRespondRight(IPlayer player, IEnemy enemy)
@@ -57,21 +57,41 @@ namespace Game1
         public void PickupCollisionRespondTop(IPlayer player, IPickup pickup)
         {
             pickup.Picked();
+            
+            if (pickup is Fireflower)
+            {
+                Mario.marioSprite.FireMarioCommandCalled();
+            }
         }
 
         public void PickupCollisionRespondBottom(IPlayer player, IPickup pickup)
         {
             pickup.Picked();
+
+            if (pickup is Fireflower)
+            {
+                Mario.marioSprite.FireMarioCommandCalled();
+            }
         }
 
         public void PickupCollisionRespondLeft(IPlayer player, IPickup pickup)
         {
             pickup.Picked();
+
+            if (pickup is Fireflower)
+            {
+                Mario.marioSprite.FireMarioCommandCalled();
+            }
         }
 
         public void PickupCollisionRespondRight(IPlayer player, IPickup pickup)
         {
             pickup.Picked();
+
+            if (pickup is Fireflower)
+            {
+                Mario.marioSprite.FireMarioCommandCalled();
+            }
         }
 
         public void Update()
