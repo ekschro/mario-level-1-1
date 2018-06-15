@@ -10,10 +10,10 @@ namespace Game1
     public class CollisionDetect : ICollision
     {
         private ILevel level1;
-        private IGameObject player;
-        private List<IGameObject> blocks;
-        private List<IGameObject> enemies;
-        private List<IGameObject> pickups;
+        private IPlayer player;
+        private List<IBlock> blocks;
+        private List<IEnemy> enemies;
+        private List<IPickup> pickups;
         private CollisionRespond collision;
 
         public CollisionDetect(ILevel Level1)
@@ -126,7 +126,7 @@ namespace Game1
 
                     if (intersect.Height > intersect.Width && playerX < pickupX)
                     {
-                        collision.PickupCollisionRespondLeft(player,pickup);
+                        collision.PickupCollisionRespondLeft(player, pickup);
                     }
                     else if (intersect.Height > intersect.Width && playerX > pickupX)
                     {

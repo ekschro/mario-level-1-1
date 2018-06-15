@@ -14,64 +14,64 @@ namespace Game1
 
         }
 
-        public void BlockCollisionRespondTop(IGameObject player, IGameObject block)
+        public void BlockCollisionRespondTop(IPlayer player, IBlock block)
         {
             
         }
 
-        public void BlockCollisionRespondBottom(IGameObject player, IGameObject block)
+        public void BlockCollisionRespondBottom(IPlayer player, IBlock block)
         {
 
         }
 
-        public void BlockCollisionRespondRight(IGameObject player, IGameObject block)
+        public void BlockCollisionRespondRight(IPlayer player, IBlock block)
         {
 
         }
 
-        public void BlockCollisionRespondLeft(IGameObject player, IGameObject block)
+        public void BlockCollisionRespondLeft(IPlayer player, IBlock block)
         {
 
         }
 
-        public void EnemyCollisionRespondTop(IGameObject player, IGameObject enemy)
+        public void EnemyCollisionRespondTop(IPlayer player, IEnemy enemy)
         {
 
         }
 
-        public void EnemyCollisionRespondBottom(IGameObject player, IGameObject enemy)
+        public void EnemyCollisionRespondBottom(IPlayer player, IEnemy enemy)
         {
 
         }
 
-        public void EnemyCollisionRespondLeft(IGameObject player, IGameObject enemy)
+        public void EnemyCollisionRespondLeft(IPlayer player, IEnemy enemy)
         {
 
         }
 
-        public void EnemyCollisionRespondRight(IGameObject player, IGameObject enemy)
+        public void EnemyCollisionRespondRight(IPlayer player, IEnemy enemy)
         {
 
         }
 
-        public void PickupCollisionRespondTop(IGameObject player, IGameObject pickup)
+        public void PickupCollisionRespondTop(IPlayer player, IPickup pickup)
         {
-
+            pickup.Picked();
         }
 
-        public void PickupCollisionRespondBottom(IGameObject player, IGameObject pickup)
+        public void PickupCollisionRespondBottom(IPlayer player, IPickup pickup)
         {
-
+            pickup.Picked();
         }
 
-        public void PickupCollisionRespondLeft(IGameObject player, IGameObject pickup)
+        public void PickupCollisionRespondLeft(IPlayer player, IPickup pickup)
         {
-
+            pickup.Picked();
         }
 
-        public void PickupCollisionRespondRight(IGameObject player, IGameObject pickup)
+        public void PickupCollisionRespondRight(IPlayer player, IPickup pickup)
         {
-
+            pickup.Picked();
         }
 
         public void Update()
