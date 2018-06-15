@@ -81,7 +81,6 @@
     <Compile Include="Blocks\UsedBlock.cs" />
     <Compile Include="CollisionRespond.cs" />
     <Compile Include="CollisionDetect.cs" />
-    <Compile Include="CollisionRespond.cs" />
     <Compile Include="Controllers\GamePadController.cs" />
     <Compile Include="Enemy\goomba\Goomba.cs" />
     <Compile Include="Enemy\goomba\GoombaSprite.cs" />
