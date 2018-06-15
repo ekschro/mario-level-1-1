@@ -9,7 +9,6 @@ namespace Game1
 {
     public class CollisionDetect : ICollision
     {
-        private Game1 game;
         private ILevel level1;
         private IGameObject player;
         private List<IGameObject> blocks;
@@ -17,7 +16,7 @@ namespace Game1
         private List<IGameObject> pickups;
         private CollisionRespond collision;
 
-        public CollisionDetect(Game1 game,ILevel Level1)
+        public CollisionDetect(ILevel Level1)
         {
             level1 = Level1;
             player = level1.GetPlayerObject();
@@ -25,7 +24,6 @@ namespace Game1
             enemies = level1.GetEnemyObjects();
             pickups = level1.GetPickupObjects();
 
-            this.game = game;
             collision = new CollisionRespond();
         }
 
@@ -148,7 +146,9 @@ namespace Game1
 
         public void Update()
         {
-
+            BlockCollisionDetect();
+            EnemyCollisionDetect();
+            PickupBlockCollisionDetect();
         }
     }
 }
