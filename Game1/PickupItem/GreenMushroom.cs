@@ -28,7 +28,7 @@ namespace Game1
             GreenMushroomSprite.Draw();
         }
 
-        public Vector2 GetCurrentLocation()
+        public Vector2 GameObjectLocation()
         {
             return pickupLocation;
         }

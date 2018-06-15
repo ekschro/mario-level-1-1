@@ -41,7 +41,7 @@ namespace Game1
             int width = TextureWareHouse.pickupTexture.Width / 15;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, TextureWareHouse.pickupTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)emptyObject.GetCurrentLocation().X, (int)emptyObject.GetCurrentLocation().Y, width, TextureWareHouse.pickupTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)emptyObject.GameObjectLocation().X, (int)emptyObject.GameObjectLocation().Y, width, TextureWareHouse.pickupTexture.Height);
 
             myGame.spriteBatch.Begin();
             myGame.spriteBatch.Draw(TextureWareHouse.pickupTexture, destinationRectangle, sourceRectangle, Color.Transparent);

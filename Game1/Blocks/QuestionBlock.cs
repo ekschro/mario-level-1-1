@@ -31,7 +31,7 @@ namespace Game1
             QuestionBlockSprite.Draw();
         }
 
-        public Vector2 GetBlockCurrentLocation()
+        public Vector2 GameObjectLocation()
         {
             return blockLocation;
         }

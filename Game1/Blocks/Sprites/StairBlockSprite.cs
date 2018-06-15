@@ -36,7 +36,7 @@ namespace Game1
             int width = TextureWareHouse.blockTexture.Width / 13;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, TextureWareHouse.blockTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)stairBlockObject.GetBlockCurrentLocation().X, (int)stairBlockObject.GetBlockCurrentLocation().Y, width, TextureWareHouse.blockTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)stairBlockObject.GameObjectLocation().X, (int)stairBlockObject.GameObjectLocation().Y, width, TextureWareHouse.blockTexture.Height);
 
             myGame.spriteBatch.Begin();
             myGame.spriteBatch.Draw(TextureWareHouse.blockTexture, destinationRectangle, sourceRectangle, Color.White);
