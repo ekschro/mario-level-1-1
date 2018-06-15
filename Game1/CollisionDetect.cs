@@ -20,6 +20,11 @@ namespace Game1
         public CollisionDetect(Game1 game,ILevel Level1)
         {
             level1 = Level1;
+            player = level1.GetPlayerObject();
+            blocks = level1.GetBlockObjects();
+            enemies = level1.GetEnemyObjects();
+            pickups = level1.GetPickupObjects();
+
             this.game = game;
             collision = new CollisionRespond();
         }
@@ -37,10 +42,28 @@ namespace Game1
                 int blockY = (int)block.GameObjectLocation().Y;
 
                 Rectangle blockBox = new Rectangle(blockX, blockY, 16, 16);
+                Rectangle intersect;
 
                 if (playerBox.Intersects(blockBox))
                 {
-                    collision.BlockCollisonRespond();
+                    Rectangle.Intersect(ref playerBox, ref blockBox, out intersect);
+
+                    if (intersect.Height > intersect.Width && playerX < blockX)
+                    {
+                        collision.BlockCollisionRespondLeft(player,block);
+                    }
+                    else if (intersect.Height > intersect.Width && playerX > blockX)
+                    {
+                        collision.BlockCollisionRespondRight(player,block);
+                    }
+                    else if (intersect.Height < intersect.Width && playerY < blockY)
+                    {
+                        collision.BlockCollisionRespondTop(player,block);
+                    }
+                    else if (intersect.Height < intersect.Width && playerY > blockY)
+                    {
+                        collision.BlockCollisionRespondBottom(player,block);
+                    }
                 }
             }
         }
@@ -58,10 +81,28 @@ namespace Game1
                 int enemyY = (int)enemy.GameObjectLocation().Y;
 
                 Rectangle enemyBox = new Rectangle(enemyX, enemyY, 16, 16);
+                Rectangle intersect;
 
                 if (playerBox.Intersects(enemyBox))
                 {
-                    collision.EnemyCollisionRespond();
+                    Rectangle.Intersect(ref playerBox, ref enemyBox, out intersect);
+
+                    if (intersect.Height > intersect.Width && playerX < enemyX)
+                    {
+                        collision.BlockCollisionRespondLeft(player,enemy);
+                    }
+                    else if (intersect.Height > intersect.Width && playerX > enemyX)
+                    {
+                        collision.BlockCollisionRespondRight(player, enemy);
+                    }
+                    else if (intersect.Height < intersect.Width && playerY < enemyY)
+                    {
+                        collision.BlockCollisionRespondTop(player, enemy);
+                    }
+                    else if (intersect.Height < intersect.Width && playerY > enemyY)
+                    {
+                        collision.BlockCollisionRespondBottom(player, enemy);
+                    }
                 }
             }
         }
@@ -79,10 +120,28 @@ namespace Game1
                 int pickupY = (int)pickup.GameObjectLocation().Y;
 
                 Rectangle pickupBox = new Rectangle(pickupX, pickupY, 16, 16);
+                Rectangle intersect;
 
                 if (playerBox.Intersects(pickupBox))
                 {
-                    collision.PickupCollisionRespond();
+                    Rectangle.Intersect(ref playerBox, ref pickupBox, out intersect);
+
+                    if (intersect.Height > intersect.Width && playerX < pickupX)
+                    {
+                        collision.PickupCollisionRespondLeft(player,pickup);
+                    }
+                    else if (intersect.Height > intersect.Width && playerX > pickupX)
+                    {
+                        collision.PickupCollisionRespondRight(player, pickup);
+                    }
+                    else if (intersect.Height < intersect.Width && playerY < pickupY)
+                    {
+                        collision.PickupCollisionRespondTop(player, pickup);
+                    }
+                    else if (intersect.Height < intersect.Width && playerY > pickupY)
+                    {
+                        collision.PickupCollisionRespondBottom(player, pickup);
+                    }
                 }
             }
         }
