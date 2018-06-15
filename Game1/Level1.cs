@@ -9,6 +9,7 @@ namespace Game1
     public class Level1 : ILevel
     {
         private List<IGameObject> levelObjects;
+        private ICollision collisionDetect;
         
         public Level1(string fileName, Game1 game)
         {
@@ -16,6 +17,8 @@ namespace Game1
             ILoader loader = new LevelLoader(game);
 
             loader.Load(fileName, levelObjects);
+
+            collisionDetect = new CollisionDetect(this);
         }
 
         public void Update()
@@ -24,6 +27,8 @@ namespace Game1
             {
                 GameObject.Update();
             }
+
+            collisionDetect.Update();
         }
 
         public void Draw()
