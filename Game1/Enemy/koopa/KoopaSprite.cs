@@ -27,7 +27,7 @@ namespace Game1
             leftEndFrame = 2;
             currentFrame = startFrame;
         }
-
+        /*
         public void BeStomped()
         {
             startFrame = leftStartFrame = 4;
@@ -35,7 +35,7 @@ namespace Game1
             startFrame = leftStartFrame = 5;
             endFrame = leftEndFrame = 6;
         }
-
+        */
         public void ChangeFrame(int start, int end)
         {
             startFrame = start;

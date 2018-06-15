@@ -10,9 +10,9 @@ namespace Game1
     {
         void Update();
         void Draw();
-        IGameObject GetPlayerObject();
-        List<IGameObject> GetBlockObjects();
-        List<IGameObject> GetEnemyObjects();
-        List<IGameObject> GetPickupObjects();
+        IPlayer GetPlayerObject();
+        List<IBlock> GetBlockObjects();
+        List<IEnemy> GetEnemyObjects();
+        List<IPickup> GetPickupObjects();
     }
 }
