@@ -10,7 +10,8 @@ namespace Game1
     {
         private List<IGameObject> levelObjects;
         private ICollision collisionDetect;
-        
+
+
         public Level1(string fileName, Game1 game)
         {
             levelObjects = new List<IGameObject>();
@@ -78,6 +79,10 @@ namespace Game1
                     pickupObjects.Add((IPickup)pickup);
             }
             return pickupObjects;
+        }
+        public List<IGameObject> GetGameObjects()
+        {
+            return levelObjects;
         }
     }
 }

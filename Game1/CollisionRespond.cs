@@ -9,7 +9,7 @@ namespace Game1
 {
     class CollisionRespond
     {
-        private Game1 mygame;
+        private Game1 myGame;
 
         ICommand upCommand;
         ICommand downCommand;
@@ -18,12 +18,12 @@ namespace Game1
 
         public CollisionRespond(Game1 game)
         {
-            mygame = game;
+            myGame = game;
 
-            upCommand = new UpCommand(mygame);
-            downCommand = new DownCommand(mygame);
-            leftCommand = new LeftCommand(mygame);
-            rightCommand = new RightCommand(mygame);
+            upCommand = new UpCommand(myGame);
+            downCommand = new DownCommand(myGame);
+            leftCommand = new LeftCommand(myGame);
+            rightCommand = new RightCommand(myGame);
         }
 
         public void BlockCollisionRespondTop(IPlayer player, IBlock block)
@@ -31,9 +31,10 @@ namespace Game1
             upCommand.Execute();
         }
 
-        public void BlockCollisionRespondBottom(IPlayer player, IBlock block)
+        public void BlockCollisionRespondBottom(IPlayer player, IBlock block, ICollision collisionDetector)
         {
-            downCommand.Execute();
+            if(!(block is EmptyBlock))
+                downCommand.Execute();
 
             if (Mario.marioSprite.isSmall() && block is BrickBlock)
             {
@@ -42,6 +43,9 @@ namespace Game1
             {
                 block.BottomCollision();
             }
+
+            if (block is BrickBlock && !Mario.marioSprite.isSmall())
+                collisionDetector.BlockObjects.Remove(block);
 
         }
 
@@ -135,7 +139,7 @@ namespace Game1
             }
             else if (pickup is Star)
             {
-                player = new StarMario(player, mygame);
+                player = new StarMario(player, myGame);
             }
         }
 
@@ -165,7 +169,7 @@ namespace Game1
             }
             else if (pickup is Star)
             {
-                player = new StarMario(player, mygame);
+                player = new StarMario(player, myGame);
             }
         }
 
@@ -195,7 +199,7 @@ namespace Game1
             }
             else if (pickup is Star)
             {
-                player = new StarMario(player, mygame);
+                player = new StarMario(player, myGame);
             }
         }
 
@@ -225,7 +229,7 @@ namespace Game1
             }
             else if (pickup is Star)
             {
-                player = new StarMario(player, mygame);
+                player = new StarMario(player, myGame);
             }
         }
 

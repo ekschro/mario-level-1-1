@@ -11,11 +11,13 @@ namespace Game1
     {
         private ILevel level1;
         private IPlayer player;
-        private List<IBlock> blocks;
+        public List<IBlock> blocks;
+        private IBlock[] blockArray;
         private List<IEnemy> enemies;
         private List<IPickup> pickups;
         private CollisionRespond collision;
         private Game1 mygame;
+        List<IBlock> ICollision.BlockObjects { get => blocks; set => blocks = value; }
 
         public CollisionDetect(Game1 game, ILevel Level1)
         {
@@ -37,10 +39,12 @@ namespace Game1
 
             Rectangle playerBox = new Rectangle(playerX, playerY, 16, 16);
 
-            foreach (IBlock block in blocks)
+            blockArray = blocks.ToArray();
+
+            for (int i = 0; i < blockArray.Length; i++)
             {
-                int blockX = (int)block.GameObjectLocation().X;
-                int blockY = (int)block.GameObjectLocation().Y;
+                int blockX = (int)blockArray[i].GameObjectLocation().X;
+                int blockY = (int)blockArray[i].GameObjectLocation().Y;
 
                 Rectangle blockBox = new Rectangle(blockX, blockY, 16, 16);
                 Rectangle intersect;
@@ -51,19 +55,19 @@ namespace Game1
 
                     if (intersect.Height > intersect.Width && playerX < blockX)
                     {
-                        collision.BlockCollisionRespondLeft(player,block);
+                        collision.BlockCollisionRespondLeft(player, blockArray[i]);
                     }
                     else if (intersect.Height > intersect.Width && playerX > blockX)
                     {
-                        collision.BlockCollisionRespondRight(player,block);
+                        collision.BlockCollisionRespondRight(player, blockArray[i]);
                     }
                     else if (intersect.Height < intersect.Width && playerY < blockY)
                     {
-                        collision.BlockCollisionRespondTop(player,block);
+                        collision.BlockCollisionRespondTop(player, blockArray[i]);
                     }
                     else if (intersect.Height < intersect.Width && playerY > blockY)
                     {
-                        collision.BlockCollisionRespondBottom(player,block);
+                        collision.BlockCollisionRespondBottom(player, blockArray[i], this);
                     }
                 }
             }
