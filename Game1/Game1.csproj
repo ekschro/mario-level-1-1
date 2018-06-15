@@ -82,6 +82,8 @@
     <Compile Include="CollisionRespond.cs" />
     <Compile Include="CollisionDetect.cs" />
     <Compile Include="Controllers\GamePadController.cs" />
+    <Compile Include="Enemy\EmptyEnemy.cs" />
+    <Compile Include="Enemy\EmptyEnemySprite.cs" />
     <Compile Include="Enemy\goomba\Goomba.cs" />
     <Compile Include="Enemy\goomba\GoombaSprite.cs" />
     <Compile Include="Enemy\goomba\GoombaStateMachine.cs" />
