@@ -57,6 +57,10 @@ namespace Game1
         {
             return koopaLocation;
         }
+        public Vector2 GameOriginalLocation()
+        {
+            return koopaOriginalLocation;
+        }
 
         public void Update()
         {

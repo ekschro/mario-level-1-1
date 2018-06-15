@@ -9,7 +9,7 @@ namespace Game1
 {
     public interface IEnemy : IGameObject
     {
-        //Vector2 GameObjectLocation();
+        Vector2 GameOriginalLocation();
         void ChangeDirection();
         void BeStomped();
         void BeFlipped();

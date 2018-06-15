@@ -54,6 +54,10 @@ namespace Game1
         {
             return goombaLocation;
         }
+        public Vector2 GameOriginalLocation()
+        {
+            return goombaOriginalLocation;
+        }
 
         public void Update()
         {
