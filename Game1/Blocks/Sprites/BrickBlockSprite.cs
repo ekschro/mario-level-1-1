@@ -18,9 +18,9 @@ namespace Game1
         private int currentFrame;
         //private Vector2 blockLocation;
 
-        public BrickBlockSprite(Game1 game, BrickBlock brick)
+        public BrickBlockSprite(Game1 game, IBlock brick)
         {
-            brickBlockObject = brick;
+            brickBlockObject = (BrickBlock)brick;
             myGame = game;
             currentFrame = 2;
         }

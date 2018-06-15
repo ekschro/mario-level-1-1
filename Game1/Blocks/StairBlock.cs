@@ -39,14 +39,13 @@ namespace Game1
             StairBlockSprite.Update();
         }
 
-        public void ToEmpty()
+        public void TopCollision() { }
+
+        public void BottomCollision()
         {
-            throw new NotImplementedException();
         }
 
-        public void ToUsed()
-        {
-            throw new NotImplementedException();
-        }
+        public void LeftCollision() { }
+        public void RightCollision() { }
     }
 }

@@ -38,14 +38,14 @@ namespace Game1
         {
             HiddenBlockSprite.Update();
         }
-        public void ToUsed()
+        public void TopCollision() { }
+
+        public void BottomCollision()
         {
-            HiddenBlockSprite = new UsedBlockSprite(myGame, new UsedBlock(myGame,blockLocation));
+            hiddenBlockSprite = new UsedBlockSprite(myGame, new UsedBlock(myGame, blockLocation));
         }
 
-        public void ToEmpty()
-        {
-            //throw new NotImplementedException();
-        }
+        public void LeftCollision() { }
+        public void RightCollision() { }
     }
 }

@@ -18,9 +18,9 @@ namespace Game1
         private int currentFrame;
         //private Vector2 blockLocation;
 
-        public TopRightPipeBlockSprite(Game1 game, TopRightPipeBlock topRightPipe)
+        public TopRightPipeBlockSprite(Game1 game, IBlock topRightPipe)
         {
-            topRightPipeBlockObject = topRightPipe;
+            topRightPipeBlockObject = (TopRightPipeBlock)topRightPipe;
             myGame = game;
             currentFrame = 9;
         }

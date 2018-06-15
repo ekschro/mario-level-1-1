@@ -20,9 +20,9 @@ namespace Game1
         private int endFrame;
         private int numberOfFrame = 13;
 
-        public QuestionBlockSprite(Game1 game, QuestionBlock questionBlock)
+        public QuestionBlockSprite(Game1 game, IBlock questionBlock)
         {
-            questionBlockObject = questionBlock;
+            questionBlockObject = (QuestionBlock)questionBlock;
             myGame = game;
             startFrame = 4;
             endFrame = 7;

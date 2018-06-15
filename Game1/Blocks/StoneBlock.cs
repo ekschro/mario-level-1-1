@@ -39,12 +39,13 @@ namespace Game1
             StoneBlockSprite.Update();
         }
 
-        public void ToEmpty()
+        public void TopCollision() { }
+
+        public void BottomCollision()
         {
         }
 
-        public void ToUsed()
-        {
-        }
+        public void LeftCollision() { }
+        public void RightCollision() { }
     }
 }

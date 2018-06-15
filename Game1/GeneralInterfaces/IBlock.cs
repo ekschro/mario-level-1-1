@@ -10,7 +10,10 @@ namespace Game1
     public interface IBlock : IGameObject
     {
         //Vector2 GameObjectLocation();
-        void ToEmpty();
-        void ToUsed();
+        void TopCollision();
+        void BottomCollision();
+        void LeftCollision();
+        void RightCollision();
+
     }
 }

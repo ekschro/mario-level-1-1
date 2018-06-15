@@ -18,9 +18,9 @@ namespace Game1
         private int currentFrame;
         private IBlock blockObject;
 
-        public HiddenBlockSprite(Game1 game, HiddenBlock hiddenBlock)
+        public HiddenBlockSprite(Game1 game, IBlock hiddenBlock)
         {
-            hiddenBlockObject = hiddenBlock;
+            hiddenBlockObject = (HiddenBlock)hiddenBlock;
             myGame = game;
             currentFrame = 0;
         }

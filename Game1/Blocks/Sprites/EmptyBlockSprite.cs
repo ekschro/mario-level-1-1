@@ -18,9 +18,9 @@ namespace Game1
         private int currentFrame;
         //private Vector2 blockLocation;
 
-        public EmptyBlockSprite(Game1 game, EmptyBlock emptyBlock)
+        public EmptyBlockSprite(Game1 game, IBlock emptyBlock)
         {
-            emptyBlockObject = emptyBlock;
+            emptyBlockObject = (EmptyBlock)emptyBlock;
             myGame = game;
             currentFrame = 12;
             //blockLocation = location;
