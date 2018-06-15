@@ -34,7 +34,7 @@ namespace Game1
 
             Rectangle playerBox = new Rectangle(playerX, playerY, 16, 16);
 
-            foreach (IGameObject block in blocks)
+            foreach (IBlock block in blocks)
             {
                 int blockX = (int)block.GameObjectLocation().X;
                 int blockY = (int)block.GameObjectLocation().Y;
@@ -73,7 +73,7 @@ namespace Game1
 
             Rectangle playerBox = new Rectangle(playerX, playerY, 16, 16);
 
-            foreach (IGameObject enemy in enemies)
+            foreach (IEnemy enemy in enemies)
             {
                 int enemyX = (int)enemy.GameObjectLocation().X;
                 int enemyY = (int)enemy.GameObjectLocation().Y;
@@ -87,19 +87,19 @@ namespace Game1
 
                     if (intersect.Height > intersect.Width && playerX < enemyX)
                     {
-                        collision.BlockCollisionRespondLeft(player,enemy);
+                        collision.EnemyCollisionRespondLeft(player,enemy);
                     }
                     else if (intersect.Height > intersect.Width && playerX > enemyX)
                     {
-                        collision.BlockCollisionRespondRight(player, enemy);
+                        collision.EnemyCollisionRespondRight(player, enemy);
                     }
                     else if (intersect.Height < intersect.Width && playerY < enemyY)
                     {
-                        collision.BlockCollisionRespondTop(player, enemy);
+                        collision.EnemyCollisionRespondTop(player, enemy);
                     }
                     else if (intersect.Height < intersect.Width && playerY > enemyY)
                     {
-                        collision.BlockCollisionRespondBottom(player, enemy);
+                        collision.EnemyCollisionRespondBottom(player, enemy);
                     }
                 }
             }
@@ -112,7 +112,7 @@ namespace Game1
 
             Rectangle playerBox = new Rectangle(playerX, playerY, 16, 16);
 
-            foreach (IGameObject pickup in pickups)
+            foreach (IPickup pickup in pickups)
             {
                 int pickupX = (int)pickup.GameObjectLocation().X;
                 int pickupY = (int)pickup.GameObjectLocation().Y;
