@@ -8,6 +8,8 @@ namespace Game1
 {
     public class GoombaStateMachine : IEnemyStateMachine
     {
+
+        //private IEnemySprite goombaSprite;
         private bool facingLeft = true;
         private enum GoombaHealth { Normal, Stomped, Flipped };
         private GoombaHealth health = GoombaHealth.Normal;
@@ -20,6 +22,8 @@ namespace Game1
 
         public void BeStomped()
         {
+            //goombaSprite.ChangeFrame(2, 3);
+            //goombaSprite.ChangeFrame(3, 4);
             if (health != GoombaHealth.Stomped) 
             {
                 health = GoombaHealth.Stomped;

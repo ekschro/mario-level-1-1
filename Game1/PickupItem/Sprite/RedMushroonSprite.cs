@@ -34,9 +34,6 @@ namespace Game1
             myGame.spriteBatch.End();
         }
 
-        public void Picked()
-        {
-            currentFrame = 14;
-        }
+
     }
 }

@@ -47,10 +47,6 @@ namespace Game1
             myGame.spriteBatch.Draw(TextureWareHouse.pickupTexture, destinationRectangle, sourceRectangle, Color.Transparent);
             myGame.spriteBatch.End();
         }
-        public void Picked()
-        {
-            startFrame = 14;
-            endFrame = 15;
-        }
+
     }
 }
