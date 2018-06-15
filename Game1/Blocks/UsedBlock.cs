@@ -10,23 +10,23 @@ namespace Game1
     public class UsedBlock : IBlock
     {
 
-        private static IBlockSprite usedBlockSprite;
+        public IBlockSprite usedBlockSprite;
 
-        public static IBlockSprite UsedBlockSprite { get => usedBlockSprite; set => usedBlockSprite = value; }
+        //public static IBlockSprite UsedBlockSprite { get => usedBlockSprite; set => usedBlockSprite = value; }
 
         private Game1 myGame;
         public Vector2 blockLocation;
 
         public UsedBlock(Game1 game, Vector2 location)
         {
-            UsedBlockSprite = new UsedBlockSprite(game, this);
+            usedBlockSprite = new UsedBlockSprite(game, this);
             myGame = game;
             blockLocation = location;
         }
 
         public void Draw()
         {
-            UsedBlockSprite.Draw();
+            usedBlockSprite.Draw();
         }
 
         public Vector2 GameObjectLocation()
@@ -36,7 +36,7 @@ namespace Game1
 
         public void Update()
         {
-            UsedBlockSprite.Update();
+            usedBlockSprite.Update();
         }
 
         public void TopCollision() { }

@@ -10,23 +10,23 @@ namespace Game1
     public class HiddenBlock : IBlock
     {
 
-        private static IBlockSprite hiddenBlockSprite;
+        public IBlockSprite hiddenBlockSprite;
 
-        public static IBlockSprite HiddenBlockSprite { get => hiddenBlockSprite; set => hiddenBlockSprite = value; }
+        //public static IBlockSprite HiddenBlockSprite { get => hiddenBlockSprite; set => hiddenBlockSprite = value; }
 
         private Game1 myGame;
         public Vector2 blockLocation;
 
         public HiddenBlock(Game1 game, Vector2 location)
         {
-            HiddenBlockSprite = new HiddenBlockSprite(game, this);
+            hiddenBlockSprite = new HiddenBlockSprite(game, this);
             myGame = game;
             blockLocation = location;
         }
 
         public void Draw()
         {
-            HiddenBlockSprite.Draw();
+            hiddenBlockSprite.Draw();
         }
 
         public Vector2 GameObjectLocation()
@@ -36,7 +36,7 @@ namespace Game1
 
         public void Update()
         {
-            HiddenBlockSprite.Update();
+            hiddenBlockSprite.Update();
         }
         public void TopCollision() { }
 

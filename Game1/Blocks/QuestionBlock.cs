@@ -10,9 +10,9 @@ namespace Game1
     public class QuestionBlock : IBlock
     {
 
-        private static IBlockSprite questionBlockSprite;
+        public IBlockSprite questionBlockSprite;
 
-        public static IBlockSprite QuestionBlockSprite { get => questionBlockSprite; set => questionBlockSprite = value; }
+        //public static IBlockSprite QuestionBlockSprite { get => questionBlockSprite; set => questionBlockSprite = value; }
 
         private Game1 myGame;
         public Vector2 blockLocation;
@@ -21,14 +21,14 @@ namespace Game1
 
         public QuestionBlock(Game1 game, Vector2 location)
         {
-            QuestionBlockSprite = new QuestionBlockSprite(game, this);
+            questionBlockSprite = new QuestionBlockSprite(game, this);
             myGame = game;
             blockLocation = location;
         }
 
         public void Draw()
         {
-            QuestionBlockSprite.Draw();
+            questionBlockSprite.Draw();
         }
 
         public Vector2 GameObjectLocation()
@@ -41,7 +41,7 @@ namespace Game1
             cyclePosition++;
             if (cyclePosition == cycleLength)
             {
-                QuestionBlockSprite.Update();
+                questionBlockSprite.Update();
                 cyclePosition = 0;
             }
             

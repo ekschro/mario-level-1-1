@@ -10,23 +10,23 @@ namespace Game1
     public class TopRightPipeBlock : IBlock
     {
 
-        private static IBlockSprite topRightPipeBlockSprite;
+        public IBlockSprite topRightPipeBlockSprite;
 
-        public static IBlockSprite TopRightPipeBlockSprite { get => topRightPipeBlockSprite; set => topRightPipeBlockSprite = value; }
+        //public static IBlockSprite TopRightPipeBlockSprite { get => topRightPipeBlockSprite; set => topRightPipeBlockSprite = value; }
 
         private Game1 myGame;
         public Vector2 blockLocation;
 
         public TopRightPipeBlock(Game1 game, Vector2 location)
         {
-            TopRightPipeBlockSprite = new TopRightPipeBlockSprite(game, this);
+            topRightPipeBlockSprite = new TopRightPipeBlockSprite(game, this);
             myGame = game;
             blockLocation = location;
         }
 
         public void Draw()
         {
-            TopRightPipeBlockSprite.Draw();
+            topRightPipeBlockSprite.Draw();
         }
 
         public Vector2 GameObjectLocation()
@@ -36,7 +36,7 @@ namespace Game1
 
         public void Update()
         {
-            TopRightPipeBlockSprite.Update();
+            topRightPipeBlockSprite.Update();
         }
 
         public void TopCollision() { }

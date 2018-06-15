@@ -10,23 +10,23 @@ namespace Game1
     public class BrickBlock : IBlock
     {
 
-        private static IBlockSprite brickBlockSprite;
+        public IBlockSprite brickBlockSprite;
 
-        public static IBlockSprite BrickBlockSprite { get => brickBlockSprite; set => brickBlockSprite = value; }
+       // public static IBlockSprite BrickBlockSprite { get => brickBlockSprite; set => brickBlockSprite = value; }
 
         private Game1 myGame;
         public Vector2 blockLocation;
 
         public BrickBlock(Game1 game, Vector2 location)
         {
-            BrickBlockSprite = new BrickBlockSprite(game, this);
+            brickBlockSprite = new BrickBlockSprite(game, this);
             myGame = game;
             blockLocation = location;
         }
 
         public void Draw()
         {
-            BrickBlockSprite.Draw();
+            brickBlockSprite.Draw();
         }
 
         public Vector2 GameObjectLocation()
@@ -36,7 +36,7 @@ namespace Game1
 
         public void Update()
         {
-            BrickBlockSprite.Update();
+            brickBlockSprite.Update();
             
         }
         public void TopCollision() { }

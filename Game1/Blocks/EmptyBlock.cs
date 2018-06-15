@@ -10,23 +10,23 @@ namespace Game1
     public class EmptyBlock : IBlock
     {
 
-        private static IBlockSprite emptyBlockSprite;
+        public IBlockSprite emptyBlockSprite;
 
-        public static IBlockSprite EmptyBlockSprite { get => emptyBlockSprite; set => emptyBlockSprite = value; }
+        //public static IBlockSprite EmptyBlockSprite { get => emptyBlockSprite; set => emptyBlockSprite = value; }
 
         private Game1 myGame;
         public Vector2 blockLocation;
 
         public EmptyBlock(Game1 game, Vector2 location)
         {
-            EmptyBlockSprite = new EmptyBlockSprite(game, this);
+            emptyBlockSprite = new EmptyBlockSprite(game, this);
             myGame = game;
             blockLocation = location;
         }
 
         public void Draw()
         {
-            EmptyBlockSprite.Draw();
+            emptyBlockSprite.Draw();
         }
 
         public Vector2 GameObjectLocation()
@@ -36,7 +36,7 @@ namespace Game1
 
         public void Update()
         {
-            EmptyBlockSprite.Update();
+            emptyBlockSprite.Update();
         }
 
         public void TopCollision() { }
