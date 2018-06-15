@@ -6,7 +6,8 @@ public class MarioDead : ISprite
     private Game1 myGame;
     
 
-        private int currentFrame = 12 + 28;
+    private int currentFrame = 12 + 28;
+    private int smallSizeOffset = 16;
 
     public MarioDead(Game1 game)
     {
@@ -22,10 +23,10 @@ public class MarioDead : ISprite
         int row = (int)((float)currentFrame / (float)Mario.TotalMarioColumns);
         int column = currentFrame % Mario.TotalMarioColumns;
 
-        
 
-        Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-        Rectangle destinationRectangle = new Rectangle((int)Mario.CurrentXPosition, (int)Mario.CurrentYPosition, width, height);
+        Rectangle sourceRectangle = new Rectangle(width * column, (height * row) + smallSizeOffset, width, height - smallSizeOffset);
+        Rectangle destinationRectangle = new Rectangle((int)Mario.CurrentXPosition, (int)Mario.CurrentYPosition, width, height - smallSizeOffset);
+
 
         myGame.spriteBatch.Begin();
         myGame.spriteBatch.Draw(TextureWareHouse.marioTexture, destinationRectangle, sourceRectangle, Color.White);

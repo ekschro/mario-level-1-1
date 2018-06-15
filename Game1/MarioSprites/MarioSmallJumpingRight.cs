@@ -9,6 +9,8 @@ namespace Game1
 
         private int currentFrame = 20 + 28;
 
+        private int smallSizeOffset = 16;
+
         public MarioSmallJumpingRight(Game1 game)
         {
             myGame = game;
@@ -23,11 +25,10 @@ namespace Game1
             int row = (int)((float)currentFrame / (float)Mario.TotalMarioColumns);
             int column = currentFrame % Mario.TotalMarioColumns;
 
-            
-            
 
-            Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)Mario.CurrentXPosition, (int)Mario.CurrentYPosition, width, height);
+            Rectangle sourceRectangle = new Rectangle(width * column, (height * row) + smallSizeOffset, width, height - smallSizeOffset);
+            Rectangle destinationRectangle = new Rectangle((int)Mario.CurrentXPosition, (int)Mario.CurrentYPosition, width, height - smallSizeOffset);
+
 
             myGame.spriteBatch.Begin();
             myGame.spriteBatch.Draw(TextureWareHouse.marioTexture, destinationRectangle, sourceRectangle, Color.White);
