@@ -9,49 +9,104 @@ namespace Game1
 {
     class CollisionRespond
     {
-        public CollisionRespond()
-        {
+        private Game1 mygame;
 
+        ICommand upCommand;
+        ICommand downCommand;
+        ICommand leftCommand;
+        ICommand rightCommand;
+
+        public CollisionRespond(Game1 game)
+        {
+            mygame = game;
+
+            upCommand = new UpCommand(mygame);
+            downCommand = new DownCommand(mygame);
+            leftCommand = new LeftCommand(mygame);
+            rightCommand = new RightCommand(mygame);
         }
 
         public void BlockCollisionRespondTop(IPlayer player, IBlock block)
         {
-            
+            upCommand.Execute();
         }
 
         public void BlockCollisionRespondBottom(IPlayer player, IBlock block)
         {
+            downCommand.Execute();
+
+            if (Mario.marioSprite.isSmall() && block is BrickBlock)
+            {
+            }
+            else
+            {
+                block.BottomCollision();
+            }
 
         }
 
         public void BlockCollisionRespondRight(IPlayer player, IBlock block)
         {
-
+            rightCommand.Execute();
         }
 
         public void BlockCollisionRespondLeft(IPlayer player, IBlock block)
         {
-
+            leftCommand.Execute();
         }
 
         public void EnemyCollisionRespondTop(IPlayer player, IEnemy enemy)
         {
-
+            enemy.BeStomped();
         }
 
         public void EnemyCollisionRespondBottom(IPlayer player, IEnemy enemy)
         {
-
+            if (player.IsStar())
+            {
+                enemy.BeStomped();
+            }
+            else if (!Mario.marioSprite.isSmall() || Mario.marioSprite.isFire())
+            {
+                Mario.marioSprite.SmallMarioCommandCalled();
+            }
+            else
+            {
+                Mario.marioSprite.DeadMarioCommandCalled();
+            }
+            
         }
 
         public void EnemyCollisionRespondLeft(IPlayer player, IEnemy enemy)
         {
-            
+            if (player.IsStar())
+            {
+                enemy.BeStomped();
+            }
+            else if (!Mario.marioSprite.isSmall() || Mario.marioSprite.isFire())
+            {
+                Mario.marioSprite.SmallMarioCommandCalled();
+            }
+            else
+            {
+                Mario.marioSprite.DeadMarioCommandCalled();
+            }
         }
 
         public void EnemyCollisionRespondRight(IPlayer player, IEnemy enemy)
         {
-
+            if (player.IsStar())
+            {
+                enemy.BeStomped();
+            }
+            else if (!Mario.marioSprite.isSmall() || Mario.marioSprite.isFire())
+            {
+                Mario.marioSprite.SmallMarioCommandCalled();
+            }
+            else
+            {
+                Mario.marioSprite.DeadMarioCommandCalled();
+            }
         }
 
         public void PickupCollisionRespondTop(IPlayer player, IPickup pickup)
@@ -64,7 +119,7 @@ namespace Game1
             }
             else if (pickup is GreenMushroom)
             {
-                Mario.marioSprite.BigMarioCommandCalled();
+                //Mario.marioSprite.BigMarioCommandCalled();
             }
             else if (pickup is RedMushroom)
             {
@@ -80,7 +135,7 @@ namespace Game1
             }
             else if (pickup is Star)
             {
-
+                player = new StarMario(player, mygame);
             }
         }
 
@@ -94,7 +149,7 @@ namespace Game1
             }
             else if (pickup is GreenMushroom)
             {
-                Mario.marioSprite.BigMarioCommandCalled();
+                //Mario.marioSprite.BigMarioCommandCalled();
             }
             else if (pickup is RedMushroom)
             {
@@ -110,7 +165,7 @@ namespace Game1
             }
             else if (pickup is Star)
             {
-
+                player = new StarMario(player, mygame);
             }
         }
 
@@ -124,7 +179,7 @@ namespace Game1
             }
             else if (pickup is GreenMushroom)
             {
-                Mario.marioSprite.BigMarioCommandCalled();
+                //Mario.marioSprite.BigMarioCommandCalled();
             }
             else if (pickup is RedMushroom)
             {
@@ -140,7 +195,7 @@ namespace Game1
             }
             else if (pickup is Star)
             {
-
+                player = new StarMario(player, mygame);
             }
         }
 
@@ -154,7 +209,7 @@ namespace Game1
             }
             else if (pickup is GreenMushroom)
             {
-                Mario.marioSprite.BigMarioCommandCalled();
+                //Mario.marioSprite.BigMarioCommandCalled();
             }
             else if (pickup is RedMushroom)
             {
@@ -170,7 +225,7 @@ namespace Game1
             }
             else if (pickup is Star)
             {
-                
+                player = new StarMario(player, mygame);
             }
         }
 

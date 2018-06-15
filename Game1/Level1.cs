@@ -18,7 +18,7 @@ namespace Game1
 
             loader.Load(fileName, levelObjects);
 
-            collisionDetect = new CollisionDetect(this);
+            collisionDetect = new CollisionDetect(game,this);
         }
 
         public void Update()

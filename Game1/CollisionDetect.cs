@@ -15,16 +15,19 @@ namespace Game1
         private List<IEnemy> enemies;
         private List<IPickup> pickups;
         private CollisionRespond collision;
+        private Game1 mygame;
 
-        public CollisionDetect(ILevel Level1)
+        public CollisionDetect(Game1 game, ILevel Level1)
         {
+            mygame = game;
+
             level1 = Level1;
             player = level1.GetPlayerObject();
             blocks = level1.GetBlockObjects();
             enemies = level1.GetEnemyObjects();
             pickups = level1.GetPickupObjects();
 
-            collision = new CollisionRespond();
+            collision = new CollisionRespond(mygame);
         }
 
         public void BlockCollisionDetect()
