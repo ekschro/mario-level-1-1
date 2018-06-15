@@ -87,6 +87,10 @@ namespace Game1
         {
             return true;
         }
+        public Vector2 GameObjectLocation()
+        {
+            return new Vector2(Mario.CurrentXPosition, Mario.CurrentYPosition);
+        }
     }
 
 }
