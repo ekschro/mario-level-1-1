@@ -12,23 +12,23 @@ namespace Game1
         private int cyclePosition = 0;
         private int cycleLength = 16;
 
-        private static IPickupSprite coinSprite;
+        public IPickupSprite coinSprite;
 
-        public static IPickupSprite CoinSprite { get => coinSprite; set => coinSprite = value; }
+        //public static IPickupSprite CoinSprite { get => coinSprite; set => coinSprite = value; }
 
         private Game1 myGame;
         public Vector2 pickupLocation;
 
         public Coin(Game1 game, Vector2 location)
         {
-            CoinSprite = new CoinSprite(game, this);
+            coinSprite = new CoinSprite(game, this);
             myGame = game;
             pickupLocation = location;
         }
 
         public void Draw()
         {
-            CoinSprite.Draw();
+            coinSprite.Draw();
         }
 
         public Vector2 GameObjectLocation()
@@ -42,12 +42,13 @@ namespace Game1
             if (cyclePosition == cycleLength)
             {
                 cyclePosition = 0;
-                CoinSprite.Update();
+                coinSprite.Update();
             }
         }
         public void Picked()
         {
-            CoinSprite = new EmptyPickupSprite(myGame, new EmptyPickup(myGame,pickupLocation));
+            coinSprite = new EmptyPickupSprite(myGame, new EmptyPickup(myGame,pickupLocation));
+            
         }
     }
 }

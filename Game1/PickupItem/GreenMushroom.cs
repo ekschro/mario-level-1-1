@@ -9,23 +9,23 @@ namespace Game1
 {
     public class GreenMushroom : IPickup
     {
-        private static IPickupSprite greenMushroomSprite;
+        public IPickupSprite greenMushroomSprite;
 
-        public static IPickupSprite GreenMushroomSprite { get => greenMushroomSprite; set => greenMushroomSprite = value; }
+        //public static IPickupSprite GreenMushroomSprite { get => greenMushroomSprite; set => greenMushroomSprite = value; }
 
         private Game1 myGame;
         public Vector2 pickupLocation;
 
         public GreenMushroom(Game1 game, Vector2 location)
         {
-            GreenMushroomSprite = new GreenMushroomSprite(game, this);
+            greenMushroomSprite = new GreenMushroomSprite(game, this);
             myGame = game;
             pickupLocation = location;
         }
 
         public void Draw()
         {
-            GreenMushroomSprite.Draw();
+            greenMushroomSprite.Draw();
         }
 
         public Vector2 GameObjectLocation()
@@ -35,11 +35,11 @@ namespace Game1
 
         public void Update()
         {
-            GreenMushroomSprite.Update();
+            greenMushroomSprite.Update();
         }
         public void Picked()
         {
-            GreenMushroomSprite = new EmptyPickupSprite(myGame, new EmptyPickup(myGame, pickupLocation));
+            greenMushroomSprite = new EmptyPickupSprite(myGame, new EmptyPickup(myGame, pickupLocation));
         }
     }
 }

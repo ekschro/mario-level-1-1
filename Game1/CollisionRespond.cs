@@ -112,7 +112,7 @@ namespace Game1
         public void PickupCollisionRespondTop(IPlayer player, IPickup pickup)
         {
             pickup.Picked();
-
+           
             if (pickup is Fireflower)
             {
                 Mario.marioSprite.FireMarioCommandCalled();
@@ -142,7 +142,7 @@ namespace Game1
         public void PickupCollisionRespondBottom(IPlayer player, IPickup pickup)
         {
             pickup.Picked();
-
+         
             if (pickup is Fireflower)
             {
                 Mario.marioSprite.FireMarioCommandCalled();
@@ -172,6 +172,7 @@ namespace Game1
         public void PickupCollisionRespondLeft(IPlayer player, IPickup pickup)
         {
             pickup.Picked();
+            CollisionDetect.Pickups.Remove(pickup);
 
             if (pickup is Fireflower)
             {
@@ -202,6 +203,7 @@ namespace Game1
         public void PickupCollisionRespondRight(IPlayer player, IPickup pickup)
         {
             pickup.Picked();
+            CollisionDetect.Pickups.Remove(pickup);
 
             if (pickup is Fireflower)
             {
