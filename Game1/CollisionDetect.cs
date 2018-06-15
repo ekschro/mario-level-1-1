@@ -15,12 +15,13 @@ namespace Game1
         private List<IGameObject> blocks;
         private List<IGameObject> enemies;
         private List<IGameObject> pickups;
-
+        private CollisionRespond collision;
 
         public CollisionDetect(Game1 game,ILevel Level1)
         {
             level1 = Level1;
             this.game = game;
+            collision = new CollisionRespond();
         }
 
         public void BlockCollisionDetect()
@@ -39,7 +40,7 @@ namespace Game1
 
                 if (playerBox.Intersects(blockBox))
                 {
-                    //Reponse
+                    collision.BlockCollisonRespond();
                 }
             }
         }
@@ -60,7 +61,7 @@ namespace Game1
 
                 if (playerBox.Intersects(enemyBox))
                 {
-                    //Reponse
+                    collision.EnemyCollisionRespond();
                 }
             }
         }
@@ -81,7 +82,7 @@ namespace Game1
 
                 if (playerBox.Intersects(pickupBox))
                 {
-                    //Reponse
+                    collision.PickupCollisionRespond();
                 }
             }
         }
