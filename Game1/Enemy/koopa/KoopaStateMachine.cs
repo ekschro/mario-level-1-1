@@ -8,7 +8,7 @@ namespace Game1
 {
     public class KoopaStateMachine : IEnemyStateMachine
     {
-        private IEnemySprite koopaSprite;
+        //private IEnemySprite koopaSprite;
         private bool facingLeft = true;
         private enum KoopaHealth { Normal, Stomped, Flipped };
         private KoopaHealth health = KoopaHealth.Normal;

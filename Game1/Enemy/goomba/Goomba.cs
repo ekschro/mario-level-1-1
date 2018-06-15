@@ -43,6 +43,7 @@ namespace Game1
         public void ChangeDirection()
         {
             stateMachine.ChangeDirection();
+            direction = !direction;
         }
 
         public void Draw()
@@ -67,8 +68,8 @@ namespace Game1
                 cyclePosition = 0;
                 GoombaSprite.Update();
                 stateMachine.Update();
-                if (goombaLocation.X == (goombaOriginalLocation.X-20) || goombaLocation.X == (goombaOriginalLocation.X + 20))
-                    direction = !direction;
+                if (goombaLocation.X == (goombaOriginalLocation.X - 20) || goombaLocation.X == (goombaOriginalLocation.X + 20))
+                    ChangeDirection();
                 if (direction == true)
                     goombaLocation.X += 1;
                 else if (direction == false)
