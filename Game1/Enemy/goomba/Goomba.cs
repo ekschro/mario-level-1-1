@@ -21,8 +21,9 @@ namespace Game1
 
         public Goomba(Game1 game, Vector2 location)
         {
-            stateMachine = new GoombaStateMachine();
+            
             GoombaSprite = new GoombaSprite(game,this);
+            stateMachine = new GoombaStateMachine(GoombaSprite);
             myGame = game;
             goombaLocation = location;
             goombaOriginalLocation = location;
@@ -35,8 +36,6 @@ namespace Game1
 
         public void BeStomped()
         {
-            GoombaSprite.ChangeFrame(2, 3);
-            GoombaSprite.ChangeFrame(3, 4);
             stateMachine.BeStomped();
         }
 

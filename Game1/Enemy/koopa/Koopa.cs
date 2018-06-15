@@ -24,8 +24,8 @@ namespace Game1
 
         public Koopa(Game1 game, Vector2 location)
         {
-            stateMachine = new KoopaStateMachine();
             KoopaSprite = new KoopaSprite(game,this);
+            stateMachine = new KoopaStateMachine(koopaSprite);
             myGame = game;
             koopaLocation = location;
             koopaOriginalLocation = location;
@@ -38,8 +38,6 @@ namespace Game1
 
         public void BeStomped()
         {
-            KoopaSprite.ChangeFrame(4, 5);
-            KoopaSprite.ChangeFrame(5, 6);
             stateMachine.BeStomped();
         }
 

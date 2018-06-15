@@ -12,60 +12,28 @@ namespace Game1
         private Koopa koopaObject;
         private Game1 myGame;
         private int currentFrame;
-        private bool goingLeft = true;
         private int startFrame;
         private int endFrame;
-        private int leftStartFrame;
-        private int leftEndFrame;
         public KoopaSprite(Game1 game, Koopa koopa)
         {
             koopaObject = koopa;
             myGame = game;
             startFrame = 2;
             endFrame = 4;
-            leftStartFrame = 0;
-            leftEndFrame = 2;
             currentFrame = startFrame;
         }
-        /*
-        public void BeStomped()
-        {
-            startFrame = leftStartFrame = 4;
-            endFrame = leftEndFrame = 6;
-            startFrame = leftStartFrame = 5;
-            endFrame = leftEndFrame = 6;
-        }
-        */
         public void ChangeFrame(int start, int end)
         {
             startFrame = start;
-            leftStartFrame = start;
             endFrame = end;
-            leftEndFrame = end;
+            currentFrame = startFrame;
         }
 
         public void Update()
         {
-            if (goingLeft == true)
-            {
-                if (koopaObject.GameObjectLocation().X == koopaObject.GameOriginalLocation().X+20)
-                {
-                    goingLeft = false;
-                    currentFrame = leftStartFrame;
-                }
-                currentFrame++;
-                if (currentFrame == endFrame)
-                    currentFrame = startFrame;
-            }
-            else if (goingLeft == false)
-            {
-                if (koopaObject.GameObjectLocation().X == koopaObject.GameOriginalLocation().X - 20)
-                    goingLeft = true;
-                currentFrame++;
-                if (currentFrame == leftEndFrame)
-                    currentFrame = leftStartFrame;
-            }
-
+            currentFrame++;
+            if (currentFrame == endFrame)
+                currentFrame = startFrame;
         }
 
         public void Draw()
