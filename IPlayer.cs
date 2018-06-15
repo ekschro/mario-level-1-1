@@ -1,6 +1,6 @@
 ﻿using System;
 
-public interface IPlayer
+public interface IPlayer : IGameObject
 {
     int GetCurrentXPosition();
     void SetCurrentXPositon(int x);
