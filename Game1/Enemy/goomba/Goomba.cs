@@ -50,9 +50,13 @@ namespace Game1
             GoombaSprite.Draw();
         }
 
-        public Vector2 GetCurrentLocation()
+        public Vector2 GameObjectLocation()
         {
             return goombaLocation;
+        }
+        public Vector2 GameOriginalLocation()
+        {
+            return goombaOriginalLocation;
         }
 
         public void Update()

@@ -31,7 +31,7 @@ namespace Game1
             StarSprite.Draw();
         }
 
-        public Vector2 GetCurrentLocation()
+        public Vector2 GameObjectLocation()
         {
             return pickupLocation;
         }

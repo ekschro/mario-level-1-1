@@ -18,9 +18,9 @@ namespace Game1
         private int currentFrame;
         //private Vector2 blockLocation;
 
-        public StoneBlockSprite(Game1 game, StoneBlock stoneBlock)
+        public StoneBlockSprite(Game1 game, IBlock stoneBlock)
         {
-            stoneBlockObject = stoneBlock;
+            stoneBlockObject = (StoneBlock)stoneBlock;
             myGame = game;
             currentFrame = 0;
             //blockLocation = location;
@@ -36,7 +36,7 @@ namespace Game1
             int width = TextureWareHouse.blockTexture.Width / 13;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, TextureWareHouse.blockTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)stoneBlockObject.GetBlockCurrentLocation().X, (int)stoneBlockObject.GetBlockCurrentLocation().Y, width, TextureWareHouse.blockTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)stoneBlockObject.GameObjectLocation().X, (int)stoneBlockObject.GameObjectLocation().Y, width, TextureWareHouse.blockTexture.Height);
 
             myGame.spriteBatch.Begin();
             myGame.spriteBatch.Draw(TextureWareHouse.blockTexture, destinationRectangle, sourceRectangle, Color.White);

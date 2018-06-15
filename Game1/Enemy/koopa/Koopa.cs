@@ -53,9 +53,13 @@ namespace Game1
             KoopaSprite.Draw();
         }
 
-        public Vector2 GetCurrentLocation()
+        public Vector2 GameObjectLocation()
         {
             return koopaLocation;
+        }
+        public Vector2 GameOriginalLocation()
+        {
+            return koopaOriginalLocation;
         }
 
         public void Update()

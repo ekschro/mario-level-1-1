@@ -31,7 +31,7 @@ namespace Game1
             QuestionBlockSprite.Draw();
         }
 
-        public Vector2 GetBlockCurrentLocation()
+        public Vector2 GameObjectLocation()
         {
             return blockLocation;
         }
@@ -47,14 +47,14 @@ namespace Game1
             
         }
 
-        public void ToEmpty()
+        public void TopCollision() { }
+
+        public void BottomCollision()
         {
-            //throw new NotImplementedException();
+            questionBlockSprite = new UsedBlockSprite(myGame, new UsedBlock(myGame, blockLocation));
         }
 
-        public void ToUsed()
-        {
-            QuestionBlockSprite = new UsedBlockSprite(myGame, new UsedBlock(myGame, blockLocation));
-        }
+        public void LeftCollision() { }
+        public void RightCollision() { }
     }
 }

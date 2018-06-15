@@ -40,7 +40,7 @@ namespace Game1
             int width = TextureWareHouse.goombaTexture.Width / 4;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, TextureWareHouse.goombaTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)goombaObject.GetCurrentLocation().X, (int)goombaObject.GetCurrentLocation().Y, width, TextureWareHouse.goombaTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)goombaObject.GameObjectLocation().X, (int)goombaObject.GameObjectLocation().Y, width, TextureWareHouse.goombaTexture.Height);
 
             myGame.spriteBatch.Begin();
             myGame.spriteBatch.Draw(TextureWareHouse.goombaTexture, destinationRectangle, sourceRectangle, Color.White);

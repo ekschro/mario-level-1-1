@@ -18,9 +18,9 @@ namespace Game1
         private int currentFrame;
         //private IBlock blockObject;
 
-        public UsedBlockSprite(Game1 game, UsedBlock usedBlock)
+        public UsedBlockSprite(Game1 game, IBlock usedBlock)
         {
-            usedBlockObject = usedBlock;
+            usedBlockObject = (UsedBlock)usedBlock;
             myGame = game;
             currentFrame = 3;
             //blockObject = block;
@@ -36,7 +36,7 @@ namespace Game1
             int width = TextureWareHouse.blockTexture.Width / 13;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, TextureWareHouse.blockTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)usedBlockObject.GetBlockCurrentLocation().X, (int)usedBlockObject.GetBlockCurrentLocation().Y, width, TextureWareHouse.blockTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)usedBlockObject.GameObjectLocation().X, (int)usedBlockObject.GameObjectLocation().Y, width, TextureWareHouse.blockTexture.Height);
 
 
             myGame.spriteBatch.Begin();

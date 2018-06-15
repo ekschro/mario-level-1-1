@@ -18,9 +18,9 @@ namespace Game1
         private int currentFrame;
         private IBlock blockObject;
 
-        public HiddenBlockSprite(Game1 game, HiddenBlock hiddenBlock)
+        public HiddenBlockSprite(Game1 game, IBlock hiddenBlock)
         {
-            hiddenBlockObject = hiddenBlock;
+            hiddenBlockObject = (HiddenBlock)hiddenBlock;
             myGame = game;
             currentFrame = 0;
         }
@@ -35,7 +35,7 @@ namespace Game1
             int width = TextureWareHouse.blockTexture.Width / 13;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, TextureWareHouse.blockTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)hiddenBlockObject.GetBlockCurrentLocation().X, (int)hiddenBlockObject.GetBlockCurrentLocation().Y, width, TextureWareHouse.blockTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)hiddenBlockObject.GameObjectLocation().X, (int)hiddenBlockObject.GameObjectLocation().Y, width, TextureWareHouse.blockTexture.Height);
 
             myGame.spriteBatch.Begin();
             myGame.spriteBatch.Draw(TextureWareHouse.blockTexture, destinationRectangle, sourceRectangle, Color.Transparent);

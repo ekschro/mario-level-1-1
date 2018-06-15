@@ -18,9 +18,9 @@ namespace Game1
         private int currentFrame;
         //private Vector2 blockLocation;
 
-        public EmptyBlockSprite(Game1 game, EmptyBlock emptyBlock)
+        public EmptyBlockSprite(Game1 game, IBlock emptyBlock)
         {
-            emptyBlockObject = emptyBlock;
+            emptyBlockObject = (EmptyBlock)emptyBlock;
             myGame = game;
             currentFrame = 12;
             //blockLocation = location;
@@ -35,7 +35,7 @@ namespace Game1
             int width = TextureWareHouse.blockTexture.Width / 13;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, TextureWareHouse.blockTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)emptyBlockObject.GetBlockCurrentLocation().X, (int)emptyBlockObject.GetBlockCurrentLocation().Y, width, TextureWareHouse.blockTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)emptyBlockObject.GameObjectLocation().X, (int)emptyBlockObject.GameObjectLocation().Y, width, TextureWareHouse.blockTexture.Height);
 
             myGame.spriteBatch.Begin();
             myGame.spriteBatch.Draw(TextureWareHouse.blockTexture, destinationRectangle, sourceRectangle, Color.Transparent);

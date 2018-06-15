@@ -39,7 +39,10 @@ namespace Game1
 
         }
         
-
+        public Vector2 GameObjectLocation()
+        {
+            return new Vector2(currentXPosition, currentYPosition);
+        }
         
 
         

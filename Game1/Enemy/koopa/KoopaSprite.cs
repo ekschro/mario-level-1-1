@@ -48,7 +48,7 @@ namespace Game1
         {
             if (goingLeft == true)
             {
-                if (koopaObject.GetCurrentLocation().X == 480)
+                if (koopaObject.GameObjectLocation().X == koopaObject.GameOriginalLocation().X+20)
                 {
                     goingLeft = false;
                     currentFrame = leftStartFrame;
@@ -59,7 +59,7 @@ namespace Game1
             }
             else if (goingLeft == false)
             {
-                if (koopaObject.GetCurrentLocation().X == 420)
+                if (koopaObject.GameObjectLocation().X == koopaObject.GameOriginalLocation().X - 20)
                     goingLeft = true;
                 currentFrame++;
                 if (currentFrame == leftEndFrame)
@@ -73,7 +73,7 @@ namespace Game1
             int width = TextureWareHouse.koopaTexture.Width / 6;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, TextureWareHouse.koopaTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)koopaObject.GetCurrentLocation().X, (int)koopaObject.GetCurrentLocation().Y, width, TextureWareHouse.koopaTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)koopaObject.GameObjectLocation().X, (int)koopaObject.GameObjectLocation().Y, width, TextureWareHouse.koopaTexture.Height);
 
             myGame.spriteBatch.Begin();
             myGame.spriteBatch.Draw(TextureWareHouse.koopaTexture, destinationRectangle, sourceRectangle, Color.White);

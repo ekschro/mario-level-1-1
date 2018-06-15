@@ -29,7 +29,7 @@ namespace Game1
             BrickBlockSprite.Draw();
         }
 
-        public Vector2 GetBlockCurrentLocation()
+        public Vector2 GameObjectLocation()
         {
             return blockLocation;
         }
@@ -39,13 +39,14 @@ namespace Game1
             BrickBlockSprite.Update();
             
         }
-        public void ToEmpty()
+        public void TopCollision() { }
+
+        public void BottomCollision()
         {
-            BrickBlockSprite = new EmptyBlockSprite(myGame, new EmptyBlock(myGame, blockLocation));
+            brickBlockSprite = new EmptyBlockSprite(myGame, new EmptyBlock(myGame, blockLocation));
         }
 
-        public void ToUsed()
-        {
-        }
+        public void LeftCollision() { }
+        public void RightCollision() { }
     }
 }

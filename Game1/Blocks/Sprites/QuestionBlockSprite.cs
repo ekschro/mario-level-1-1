@@ -20,9 +20,9 @@ namespace Game1
         private int endFrame;
         private int numberOfFrame = 13;
 
-        public QuestionBlockSprite(Game1 game, QuestionBlock questionBlock)
+        public QuestionBlockSprite(Game1 game, IBlock questionBlock)
         {
-            questionBlockObject = questionBlock;
+            questionBlockObject = (QuestionBlock)questionBlock;
             myGame = game;
             startFrame = 4;
             endFrame = 7;
@@ -41,7 +41,7 @@ namespace Game1
             int width = TextureWareHouse.blockTexture.Width / numberOfFrame;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, TextureWareHouse.blockTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)questionBlockObject.GetBlockCurrentLocation().X, (int)questionBlockObject.GetBlockCurrentLocation().Y, width, TextureWareHouse.blockTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)questionBlockObject.GameObjectLocation().X, (int)questionBlockObject.GameObjectLocation().Y, width, TextureWareHouse.blockTexture.Height);
 
             myGame.spriteBatch.Begin();
             myGame.spriteBatch.Draw(TextureWareHouse.blockTexture, destinationRectangle, sourceRectangle, Color.White);
