@@ -10,7 +10,5 @@ namespace Game1
     {
         void Update();
         List<IBlock> BlockObjects { get; set; }
-        List<IEnemy> EnemyObjects { get; set; }
-        List<IPickup> PickupObjects { get; set; }
     }
 }

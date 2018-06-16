@@ -10,7 +10,7 @@ namespace Game1
         private static int totalMarioColumns = 28;
         private static int totalMarioRows = 3;
 
-        public static ISprite marioSprite;
+       public static ISprite marioSprite;
 
         public static ISprite MarioSprite { get => marioSprite; set => marioSprite = value; }
         public static float CurrentXPosition { get => currentXPosition; set => currentXPosition = value; }
