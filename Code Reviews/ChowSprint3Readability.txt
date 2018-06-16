@@ -1,0 +1,11 @@
+Dorothy Chow (.140)
+6/15/18
+Sprint 3
+Level1.cs
+William Freeman
+20
+
+The file is clear and readable. 
+Naming conventions are good. Have used meaningful names for variable and methods, don't need extra comments to explain them. 
+It is clear that he have separate different method to get different objects like enemy, blocks, pickups.
+All function simple with minimum of lines by using interface.
