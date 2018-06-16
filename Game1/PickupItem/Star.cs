@@ -12,23 +12,23 @@ namespace Game1
         private int cyclePosition = 0;
         private int cycleLength = 16;
 
-        private static IPickupSprite starSprite;
+        public IPickupSprite starSprite;
 
-        public static IPickupSprite StarSprite { get => starSprite; set => starSprite = value; }
+        //public static IPickupSprite StarSprite { get => starSprite; set => starSprite = value; }
 
         private Game1 myGame;
         public Vector2 pickupLocation;
 
         public Star(Game1 game, Vector2 location)
         {
-            StarSprite = new StarSprite(game, this);
+            starSprite = new StarSprite(game, this);
             myGame = game;
             pickupLocation = location;
         }
 
         public void Draw()
         {
-            StarSprite.Draw();
+            starSprite.Draw();
         }
 
         public Vector2 GameObjectLocation()
@@ -41,13 +41,13 @@ namespace Game1
             cyclePosition++;
             if (cyclePosition == cycleLength)
             {
-                StarSprite.Update();
+                starSprite.Update();
                 cyclePosition = 0;
             }
         }
         public void Picked()
         {
-            StarSprite = new EmptyPickupSprite(myGame, new EmptyPickup(myGame, pickupLocation));
+            starSprite = new EmptyPickupSprite(myGame, new EmptyPickup(myGame, pickupLocation));
         }
     }
 }

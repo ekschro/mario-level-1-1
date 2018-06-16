@@ -9,23 +9,23 @@ namespace Game1
 {
     public class EmptyPickup : IPickup
     {
-        private static IPickupSprite emptySprite;
+        public IPickupSprite emptySprite;
 
-        public static IPickupSprite EmptySprite { get => emptySprite; set => emptySprite = value; }
+        //public static IPickupSprite EmptySprite { get => emptySprite; set => emptySprite = value; }
 
         private Game1 myGame;
         public Vector2 pickupLocation;
 
         public EmptyPickup(Game1 game, Vector2 location)
         {
-            EmptySprite = new EmptyPickupSprite(game, this);
+            emptySprite = new EmptyPickupSprite(game, this);
             myGame = game;
             pickupLocation = location;
         }
 
         public void Draw()
         {
-            EmptySprite.Draw();
+            emptySprite.Draw();
         }
 
         public Vector2 GameObjectLocation()

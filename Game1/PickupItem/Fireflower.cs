@@ -12,23 +12,23 @@ namespace Game1
         private int cyclePosition = 0;
         private int cycleLength = 16;
 
-        private static IPickupSprite fireflowerSprite;
+        public IPickupSprite fireflowerSprite;
 
-        public static IPickupSprite FireflowerSprite { get => fireflowerSprite; set => fireflowerSprite = value; }
+        //public static IPickupSprite FireflowerSprite { get => fireflowerSprite; set => fireflowerSprite = value; }
 
         private Game1 myGame;
         public Vector2 pickupLocation;
 
         public Fireflower(Game1 game, Vector2 location)
         {
-            FireflowerSprite = new FireflowerSprite(game, this);
+            fireflowerSprite = new FireflowerSprite(game, this);
             myGame = game;
             pickupLocation = location;
         }
 
         public void Draw()
         {
-            FireflowerSprite.Draw();
+            fireflowerSprite.Draw();
         }
 
         public Vector2 GameObjectLocation()
@@ -41,13 +41,13 @@ namespace Game1
             cyclePosition++;
             if (cyclePosition == cycleLength)
             {
-                FireflowerSprite.Update();
+                fireflowerSprite.Update();
                 cyclePosition = 0;
             }
         }
         public void Picked()
         {
-            FireflowerSprite = new EmptyPickupSprite(myGame, new EmptyPickup(myGame, pickupLocation));
+            fireflowerSprite = new EmptyPickupSprite(myGame, new EmptyPickup(myGame, pickupLocation));
         }
     }
 }
