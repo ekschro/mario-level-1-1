@@ -14,6 +14,7 @@ namespace Game1
     {
         Boolean isSmall();
         Boolean isFire();
+        Boolean isCrouching();
         void UpCommandCalled();
         void DownCommandCalled();
         void LeftCommandCalled();

@@ -97,9 +97,6 @@
 /processorParam:TextureFormat=Color
 /build:koopa1.png
 
-#begin LevelInfo.csv
-/copy:LevelInfo.csv
-
 #begin Background.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -111,4 +108,7 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Background.png
+
+#begin LevelInfo.csv
+/copy:LevelInfo.csv
 
