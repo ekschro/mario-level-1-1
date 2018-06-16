@@ -25,10 +25,7 @@ namespace Game1
             int height = TextureWareHouse.marioTexture.Height / Mario.TotalMarioRows;
             int row = (int)((float)currentFrame / (float)Mario.TotalMarioColumns);
             int column = currentFrame % Mario.TotalMarioColumns;
-
             
-            
-
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
             Rectangle destinationRectangle = new Rectangle((int)Mario.CurrentXPosition, (int)Mario.CurrentYPosition, width, height);
 

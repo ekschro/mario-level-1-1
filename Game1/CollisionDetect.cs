@@ -14,10 +14,14 @@ namespace Game1
         public List<IBlock> blocks;
         private IBlock[] blockArray;
         private List<IEnemy> enemies;
+        private IEnemy[] enemyArray;
         private List<IPickup> pickups;
+        private IPickup[] pickupArray;
         private CollisionRespond collision;
         private Game1 mygame;
         List<IBlock> ICollision.BlockObjects { get => blocks; set => blocks = value; }
+        List<IEnemy> ICollision.EnemyObjects { get => enemies; set => enemies = value; }
+        List<IPickup> ICollision.PickupObjects { get => pickups; set => pickups = value; }
 
         public CollisionDetect(Game1 game, ILevel Level1)
         {
@@ -36,8 +40,12 @@ namespace Game1
         {
             int playerX = (int)player.GameObjectLocation().X;
             int playerY = (int)player.GameObjectLocation().Y;
+            Rectangle playerBox;
 
-            Rectangle playerBox = new Rectangle(playerX, playerY, 16, 16);
+            if (Mario.marioSprite.isSmall())
+                playerBox = new Rectangle(playerX, playerY, 16, 16);
+            else
+                playerBox = new Rectangle(playerX, playerY, 16, 32);
 
             blockArray = blocks.ToArray();
 
@@ -77,13 +85,19 @@ namespace Game1
         {
             int playerX = (int)player.GameObjectLocation().X;
             int playerY = (int)player.GameObjectLocation().Y;
+            Rectangle playerBox;
 
-            Rectangle playerBox = new Rectangle(playerX, playerY, 16, 16);
+            if (Mario.marioSprite.isSmall()) 
+                playerBox = new Rectangle(playerX, playerY, 16, 16);
+            else
+                playerBox = new Rectangle(playerX, playerY, 16, 32);
 
-            foreach (IEnemy enemy in enemies)
+            enemyArray = enemies.ToArray();
+
+            for (int i = 0; i < enemyArray.Length; i++)
             {
-                int enemyX = (int)enemy.GameObjectLocation().X;
-                int enemyY = (int)enemy.GameObjectLocation().Y;
+                int enemyX = (int)enemyArray[i].GameObjectLocation().X;
+                int enemyY = (int)enemyArray[i].GameObjectLocation().Y;
 
                 Rectangle enemyBox = new Rectangle(enemyX, enemyY, 16, 16);
                 Rectangle intersect;
@@ -94,19 +108,19 @@ namespace Game1
 
                     if (intersect.Height > intersect.Width && playerX < enemyX)
                     {
-                        collision.EnemyCollisionRespondLeft(player,enemy);
+                        collision.EnemyCollisionRespondLeft(player,enemyArray[i], this);
                     }
                     else if (intersect.Height > intersect.Width && playerX > enemyX)
                     {
-                        collision.EnemyCollisionRespondRight(player, enemy);
+                        collision.EnemyCollisionRespondRight(player, enemyArray[i], this);
                     }
                     else if (intersect.Height < intersect.Width && playerY < enemyY)
                     {
-                        collision.EnemyCollisionRespondTop(player, enemy);
+                        collision.EnemyCollisionRespondTop(player, enemyArray[i], this);
                     }
                     else if (intersect.Height < intersect.Width && playerY > enemyY)
                     {
-                        collision.EnemyCollisionRespondBottom(player, enemy);
+                        collision.EnemyCollisionRespondBottom(player, enemyArray[i], this);
                     }
                 }
             }
@@ -116,13 +130,19 @@ namespace Game1
         {
             int playerX = (int)player.GameObjectLocation().X;
             int playerY = (int)player.GameObjectLocation().Y;
+            Rectangle playerBox;
 
-            Rectangle playerBox = new Rectangle(playerX, playerY, 16, 16);
+            if (Mario.marioSprite.isSmall())
+                playerBox = new Rectangle(playerX, playerY, 16, 16);
+            else
+                playerBox = new Rectangle(playerX, playerY, 16, 32);
 
-            foreach (IPickup pickup in pickups)
+            pickupArray = pickups.ToArray();
+
+            for (int i = 0; i < pickupArray.Length; i++)
             {
-                int pickupX = (int)pickup.GameObjectLocation().X;
-                int pickupY = (int)pickup.GameObjectLocation().Y;
+                int pickupX = (int)pickupArray[i].GameObjectLocation().X;
+                int pickupY = (int)pickupArray[i].GameObjectLocation().Y;
 
                 Rectangle pickupBox = new Rectangle(pickupX, pickupY, 16, 16);
                 Rectangle intersect;
@@ -133,19 +153,19 @@ namespace Game1
 
                     if (intersect.Height > intersect.Width && playerX < pickupX)
                     {
-                        collision.PickupCollisionRespondLeft(player, pickup);
+                        collision.PickupCollisionRespondLeft(player, pickupArray[i], this);
                     }
                     else if (intersect.Height > intersect.Width && playerX > pickupX)
                     {
-                        collision.PickupCollisionRespondRight(player, pickup);
+                        collision.PickupCollisionRespondRight(player, pickupArray[i], this);
                     }
                     else if (intersect.Height < intersect.Width && playerY < pickupY)
                     {
-                        collision.PickupCollisionRespondTop(player, pickup);
+                        collision.PickupCollisionRespondTop(player, pickupArray[i], this);
                     }
                     else if (intersect.Height < intersect.Width && playerY > pickupY)
                     {
-                        collision.PickupCollisionRespondBottom(player, pickup);
+                        collision.PickupCollisionRespondBottom(player, pickupArray[i], this);
                     }
                 }
             }
