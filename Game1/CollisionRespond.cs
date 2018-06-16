@@ -62,7 +62,6 @@ namespace Game1
         public void EnemyCollisionRespondTop(IPlayer player, IEnemy enemy, ICollision collisionDetector)
         {
             enemy.BeStomped();
-
             collisionDetector.EnemyObjects.Remove(enemy);
         }
 
@@ -71,6 +70,7 @@ namespace Game1
             if (player.IsStar())
             {
                 enemy.BeStomped();
+                collisionDetector.EnemyObjects.Remove(enemy);
             }
             else if (Mario.marioSprite.isFire())
             {
@@ -84,8 +84,7 @@ namespace Game1
             {
                 Mario.marioSprite.DeadMarioCommandCalled();
             }
-
-            collisionDetector.EnemyObjects.Remove(enemy);
+            
         }
 
         public void EnemyCollisionRespondLeft(IPlayer player, IEnemy enemy, ICollision collisionDetector)
@@ -93,6 +92,7 @@ namespace Game1
             if (player.IsStar())
             {
                 enemy.BeStomped();
+                collisionDetector.EnemyObjects.Remove(enemy);
             }
             else if (Mario.marioSprite.isFire())
             {
@@ -106,8 +106,6 @@ namespace Game1
             {
                 Mario.marioSprite.DeadMarioCommandCalled();
             }
-
-            collisionDetector.EnemyObjects.Remove(enemy);
         }
 
         public void EnemyCollisionRespondRight(IPlayer player, IEnemy enemy, ICollision collisionDetector)
@@ -115,6 +113,7 @@ namespace Game1
             if (player.IsStar())
             {
                 enemy.BeStomped();
+                collisionDetector.EnemyObjects.Remove(enemy);
             }
             else if (Mario.marioSprite.isFire())
             {
@@ -128,8 +127,6 @@ namespace Game1
             {
                 Mario.marioSprite.DeadMarioCommandCalled();
             }
-
-            collisionDetector.EnemyObjects.Remove(enemy);
         }
 
         public void PickupCollisionRespondTop(IPlayer player, IPickup pickup, ICollision collisionDetector)

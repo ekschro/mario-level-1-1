@@ -23,6 +23,9 @@ namespace Game1
         List<IEnemy> ICollision.EnemyObjects { get => enemies; set => enemies = value; }
         List<IPickup> ICollision.PickupObjects { get => pickups; set => pickups = value; }
 
+        private int invulnerabilityFrames = 100;
+        private int invulnerabilityTimer = 0;
+
         public CollisionDetect(Game1 game, ILevel Level1)
         {
             mygame = game;
@@ -42,7 +45,7 @@ namespace Game1
             int playerY = (int)player.GameObjectLocation().Y;
             Rectangle playerBox;
 
-            if (Mario.marioSprite.isSmall())
+            if (Mario.marioSprite.isSmall() || Mario.marioSprite.isCrouching())
                 playerBox = new Rectangle(playerX, playerY, 16, 16);
             else
                 playerBox = new Rectangle(playerX, playerY, 16, 32);
@@ -83,47 +86,53 @@ namespace Game1
 
         public void EnemyCollisionDetect()
         {
-            int playerX = (int)player.GameObjectLocation().X;
-            int playerY = (int)player.GameObjectLocation().Y;
-            Rectangle playerBox;
-
-            if (Mario.marioSprite.isSmall()) 
-                playerBox = new Rectangle(playerX, playerY, 16, 16);
-            else
-                playerBox = new Rectangle(playerX, playerY, 16, 32);
-
-            enemyArray = enemies.ToArray();
-
-            for (int i = 0; i < enemyArray.Length; i++)
+            if (invulnerabilityTimer == 0)
             {
-                int enemyX = (int)enemyArray[i].GameObjectLocation().X;
-                int enemyY = (int)enemyArray[i].GameObjectLocation().Y;
+                int playerX = (int)player.GameObjectLocation().X;
+                int playerY = (int)player.GameObjectLocation().Y;
+                Rectangle playerBox;
 
-                Rectangle enemyBox = new Rectangle(enemyX, enemyY, 16, 16);
-                Rectangle intersect;
+                if (Mario.marioSprite.isSmall())
+                    playerBox = new Rectangle(playerX, playerY, 16, 16);
+                else
+                    playerBox = new Rectangle(playerX, playerY, 16, 32);
 
-                if (playerBox.Intersects(enemyBox))
+                enemyArray = enemies.ToArray();
+
+                for (int i = 0; i < enemyArray.Length; i++)
                 {
-                    Rectangle.Intersect(ref playerBox, ref enemyBox, out intersect);
+                    int enemyX = (int)enemyArray[i].GameObjectLocation().X;
+                    int enemyY = (int)enemyArray[i].GameObjectLocation().Y;
 
-                    if (intersect.Height > intersect.Width && playerX < enemyX)
+                    Rectangle enemyBox = new Rectangle(enemyX, enemyY, 16, 16);
+                    Rectangle intersect;
+
+                    if (playerBox.Intersects(enemyBox))
                     {
-                        collision.EnemyCollisionRespondLeft(player,enemyArray[i], this);
-                    }
-                    else if (intersect.Height > intersect.Width && playerX > enemyX)
-                    {
-                        collision.EnemyCollisionRespondRight(player, enemyArray[i], this);
-                    }
-                    else if (intersect.Height < intersect.Width && playerY < enemyY)
-                    {
-                        collision.EnemyCollisionRespondTop(player, enemyArray[i], this);
-                    }
-                    else if (intersect.Height < intersect.Width && playerY > enemyY)
-                    {
-                        collision.EnemyCollisionRespondBottom(player, enemyArray[i], this);
+                        Rectangle.Intersect(ref playerBox, ref enemyBox, out intersect);
+
+                        if (intersect.Height > intersect.Width && playerX < enemyX)
+                        {
+                            collision.EnemyCollisionRespondLeft(player, enemyArray[i], this);
+                            invulnerabilityTimer++;
+                        }
+                        else if (intersect.Height > intersect.Width && playerX > enemyX)
+                        {
+                            collision.EnemyCollisionRespondRight(player, enemyArray[i], this);
+                            invulnerabilityTimer++;
+                        }
+                        else if (intersect.Height < intersect.Width && playerY < enemyY)
+                        {
+                            collision.EnemyCollisionRespondTop(player, enemyArray[i], this);
+                        }
+                        else if (intersect.Height < intersect.Width && playerY > enemyY)
+                        {
+                            collision.EnemyCollisionRespondBottom(player, enemyArray[i], this);
+                            invulnerabilityTimer++;
+                        }
                     }
                 }
-            }
+            } 
         }
 
         public void PickupBlockCollisionDetect()
@@ -176,6 +185,11 @@ namespace Game1
             BlockCollisionDetect();
             EnemyCollisionDetect();
             PickupBlockCollisionDetect();
+
+            if (invulnerabilityTimer != 0)
+                invulnerabilityTimer++;
+            if (invulnerabilityTimer == invulnerabilityFrames)
+                invulnerabilityTimer = 0;
         }
     }
 }
