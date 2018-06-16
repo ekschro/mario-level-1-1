@@ -54,6 +54,7 @@ namespace Game1
             }
         }
 
+
         public IGameObject GenerateObject(string objectName, int positionX, int positionY)
         {
             Vector2 Position = new Vector2(positionX, positionY);
