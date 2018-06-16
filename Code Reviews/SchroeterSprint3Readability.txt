@@ -1,0 +1,11 @@
+Ericsson Schroeter (.12)
+6/15/18
+Sprint 3
+Fireflower.cs
+Dorothy Chow
+10
+
+This class uses the same cyclePosition and cycleLength variables as every other similar class, so this aids in consistency.
+The Fireflower object stores its sprite, and only calls it to use its draw method and change its sprite when "Picked." This is not a great choice for a name, since it is not entirely clear what picked is, but this refers to the item being picked up.
+The remaining functions are sufficient, with GameObjectLocation just returning the location of the object, and Update is a typical animation loop.
+The choice of the names all fit, whether PascalCase or camelCase.

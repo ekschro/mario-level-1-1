@@ -1,9 +1,0 @@
-Dorothy Chow (.140)
-6/5/18
-Sprint2
-HiddenBlockSprite.cs
-William Freeman
-
-This class was implemented by uses IBlockSprite Interface, this makes it easy to manage the blocks classes.
-In the Draw method, have include colour parameter so we can easily change the color later if we need to.
-There isn't any magic numbers in the class, so the implementation could be easily change. We can add more blocks and change its position easily in the Game1.cs 

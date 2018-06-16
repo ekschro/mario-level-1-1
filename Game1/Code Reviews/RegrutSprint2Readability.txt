@@ -1,7 +1,0 @@
-Author: Tim Regrut
-Date: 6/1/2018
-Sprint: 2
-File: KoopaSprite.cs
-Author of File: Dorothy Chow
-Minutes to complete: 7 minutes
-Variables are fine, high cyclomatic complexity in update, location could be private to class. Could use more descriptive variable names because just by looking at the code I have very little idea on what objects the variables are for.
