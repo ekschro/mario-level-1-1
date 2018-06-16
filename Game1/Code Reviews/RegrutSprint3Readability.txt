@@ -1,0 +1,9 @@
+Tim Regrut
+6/15/2018
+Sprint 3
+LevelLoader.cs
+Will F is the author
+7
+
+The code that was written is fairly reasonable. The code accomplishes its purpose which is to load the level. 
+However, there is excessive branching which could be improved by breaking up the read in of the objects to their types such as blocks, pickups, enemies, and mario.
