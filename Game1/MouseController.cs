@@ -14,16 +14,12 @@ namespace Game1
 
     public class MouseController : IController
     {
-        
-        private Game1 myGame;
         ICommand right;
         ICommand left;
         ICommand down;
         ICommand up;
         public MouseController(Game1 game)
         {
-
-            myGame = game;
             right = new RightCommand(game);
             left = new LeftCommand(game);
             down = new DownCommand(game);

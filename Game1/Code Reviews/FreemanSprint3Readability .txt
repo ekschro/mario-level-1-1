@@ -1,0 +1,24 @@
+William Freeman (.694)
+6/15/18
+Sprint 3
+MouseController.cs
+Tim Regrut
+40
+Since this is a mouse controller, the fields containing just the 
+	four cardinal directions as ICommand's already imply how the 
+	class will operate. The fact that these fields are all 
+	lowercase is slightly concerning, but otherwise fine.
+The constructor simply initializes these four commands with their 
+	respective commands from the classes that extend ICommand. 
+	The commands are slightly vague, as it's not clear what is 
+	going "Up" or "Down."
+MouseController has a single method, Update, and by keeping the 
+	class small it makes its purpose clearer.
+The class gets the state of the mouse with a descriptive variable 
+	"mouseState"
+From there, there is an extended if-else statement which does 
+	reduce some readability. It uses a field from a different
+	class to perform its logic, which adds to the confusion.
+	However, each path executes a single line of code, making
+	it clear that this just determines which direction the Mario
+	object is going.
