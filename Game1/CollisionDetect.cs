@@ -11,32 +11,21 @@ namespace Game1
     {
         private ILevel level1;
         private IPlayer player;
-        public List<IBlock> blocks;
         private IBlock[] blockArray;
-        private List<IEnemy> enemies;
         private IEnemy[] enemyArray;
-        private List<IPickup> pickups;
         private IPickup[] pickupArray;
         private CollisionRespond collision;
         private Game1 mygame;
-        List<IBlock> ICollision.BlockObjects { get => blocks; set => blocks = value; }
-        List<IEnemy> ICollision.EnemyObjects { get => enemies; set => enemies = value; }
-        List<IPickup> ICollision.PickupObjects { get => pickups; set => pickups = value; }
 
-        private int invulnerabilityFrames = 100;
-        private int invulnerabilityTimer = 0;
 
         public CollisionDetect(Game1 game, ILevel Level1)
         {
             mygame = game;
 
             level1 = Level1;
-            player = level1.GetPlayerObject();
-            blocks = level1.GetBlockObjects();
-            enemies = level1.GetEnemyObjects();
-            pickups = level1.GetPickupObjects();
+            player = Level1.PlayerObject;
 
-            collision = new CollisionRespond(mygame);
+            collision = new CollisionRespond(mygame, level1);
         }
 
         public void BlockCollisionDetect()
@@ -50,7 +39,7 @@ namespace Game1
             else
                 playerBox = new Rectangle(playerX, playerY, 16, 32);
 
-            blockArray = blocks.ToArray();
+            blockArray = level1.BlockObjects.ToArray();
 
             for (int i = 0; i < blockArray.Length; i++)
             {
@@ -78,7 +67,7 @@ namespace Game1
                     }
                     else if (intersect.Height < intersect.Width && playerY > blockY)
                     {
-                        collision.BlockCollisionRespondBottom(player, blockArray[i], this);
+                        collision.BlockCollisionRespondBottom(player, blockArray[i]);
                     }
                 }
             }
@@ -86,53 +75,47 @@ namespace Game1
 
         public void EnemyCollisionDetect()
         {
-            if (invulnerabilityTimer == 0)
+            int playerX = (int)player.GameObjectLocation().X;
+            int playerY = (int)player.GameObjectLocation().Y;
+            Rectangle playerBox;
+
+            if (Mario.marioSprite.isSmall())
+                playerBox = new Rectangle(playerX, playerY, 16, 16);
+            else
+                playerBox = new Rectangle(playerX, playerY, 16, 32);
+
+            enemyArray = level1.EnemyObjects.ToArray();
+
+            for (int i = 0; i < enemyArray.Length; i++)
             {
-                int playerX = (int)player.GameObjectLocation().X;
-                int playerY = (int)player.GameObjectLocation().Y;
-                Rectangle playerBox;
+                int enemyX = (int)enemyArray[i].GameObjectLocation().X;
+                int enemyY = (int)enemyArray[i].GameObjectLocation().Y;
 
-                if (Mario.marioSprite.isSmall())
-                    playerBox = new Rectangle(playerX, playerY, 16, 16);
-                else
-                    playerBox = new Rectangle(playerX, playerY, 16, 32);
+                Rectangle enemyBox = new Rectangle(enemyX, enemyY, 16, 16);
+                Rectangle intersect;
 
-                enemyArray = enemies.ToArray();
-
-                for (int i = 0; i < enemyArray.Length; i++)
+                if (playerBox.Intersects(enemyBox))
                 {
-                    int enemyX = (int)enemyArray[i].GameObjectLocation().X;
-                    int enemyY = (int)enemyArray[i].GameObjectLocation().Y;
+                    Rectangle.Intersect(ref playerBox, ref enemyBox, out intersect);
 
-                    Rectangle enemyBox = new Rectangle(enemyX, enemyY, 16, 16);
-                    Rectangle intersect;
-
-                    if (playerBox.Intersects(enemyBox))
+                    if (intersect.Height > intersect.Width && playerX < enemyX)
                     {
-                        Rectangle.Intersect(ref playerBox, ref enemyBox, out intersect);
-
-                        if (intersect.Height > intersect.Width && playerX < enemyX)
-                        {
-                            collision.EnemyCollisionRespondLeft(player, enemyArray[i], this);
-                            invulnerabilityTimer++;
-                        }
-                        else if (intersect.Height > intersect.Width && playerX > enemyX)
-                        {
-                            collision.EnemyCollisionRespondRight(player, enemyArray[i], this);
-                            invulnerabilityTimer++;
-                        }
-                        else if (intersect.Height < intersect.Width && playerY < enemyY)
-                        {
-                            collision.EnemyCollisionRespondTop(player, enemyArray[i], this);
-                        }
-                        else if (intersect.Height < intersect.Width && playerY > enemyY)
-                        {
-                            collision.EnemyCollisionRespondBottom(player, enemyArray[i], this);
-                            invulnerabilityTimer++;
-                        }
+                        collision.EnemyCollisionRespondLeft(player, enemyArray[i]);
+                    }
+                    else if (intersect.Height > intersect.Width && playerX > enemyX)
+                    {
+                        collision.EnemyCollisionRespondRight(player, enemyArray[i]);
+                    }
+                    else if (intersect.Height < intersect.Width && playerY < enemyY)
+                    {
+                        collision.EnemyCollisionRespondTop(player, enemyArray[i]);
+                    }
+                    else if (intersect.Height < intersect.Width && playerY > enemyY)
+                    {
+                        collision.EnemyCollisionRespondBottom(player, enemyArray[i]);
                     }
                 }
-            } 
+            }
         }
 
         public void PickupBlockCollisionDetect()
@@ -146,7 +129,7 @@ namespace Game1
             else
                 playerBox = new Rectangle(playerX, playerY, 16, 32);
 
-            pickupArray = pickups.ToArray();
+            pickupArray = level1.PickupObjects.ToArray();
 
             for (int i = 0; i < pickupArray.Length; i++)
             {
@@ -162,19 +145,19 @@ namespace Game1
 
                     if (intersect.Height > intersect.Width && playerX < pickupX)
                     {
-                        collision.PickupCollisionRespondLeft(player, pickupArray[i], this);
+                        collision.PickupCollisionRespondLeft(player, pickupArray[i]);
                     }
                     else if (intersect.Height > intersect.Width && playerX > pickupX)
                     {
-                        collision.PickupCollisionRespondRight(player, pickupArray[i], this);
+                        collision.PickupCollisionRespondRight(player, pickupArray[i]);
                     }
                     else if (intersect.Height < intersect.Width && playerY < pickupY)
                     {
-                        collision.PickupCollisionRespondTop(player, pickupArray[i], this);
+                        collision.PickupCollisionRespondTop(player, pickupArray[i]);
                     }
                     else if (intersect.Height < intersect.Width && playerY > pickupY)
                     {
-                        collision.PickupCollisionRespondBottom(player, pickupArray[i], this);
+                        collision.PickupCollisionRespondBottom(player, pickupArray[i]);
                     }
                 }
             }
@@ -186,10 +169,7 @@ namespace Game1
             EnemyCollisionDetect();
             PickupBlockCollisionDetect();
 
-            if (invulnerabilityTimer != 0)
-                invulnerabilityTimer++;
-            if (invulnerabilityTimer == invulnerabilityFrames)
-                invulnerabilityTimer = 0;
+            collision.Update(level1);
         }
     }
 }

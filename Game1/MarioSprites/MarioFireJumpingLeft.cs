@@ -24,7 +24,7 @@ namespace Game1
             int column = currentFrame % Mario.TotalMarioColumns;
 
             
-            
+     
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
             Rectangle destinationRectangle = new Rectangle((int)Mario.CurrentXPosition, (int)Mario.CurrentYPosition, width, height);

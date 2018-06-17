@@ -11,6 +11,7 @@ namespace Game1
         private static int totalMarioRows = 3;
         private static bool isStar = false;
 
+
        public static ISprite marioSprite;
 
         public static ISprite MarioSprite { get => marioSprite; set => marioSprite = value; }

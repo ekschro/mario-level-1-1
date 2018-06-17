@@ -16,7 +16,13 @@ namespace Game1
         ICommand leftCommand;
         ICommand rightCommand;
 
-        public CollisionRespond(Game1 game)
+        private int invulnerabilityFrames = 100;
+        private int invulnerabilityTimer = 100;
+        private bool invulnerability = false;
+
+        private ILevel objectLevel;
+
+        public CollisionRespond(Game1 game, ILevel level)
         {
             myGame = game;
 
@@ -24,6 +30,8 @@ namespace Game1
             downCommand = new DownCommand(myGame);
             leftCommand = new LeftCommand(myGame);
             rightCommand = new RightCommand(myGame);
+
+            objectLevel = level;
         }
 
         public void BlockCollisionRespondTop(IPlayer player, IBlock block)
@@ -31,7 +39,7 @@ namespace Game1
             upCommand.Execute();
         }
 
-        public void BlockCollisionRespondBottom(IPlayer player, IBlock block, ICollision collisionDetector)
+        public void BlockCollisionRespondBottom(IPlayer player, IBlock block)
         {
             if(!(block is EmptyBlock))
                 downCommand.Execute();
@@ -45,7 +53,7 @@ namespace Game1
             }
 
             if (block is BrickBlock && !Mario.marioSprite.isSmall())
-                collisionDetector.BlockObjects.Remove(block);
+                objectLevel.BlockObjects.Remove(block);
 
         }
 
@@ -59,26 +67,31 @@ namespace Game1
             leftCommand.Execute();
         }
 
-        public void EnemyCollisionRespondTop(IPlayer player, IEnemy enemy, ICollision collisionDetector)
+        public void EnemyCollisionRespondTop(IPlayer player, IEnemy enemy)
         {
             enemy.BeStomped();
-            collisionDetector.EnemyObjects.Remove(enemy);
+            objectLevel.EnemyObjects.Remove(enemy);
         }
 
-        public void EnemyCollisionRespondBottom(IPlayer player, IEnemy enemy, ICollision collisionDetector)
+        public void EnemyCollisionRespondBottom(IPlayer player, IEnemy enemy)
         {
-            if (player.IsStar)
+            if (objectLevel.PlayerObject.IsStar)
             {
                 enemy.BeStomped();
-                collisionDetector.EnemyObjects.Remove(enemy);
+                objectLevel.EnemyObjects.Remove(enemy);
+            } else if (invulnerability)
+            {
+
             }
             else if (Mario.marioSprite.isFire())
             {
                 Mario.marioSprite.BigMarioCommandCalled();
+                invulnerability = true;
             }
             else if (!Mario.marioSprite.isSmall())
             {
                 Mario.marioSprite.SmallMarioCommandCalled();
+                invulnerability = true;
             }
             else
             {
@@ -87,20 +100,26 @@ namespace Game1
             
         }
 
-        public void EnemyCollisionRespondLeft(IPlayer player, IEnemy enemy, ICollision collisionDetector)
+        public void EnemyCollisionRespondLeft(IPlayer player, IEnemy enemy)
         {
-            if (player.IsStar)
+            if (objectLevel.PlayerObject.IsStar)
             {
                 enemy.BeStomped();
-                collisionDetector.EnemyObjects.Remove(enemy);
+                objectLevel.EnemyObjects.Remove(enemy);
+            }
+            else if (invulnerability)
+            {
+
             }
             else if (Mario.marioSprite.isFire())
             {
                 Mario.marioSprite.BigMarioCommandCalled();
+                invulnerability = true;
             }
             else if (!Mario.marioSprite.isSmall())
             {
                 Mario.marioSprite.SmallMarioCommandCalled();
+                invulnerability = true;
             }
             else
             {
@@ -108,20 +127,26 @@ namespace Game1
             }
         }
 
-        public void EnemyCollisionRespondRight(IPlayer player, IEnemy enemy, ICollision collisionDetector)
+        public void EnemyCollisionRespondRight(IPlayer player, IEnemy enemy)
         {
-            if (player.IsStar)
+            if (objectLevel.PlayerObject.IsStar)
             {
                 enemy.BeStomped();
-                collisionDetector.EnemyObjects.Remove(enemy);
+                objectLevel.EnemyObjects.Remove(enemy);
+            }
+            else if (invulnerability)
+            {
+
             }
             else if (Mario.marioSprite.isFire())
             {
                 Mario.marioSprite.BigMarioCommandCalled();
+                invulnerability = true;
             }
             else if (!Mario.marioSprite.isSmall())
             {
                 Mario.marioSprite.SmallMarioCommandCalled();
+                invulnerability = true;
             }
             else
             {
@@ -129,7 +154,7 @@ namespace Game1
             }
         }
 
-        public void PickupCollisionRespondTop(IPlayer player, IPickup pickup, ICollision collisionDetector)
+        public void PickupCollisionRespondTop(IPlayer player, IPickup pickup)
         {
             pickup.Picked();
            
@@ -156,13 +181,14 @@ namespace Game1
             }
             else if (pickup is Star)
             {
-                player = new StarMario(player, myGame);
+                objectLevel.PlayerObject.IsStar = true;
+                invulnerabilityTimer = 1000;
             }
 
-            collisionDetector.PickupObjects.Remove(pickup);
+            objectLevel.PickupObjects.Remove(pickup);
         }
 
-        public void PickupCollisionRespondBottom(IPlayer player, IPickup pickup, ICollision collisionDetector)
+        public void PickupCollisionRespondBottom(IPlayer player, IPickup pickup)
         {
             pickup.Picked();
          
@@ -189,14 +215,14 @@ namespace Game1
             }
             else if (pickup is Star)
             {
-                player = new StarMario(player, myGame);
-                
+                objectLevel.PlayerObject.IsStar = true;
+                invulnerabilityTimer = 1000;
             }
 
-            collisionDetector.PickupObjects.Remove(pickup);
+            objectLevel.PickupObjects.Remove(pickup);
         }
 
-        public void PickupCollisionRespondLeft(IPlayer player, IPickup pickup, ICollision collisionDetector)
+        public void PickupCollisionRespondLeft(IPlayer player, IPickup pickup)
         {
             pickup.Picked();
             
@@ -224,13 +250,14 @@ namespace Game1
             }
             else if (pickup is Star)
             {
-                player = new StarMario(player, myGame);
+                objectLevel.PlayerObject.IsStar = true;
+                invulnerabilityTimer = 1000;
             }
 
-            collisionDetector.PickupObjects.Remove(pickup);
+            objectLevel.PickupObjects.Remove(pickup);
         }
 
-        public void PickupCollisionRespondRight(IPlayer player, IPickup pickup, ICollision collisionDetector)
+        public void PickupCollisionRespondRight(IPlayer player, IPickup pickup)
         {
             pickup.Picked();
             
@@ -258,15 +285,26 @@ namespace Game1
             }
             else if (pickup is Star)
             {
-                player = new StarMario(player, myGame);
+                objectLevel.PlayerObject.IsStar = true;
+                invulnerabilityTimer = 1000;
             }
 
-            collisionDetector.PickupObjects.Remove(pickup);
+            objectLevel.PickupObjects.Remove(pickup);
         }
 
-        public void Update()
+        public void Update(ILevel level1)
         {
 
+            if (invulnerability)
+            {
+                invulnerabilityTimer--;
+            }
+            if (invulnerabilityTimer == 0)
+            {
+                invulnerabilityTimer = invulnerabilityFrames;
+                invulnerability = false;
+                level1.PlayerObject.IsStar = false;
+            }
         }
     }
 }

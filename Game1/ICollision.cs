@@ -9,8 +9,6 @@ namespace Game1
     public interface ICollision
     {
         void Update();
-        List<IBlock> BlockObjects { get; set; }
-        List<IEnemy> EnemyObjects { get; set; }
-        List<IPickup> PickupObjects { get; set; }
+
     }
 }

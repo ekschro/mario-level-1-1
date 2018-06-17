@@ -70,7 +70,7 @@ public class MarioDead : ISprite
 
         public bool isSmall()
         {
-            return false;
+            return true;
         }
 
         public bool isFire()

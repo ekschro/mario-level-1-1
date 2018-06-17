@@ -11,6 +11,15 @@ namespace Game1
         private List<IGameObject> levelObjects;
         private ICollision collisionDetect;
 
+        private IPlayer playerObject;
+        public List<IBlock> blocks;
+        private List<IEnemy> enemies;
+        private List<IPickup> pickups;
+
+        IPlayer ILevel.PlayerObject { get => playerObject; set => playerObject = value; }
+        List<IBlock> ILevel.BlockObjects { get => blocks; set => blocks = value; }
+        List<IEnemy> ILevel.EnemyObjects { get => enemies; set => enemies = value; }
+        List<IPickup> ILevel.PickupObjects { get => pickups; set => pickups = value; }
 
         public Level1(string fileName, Game1 game)
         {
@@ -18,6 +27,11 @@ namespace Game1
             ILoader loader = new LevelLoader(game);
 
             loader.Load(fileName, levelObjects);
+
+            GetPlayerObject();
+            GetBlockObjects();
+            GetEnemyObjects();
+            GetPickupObjects();
 
             collisionDetect = new CollisionDetect(game,this);
         }
@@ -40,7 +54,7 @@ namespace Game1
             }
         }
 
-        public IPlayer GetPlayerObject()
+        private void GetPlayerObject()
         {
             IPlayer playerObject = null;
             foreach(IGameObject player in levelObjects)
@@ -48,9 +62,10 @@ namespace Game1
                 if(player is IPlayer)
                     playerObject = (IPlayer)player;
             }
-            return playerObject;
+
+            this.playerObject = playerObject;
         }
-        public List<IBlock> GetBlockObjects()
+        private void GetBlockObjects()
         {
             List<IBlock> blockObjects = new List<IBlock>();
             foreach (IGameObject block in levelObjects)
@@ -58,9 +73,9 @@ namespace Game1
                 if(block is IBlock)
                     blockObjects.Add((IBlock)block);
             }
-            return blockObjects;
+            this.blocks = blockObjects;
         }
-        public List<IEnemy> GetEnemyObjects()
+        private void GetEnemyObjects()
         {
             List<IEnemy> enemyObjects = new List<IEnemy>();
             foreach (IGameObject enemy in levelObjects)
@@ -68,9 +83,9 @@ namespace Game1
                 if(enemy is IEnemy)
                     enemyObjects.Add((IEnemy)enemy);
             }
-            return enemyObjects;
+            this.enemies = enemyObjects;
         }
-        public List<IPickup> GetPickupObjects()
+        private void GetPickupObjects()
         {
             List<IPickup> pickupObjects = new List<IPickup>();
             foreach (IGameObject pickup in levelObjects)
@@ -78,11 +93,7 @@ namespace Game1
                 if(pickup is IPickup)
                     pickupObjects.Add((IPickup)pickup);
             }
-            return pickupObjects;
-        }
-        public List<IGameObject> GetGameObjects()
-        {
-            return levelObjects;
+            this.pickups = pickupObjects;
         }
     }
 }

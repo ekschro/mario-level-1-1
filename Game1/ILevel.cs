@@ -11,10 +11,9 @@ namespace Game1
 
         void Update();
         void Draw();
-        IPlayer GetPlayerObject();
-        List<IBlock> GetBlockObjects();
-        List<IEnemy> GetEnemyObjects();
-        List<IPickup> GetPickupObjects();
-        List<IGameObject> GetGameObjects();
+        List<IBlock> BlockObjects { get; set; }
+        List<IEnemy> EnemyObjects { get; set; }
+        List<IPickup> PickupObjects { get; set; }
+        IPlayer PlayerObject { get; set; }
     }
 }
