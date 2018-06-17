@@ -67,7 +67,7 @@ namespace Game1
 
         public void EnemyCollisionRespondBottom(IPlayer player, IEnemy enemy, ICollision collisionDetector)
         {
-            if (player.IsStar())
+            if (player.IsStar)
             {
                 enemy.BeStomped();
                 collisionDetector.EnemyObjects.Remove(enemy);
@@ -89,7 +89,7 @@ namespace Game1
 
         public void EnemyCollisionRespondLeft(IPlayer player, IEnemy enemy, ICollision collisionDetector)
         {
-            if (player.IsStar())
+            if (player.IsStar)
             {
                 enemy.BeStomped();
                 collisionDetector.EnemyObjects.Remove(enemy);
@@ -110,7 +110,7 @@ namespace Game1
 
         public void EnemyCollisionRespondRight(IPlayer player, IEnemy enemy, ICollision collisionDetector)
         {
-            if (player.IsStar())
+            if (player.IsStar)
             {
                 enemy.BeStomped();
                 collisionDetector.EnemyObjects.Remove(enemy);
@@ -156,6 +156,7 @@ namespace Game1
             }
             else if (pickup is Star)
             {
+                player.IsStar = true;
                 player = new StarMario(player, myGame);
             }
 
@@ -189,6 +190,7 @@ namespace Game1
             }
             else if (pickup is Star)
             {
+                player.IsStar = true;
                 player = new StarMario(player, myGame);
             }
 
@@ -223,6 +225,7 @@ namespace Game1
             }
             else if (pickup is Star)
             {
+                player.IsStar = true;
                 player = new StarMario(player, myGame);
             }
 
@@ -257,6 +260,7 @@ namespace Game1
             }
             else if (pickup is Star)
             {
+                player.IsStar = true;
                 player = new StarMario(player, myGame);
             }
 

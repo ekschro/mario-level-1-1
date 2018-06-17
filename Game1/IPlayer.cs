@@ -4,8 +4,6 @@ namespace Game1
 {
     public interface IPlayer : IGameObject
     {
-
-        bool IsStar();
-        
+        bool IsStar { get; set; }
     }
 }

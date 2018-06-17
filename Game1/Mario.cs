@@ -9,6 +9,7 @@ namespace Game1
         private Game1 myGame;
         private static int totalMarioColumns = 28;
         private static int totalMarioRows = 3;
+        private static bool isStar = false;
 
        public static ISprite marioSprite;
 
@@ -17,6 +18,7 @@ namespace Game1
         public static float CurrentYPosition { get => currentYPosition; set => currentYPosition = value; }
         public static int TotalMarioRows { get => totalMarioRows; set => totalMarioRows = value; }
         public static int TotalMarioColumns { get => totalMarioColumns; set => totalMarioColumns = value; }
+        public bool IsStar { get => isStar; set => isStar = value; }
 
         public Mario(Game1 game, Vector2 vector)
         {
@@ -44,10 +46,10 @@ namespace Game1
             return new Vector2(currentXPosition, currentYPosition);
         }
 
-        public bool IsStar()
-        {
-            return false;
-        }
+        //public bool IsStar()
+        //{
+        //    return isStar;
+        //}
         
 
         

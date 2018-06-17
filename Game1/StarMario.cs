@@ -13,6 +13,7 @@ namespace Game1
         IPlayer marioObject;
         Game1 myGame;
         int timer = 1000;
+        public bool IsStar { get; set; }
 
         public StarMario(IPlayer decoratedMario, Game1 game)
         {
@@ -34,8 +35,9 @@ namespace Game1
 
 
         public void RemoveStar()
-        { 
+        {
             marioObject = decoratedMario;
+            decoratedMario.IsStar = false;
         }
 
         public void Draw()
@@ -48,9 +50,9 @@ namespace Game1
             return decoratedMario.GameObjectLocation();
         }
 
-        public bool IsStar()
-        {
-            return true;
-        }
+        //public bool IsStar()
+        //{
+        //    return true;
+        //}
     }
 }
