@@ -12,12 +12,13 @@ namespace Game1
         IPlayer decoratedMario;
         IPlayer marioObject;
         Game1 myGame;
-        int timer = 1000;
+        int timer = 10;
         public bool IsStar { get; set; }
 
         public StarMario(IPlayer decoratedMario, Game1 game)
         {
             this.decoratedMario = decoratedMario;
+            decoratedMario.IsStar = true;
             myGame = game;
             marioObject = myGame.PlatformerLevel.GetPlayerObject();
         }

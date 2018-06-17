@@ -156,7 +156,6 @@ namespace Game1
             }
             else if (pickup is Star)
             {
-                player.IsStar = true;
                 player = new StarMario(player, myGame);
             }
 
@@ -190,8 +189,8 @@ namespace Game1
             }
             else if (pickup is Star)
             {
-                player.IsStar = true;
                 player = new StarMario(player, myGame);
+                
             }
 
             collisionDetector.PickupObjects.Remove(pickup);
@@ -225,7 +224,6 @@ namespace Game1
             }
             else if (pickup is Star)
             {
-                player.IsStar = true;
                 player = new StarMario(player, myGame);
             }
 
@@ -260,7 +258,6 @@ namespace Game1
             }
             else if (pickup is Star)
             {
-                player.IsStar = true;
                 player = new StarMario(player, myGame);
             }
 
