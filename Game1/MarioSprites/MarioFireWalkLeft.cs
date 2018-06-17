@@ -10,7 +10,7 @@ namespace Game1
         //private int currentFrame = 11 + 56;
         private int currentFrame;
         private int startFrame = 11 + 56;
-        private int endFrame = 9 + 56;
+        private int endFrame = 8 + 56;
         
         
 
