@@ -36,13 +36,14 @@ namespace Game1
 
         public void BlockCollisionRespondTop(IPlayer player, IBlock block)
         {
-            upCommand.Execute();
+            if (!(block is HiddenBlock))
+                upCommand.Execute();
         }
 
         public void BlockCollisionRespondBottom(IPlayer player, IBlock block)
         {
-            if(!(block is EmptyBlock))
-                downCommand.Execute();
+            
+            downCommand.Execute();
 
             if (Mario.marioSprite.isSmall() && block is BrickBlock)
             {
@@ -54,17 +55,28 @@ namespace Game1
 
             if (block is BrickBlock && !Mario.marioSprite.isSmall())
                 objectLevel.BlockObjects.Remove(block);
+            else if (block is HiddenBlock)
+            {
+                objectLevel.BlockObjects.Remove(block);
+                objectLevel.BlockObjects.Add(new UsedBlock(myGame, block.GameObjectLocation()));
+            } else if (block is QuestionBlock)
+            {
+                objectLevel.BlockObjects.Remove(block);
+                objectLevel.BlockObjects.Add(new UsedBlock(myGame, block.GameObjectLocation()));
+            }
 
         }
 
         public void BlockCollisionRespondRight(IPlayer player, IBlock block)
         {
-            rightCommand.Execute();
+            if(!(block is HiddenBlock))
+                rightCommand.Execute();
         }
 
         public void BlockCollisionRespondLeft(IPlayer player, IBlock block)
         {
-            leftCommand.Execute();
+            if (!(block is HiddenBlock))
+                leftCommand.Execute();
         }
 
         public void EnemyCollisionRespondTop(IPlayer player, IEnemy enemy)
@@ -183,6 +195,7 @@ namespace Game1
             {
                 objectLevel.PlayerObject.IsStar = true;
                 invulnerabilityTimer = 1000;
+                invulnerability = true;
             }
 
             objectLevel.PickupObjects.Remove(pickup);
@@ -217,6 +230,7 @@ namespace Game1
             {
                 objectLevel.PlayerObject.IsStar = true;
                 invulnerabilityTimer = 1000;
+                invulnerability = true;
             }
 
             objectLevel.PickupObjects.Remove(pickup);
@@ -252,6 +266,7 @@ namespace Game1
             {
                 objectLevel.PlayerObject.IsStar = true;
                 invulnerabilityTimer = 1000;
+                invulnerability = true;
             }
 
             objectLevel.PickupObjects.Remove(pickup);
@@ -287,12 +302,13 @@ namespace Game1
             {
                 objectLevel.PlayerObject.IsStar = true;
                 invulnerabilityTimer = 1000;
+                invulnerability = true;
             }
 
             objectLevel.PickupObjects.Remove(pickup);
         }
 
-        public void Update(ILevel level1)
+        public void Update()
         {
 
             if (invulnerability)
@@ -303,7 +319,7 @@ namespace Game1
             {
                 invulnerabilityTimer = invulnerabilityFrames;
                 invulnerability = false;
-                level1.PlayerObject.IsStar = false;
+                objectLevel.PlayerObject.IsStar = false;
             }
         }
     }

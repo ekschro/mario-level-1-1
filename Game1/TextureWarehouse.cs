@@ -17,7 +17,7 @@ namespace Game1 {
             myGame = game;
 
             pickupTexture = myGame.Content.Load<Texture2D>("pickup");
-            marioTexture = myGame.Content.Load<Texture2D>("mario");
+            marioTexture = myGame.Content.Load<Texture2D>("marioRedux");
             koopaTexture = myGame.Content.Load<Texture2D>("koopa1");
             goombaTexture = myGame.Content.Load<Texture2D>("goomba1");
             blockTexture = myGame.Content.Load<Texture2D>("tiles");
