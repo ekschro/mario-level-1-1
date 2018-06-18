@@ -55,6 +55,15 @@ namespace Game1
 
             if (block is BrickBlock && !Mario.marioSprite.isSmall())
                 objectLevel.BlockObjects.Remove(block);
+            else if (block is HiddenBlock)
+            {
+                objectLevel.BlockObjects.Remove(block);
+                objectLevel.BlockObjects.Add(new UsedBlock(myGame, block.GameObjectLocation()));
+            } else if (block is QuestionBlock)
+            {
+                objectLevel.BlockObjects.Remove(block);
+                objectLevel.BlockObjects.Add(new UsedBlock(myGame, block.GameObjectLocation()));
+            }
 
         }
 
