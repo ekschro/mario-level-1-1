@@ -23,19 +23,26 @@ namespace Game1
         public bool IsStar { get => isStar; set => isStar = value; }
         public static int CurrentFrame { get => currentFrame; set => currentFrame = value; }
         public static Game1 MyGame { get => myGame; set => myGame = value; }
+        public static Color MarioColor;
+        private int colorTimer;
+        private int colorStartingTime;
 
         public Mario(Game1 game, Vector2 vector)
         {
             MyGame = game;
             CurrentXPosition = vector.X;
             CurrentYPosition = vector.Y;
+            MarioColor = Color.White;
             MarioSprite = new MarioSmallIdleRight(MyGame);
+            colorStartingTime = 5;
+            colorTimer = 0;
         }
 
         
 
         public void Draw()
         {
+            ColorSelect();
             MarioSprite.Draw();
         }
 
@@ -50,18 +57,35 @@ namespace Game1
             return new Vector2(currentXPosition, currentYPosition);
         }
 
-        //public bool IsStar()
-        //{
-        //    return isStar;
-        //}
-        
+        public void ColorSelect()
+        {
+            if (isStar && colorTimer == 0)
+            {
+                if (MarioColor == Color.White)
+                    MarioColor = Color.Red;
+                else if (MarioColor == Color.Red)
+                    MarioColor = Color.LightBlue;
+                else if (MarioColor == Color.LightBlue)
+                    MarioColor = Color.LimeGreen;
+                else if (MarioColor == Color.LimeGreen)
+                    MarioColor = Color.Red;
 
-        
+                colorTimer = colorStartingTime;
+            }
+            else if (isStar && colorTimer > 0)
+                colorTimer--;
+            else
+            {
+                MarioColor = Color.White;
+            }
+        }
 
-        
 
-       
 
-       
+
+
+
+
+
     }
 }
