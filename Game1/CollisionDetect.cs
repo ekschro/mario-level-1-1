@@ -84,6 +84,9 @@ namespace Game1
             int playerY = (int)player.GameObjectLocation().Y;
             Rectangle playerBox;
 
+            if (Mario.marioSprite.isCrouching())
+                playerY = playerY + tileOffset;
+
             if (Mario.marioSprite.isSmall())
                 playerBox = new Rectangle(playerX, playerY, 16, 16);
             else
@@ -128,6 +131,9 @@ namespace Game1
             int playerX = (int)player.GameObjectLocation().X;
             int playerY = (int)player.GameObjectLocation().Y;
             Rectangle playerBox;
+
+            if (Mario.marioSprite.isCrouching())
+                playerY = playerY + tileOffset;
 
             if (Mario.marioSprite.isSmall())
                 playerBox = new Rectangle(playerX, playerY, 16, 16);
@@ -174,7 +180,7 @@ namespace Game1
             EnemyCollisionDetect();
             PickupBlockCollisionDetect();
 
-            collision.Update(level1);
+            collision.Update();
         }
     }
 }

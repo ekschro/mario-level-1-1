@@ -183,6 +183,7 @@ namespace Game1
             {
                 objectLevel.PlayerObject.IsStar = true;
                 invulnerabilityTimer = 1000;
+                invulnerability = true;
             }
 
             objectLevel.PickupObjects.Remove(pickup);
@@ -217,6 +218,7 @@ namespace Game1
             {
                 objectLevel.PlayerObject.IsStar = true;
                 invulnerabilityTimer = 1000;
+                invulnerability = true;
             }
 
             objectLevel.PickupObjects.Remove(pickup);
@@ -252,6 +254,7 @@ namespace Game1
             {
                 objectLevel.PlayerObject.IsStar = true;
                 invulnerabilityTimer = 1000;
+                invulnerability = true;
             }
 
             objectLevel.PickupObjects.Remove(pickup);
@@ -287,12 +290,13 @@ namespace Game1
             {
                 objectLevel.PlayerObject.IsStar = true;
                 invulnerabilityTimer = 1000;
+                invulnerability = true;
             }
 
             objectLevel.PickupObjects.Remove(pickup);
         }
 
-        public void Update(ILevel level1)
+        public void Update()
         {
 
             if (invulnerability)
@@ -303,7 +307,7 @@ namespace Game1
             {
                 invulnerabilityTimer = invulnerabilityFrames;
                 invulnerability = false;
-                level1.PlayerObject.IsStar = false;
+                objectLevel.PlayerObject.IsStar = false;
             }
         }
     }

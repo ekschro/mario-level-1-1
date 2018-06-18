@@ -9,8 +9,6 @@ namespace Game1
 
         private int currentFrame = 14 + 28;
 
-        private int smallSizeOffset = 16;
-
         public MarioSmallIdleRight(Game1 game)
         {
             myGame = game;
@@ -26,8 +24,8 @@ namespace Game1
             int column = currentFrame % Mario.TotalMarioColumns;
 
 
-            Rectangle sourceRectangle = new Rectangle(width * column, (height * row) + smallSizeOffset, width, height - smallSizeOffset);
-            Rectangle destinationRectangle = new Rectangle((int)Mario.CurrentXPosition, (int)Mario.CurrentYPosition, width, height - smallSizeOffset);
+            Rectangle sourceRectangle = new Rectangle(width * column, (height * row), width, height);
+            Rectangle destinationRectangle = new Rectangle((int)Mario.CurrentXPosition, (int)Mario.CurrentYPosition, width, height);
 
 
             myGame.spriteBatch.Begin();
