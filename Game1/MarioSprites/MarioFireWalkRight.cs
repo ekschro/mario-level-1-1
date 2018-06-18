@@ -5,17 +5,19 @@ namespace Game1
     public class MarioFireWalkRight : ISprite
     {
         private Game1 myGame;
-        
 
-        private int currentFrame = 16 + 56;
-       
+
+        //private int currentFrame = 16 + 56;
+        private int currentFrame;
+        private int startFrame = 16 + 56;
+        private int endFrame = 19 + 56;
         
         
 
         public MarioFireWalkRight(Game1 game)
         {
             myGame = game;
-            
+            currentFrame = startFrame;
         }
 
 
@@ -54,7 +56,10 @@ namespace Game1
 
         public void RightCommandCalled()
         {
-            Mario.marioSprite = new MarioFireWalkRightPart2(myGame);
+            currentFrame++;
+            if (currentFrame == endFrame)
+                currentFrame = startFrame;
+            //Mario.marioSprite = new MarioFireWalkRightPart2(myGame);
         }
 
         public void SmallMarioCommandCalled()

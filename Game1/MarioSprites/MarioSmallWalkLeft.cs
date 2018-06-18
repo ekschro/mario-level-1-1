@@ -7,16 +7,17 @@ namespace Game1
     {
         private Game1 myGame;
         
-        private int currentFrame = 11 + 28;
+        //private int currentFrame = 11 + 28;
+        private int startFrame = 11 + 28;
+        private int endFrame = 8 + 28;
+        private int currentFrame;
 
         private int smallSizeOffset = 16;
-
-
 
         public MarioSmallWalkLeft(Game1 game)
         {
             myGame = game;
-            
+            currentFrame = startFrame;
         }
 
 
@@ -49,7 +50,10 @@ namespace Game1
 
         public void LeftCommandCalled()
         {
-            Mario.marioSprite = new MarioSmallWalkLeftPart2(myGame);
+            currentFrame--;
+            if (currentFrame == endFrame)
+                currentFrame = startFrame;
+            //Mario.marioSprite = new MarioSmallWalkLeftPart2(myGame);
         }
 
         public void RightCommandCalled()
