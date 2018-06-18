@@ -80,7 +80,7 @@ public class MarioDead : ISprite
 
         public bool isCrouching()
         {
-            return true;
+            return false;
         }
 
 

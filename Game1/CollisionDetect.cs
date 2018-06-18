@@ -16,6 +16,7 @@ namespace Game1
         private IPickup[] pickupArray;
         private CollisionRespond collision;
         private Game1 mygame;
+        private int tileOffset = 16;
 
 
         public CollisionDetect(Game1 game, ILevel Level1)
@@ -33,6 +34,10 @@ namespace Game1
             int playerX = (int)player.GameObjectLocation().X;
             int playerY = (int)player.GameObjectLocation().Y;
             Rectangle playerBox;
+
+            if (Mario.marioSprite.isCrouching())
+                playerY = playerY + tileOffset;
+            
 
             if (Mario.marioSprite.isSmall() || Mario.marioSprite.isCrouching())
                 playerBox = new Rectangle(playerX, playerY, 16, 16);
