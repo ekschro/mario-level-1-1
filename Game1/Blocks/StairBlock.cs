@@ -10,12 +10,9 @@ namespace Game1
     public class StairBlock : IBlock
     {
 
-        public IBlockSprite stairBlockSprite;
-
-       // public static IBlockSprite StairBlockSprite { get => stairBlockSprite; set => stairBlockSprite = value; }
-
+        private IBlockSprite stairBlockSprite;
         private Game1 myGame;
-        public Vector2 blockLocation;
+        private Vector2 blockLocation;
 
         public StairBlock(Game1 game, Vector2 location)
         {
@@ -40,11 +37,7 @@ namespace Game1
         }
 
         public void TopCollision() { }
-
-        public void BottomCollision()
-        {
-        }
-
+        public void BottomCollision() { }
         public void LeftCollision() { }
         public void RightCollision() { }
     }

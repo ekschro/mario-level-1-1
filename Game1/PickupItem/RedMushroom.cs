@@ -11,10 +11,8 @@ namespace Game1
     {
         private static IPickupSprite redMushroomSprite;
 
-        //public static IPickupSprite RedMushroomSprite { get => redMushroomSprite; set => redMushroomSprite = value; }
-
         private Game1 myGame;
-        public Vector2 pickupLocation;
+        private Vector2 pickupLocation;
 
         public RedMushroom(Game1 game, Vector2 location)
         {

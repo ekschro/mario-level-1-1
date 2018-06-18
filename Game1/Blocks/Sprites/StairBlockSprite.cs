@@ -16,7 +16,6 @@ namespace Game1
         private StairBlock stairBlockObject;
         private Game1 myGame;
         private int currentFrame;
-        //private Vector2 blockLocation;
 
         public StairBlockSprite(Game1 game, IBlock stairBlock)
         {

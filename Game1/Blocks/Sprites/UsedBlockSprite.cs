@@ -16,14 +16,12 @@ namespace Game1
         private UsedBlock usedBlockObject;
         private Game1 myGame;
         private int currentFrame;
-        //private IBlock blockObject;
 
         public UsedBlockSprite(Game1 game, IBlock usedBlock)
         {
             usedBlockObject = (UsedBlock)usedBlock;
             myGame = game;
             currentFrame = 3;
-            //blockObject = block;
         }
 
         public void Update()

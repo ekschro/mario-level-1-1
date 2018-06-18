@@ -16,7 +16,6 @@ namespace Game1
         public HiddenBlock hiddenBlockObject;
         private Game1 myGame;
         private int currentFrame;
-        private IBlock blockObject;
 
         public HiddenBlockSprite(Game1 game, IBlock hiddenBlock)
         {

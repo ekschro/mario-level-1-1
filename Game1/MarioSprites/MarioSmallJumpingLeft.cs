@@ -9,7 +9,7 @@ namespace Game1
 
         private int currentFrame = 7 + 28;
 
-        private int smallSizeOffset = 16;
+        //private int smallSizeOffset = 16;
 
         public MarioSmallJumpingLeft(Game1 game)
         {

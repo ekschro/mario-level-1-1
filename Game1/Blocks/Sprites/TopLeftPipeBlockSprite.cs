@@ -16,7 +16,6 @@ namespace Game1
         private TopLeftPipeBlock topLeftPipeBlockObject;
         private Game1 myGame;
         private int currentFrame;
-        //private Vector2 blockLocation;
 
         public TopLeftPipeBlockSprite(Game1 game, IBlock topLeftPipe)
         {

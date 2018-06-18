@@ -16,20 +16,15 @@ namespace Game1
         private StoneBlock stoneBlockObject;
         private Game1 myGame;
         private int currentFrame;
-        //private Vector2 blockLocation;
 
         public StoneBlockSprite(Game1 game, IBlock stoneBlock)
         {
             stoneBlockObject = (StoneBlock)stoneBlock;
             myGame = game;
             currentFrame = 0;
-            //blockLocation = location;
         }
 
-        public void Update()
-        {
-
-        }
+        public void Update(){}
 
         public void Draw()
         {

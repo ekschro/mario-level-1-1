@@ -9,13 +9,9 @@ namespace Game1
 {
     public class BottomLeftPipeBlock : IBlock
     {
-
-        public  IBlockSprite bottomLeftPipeBlockSprite;
-
-       // public static IBlockSprite BottomLeftPipeBlockSprite { get => bottomLeftPipeBlockSprite; set => bottomLeftPipeBlockSprite = value; }
-
+        private  IBlockSprite bottomLeftPipeBlockSprite;
         private Game1 myGame;
-        public Vector2 blockLocation;
+        private Vector2 blockLocation;
 
         public BottomLeftPipeBlock(Game1 game, Vector2 location)
         {
@@ -40,11 +36,7 @@ namespace Game1
         }
 
         public void TopCollision() { }
-
-        public void BottomCollision()
-        {
-        }
-
+        public void BottomCollision() { }
         public void LeftCollision() { }
         public void RightCollision() { }
     }

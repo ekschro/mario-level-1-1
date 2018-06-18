@@ -16,7 +16,6 @@ namespace Game1
         private BottomRightPipeBlock bottomRightPipeBlockObject;
         private Game1 myGame;
         private int currentFrame;
-        //private Vector2 blockLocation;
 
         public BottomRightPipeBlockSprite(Game1 game, IBlock bottomRightPipe)
         {

@@ -9,12 +9,10 @@ namespace Game1
 {
     public class EmptyPickup : IPickup
     {
-        public IPickupSprite emptySprite;
-
-        //public static IPickupSprite EmptySprite { get => emptySprite; set => emptySprite = value; }
+        private IPickupSprite emptySprite;
 
         private Game1 myGame;
-        public Vector2 pickupLocation;
+        private Vector2 pickupLocation;
 
         public EmptyPickup(Game1 game, Vector2 location)
         {

@@ -12,12 +12,9 @@ namespace Game1
         private int cyclePosition = 0;
         private int cycleLength = 16;
 
-        public IPickupSprite fireflowerSprite;
-
-        //public static IPickupSprite FireflowerSprite { get => fireflowerSprite; set => fireflowerSprite = value; }
-
+        private IPickupSprite fireflowerSprite;
         private Game1 myGame;
-        public Vector2 pickupLocation;
+        private Vector2 pickupLocation;
 
         public Fireflower(Game1 game, Vector2 location)
         {

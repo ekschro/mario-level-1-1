@@ -17,7 +17,7 @@ namespace Game1
         private bool direction = true;
         private int cyclePosition = 0;
         private int cycleLength = 8;
-        public Vector2 koopaLocation;
+        private Vector2 koopaLocation;
         private Vector2 koopaOriginalLocation;
 
 
