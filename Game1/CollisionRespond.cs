@@ -36,13 +36,14 @@ namespace Game1
 
         public void BlockCollisionRespondTop(IPlayer player, IBlock block)
         {
-            upCommand.Execute();
+            if (!(block is HiddenBlock))
+                upCommand.Execute();
         }
 
         public void BlockCollisionRespondBottom(IPlayer player, IBlock block)
         {
-            if(!(block is EmptyBlock))
-                downCommand.Execute();
+            
+            downCommand.Execute();
 
             if (Mario.marioSprite.isSmall() && block is BrickBlock)
             {
@@ -59,12 +60,14 @@ namespace Game1
 
         public void BlockCollisionRespondRight(IPlayer player, IBlock block)
         {
-            rightCommand.Execute();
+            if(!(block is HiddenBlock))
+                rightCommand.Execute();
         }
 
         public void BlockCollisionRespondLeft(IPlayer player, IBlock block)
         {
-            leftCommand.Execute();
+            if (!(block is HiddenBlock))
+                leftCommand.Execute();
         }
 
         public void EnemyCollisionRespondTop(IPlayer player, IEnemy enemy)
