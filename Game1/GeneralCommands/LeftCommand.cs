@@ -29,7 +29,7 @@ namespace Game1
 
             if (timer == 5)
             {
-                Mario.marioSprite.LeftCommandCalled();
+                Mario.playerSprite.LeftCommandCalled();
                 timer = 0;
             }else
             {

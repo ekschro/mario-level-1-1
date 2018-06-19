@@ -26,7 +26,7 @@ namespace Game1
         {
             if (timer == 5)
             {
-                Mario.marioSprite.RightCommandCalled();
+                Mario.playerSprite.RightCommandCalled();
                 timer = 0;
             } else
             {

@@ -27,9 +27,9 @@ public class MarioDead : ISprite
         Rectangle destinationRectangle = new Rectangle((int)Mario.CurrentXPosition, (int)Mario.CurrentYPosition, width, height);
 
 
-        myGame.spriteBatch.Begin();
-        myGame.spriteBatch.Draw(TextureWareHouse.marioTexture, destinationRectangle, sourceRectangle, Mario.MarioColor);
-        myGame.spriteBatch.End();
+        myGame.SpriteBatch.Begin();
+        myGame.SpriteBatch.Draw(TextureWareHouse.marioTexture, destinationRectangle, sourceRectangle, Mario.MarioColor);
+        myGame.SpriteBatch.End();
     }
 
     public void UpCommandCalled()
@@ -53,14 +53,14 @@ public class MarioDead : ISprite
         }
     public void SmallMarioCommandCalled()
     {
-        Mario.marioSprite = new MarioSmallIdleRight(myGame);
+        Mario.playerSprite = new MarioSmallIdleRight(myGame);
     }
 
-        public void BigMarioCommandCalled() => Mario.marioSprite = new MarioBigIdleRight(myGame);
+        public void BigMarioCommandCalled() => Mario.playerSprite = new MarioBigIdleRight(myGame);
 
-        public void FireMarioCommandCalled() => Mario.marioSprite = new MarioFireIdleRight(myGame);
+        public void FireMarioCommandCalled() => Mario.playerSprite = new MarioFireIdleRight(myGame);
 
-        public void DeadMarioCommandCalled() => Mario.marioSprite = new MarioDead(myGame);
+        public void DeadMarioCommandCalled() => Mario.playerSprite = new MarioDead(myGame);
 
         public void Update()
     {

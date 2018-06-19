@@ -8,12 +8,11 @@ namespace Game1
 {
     public interface ILevel
     {
-
         void Update();
         void Draw();
-        List<IBlock> BlockObjects { get; set; }
-        List<IEnemy> EnemyObjects { get; set; }
-        List<IPickup> PickupObjects { get; set; }
+        List<IBlock> BlockObjects { get; }
+        List<IEnemy> EnemyObjects { get; }
+        List<IPickup> PickupObjects { get; }
         IPlayer PlayerObject { get; set; }
     }
 }

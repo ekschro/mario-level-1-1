@@ -64,7 +64,7 @@ namespace Game1
 
         private Buttons[] GetPressedButtons()
         {
-                Buttons[] PressedButtons = new Buttons[10];
+            Buttons[] PressedButtons = new Buttons[10];
             
             if (GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed)
                     PressedButtons[0] = Buttons.Start;
