@@ -29,9 +29,9 @@ namespace Game1
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
             Rectangle destinationRectangle = new Rectangle((int)Mario.CurrentXPosition, (int)Mario.CurrentYPosition, width, height);
 
-            myGame.spriteBatch.Begin();
-            myGame.spriteBatch.Draw(TextureWareHouse.marioTexture, destinationRectangle, sourceRectangle, Mario.MarioColor);
-            myGame.spriteBatch.End();
+            myGame.SpriteBatch.Begin();
+            myGame.SpriteBatch.Draw(TextureWareHouse.marioTexture, destinationRectangle, sourceRectangle, Mario.MarioColor);
+            myGame.SpriteBatch.End();
         }
 
         public void UpCommandCalled()
@@ -41,22 +41,22 @@ namespace Game1
 
         public void DownCommandCalled()
         {
-            Mario.marioSprite = new MarioBigIdleLeft(myGame);
+            Mario.playerSprite = new MarioBigIdleLeft(myGame);
         }
 
         public void LeftCommandCalled()
         {
-            Mario.marioSprite = new MarioBigIdleLeft(myGame);
+            Mario.playerSprite = new MarioBigIdleLeft(myGame);
         }
 
         public void RightCommandCalled()
         {
-            Mario.marioSprite = new MarioBigIdleRight(myGame);
+            Mario.playerSprite = new MarioBigIdleRight(myGame);
         }
 
         public void SmallMarioCommandCalled()
         {
-            Mario.marioSprite = new MarioSmallJumpingLeft(myGame);
+            Mario.playerSprite = new MarioSmallJumpingLeft(myGame);
         }
 
         public void BigMarioCommandCalled()
@@ -66,12 +66,12 @@ namespace Game1
 
         public void FireMarioCommandCalled()
         {
-            Mario.marioSprite = new MarioFireJumpingLeft(myGame);
+            Mario.playerSprite = new MarioFireJumpingLeft(myGame);
         }
 
         public void DeadMarioCommandCalled()
         {
-            Mario.marioSprite = new MarioDead(myGame);
+            Mario.playerSprite = new MarioDead(myGame);
         }
 
         public void Update()

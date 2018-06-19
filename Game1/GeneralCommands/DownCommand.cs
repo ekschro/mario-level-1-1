@@ -27,7 +27,7 @@ namespace Game1
         public void Execute()
         {
             if (timer == 5) {
-                Mario.marioSprite.DownCommandCalled();
+                Mario.playerSprite.DownCommandCalled();
                 timer = 0;
             }
             else

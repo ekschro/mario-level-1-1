@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Game1
 {
@@ -12,14 +8,14 @@ namespace Game1
         private ICollision collisionDetect;
 
         private IPlayer playerObject;
-        public List<IBlock> blocks;
+        private List<IBlock> blocks;
         private List<IEnemy> enemies;
         private List<IPickup> pickups;
 
-        IPlayer ILevel.PlayerObject { get => playerObject; set => playerObject = value; }
-        List<IBlock> ILevel.BlockObjects { get => blocks; set => blocks = value; }
-        List<IEnemy> ILevel.EnemyObjects { get => enemies; set => enemies = value; }
-        List<IPickup> ILevel.PickupObjects { get => pickups; set => pickups = value; }
+        public IPlayer PlayerObject { get => playerObject; set => playerObject = value; }
+        public List<IBlock> BlockObjects { get => blocks; }
+        public List<IEnemy> EnemyObjects { get => enemies; }
+        public List<IPickup> PickupObjects { get => pickups; }
 
         public Level1(string fileName, Game1 game)
         {
@@ -28,7 +24,7 @@ namespace Game1
 
             loader.Load(fileName, levelObjects);
 
-            GetPlayerObject();
+            GetPlayerObjects();
             GetBlockObjects();
             GetEnemyObjects();
             GetPickupObjects();
@@ -54,7 +50,7 @@ namespace Game1
             }
         }
 
-        private void GetPlayerObject()
+        private void GetPlayerObjects()
         {
             IPlayer playerObject = null;
             foreach(IGameObject player in levelObjects)

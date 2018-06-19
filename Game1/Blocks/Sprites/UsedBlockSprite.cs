@@ -37,9 +37,9 @@ namespace Game1
             Rectangle destinationRectangle = new Rectangle((int)usedBlockObject.GameObjectLocation().X, (int)usedBlockObject.GameObjectLocation().Y, width, TextureWareHouse.blockTexture.Height);
 
 
-            myGame.spriteBatch.Begin();
-            myGame.spriteBatch.Draw(TextureWareHouse.blockTexture, destinationRectangle, sourceRectangle, Color.White);
-            myGame.spriteBatch.End();
+            myGame.SpriteBatch.Begin();
+            myGame.SpriteBatch.Draw(TextureWareHouse.blockTexture, destinationRectangle, sourceRectangle, Color.White);
+            myGame.SpriteBatch.End();
         }
     }
 }

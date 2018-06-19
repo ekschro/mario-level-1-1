@@ -29,9 +29,9 @@ namespace Game1
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
             Rectangle destinationRectangle = new Rectangle((int)Mario.CurrentXPosition, (int)Mario.CurrentYPosition, width, height);
 
-            myGame.spriteBatch.Begin();
-            myGame.spriteBatch.Draw(TextureWareHouse.marioTexture, destinationRectangle, sourceRectangle, Mario.MarioColor);
-            myGame.spriteBatch.End();
+            myGame.SpriteBatch.Begin();
+            myGame.SpriteBatch.Draw(TextureWareHouse.marioTexture, destinationRectangle, sourceRectangle, Mario.MarioColor);
+            myGame.SpriteBatch.End();
         }
 
         public void UpCommandCalled()
@@ -41,27 +41,27 @@ namespace Game1
 
         public void DownCommandCalled()
         {
-            Mario.marioSprite = new MarioFireIdleLeft(myGame);
+            Mario.playerSprite = new MarioFireIdleLeft(myGame);
         }
 
         public void LeftCommandCalled()
         {
-            Mario.marioSprite = new MarioFireIdleLeft(myGame);
+            Mario.playerSprite = new MarioFireIdleLeft(myGame);
         }
 
         public void RightCommandCalled()
         {
-            Mario.marioSprite = new MarioFireIdleRight(myGame);
+            Mario.playerSprite = new MarioFireIdleRight(myGame);
         }
 
         public void SmallMarioCommandCalled()
         {
-            Mario.marioSprite = new MarioSmallJumpingLeft(myGame);
+            Mario.playerSprite = new MarioSmallJumpingLeft(myGame);
         }
 
         public void BigMarioCommandCalled()
         {
-            Mario.marioSprite = new MarioBigJumpingLeft(myGame);
+            Mario.playerSprite = new MarioBigJumpingLeft(myGame);
         }
 
         public void FireMarioCommandCalled()
@@ -71,7 +71,7 @@ namespace Game1
 
         public void DeadMarioCommandCalled()
         {
-            Mario.marioSprite = new MarioDead(myGame);
+            Mario.playerSprite = new MarioDead(myGame);
         }
 
         public void Update()

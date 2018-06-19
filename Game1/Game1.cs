@@ -1,23 +1,26 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
+[assembly:CLSCompliant(true)]
 namespace Game1
 {
-    
-
     public class Game1 : Game
     {
         GraphicsDeviceManager graphics;
-        public SpriteBatch spriteBatch;
+        private SpriteBatch spriteBatch;
         public IController mouseController;
         public IList<IController> controllerList;
         public ILevel PlatformerLevel;
         //public int totalBlockFrames = 12;
         public TextureWareHouse warehouse;
+
+        public SpriteBatch SpriteBatch { get => spriteBatch; set => spriteBatch = value; }
+
         /*
         public Texture2D marioTexture;
         public Texture2D pickupTexture;
