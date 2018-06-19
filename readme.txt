@@ -9,6 +9,9 @@ to exit the block, as this represents the state for a valid collision from below
 once Mario physics are established, we can check if Mario is falling, and stop the trigger 
 from occurring when Mario is falling.
 
+The team plan on taking all of the grader's comments into consideration for Sprint 4.  Due to a shortage 
+of time (one day) the team was unable to make some of the drastic changes required to satisfy them all.
+
 -- Warning Explaination --
 
 CA1002:
