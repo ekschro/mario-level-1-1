@@ -70,7 +70,7 @@ namespace Game1
                     {
                         collision.BlockCollisionRespondTop( blockArray[i]);
                     }
-                    else if (intersect.Height < intersect.Width && playerY > blockY+14)
+                    else if (intersect.Height < intersect.Width && playerY > blockY+14) //Temp fix
                     {
                         collision.BlockCollisionRespondBottom( blockArray[i]);
                     }
