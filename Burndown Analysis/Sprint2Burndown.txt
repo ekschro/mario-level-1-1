@@ -1,3 +1,21 @@
-	Overall, while there were several aspects that could be improved upon in terms of communication and consistency, this project was a great starting point and went better than expected. The team collaborated on different tasks, working with feedback from other teammates for nearly every class. The weekly team meeting was sufficient in clearing up any inconsistencies that arose over the course of the project, but may be broken down into several shorter meetings in order to clear up problems on a more consistent basis on future sprints. 
-	The work done on the code was fairly consistent, as multiple commits occurred every day of the project except for the 26th and the 28th. The burndown chart is somewhat oddly shaped in the first day, as the chart updated while tasks were still being added, so the chart drastically rises. Additionally, tasks were completed that same day, so the chart does not completely represent all work that was done. The plateau that occurs from the 24th to the 27th mainly had to do with members of the team not updating their backlog items, as opposed to work not being done. As a result, what remains seems to match how the group operated. Much of the graph lies below the line for the ideal trend, indicating that the team was largely ahead of time on tasks, which was the product of an early burst of productivity, followed then by a more sustainable progression.
-	The main issues to lie in communicating what has been done, as well as explicitly deciding tasks for each person. While no overlap occurred during this sprint, there were several occassions where team members were not clear on which person was responsible for specific portions of code (for example, should the commands for the Mario object be written by the person in charge of the Mario object, or the Controller?). Good comunication skills solved these problems, but they could have been mostly avoided with a more in-depth initial meeting when assigning tasks. 
+	Overall, while there were several aspects that could be improved upon in terms of communication and consistency, 
+	this project was a great starting point and went better than expected. The team collaborated on different tasks,
+	 working with feedback from other teammates for nearly every class. The weekly team meeting was sufficient in 
+	 clearing up any inconsistencies that arose over the course of the project, but may be broken down into several 
+	 shorter meetings in order to clear up problems on a more consistent basis on future sprints. 
+
+	The work done on the code was fairly consistent, as multiple commits occurred every day of the project except 
+	for the 26th and the 28th. The burndown chart is somewhat oddly shaped in the first day, as the chart updated 
+	while tasks were still being added, so the chart drastically rises. Additionally, tasks were completed that 
+	same day, so the chart does not completely represent all work that was done. The plateau that occurs from the 
+	24th to the 27th mainly had to do with members of the team not updating their backlog items, as opposed to work
+	 not being done. As a result, what remains seems to match how the group operated. Much of the graph lies below 
+	 the line for the ideal trend, indicating that the team was largely ahead of time on tasks, which was the product 
+	 of an early burst of productivity, followed then by a more sustainable progression.
+
+	The main issues to lie in communicating what has been done, as well as explicitly deciding tasks for each person.
+	 While no overlap occurred during this sprint, there were several occassions where team members were not clear 
+	 on which person was responsible for specific portions of code (for example, should the commands for the Mario 
+	 object be written by the person in charge of the Mario object, or the Controller?). Good comunication skills 
+	 solved these problems, but they could have been mostly avoided with a more in-depth initial meeting when 
+	 assigning tasks. 
