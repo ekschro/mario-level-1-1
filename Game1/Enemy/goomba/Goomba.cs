@@ -12,7 +12,7 @@ namespace Game1
         private static IEnemySprite goombaSprite;
         public static IEnemySprite GoombaSprite { get => goombaSprite; set => goombaSprite = value; }
         private GoombaStateMachine stateMachine;
-        private Game1 myGame;
+        //private Game1 myGame;
         private bool direction = true;
         private int cyclePosition = 0;
         private int cycleLength = 8;
@@ -24,7 +24,7 @@ namespace Game1
             
             GoombaSprite = new GoombaSprite(game,this);
             stateMachine = new GoombaStateMachine(GoombaSprite);
-            myGame = game;
+            //myGame = game;
             goombaLocation = location;
             goombaOriginalLocation = location;
         }

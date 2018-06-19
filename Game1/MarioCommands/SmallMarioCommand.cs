@@ -13,12 +13,12 @@ namespace Game1
 {
     public class SmallMarioCommand : ICommand
     {
-        private Game1 myGame;
+        //private Game1 myGame;
         
 
         public SmallMarioCommand(Game1 game)
         {
-            myGame = game;
+            //myGame = game;
            
             
         }

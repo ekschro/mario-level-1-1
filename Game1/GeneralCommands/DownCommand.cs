@@ -14,12 +14,12 @@ namespace Game1
     public class DownCommand : ICommand
     {
         private int timer;
-        private Game1 myGame;
+        //private Game1 myGame;
         
 
         public DownCommand(Game1 game)
         {
-            myGame = game;
+            //myGame = game;
             timer = 0;
            
         }

@@ -11,13 +11,13 @@ namespace Game1
     {
 
         private IBlockSprite stairBlockSprite;
-        private Game1 myGame;
+        //private Game1 myGame;
         private Vector2 blockLocation;
 
         public StairBlock(Game1 game, Vector2 location)
         {
             stairBlockSprite = new StairBlockSprite(game, this);
-            myGame = game;
+            //myGame = game;
             blockLocation = location;
         }
 

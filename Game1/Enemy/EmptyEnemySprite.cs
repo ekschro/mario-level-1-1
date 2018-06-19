@@ -12,8 +12,8 @@ namespace Game1
         private Empty emptyObject;
         private Game1 myGame;
         private int currentFrame;
-        private int startFrame;
-        private int endFrame;
+        //private int startFrame;
+        //private int endFrame;
 
         public EmptySprite(Game1 game, Empty empty)
         {
@@ -23,8 +23,8 @@ namespace Game1
         }
         public void ChangeFrame(int start, int end)
         {
-            startFrame = start;
-            endFrame = end;
+            //startFrame = start;
+            //endFrame = end;
         }
         public void Update()
         {

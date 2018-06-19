@@ -13,7 +13,7 @@ namespace Game1
         public static IEnemySprite KoopaSprite { get => koopaSprite; set => koopaSprite = value; }
         private KoopaStateMachine stateMachine;
 
-        private Game1 myGame;
+        //private Game1 myGame;
         private bool direction = true;
         private int cyclePosition = 0;
         private int cycleLength = 8;
@@ -26,7 +26,7 @@ namespace Game1
         {
             KoopaSprite = new KoopaSprite(game,this);
             stateMachine = new KoopaStateMachine(koopaSprite);
-            myGame = game;
+            //myGame = game;
             koopaLocation = location;
             koopaOriginalLocation = location;
         }

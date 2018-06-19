@@ -15,7 +15,7 @@ namespace Game1
     public class GamePadController : IController
     {
         private Dictionary<Buttons, ICommand> controllerMappings;
-        private List<Buttons> recentKeys;
+        //private List<Buttons> recentKeys;
         private Game1 myGame;
         
 
@@ -25,7 +25,7 @@ namespace Game1
             
             myGame = game;
             controllerMappings = new Dictionary<Buttons, ICommand>();
-            recentKeys = new List<Buttons>();
+            //recentKeys = new List<Buttons>();
             controllerMappings.Add(Buttons.Start, new ExitGameCommand(myGame));
 
             controllerMappings.Add(Buttons.LeftThumbstickUp, new UpCommand(myGame));

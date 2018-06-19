@@ -10,13 +10,13 @@ namespace Game1
     public class TopLeftPipeBlock : IBlock
     {
         private IBlockSprite topLeftPipeBlockSprite;
-        private Game1 myGame;
+        //private Game1 myGame;
         private Vector2 blockLocation;
 
         public TopLeftPipeBlock(Game1 game, Vector2 location)
         {
             topLeftPipeBlockSprite = new TopLeftPipeBlockSprite(game, this);
-            myGame = game;
+            //myGame = game;
             blockLocation = location;
         }
 

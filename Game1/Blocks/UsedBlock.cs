@@ -11,13 +11,13 @@ namespace Game1
     {
 
         private IBlockSprite usedBlockSprite;
-        private Game1 myGame;
+        //private Game1 myGame;
         private Vector2 blockLocation;
 
         public UsedBlock(Game1 game, Vector2 location)
         {
             usedBlockSprite = new UsedBlockSprite(game, this);
-            myGame = game;
+            //myGame = game;
             blockLocation = location;
         }
 

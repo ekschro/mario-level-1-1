@@ -11,13 +11,13 @@ namespace Game1
     {
         private IPickupSprite emptySprite;
 
-        private Game1 myGame;
+        //private Game1 myGame;
         private Vector2 pickupLocation;
 
         public EmptyPickup(Game1 game, Vector2 location)
         {
             emptySprite = new EmptyPickupSprite(game, this);
-            myGame = game;
+            //myGame = game;
             pickupLocation = location;
         }
 

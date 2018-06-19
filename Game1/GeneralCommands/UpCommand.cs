@@ -13,12 +13,12 @@ namespace Game1
 {
     public class UpCommand : ICommand
     {
-        private Game1 myGame;
+        //private Game1 myGame;
         private int timer;
         
         public UpCommand(Game1 game)
         {
-            myGame = game;
+            //myGame = game;
             timer = 0;
             
         }

@@ -15,7 +15,7 @@ namespace Game1
     public class KeyboardController : IController
     {
         private Dictionary<Keys, ICommand> controllerMappings;
-        private List<Keys> recentKeys;
+        //private List<Keys> recentKeys;
         private Game1 myGame;
         
 
@@ -25,7 +25,7 @@ namespace Game1
             
             myGame = game;
             controllerMappings = new Dictionary<Keys, ICommand>();
-            recentKeys = new List<Keys>();
+            //recentKeys = new List<Keys>();
             controllerMappings.Add(Keys.Q, new ExitGameCommand(myGame));
             controllerMappings.Add(Keys.W, new UpCommand(myGame));
             controllerMappings.Add(Keys.S, new DownCommand(myGame));
