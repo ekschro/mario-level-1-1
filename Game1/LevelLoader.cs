@@ -11,7 +11,7 @@ namespace Game1
     public class LevelLoader : ILoader
     {
         Game1 myGame;
-        public IGameObject mario;
+        private IGameObject mario;
        
         public LevelLoader(Game1 game)
         {

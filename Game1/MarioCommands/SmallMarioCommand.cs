@@ -16,7 +16,7 @@ namespace Game1
         //private Game1 myGame;
         
 
-        public SmallMarioCommand(Game1 game)
+        public SmallMarioCommand()
         {
             //myGame = game;
            

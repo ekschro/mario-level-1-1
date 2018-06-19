@@ -16,7 +16,7 @@ namespace Game1
         //private Game1 myGame;
         
 
-        public FireMarioCommand(Game1 game)
+        public FireMarioCommand()
         {
            // myGame = game;
             

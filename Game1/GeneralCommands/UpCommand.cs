@@ -16,7 +16,7 @@ namespace Game1
         //private Game1 myGame;
         private int timer;
         
-        public UpCommand(Game1 game)
+        public UpCommand()
         {
             //myGame = game;
             timer = 0;

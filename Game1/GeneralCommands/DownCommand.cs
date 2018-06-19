@@ -17,7 +17,7 @@ namespace Game1
         //private Game1 myGame;
         
 
-        public DownCommand(Game1 game)
+        public DownCommand()
         {
             //myGame = game;
             timer = 0;

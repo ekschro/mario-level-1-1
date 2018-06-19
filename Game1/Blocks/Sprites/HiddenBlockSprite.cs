@@ -13,7 +13,7 @@ namespace Game1
 {
     public class HiddenBlockSprite : IBlockSprite
     {
-        public HiddenBlock hiddenBlockObject;
+        private HiddenBlock hiddenBlockObject;
         private Game1 myGame;
         private int currentFrame;
 

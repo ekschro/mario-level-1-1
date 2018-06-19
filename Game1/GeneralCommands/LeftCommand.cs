@@ -17,7 +17,7 @@ namespace Game1
         //private Game1 myGame;
         private int timer;
         
-        public LeftCommand(Game1 game)
+        public LeftCommand()
         {
             //myGame = game;
             timer = 0;

@@ -16,7 +16,7 @@ namespace Game1
         private bool direction = true;
         private int cyclePosition = 0;
         private int cycleLength = 8;
-        public Vector2 goombaLocation;
+        private Vector2 goombaLocation;
         private Vector2 goombaOriginalLocation;
 
         public Goomba(Game1 game, Vector2 location)

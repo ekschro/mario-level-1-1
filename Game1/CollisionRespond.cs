@@ -26,10 +26,10 @@ namespace Game1
         {
             myGame = game;
 
-            upCommand = new UpCommand(myGame);
-            downCommand = new DownCommand(myGame);
-            leftCommand = new LeftCommand(myGame);
-            rightCommand = new RightCommand(myGame);
+            upCommand = new UpCommand();
+            downCommand = new DownCommand();
+            leftCommand = new LeftCommand();
+            rightCommand = new RightCommand();
 
             objectLevel = level;
         }
