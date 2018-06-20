@@ -17,8 +17,7 @@ namespace Game1
         private static int totalMarioRows = 3;
         private static bool isStar = false;
         private static int currentFrame = 0;
-        private int colorTimer;
-        private int colorStartingTime;
+        
 
 
         private static ISprite playerSprite;
