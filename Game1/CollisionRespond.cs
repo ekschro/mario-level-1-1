@@ -45,7 +45,7 @@ namespace Game1
             
             downCommand.Execute();
 
-            if (Mario.playerSprite.isSmall() && block is BrickBlock)
+            if (Mario.MarioSprite.isSmall() && block is BrickBlock)
             {
             }
             else
@@ -53,7 +53,7 @@ namespace Game1
                 block.BottomCollision();
             }
 
-            if (block is BrickBlock && !Mario.playerSprite.isSmall())
+            if (block is BrickBlock && !Mario.MarioSprite.isSmall())
                 objectLevel.BlockObjects.Remove(block);
             else if (block is HiddenBlock)
             {
@@ -95,19 +95,19 @@ namespace Game1
             {
 
             }
-            else if (Mario.playerSprite.isFire())
+            else if (Mario.MarioSprite.isFire())
             {
-                Mario.playerSprite.BigMarioCommandCalled();
+                Mario.MarioSprite.BigMarioCommandCalled();
                 invulnerability = true;
             }
-            else if (!Mario.playerSprite.isSmall())
+            else if (!Mario.MarioSprite.isSmall())
             {
-                Mario.playerSprite.SmallMarioCommandCalled();
+                Mario.MarioSprite.SmallMarioCommandCalled();
                 invulnerability = true;
             }
             else
             {
-                Mario.playerSprite.DeadMarioCommandCalled();
+                Mario.MarioSprite.DeadMarioCommandCalled();
             }
             
         }
@@ -123,19 +123,19 @@ namespace Game1
             {
 
             }
-            else if (Mario.playerSprite.isFire())
+            else if (Mario.MarioSprite.isFire())
             {
-                Mario.playerSprite.BigMarioCommandCalled();
+                Mario.MarioSprite.BigMarioCommandCalled();
                 invulnerability = true;
             }
-            else if (!Mario.playerSprite.isSmall())
+            else if (!Mario.MarioSprite.isSmall())
             {
-                Mario.playerSprite.SmallMarioCommandCalled();
+                Mario.MarioSprite.SmallMarioCommandCalled();
                 invulnerability = true;
             }
             else
             {
-                Mario.playerSprite.DeadMarioCommandCalled();
+                Mario.MarioSprite.DeadMarioCommandCalled();
             }
         }
 
@@ -150,19 +150,19 @@ namespace Game1
             {
 
             }
-            else if (Mario.playerSprite.isFire())
+            else if (Mario.MarioSprite.isFire())
             {
-                Mario.playerSprite.BigMarioCommandCalled();
+                Mario.MarioSprite.BigMarioCommandCalled();
                 invulnerability = true;
             }
-            else if (!Mario.playerSprite.isSmall())
+            else if (!Mario.MarioSprite.isSmall())
             {
-                Mario.playerSprite.SmallMarioCommandCalled();
+                Mario.MarioSprite.SmallMarioCommandCalled();
                 invulnerability = true;
             }
             else
             {
-                Mario.playerSprite.DeadMarioCommandCalled();
+                Mario.MarioSprite.DeadMarioCommandCalled();
             }
         }
 
@@ -172,7 +172,7 @@ namespace Game1
            
             if (pickup is Fireflower)
             {
-                Mario.playerSprite.FireMarioCommandCalled();
+                Mario.MarioSprite.FireMarioCommandCalled();
             }
             else if (pickup is GreenMushroom)
             {
@@ -180,8 +180,8 @@ namespace Game1
             }
             else if (pickup is RedMushroom)
             {
-                if (!Mario.playerSprite.isFire())
-                    Mario.playerSprite.BigMarioCommandCalled();
+                if (!Mario.MarioSprite.isFire())
+                    Mario.MarioSprite.BigMarioCommandCalled();
             }
             else if (pickup is Coin)
             {
@@ -207,7 +207,7 @@ namespace Game1
          
             if (pickup is Fireflower)
             {
-                Mario.playerSprite.FireMarioCommandCalled();
+                Mario.MarioSprite.FireMarioCommandCalled();
             }
             else if (pickup is GreenMushroom)
             {
@@ -215,8 +215,8 @@ namespace Game1
             }
             else if (pickup is RedMushroom)
             {
-                if (!Mario.playerSprite.isFire())
-                Mario.playerSprite.BigMarioCommandCalled();
+                if (!Mario.MarioSprite.isFire())
+                Mario.MarioSprite.BigMarioCommandCalled();
             }
             else if (pickup is Coin)
             {
@@ -242,7 +242,7 @@ namespace Game1
             
             if (pickup is Fireflower)
             {
-                Mario.playerSprite.FireMarioCommandCalled();
+                Mario.MarioSprite.FireMarioCommandCalled();
             }
             else if (pickup is GreenMushroom)
             {
@@ -250,8 +250,8 @@ namespace Game1
             }
             else if (pickup is RedMushroom)
             {
-                if (!Mario.playerSprite.isFire())
-                    Mario.playerSprite.BigMarioCommandCalled();
+                if (!Mario.MarioSprite.isFire())
+                    Mario.MarioSprite.BigMarioCommandCalled();
             }
             else if (pickup is Coin)
             {
@@ -278,7 +278,7 @@ namespace Game1
 
             if (pickup is Fireflower)
             {
-                Mario.playerSprite.FireMarioCommandCalled();
+                Mario.MarioSprite.FireMarioCommandCalled();
             }
             else if (pickup is GreenMushroom)
             {
@@ -286,8 +286,8 @@ namespace Game1
             }
             else if (pickup is RedMushroom)
             {
-                if (!Mario.playerSprite.isFire())
-                    Mario.playerSprite.BigMarioCommandCalled();
+                if (!Mario.MarioSprite.isFire())
+                    Mario.MarioSprite.BigMarioCommandCalled();
             }
             else if (pickup is Coin)
             {

@@ -19,7 +19,7 @@ namespace Game1
         private static int currentFrame = 0;
 
 
-        public static ISprite playerSprite;
+        private static ISprite playerSprite;
 
         public static ISprite MarioSprite { get => playerSprite; set => playerSprite = value; }
         public static float CurrentXPosition { get => currentXPosition; set => currentXPosition = value; }
@@ -35,8 +35,9 @@ namespace Game1
         public static bool MovingRight { get => movingRight; set => movingRight = value; }
         public static bool MovingLeft { get => movingLeft; set => movingLeft = value; }
         public static bool MovingDown { get => movingDown; set => movingDown = value; }
+        public static Color MarioColor { get => marioColor; set => marioColor = value; }
 
-        public static Color MarioColor;
+        private static Color marioColor;
         private int colorTimer;
         private int colorStartingTime;
         //public Color MarioColor { get => marioColor; set => marioColor = value; }
