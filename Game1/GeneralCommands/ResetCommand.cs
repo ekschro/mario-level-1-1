@@ -23,6 +23,10 @@ namespace Game1
         public void Execute()
         {
             myGame.Reset();
+            Mario.MovingDown = false;
+            Mario.MovingUp = false;
+            Mario.MovingRight = false;
+            Mario.MovingLeft = false;
         }
     }
 }

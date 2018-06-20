@@ -35,7 +35,10 @@ namespace Game1
                 timer++;
             }
 
-            
+            Mario.MovingDown = true;
+            Mario.MovingUp = false;
+            Mario.MovingRight = false;
+            Mario.MovingLeft = false;
             Mario.CurrentYPosition = Mario.CurrentYPosition + 1;
         }
     }

@@ -70,10 +70,14 @@ namespace Game1
                     {
                         collision.BlockCollisionRespondTop( blockArray[i]);
                     }
-                    else if (intersect.Height < intersect.Width && playerY > blockY+14) //Temp fix
+                    else if (intersect.Height < intersect.Width && playerY > blockY+14 && !(blockArray[i] is HiddenBlock)) //Temp fix
                     {
                         collision.BlockCollisionRespondBottom( blockArray[i]);
+                    } else if (intersect.Height < intersect.Width && playerY > blockY + 14 && (blockArray[i] is HiddenBlock) && Mario.MovingUp)
+                    {
+                        collision.BlockCollisionRespondBottom(blockArray[i]);
                     }
+                   
                 }
             }
         }
