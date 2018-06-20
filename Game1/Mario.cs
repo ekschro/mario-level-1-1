@@ -39,9 +39,6 @@ namespace Game1
         public static Color MarioColor { get => marioColor; set => marioColor = value; }
 
         private static Color marioColor;
-        private int colorTimer;
-        private int colorStartingTime;
-        //public Color MarioColor { get => marioColor; set => marioColor = value; }
 
         public Mario(Game1 game, Vector2 vector)
         {
@@ -56,10 +53,8 @@ namespace Game1
             MovingDown = false;
             MovingRight = false;
             MovingLeft = false;
-
         }
-
-        
+                
 
         public void Draw()
         {
