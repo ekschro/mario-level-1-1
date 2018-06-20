@@ -52,10 +52,8 @@ namespace Game1
             MovingDown = false;
             MovingRight = false;
             MovingLeft = false;
-
         }
-
-        
+                
 
         public void Draw()
         {
