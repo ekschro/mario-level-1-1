@@ -17,7 +17,8 @@ namespace Game1
         private static int totalMarioRows = 3;
         private static bool isStar = false;
         private static int currentFrame = 0;
-        
+        private static int colorStartingTime;
+        private static int colorTimer;
 
 
         private static ISprite playerSprite;
@@ -93,6 +94,7 @@ namespace Game1
             else
             {
                 MarioColor = Color.White;
+                
             }
         }
 
