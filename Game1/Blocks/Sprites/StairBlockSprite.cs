@@ -16,7 +16,6 @@ namespace Game1
         private StairBlock stairBlockObject;
         private Game1 myGame;
         private int currentFrame;
-        //private Vector2 blockLocation;
 
         public StairBlockSprite(Game1 game, IBlock stairBlock)
         {
@@ -38,9 +37,9 @@ namespace Game1
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, TextureWareHouse.blockTexture.Height);
             Rectangle destinationRectangle = new Rectangle((int)stairBlockObject.GameObjectLocation().X, (int)stairBlockObject.GameObjectLocation().Y, width, TextureWareHouse.blockTexture.Height);
 
-            myGame.spriteBatch.Begin();
-            myGame.spriteBatch.Draw(TextureWareHouse.blockTexture, destinationRectangle, sourceRectangle, Color.White);
-            myGame.spriteBatch.End();
+            myGame.SpriteBatch.Begin();
+            myGame.SpriteBatch.Draw(TextureWareHouse.blockTexture, destinationRectangle, sourceRectangle, Color.White);
+            myGame.SpriteBatch.End();
         }
     }
 }

@@ -10,17 +10,14 @@ namespace Game1
     public class UsedBlock : IBlock
     {
 
-        public IBlockSprite usedBlockSprite;
-
-        //public static IBlockSprite UsedBlockSprite { get => usedBlockSprite; set => usedBlockSprite = value; }
-
-        private Game1 myGame;
-        public Vector2 blockLocation;
+        private IBlockSprite usedBlockSprite;
+        //private Game1 myGame;
+        private Vector2 blockLocation;
 
         public UsedBlock(Game1 game, Vector2 location)
         {
             usedBlockSprite = new UsedBlockSprite(game, this);
-            myGame = game;
+            //myGame = game;
             blockLocation = location;
         }
 
@@ -40,11 +37,7 @@ namespace Game1
         }
 
         public void TopCollision() { }
-
-        public void BottomCollision()
-        {
-        }
-
+        public void BottomCollision() { }
         public void LeftCollision() { }
         public void RightCollision() { }
     }

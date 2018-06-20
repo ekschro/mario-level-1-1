@@ -1,0 +1,8 @@
+Author: Tim Regrut
+6/19/2018
+Sprint 3
+CollisionRespond.cs
+Will Freeman and Ericsson
+
+All of the methods are of appropriate length. They are all under 25 lines except the pickup collision methods. They are over 25 lines. There is excessive branching in the block bottom, right, and left collision methods. There is also excessive branching in the enemy and pickup collision methods.
+A hypothetical change would be to make a methods which return boolean values for the excessive branching methods. The current implementation could easily support the change because all that would need to be done is to break up the if else ifs conditions into methods. This could potentally lower the cyclomatic complexity.

@@ -16,7 +16,6 @@ namespace Game1
         private BrickBlock brickBlockObject;
         private Game1 myGame;
         private int currentFrame;
-        //private Vector2 blockLocation;
 
         public BrickBlockSprite(Game1 game, IBlock brick)
         {
@@ -37,18 +36,9 @@ namespace Game1
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, TextureWareHouse.blockTexture.Height);
             Rectangle destinationRectangle = new Rectangle((int)brickBlockObject.GameObjectLocation().X, (int)brickBlockObject.GameObjectLocation().Y, width, TextureWareHouse.blockTexture.Height);
 
-            myGame.spriteBatch.Begin();
-            myGame.spriteBatch.Draw(TextureWareHouse.blockTexture, destinationRectangle, sourceRectangle, Color.White);
-            myGame.spriteBatch.End();
-        }
-        public void ToEmpty()
-        {
-            currentFrame = 12;
-
-        }
-        public void ToUsed()
-        {
-
+            myGame.SpriteBatch.Begin();
+            myGame.SpriteBatch.Draw(TextureWareHouse.blockTexture, destinationRectangle, sourceRectangle, Color.White);
+            myGame.SpriteBatch.End();
         }
     }
 }

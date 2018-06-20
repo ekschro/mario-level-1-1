@@ -11,13 +11,9 @@ namespace Game1
     {
         private int cyclePosition = 0;
         private int cycleLength = 16;
-
-        public IPickupSprite coinSprite;
-
-        //public static IPickupSprite CoinSprite { get => coinSprite; set => coinSprite = value; }
-
+        private IPickupSprite coinSprite;
         private Game1 myGame;
-        public Vector2 pickupLocation;
+        private Vector2 pickupLocation;
 
         public Coin(Game1 game, Vector2 location)
         {
@@ -48,7 +44,6 @@ namespace Game1
         public void Picked()
         {
             coinSprite = new EmptyPickupSprite(myGame, new EmptyPickup(myGame,pickupLocation));
-            
         }
     }
 }

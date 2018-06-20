@@ -11,7 +11,7 @@ namespace Game1
     public class LevelLoader : ILoader
     {
         Game1 myGame;
-        public IGameObject mario;
+        //private IGameObject mario;
        
         public LevelLoader(Game1 game)
         {
@@ -62,7 +62,7 @@ namespace Game1
             switch (objectName) {
                 case "Mario" :
                     GameObject = new Mario(myGame, Position);
-                    mario = GameObject;
+                    //mario = GameObject;
                     break;
                 case "FireFlower":
                     GameObject = new Fireflower(myGame, Position);

@@ -29,9 +29,9 @@ namespace Game1
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, TextureWareHouse.pickupTexture.Height);
             Rectangle destinationRectangle = new Rectangle((int)redMushroomObject.GameObjectLocation().X, (int)redMushroomObject.GameObjectLocation().Y, width, TextureWareHouse.pickupTexture.Height);
 
-            myGame.spriteBatch.Begin();
-            myGame.spriteBatch.Draw(TextureWareHouse.pickupTexture, destinationRectangle, sourceRectangle, Color.White);
-            myGame.spriteBatch.End();
+            myGame.SpriteBatch.Begin();
+            myGame.SpriteBatch.Draw(TextureWareHouse.pickupTexture, destinationRectangle, sourceRectangle, Color.White);
+            myGame.SpriteBatch.End();
         }
 
 

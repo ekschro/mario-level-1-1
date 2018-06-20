@@ -34,19 +34,19 @@ namespace Game1
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
             Rectangle destinationRectangle = new Rectangle((int)Mario.CurrentXPosition, (int)Mario.CurrentYPosition, width, height);
 
-            myGame.spriteBatch.Begin();
-            myGame.spriteBatch.Draw(TextureWareHouse.marioTexture, destinationRectangle, sourceRectangle, Mario.MarioColor);
-            myGame.spriteBatch.End();
+            myGame.SpriteBatch.Begin();
+            myGame.SpriteBatch.Draw(TextureWareHouse.marioTexture, destinationRectangle, sourceRectangle, Mario.MarioColor);
+            myGame.SpriteBatch.End();
         }
 
         public void UpCommandCalled()
         {
-            Mario.marioSprite = new MarioFireJumpingLeft(myGame);
+            Mario.playerSprite = new MarioFireJumpingLeft(myGame);
         }
 
         public void DownCommandCalled()
         {
-            Mario.marioSprite = new MarioFireCrouchingLeft(myGame);
+            Mario.playerSprite = new MarioFireCrouchingLeft(myGame);
         }
 
         public void LeftCommandCalled()
@@ -59,17 +59,17 @@ namespace Game1
 
         public void RightCommandCalled()
         {
-            Mario.marioSprite = new MarioFireIdleLeft(myGame);
+            Mario.playerSprite = new MarioFireIdleLeft(myGame);
         }
 
         public void SmallMarioCommandCalled()
         {
-            Mario.marioSprite = new MarioSmallWalkLeft(myGame);
+            Mario.playerSprite = new MarioSmallWalkLeft(myGame);
         }
 
         public void BigMarioCommandCalled()
         {
-            Mario.marioSprite = new MarioBigWalkLeft(myGame);
+            Mario.playerSprite = new MarioBigWalkLeft(myGame);
         }
 
         public void FireMarioCommandCalled()
@@ -79,7 +79,7 @@ namespace Game1
 
         public void DeadMarioCommandCalled()
         {
-            Mario.marioSprite = new MarioDead(myGame);
+            Mario.playerSprite = new MarioDead(myGame);
         }
 
         public void Update()

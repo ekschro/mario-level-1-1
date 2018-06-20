@@ -10,7 +10,7 @@ namespace Game1
     public interface IEnemySprite
     {
         void Update();
-        void ChangeFrame(int start, int end);
+        void ChangeFrame(int start, int endFrame);
         void Draw();
     }
 }

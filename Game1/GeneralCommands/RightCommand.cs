@@ -13,12 +13,12 @@ namespace Game1
 {
     public class RightCommand : ICommand
     {
-        private Game1 myGame;
+        //private Game1 myGame;
         private int timer;
         
-        public RightCommand(Game1 game)
+        public RightCommand()
         {
-            myGame = game;
+            //myGame = game;
             timer = 0;
         }
 
@@ -26,14 +26,17 @@ namespace Game1
         {
             if (timer == 5)
             {
-                Mario.marioSprite.RightCommandCalled();
+                Mario.playerSprite.RightCommandCalled();
                 timer = 0;
             } else
             {
                 timer++;
             }
 
-            
+            Mario.MovingDown = false;
+            Mario.MovingUp = false;
+            Mario.MovingRight = true;
+            Mario.MovingLeft = false;
             Mario.CurrentXPosition = Mario.CurrentXPosition + 1;
         }
     }

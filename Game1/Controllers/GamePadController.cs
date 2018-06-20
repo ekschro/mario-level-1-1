@@ -15,7 +15,7 @@ namespace Game1
     public class GamePadController : IController
     {
         private Dictionary<Buttons, ICommand> controllerMappings;
-        private List<Buttons> recentKeys;
+        //private List<Buttons> recentKeys;
         private Game1 myGame;
         
 
@@ -25,20 +25,20 @@ namespace Game1
             
             myGame = game;
             controllerMappings = new Dictionary<Buttons, ICommand>();
-            recentKeys = new List<Buttons>();
+            //recentKeys = new List<Buttons>();
             controllerMappings.Add(Buttons.Start, new ExitGameCommand(myGame));
 
-            controllerMappings.Add(Buttons.LeftThumbstickUp, new UpCommand(myGame));
-            controllerMappings.Add(Buttons.DPadUp, new UpCommand(myGame));
+            controllerMappings.Add(Buttons.LeftThumbstickUp, new UpCommand());
+            controllerMappings.Add(Buttons.DPadUp, new UpCommand());
 
-            controllerMappings.Add(Buttons.LeftThumbstickDown, new DownCommand(myGame));
-            controllerMappings.Add(Buttons.DPadDown, new DownCommand(myGame));
+            controllerMappings.Add(Buttons.LeftThumbstickDown, new DownCommand());
+            controllerMappings.Add(Buttons.DPadDown, new DownCommand());
 
-            controllerMappings.Add(Buttons.LeftThumbstickLeft, new LeftCommand(myGame));
-            controllerMappings.Add(Buttons.DPadLeft, new LeftCommand(myGame));
+            controllerMappings.Add(Buttons.LeftThumbstickLeft, new LeftCommand());
+            controllerMappings.Add(Buttons.DPadLeft, new LeftCommand());
 
-            controllerMappings.Add(Buttons.LeftThumbstickRight, new RightCommand(myGame));
-            controllerMappings.Add(Buttons.DPadRight, new RightCommand(myGame));
+            controllerMappings.Add(Buttons.LeftThumbstickRight, new RightCommand());
+            controllerMappings.Add(Buttons.DPadRight, new RightCommand());
 
             controllerMappings.Add(Buttons.Back, new ResetCommand(myGame));
             
@@ -64,7 +64,7 @@ namespace Game1
 
         private Buttons[] GetPressedButtons()
         {
-                Buttons[] PressedButtons = new Buttons[10];
+            Buttons[] PressedButtons = new Buttons[10];
             
             if (GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed)
                     PressedButtons[0] = Buttons.Start;

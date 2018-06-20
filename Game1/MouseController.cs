@@ -18,12 +18,12 @@ namespace Game1
         ICommand left;
         ICommand down;
         ICommand up;
-        public MouseController(Game1 game)
+        public MouseController()
         {
-            right = new RightCommand(game);
-            left = new LeftCommand(game);
-            down = new DownCommand(game);
-            up = new UpCommand(game);
+            right = new RightCommand();
+            left = new LeftCommand();
+            down = new DownCommand();
+            up = new UpCommand();
 
         }
 

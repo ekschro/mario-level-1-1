@@ -10,12 +10,9 @@ namespace Game1
     public class QuestionBlock : IBlock
     {
 
-        public IBlockSprite questionBlockSprite;
-
-        //public static IBlockSprite QuestionBlockSprite { get => questionBlockSprite; set => questionBlockSprite = value; }
-
+        private IBlockSprite questionBlockSprite;
         private Game1 myGame;
-        public Vector2 blockLocation;
+        private Vector2 blockLocation;
         private int cyclePosition = 0;
         private int cycleLength = 16;
 
@@ -48,12 +45,10 @@ namespace Game1
         }
 
         public void TopCollision() { }
-
         public void BottomCollision()
         {
             questionBlockSprite = new UsedBlockSprite(myGame, new UsedBlock(myGame, blockLocation));
         }
-
         public void LeftCollision() { }
         public void RightCollision() { }
     }

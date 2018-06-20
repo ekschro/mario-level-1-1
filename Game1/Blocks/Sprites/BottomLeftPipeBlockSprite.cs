@@ -16,7 +16,6 @@ namespace Game1
         private BottomLeftPipeBlock bottomLeftPipeBlockObject;
         private Game1 myGame;
         private int currentFrame;
-        //private Vector2 blockLocation;
 
         public BottomLeftPipeBlockSprite(Game1 game, IBlock bottomLeftPipe)
         {
@@ -37,9 +36,9 @@ namespace Game1
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, TextureWareHouse.blockTexture.Height);
             Rectangle destinationRectangle = new Rectangle((int)bottomLeftPipeBlockObject.GameObjectLocation().X, (int)bottomLeftPipeBlockObject.GameObjectLocation().Y, width, TextureWareHouse.blockTexture.Height);
 
-            myGame.spriteBatch.Begin();
-            myGame.spriteBatch.Draw(TextureWareHouse.blockTexture, destinationRectangle, sourceRectangle, Color.White);
-            myGame.spriteBatch.End();
+            myGame.SpriteBatch.Begin();
+            myGame.SpriteBatch.Draw(TextureWareHouse.blockTexture, destinationRectangle, sourceRectangle, Color.White);
+            myGame.SpriteBatch.End();
         }
     }
 }

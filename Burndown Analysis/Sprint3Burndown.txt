@@ -1,0 +1,17 @@
+Sprint 3 Analysis
+Ericsson Schroeter
+
+This sprint was a little trying for our team.  There were a lot of growing pains for our cade and as a group.  
+Our initial implementation from Sprint 2 made the goals for Sprint 3 difficult to implement and required some 
+rewriting and considieration before doing so.  The team as a whole seemed to have a lot going on in terms of 
+other class work which made it difficult to complete in a orderly fashion ahead of time.
+
+Unlike Sprint 2 the code was not written in a consistent fashion.  Though a lot of work and time was put into this 
+sprint it was done in large bursts over the few weeks.  The burndown chart itself looks like a plateau because 
+the tasks at hand weren't completely finished until shortly before the due date.  When something was suppossedly
+completed issues would arise later from other changes or requirements implemented that would bar the team from
+moving forward.
+
+Though not perfect yet, communication between the group has gotten better.  Meeting in person has definetly proven 
+to be the most effective way to work as a team.  All of this has been taken into consideration for the large amount
+of goals in coming in Sprint 4.

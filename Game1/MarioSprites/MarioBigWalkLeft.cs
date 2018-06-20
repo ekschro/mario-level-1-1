@@ -33,19 +33,19 @@ namespace Game1
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
             Rectangle destinationRectangle = new Rectangle((int)Mario.CurrentXPosition, (int)Mario.CurrentYPosition, width, height);
 
-            myGame.spriteBatch.Begin();
-            myGame.spriteBatch.Draw(TextureWareHouse.marioTexture, destinationRectangle, sourceRectangle, Mario.MarioColor);
-            myGame.spriteBatch.End();
+            myGame.SpriteBatch.Begin();
+            myGame.SpriteBatch.Draw(TextureWareHouse.marioTexture, destinationRectangle, sourceRectangle, Mario.MarioColor);
+            myGame.SpriteBatch.End();
         }
 
         public void UpCommandCalled()
         {
-            Mario.marioSprite = new MarioBigJumpingLeft(myGame);
+            Mario.playerSprite = new MarioBigJumpingLeft(myGame);
         }
 
         public void DownCommandCalled()
         {
-            Mario.marioSprite = new MarioBigCrouchingLeft(myGame);
+            Mario.playerSprite = new MarioBigCrouchingLeft(myGame);
         }
 
         public void LeftCommandCalled()
@@ -58,12 +58,12 @@ namespace Game1
 
         public void RightCommandCalled()
         {
-            Mario.marioSprite = new MarioBigIdleLeft(myGame);
+            Mario.playerSprite = new MarioBigIdleLeft(myGame);
         }
 
         public void SmallMarioCommandCalled()
         {
-            Mario.marioSprite = new MarioSmallWalkLeft(myGame);
+            Mario.playerSprite = new MarioSmallWalkLeft(myGame);
         }
 
         public void BigMarioCommandCalled()
@@ -73,12 +73,12 @@ namespace Game1
 
         public void FireMarioCommandCalled()
         {
-            Mario.marioSprite = new MarioFireWalkLeft(myGame);
+            Mario.playerSprite = new MarioFireWalkLeft(myGame);
         }
 
         public void DeadMarioCommandCalled()
         {
-            Mario.marioSprite = new MarioDead(myGame);
+            Mario.playerSprite = new MarioDead(myGame);
         }
 
         public void Update()

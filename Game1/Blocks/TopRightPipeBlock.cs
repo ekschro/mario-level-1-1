@@ -10,17 +10,14 @@ namespace Game1
     public class TopRightPipeBlock : IBlock
     {
 
-        public IBlockSprite topRightPipeBlockSprite;
-
-        //public static IBlockSprite TopRightPipeBlockSprite { get => topRightPipeBlockSprite; set => topRightPipeBlockSprite = value; }
-
-        private Game1 myGame;
-        public Vector2 blockLocation;
+        private IBlockSprite topRightPipeBlockSprite;
+        //private Game1 myGame;
+        private Vector2 blockLocation;
 
         public TopRightPipeBlock(Game1 game, Vector2 location)
         {
             topRightPipeBlockSprite = new TopRightPipeBlockSprite(game, this);
-            myGame = game;
+            //myGame = game;
             blockLocation = location;
         }
 

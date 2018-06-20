@@ -6,6 +6,12 @@ namespace Game1
     {
         private static float currentXPosition;
         private static float currentYPosition;
+        private static float oldXPosition;
+        private static float oldYPosition;
+        private static bool movingUp;
+        private static bool movingRight;
+        private static bool movingLeft;
+        private static bool movingDown;
         private static Game1 myGame;
         private static int totalMarioColumns = 28;
         private static int totalMarioRows = 3;
@@ -24,6 +30,13 @@ namespace Game1
         public bool IsStar { get => isStar; set => isStar = value; }
         public static int CurrentFrame { get => currentFrame; set => currentFrame = value; }
         public static Game1 MyGame { get => myGame; set => myGame = value; }
+        public static float OldXPosition { get => oldXPosition; set => oldXPosition = value; }
+        public static float OldYPosition { get => oldYPosition; set => oldYPosition = value; }
+        public static bool MovingUp { get => movingUp; set => movingUp = value; }
+        public static bool MovingRight { get => movingRight; set => movingRight = value; }
+        public static bool MovingLeft { get => movingLeft; set => movingLeft = value; }
+        public static bool MovingDown { get => movingDown; set => movingDown = value; }
+
         public static Color MarioColor;
 
         public Mario(Game1 game, Vector2 vector)
@@ -35,6 +48,11 @@ namespace Game1
             MarioSprite = new MarioSmallIdleRight(MyGame);
             colorStartingTime = 5;
             colorTimer = 0;
+            MovingUp = false;
+            MovingDown = false;
+            MovingRight = false;
+            MovingLeft = false;
+
         }
 
         

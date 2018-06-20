@@ -12,8 +12,8 @@ namespace Game1
         private Empty emptyObject;
         private Game1 myGame;
         private int currentFrame;
-        private int startFrame;
-        private int endFrame;
+        //private int startFrame;
+        //private int endFrame;
 
         public EmptySprite(Game1 game, Empty empty)
         {
@@ -23,8 +23,8 @@ namespace Game1
         }
         public void ChangeFrame(int start, int end)
         {
-            startFrame = start;
-            endFrame = end;
+            //startFrame = start;
+            //endFrame = end;
         }
         public void Update()
         {
@@ -37,9 +37,9 @@ namespace Game1
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, TextureWareHouse.goombaTexture.Height);
             Rectangle destinationRectangle = new Rectangle((int)emptyObject.GameObjectLocation().X, (int)emptyObject.GameObjectLocation().Y, width, TextureWareHouse.goombaTexture.Height);
 
-            myGame.spriteBatch.Begin();
-            myGame.spriteBatch.Draw(TextureWareHouse.goombaTexture, destinationRectangle, sourceRectangle, Color.Transparent);
-            myGame.spriteBatch.End();
+            myGame.SpriteBatch.Begin();
+            myGame.SpriteBatch.Draw(TextureWareHouse.goombaTexture, destinationRectangle, sourceRectangle, Color.Transparent);
+            myGame.SpriteBatch.End();
         }
     }
 }

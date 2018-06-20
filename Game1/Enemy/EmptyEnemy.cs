@@ -11,20 +11,16 @@ namespace Game1
     {
         private static IEnemySprite emptySprite;
         public static IEnemySprite EmptySprite { get => emptySprite; set => emptySprite = value; }
-        //private EmptyStateMachine stateMachine;
-        private Game1 myGame;
-        private bool direction = true;
-        private int cyclePosition = 0;
-        private int cycleLength = 8;
-        public Vector2 emptyLocation;
+        //private Game1 myGame;
+
+        private Vector2 emptyLocation;
         private Vector2 emptyOriginalLocation;
 
         public Empty(Game1 game, Vector2 location)
         {
 
             EmptySprite = new EmptySprite(game, this);
-            //stateMachine = new EmptyStateMachine(EmptySprite);
-            myGame = game;
+            //myGame = game;
             emptyLocation = location;
             emptyOriginalLocation = location;
         }

@@ -1,0 +1,11 @@
+Ericsson Schroeter (.12)
+6/19/18
+Sprint 3
+StarSprite.cs
+Dorothy Chow
+10
+
+The StarSprite class Draw method seems to share the same contents as the as the rest of the PickupItem/
+Sprite/ classes.  I believe that this method could be defined in and inheirted from a more general class 
+to avoid this redundant method body.  All else seems to pertain to the soley to StarSprite (high cohesion) 
+and all methods seem to be concise and reasonably sized.

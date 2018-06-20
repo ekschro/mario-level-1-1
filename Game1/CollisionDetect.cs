@@ -35,11 +35,11 @@ namespace Game1
             int playerY = (int)player.GameObjectLocation().Y;
             Rectangle playerBox;
 
-            if (Mario.marioSprite.isCrouching())
+            if (Mario.playerSprite.isCrouching())
                 playerY = playerY + tileOffset;
             
 
-            if (Mario.marioSprite.isSmall() || Mario.marioSprite.isCrouching())
+            if (Mario.playerSprite.isSmall() || Mario.playerSprite.isCrouching())
                 playerBox = new Rectangle(playerX, playerY, 16, 16);
             else
                 playerBox = new Rectangle(playerX, playerY, 16, 32);
@@ -60,20 +60,24 @@ namespace Game1
 
                     if (intersect.Height > intersect.Width && playerX < blockX)
                     {
-                        collision.BlockCollisionRespondLeft(player, blockArray[i]);
+                        collision.BlockCollisionRespondLeft( blockArray[i]);
                     }
                     else if (intersect.Height > intersect.Width && playerX > blockX)
                     {
-                        collision.BlockCollisionRespondRight(player, blockArray[i]);
+                        collision.BlockCollisionRespondRight( blockArray[i]);
                     }
                     else if (intersect.Height < intersect.Width && playerY < blockY)
                     {
-                        collision.BlockCollisionRespondTop(player, blockArray[i]);
+                        collision.BlockCollisionRespondTop( blockArray[i]);
                     }
-                    else if (intersect.Height < intersect.Width && playerY > blockY)
+                    else if (intersect.Height < intersect.Width && playerY > blockY+14 && !(blockArray[i] is HiddenBlock)) //Temp fix
                     {
-                        collision.BlockCollisionRespondBottom(player, blockArray[i]);
+                        collision.BlockCollisionRespondBottom( blockArray[i]);
+                    } else if (intersect.Height < intersect.Width && playerY > blockY + 14 && (blockArray[i] is HiddenBlock) && Mario.MovingUp)
+                    {
+                        collision.BlockCollisionRespondBottom(blockArray[i]);
                     }
+                   
                 }
             }
         }
@@ -84,10 +88,10 @@ namespace Game1
             int playerY = (int)player.GameObjectLocation().Y;
             Rectangle playerBox;
 
-            if (Mario.marioSprite.isCrouching())
+            if (Mario.playerSprite.isCrouching())
                 playerY = playerY + tileOffset;
 
-            if (Mario.marioSprite.isSmall())
+            if (Mario.playerSprite.isSmall())
                 playerBox = new Rectangle(playerX, playerY, 16, 16);
             else
                 playerBox = new Rectangle(playerX, playerY, 16, 32);
@@ -108,19 +112,19 @@ namespace Game1
 
                     if (intersect.Height > intersect.Width && playerX < enemyX)
                     {
-                        collision.EnemyCollisionRespondLeft(player, enemyArray[i]);
+                        collision.EnemyCollisionRespondLeft( enemyArray[i]);
                     }
                     else if (intersect.Height > intersect.Width && playerX > enemyX)
                     {
-                        collision.EnemyCollisionRespondRight(player, enemyArray[i]);
+                        collision.EnemyCollisionRespondRight( enemyArray[i]);
                     }
                     else if (intersect.Height < intersect.Width && playerY < enemyY)
                     {
-                        collision.EnemyCollisionRespondTop(player, enemyArray[i]);
+                        collision.EnemyCollisionRespondTop( enemyArray[i]);
                     }
                     else if (intersect.Height < intersect.Width && playerY > enemyY)
                     {
-                        collision.EnemyCollisionRespondBottom(player, enemyArray[i]);
+                        collision.EnemyCollisionRespondBottom( enemyArray[i]);
                     }
                 }
             }
@@ -132,10 +136,10 @@ namespace Game1
             int playerY = (int)player.GameObjectLocation().Y;
             Rectangle playerBox;
 
-            if (Mario.marioSprite.isCrouching())
+            if (Mario.playerSprite.isCrouching())
                 playerY = playerY + tileOffset;
 
-            if (Mario.marioSprite.isSmall())
+            if (Mario.playerSprite.isSmall())
                 playerBox = new Rectangle(playerX, playerY, 16, 16);
             else
                 playerBox = new Rectangle(playerX, playerY, 16, 32);
@@ -156,19 +160,19 @@ namespace Game1
 
                     if (intersect.Height > intersect.Width && playerX < pickupX)
                     {
-                        collision.PickupCollisionRespondLeft(player, pickupArray[i]);
+                        collision.PickupCollisionRespondLeft( pickupArray[i]);
                     }
                     else if (intersect.Height > intersect.Width && playerX > pickupX)
                     {
-                        collision.PickupCollisionRespondRight(player, pickupArray[i]);
+                        collision.PickupCollisionRespondRight(pickupArray[i]);
                     }
                     else if (intersect.Height < intersect.Width && playerY < pickupY)
                     {
-                        collision.PickupCollisionRespondTop(player, pickupArray[i]);
+                        collision.PickupCollisionRespondTop(pickupArray[i]);
                     }
                     else if (intersect.Height < intersect.Width && playerY > pickupY)
                     {
-                        collision.PickupCollisionRespondBottom(player, pickupArray[i]);
+                        collision.PickupCollisionRespondBottom(pickupArray[i]);
                     }
                 }
             }

@@ -10,17 +10,14 @@ namespace Game1
     public class EmptyBlock : IBlock
     {
 
-        public IBlockSprite emptyBlockSprite;
-
-        //public static IBlockSprite EmptyBlockSprite { get => emptyBlockSprite; set => emptyBlockSprite = value; }
-
-        private Game1 myGame;
-        public Vector2 blockLocation;
+        private IBlockSprite emptyBlockSprite;
+        //private Game1 myGame;
+        private Vector2 blockLocation;
 
         public EmptyBlock(Game1 game, Vector2 location)
         {
             emptyBlockSprite = new EmptyBlockSprite(game, this);
-            myGame = game;
+           // myGame = game;
             blockLocation = location;
         }
 
@@ -40,11 +37,7 @@ namespace Game1
         }
 
         public void TopCollision() { }
-
-        public void BottomCollision()
-        {
-        }
-
+        public void BottomCollision() { }
         public void LeftCollision() { }
         public void RightCollision() { }
     }

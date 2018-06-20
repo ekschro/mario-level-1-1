@@ -16,20 +16,15 @@ namespace Game1
         private StoneBlock stoneBlockObject;
         private Game1 myGame;
         private int currentFrame;
-        //private Vector2 blockLocation;
 
         public StoneBlockSprite(Game1 game, IBlock stoneBlock)
         {
             stoneBlockObject = (StoneBlock)stoneBlock;
             myGame = game;
             currentFrame = 0;
-            //blockLocation = location;
         }
 
-        public void Update()
-        {
-
-        }
+        public void Update(){}
 
         public void Draw()
         {
@@ -38,9 +33,9 @@ namespace Game1
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, TextureWareHouse.blockTexture.Height);
             Rectangle destinationRectangle = new Rectangle((int)stoneBlockObject.GameObjectLocation().X, (int)stoneBlockObject.GameObjectLocation().Y, width, TextureWareHouse.blockTexture.Height);
 
-            myGame.spriteBatch.Begin();
-            myGame.spriteBatch.Draw(TextureWareHouse.blockTexture, destinationRectangle, sourceRectangle, Color.White);
-            myGame.spriteBatch.End();
+            myGame.SpriteBatch.Begin();
+            myGame.SpriteBatch.Draw(TextureWareHouse.blockTexture, destinationRectangle, sourceRectangle, Color.White);
+            myGame.SpriteBatch.End();
         }
     }
 }
