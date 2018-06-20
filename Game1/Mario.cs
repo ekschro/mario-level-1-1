@@ -21,8 +21,8 @@ namespace Game1
         private int colorStartingTime;
 
 
-        private static ISprite marioSprite;
-        public static ISprite MarioSprite { get => marioSprite; set => marioSprite = value; }
+        public static ISprite playerSprite;
+        public static ISprite MarioSprite { get => playerSprite; set => playerSprite = value; }
         public static float CurrentXPosition { get => currentXPosition; set => currentXPosition = value; }
         public static float CurrentYPosition { get => currentYPosition; set => currentYPosition = value; }
         public static int TotalMarioRows { get => totalMarioRows; set => totalMarioRows = value; }
