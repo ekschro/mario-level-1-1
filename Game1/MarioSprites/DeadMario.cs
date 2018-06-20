@@ -53,14 +53,14 @@ public class MarioDead : ISprite
         }
     public void SmallMarioCommandCalled()
     {
-        Mario.playerSprite = new MarioSmallIdleRight(myGame);
+        Mario.MarioSprite = new MarioSmallIdleRight(myGame);
     }
 
-        public void BigMarioCommandCalled() => Mario.playerSprite = new MarioBigIdleRight(myGame);
+        public void BigMarioCommandCalled() => Mario.MarioSprite = new MarioBigIdleRight(myGame);
 
-        public void FireMarioCommandCalled() => Mario.playerSprite = new MarioFireIdleRight(myGame);
+        public void FireMarioCommandCalled() => Mario.MarioSprite = new MarioFireIdleRight(myGame);
 
-        public void DeadMarioCommandCalled() => Mario.playerSprite = new MarioDead(myGame);
+        public void DeadMarioCommandCalled() => Mario.MarioSprite = new MarioDead(myGame);
 
         public void Update()
     {

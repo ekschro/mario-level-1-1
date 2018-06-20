@@ -24,7 +24,7 @@ namespace Game1
 
         public void Execute()
         {
-            Mario.playerSprite.BigMarioCommandCalled();
+            Mario.MarioSprite.BigMarioCommandCalled();
         }
     }
 }

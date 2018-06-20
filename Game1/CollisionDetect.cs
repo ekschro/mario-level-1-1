@@ -35,11 +35,11 @@ namespace Game1
             int playerY = (int)player.GameObjectLocation().Y;
             Rectangle playerBox;
 
-            if (Mario.playerSprite.isCrouching())
+            if (Mario.MarioSprite.isCrouching())
                 playerY = playerY + tileOffset;
             
 
-            if (Mario.playerSprite.isSmall() || Mario.playerSprite.isCrouching())
+            if (Mario.MarioSprite.isSmall() || Mario.MarioSprite.isCrouching())
                 playerBox = new Rectangle(playerX, playerY, 16, 16);
             else
                 playerBox = new Rectangle(playerX, playerY, 16, 32);
@@ -88,10 +88,10 @@ namespace Game1
             int playerY = (int)player.GameObjectLocation().Y;
             Rectangle playerBox;
 
-            if (Mario.playerSprite.isCrouching())
+            if (Mario.MarioSprite.isCrouching())
                 playerY = playerY + tileOffset;
 
-            if (Mario.playerSprite.isSmall())
+            if (Mario.MarioSprite.isSmall())
                 playerBox = new Rectangle(playerX, playerY, 16, 16);
             else
                 playerBox = new Rectangle(playerX, playerY, 16, 32);
@@ -136,10 +136,10 @@ namespace Game1
             int playerY = (int)player.GameObjectLocation().Y;
             Rectangle playerBox;
 
-            if (Mario.playerSprite.isCrouching())
+            if (Mario.MarioSprite.isCrouching())
                 playerY = playerY + tileOffset;
 
-            if (Mario.playerSprite.isSmall())
+            if (Mario.MarioSprite.isSmall())
                 playerBox = new Rectangle(playerX, playerY, 16, 16);
             else
                 playerBox = new Rectangle(playerX, playerY, 16, 32);

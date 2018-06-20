@@ -1,0 +1,10 @@
+Dorothy Chow 
+6/19/2018
+Sprint 3
+CollisionDetect.cs
+Ericsson Schroeter
+15
+
+This class in terms of total number of line and in each methods, have much more line than other class. The collision detect class for block, enemy, pickup share similar idea. Although it is good to separate different collision responds, there is lots of copying. For example, the mario player game object initilization share the exact same code.
+
+A change will be initilize the mario plater object at the top instead of initilizing in each methods. Also as those rectangle box the width and height is using numbers, it is better to get rid of it by using variable or other possible way. Another possible change might be create a method which implement the logic. Then the block, enemy or pickup can simply used the method instead of having it.

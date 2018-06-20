@@ -37,7 +37,7 @@ namespace Game1
 
         public void UpCommandCalled()
         {
-            Mario.playerSprite = new MarioSmallJumpingLeft(myGame);
+            Mario.MarioSprite = new MarioSmallJumpingLeft(myGame);
         }
 
         public void DownCommandCalled()
@@ -47,12 +47,12 @@ namespace Game1
 
         public void LeftCommandCalled()
         {
-            Mario.playerSprite = new MarioSmallWalkLeft(myGame);
+            Mario.MarioSprite = new MarioSmallWalkLeft(myGame);
         }
 
         public void RightCommandCalled()
         {
-            Mario.playerSprite = new MarioSmallIdleRight(myGame);
+            Mario.MarioSprite = new MarioSmallIdleRight(myGame);
         }
 
         public void SmallMarioCommandCalled()
@@ -62,17 +62,17 @@ namespace Game1
 
         public void BigMarioCommandCalled()
         {
-            Mario.playerSprite = new MarioBigIdleLeft(myGame);
+            Mario.MarioSprite = new MarioBigIdleLeft(myGame);
         }
 
         public void FireMarioCommandCalled()
         {
-            Mario.playerSprite = new MarioFireIdleLeft(myGame);
+            Mario.MarioSprite = new MarioFireIdleLeft(myGame);
         }
 
         public void DeadMarioCommandCalled()
         {
-            Mario.playerSprite = new MarioDead(myGame);
+            Mario.MarioSprite = new MarioDead(myGame);
         }
 
         public void Update()
