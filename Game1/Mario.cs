@@ -11,10 +11,11 @@ namespace Game1
         private static int totalMarioRows = 3;
         private static bool isStar = false;
         private static int currentFrame = 0;
+        private int colorTimer;
+        private int colorStartingTime;
 
 
-        public static ISprite marioSprite;
-
+        private static ISprite marioSprite;
         public static ISprite MarioSprite { get => marioSprite; set => marioSprite = value; }
         public static float CurrentXPosition { get => currentXPosition; set => currentXPosition = value; }
         public static float CurrentYPosition { get => currentYPosition; set => currentYPosition = value; }
@@ -24,8 +25,6 @@ namespace Game1
         public static int CurrentFrame { get => currentFrame; set => currentFrame = value; }
         public static Game1 MyGame { get => myGame; set => myGame = value; }
         public static Color MarioColor;
-        private int colorTimer;
-        private int colorStartingTime;
 
         public Mario(Game1 game, Vector2 vector)
         {
