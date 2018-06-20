@@ -58,5 +58,9 @@ namespace Game1
         public void Update()
         {
         }
+        public void Running()
+        {
+
+        }
     }
 }

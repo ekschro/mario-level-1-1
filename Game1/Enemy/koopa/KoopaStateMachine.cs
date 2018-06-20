@@ -57,5 +57,10 @@ namespace Game1
                 health = KoopaHealth.Normal;
             }
         }
+        public bool GetDirection()
+        {
+            return facingLeft;
+        }
+
     }
 }
