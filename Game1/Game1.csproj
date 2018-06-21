@@ -59,8 +59,13 @@
   <ItemGroup>
     <Compile Include="Blocks\BottomLeftPipeBlock.cs" />
     <Compile Include="Blocks\BottomRightPipeBlock.cs" />
+    <Compile Include="Blocks\HiddenGreenMushroomBlock.cs" />
+    <Compile Include="Blocks\HiddenStarBlock.cs" />
+    <Compile Include="Blocks\QuestionCoinBlock.cs" />
+    <Compile Include="Blocks\QuestionPowerUpBlock.cs" />
     <Compile Include="Blocks\Sprites\BottomLeftPipeBlockSprite.cs" />
     <Compile Include="Blocks\Sprites\BottomRightPipeBlockSprite.cs" />
+    <Compile Include="Blocks\Sprites\HiddenBlockSprite.cs" />
     <Compile Include="Blocks\Sprites\TopRightPipeBlockSprite.cs" />
     <Compile Include="Blocks\Sprites\TopLeftPipeBlockSprite.cs" />
     <Compile Include="Blocks\TopLeftPipeBlock.cs" />
@@ -71,7 +76,6 @@
     <Compile Include="Blocks\QuestionBlock.cs" />
     <Compile Include="Blocks\Sprites\BrickBlockSprite.cs" />
     <Compile Include="Blocks\Sprites\EmptyBlockSprite.cs" />
-    <Compile Include="Blocks\Sprites\HiddenBlockSprite.cs" />
     <Compile Include="Blocks\Sprites\QuestionBlockSprite.cs" />
     <Compile Include="Blocks\Sprites\StairBlockSprite.cs" />
     <Compile Include="Blocks\Sprites\StoneBlockSprite.cs" />
