@@ -12,12 +12,11 @@ namespace Game1
         private static IEnemySprite goombaSprite;
         public static IEnemySprite GoombaSprite { get => goombaSprite; set => goombaSprite = value; }
         private GoombaStateMachine stateMachine;
-        //private Game1 myGame;
-        private bool direction = true;
         private int cyclePosition = 0;
         private int cycleLength = 8;
         private Vector2 goombaLocation;
         private Vector2 goombaOriginalLocation;
+        private bool running=false;
 
         public Goomba(Game1 game, Vector2 location)
         {
@@ -42,7 +41,7 @@ namespace Game1
         public void ChangeDirection()
         {
             stateMachine.ChangeDirection();
-            direction = !direction;
+            
         }
 
         public void Draw()
@@ -62,18 +61,22 @@ namespace Game1
         public void Update()
         {
             cyclePosition++;
-            if (cyclePosition == cycleLength)
+            if (cyclePosition == cycleLength && running)
             {
                 cyclePosition = 0;
                 GoombaSprite.Update();
                 stateMachine.Update();
-                if (goombaLocation.X == (goombaOriginalLocation.X - 20) || goombaLocation.X == (goombaOriginalLocation.X + 20))
-                    ChangeDirection();
-                if (direction == true)
+                //if (goombaLocation.X == (goombaOriginalLocation.X - 20) || goombaLocation.X == (goombaOriginalLocation.X + 20))
+                    //ChangeDirection();
+                if (stateMachine.GetDirection())
                     goombaLocation.X += 1;
-                else if (direction == false)
+                else 
                     goombaLocation.X -= 1;
             }
+        }
+        public void Running()
+        {
+            running = true;
         }
     }
 }

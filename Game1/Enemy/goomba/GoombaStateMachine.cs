@@ -52,5 +52,10 @@ namespace Game1
                 health = GoombaHealth.Normal;
             }
         }
+        public bool GetDirection()
+        {
+            return facingLeft;
+        }
+
     }
 }

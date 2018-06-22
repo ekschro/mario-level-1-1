@@ -19,7 +19,7 @@ namespace Game1
         private int cycleLength = 8;
         private Vector2 koopaLocation;
         private Vector2 koopaOriginalLocation;
-
+        private bool running = false;
 
 
         public Koopa(Game1 game, Vector2 location)
@@ -64,18 +64,23 @@ namespace Game1
         public void Update()
         {
             cyclePosition++;
-            if (cyclePosition == cycleLength)
+            if (cyclePosition == cycleLength && running)
             {
                 cyclePosition = 0;
                 KoopaSprite.Update();
                 stateMachine.Update();
-                if (koopaLocation.X == (koopaOriginalLocation.X - 20) || koopaLocation.X == koopaOriginalLocation.X + 20)
-                    ChangeDirection();
-                if (direction == true)
+                //if (koopaLocation.X == (koopaOriginalLocation.X - 20) || koopaLocation.X == koopaOriginalLocation.X + 20)
+                    //ChangeDirection();
+                    
+                if (stateMachine.GetDirection())
                     koopaLocation.X += 1;
-                else if (direction == false)
+                else
                     koopaLocation.X -= 1;
             }
+        }
+        public void Running()
+        {
+            running = true;
         }
     }
 }
