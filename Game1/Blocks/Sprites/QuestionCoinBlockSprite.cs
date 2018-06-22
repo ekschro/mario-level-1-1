@@ -11,18 +11,18 @@ using System.Collections;
 
 namespace Game1
 {
-    public class QuestionBlockSprite : IBlockSprite
+    public class QuestionCoinBlockSprite : IBlockSprite
     {
-        private QuestionBlock questionBlockObject;
+        private QuestionCoinBlock questionCoinBlockObject;
         private Game1 myGame;
         private int currentFrame;
         private int startFrame;
         private int endFrame;
         private int numberOfFrame = 13;
 
-        public QuestionBlockSprite(Game1 game, IBlock questionBlock)
+        public QuestionCoinBlockSprite(Game1 game, IBlock questionCoinBlock)
         {
-            questionBlockObject = (QuestionBlock)questionBlock;
+            questionCoinBlockObject = (QuestionCoinBlock)questionCoinBlock;
             myGame = game;
             startFrame = 4;
             endFrame = 7;
@@ -42,7 +42,7 @@ namespace Game1
             int width = TextureWareHouse.blockTexture.Width / numberOfFrame;
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, TextureWareHouse.blockTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)questionBlockObject.GameObjectLocation().X, (int)questionBlockObject.GameObjectLocation().Y, width, TextureWareHouse.blockTexture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)questionCoinBlockObject.GameObjectLocation().X, (int)questionCoinBlockObject.GameObjectLocation().Y, width, TextureWareHouse.blockTexture.Height);
 
             myGame.SpriteBatch.Begin();
             myGame.SpriteBatch.Draw(TextureWareHouse.blockTexture, destinationRectangle, sourceRectangle, Color.White);

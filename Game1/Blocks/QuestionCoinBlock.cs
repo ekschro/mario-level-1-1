@@ -18,7 +18,7 @@ namespace Game1
 
         public QuestionCoinBlock(Game1 game, Vector2 location)
         {
-            questionCoinBlockSprite = new QuestionBlockSprite(game, this);
+            questionCoinBlockSprite = new QuestionCoinBlockSprite(game, this);
             myGame = game;
             blockLocation = location;
         }
@@ -38,6 +38,7 @@ namespace Game1
             cyclePosition++;
             if (cyclePosition == cycleLength)
             {
+                
                 questionCoinBlockSprite.Update();
                 cyclePosition = 0;
             }

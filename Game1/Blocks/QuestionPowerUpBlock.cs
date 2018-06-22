@@ -18,7 +18,7 @@ namespace Game1
 
         public QuestionPowerUpBlock(Game1 game, Vector2 location)
         {
-            questionPowerUpBlockSprite = new QuestionBlockSprite(game, this);
+            questionPowerUpBlockSprite = new QuestionPowerUpBlockSprite(game, this);
             myGame = game;
             blockLocation = location;
         }
