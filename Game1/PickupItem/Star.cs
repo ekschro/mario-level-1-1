@@ -15,12 +15,13 @@ namespace Game1
         private IPickupSprite starSprite;
         private Game1 myGame;
         private Vector2 pickupLocation;
-
+        private Vector2 pickupOriginalLocation;
         public Star(Game1 game, Vector2 location)
         {
             starSprite = new StarSprite(game, this);
             myGame = game;
             pickupLocation = location;
+            pickupOriginalLocation = location;
         }
 
         public void Draw()
@@ -40,6 +41,10 @@ namespace Game1
             {
                 starSprite.Update();
                 cyclePosition = 0;
+            }
+            if (pickupLocation.Y > pickupOriginalLocation.Y - 16)
+            {
+                pickupLocation.Y -= 1;
             }
         }
         public void Picked()

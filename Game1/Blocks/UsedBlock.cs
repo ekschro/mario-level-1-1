@@ -15,7 +15,7 @@ namespace Game1
         private Vector2 blockOriginalLocation;
         private bool up = true;
         private bool endofJumping = false;
-        public UsedBlock(Game1 game, Vector2 location)//Boolean isJumping)
+        public UsedBlock(Game1 game, Vector2 location)
         {
             usedBlockSprite = new UsedBlockSprite(game, this);
             blockLocation = location;
@@ -49,5 +49,7 @@ namespace Game1
         public void BottomCollision() { }
         public void LeftCollision() { }
         public void RightCollision() { }
+        public void Moving()
+        { endofJumping = false; }
     }
 }
