@@ -37,7 +37,8 @@ namespace Game1
             Mario.MovingUp = false;
             Mario.MovingRight = true;
             Mario.MovingLeft = false;
-            Mario.CurrentXPosition = Mario.CurrentXPosition + 1;
+            //Mario.CurrentXPosition = Mario.CurrentXPosition + 2;
+
         }
     }
 }
