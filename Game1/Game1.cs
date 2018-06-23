@@ -12,6 +12,7 @@ namespace Game1
     public class Game1 : Game
     {
         GraphicsDeviceManager graphics;
+        public GameTime delta;
         private SpriteBatch spriteBatch;
         public IController mouseController;
         public IList<IController> controllerList;
@@ -69,6 +70,8 @@ namespace Game1
         {
             foreach (IController controller in controllerList.ToArray())
                 controller.Update();
+
+            delta = gameTime;
 
             PlatformerLevel.Update();
 

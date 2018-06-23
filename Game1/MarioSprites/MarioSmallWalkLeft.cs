@@ -5,6 +5,9 @@ namespace Game1
 {
     public class MarioSmallWalkLeft : ISprite
     {
+        public float CurrentXPos { get; set; }
+        public float CurrentYPos { get; set; }
+
         private Game1 myGame;
         
         //private int currentFrame = 11 + 28;

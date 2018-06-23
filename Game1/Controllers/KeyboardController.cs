@@ -45,7 +45,9 @@ namespace Game1
         public void Update()
         {
             Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
+
             none.Execute();
+
             foreach (Keys key in pressedKeys)
             {
                 for (int i = 0; i < 50; i++)

@@ -15,7 +15,6 @@ namespace Game1
 
         public void Execute()
         {
-            Console.WriteLine("HElloooo");
             Mario.MovingDown = false;
             Mario.MovingUp = false;
             Mario.MovingRight = false;

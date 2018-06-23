@@ -9,6 +9,9 @@ namespace Game1
 {
     public class Koopa : IEnemy
     {
+        public float CurrentXPos { get; set; }
+        public float CurrentYPos { get; set; }
+
         private static IEnemySprite koopaSprite;
         public static IEnemySprite KoopaSprite { get => koopaSprite; set => koopaSprite = value; }
         private KoopaStateMachine stateMachine;

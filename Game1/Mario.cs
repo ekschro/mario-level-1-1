@@ -4,6 +4,9 @@ namespace Game1
 {
     public class Mario : IPlayer
     {
+        public float CurrentXPos { get; set; }
+        public float CurrentYPos { get; set; }
+
         private static float currentXPosition;
         private static float currentYPosition;
         private static float oldXPosition;
@@ -23,7 +26,11 @@ namespace Game1
 
         private static ISprite playerSprite;
 
+        private MarioPhysics physics;
         public static ISprite MarioSprite { get => playerSprite; set => playerSprite = value; }
+
+        //Changed from static to non-static
+
         public static float CurrentXPosition { get => currentXPosition; set => currentXPosition = value; }
         public static float CurrentYPosition { get => currentYPosition; set => currentYPosition = value; }
         public static int TotalMarioRows { get => totalMarioRows; set => totalMarioRows = value; }
@@ -44,6 +51,7 @@ namespace Game1
         public Mario(Game1 game, Vector2 vector)
         {
             MyGame = game;
+            physics = new MarioPhysics(game,1);
             CurrentXPosition = vector.X;
             CurrentYPosition = vector.Y;
             MarioColor = Color.White;
@@ -66,7 +74,7 @@ namespace Game1
 
         public void Update()
         {
-
+            physics.Update();
         }
         
         public Vector2 GameObjectLocation()
@@ -97,13 +105,5 @@ namespace Game1
                 
             }
         }
-
-
-
-
-
-
-
-
     }
 }

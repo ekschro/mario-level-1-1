@@ -9,6 +9,9 @@ namespace Game1
 {
     public class GreenMushroom : IPickup
     {
+        public float CurrentXPos { get; set; }
+        public float CurrentYPos { get; set; }
+
         private IPickupSprite greenMushroomSprite;
         private Game1 myGame;
         private Vector2 pickupLocation;

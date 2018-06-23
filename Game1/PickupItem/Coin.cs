@@ -9,6 +9,9 @@ namespace Game1
 {
     public class Coin : IPickup
     {
+        public float CurrentXPos { get; set; }
+        public float CurrentYPos { get; set; }
+
         private int cyclePosition = 0;
         private int cycleLength = 16;
         private IPickupSprite coinSprite;

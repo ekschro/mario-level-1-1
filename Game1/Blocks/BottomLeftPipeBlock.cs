@@ -9,8 +9,10 @@ namespace Game1
 {
     public class BottomLeftPipeBlock : IBlock
     {
+        public float CurrentXPos { get; set; }
+        public float CurrentYPos { get; set; }
+
         private  IBlockSprite bottomLeftPipeBlockSprite;
-        //private Game1 myGame;
         private Vector2 blockLocation;
 
         public BottomLeftPipeBlock(Game1 game, Vector2 location)
