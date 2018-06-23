@@ -13,14 +13,15 @@ namespace Game1
         public float CurrentYPos { get; set; }
 
         private IBlockSprite usedBlockSprite;
-        //private Game1 myGame;
         private Vector2 blockLocation;
-
+        private Vector2 blockOriginalLocation;
+        private bool up = true;
+        private bool endofJumping = false;
         public UsedBlock(Game1 game, Vector2 location)
         {
             usedBlockSprite = new UsedBlockSprite(game, this);
-            //myGame = game;
             blockLocation = location;
+            blockOriginalLocation = location;
         }
 
         public void Draw()
@@ -35,12 +36,22 @@ namespace Game1
 
         public void Update()
         {
-            usedBlockSprite.Update();
+            if (endofJumping==false)
+            {
+                if (blockLocation.Y == (blockOriginalLocation.Y - 20))
+                { up = false; }
+                if (up == true)
+                { blockLocation.Y -= 2; }
+                else if (blockLocation.Y != blockOriginalLocation.Y)
+                { blockLocation.Y += 2; }
+            }
         }
 
         public void TopCollision() { }
         public void BottomCollision() { }
         public void LeftCollision() { }
         public void RightCollision() { }
+        public void Moving()
+        { endofJumping = false; }
     }
 }

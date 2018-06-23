@@ -95,10 +95,10 @@ namespace Game1
                     GameObject = new UsedBlock(myGame, Position);
                     break;
                 case "QuestionBlockWithPowerUp":
-                    GameObject = new QuestionBlock(myGame, Position);
+                    GameObject = new QuestionPowerUpBlock(myGame, Position);
                     break;
                 case "QuestionBlockWithCoin":
-                    GameObject = new QuestionBlock(myGame, Position);
+                    GameObject = new QuestionCoinBlock(myGame, Position);
                     break;
                 case "BrickBlock":
                     GameObject = new BrickBlock(myGame, Position);

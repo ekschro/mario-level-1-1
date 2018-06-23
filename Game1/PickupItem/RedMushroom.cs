@@ -16,12 +16,14 @@ namespace Game1
 
         private Game1 myGame;
         private Vector2 pickupLocation;
+        private Vector2 pickupOriginalLocation;
 
         public RedMushroom(Game1 game, Vector2 location)
         {
             redMushroomSprite = new RedMushroomSprite(game, this);
             myGame = game;
             pickupLocation = location;
+            pickupOriginalLocation = location;
         }
 
         public void Draw()
@@ -37,6 +39,10 @@ namespace Game1
         public void Update()
         {
             redMushroomSprite.Update();
+            if (pickupLocation.Y > pickupOriginalLocation.Y - 16)
+            {
+                pickupLocation.Y -= 1;
+            }
         }
         public void Picked()
         {

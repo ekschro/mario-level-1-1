@@ -18,12 +18,14 @@ namespace Game1
         private IPickupSprite fireflowerSprite;
         private Game1 myGame;
         private Vector2 pickupLocation;
+        private Vector2 pickupOriginalLocation;
 
         public Fireflower(Game1 game, Vector2 location)
         {
             fireflowerSprite = new FireflowerSprite(game, this);
             myGame = game;
             pickupLocation = location;
+            pickupOriginalLocation = location;
         }
 
         public void Draw()
@@ -43,6 +45,10 @@ namespace Game1
             {
                 fireflowerSprite.Update();
                 cyclePosition = 0;
+            }
+            if (pickupLocation.Y > pickupOriginalLocation.Y - 16)
+            {
+                pickupLocation.Y -= 1;
             }
         }
         public void Picked()
