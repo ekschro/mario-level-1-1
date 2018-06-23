@@ -37,9 +37,7 @@ namespace Game1
 
             Mario.MovingDown = false;
             Mario.MovingUp = true;
-            Mario.MovingRight = false;
-            Mario.MovingLeft = false;
-
+           
             Mario.NewYPos();
         }
     }
