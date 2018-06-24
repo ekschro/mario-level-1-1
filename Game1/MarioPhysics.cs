@@ -16,6 +16,7 @@ namespace Game1
         private float yVelocity;
         private float currentX;
         private float currentY;
+        private int timer;
 
         private bool prevUp;
         private bool prevRight;
@@ -39,7 +40,7 @@ namespace Game1
         {
             delta = game.delta.ElapsedGameTime.Milliseconds;
             NewPosX();
-            Console.WriteLine(Mario.MovingRight);
+            NewPosY();
         }
 
         public void NewPosX()
@@ -48,14 +49,25 @@ namespace Game1
             {
                 if (xVelocity < velCap)
                 {
-                    xVelocity += (float)(0.5 * 0.01 * Math.Pow(delta, 2));
+                    xVelocity += (float)(0.5 * 0.001 * Math.Pow(delta, 2));
                 }
                 else
                 {
                     xVelocity = velCap;
                 }
             }
-            if (!Mario.MovingRight)
+            else if (Mario.MovingLeft)
+            {
+                if (Math.Abs(xVelocity) < velCap)
+                {
+                    xVelocity -= (float)(0.5 * 0.001 * Math.Pow(delta, 2));
+                }
+                else
+                {
+                    xVelocity = -1*velCap;
+                }
+            }
+            else
             {
                 xVelocity = 0;
             }
@@ -63,9 +75,23 @@ namespace Game1
             Mario.CurrentXPosition += xVelocity;
         }
 
-        public int NewPosY()
+        public void NewPosY()
         {
-            return 0;
+            if(Mario.MovingUp)
+            {
+                yVelocity = -6;
+            }
+            else if (yVelocity < 0)
+            {
+                yVelocity += (float)(0.5 * 0.001 * Math.Pow(delta, 2));
+            }
+            else
+            {
+                yVelocity = 1;
+            }
+
+            prevUp = Mario.MovingUp;
+            Mario.CurrentYPosition += yVelocity;
         }
 
 
