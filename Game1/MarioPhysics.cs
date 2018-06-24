@@ -16,7 +16,6 @@ namespace Game1
         private float yVelocity;
         private float currentX;
         private float currentY;
-        private int timer;
 
         private bool prevUp;
         private bool prevRight;
@@ -69,7 +68,18 @@ namespace Game1
             }
             else
             {
-                xVelocity = 0;
+                if (xVelocity < 0)
+                {
+                    xVelocity += (float)(0.5 * 0.001 * Math.Pow(delta, 2));
+                }
+                else if (xVelocity > 0)
+                {
+                    xVelocity -= (float)(0.5 * 0.001 * Math.Pow(delta, 2));
+                }
+                else
+                {
+                    xVelocity = 0;
+                }
             }
 
             Mario.CurrentXPosition += xVelocity;
