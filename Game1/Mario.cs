@@ -26,7 +26,7 @@ namespace Game1
 
         private static ISprite playerSprite;
 
-        private MarioPhysics physics;
+        private static  MarioPhysics physics;
         public static ISprite MarioSprite { get => playerSprite; set => playerSprite = value; }
 
         //Changed from static to non-static
@@ -46,6 +46,9 @@ namespace Game1
         public static bool MovingDown { get => movingDown; set => movingDown = value; }
         public static Color MarioColor { get => marioColor; set => marioColor = value; }
 
+       
+        
+
         private static Color marioColor;
 
         public Mario(Game1 game, Vector2 vector)
@@ -62,6 +65,7 @@ namespace Game1
             MovingDown = false;
             MovingRight = false;
             MovingLeft = false;
+           
         }
                 
 
@@ -105,5 +109,25 @@ namespace Game1
                 
             }
         }
+        public static void NewXPos()
+        {
+            physics.NewPosX();
+        }
+        public static void NewYPos()
+        {
+            physics.NewPosY();
+        }
+        public static Boolean CanGenerateProjectiles()
+        {
+            if (MarioSprite.isFire())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
+    
 }

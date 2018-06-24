@@ -63,7 +63,7 @@ namespace Game1
             Mario.CurrentXPosition += xVelocity;
         }
 
-        public int NewPosY(int currentY, bool up, bool right, bool left, bool down)
+        public int NewPosY()
         {
             return 0;
         }
