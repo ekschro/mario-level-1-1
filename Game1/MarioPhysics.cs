@@ -46,7 +46,14 @@ namespace Game1
         {
             if (Mario.MovingRight)
             {
-                xVelocity += (float)(0.5 * 0.01 * Math.Pow(delta, 2));
+                if (xVelocity < velCap)
+                {
+                    xVelocity += (float)(0.5 * 0.01 * Math.Pow(delta, 2));
+                }
+                else
+                {
+                    xVelocity = velCap;
+                }
             }
             if (!Mario.MovingRight)
             {

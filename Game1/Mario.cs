@@ -51,7 +51,7 @@ namespace Game1
         public Mario(Game1 game, Vector2 vector)
         {
             MyGame = game;
-            physics = new MarioPhysics(game,1);
+            physics = new MarioPhysics(game,3);
             CurrentXPosition = vector.X;
             CurrentYPosition = vector.Y;
             MarioColor = Color.White;
