@@ -51,7 +51,7 @@ namespace Game1
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             warehouse = new TextureWareHouse(this);
-            PlatformerLevel = new Level1("LevelInfo.csv", this);
+            PlatformerLevel = new Level1("../../../../Content/LevelInfo.csv", this);
         }
 
         public void Reset()

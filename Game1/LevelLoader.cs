@@ -57,8 +57,8 @@ namespace Game1
 
         public IGameObject GenerateObject(string objectName, int positionX, int positionY)
         {
-            Vector2 Position = new Vector2(positionX, positionY);
-            IGameObject GameObject = new Mario(myGame, Position);
+            Vector2 Position = new Vector2((float)positionX, (float)positionY);
+            IGameObject GameObject = new Coin(myGame,Position);
             switch (objectName) {
                 case "Mario" :
                     GameObject = new Mario(myGame, Position);
