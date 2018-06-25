@@ -4,8 +4,8 @@ Coin,288,192
 RedMushroom,192,64
 GreenMushroom,256,64
 Star,320,64
-Goomba,384,80
-Koopa,448,80
+Koopa,312,192
+Goomba,455,192
 HiddenBlock,32,192
 StairBlock,96,192
 UsedBlock,160,192

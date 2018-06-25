@@ -82,7 +82,8 @@ namespace Game1
         public void EnemyCollisionRespondTop(IEnemy enemy)
         {
             enemy.BeStomped();
-            objectLevel.EnemyObjects.Remove(enemy);
+            if (enemy is Goomba)
+            { objectLevel.EnemyObjects.Remove(enemy); }
         }
 
         public void EnemyCollisionRespondBottom(IEnemy enemy)
@@ -164,6 +165,10 @@ namespace Game1
             {
                 Mario.MarioSprite.DeadMarioCommandCalled();
             }
+        }
+        public void EnemyCollisionBlockRespondXDirection(IEnemy enemy)
+        {
+            enemy.BeFlipped(); ;
         }
 
         public void PickupCollisionRespondTop(IPickup pickup)
