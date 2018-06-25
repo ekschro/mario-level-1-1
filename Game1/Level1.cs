@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 
 namespace Game1
 {
@@ -17,13 +19,17 @@ namespace Game1
         public List<IEnemy> EnemyObjects { get => enemies; }
         public List<IPickup> PickupObjects { get => pickups; }
 
+        public float CameraPosition = 0;
+        private float cameraOffset = 200;
+        private Viewport view = new Viewport(new Rectangle(new Point(0, 0), new Point(400, 214)));
+
         public Level1(string fileName, Game1 game)
         {
             levelObjects = new List<IGameObject>();
             ILoader loader = new LevelLoader(game);
 
             loader.Load(fileName, levelObjects);
-
+            
             GetPlayerObjects();
             GetBlockObjects();
             GetEnemyObjects();
@@ -36,10 +42,13 @@ namespace Game1
         {
             foreach (IGameObject GameObject in levelObjects)
             {
-                GameObject.Update();
+                if (GameObject.CurrentXPos > CameraPosition && GameObject.CurrentXPos < CameraPosition + 400)
+                    GameObject.Update();
             }
 
-            
+            if (PlayerObject.CurrentXPos > CameraPosition + cameraOffset)
+                CameraPosition += (PlayerObject.CurrentXPos - CameraPosition) - cameraOffset;
+
             collisionDetect.Update();
         }
 
@@ -47,7 +56,8 @@ namespace Game1
         {
             foreach (IGameObject GameObject in levelObjects)
             {
-                GameObject.Draw();
+                if (GameObject.CurrentXPos > CameraPosition && GameObject.CurrentXPos < CameraPosition + 400)
+                    GameObject.Draw();
             }
         }
 
@@ -56,8 +66,10 @@ namespace Game1
             IPlayer playerObject = null;
             foreach(IGameObject player in levelObjects)
             {
-                if(player is IPlayer)
+                if (player is IPlayer)
+                {
                     playerObject = (IPlayer)player;
+                } break;
             }
 
             this.playerObject = playerObject;
