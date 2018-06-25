@@ -3,7 +3,10 @@ using System;
 namespace Game1 { 
 public class MarioDead : ISprite
 {
-    private Game1 myGame;
+        public float CurrentXPos { get; set; }
+        public float CurrentYPos { get; set; }
+
+        private Game1 myGame;
     
 
     private int currentFrame = 12 + 28;

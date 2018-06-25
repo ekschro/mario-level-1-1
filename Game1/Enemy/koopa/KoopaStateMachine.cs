@@ -19,17 +19,19 @@ namespace Game1
 
         public void ChangeDirection()
         {
-            if (health == KoopaHealth.Normal)
+            if (health == KoopaHealth.Flipped)
             {
                 facingLeft = !facingLeft;
                 if (facingLeft == true)
                     koopaSprite.ChangeFrame(2, 4);
                 else
                     koopaSprite.ChangeFrame(0, 2);
+                health = KoopaHealth.Normal;
             }
+            else
+            { facingLeft = !facingLeft; }
             
         }
-
 
         public void BeStomped()
         {
@@ -43,9 +45,13 @@ namespace Game1
 
         public void BeFlipped()
         {
-            if (health != KoopaHealth.Flipped)
+            if (health == KoopaHealth.Normal || health == KoopaHealth.Flipped)
             {
                 health = KoopaHealth.Flipped;
+            }
+            else 
+            {
+                ChangeDirection();
             }
         }
 
@@ -53,8 +59,8 @@ namespace Game1
         {
             if (health == KoopaHealth.Flipped)
             {
+                //health = KoopaHealth.Normal;
                 ChangeDirection();
-                health = KoopaHealth.Normal;
             }
         }
         public bool GetDirection()

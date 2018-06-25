@@ -9,6 +9,9 @@ namespace Game1
 {
     public class EmptyPickup : IPickup
     {
+        public float CurrentXPos { get; set; }
+        public float CurrentYPos { get; set; }
+
         private IPickupSprite emptySprite;
 
         //private Game1 myGame;

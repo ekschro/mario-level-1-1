@@ -21,7 +21,6 @@ namespace Game1
         public void ChangeDirection()
         {
             facingLeft = !facingLeft;
-
         }
 
         public void BeStomped()
@@ -48,8 +47,8 @@ namespace Game1
         {
             if (health == GoombaHealth.Flipped)
             {
-                ChangeDirection();
                 health = GoombaHealth.Normal;
+                ChangeDirection();
             }
         }
         public bool GetDirection()

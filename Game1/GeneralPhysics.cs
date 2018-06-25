@@ -7,23 +7,26 @@ using System.Threading.Tasks;
 
 namespace Game1
 {
-    class Physics
+    class GeneralPhysics
     {
         private Game1 game;
-        //private GameTime delta;
-
+        private IPlayer obj;
+        private float delta;
         private int velCap;
-        private int xVelocity;
-        private int yVelocity;
+        private float xVelocity;
+        private float yVelocity;
+        private float currentX;
+        private float currentY;
 
         private bool prevUp;
         private bool prevRight;
         private bool prevLeft;
         private bool prevDown;
 
-        public Physics(Game1 game,int velCap)
+        public GeneralPhysics(Game1 game,IPlayer obj,int velCap)
         {
             this.game = game;
+            this.obj = obj;
 
             this.velCap = velCap;
             xVelocity = 0;
@@ -35,17 +38,24 @@ namespace Game1
             prevDown = false;
         }
 
-        public void Update(GameTime gameTime)
+        public void Update(bool up, bool right, bool left, bool down)
         {
-            var delta = gameTime.ElapsedGameTime.TotalSeconds;
+            delta = game.delta.ElapsedGameTime.Milliseconds;
+            NewPosX(up, right, left, down);
         }
 
-        public int NewPosX(int currentX,bool up,bool right,bool left,bool down)
+        public void NewPosX(bool up,bool right,bool left,bool down)
         {
-            //xVelocity += 0.5 * 1 * delta ^ 2;
+            if (right)
+            {
+                xVelocity += (float)(0.5 * 0.01 * Math.Pow(delta, 2));
+            }
+            else
+            {
+                xVelocity = 0;
+            }
 
-            //return (int)(currentX + delta*xVelocity);
-            return 0;
+            obj.CurrentXPos += xVelocity;
         }
 
         public int NewPosY(int currentY, bool up, bool right, bool left, bool down)

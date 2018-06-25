@@ -9,17 +9,18 @@ namespace Game1
 {
     public class Koopa : IEnemy
     {
+        public float CurrentXPos { get; set; }
+        public float CurrentYPos { get; set; }
+
         private static IEnemySprite koopaSprite;
         public static IEnemySprite KoopaSprite { get => koopaSprite; set => koopaSprite = value; }
         private KoopaStateMachine stateMachine;
 
-        //private Game1 myGame;
-        private bool direction = true;
         private int cyclePosition = 0;
         private int cycleLength = 8;
         private Vector2 koopaLocation;
         private Vector2 koopaOriginalLocation;
-        private bool running = false;
+        private bool running = true;
 
 
         public Koopa(Game1 game, Vector2 location)
@@ -44,7 +45,6 @@ namespace Game1
         public void ChangeDirection()
         {
             stateMachine.ChangeDirection();
-            direction = !direction;
         }
 
         public void Draw()

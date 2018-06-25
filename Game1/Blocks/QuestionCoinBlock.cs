@@ -9,6 +9,8 @@ namespace Game1
 {
     public class QuestionCoinBlock : IBlock
     {
+        public float CurrentXPos { get; set; }
+        public float CurrentYPos { get; set; }
 
         private IBlockSprite questionCoinBlockSprite;
         private Game1 myGame;
@@ -18,7 +20,7 @@ namespace Game1
 
         public QuestionCoinBlock(Game1 game, Vector2 location)
         {
-            questionCoinBlockSprite = new QuestionBlockSprite(game, this);
+            questionCoinBlockSprite = new QuestionCoinBlockSprite(game, this);
             myGame = game;
             blockLocation = location;
         }
@@ -38,6 +40,7 @@ namespace Game1
             cyclePosition++;
             if (cyclePosition == cycleLength)
             {
+                
                 questionCoinBlockSprite.Update();
                 cyclePosition = 0;
             }

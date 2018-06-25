@@ -17,12 +17,11 @@ namespace Game1
         private Dictionary<Keys, ICommand> controllerMappings;
         //private List<Keys> recentKeys;
         private Game1 myGame;
-        
-
+        private ICommand none;
         
         public KeyboardController(Game1 game)
         {
-            
+            none = new NoCommand();
             myGame = game;
             controllerMappings = new Dictionary<Keys, ICommand>();
             //recentKeys = new List<Keys>();
@@ -41,12 +40,13 @@ namespace Game1
             controllerMappings.Add(Keys.O, new DeadMarioCommand(myGame));
             controllerMappings.Add(Keys.R, new ResetCommand(myGame));
             controllerMappings.Add(Keys.M, new MouseToggleCommand(myGame));
-            
     }
 
         public void Update()
         {
             Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
+
+            none.Execute();
 
             foreach (Keys key in pressedKeys)
             {
@@ -57,9 +57,7 @@ namespace Game1
                         controllerMappings[key].Execute();
                     }
                 }
-
             }
-            
         }
     }
 }

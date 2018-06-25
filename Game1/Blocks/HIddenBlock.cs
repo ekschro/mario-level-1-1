@@ -9,6 +9,8 @@ namespace Game1
 {
     public class HiddenBlock : IBlock
     {
+        public float CurrentXPos { get; set; }
+        public float CurrentYPos { get; set; }
 
         private IBlockSprite hiddenBlockSprite;
         private Game1 myGame;

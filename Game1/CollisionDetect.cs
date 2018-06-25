@@ -82,6 +82,54 @@ namespace Game1
             }
         }
 
+        public void BlockEnemyCollisionDetect()
+        {
+            int playerX = (int)player.GameObjectLocation().X;
+            int playerY = (int)player.GameObjectLocation().Y;
+            Rectangle playerBox;
+
+            for (int j = 0; j < enemyArray.Length;j++)
+            {
+                int enemyX = (int)enemyArray[j].GameObjectLocation().X;
+                int enemyY = (int)enemyArray[j].GameObjectLocation().Y;
+                playerBox = new Rectangle(enemyX, enemyY, 16, 16);
+
+                blockArray = level1.BlockObjects.ToArray();
+
+                for (int i = 0; i < blockArray.Length; i++)
+                {
+                    int blockX = (int)blockArray[i].GameObjectLocation().X;
+                    int blockY = (int)blockArray[i].GameObjectLocation().Y;
+
+                    Rectangle blockBox = new Rectangle(blockX, blockY, 16, 16);
+                    Rectangle intersect;
+
+                    if (playerBox.Intersects(blockBox))
+                    {
+                        Rectangle.Intersect(ref playerBox, ref blockBox, out intersect);
+
+                        if (intersect.Height > intersect.Width && playerX < blockX)
+                        {
+                            collision.EnemyCollisionBlockRespondXDirection(enemyArray[j]);
+                        }
+                        else if (intersect.Height > intersect.Width && playerX > blockX)
+                        {
+                            collision.EnemyCollisionBlockRespondXDirection(enemyArray[j]);
+                        }
+                        else if (intersect.Height < intersect.Width && playerY < blockY)
+                        {
+                            //collision.BlockCollisionRespondTop(blockArray[i]);
+                        }
+                        else if (intersect.Height < intersect.Width && playerY > blockY + 14 && (blockArray[i] is HiddenBlock) && Mario.MovingUp)
+                        {
+                            //collision.BlockCollisionRespondBottom(blockArray[i]);
+                        }
+
+                    }
+                }
+            }
+        }
+
         public void EnemyCollisionDetect()
         {
             int playerX = (int)player.GameObjectLocation().X;
@@ -183,7 +231,7 @@ namespace Game1
             BlockCollisionDetect();
             EnemyCollisionDetect();
             PickupBlockCollisionDetect();
-
+            BlockEnemyCollisionDetect();
             collision.Update();
         }
     }

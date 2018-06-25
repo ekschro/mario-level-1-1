@@ -9,6 +9,9 @@ namespace Game1
 {
     public class Goomba : IEnemy
     {
+        public float CurrentXPos { get; set; }
+        public float CurrentYPos { get; set; }
+
         private static IEnemySprite goombaSprite;
         public static IEnemySprite GoombaSprite { get => goombaSprite; set => goombaSprite = value; }
         private GoombaStateMachine stateMachine;
@@ -16,7 +19,7 @@ namespace Game1
         private int cycleLength = 8;
         private Vector2 goombaLocation;
         private Vector2 goombaOriginalLocation;
-        private bool running=false;
+        private bool running=true;
 
         public Goomba(Game1 game, Vector2 location)
         {
@@ -64,9 +67,10 @@ namespace Game1
             if (cyclePosition == cycleLength && running)
             {
                 cyclePosition = 0;
-                GoombaSprite.Update();
                 stateMachine.Update();
-                //if (goombaLocation.X == (goombaOriginalLocation.X - 20) || goombaLocation.X == (goombaOriginalLocation.X + 20))
+                GoombaSprite.Update();
+                
+                //if (goombaLocation.X == (goombaOriginalLocation.X - 5) || goombaLocation.X == (goombaOriginalLocation.X + 5))
                     //ChangeDirection();
                 if (stateMachine.GetDirection())
                     goombaLocation.X += 1;

@@ -4,6 +4,9 @@ namespace Game1
 {
     public class MarioBigWalkRight : ISprite
     {
+        public float CurrentXPos { get; set; }
+        public float CurrentYPos { get; set; }
+
         private Game1 myGame;
 
 

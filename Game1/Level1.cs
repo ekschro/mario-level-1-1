@@ -39,6 +39,7 @@ namespace Game1
                 GameObject.Update();
             }
 
+            
             collisionDetect.Update();
         }
 

@@ -9,6 +9,8 @@ namespace Game1
 {
     public class QuestionPowerUpBlock : IBlock
     {
+        public float CurrentXPos { get; set; }
+        public float CurrentYPos { get; set; }
 
         private IBlockSprite questionPowerUpBlockSprite;
         private Game1 myGame;
@@ -18,7 +20,7 @@ namespace Game1
 
         public QuestionPowerUpBlock(Game1 game, Vector2 location)
         {
-            questionPowerUpBlockSprite = new QuestionBlockSprite(game, this);
+            questionPowerUpBlockSprite = new QuestionPowerUpBlockSprite(game, this);
             myGame = game;
             blockLocation = location;
         }
