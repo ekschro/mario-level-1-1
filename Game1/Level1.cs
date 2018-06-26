@@ -8,6 +8,8 @@ namespace Game1
     {
         private List<IGameObject> levelObjects;
         private ICollision collisionDetect;
+        private ICamera levelCamera;
+        private Game1 myGame;
 
         private IPlayer playerObject;
         private List<IBlock> blocks;
@@ -19,12 +21,10 @@ namespace Game1
         public List<IEnemy> EnemyObjects { get => enemies; }
         public List<IPickup> PickupObjects { get => pickups; }
 
-        public float CameraPosition = 0;
-        private float cameraOffset = 200;
-        private Viewport view = new Viewport(new Rectangle(new Point(0, 0), new Point(400, 214)));
 
         public Level1(string fileName, Game1 game)
         {
+            myGame = game;
             levelObjects = new List<IGameObject>();
             ILoader loader = new LevelLoader(game);
 
@@ -36,27 +36,27 @@ namespace Game1
             GetPickupObjects();
 
             collisionDetect = new CollisionDetect(game,this);
+
+            levelCamera = new Camera(this);
         }
 
         public void Update()
         {
             foreach (IGameObject GameObject in levelObjects)
             {
-                if (GameObject.CurrentXPos > CameraPosition && GameObject.CurrentXPos < CameraPosition + 400)
+                if (GameObject.CurrentXPos > levelCamera.CameraPosition - 16  && GameObject.CurrentXPos < levelCamera.CameraPosition + myGame.GraphicsDevice.Viewport.Width)
                     GameObject.Update();
             }
 
-            if (PlayerObject.CurrentXPos > CameraPosition + cameraOffset)
-                CameraPosition += (PlayerObject.CurrentXPos - CameraPosition) - cameraOffset;
-
             collisionDetect.Update();
+            levelCamera.Update();
         }
 
         public void Draw()
         {
             foreach (IGameObject GameObject in levelObjects)
             {
-                if (GameObject.CurrentXPos > CameraPosition && GameObject.CurrentXPos < CameraPosition + 400)
+                if (GameObject.CurrentXPos > levelCamera.CameraPosition - 16 && GameObject.CurrentXPos < levelCamera.CameraPosition + myGame.GraphicsDevice.Viewport.Width)
                     GameObject.Draw();
             }
         }

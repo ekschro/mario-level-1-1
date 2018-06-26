@@ -25,7 +25,7 @@ namespace Game1
         public void Execute()
         {
             Mario.MarioSprite.DeadMarioCommandCalled();
-            myGame.PlatformerLevel.PlayerObject.IsStar = false;
+            myGame.CurrentLevel.PlayerObject.IsStar = false;
         }
     }
 }
