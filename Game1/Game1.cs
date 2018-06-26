@@ -16,11 +16,12 @@ namespace Game1
         private SpriteBatch spriteBatch;
         public IController mouseController;
         public IList<IController> controllerList;
-        public ILevel PlatformerLevel;
+        private ILevel currentLevel;
         //public int totalBlockFrames = 12;
         public TextureWareHouse warehouse;
 
         public SpriteBatch SpriteBatch { get => spriteBatch; set => spriteBatch = value; }
+        public ILevel CurrentLevel { get => currentLevel; set => currentLevel = value; }
 
         /*
         public Texture2D marioTexture;
@@ -33,6 +34,10 @@ namespace Game1
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
+            graphics.PreferredBackBufferWidth = 400;
+            graphics.PreferredBackBufferHeight = 230;
+            graphics.ApplyChanges();
+            
             Content.RootDirectory = "Content";
         }
       
@@ -52,7 +57,7 @@ namespace Game1
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             warehouse = new TextureWareHouse(this);
-            PlatformerLevel = new Level1("../../../../Content/LevelInfo.csv", this);
+            CurrentLevel = new Level1("../../../../Content/LevelInfo.csv", this);
         }
 
         public void Reset()
@@ -73,7 +78,7 @@ namespace Game1
 
             delta = gameTime;
 
-            PlatformerLevel.Update();
+            CurrentLevel.Update();
 
             base.Update(gameTime);
         }
@@ -89,7 +94,7 @@ namespace Game1
 
             spriteBatch.End();
 
-            PlatformerLevel.Draw();
+            CurrentLevel.Draw();
 
             base.Draw(gameTime);
         }
