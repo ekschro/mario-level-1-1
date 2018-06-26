@@ -25,7 +25,9 @@ namespace Game1
         private static ISprite playerSprite;
         private static  MarioPhysics physics;
         private static Color marioColor;
+        private static bool canJump;
 
+        public static bool CanJump { get => canJump; set => canJump = value; }
         public static ISprite MarioSprite { get => playerSprite; set => playerSprite = value; }
         public static float CurrentXPosition { get => currentXPosition; set => currentXPosition = value; }
         public static float CurrentYPosition { get => currentYPosition; set => currentYPosition = value; }
@@ -56,7 +58,7 @@ namespace Game1
             MovingDown = false;
             MovingRight = false;
             MovingLeft = false;
-           
+            canJump = true;
         }
                 
 
@@ -113,5 +115,4 @@ namespace Game1
             }
         }
     }
-    
 }

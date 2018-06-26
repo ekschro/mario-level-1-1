@@ -33,6 +33,7 @@ namespace Game1
         {
             if (!(block is HiddenBlock) && !standing)
                 Mario.CurrentYPosition -= height;
+            Mario.CanJump = true;
         }
 
         public void BlockCollisionRespondBottom(IBlock block,int height,bool head)
@@ -54,7 +55,13 @@ namespace Game1
             {
                 objectLevel.BlockObjects.Remove(block);
                 objectLevel.BlockObjects.Add(new UsedBlock(myGame, block.GameObjectLocation()));
-            } else if (block is QuestionBlock)
+            }
+            else if (block is QuestionPowerUpBlock)
+            {
+                objectLevel.BlockObjects.Remove(block);
+                objectLevel.BlockObjects.Add(new UsedBlock(myGame, block.GameObjectLocation()));
+            }
+            else if (block is QuestionCoinBlock)
             {
                 objectLevel.BlockObjects.Remove(block);
                 objectLevel.BlockObjects.Add(new UsedBlock(myGame, block.GameObjectLocation()));
