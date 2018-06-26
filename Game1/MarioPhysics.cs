@@ -9,6 +9,8 @@ namespace Game1
 {
     class MarioPhysics
     {
+        private const int JUMPCALLS = 10;
+
         private Game1 game;
         private float delta;
         private int velCap;
@@ -16,6 +18,7 @@ namespace Game1
         private float yVelocity;
         private float currentX;
         private float currentY;
+        private int counter = JUMPCALLS;
 
         private bool prevUp;
         private bool prevRight;
@@ -88,17 +91,20 @@ namespace Game1
 
         public void NewPosY()
         {
-            if(Mario.MovingUp)
+            if(Mario.MovingUp && Mario.CanJump)
             {
                 yVelocity = (float)-3.5;
+                counter = JUMPCALLS;
+                Mario.CanJump = false;
             }
-            else if (yVelocity < 0)
+            else if (Mario.MovingUp && counter != 0)
+            {
+                yVelocity = (float)-3.5;
+                counter--;
+            }
+            else if (yVelocity < 3.5)
             {
                 yVelocity += (float)(0.5 * 0.01 * Math.Pow(delta, 2));
-            }
-            else
-            {
-                yVelocity = (float)3.5;
             }
 
             Mario.CurrentYPosition += yVelocity;
