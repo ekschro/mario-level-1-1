@@ -41,8 +41,10 @@ namespace Game1
         {
             int width = TextureWareHouse.blockTexture.Width / numberOfFrame;
 
+            int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(questionCoinBlockObject.GameObjectLocation().X);
+
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, TextureWareHouse.blockTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)questionCoinBlockObject.GameObjectLocation().X, (int)questionCoinBlockObject.GameObjectLocation().Y, width, TextureWareHouse.blockTexture.Height);
+            Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)questionCoinBlockObject.GameObjectLocation().Y, width, TextureWareHouse.blockTexture.Height);
 
             myGame.SpriteBatch.Begin();
             myGame.SpriteBatch.Draw(TextureWareHouse.blockTexture, destinationRectangle, sourceRectangle, Color.White);

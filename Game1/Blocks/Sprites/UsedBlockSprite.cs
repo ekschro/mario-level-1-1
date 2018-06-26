@@ -33,8 +33,10 @@ namespace Game1
         {
             int width = TextureWareHouse.blockTexture.Width / 13;
 
+            int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(usedBlockObject.GameObjectLocation().X);
+
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, TextureWareHouse.blockTexture.Height);
-            Rectangle destinationRectangle = new Rectangle((int)usedBlockObject.GameObjectLocation().X, (int)usedBlockObject.GameObjectLocation().Y, width, TextureWareHouse.blockTexture.Height);
+            Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)usedBlockObject.GameObjectLocation().Y, width, TextureWareHouse.blockTexture.Height);
 
 
             myGame.SpriteBatch.Begin();

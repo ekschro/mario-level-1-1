@@ -24,8 +24,13 @@ namespace Game1
 
         public void Update()
         {
-            if (gameLevel.PlayerObject.CurrentXPos > CameraPosition + cameraOffset)
-                CameraPosition += (gameLevel.PlayerObject.CurrentXPos - CameraPosition) - cameraOffset;
+            if (gameLevel.PlayerObject.GameObjectLocation().X > CameraPosition + cameraOffset)
+                CameraPosition += (gameLevel.PlayerObject.GameObjectLocation().X - CameraPosition) - cameraOffset;
+        }
+
+        public float PositionRelativeToCamera(float objectPosition)
+        {
+            return objectPosition - CameraPosition;
         }
     }
 }

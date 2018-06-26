@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Game1
 {
-    interface ICamera
+    public interface ICamera
     {
         float CameraPosition { get; set; }
         float CameraOffset { get; set; }
         void Update();
+        float PositionRelativeToCamera(float objectPosition);
     }
 }

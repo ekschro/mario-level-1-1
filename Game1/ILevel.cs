@@ -14,5 +14,6 @@ namespace Game1
         List<IEnemy> EnemyObjects { get; }
         List<IPickup> PickupObjects { get; }
         IPlayer PlayerObject { get; set; }
+        ICamera LevelCamera { get; set; }
     }
 }

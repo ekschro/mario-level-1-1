@@ -21,6 +21,8 @@ namespace Game1
         public List<IEnemy> EnemyObjects { get => enemies; }
         public List<IPickup> PickupObjects { get => pickups; }
 
+        public ICamera LevelCamera { get => levelCamera; set => levelCamera = value; }
+
 
         public Level1(string fileName, Game1 game)
         {
@@ -44,7 +46,7 @@ namespace Game1
         {
             foreach (IGameObject GameObject in levelObjects)
             {
-                if (GameObject.CurrentXPos > levelCamera.CameraPosition - 16  && GameObject.CurrentXPos < levelCamera.CameraPosition + myGame.GraphicsDevice.Viewport.Width)
+                if (GameObject.GameObjectLocation().X > levelCamera.CameraPosition - 16  && GameObject.GameObjectLocation().X < levelCamera.CameraPosition + 400)
                     GameObject.Update();
             }
 
@@ -56,7 +58,7 @@ namespace Game1
         {
             foreach (IGameObject GameObject in levelObjects)
             {
-                if (GameObject.CurrentXPos > levelCamera.CameraPosition - 16 && GameObject.CurrentXPos < levelCamera.CameraPosition + myGame.GraphicsDevice.Viewport.Width)
+                if (GameObject.GameObjectLocation().X > levelCamera.CameraPosition - 16 && GameObject.GameObjectLocation().X < levelCamera.CameraPosition + 400)
                     GameObject.Draw();
             }
         }

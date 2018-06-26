@@ -26,10 +26,10 @@ namespace Game1
             int row = (int)((float)currentFrame / (float)Mario.TotalMarioColumns);
             int column = currentFrame % Mario.TotalMarioColumns;
 
-            
+            int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(Mario.CurrentXPosition);
 
-            Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)Mario.CurrentXPosition, (int)Mario.CurrentYPosition, width, height);
+            Rectangle sourceRectangle = new Rectangle(width * column, (height * row), width, height);
+            Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)Mario.CurrentYPosition, width, height);
 
             myGame.SpriteBatch.Begin();
             myGame.SpriteBatch.Draw(TextureWareHouse.marioTexture, destinationRectangle, sourceRectangle, Mario.MarioColor);

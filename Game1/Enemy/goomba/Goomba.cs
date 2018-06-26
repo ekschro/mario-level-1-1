@@ -12,8 +12,8 @@ namespace Game1
         public float CurrentXPos { get; set; }
         public float CurrentYPos { get; set; }
 
-        private static IEnemySprite goombaSprite;
-        public static IEnemySprite GoombaSprite { get => goombaSprite; set => goombaSprite = value; }
+        private IEnemySprite goombaSprite;
+        public IEnemySprite GoombaSprite { get => goombaSprite; set => goombaSprite = value; }
         private GoombaStateMachine stateMachine;
         private int cyclePosition = 0;
         private int cycleLength = 8;
@@ -23,12 +23,12 @@ namespace Game1
 
         public Goomba(Game1 game, Vector2 location)
         {
-            
-            GoombaSprite = new GoombaSprite(game,this);
-            stateMachine = new GoombaStateMachine(GoombaSprite);
-            //myGame = game;
             goombaLocation = location;
             goombaOriginalLocation = location;
+
+            GoombaSprite = new GoombaSprite(game, this);
+            stateMachine = new GoombaStateMachine(GoombaSprite);
+            //myGame = game;
         }
 
         public void BeFlipped()
