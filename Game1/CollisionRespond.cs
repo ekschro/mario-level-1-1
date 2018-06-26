@@ -34,15 +34,16 @@ namespace Game1
             objectLevel = level;
         }
 
-        public void BlockCollisionRespondTop(IBlock block,int height)
+        public void BlockCollisionRespondTop(IBlock block,int height,bool standing)
         {
-            if (!(block is HiddenBlock))
+            if (!(block is HiddenBlock) && !standing)
                 Mario.CurrentYPosition -= height;
         }
 
-        public void BlockCollisionRespondBottom(IBlock block,int height)
+        public void BlockCollisionRespondBottom(IBlock block,int height,bool head)
         {
-            Mario.CurrentYPosition += height;
+            if (!head)
+                Mario.CurrentYPosition += height;
 
             if (Mario.MarioSprite.isSmall() && block is BrickBlock)
             {
@@ -66,15 +67,15 @@ namespace Game1
 
         }
 
-        public void BlockCollisionRespondRight(IBlock block,int width)
+        public void BlockCollisionRespondRight(IBlock block,int width,bool right)
         {
-            if (!(block is HiddenBlock))
+            if (!(block is HiddenBlock) && !right)
                 Mario.CurrentXPosition += width;
         }
 
-        public void BlockCollisionRespondLeft(IBlock block,int width)
+        public void BlockCollisionRespondLeft(IBlock block,int width,bool left)
         {
-            if (!(block is HiddenBlock))
+            if (!(block is HiddenBlock) && !left)
                 Mario.CurrentXPosition -= width;
         }
 

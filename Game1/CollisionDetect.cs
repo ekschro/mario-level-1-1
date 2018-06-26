@@ -12,6 +12,7 @@ namespace Game1
         private ILevel level1;
         private IPlayer player;
         private IBlock[] blockArray;
+        private List<Action> commandArray;
         private IEnemy[] enemyArray;
         private IPickup[] pickupArray;
         private CollisionRespond collision;
@@ -46,6 +47,12 @@ namespace Game1
 
             blockArray = level1.BlockObjects.ToArray();
 
+            //Consider array??
+            bool standing = false;
+            bool head = false;
+            bool right = false;
+            bool left = false;
+
             for (int i = 0; i < blockArray.Length; i++)
             {
                 int blockX = (int)blockArray[i].GameObjectLocation().X;
@@ -60,27 +67,28 @@ namespace Game1
 
                     if (intersect.Height < intersect.Width && playerY < blockY)
                     {
-                        collision.BlockCollisionRespondTop(blockArray[i],intersect.Height);
+                        collision.BlockCollisionRespondTop(blockArray[i],intersect.Height,standing);
+                        standing = true;
                     }
                     else if (intersect.Height < intersect.Width && playerY > blockY && !(blockArray[i] is HiddenBlock)) //Temp fix
                     {
-                        collision.BlockCollisionRespondBottom(blockArray[i],intersect.Height);
+                        collision.BlockCollisionRespondBottom(blockArray[i],intersect.Height,head);
+                        head = true;
                     }
-                    else if (intersect.Height < intersect.Width && playerY > blockY && !(blockArray[i] is HiddenBlock) && Mario.MovingUp)
+                    else if (intersect.Height < intersect.Width && playerY > blockY /*&& (blockArray[i] is HiddenBlock)*/ && Mario.MovingUp)
                     {
-                        collision.BlockCollisionRespondBottom(blockArray[i],intersect.Height);
+                        collision.BlockCollisionRespondBottom(blockArray[i],intersect.Height,head);
+                        head = true;
                     }
                     else if (intersect.Height - 3 > intersect.Width && playerX < blockX)
                     {
-                        Console.Write("Height: ");
-                        Console.WriteLine(intersect.Height - 3 );
-                        Console.Write("Width: ");
-                        Console.WriteLine(intersect.Width);
-                        collision.BlockCollisionRespondLeft(blockArray[i], intersect.Width);
+                        collision.BlockCollisionRespondLeft(blockArray[i], intersect.Width,left);
+                        left = true;
                     }
-                    else if (intersect.Height -3 > intersect.Width && playerX > blockX)
+                    else if (intersect.Height - 3 > intersect.Width && playerX > blockX)
                     {
-                        collision.BlockCollisionRespondRight(blockArray[i], intersect.Width);
+                        collision.BlockCollisionRespondRight(blockArray[i], intersect.Width,right);
+                        right = true;
                     }
 
                 }
