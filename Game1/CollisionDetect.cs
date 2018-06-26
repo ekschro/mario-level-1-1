@@ -12,6 +12,7 @@ namespace Game1
         private ILevel level1;
         private IPlayer player;
         private IBlock[] blockArray;
+        private List<Action> commandArray;
         private IEnemy[] enemyArray;
         private IPickup[] pickupArray;
         private CollisionRespond collision;
@@ -46,6 +47,12 @@ namespace Game1
 
             blockArray = level1.BlockObjects.ToArray();
 
+            //Consider array??
+            bool standing = false;
+            bool head = false;
+            bool right = false;
+            bool left = false;
+
             for (int i = 0; i < blockArray.Length; i++)
             {
                 int blockX = (int)blockArray[i].GameObjectLocation().X;
@@ -58,26 +65,32 @@ namespace Game1
                 {
                     Rectangle.Intersect(ref playerBox, ref blockBox, out intersect);
 
-                    if (intersect.Height > intersect.Width && playerX < blockX)
+                    if (intersect.Height < intersect.Width && playerY < blockY)
                     {
-                        collision.BlockCollisionRespondLeft( blockArray[i]);
+                        collision.BlockCollisionRespondTop(blockArray[i],intersect.Height,standing);
+                        standing = true;
                     }
-                    else if (intersect.Height > intersect.Width && playerX > blockX)
+                    else if (intersect.Height < intersect.Width && playerY > blockY && !(blockArray[i] is HiddenBlock)) //Temp fix
                     {
-                        collision.BlockCollisionRespondRight( blockArray[i]);
+                        collision.BlockCollisionRespondBottom(blockArray[i],intersect.Height,head);
+                        head = true;
                     }
-                    else if (intersect.Height < intersect.Width && playerY < blockY)
+                    else if (intersect.Height < intersect.Width && playerY > blockY /*&& (blockArray[i] is HiddenBlock)*/ && Mario.MovingUp)
                     {
-                        collision.BlockCollisionRespondTop( blockArray[i]);
+                        collision.BlockCollisionRespondBottom(blockArray[i],intersect.Height,head);
+                        head = true;
                     }
-                    else if (intersect.Height < intersect.Width && playerY > blockY+14 && !(blockArray[i] is HiddenBlock)) //Temp fix
+                    else if (intersect.Height - 3 > intersect.Width && playerX < blockX)
                     {
-                        collision.BlockCollisionRespondBottom( blockArray[i]);
-                    } else if (intersect.Height < intersect.Width && playerY > blockY + 14 && (blockArray[i] is HiddenBlock) && Mario.MovingUp)
-                    {
-                        collision.BlockCollisionRespondBottom(blockArray[i]);
+                        collision.BlockCollisionRespondLeft(blockArray[i], intersect.Width,left);
+                        left = true;
                     }
-                   
+                    else if (intersect.Height - 3 > intersect.Width && playerX > blockX)
+                    {
+                        collision.BlockCollisionRespondRight(blockArray[i], intersect.Width,right);
+                        right = true;
+                    }
+
                 }
             }
         }
