@@ -42,12 +42,12 @@ namespace Game1
         {
             foreach (IGameObject GameObject in levelObjects)
             {
-                if (GameObject.CurrentXPos > CameraPosition && GameObject.CurrentXPos < CameraPosition + 400)
+                if (/*GameObject.CurrentXPos > CameraPosition && */GameObject.CurrentXPos < CameraPosition + 400)
                     GameObject.Update();
             }
 
-            if (PlayerObject.CurrentXPos > CameraPosition + cameraOffset)
-                CameraPosition += (PlayerObject.CurrentXPos - CameraPosition) - cameraOffset;
+            if (PlayerObject.CurrentXPos < CameraPosition + cameraOffset)
+                CameraPosition += (PlayerObject.CurrentXPos - CameraPosition) + cameraOffset;
 
             collisionDetect.Update();
         }
@@ -56,7 +56,7 @@ namespace Game1
         {
             foreach (IGameObject GameObject in levelObjects)
             {
-                if (GameObject.CurrentXPos > CameraPosition && GameObject.CurrentXPos < CameraPosition + 400)
+                if (/*GameObject.CurrentXPos > CameraPosition && */GameObject.CurrentXPos < CameraPosition + 400)
                     GameObject.Draw();
             }
         }
