@@ -62,7 +62,6 @@ namespace Game1
             switch (objectName) {
                 case "Mario" :
                     GameObject = new Mario(myGame, Position);
-                    //mario = GameObject;
                     break;
                 case "FireFlower":
                     GameObject = new Fireflower(myGame, Position);
@@ -85,7 +84,10 @@ namespace Game1
                 case "Koopa":
                     GameObject = new Koopa(myGame, Position);
                     break;
-                case "HiddenBlock":
+                case "HiddenBlockWith1Up":
+                    GameObject = new HiddenBlock(myGame, Position);
+                    break;
+                case "HiddenBlockWithStar":
                     GameObject = new HiddenBlock(myGame, Position);
                     break;
                 case "StairBlock":
@@ -100,7 +102,16 @@ namespace Game1
                 case "QuestionBlockWithCoin":
                     GameObject = new QuestionCoinBlock(myGame, Position);
                     break;
+                case "QuestionBlockWithManyCoins":
+                    GameObject = new QuestionCoinBlock(myGame, Position);
+                    break;
                 case "BrickBlock":
+                    GameObject = new BrickBlock(myGame, Position);
+                    break;
+                case "BrickBlockWithStar":
+                    GameObject = new BrickBlock(myGame, Position);
+                    break;
+                case "BrickBlockWithManyCoins":
                     GameObject = new BrickBlock(myGame, Position);
                     break;
                 case "StoneBlock":
