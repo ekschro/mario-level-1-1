@@ -9,21 +9,14 @@ namespace Game1
 {
     class MarioPhysics
     {
-        private const int JUMPCALLS = 10;
+        private const int JUMPCALLS = 17;
 
         private Game1 game;
         private float delta;
         private int velCap;
         private float xVelocity;
         private float yVelocity;
-        private float currentX;
-        private float currentY;
-        private int counter = JUMPCALLS;
-
-        private bool prevUp;
-        private bool prevRight;
-        private bool prevLeft;
-        private bool prevDown;
+        private int counter;
 
         public MarioPhysics(Game1 game,int velCap)
         {
@@ -31,11 +24,7 @@ namespace Game1
             this.velCap = velCap;
             xVelocity = 0;
             yVelocity = 0;
-
-            prevUp = false;
-            prevRight = false;
-            prevLeft = false;
-            prevDown = false;
+            counter = JUMPCALLS;
         }
 
         public void Update()
@@ -93,14 +82,14 @@ namespace Game1
         {
             if(Mario.MovingUp && Mario.CanJump)
             {
-                yVelocity = (float)-3.5;
+                yVelocity = (float)-4.5;
                 counter = JUMPCALLS;
                 Mario.CanJump = false;
             }
-            else if (Mario.MovingUp && counter != 0)
+            else if (Mario.MovingUp /*&& counter != 0*/)
             {
-                yVelocity = (float)-3.5;
-                counter--;
+                yVelocity += (float)(0.5 * 0.001 * Math.Pow(delta, 2)); ;
+                //counter--;
             }
             else if (yVelocity < 3.5)
             {
