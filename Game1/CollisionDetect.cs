@@ -58,26 +58,31 @@ namespace Game1
                 {
                     Rectangle.Intersect(ref playerBox, ref blockBox, out intersect);
 
-                    if (intersect.Height > intersect.Width && playerX < blockX)
+                    if (intersect.Height < intersect.Width && playerY < blockY)
                     {
-                        collision.BlockCollisionRespondLeft( blockArray[i]);
+                        collision.BlockCollisionRespondTop(blockArray[i],intersect.Height);
                     }
-                    else if (intersect.Height > intersect.Width && playerX > blockX)
+                    else if (intersect.Height < intersect.Width && playerY > blockY && !(blockArray[i] is HiddenBlock)) //Temp fix
                     {
-                        collision.BlockCollisionRespondRight( blockArray[i]);
+                        collision.BlockCollisionRespondBottom(blockArray[i],intersect.Height);
                     }
-                    else if (intersect.Height < intersect.Width && playerY < blockY)
+                    else if (intersect.Height < intersect.Width && playerY > blockY && !(blockArray[i] is HiddenBlock) && Mario.MovingUp)
                     {
-                        collision.BlockCollisionRespondTop( blockArray[i]);
+                        collision.BlockCollisionRespondBottom(blockArray[i],intersect.Height);
                     }
-                    else if (intersect.Height < intersect.Width && playerY > blockY+14 && !(blockArray[i] is HiddenBlock)) //Temp fix
+                    else if (intersect.Height - 3 > intersect.Width && playerX < blockX)
                     {
-                        collision.BlockCollisionRespondBottom( blockArray[i]);
-                    } else if (intersect.Height < intersect.Width && playerY > blockY + 14 && (blockArray[i] is HiddenBlock) && Mario.MovingUp)
-                    {
-                        collision.BlockCollisionRespondBottom(blockArray[i]);
+                        Console.Write("Height: ");
+                        Console.WriteLine(intersect.Height - 3 );
+                        Console.Write("Width: ");
+                        Console.WriteLine(intersect.Width);
+                        collision.BlockCollisionRespondLeft(blockArray[i], intersect.Width);
                     }
-                   
+                    else if (intersect.Height -3 > intersect.Width && playerX > blockX)
+                    {
+                        collision.BlockCollisionRespondRight(blockArray[i], intersect.Width);
+                    }
+
                 }
             }
         }

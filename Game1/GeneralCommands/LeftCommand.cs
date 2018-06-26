@@ -41,7 +41,7 @@ namespace Game1
             
             Mario.MovingRight = false;
             Mario.MovingLeft = true;
-            Mario.NewXPos();
+            //Mario.NewXPos();
         }
     }
 }

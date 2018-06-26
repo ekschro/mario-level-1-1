@@ -22,15 +22,11 @@ namespace Game1
         private static int currentFrame = 0;
         private static int colorStartingTime;
         private static int colorTimer;
-
-
         private static ISprite playerSprite;
-
         private static  MarioPhysics physics;
+        private static Color marioColor;
+
         public static ISprite MarioSprite { get => playerSprite; set => playerSprite = value; }
-
-        //Changed from static to non-static
-
         public static float CurrentXPosition { get => currentXPosition; set => currentXPosition = value; }
         public static float CurrentYPosition { get => currentYPosition; set => currentYPosition = value; }
         public static int TotalMarioRows { get => totalMarioRows; set => totalMarioRows = value; }
@@ -46,15 +42,10 @@ namespace Game1
         public static bool MovingDown { get => movingDown; set => movingDown = value; }
         public static Color MarioColor { get => marioColor; set => marioColor = value; }
 
-       
-        
-
-        private static Color marioColor;
-
         public Mario(Game1 game, Vector2 vector)
         {
             MyGame = game;
-            physics = new MarioPhysics(game,3);
+            physics = new MarioPhysics(game,2);
             CurrentXPosition = vector.X;
             CurrentYPosition = vector.Y;
             MarioColor = Color.White;
@@ -109,14 +100,7 @@ namespace Game1
                 
             }
         }
-        public static void NewXPos()
-        {
-            physics.NewPosX();
-        }
-        public static void NewYPos()
-        {
-            physics.NewPosY();
-        }
+
         public static Boolean CanGenerateProjectiles()
         {
             if (MarioSprite.isFire())

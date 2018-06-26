@@ -68,7 +68,11 @@ namespace Game1
             }
             else
             {
-                if (xVelocity < 0)
+                if (Math.Abs(xVelocity) < 0.2)
+                {
+                    xVelocity = 0;
+                }
+                else if (xVelocity < 0)
                 {
                     xVelocity += (float)(0.5 * 0.001 * Math.Pow(delta, 2));
                 }
@@ -76,10 +80,7 @@ namespace Game1
                 {
                     xVelocity -= (float)(0.5 * 0.001 * Math.Pow(delta, 2));
                 }
-                else
-                {
-                    xVelocity = 0;
-                }
+                
             }
 
             Mario.CurrentXPosition += xVelocity;
@@ -89,21 +90,18 @@ namespace Game1
         {
             if(Mario.MovingUp)
             {
-                yVelocity = -6;
+                yVelocity = (float)-3.5;
             }
             else if (yVelocity < 0)
             {
-                yVelocity += (float)(0.5 * 0.001 * Math.Pow(delta, 2));
+                yVelocity += (float)(0.5 * 0.01 * Math.Pow(delta, 2));
             }
             else
             {
-                yVelocity = 1;
+                yVelocity = (float)3.5;
             }
 
-            prevUp = Mario.MovingUp;
             Mario.CurrentYPosition += yVelocity;
         }
-
-
     }
 }

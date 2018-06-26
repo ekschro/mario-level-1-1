@@ -34,16 +34,15 @@ namespace Game1
             objectLevel = level;
         }
 
-        public void BlockCollisionRespondTop(IBlock block)
+        public void BlockCollisionRespondTop(IBlock block,int height)
         {
             if (!(block is HiddenBlock))
-                upCommand.Execute();
+                Mario.CurrentYPosition -= height;
         }
 
-        public void BlockCollisionRespondBottom(IBlock block)
+        public void BlockCollisionRespondBottom(IBlock block,int height)
         {
-            
-            downCommand.Execute();
+            Mario.CurrentYPosition += height;
 
             if (Mario.MarioSprite.isSmall() && block is BrickBlock)
             {
@@ -67,16 +66,16 @@ namespace Game1
 
         }
 
-        public void BlockCollisionRespondRight(IBlock block)
-        {
-            if(!(block is HiddenBlock))
-                rightCommand.Execute();
-        }
-
-        public void BlockCollisionRespondLeft(IBlock block)
+        public void BlockCollisionRespondRight(IBlock block,int width)
         {
             if (!(block is HiddenBlock))
-                leftCommand.Execute();
+                Mario.CurrentXPosition += width;
+        }
+
+        public void BlockCollisionRespondLeft(IBlock block,int width)
+        {
+            if (!(block is HiddenBlock))
+                Mario.CurrentXPosition -= width;
         }
 
         public void EnemyCollisionRespondTop(IEnemy enemy)
@@ -314,7 +313,6 @@ namespace Game1
 
         public void Update()
         {
-
             if (invulnerability)
             {
                 invulnerabilityTimer--;
