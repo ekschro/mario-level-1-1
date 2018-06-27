@@ -91,6 +91,7 @@ namespace Game1
                         right = true;
                     }
 
+
                 }
             }
         }
@@ -120,8 +121,11 @@ namespace Game1
                     if (playerBox.Intersects(blockBox))
                     {
                         Rectangle.Intersect(ref playerBox, ref blockBox, out intersect);
-
-                        if (intersect.Height > intersect.Width && playerX < blockX)
+                        if (intersect.Height < intersect.Width && playerY < blockY)
+                        {
+                            collision.EnemyCollisionBlockRespondYDirection(enemyArray[j], intersect.Height);
+                        }
+                        else if (intersect.Height > intersect.Width && playerX < blockX)
                         {
                             collision.EnemyCollisionBlockRespondXDirection(enemyArray[j]);
                         }
@@ -129,17 +133,12 @@ namespace Game1
                         {
                             collision.EnemyCollisionBlockRespondXDirection(enemyArray[j]);
                         }
-                        else if (intersect.Height < intersect.Width && playerY < blockY)
+                        /*
+                        else
                         {
-                            collision.EnemyCollisionBlockRespondYDirection(enemyArray[j], intersect.Height);
-                            //collision.BlockCollisionRespondTop(blockArray[i], intersect.Height, false);
+                            collision.EnemyCollisionBlockRespondFalling(enemyArray[j]);
                         }
-                        else if (intersect.Height < intersect.Width && playerY > blockY + 14 && (blockArray[i] is HiddenBlock) && Mario.MovingUp)
-                        {
-                            collision.EnemyCollisionBlockRespondYDirection(enemyArray[j], intersect.Height);
-                            //collision.BlockCollisionRespondTop(blockArray[i], intersect.Height, false);
-                        }
-
+                        */
                     }
                 }
             }

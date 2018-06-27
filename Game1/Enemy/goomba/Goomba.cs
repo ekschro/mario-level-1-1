@@ -20,6 +20,8 @@ namespace Game1
         private Vector2 goombaLocation;
         private Vector2 goombaOriginalLocation;
         private bool running=true;
+        private bool movingdown = true;
+
         private float yVelocity;
         private float delta;
         private Game1 myGame;
@@ -68,6 +70,7 @@ namespace Game1
         public void Update()
         {
             delta = myGame.delta.ElapsedGameTime.Milliseconds;
+            
             cyclePosition++;
             if (cyclePosition == cycleLength && running)
             {
@@ -79,7 +82,9 @@ namespace Game1
                 else 
                     goombaLocation.X -= 1;
             }
-            NewPosY();
+            if (movingdown)
+                NewPosY();
+            //Falling();
         }
         public void Running()
         {
@@ -94,6 +99,14 @@ namespace Game1
             }
 
             goombaLocation.Y += yVelocity;
+        }
+        public void ReachGround()
+        {
+            movingdown = false;
+        }
+        public void Falling()
+        {
+            movingdown = true;
         }
     }
 }

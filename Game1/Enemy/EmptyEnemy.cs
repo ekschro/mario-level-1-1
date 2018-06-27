@@ -14,7 +14,6 @@ namespace Game1
 
         private static IEnemySprite emptySprite;
         public static IEnemySprite EmptySprite { get => emptySprite; set => emptySprite = value; }
-        //private Game1 myGame;
 
         private Vector2 emptyLocation;
         private Vector2 emptyOriginalLocation;
@@ -65,5 +64,12 @@ namespace Game1
         {
 
         }
+
+        public void ReachGround()
+        {
+            throw new NotImplementedException();
+        }
+        public void Falling()
+        { }
     }
 }

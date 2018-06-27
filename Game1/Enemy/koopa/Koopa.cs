@@ -21,13 +21,17 @@ namespace Game1
         private Vector2 koopaLocation;
         private Vector2 koopaOriginalLocation;
         private bool running = true;
+        private bool movingdown = true;
 
+        private float yVelocity;
+        private float delta;
+        private Game1 myGame;
 
         public Koopa(Game1 game, Vector2 location)
         {
             KoopaSprite = new KoopaSprite(game,this);
             stateMachine = new KoopaStateMachine(koopaSprite);
-            //myGame = game;
+            myGame = game;
             koopaLocation = location;
             koopaOriginalLocation = location;
         }
@@ -69,18 +73,35 @@ namespace Game1
                 cyclePosition = 0;
                 KoopaSprite.Update();
                 stateMachine.Update();
-                //if (koopaLocation.X == (koopaOriginalLocation.X - 20) || koopaLocation.X == koopaOriginalLocation.X + 20)
-                    //ChangeDirection();
-                    
                 if (stateMachine.GetDirection())
                     koopaLocation.X += 1;
                 else
                     koopaLocation.X -= 1;
             }
+            if (movingdown)
+                NewPosY();
         }
         public void Running()
         {
             running = true;
+        }
+        public void NewPosY()
+        {
+
+            if (yVelocity < 3.5)
+            {
+                yVelocity += (float)(0.5 * 0.01 * Math.Pow(delta, 2));
+            }
+
+            koopaLocation.Y += yVelocity;
+        }
+        public void ReachGround()
+        {
+            movingdown = false;
+        }
+        public void Falling()
+        {
+            movingdown = true;
         }
     }
 }

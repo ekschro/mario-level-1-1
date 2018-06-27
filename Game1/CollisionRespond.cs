@@ -60,12 +60,17 @@ namespace Game1
             {
                 objectLevel.BlockObjects.Remove(block);
                 objectLevel.BlockObjects.Add(new UsedBlock(myGame, block.GameObjectLocation()));
+                if (Mario.MarioSprite.isSmall())
+                    objectLevel.PickupObjects.Add(new RedMushroom(myGame, block.GameObjectLocation()));
+                else
+                    objectLevel.PickupObjects.Add(new Fireflower(myGame, block.GameObjectLocation()));
             }
             else if (block is QuestionCoinBlock)
             {
                 objectLevel.BlockObjects.Remove(block);
                 objectLevel.BlockObjects.Add(new UsedBlock(myGame, block.GameObjectLocation()));
                 objectLevel.PickupObjects.Add(new Coin(myGame, block.GameObjectLocation()));
+                objectLevel.PickupObjects.Add(new Coin(myGame, new Vector2(100,10)));
             }
 
         }
@@ -175,8 +180,15 @@ namespace Game1
         }
         public void EnemyCollisionBlockRespondYDirection(IEnemy enemy, int height)
         {
-            enemy.CurrentYPos -= height;
+            enemy.ReachGround();
+            //enemy.CurrentYPos -= height;
         }
+        public void EnemyCollisionBlockRespondFalling(IEnemy enemy)
+        {
+            enemy.Falling();
+        }
+
+
         public void PickupCollisionRespondTop(IPickup pickup)
         {
             pickup.Picked();

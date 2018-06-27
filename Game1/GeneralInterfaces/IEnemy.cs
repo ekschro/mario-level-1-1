@@ -14,6 +14,8 @@ namespace Game1
         void BeStomped();
         void BeFlipped();
         void Running();
+        void ReachGround();
+        void Falling();
 
     }
 }
