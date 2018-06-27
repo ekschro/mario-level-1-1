@@ -70,7 +70,6 @@ namespace Game1
                 objectLevel.BlockObjects.Remove(block);
                 objectLevel.BlockObjects.Add(new UsedBlock(myGame, block.GameObjectLocation()));
                 objectLevel.PickupObjects.Add(new Coin(myGame, block.GameObjectLocation()));
-                objectLevel.PickupObjects.Add(new Coin(myGame, new Vector2(100,10)));
             }
 
         }

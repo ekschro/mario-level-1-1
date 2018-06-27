@@ -20,6 +20,7 @@ namespace Game1
         public List<IBlock> BlockObjects { get => blocks; }
         public List<IEnemy> EnemyObjects { get => enemies; }
         public List<IPickup> PickupObjects { get => pickups; }
+        public List<IGameObject> LevelObjects { get => levelObjects; }
 
         public ICamera LevelCamera { get => levelCamera; set => levelCamera = value; }
 
@@ -52,6 +53,7 @@ namespace Game1
 
             collisionDetect.Update();
             levelCamera.Update();
+            UpdateLevelObjects();
         }
 
         public void Draw()
@@ -105,6 +107,14 @@ namespace Game1
                     pickupObjects.Add((IPickup)pickup);
             }
             this.pickups = pickupObjects;
+        }
+        private void UpdateLevelObjects()
+        {
+            levelObjects = new List<IGameObject>();
+            levelObjects.Add(PlayerObject);
+            levelObjects.AddRange(BlockObjects);
+            levelObjects.AddRange(PickupObjects);
+            levelObjects.AddRange(EnemyObjects);
         }
     }
 }
