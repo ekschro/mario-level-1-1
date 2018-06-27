@@ -65,6 +65,7 @@ namespace Game1
             {
                 objectLevel.BlockObjects.Remove(block);
                 objectLevel.BlockObjects.Add(new UsedBlock(myGame, block.GameObjectLocation()));
+                objectLevel.PickupObjects.Add(new Coin(myGame, block.GameObjectLocation()));
             }
 
         }
@@ -170,9 +171,12 @@ namespace Game1
         }
         public void EnemyCollisionBlockRespondXDirection(IEnemy enemy)
         {
-            enemy.BeFlipped(); ;
+            enemy.BeFlipped(); 
         }
-
+        public void EnemyCollisionBlockRespondYDirection(IEnemy enemy, int height)
+        {
+            enemy.CurrentYPos -= height;
+        }
         public void PickupCollisionRespondTop(IPickup pickup)
         {
             pickup.Picked();

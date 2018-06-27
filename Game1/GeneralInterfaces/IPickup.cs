@@ -11,5 +11,6 @@ namespace Game1
     {
         //Vector2 GameObjectLocation();
         void Picked();
+        void Collide();
     }
 }

@@ -131,11 +131,13 @@ namespace Game1
                         }
                         else if (intersect.Height < intersect.Width && playerY < blockY)
                         {
-                            //collision.BlockCollisionRespondTop(blockArray[i]);
+                            collision.EnemyCollisionBlockRespondYDirection(enemyArray[j], intersect.Height);
+                            //collision.BlockCollisionRespondTop(blockArray[i], intersect.Height, false);
                         }
                         else if (intersect.Height < intersect.Width && playerY > blockY + 14 && (blockArray[i] is HiddenBlock) && Mario.MovingUp)
                         {
-                            //collision.BlockCollisionRespondBottom(blockArray[i]);
+                            collision.EnemyCollisionBlockRespondYDirection(enemyArray[j], intersect.Height);
+                            //collision.BlockCollisionRespondTop(blockArray[i], intersect.Height, false);
                         }
 
                     }

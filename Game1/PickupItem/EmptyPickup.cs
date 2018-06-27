@@ -39,5 +39,10 @@ namespace Game1
         }
         public void Picked()
         { }
+
+        public void Collide()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

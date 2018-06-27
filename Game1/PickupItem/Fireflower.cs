@@ -55,5 +55,10 @@ namespace Game1
         {
             fireflowerSprite = new EmptyPickupSprite(myGame, new EmptyPickup(myGame, pickupLocation));
         }
+
+        public void Collide()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

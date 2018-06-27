@@ -18,6 +18,7 @@ namespace Game1
         private Game1 myGame;
         private Vector2 pickupLocation;
         private Vector2 pickupOriginalLocation;
+        private bool collide = false;
 
         public Coin(Game1 game, Vector2 location)
         {
@@ -29,7 +30,8 @@ namespace Game1
 
         public void Draw()
         {
-            coinSprite.Draw();
+            if (collide)
+                coinSprite.Draw();
         }
 
         public Vector2 GameObjectLocation()
@@ -53,6 +55,10 @@ namespace Game1
         public void Picked()
         {
             coinSprite = new EmptyPickupSprite(myGame, new EmptyPickup(myGame,pickupLocation));
+        }
+        public void Collide()
+        {
+            collide = true;
         }
     }
 }

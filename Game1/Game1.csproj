@@ -189,7 +189,7 @@
     </Content>
     <None Include="app.manifest" />
     <None Include="Content\LevelInfo.csv">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>

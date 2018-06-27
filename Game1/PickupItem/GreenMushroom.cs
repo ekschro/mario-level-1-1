@@ -47,5 +47,10 @@ namespace Game1
         {
             greenMushroomSprite = new EmptyPickupSprite(myGame, new EmptyPickup(myGame, pickupLocation));
         }
+
+        public void Collide()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

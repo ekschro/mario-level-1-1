@@ -20,15 +20,19 @@ namespace Game1
         private Vector2 goombaLocation;
         private Vector2 goombaOriginalLocation;
         private bool running=true;
+        private float yVelocity;
+        private float delta;
+        private Game1 myGame;
 
         public Goomba(Game1 game, Vector2 location)
         {
             goombaLocation = location;
             goombaOriginalLocation = location;
+            myGame = game;
 
             GoombaSprite = new GoombaSprite(game, this);
             stateMachine = new GoombaStateMachine(GoombaSprite);
-            //myGame = game;
+            yVelocity = 0;
         }
 
         public void BeFlipped()
@@ -63,24 +67,33 @@ namespace Game1
 
         public void Update()
         {
+            delta = myGame.delta.ElapsedGameTime.Milliseconds;
             cyclePosition++;
             if (cyclePosition == cycleLength && running)
             {
                 cyclePosition = 0;
                 stateMachine.Update();
                 GoombaSprite.Update();
-                
-                //if (goombaLocation.X == (goombaOriginalLocation.X - 5) || goombaLocation.X == (goombaOriginalLocation.X + 5))
-                    //ChangeDirection();
                 if (stateMachine.GetDirection())
                     goombaLocation.X += 1;
                 else 
                     goombaLocation.X -= 1;
             }
+            NewPosY();
         }
         public void Running()
         {
             running = true;
+        }
+        public void NewPosY()
+        {
+            
+            if (yVelocity < 3.5)
+            {
+                yVelocity += (float)(0.5 * 0.01 * Math.Pow(delta, 2));
+            }
+
+            goombaLocation.Y += yVelocity;
         }
     }
 }
