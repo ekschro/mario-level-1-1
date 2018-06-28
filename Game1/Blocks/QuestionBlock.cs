@@ -19,7 +19,7 @@ namespace Game1
         private Vector2 blockOriginalLocation;
         private int cyclePosition = 0;
         private int cycleLength = 8;
-        private bool jumping = false;
+        //private bool jumping = false;
 
         public QuestionBlock(Game1 game, Vector2 location)
         {
@@ -62,8 +62,6 @@ namespace Game1
             //Jump();
             //Update();
             questionBlockSprite = new UsedBlockSprite(myGame, usedBlockObject);
-            
-
             //blockLocation.Y += 20;
             //questionBlockSprite = new UsedBlockSprite(myGame, this);
             
@@ -71,10 +69,12 @@ namespace Game1
         }
         public void LeftCollision() { }
         public void RightCollision() { }
+        /*
         public void Jump()
         {
-            jumping = true;
+            //jumping = true;
             //blockLocation.Y -= 20;  
         }
+        */
     }
 }

@@ -18,7 +18,7 @@ namespace Game1
 
         public HiddenStarBlock(Game1 game, Vector2 location)
         {
-            hiddenStarBlockSprite = new HiddenBlockSprite(game, this);
+            hiddenStarBlockSprite = new HiddenStarBlockSprite(game, this);
             myGame = game;
             blockLocation = location;
         }

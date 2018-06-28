@@ -13,11 +13,9 @@ namespace Game1
         void ChangeDirection();
         void BeStomped();
         void BeFlipped();
-        void Running();
-        void ReachGround();
-        void Falling();
         void SetGameObjectLocation(Vector2 x);
-        Vector2 GetGameObjectLocation();
+        //Vector2 GetGameObjectLocation();
+        bool GetDead();
 
     }
 }

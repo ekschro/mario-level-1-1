@@ -85,10 +85,10 @@ namespace Game1
                     GameObject = new Koopa(myGame, Position);
                     break;
                 case "HiddenBlockWith1Up":
-                    GameObject = new HiddenBlock(myGame, Position);
+                    GameObject = new HiddenGreenMushroomBlock(myGame, Position);
                     break;
                 case "HiddenBlockWithStar":
-                    GameObject = new HiddenBlock(myGame, Position);
+                    GameObject = new HiddenStarBlock(myGame, Position);
                     break;
                 case "StairBlock":
                     GameObject = new StairBlock(myGame, Position);

@@ -70,7 +70,7 @@ namespace Game1
                         collision.BlockCollisionRespondTop(blockArray[i],intersect.Height,standing);
                         standing = true;
                     }
-                    else if (intersect.Height < intersect.Width && playerY > blockY && !(blockArray[i] is HiddenBlock)) //Temp fix
+                    else if (intersect.Height < intersect.Width && playerY > blockY && !(blockArray[i] is HiddenBlock) && !(blockArray[i] is HiddenGreenMushroomBlock) && !(blockArray[i] is HiddenStarBlock)) //Temp fix
                     {
                         collision.BlockCollisionRespondBottom(blockArray[i],intersect.Height,head);
                         head = true;
