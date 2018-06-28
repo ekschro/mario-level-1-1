@@ -16,6 +16,7 @@ namespace Game1
         void SetGameObjectLocation(Vector2 x);
         //Vector2 GetGameObjectLocation();
         bool GetDead();
+        IEnemyStateMachine GetStateMachine { get; }
 
     }
 }
