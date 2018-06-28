@@ -23,6 +23,7 @@ namespace Game1
         private bool movingdown = true;
 
         private float yVelocity;
+        private GeneralPhysics physics;
         private float delta;
         private Game1 myGame;
 
@@ -35,6 +36,8 @@ namespace Game1
             GoombaSprite = new GoombaSprite(game, this);
             stateMachine = new GoombaStateMachine(GoombaSprite);
             yVelocity = 0;
+
+            physics = new GeneralPhysics(myGame,this,1);
         }
 
         public void BeFlipped()
@@ -58,10 +61,16 @@ namespace Game1
             GoombaSprite.Draw();
         }
 
-        public Vector2 GameObjectLocation()
+        public Vector2 GetGameObjectLocation()
         {
             return goombaLocation;
         }
+
+        public void SetGameObjectLocation(Vector2 newPos)
+        {
+            goombaLocation = newPos;
+        }
+
         public Vector2 GameOriginalLocation()
         {
             return goombaOriginalLocation;
@@ -70,6 +79,8 @@ namespace Game1
         public void Update()
         {
             delta = myGame.delta.ElapsedGameTime.Milliseconds;
+
+            physics.Update();
             
             cyclePosition++;
             if (cyclePosition == cycleLength && running)
@@ -82,8 +93,8 @@ namespace Game1
                 else 
                     goombaLocation.X -= 1;
             }
-            if (movingdown)
-                NewPosY();
+            //if (movingdown)
+                //NewPosY();
             //Falling();
         }
         public void Running()

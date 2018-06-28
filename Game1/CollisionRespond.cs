@@ -55,22 +55,22 @@ namespace Game1
             else if (block is HiddenBlock)
             {
                 objectLevel.BlockObjects.Remove(block);
-                objectLevel.BlockObjects.Add(new UsedBlock(myGame, block.GameObjectLocation()));
+                objectLevel.BlockObjects.Add(new UsedBlock(myGame, block.GetGameObjectLocation()));
             }
             else if (block is QuestionPowerUpBlock)
             {
                 objectLevel.BlockObjects.Remove(block);
-                objectLevel.BlockObjects.Add(new UsedBlock(myGame, block.GameObjectLocation()));
+                objectLevel.BlockObjects.Add(new UsedBlock(myGame, block.GetGameObjectLocation()));
                 if (Mario.MarioSprite.isSmall())
-                    objectLevel.PickupObjects.Add(new RedMushroom(myGame, block.GameObjectLocation()));
+                    objectLevel.PickupObjects.Add(new RedMushroom(myGame, block.GetGameObjectLocation()));
                 else
-                    objectLevel.PickupObjects.Add(new Fireflower(myGame, block.GameObjectLocation()));
+                    objectLevel.PickupObjects.Add(new Fireflower(myGame, block.GetGameObjectLocation()));
             }
             else if (block is QuestionCoinBlock)
             {
                 objectLevel.BlockObjects.Remove(block);
-                objectLevel.BlockObjects.Add(new UsedBlock(myGame, block.GameObjectLocation()));
-                objectLevel.PickupObjects.Add(new Coin(myGame, block.GameObjectLocation()));
+                objectLevel.BlockObjects.Add(new UsedBlock(myGame, block.GetGameObjectLocation()));
+                objectLevel.PickupObjects.Add(new Coin(myGame, block.GetGameObjectLocation()));
             }
 
         }
@@ -178,10 +178,15 @@ namespace Game1
         {
             enemy.BeFlipped(); 
         }
-        public void EnemyCollisionBlockRespondYDirection(IEnemy enemy, int height)
+        public void EnemyCollisionBlockRespondYDirection(IEnemy enemy, int height,bool bottom)
         {
-            enemy.ReachGround();
-            enemy.CurrentYPos -= height;
+            // enemy.ReachGround();
+            if (!bottom)
+            {
+                var x = enemy.GetGameObjectLocation().X;
+                var y = enemy.GetGameObjectLocation().Y - height;
+                enemy.SetGameObjectLocation(new Vector2(x, y));
+            }
         }
         public void EnemyCollisionBlockRespondFalling(IEnemy enemy)
         {

@@ -16,6 +16,8 @@ namespace Game1
         void Running();
         void ReachGround();
         void Falling();
+        void SetGameObjectLocation(Vector2 x);
+        Vector2 GetGameObjectLocation();
 
     }
 }

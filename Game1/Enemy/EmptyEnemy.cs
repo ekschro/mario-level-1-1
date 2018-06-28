@@ -48,10 +48,16 @@ namespace Game1
             EmptySprite.Draw();
         }
 
-        public Vector2 GameObjectLocation()
+        public Vector2 GetGameObjectLocation()
         {
             return emptyLocation;
         }
+
+        public void SetGameObjectLocation(Vector2 newPos)
+        {
+            emptyLocation = newPos;
+        }
+
         public Vector2 GameOriginalLocation()
         {
             return emptyOriginalLocation;

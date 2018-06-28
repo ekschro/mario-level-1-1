@@ -20,6 +20,7 @@ namespace Game1
         private int cycleLength = 8;
         private Vector2 koopaLocation;
         private Vector2 koopaOriginalLocation;
+        private GeneralPhysics physics;
         private bool running = true;
         private bool movingdown = true;
 
@@ -34,6 +35,8 @@ namespace Game1
             myGame = game;
             koopaLocation = location;
             koopaOriginalLocation = location;
+
+            physics = new GeneralPhysics(myGame,this,1);
         }
 
         public void BeFlipped()
@@ -56,10 +59,16 @@ namespace Game1
             KoopaSprite.Draw();
         }
 
-        public Vector2 GameObjectLocation()
+        public Vector2 GetGameObjectLocation()
         {
             return koopaLocation;
         }
+
+        public void SetGameObjectLocation(Vector2 newPos)
+        {
+            koopaLocation = newPos;
+        }
+
         public Vector2 GameOriginalLocation()
         {
             return koopaOriginalLocation;
@@ -67,6 +76,8 @@ namespace Game1
 
         public void Update()
         {
+            physics.Update();
+
             cyclePosition++;
             if (cyclePosition == cycleLength && running)
             {
@@ -78,8 +89,8 @@ namespace Game1
                 else
                     koopaLocation.X -= 1;
             }
-            if (movingdown)
-                NewPosY();
+            //qif (movingdown)
+                //NewPosY();
         }
         public void Running()
         {

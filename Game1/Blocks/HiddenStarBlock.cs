@@ -28,7 +28,7 @@ namespace Game1
             hiddenStarBlockSprite.Draw();
         }
 
-        public Vector2 GameObjectLocation()
+        public Vector2 GetGameObjectLocation()
         {
             return blockLocation;
         }

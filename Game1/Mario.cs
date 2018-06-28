@@ -78,7 +78,7 @@ namespace Game1
             physics.Update();
         }
         
-        public Vector2 GameObjectLocation()
+        public Vector2 GetGameObjectLocation()
         {
             return new Vector2(currentXPosition, currentYPosition);
         }

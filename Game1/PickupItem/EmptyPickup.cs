@@ -29,7 +29,7 @@ namespace Game1
             emptySprite.Draw();
         }
 
-        public Vector2 GameObjectLocation()
+        public Vector2 GetGameObjectLocation()
         {
             return pickupLocation;
         }
