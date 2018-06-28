@@ -107,5 +107,20 @@ namespace Game1
         {
             throw new NotImplementedException();
         }
+
+        public void SetGameObjectLocation(Vector2 x)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool GetDead()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Vector2 GetGameObjectLocation()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
