@@ -20,20 +20,18 @@ namespace Game1
         private int cycleLength = 8;
         private Vector2 koopaLocation;
         private Vector2 koopaOriginalLocation;
-        private bool running = true;
-        private bool movingdown = true;
-
-        private float yVelocity;
-        private float delta;
-        private Game1 myGame;
+        private GeneralPhysics physics;
+        private bool dead = false;
 
         public Koopa(Game1 game, Vector2 location)
         {
             KoopaSprite = new KoopaSprite(game,this);
             stateMachine = new KoopaStateMachine(koopaSprite);
-            myGame = game;
+            //myGame = game;
             koopaLocation = location;
             koopaOriginalLocation = location;
+
+            physics = new GeneralPhysics(game,this,1);
         }
 
         public void BeFlipped()
@@ -56,10 +54,16 @@ namespace Game1
             KoopaSprite.Draw();
         }
 
-        public Vector2 GameObjectLocation()
+        public Vector2 GetGameObjectLocation()
         {
             return koopaLocation;
         }
+
+        public void SetGameObjectLocation(Vector2 newPos)
+        {
+            koopaLocation = newPos;
+        }
+
         public Vector2 GameOriginalLocation()
         {
             return koopaOriginalLocation;
@@ -67,8 +71,10 @@ namespace Game1
 
         public void Update()
         {
+            physics.Update();
+
             cyclePosition++;
-            if (cyclePosition == cycleLength && running)
+            if (cyclePosition == cycleLength)
             {
                 cyclePosition = 0;
                 KoopaSprite.Update();
@@ -78,30 +84,13 @@ namespace Game1
                 else
                     koopaLocation.X -= 1;
             }
-            if (movingdown)
-                NewPosY();
+            //qif (movingdown)
+            //NewPosY();
         }
-        public void Running()
+        public bool GetDead()
         {
-            running = true;
+            return dead;
         }
-        public void NewPosY()
-        {
 
-            if (yVelocity < 3.5)
-            {
-                yVelocity += (float)(0.5 * 0.01 * Math.Pow(delta, 2));
-            }
-
-            koopaLocation.Y += yVelocity;
-        }
-        public void ReachGround()
-        {
-            movingdown = false;
-        }
-        public void Falling()
-        {
-            movingdown = true;
-        }
     }
 }

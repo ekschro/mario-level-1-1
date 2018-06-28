@@ -46,13 +46,6 @@ namespace Game1
 
         public void Update()
         {
-            /*
-            if (health == GoombaHealth.Flipped)
-            {
-                health = GoombaHealth.Normal;
-                ChangeDirection();
-            }
-            */
         }
         public bool GetDirection()
         {

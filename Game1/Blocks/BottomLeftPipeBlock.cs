@@ -27,7 +27,7 @@ namespace Game1
             bottomLeftPipeBlockSprite.Draw();
         }
 
-        public Vector2 GameObjectLocation()
+        public Vector2 GetGameObjectLocation()
         {
             return blockLocation;
         }

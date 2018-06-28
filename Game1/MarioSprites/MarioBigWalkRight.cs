@@ -103,7 +103,7 @@ namespace Game1
             return false;
         }
 
-        public Vector2 GameObjectLocation()
+        public Vector2 GetGameObjectLocation()
         {
             return new Vector2(Mario.CurrentXPosition, Mario.CurrentYPosition);
         }

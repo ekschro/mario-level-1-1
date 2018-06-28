@@ -48,7 +48,7 @@ namespace Game1
         {
             foreach (IGameObject GameObject in levelObjects)
             {
-                if (GameObject.GameObjectLocation().X > levelCamera.CameraPosition - 16  && GameObject.GameObjectLocation().X < levelCamera.CameraPosition + 400)
+                if (GameObject.GetGameObjectLocation().X > levelCamera.CameraPosition - 16  && GameObject.GetGameObjectLocation().X < levelCamera.CameraPosition + 400)
                     GameObject.Update();
             }
 
@@ -61,7 +61,7 @@ namespace Game1
         {
             foreach (IGameObject GameObject in levelObjects)
             {
-                if (GameObject.GameObjectLocation().X > levelCamera.CameraPosition - 16 && GameObject.GameObjectLocation().X < levelCamera.CameraPosition + 400)
+                if (GameObject.GetGameObjectLocation().X > levelCamera.CameraPosition - 16 && GameObject.GetGameObjectLocation().X < levelCamera.CameraPosition + 400)
                     GameObject.Draw();
             }
         }

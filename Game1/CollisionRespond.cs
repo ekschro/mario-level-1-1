@@ -31,7 +31,7 @@ namespace Game1
 
         public void BlockCollisionRespondTop(IBlock block,int height,bool standing)
         {
-            if (!(block is HiddenBlock) && !standing)
+            if (!(block is HiddenBlock)&& !(block is HiddenStarBlock)&& !(block is HiddenGreenMushroomBlock) && !standing)
                 Mario.CurrentYPosition -= height;
             Mario.CanJump = true;
             Mario.Falling = false;
@@ -55,35 +55,47 @@ namespace Game1
             else if (block is HiddenBlock)
             {
                 objectLevel.BlockObjects.Remove(block);
-                objectLevel.BlockObjects.Add(new UsedBlock(myGame, block.GameObjectLocation()));
+                objectLevel.BlockObjects.Add(new UsedBlock(myGame, block.GetGameObjectLocation()));
             }
             else if (block is QuestionPowerUpBlock)
             {
                 objectLevel.BlockObjects.Remove(block);
-                objectLevel.BlockObjects.Add(new UsedBlock(myGame, block.GameObjectLocation()));
+                objectLevel.BlockObjects.Add(new UsedBlock(myGame, block.GetGameObjectLocation()));
                 if (Mario.MarioSprite.isSmall())
-                    objectLevel.PickupObjects.Add(new RedMushroom(myGame, block.GameObjectLocation()));
+                    objectLevel.PickupObjects.Add(new RedMushroom(myGame, block.GetGameObjectLocation()));
                 else
-                    objectLevel.PickupObjects.Add(new Fireflower(myGame, block.GameObjectLocation()));
+                    objectLevel.PickupObjects.Add(new Fireflower(myGame, block.GetGameObjectLocation()));
             }
             else if (block is QuestionCoinBlock)
             {
                 objectLevel.BlockObjects.Remove(block);
-                objectLevel.BlockObjects.Add(new UsedBlock(myGame, block.GameObjectLocation()));
-                objectLevel.PickupObjects.Add(new Coin(myGame, block.GameObjectLocation()));
+                objectLevel.BlockObjects.Add(new UsedBlock(myGame, block.GetGameObjectLocation()));
+                objectLevel.PickupObjects.Add(new Coin(myGame, block.GetGameObjectLocation()));
+            }
+            else if (block is HiddenStarBlock)
+            {
+                objectLevel.BlockObjects.Remove(block);
+                objectLevel.BlockObjects.Add(new UsedBlock(myGame, block.GetGameObjectLocation()));
+                objectLevel.PickupObjects.Add(new Star(myGame, block.GetGameObjectLocation()));
+            }
+            else if (block is HiddenGreenMushroomBlock)
+            {
+                objectLevel.BlockObjects.Remove(block);
+                objectLevel.BlockObjects.Add(new UsedBlock(myGame, block.GetGameObjectLocation()));
+                objectLevel.PickupObjects.Add(new GreenMushroom(myGame, block.GetGameObjectLocation()));
             }
 
         }
 
         public void BlockCollisionRespondRight(IBlock block,int width,bool right)
         {
-            if (!(block is HiddenBlock) && !right)
+            if (!(block is HiddenBlock) && !(block is HiddenStarBlock) && !(block is HiddenGreenMushroomBlock) && !right)
                 Mario.CurrentXPosition += width;
         }
 
         public void BlockCollisionRespondLeft(IBlock block,int width,bool left)
         {
-            if (!(block is HiddenBlock) && !left)
+            if (!(block is HiddenBlock) && !(block is HiddenStarBlock) && !(block is HiddenGreenMushroomBlock) && !left)
                 Mario.CurrentXPosition -= width;
         }
 
@@ -125,8 +137,8 @@ namespace Game1
         {
             if (objectLevel.PlayerObject.IsStar)
             {
-                enemy.BeStomped();
-                objectLevel.EnemyObjects.Remove(enemy);
+                enemy.BeFlipped();
+                //objectLevel.EnemyObjects.Remove(enemy);
             }
             else if (invulnerability)
             {
@@ -152,8 +164,8 @@ namespace Game1
         {
             if (objectLevel.PlayerObject.IsStar)
             {
-                enemy.BeStomped();
-                objectLevel.EnemyObjects.Remove(enemy);
+                enemy.BeFlipped();
+                //objectLevel.EnemyObjects.Remove(enemy);
             }
             else if (invulnerability)
             {
@@ -174,20 +186,27 @@ namespace Game1
                 Mario.MarioSprite.DeadMarioCommandCalled();
             }
         }
-        public void EnemyCollisionBlockRespondXDirection(IEnemy enemy)
+        public void EnemyCollisionBlockRespondXDirection(IEnemy enemy, int width)
         {
-            enemy.BeFlipped(); 
-        }
-        public void EnemyCollisionBlockRespondYDirection(IEnemy enemy, int height)
-        {
-            enemy.ReachGround();
-            //enemy.CurrentYPos -= height;
-        }
-        public void EnemyCollisionBlockRespondFalling(IEnemy enemy)
-        {
-            enemy.Falling();
+            if (enemy.GetDead() == false)
+            {
+                var x = enemy.GetGameObjectLocation().X - width;
+                var y = enemy.GetGameObjectLocation().Y;
+                enemy.SetGameObjectLocation(new Vector2(x, y));
+            }
+            enemy.ChangeDirection();
         }
 
+        public void EnemyCollisionBlockRespondYDirection(IEnemy enemy, int height,bool bottom)
+        {
+            // enemy.ReachGround();
+            if (!bottom && enemy.GetDead()==false)
+            {
+                var x = enemy.GetGameObjectLocation().X;
+                var y = enemy.GetGameObjectLocation().Y - height;
+                enemy.SetGameObjectLocation(new Vector2(x, y));
+            }
+        }
 
         public void PickupCollisionRespondTop(IPickup pickup)
         {

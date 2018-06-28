@@ -33,8 +33,8 @@ namespace Game1
 
         public void BlockCollisionDetect()
         {
-            int playerX = (int)player.GameObjectLocation().X;
-            int playerY = (int)player.GameObjectLocation().Y;
+            int playerX = (int)player.GetGameObjectLocation().X;
+            int playerY = (int)player.GetGameObjectLocation().Y;
             Rectangle playerBox;
 
             if (Mario.MarioSprite.isCrouching())
@@ -56,8 +56,8 @@ namespace Game1
 
             for (int i = 0; i < blockArray.Length; i++)
             {
-                int blockX = (int)blockArray[i].GameObjectLocation().X;
-                int blockY = (int)blockArray[i].GameObjectLocation().Y;
+                int blockX = (int)blockArray[i].GetGameObjectLocation().X;
+                int blockY = (int)blockArray[i].GetGameObjectLocation().Y;
 
                 Rectangle blockBox = new Rectangle(blockX, blockY, 16, 16);
                 Rectangle intersect;
@@ -91,30 +91,30 @@ namespace Game1
                         collision.BlockCollisionRespondRight(blockArray[i], intersect.Width,right);
                         right = true;
                     }
-
-
                 }
             }
         }
 
         public void BlockEnemyCollisionDetect()
         {
-            int playerX = (int)player.GameObjectLocation().X;
-            int playerY = (int)player.GameObjectLocation().Y;
+            //int playerX = (int)player.GetGameObjectLocation().X;
+            //int playerY = (int)player.GetGameObjectLocation().Y;
             Rectangle playerBox;
+
+            bool bottom = false;
 
             for (int j = 0; j < enemyArray.Length;j++)
             {
-                int enemyX = (int)enemyArray[j].GameObjectLocation().X;
-                int enemyY = (int)enemyArray[j].GameObjectLocation().Y;
+                int enemyX = (int)enemyArray[j].GetGameObjectLocation().X;
+                int enemyY = (int)enemyArray[j].GetGameObjectLocation().Y;
                 playerBox = new Rectangle(enemyX, enemyY, 16, 16);
 
                 blockArray = level1.BlockObjects.ToArray();
 
                 for (int i = 0; i < blockArray.Length; i++)
                 {
-                    int blockX = (int)blockArray[i].GameObjectLocation().X;
-                    int blockY = (int)blockArray[i].GameObjectLocation().Y;
+                    int blockX = (int)blockArray[i].GetGameObjectLocation().X;
+                    int blockY = (int)blockArray[i].GetGameObjectLocation().Y;
 
                     Rectangle blockBox = new Rectangle(blockX, blockY, 16, 16);
                     Rectangle intersect;
@@ -122,17 +122,20 @@ namespace Game1
                     if (playerBox.Intersects(blockBox))
                     {
                         Rectangle.Intersect(ref playerBox, ref blockBox, out intersect);
-                        if (intersect.Height < intersect.Width && playerY < blockY)
+                        if (intersect.Height < intersect.Width && enemyY < blockY)
                         {
-                            collision.EnemyCollisionBlockRespondYDirection(enemyArray[j], intersect.Height);
+                            collision.EnemyCollisionBlockRespondYDirection(enemyArray[j], intersect.Height, bottom);
+                            bottom = true;
                         }
-                        else if (intersect.Height > intersect.Width && playerX < blockX)
+                        else if (intersect.Height > intersect.Width && enemyX < blockX)
                         {
-                            collision.EnemyCollisionBlockRespondXDirection(enemyArray[j]);
+                            Console.WriteLine("Collision!");
+                            collision.EnemyCollisionBlockRespondXDirection(enemyArray[j], intersect.Width);
                         }
-                        else if (intersect.Height > intersect.Width && playerX > blockX)
+                        else if (intersect.Height > intersect.Width && enemyX > blockX)
                         {
-                            collision.EnemyCollisionBlockRespondXDirection(enemyArray[j]);
+                            Console.WriteLine("Collision!!");
+                            collision.EnemyCollisionBlockRespondXDirection(enemyArray[j], intersect.Width);
                         }
                         /*
                         else
@@ -147,8 +150,8 @@ namespace Game1
 
         public void EnemyCollisionDetect()
         {
-            int playerX = (int)player.GameObjectLocation().X;
-            int playerY = (int)player.GameObjectLocation().Y;
+            int playerX = (int)player.GetGameObjectLocation().X;
+            int playerY = (int)player.GetGameObjectLocation().Y;
             Rectangle playerBox;
 
             if (Mario.MarioSprite.isCrouching())
@@ -163,8 +166,8 @@ namespace Game1
 
             for (int i = 0; i < enemyArray.Length; i++)
             {
-                int enemyX = (int)enemyArray[i].GameObjectLocation().X;
-                int enemyY = (int)enemyArray[i].GameObjectLocation().Y;
+                int enemyX = (int)enemyArray[i].GetGameObjectLocation().X;
+                int enemyY = (int)enemyArray[i].GetGameObjectLocation().Y;
 
                 Rectangle enemyBox = new Rectangle(enemyX, enemyY, 16, 16);
                 Rectangle intersect;
@@ -193,10 +196,10 @@ namespace Game1
             }
         }
 
-        public void PickupBlockCollisionDetect()
+        public void PickupCollisionDetect()
         {
-            int playerX = (int)player.GameObjectLocation().X;
-            int playerY = (int)player.GameObjectLocation().Y;
+            int playerX = (int)player.GetGameObjectLocation().X;
+            int playerY = (int)player.GetGameObjectLocation().Y;
             Rectangle playerBox;
 
             if (Mario.MarioSprite.isCrouching())
@@ -211,8 +214,8 @@ namespace Game1
 
             for (int i = 0; i < pickupArray.Length; i++)
             {
-                int pickupX = (int)pickupArray[i].GameObjectLocation().X;
-                int pickupY = (int)pickupArray[i].GameObjectLocation().Y;
+                int pickupX = (int)pickupArray[i].GetGameObjectLocation().X;
+                int pickupY = (int)pickupArray[i].GetGameObjectLocation().Y;
 
                 Rectangle pickupBox = new Rectangle(pickupX, pickupY, 16, 16);
                 Rectangle intersect;
@@ -245,7 +248,7 @@ namespace Game1
         {
             BlockCollisionDetect();
             EnemyCollisionDetect();
-            PickupBlockCollisionDetect();
+            PickupCollisionDetect();
             BlockEnemyCollisionDetect();
             collision.Update();
         }

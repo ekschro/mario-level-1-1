@@ -13,13 +13,13 @@ namespace Game1
         public float CurrentYPos { get; set; }
 
         private IBlockSprite hiddenGreenMushroomBlockSprite;
-        private Game1 myGame;
+        //private Game1 myGame;
         private Vector2 blockLocation;
 
         public HiddenGreenMushroomBlock(Game1 game, Vector2 location)
         {
-            hiddenGreenMushroomBlockSprite = new HiddenBlockSprite(game, this);
-            myGame = game;
+            hiddenGreenMushroomBlockSprite = new HiddenGreenMushroomBlockSprite(game, this);
+            //myGame = game;
             blockLocation = location;
         }
 
@@ -28,7 +28,7 @@ namespace Game1
             hiddenGreenMushroomBlockSprite.Draw();
         }
 
-        public Vector2 GameObjectLocation()
+        public Vector2 GetGameObjectLocation()
         {
             return blockLocation;
         }
@@ -40,7 +40,7 @@ namespace Game1
         public void TopCollision() { }
         public void BottomCollision()
         {
-            hiddenGreenMushroomBlockSprite = new UsedBlockSprite(myGame, new UsedBlock(myGame, blockLocation));
+            //hiddenGreenMushroomBlockSprite = new UsedBlockSprite(myGame, new UsedBlock(myGame, blockLocation));
         }
         public void LeftCollision() { }
         public void RightCollision() { }

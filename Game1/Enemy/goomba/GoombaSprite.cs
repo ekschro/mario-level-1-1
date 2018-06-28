@@ -46,10 +46,10 @@ namespace Game1
         {
             int width = TextureWareHouse.goombaTexture.Width / 4;
 
-            int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(goombaObject.GameObjectLocation().X);
+            int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(goombaObject.GetGameObjectLocation().X);
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, TextureWareHouse.goombaTexture.Height);
-            Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)goombaObject.GameObjectLocation().Y, width, TextureWareHouse.goombaTexture.Height);
+            Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)goombaObject.GetGameObjectLocation().Y, width, TextureWareHouse.goombaTexture.Height);
 
             myGame.SpriteBatch.Begin();
             myGame.SpriteBatch.Draw(TextureWareHouse.goombaTexture, destinationRectangle, sourceRectangle, Color.White,0,new Vector2(0,0), GoombaSpriteEffects, 0);
