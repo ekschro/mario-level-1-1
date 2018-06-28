@@ -13,7 +13,7 @@ namespace Game1
         public float CurrentYPos { get; set; }
 
         private IBlockSprite questionPowerUpBlockSprite;
-        private Game1 myGame;
+        //private Game1 myGame;
         private Vector2 blockLocation;
         private int cyclePosition = 0;
         private int cycleLength = 16;
@@ -21,7 +21,7 @@ namespace Game1
         public QuestionPowerUpBlock(Game1 game, Vector2 location)
         {
             questionPowerUpBlockSprite = new QuestionPowerUpBlockSprite(game, this);
-            myGame = game;
+            //myGame = game;
             blockLocation = location;
         }
 
@@ -49,7 +49,7 @@ namespace Game1
         public void TopCollision() { }
         public void BottomCollision()
         {
-            questionPowerUpBlockSprite = new UsedBlockSprite(myGame, new UsedBlock(myGame, blockLocation));
+            //questionPowerUpBlockSprite = new UsedBlockSprite(myGame, new UsedBlock(myGame, blockLocation));
         }
         public void LeftCollision() { }
         public void RightCollision() { }

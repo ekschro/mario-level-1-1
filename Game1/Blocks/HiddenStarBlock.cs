@@ -13,13 +13,13 @@ namespace Game1
         public float CurrentYPos { get; set; }
 
         private IBlockSprite hiddenStarBlockSprite;
-        private Game1 myGame;
+        //private Game1 myGame;
         private Vector2 blockLocation;
 
         public HiddenStarBlock(Game1 game, Vector2 location)
         {
-            hiddenStarBlockSprite = new HiddenBlockSprite(game, this);
-            myGame = game;
+            hiddenStarBlockSprite = new HiddenStarBlockSprite(game, this);
+            //myGame = game;
             blockLocation = location;
         }
 
@@ -40,7 +40,7 @@ namespace Game1
         public void TopCollision() { }
         public void BottomCollision()
         {
-            hiddenStarBlockSprite = new UsedBlockSprite(myGame, new UsedBlock(myGame, blockLocation));
+            //hiddenStarBlockSprite = new UsedBlockSprite(myGame, new UsedBlock(myGame, blockLocation));
         }
         public void LeftCollision() { }
         public void RightCollision() { }

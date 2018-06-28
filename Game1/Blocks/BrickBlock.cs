@@ -13,15 +13,13 @@ namespace Game1
         public float CurrentYPos { get; set; }
 
         private IBlockSprite brickBlockSprite;
-
-       
-        private Game1 myGame;
+        //private Game1 myGame;
         private Vector2 blockLocation;
 
         public BrickBlock(Game1 game, Vector2 location)
         {
             brickBlockSprite = new BrickBlockSprite(game, this);
-            myGame = game;
+            //myGame = game;
             blockLocation = location;
         }
 
@@ -43,7 +41,7 @@ namespace Game1
         public void TopCollision() { }
         public void BottomCollision()
         {
-            brickBlockSprite = new EmptyBlockSprite(myGame, new EmptyBlock(myGame, blockLocation));
+            //brickBlockSprite = new EmptyBlockSprite(myGame, new EmptyBlock(myGame, blockLocation));
         }
         public void LeftCollision() { }
         public void RightCollision() { }

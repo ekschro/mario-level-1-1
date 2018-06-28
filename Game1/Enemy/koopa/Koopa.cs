@@ -21,22 +21,20 @@ namespace Game1
         private Vector2 koopaLocation;
         private Vector2 koopaOriginalLocation;
         private GeneralPhysics physics;
-        private bool running = true;
-        private bool movingdown = true;
-
-        private float yVelocity;
-        private float delta;
-        private Game1 myGame;
+        //private bool dead = false;
+        //private float yVelocity;
+        //private float delta;
+        //private Game1 myGame;
 
         public Koopa(Game1 game, Vector2 location)
         {
             KoopaSprite = new KoopaSprite(game,this);
             stateMachine = new KoopaStateMachine(koopaSprite);
-            myGame = game;
+            //myGame = game;
             koopaLocation = location;
             koopaOriginalLocation = location;
 
-            physics = new GeneralPhysics(myGame,this,1);
+            physics = new GeneralPhysics(game,this,1);
         }
 
         public void BeFlipped()
@@ -79,7 +77,7 @@ namespace Game1
             physics.Update();
 
             cyclePosition++;
-            if (cyclePosition == cycleLength && running)
+            if (cyclePosition == cycleLength)
             {
                 cyclePosition = 0;
                 KoopaSprite.Update();
@@ -90,12 +88,9 @@ namespace Game1
                     koopaLocation.X -= 1;
             }
             //qif (movingdown)
-                //NewPosY();
+            //NewPosY();
         }
-        public void Running()
-        {
-            running = true;
-        }
+        /*
         public void NewPosY()
         {
 
@@ -106,13 +101,11 @@ namespace Game1
 
             koopaLocation.Y += yVelocity;
         }
-        public void ReachGround()
+        */
+        public bool GetDead()
         {
-            movingdown = false;
+            throw new NotImplementedException();
         }
-        public void Falling()
-        {
-            movingdown = true;
-        }
+
     }
 }

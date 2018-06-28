@@ -66,16 +66,10 @@ namespace Game1
         public void Update()
         {
         }
-        public void Running()
-        {
 
-        }
-
-        public void ReachGround()
+        public bool GetDead()
         {
             throw new NotImplementedException();
         }
-        public void Falling()
-        { }
     }
 }

@@ -11,7 +11,6 @@ namespace Game1
     {
         public float CurrentXPos { get; set; }
         public float CurrentYPos { get; set; }
-
         private IEnemySprite goombaSprite;
         public IEnemySprite GoombaSprite { get => goombaSprite; set => goombaSprite = value; }
         private GoombaStateMachine stateMachine;
@@ -19,30 +18,31 @@ namespace Game1
         private int cycleLength = 8;
         private Vector2 goombaLocation;
         private Vector2 goombaOriginalLocation;
-        private bool running=true;
-        private bool movingdown = true;
-
-        private float yVelocity;
+        //private bool running=true;
+        //private bool movingdown = true;
+        private bool dead = false;
+        //private float yVelocity;
         private GeneralPhysics physics;
-        private float delta;
-        private Game1 myGame;
+        //private float delta;
+        //private Game1 myGame;
 
         public Goomba(Game1 game, Vector2 location)
         {
             goombaLocation = location;
             goombaOriginalLocation = location;
-            myGame = game;
+            //myGame = game;
 
             GoombaSprite = new GoombaSprite(game, this);
             stateMachine = new GoombaStateMachine(GoombaSprite);
-            yVelocity = 0;
+            //yVelocity = 0;
 
-            physics = new GeneralPhysics(myGame,this,1);
+            physics = new GeneralPhysics(game,this,1);
         }
 
         public void BeFlipped()
         {
             stateMachine.BeFlipped();
+            dead = true;
         }
 
         public void BeStomped()
@@ -52,8 +52,7 @@ namespace Game1
 
         public void ChangeDirection()
         {
-            stateMachine.ChangeDirection();
-            
+            stateMachine.ChangeDirection(); 
         }
 
         public void Draw()
@@ -65,7 +64,6 @@ namespace Game1
         {
             return goombaLocation;
         }
-
         public void SetGameObjectLocation(Vector2 newPos)
         {
             goombaLocation = newPos;
@@ -75,15 +73,13 @@ namespace Game1
         {
             return goombaOriginalLocation;
         }
-
         public void Update()
         {
-            delta = myGame.delta.ElapsedGameTime.Milliseconds;
-
+            //delta = myGame.delta.ElapsedGameTime.Milliseconds;
             physics.Update();
             
             cyclePosition++;
-            if (cyclePosition == cycleLength && running)
+            if (cyclePosition == cycleLength)
             {
                 cyclePosition = 0;
                 stateMachine.Update();
@@ -92,32 +88,18 @@ namespace Game1
                     goombaLocation.X += 1;
                 else 
                     goombaLocation.X -= 1;
-            }
-            //if (movingdown)
-                //NewPosY();
-            //Falling();
-        }
-        public void Running()
-        {
-            running = true;
-        }
-        public void NewPosY()
-        {
-            
-            if (yVelocity < 3.5)
-            {
-                yVelocity += (float)(0.5 * 0.01 * Math.Pow(delta, 2));
+                if (dead)
+                {
+                    goombaLocation.Y += 1;
+                }
             }
 
-            goombaLocation.Y += yVelocity;
         }
-        public void ReachGround()
+
+        public bool GetDead()
         {
-            movingdown = false;
+            return dead;
         }
-        public void Falling()
-        {
-            movingdown = true;
-        }
+
     }
 }
