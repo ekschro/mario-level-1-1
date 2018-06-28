@@ -34,6 +34,7 @@ namespace Game1
             if (!(block is HiddenBlock) && !standing)
                 Mario.CurrentYPosition -= height;
             Mario.CanJump = true;
+            Mario.Falling = false;
         }
 
         public void BlockCollisionRespondBottom(IBlock block,int height,bool head)
