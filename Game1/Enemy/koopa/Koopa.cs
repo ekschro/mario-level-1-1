@@ -21,10 +21,7 @@ namespace Game1
         private Vector2 koopaLocation;
         private Vector2 koopaOriginalLocation;
         private GeneralPhysics physics;
-        //private bool dead = false;
-        //private float yVelocity;
-        //private float delta;
-        //private Game1 myGame;
+        private bool dead = false;
 
         public Koopa(Game1 game, Vector2 location)
         {
@@ -90,21 +87,9 @@ namespace Game1
             //qif (movingdown)
             //NewPosY();
         }
-        /*
-        public void NewPosY()
-        {
-
-            if (yVelocity < 3.5)
-            {
-                yVelocity += (float)(0.5 * 0.01 * Math.Pow(delta, 2));
-            }
-
-            koopaLocation.Y += yVelocity;
-        }
-        */
         public bool GetDead()
         {
-            throw new NotImplementedException();
+            return dead;
         }
 
     }
