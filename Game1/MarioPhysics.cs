@@ -52,8 +52,11 @@ namespace Game1
                 }
                 else
                 {
-                    xVelocity = -1*velCap;
+                    xVelocity = -1 * velCap;
                 }
+
+                if (Mario.CurrentXPosition < (game.CurrentLevel.LevelCamera.CameraPosition + 4))
+                    xVelocity = 0;
             }
             else
             {
@@ -69,7 +72,7 @@ namespace Game1
                 {
                     xVelocity -= (float)(0.5 * 0.001 * Math.Pow(delta, 2));
                 }
-                
+
             }
 
             Mario.CurrentXPosition += xVelocity;

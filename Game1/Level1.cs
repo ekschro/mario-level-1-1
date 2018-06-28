@@ -50,21 +50,45 @@ namespace Game1
 
         public void Update()
         {
-            foreach (IGameObject GameObject in levelObjects)
+            PlayerObject.Update();
+            foreach (IGameObject GameObject in BlockObjects)
             {
                 if (GameObject.GetGameObjectLocation().X > levelCamera.CameraPosition - 16  && GameObject.GetGameObjectLocation().X < levelCamera.CameraPosition + 400)
                     GameObject.Update();
             }
+            foreach (IGameObject GameObject in EnemyObjects)
+            {
+                if (GameObject.GetGameObjectLocation().X > levelCamera.CameraPosition - 16 && GameObject.GetGameObjectLocation().X < levelCamera.CameraPosition + 400)
+                    GameObject.Update();
+            }
+            IGameObject[] pickupObjectArray = PickupObjects.ToArray();
+            for(int i = 0; i < pickupObjectArray.Length; i++)
+            {
+                if (pickupObjectArray[i].GetGameObjectLocation().X > levelCamera.CameraPosition - 16 && pickupObjectArray[i].GetGameObjectLocation().X < levelCamera.CameraPosition + 400)
+                    pickupObjectArray[i].Update();
+            }
+
 
             collisionDetect.Update();
             levelCamera.Update();
-            UpdateLevelObjects();
+            //UpdateLevelObjects();
         }
 
         public void Draw()
         {
             BackgroundObject.Draw();
-            foreach (IGameObject GameObject in levelObjects)
+            PlayerObject.Draw();
+            foreach (IGameObject GameObject in BlockObjects)
+            {
+                if (GameObject.GetGameObjectLocation().X > levelCamera.CameraPosition - 16 && GameObject.GetGameObjectLocation().X < levelCamera.CameraPosition + 400)
+                    GameObject.Draw();
+            }
+            foreach (IGameObject GameObject in EnemyObjects)
+            {
+                if (GameObject.GetGameObjectLocation().X > levelCamera.CameraPosition - 16 && GameObject.GetGameObjectLocation().X < levelCamera.CameraPosition + 400)
+                    GameObject.Draw();
+            }
+            foreach (IGameObject GameObject in PickupObjects)
             {
                 if (GameObject.GetGameObjectLocation().X > levelCamera.CameraPosition - 16 && GameObject.GetGameObjectLocation().X < levelCamera.CameraPosition + 400)
                     GameObject.Draw();
