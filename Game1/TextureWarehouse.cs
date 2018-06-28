@@ -22,7 +22,7 @@ namespace Game1 {
             koopaTexture = myGame.Content.Load<Texture2D>("koopa1");
             goombaTexture = myGame.Content.Load<Texture2D>("goomba1");
             blockTexture = myGame.Content.Load<Texture2D>("tiles");
-            backgroundTexture = myGame.Content.Load<Texture2D>("background");
+            backgroundTexture = myGame.Content.Load<Texture2D>("1-1");
             fireballs = myGame.Content.Load<Texture2D>("fireball");
         }
     }

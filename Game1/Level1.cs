@@ -12,11 +12,13 @@ namespace Game1
         private Game1 myGame;
 
         private IPlayer playerObject;
+        private IBackground backgroundObject;
         private List<IBlock> blocks;
         private List<IEnemy> enemies;
         private List<IPickup> pickups;
         private List<MarioFireBall> projectiles;
         public IPlayer PlayerObject { get => playerObject; set => playerObject = value; }
+        public IBackground BackgroundObject { get => backgroundObject; set => backgroundObject = value; }
         public List<IBlock> BlockObjects { get => blocks; }
         public List<IEnemy> EnemyObjects { get => enemies; }
         public List<IPickup> PickupObjects { get => pickups; }
@@ -34,7 +36,8 @@ namespace Game1
 
             loader.Load(fileName, levelObjects);
             
-            GetPlayerObjects();
+            GetPlayerObject();
+            GetBackgroundObject();
             GetBlockObjects();
             GetEnemyObjects();
             GetPickupObjects();
@@ -42,6 +45,7 @@ namespace Game1
             collisionDetect = new CollisionDetect(game,this);
 
             levelCamera = new Camera(this);
+            backgroundObject = new Level1Background(myGame, new Vector2(0,0));
         }
 
         public void Update()
@@ -59,6 +63,7 @@ namespace Game1
 
         public void Draw()
         {
+            BackgroundObject.Draw();
             foreach (IGameObject GameObject in levelObjects)
             {
                 if (GameObject.GetGameObjectLocation().X > levelCamera.CameraPosition - 16 && GameObject.GetGameObjectLocation().X < levelCamera.CameraPosition + 400)
@@ -66,7 +71,7 @@ namespace Game1
             }
         }
 
-        private void GetPlayerObjects()
+        private void GetPlayerObject()
         {
             IPlayer playerObject = null;
             foreach(IGameObject player in levelObjects)
@@ -74,10 +79,23 @@ namespace Game1
                 if (player is IPlayer)
                 {
                     playerObject = (IPlayer)player;
-                } break;
+                } 
             }
 
             this.playerObject = playerObject;
+        }
+        private void GetBackgroundObject()
+        {
+            IBackground backgroundObject = null;
+            foreach (IGameObject background in levelObjects)
+            {
+                if (background is IBackground)
+                {
+                    backgroundObject = (IBackground)background;
+                }
+            }
+
+            this.backgroundObject = backgroundObject;
         }
         private void GetBlockObjects()
         {
@@ -114,6 +132,7 @@ namespace Game1
         {
             levelObjects = new List<IGameObject>();
             levelObjects.Add(PlayerObject);
+            levelObjects.Add(BackgroundObject);
             levelObjects.AddRange(BlockObjects);
             levelObjects.AddRange(PickupObjects);
             levelObjects.AddRange(EnemyObjects);
