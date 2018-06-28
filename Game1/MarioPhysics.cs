@@ -9,14 +9,12 @@ namespace Game1
 {
     class MarioPhysics
     {
-        //private const int JUMPCALLS = 17;
 
         private Game1 game;
         private float delta;
         private int velCap;
         private float xVelocity;
         private float yVelocity;
-        private int counter;
 
         public MarioPhysics(Game1 game,int velCap)
         {
@@ -24,7 +22,6 @@ namespace Game1
             this.velCap = velCap;
             xVelocity = 0;
             yVelocity = 0;
-            //counter = JUMPCALLS;
         }
 
         public void Update()
@@ -80,7 +77,7 @@ namespace Game1
 
         public void NewPosY()
         {
-            if(Mario.MovingUp /*&& Mario.CanJump*/ && !Mario.Falling)
+            if (Mario.MovingUp && Mario.CanJump && !Mario.Falling)
             {
                 yVelocity = (float)-4.5;
                 Mario.CanJump = false;
@@ -88,14 +85,11 @@ namespace Game1
             else if (yVelocity < 3.5)
             {
                 yVelocity += (float)(0.5 * 0.001 * Math.Pow(delta, 2));
-                Console.WriteLine("Fall");
             }
             else
             {
                 Mario.Falling = true;
             }
-
-            Console.WriteLine(Mario.Falling);
 
             Mario.CurrentYPosition += yVelocity;
         }
