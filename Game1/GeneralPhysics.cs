@@ -23,7 +23,7 @@ namespace Game1
 
             this.velCap = velCap;
             xVelocity = 0;
-            yVelocity = (float)2;
+            yVelocity = (float)1;
         }
 
         public void Update()

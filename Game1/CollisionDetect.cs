@@ -123,6 +123,7 @@ namespace Game1
                         Rectangle.Intersect(ref playerBox, ref blockBox, out intersect);
                         if (intersect.Height < intersect.Width && playerY < blockY)
                         {
+                            Console.WriteLine("Collide");
                             collision.EnemyCollisionBlockRespondYDirection(enemyArray[j], intersect.Height, bottom);
                             bottom = true;
                         }

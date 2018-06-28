@@ -178,6 +178,7 @@ namespace Game1
         {
             enemy.BeFlipped(); 
         }
+
         public void EnemyCollisionBlockRespondYDirection(IEnemy enemy, int height,bool bottom)
         {
             // enemy.ReachGround();
