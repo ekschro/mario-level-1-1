@@ -107,5 +107,18 @@ namespace Game1
         {
             throw new NotImplementedException();
         }
+        public void SetGameObjectLocation(Vector2 vector)
+        {
+            CurrentXPos = vector.X;
+            CurrentYPos = vector.Y;
+        }
+        public bool GetDead()
+        {
+            return false;
+        }
+        public Vector2 GetGameObjectLocation()
+        {
+            return new Vector2(CurrentXPos, CurrentYPos);
+        }
     }
 }

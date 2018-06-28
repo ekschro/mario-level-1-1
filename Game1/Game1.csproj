@@ -89,6 +89,7 @@
     <Compile Include="Blocks\UsedBlock.cs" />
     <Compile Include="Camera.cs" />
     <Compile Include="Fireball.cs" />
+    <Compile Include="GeneralCommands\FireballCommand.cs" />
     <Compile Include="GeneralCommands\NoCommand.cs" />
     <Compile Include="GeneralPhysics.cs" />
     <Compile Include="ICamera.cs" />
