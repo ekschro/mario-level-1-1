@@ -6,6 +6,7 @@ namespace Game1
     public class MarioFireBall : IEnemy
     {
         private Game1 myGame;
+        public IEnemyStateMachine GetStateMachine { get; }
         private int currentFrame;
         public MarioFireBall(Game1 game)
         {
@@ -107,20 +108,18 @@ namespace Game1
         {
             throw new NotImplementedException();
         }
-
-        public void SetGameObjectLocation(Vector2 x)
+        public void SetGameObjectLocation(Vector2 vector)
         {
-            throw new NotImplementedException();
+            CurrentXPos = vector.X;
+            CurrentYPos = vector.Y;
         }
-
         public bool GetDead()
         {
-            throw new NotImplementedException();
+            return false;
         }
-
         public Vector2 GetGameObjectLocation()
         {
-            throw new NotImplementedException();
+            return new Vector2(CurrentXPos, CurrentYPos);
         }
     }
 }

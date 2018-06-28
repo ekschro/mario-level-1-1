@@ -14,7 +14,8 @@ namespace Game1
 
         private static IEnemySprite koopaSprite;
         public static IEnemySprite KoopaSprite { get => koopaSprite; set => koopaSprite = value; }
-        private KoopaStateMachine stateMachine;
+        public KoopaStateMachine stateMachine;
+        public IEnemyStateMachine GetStateMachine { get => stateMachine; }
 
         private int cyclePosition = 0;
         private int cycleLength = 8;
@@ -79,13 +80,7 @@ namespace Game1
                 cyclePosition = 0;
                 KoopaSprite.Update();
                 stateMachine.Update();
-                if (stateMachine.GetDirection())
-                    koopaLocation.X += 1;
-                else
-                    koopaLocation.X -= 1;
             }
-            //qif (movingdown)
-            //NewPosY();
         }
         public bool GetDead()
         {

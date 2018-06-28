@@ -13,7 +13,8 @@ namespace Game1
         public float CurrentYPos { get; set; }
         private IEnemySprite goombaSprite;
         public IEnemySprite GoombaSprite { get => goombaSprite; set => goombaSprite = value; }
-        private GoombaStateMachine stateMachine;
+        public GoombaStateMachine stateMachine;
+        public IEnemyStateMachine GetStateMachine { get => stateMachine; }
         private int cyclePosition = 0;
         private int cycleLength = 8;
         private Vector2 goombaLocation;
@@ -80,10 +81,6 @@ namespace Game1
                 cyclePosition = 0;
                 stateMachine.Update();
                 GoombaSprite.Update();
-                if (stateMachine.GetDirection())
-                    goombaLocation.X += 1;
-                else 
-                    goombaLocation.X -= 1;
                 if (dead)
                 {
                     goombaLocation.Y += 1;

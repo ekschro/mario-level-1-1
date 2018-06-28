@@ -130,12 +130,12 @@ namespace Game1
                         else if (intersect.Height > intersect.Width && enemyX < blockX)
                         {
                             Console.WriteLine("Collision!");
-                            collision.EnemyCollisionBlockRespondXDirection(enemyArray[j], intersect.Width);
+                            collision.EnemyCollisionBlockRespondXDirection(enemyArray[j], intersect.Width, true);
                         }
                         else if (intersect.Height > intersect.Width && enemyX > blockX)
                         {
                             Console.WriteLine("Collision!!");
-                            collision.EnemyCollisionBlockRespondXDirection(enemyArray[j], intersect.Width);
+                            collision.EnemyCollisionBlockRespondXDirection(enemyArray[j], intersect.Width, false);
                         }
                         /*
                         else

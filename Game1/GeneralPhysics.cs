@@ -22,8 +22,8 @@ namespace Game1
             this.obj = obj;
 
             this.velCap = velCap;
-            xVelocity = 0;
-            yVelocity = (float)1;
+            xVelocity = (float)0.5;
+            yVelocity = (float)3;
         }
 
         public void Update()
@@ -35,7 +35,10 @@ namespace Game1
 
         public void NewPosX()
         {
-            
+            if (obj.GetStateMachine.GetDirection())
+                obj.SetGameObjectLocation(new Vector2(obj.GetGameObjectLocation().X + xVelocity, obj.GetGameObjectLocation().Y));
+            else
+                obj.SetGameObjectLocation(new Vector2(obj.GetGameObjectLocation().X - xVelocity, obj.GetGameObjectLocation().Y));
         }
 
         public void NewPosY()
