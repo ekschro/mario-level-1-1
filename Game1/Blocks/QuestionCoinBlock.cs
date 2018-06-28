@@ -21,7 +21,7 @@ namespace Game1
         public QuestionCoinBlock(Game1 game, Vector2 location)
         {
             questionCoinBlockSprite = new QuestionCoinBlockSprite(game, this);
-            myGame = game;
+            //myGame = game;
             blockLocation = location;
         }
 

@@ -14,7 +14,7 @@ namespace Game1
 
         private IBlockSprite questionBlockSprite;
         private IBlock usedBlockObject;
-        private Game1 myGame;
+        //private Game1 myGame;
         private Vector2 blockLocation;
         private Vector2 blockOriginalLocation;
         private int cyclePosition = 0;
@@ -25,7 +25,7 @@ namespace Game1
         {
             questionBlockSprite = new QuestionBlockSprite(game, this);
             usedBlockObject = new UsedBlock(game, location);
-            myGame = game;
+            //myGame = game;
             blockLocation = location;
             blockOriginalLocation = location;
             //Jumping = false;
@@ -61,7 +61,7 @@ namespace Game1
         {
             //Jump();
             //Update();
-            questionBlockSprite = new UsedBlockSprite(myGame, usedBlockObject);
+            //questionBlockSprite = new UsedBlockSprite(myGame, usedBlockObject);
             //blockLocation.Y += 20;
             //questionBlockSprite = new UsedBlockSprite(myGame, this);
             
