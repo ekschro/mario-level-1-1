@@ -13,10 +13,10 @@ namespace Game1
         public float CurrentYPos { get; set; }
 
         private IBlockSprite questionBlockSprite;
-        private IBlock usedBlockObject;
+        //private IBlock usedBlockObject;
         //private Game1 myGame;
         private Vector2 blockLocation;
-        private Vector2 blockOriginalLocation;
+        //private Vector2 blockOriginalLocation;
         private int cyclePosition = 0;
         private int cycleLength = 8;
         //private bool jumping = false;
@@ -24,10 +24,10 @@ namespace Game1
         public QuestionBlock(Game1 game, Vector2 location)
         {
             questionBlockSprite = new QuestionBlockSprite(game, this);
-            usedBlockObject = new UsedBlock(game, location);
+            //usedBlockObject = new UsedBlock(game, location);
             //myGame = game;
             blockLocation = location;
-            blockOriginalLocation = location;
+            //blockOriginalLocation = location;
             //Jumping = false;
         }
 
