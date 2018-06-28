@@ -57,6 +57,8 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="IBackground.cs" />
+    <Compile Include="Level1Background.cs" />
     <Compile Include="Blocks\Sprites\QuestionCoinBlockSprite.cs" />
     <Compile Include="Blocks\Sprites\QuestionPowerUpBlockSprite.cs" />
     <Compile Include="Blocks\BottomLeftPipeBlock.cs" />
