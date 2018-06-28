@@ -85,18 +85,10 @@ namespace Game1
                 yVelocity = (float)-6.5;
                 Mario.CanJump = false;
             }
-            else if (Mario.MovingUp && yVelocity < 3.5)
-            {
-                //yVelocity += (float)(0.5 * 0.001 * Math.Pow(delta, 2));
-            }
             else if (!Mario.MovingUp && !Mario.Falling)
             {
                 yVelocity = 1;
                 Mario.Falling = true;
-            }
-            else
-            {
-                
             }
 
             yVelocity += (float)(0.5 * 0.002 * Math.Pow(delta, 2));
