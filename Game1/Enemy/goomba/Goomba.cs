@@ -18,13 +18,9 @@ namespace Game1
         private int cycleLength = 8;
         private Vector2 goombaLocation;
         private Vector2 goombaOriginalLocation;
-        //private bool running=true;
-        //private bool movingdown = true;
+
         private bool dead = false;
-        //private float yVelocity;
         private GeneralPhysics physics;
-        //private float delta;
-        //private Game1 myGame;
 
         public Goomba(Game1 game, Vector2 location)
         {
