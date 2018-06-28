@@ -126,6 +126,11 @@ namespace Game1
                             collision.EnemyCollisionBlockRespondYDirection(enemyArray[j], intersect.Height, bottom);
                             bottom = true;
                         }
+                        else if (intersect.Height < intersect.Width && playerY > blockY && !(blockArray[i] is HiddenBlock) && !(blockArray[i] is HiddenGreenMushroomBlock) && !(blockArray[i] is HiddenStarBlock)) //Temp fix
+                        {
+                            collision.EnemyCollisionBlockRespondYDirection(enemyArray[j], intersect.Height, bottom);
+                            bottom = true;
+                        }
                         else if (intersect.Height > intersect.Width && playerX < blockX)
                         {
                             collision.EnemyCollisionBlockRespondXDirection(enemyArray[j]);
@@ -145,6 +150,56 @@ namespace Game1
             }
         }
 
+        public void EnemyEnemyCollisionDetect()
+        {
+            int playerX = (int)player.GetGameObjectLocation().X;
+            int playerY = (int)player.GetGameObjectLocation().Y;
+            Rectangle playerBox;
+
+            bool bottom = false;
+
+            for (int j = 0; j < enemyArray.Length; j++)
+            {
+                int enemyX = (int)enemyArray[j].GetGameObjectLocation().X;
+                int enemyY = (int)enemyArray[j].GetGameObjectLocation().Y;
+                playerBox = new Rectangle(enemyX, enemyY, 16, 16);
+
+                blockArray = level1.BlockObjects.ToArray();
+
+                for (int i = 0; i < blockArray.Length; i++)
+                {
+                    int blockX = (int)blockArray[i].GetGameObjectLocation().X;
+                    int blockY = (int)blockArray[i].GetGameObjectLocation().Y;
+
+                    Rectangle blockBox = new Rectangle(blockX, blockY, 16, 16);
+                    Rectangle intersect;
+
+                    if (playerBox.Intersects(blockBox))
+                    {
+                        Rectangle.Intersect(ref playerBox, ref blockBox, out intersect);
+                        if (intersect.Height < intersect.Width && playerY < blockY)
+                        {
+                            collision.EnemyCollisionBlockRespondYDirection(enemyArray[j], intersect.Height, bottom);
+                            bottom = true;
+                        }
+                        else if (intersect.Height > intersect.Width && playerX < blockX)
+                        {
+                            collision.EnemyCollisionBlockRespondXDirection(enemyArray[j]);
+                        }
+                        else if (intersect.Height > intersect.Width && playerX > blockX)
+                        {
+                            collision.EnemyCollisionBlockRespondXDirection(enemyArray[j]);
+                        }
+                        /*
+                        else
+                        {
+                            collision.EnemyCollisionBlockRespondFalling(enemyArray[j]);
+                        }
+                        */
+                    }
+                }
+            }
+        }
         public void EnemyCollisionDetect()
         {
             int playerX = (int)player.GetGameObjectLocation().X;
@@ -247,6 +302,7 @@ namespace Game1
             EnemyCollisionDetect();
             PickupCollisionDetect();
             BlockEnemyCollisionDetect();
+            EnemyEnemyCollisionDetect();
             collision.Update();
         }
     }
