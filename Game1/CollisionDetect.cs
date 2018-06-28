@@ -16,6 +16,7 @@ namespace Game1
         private IEnemy[] enemyArray;
         private IPickup[] pickupArray;
         private CollisionRespond collision;
+        
         private Game1 mygame;
         private int tileOffset = 16;
 

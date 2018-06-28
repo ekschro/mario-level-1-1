@@ -86,9 +86,11 @@
     <Compile Include="Blocks\StoneBlock.cs" />
     <Compile Include="Blocks\UsedBlock.cs" />
     <Compile Include="Camera.cs" />
+    <Compile Include="Fireball.cs" />
     <Compile Include="GeneralCommands\NoCommand.cs" />
     <Compile Include="GeneralPhysics.cs" />
     <Compile Include="ICamera.cs" />
+    <Compile Include="FireballPhysics.cs" />
     <Compile Include="MarioPhysics.cs" />
     <Compile Include="CollisionRespond.cs" />
     <Compile Include="CollisionDetect.cs" />
