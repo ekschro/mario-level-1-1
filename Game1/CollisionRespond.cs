@@ -190,13 +190,22 @@ namespace Game1
                 Mario.MarioSprite.DeadMarioCommandCalled();
             }
         }
-        public void EnemyCollisionBlockRespondXDirection(IEnemy enemy, int width)
+        public void EnemyCollisionBlockRespondXDirection(IEnemy enemy, int width, bool left)
         {
             if (enemy.GetDead() == false)
             {
-                var x = enemy.GetGameObjectLocation().X - width;
-                var y = enemy.GetGameObjectLocation().Y;
-                enemy.SetGameObjectLocation(new Vector2(x, y));
+                if (left)
+                {
+                    var x = enemy.GetGameObjectLocation().X - width;
+                    var y = enemy.GetGameObjectLocation().Y;
+                    enemy.SetGameObjectLocation(new Vector2(x, y));
+                }
+                else if (!left)
+                {
+                    var x = enemy.GetGameObjectLocation().X + width;
+                    var y = enemy.GetGameObjectLocation().Y;
+                    enemy.SetGameObjectLocation(new Vector2(x, y));
+                }
             }
             enemy.ChangeDirection();
         }

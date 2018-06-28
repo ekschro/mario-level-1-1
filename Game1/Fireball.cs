@@ -6,6 +6,7 @@ namespace Game1
     public class MarioFireBall : IEnemy
     {
         private Game1 myGame;
+        public IEnemyStateMachine GetStateMachine { get; }
         private int currentFrame;
         public MarioFireBall(Game1 game)
         {
