@@ -41,5 +41,10 @@ namespace Game1
             myGame.SpriteBatch.Draw(TextureWareHouse.goombaTexture, destinationRectangle, sourceRectangle, Color.Transparent);
             myGame.SpriteBatch.End();
         }
+
+        public void FlipSprite()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

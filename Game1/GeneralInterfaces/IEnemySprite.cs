@@ -11,6 +11,7 @@ namespace Game1
     {
         void Update();
         void ChangeFrame(int start, int endFrame);
+        void FlipSprite();
         void Draw();
     }
 }
