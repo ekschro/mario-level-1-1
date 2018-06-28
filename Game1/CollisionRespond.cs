@@ -85,6 +85,10 @@ namespace Game1
                 objectLevel.PickupObjects.Add(new GreenMushroom(myGame, block.GetGameObjectLocation()));
             }
 
+            Mario.CanJump = false;
+            Mario.Falling = true;
+            Mario.Jumping = false;
+
         }
 
         public void BlockCollisionRespondRight(IBlock block,int width,bool right)

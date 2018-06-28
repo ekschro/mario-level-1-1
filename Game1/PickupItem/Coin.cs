@@ -18,7 +18,7 @@ namespace Game1
         private Game1 myGame;
         private Vector2 pickupLocation;
         private Vector2 pickupOriginalLocation;
-        private bool collide = false;
+        private int timeBeforeDisappearing;
 
         public Coin(Game1 game, Vector2 location)
         {
@@ -26,11 +26,11 @@ namespace Game1
             myGame = game;
             pickupLocation = location;
             pickupOriginalLocation = location;
+            timeBeforeDisappearing = 15;
         }
 
         public void Draw()
         {
-            if (collide)
                 coinSprite.Draw();
         }
 
@@ -41,6 +41,7 @@ namespace Game1
 
         public void Update()
         {
+            timeBeforeDisappearing--;
             cyclePosition++;
             if (cyclePosition == cycleLength)
             {
@@ -51,6 +52,9 @@ namespace Game1
             {
                 pickupLocation.Y -= 1;
             }
+
+            if (timeBeforeDisappearing <= 0)
+                myGame.CurrentLevel.PickupObjects.Remove(this);
         }
         public void Picked()
         {
@@ -58,7 +62,7 @@ namespace Game1
         }
         public void Collide()
         {
-            collide = true;
+          
         }
     }
 }

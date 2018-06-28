@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Game1
 {
-    class Class1
+    public interface IBackground : IGameObject
     {
+
     }
 }

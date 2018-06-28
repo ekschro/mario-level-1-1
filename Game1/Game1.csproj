@@ -59,6 +59,8 @@
   <ItemGroup>
     <Compile Include="Blocks\Sprites\HiddenGreenMushroomBlockSprite.cs" />
     <Compile Include="Blocks\Sprites\HiddenStarBlockSprite.cs" />
+    <Compile Include="IBackground.cs" />
+    <Compile Include="Level1Background.cs" />
     <Compile Include="Blocks\Sprites\QuestionCoinBlockSprite.cs" />
     <Compile Include="Blocks\Sprites\QuestionPowerUpBlockSprite.cs" />
     <Compile Include="Blocks\BottomLeftPipeBlock.cs" />
@@ -88,9 +90,12 @@
     <Compile Include="Blocks\StoneBlock.cs" />
     <Compile Include="Blocks\UsedBlock.cs" />
     <Compile Include="Camera.cs" />
+    <Compile Include="Fireball.cs" />
+    <Compile Include="GeneralCommands\FireballCommand.cs" />
     <Compile Include="GeneralCommands\NoCommand.cs" />
     <Compile Include="GeneralPhysics.cs" />
     <Compile Include="ICamera.cs" />
+    <Compile Include="FireballPhysics.cs" />
     <Compile Include="MarioPhysics.cs" />
     <Compile Include="CollisionRespond.cs" />
     <Compile Include="CollisionDetect.cs" />
