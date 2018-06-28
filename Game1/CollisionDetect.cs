@@ -90,8 +90,6 @@ namespace Game1
                         collision.BlockCollisionRespondRight(blockArray[i], intersect.Width,right);
                         right = true;
                     }
-
-
                 }
             }
         }
@@ -192,7 +190,7 @@ namespace Game1
             }
         }
 
-        public void PickupBlockCollisionDetect()
+        public void PickupCollisionDetect()
         {
             int playerX = (int)player.GameObjectLocation().X;
             int playerY = (int)player.GameObjectLocation().Y;
@@ -244,7 +242,7 @@ namespace Game1
         {
             BlockCollisionDetect();
             EnemyCollisionDetect();
-            PickupBlockCollisionDetect();
+            PickupCollisionDetect();
             BlockEnemyCollisionDetect();
             collision.Update();
         }

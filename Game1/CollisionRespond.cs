@@ -181,7 +181,7 @@ namespace Game1
         public void EnemyCollisionBlockRespondYDirection(IEnemy enemy, int height)
         {
             enemy.ReachGround();
-            //enemy.CurrentYPos -= height;
+            enemy.CurrentYPos -= height;
         }
         public void EnemyCollisionBlockRespondFalling(IEnemy enemy)
         {
