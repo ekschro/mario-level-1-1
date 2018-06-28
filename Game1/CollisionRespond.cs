@@ -186,9 +186,15 @@ namespace Game1
                 Mario.MarioSprite.DeadMarioCommandCalled();
             }
         }
-        public void EnemyCollisionBlockRespondXDirection(IEnemy enemy)
+        public void EnemyCollisionBlockRespondXDirection(IEnemy enemy, int width)
         {
-            enemy.ChangeDirection(); 
+            if (enemy.GetDead() == false)
+            {
+                var x = enemy.GetGameObjectLocation().X - width;
+                var y = enemy.GetGameObjectLocation().Y;
+                enemy.SetGameObjectLocation(new Vector2(x, y));
+            }
+            enemy.ChangeDirection();
         }
 
         public void EnemyCollisionBlockRespondYDirection(IEnemy enemy, int height,bool bottom)
