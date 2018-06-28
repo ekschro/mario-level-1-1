@@ -80,13 +80,7 @@ namespace Game1
                 cyclePosition = 0;
                 KoopaSprite.Update();
                 stateMachine.Update();
-                if (stateMachine.GetDirection())
-                    koopaLocation.X += 1;
-                else
-                    koopaLocation.X -= 1;
             }
-            //qif (movingdown)
-            //NewPosY();
         }
         public bool GetDead()
         {

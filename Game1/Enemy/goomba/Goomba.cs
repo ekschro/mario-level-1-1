@@ -81,10 +81,6 @@ namespace Game1
                 cyclePosition = 0;
                 stateMachine.Update();
                 GoombaSprite.Update();
-                //if (stateMachine.GetDirection())
-                    //goombaLocation.X += 1;
-                //else 
-                    //goombaLocation.X -= 1;
                 if (dead)
                 {
                     goombaLocation.Y += 1;
