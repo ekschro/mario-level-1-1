@@ -91,6 +91,14 @@ namespace Game1
                 Mario.Falling = true;
             }
 
+            if (Mario.Bump)
+            {
+                yVelocity = 0;
+                Mario.Falling = true;
+                Mario.Bump = false;
+            }
+                
+
             yVelocity += (float)(0.5 * 0.002 * Math.Pow(delta, 2));
             Mario.CurrentYPosition += yVelocity;
         }

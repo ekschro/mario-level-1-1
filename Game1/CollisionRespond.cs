@@ -40,7 +40,11 @@ namespace Game1
         public void BlockCollisionRespondBottom(IBlock block,int height,bool head)
         {
             if (!head)
+            {
                 Mario.CurrentYPosition += height;
+                Mario.Bump = true;
+            }
+                
 
             if (Mario.MarioSprite.isSmall() && block is BrickBlock)
             {
