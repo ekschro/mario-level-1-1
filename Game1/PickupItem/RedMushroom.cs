@@ -31,7 +31,7 @@ namespace Game1
             redMushroomSprite.Draw();  
         }
 
-        public Vector2 GameObjectLocation()
+        public Vector2 GetGameObjectLocation()
         {
             return pickupLocation;
         }

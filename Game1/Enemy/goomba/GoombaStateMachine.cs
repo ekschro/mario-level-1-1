@@ -36,6 +36,7 @@ namespace Game1
 
         public void BeFlipped()
         {
+            goombaSprite.FlipSprite();
             if (health != GoombaHealth.Flipped) 
             {
                 health = GoombaHealth.Flipped;
@@ -45,11 +46,6 @@ namespace Game1
 
         public void Update()
         {
-            if (health == GoombaHealth.Flipped)
-            {
-                health = GoombaHealth.Normal;
-                ChangeDirection();
-            }
         }
         public bool GetDirection()
         {

@@ -16,13 +16,14 @@ namespace Game1
         private List<IBlock> blocks;
         private List<IEnemy> enemies;
         private List<IPickup> pickups;
-
+        private List<MarioFireBall> projectiles;
         public IPlayer PlayerObject { get => playerObject; set => playerObject = value; }
         public IBackground BackgroundObject { get => backgroundObject; set => backgroundObject = value; }
         public List<IBlock> BlockObjects { get => blocks; }
         public List<IEnemy> EnemyObjects { get => enemies; }
         public List<IPickup> PickupObjects { get => pickups; }
         public List<IGameObject> LevelObjects { get => levelObjects; }
+        
 
         public ICamera LevelCamera { get => levelCamera; set => levelCamera = value; }
 
@@ -40,7 +41,7 @@ namespace Game1
             GetBlockObjects();
             GetEnemyObjects();
             GetPickupObjects();
-
+            
             collisionDetect = new CollisionDetect(game,this);
 
             levelCamera = new Camera(this);
@@ -51,7 +52,7 @@ namespace Game1
         {
             foreach (IGameObject GameObject in levelObjects)
             {
-                if (GameObject.GameObjectLocation().X > levelCamera.CameraPosition - 16  && GameObject.GameObjectLocation().X < levelCamera.CameraPosition + 400)
+                if (GameObject.GetGameObjectLocation().X > levelCamera.CameraPosition - 16  && GameObject.GetGameObjectLocation().X < levelCamera.CameraPosition + 400)
                     GameObject.Update();
             }
 
@@ -65,7 +66,7 @@ namespace Game1
             BackgroundObject.Draw();
             foreach (IGameObject GameObject in levelObjects)
             {
-                if (GameObject.GameObjectLocation().X > levelCamera.CameraPosition - 16 && GameObject.GameObjectLocation().X < levelCamera.CameraPosition + 400)
+                if (GameObject.GetGameObjectLocation().X > levelCamera.CameraPosition - 16 && GameObject.GetGameObjectLocation().X < levelCamera.CameraPosition + 400)
                     GameObject.Draw();
             }
         }
@@ -126,6 +127,7 @@ namespace Game1
             }
             this.pickups = pickupObjects;
         }
+        
         private void UpdateLevelObjects()
         {
             levelObjects = new List<IGameObject>();
@@ -134,6 +136,7 @@ namespace Game1
             levelObjects.AddRange(BlockObjects);
             levelObjects.AddRange(PickupObjects);
             levelObjects.AddRange(EnemyObjects);
+            
         }
     }
 }

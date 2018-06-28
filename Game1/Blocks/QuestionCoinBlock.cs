@@ -13,7 +13,7 @@ namespace Game1
         public float CurrentYPos { get; set; }
 
         private IBlockSprite questionCoinBlockSprite;
-        private Game1 myGame;
+        //private Game1 myGame;
         private Vector2 blockLocation;
         private int cyclePosition = 0;
         private int cycleLength = 16;
@@ -21,7 +21,7 @@ namespace Game1
         public QuestionCoinBlock(Game1 game, Vector2 location)
         {
             questionCoinBlockSprite = new QuestionCoinBlockSprite(game, this);
-            myGame = game;
+            //myGame = game;
             blockLocation = location;
         }
 
@@ -30,7 +30,7 @@ namespace Game1
             questionCoinBlockSprite.Draw();
         }
 
-        public Vector2 GameObjectLocation()
+        public Vector2 GetGameObjectLocation()
         {
             return blockLocation;
         }
@@ -50,7 +50,7 @@ namespace Game1
         public void TopCollision() { }
         public void BottomCollision()
         {
-            questionCoinBlockSprite = new UsedBlockSprite(myGame, new UsedBlock(myGame, blockLocation));
+            //questionCoinBlockSprite = new UsedBlockSprite(myGame, new UsedBlock(myGame, blockLocation));
         }
         public void LeftCollision() { }
         public void RightCollision() { }

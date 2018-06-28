@@ -33,7 +33,7 @@ namespace Game1
             fireflowerSprite.Draw();
         }
 
-        public Vector2 GameObjectLocation()
+        public Vector2 GetGameObjectLocation()
         {
             return pickupLocation;
         }

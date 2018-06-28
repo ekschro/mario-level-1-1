@@ -45,23 +45,30 @@ namespace Game1
 
         public void BeFlipped()
         {
+            /*
+            koopaSprite.FlipSprite();
             if (health == KoopaHealth.Normal || health == KoopaHealth.Flipped)
             {
                 health = KoopaHealth.Flipped;
             }
             else 
             {
-                ChangeDirection();
+                //ChangeDirection();
             }
+            */
+            BeStomped();
         }
 
         public void Update()
         {
+            /*
             if (health == KoopaHealth.Flipped)
             {
-                //health = KoopaHealth.Normal;
-                ChangeDirection();
+                //health = KoopaHealth.Stomped;
+
             }
+            */
+            
         }
         public bool GetDirection()
         {

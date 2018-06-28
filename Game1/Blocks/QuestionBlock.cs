@@ -13,21 +13,21 @@ namespace Game1
         public float CurrentYPos { get; set; }
 
         private IBlockSprite questionBlockSprite;
-        private IBlock usedBlockObject;
-        private Game1 myGame;
+        //private IBlock usedBlockObject;
+        //private Game1 myGame;
         private Vector2 blockLocation;
-        private Vector2 blockOriginalLocation;
+        //private Vector2 blockOriginalLocation;
         private int cyclePosition = 0;
         private int cycleLength = 8;
-        private bool jumping = false;
+        //private bool jumping = false;
 
         public QuestionBlock(Game1 game, Vector2 location)
         {
             questionBlockSprite = new QuestionBlockSprite(game, this);
-            usedBlockObject = new UsedBlock(game, location);
-            myGame = game;
+            //usedBlockObject = new UsedBlock(game, location);
+            //myGame = game;
             blockLocation = location;
-            blockOriginalLocation = location;
+            //blockOriginalLocation = location;
             //Jumping = false;
         }
 
@@ -36,7 +36,7 @@ namespace Game1
             questionBlockSprite.Draw();
         }
 
-        public Vector2 GameObjectLocation()
+        public Vector2 GetGameObjectLocation()
         {
             return blockLocation;
         }
@@ -61,9 +61,7 @@ namespace Game1
         {
             //Jump();
             //Update();
-            questionBlockSprite = new UsedBlockSprite(myGame, usedBlockObject);
-            
-
+            //questionBlockSprite = new UsedBlockSprite(myGame, usedBlockObject);
             //blockLocation.Y += 20;
             //questionBlockSprite = new UsedBlockSprite(myGame, this);
             
@@ -71,10 +69,12 @@ namespace Game1
         }
         public void LeftCollision() { }
         public void RightCollision() { }
+        /*
         public void Jump()
         {
-            jumping = true;
+            //jumping = true;
             //blockLocation.Y -= 20;  
         }
+        */
     }
 }

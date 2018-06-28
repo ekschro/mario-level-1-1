@@ -26,6 +26,7 @@ namespace Game1
         private static  MarioPhysics physics;
         private static Color marioColor;
         private static bool canJump;
+        //prvate static bool falling;
 
         public static bool CanJump { get => canJump; set => canJump = value; }
         public static ISprite MarioSprite { get => playerSprite; set => playerSprite = value; }
@@ -43,6 +44,8 @@ namespace Game1
         public static bool MovingLeft { get => movingLeft; set => movingLeft = value; }
         public static bool MovingDown { get => movingDown; set => movingDown = value; }
         public static Color MarioColor { get => marioColor; set => marioColor = value; }
+        public static bool Jumping { get; internal set; }
+        public static bool Falling { get; internal set; }
 
         public Mario(Game1 game, Vector2 vector)
         {
@@ -59,6 +62,7 @@ namespace Game1
             MovingRight = false;
             MovingLeft = false;
             canJump = true;
+            Falling = false;
         }
                 
 
@@ -74,7 +78,7 @@ namespace Game1
             physics.Update();
         }
         
-        public Vector2 GameObjectLocation()
+        public Vector2 GetGameObjectLocation()
         {
             return new Vector2(currentXPosition, currentYPosition);
         }

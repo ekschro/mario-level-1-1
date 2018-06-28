@@ -7,21 +7,27 @@ using System.Threading.Tasks;
 
 namespace Game1
 {
-    class MarioPhysics
+    class FireBallPhysics
     {
+        //private const int JUMPCALLS = 17;
 
         private Game1 game;
         private float delta;
         private int velCap;
         private float xVelocity;
         private float yVelocity;
+        private int counter;
+        private MarioFireBall fire;
 
-        public MarioPhysics(Game1 game,int velCap)
+        public FireBallPhysics(Game1 game, int velCap, MarioFireBall fireball)
         {
             this.game = game;
             this.velCap = velCap;
             xVelocity = 0;
             yVelocity = 0;
+            //counter = JUMPCALLS;
+            fire = fireball;
+            fireball.MovingUp = false;
         }
 
         public void Update()
@@ -33,7 +39,7 @@ namespace Game1
 
         public void NewPosX()
         {
-            if (Mario.MovingRight)
+            if (fire.MovingRight)
             {
                 if (xVelocity < velCap)
                 {
@@ -44,7 +50,7 @@ namespace Game1
                     xVelocity = velCap;
                 }
             }
-            else if (Mario.MovingLeft)
+            else if (fire.MovingLeft)
             {
                 if (Math.Abs(xVelocity) < velCap)
                 {
@@ -52,46 +58,30 @@ namespace Game1
                 }
                 else
                 {
-                    xVelocity = -1*velCap;
+                    xVelocity = velCap;
                 }
             }
-            else
-            {
-                if (Math.Abs(xVelocity) < 0.2)
-                {
-                    xVelocity = 0;
-                }
-                else if (xVelocity < 0)
-                {
-                    xVelocity += (float)(0.5 * 0.001 * Math.Pow(delta, 2));
-                }
-                else if (xVelocity > 0)
-                {
-                    xVelocity -= (float)(0.5 * 0.001 * Math.Pow(delta, 2));
-                }
-                
-            }
+            
 
-            Mario.CurrentXPosition += xVelocity;
+            fire.CurrentXPos += xVelocity;
         }
 
         public void NewPosY()
         {
-            if (Mario.MovingUp && Mario.CanJump && !Mario.Falling)
+            if (fire.MovingUp)
             {
                 yVelocity = (float)-4.5;
-                Mario.CanJump = false;
+                fire.MovingUp = false;
+
             }
             else if (yVelocity < 3.5)
             {
                 yVelocity += (float)(0.5 * 0.001 * Math.Pow(delta, 2));
             }
-            else
-            {
-                Mario.Falling = true;
-            }
 
-            Mario.CurrentYPosition += yVelocity;
+
+            fire.CurrentYPos += yVelocity;
+            
         }
     }
 }
