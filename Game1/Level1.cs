@@ -21,7 +21,7 @@ namespace Game1
         public List<IEnemy> EnemyObjects { get => enemies; }
         public List<IPickup> PickupObjects { get => pickups; }
         public List<IGameObject> LevelObjects { get => levelObjects; }
-        public List<MarioFireBall> ProjectileObjects { get => projectiles; set => projectiles = value; }
+        
 
         public ICamera LevelCamera { get => levelCamera; set => levelCamera = value; }
 
@@ -38,7 +38,7 @@ namespace Game1
             GetBlockObjects();
             GetEnemyObjects();
             GetPickupObjects();
-            GeProjectileObjects();
+            
             collisionDetect = new CollisionDetect(game,this);
 
             levelCamera = new Camera(this);
@@ -109,16 +109,7 @@ namespace Game1
             }
             this.pickups = pickupObjects;
         }
-        private void GeProjectileObjects()
-        {
-            List<MarioFireBall> projectiles = new List<MarioFireBall>();
-            foreach (IGameObject projectile in levelObjects)
-            {
-                if (projectiles is MarioFireBall)
-                    projectiles.Add((MarioFireBall)projectile);
-            }
-            this.projectiles = projectiles;
-        }
+        
         private void UpdateLevelObjects()
         {
             levelObjects = new List<IGameObject>();
@@ -126,7 +117,7 @@ namespace Game1
             levelObjects.AddRange(BlockObjects);
             levelObjects.AddRange(PickupObjects);
             levelObjects.AddRange(EnemyObjects);
-            levelObjects.AddRange(ProjectileObjects);
+            
         }
     }
 }
