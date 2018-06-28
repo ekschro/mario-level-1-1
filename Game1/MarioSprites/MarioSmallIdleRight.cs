@@ -74,7 +74,8 @@ namespace Game1
 
         public void DeadMarioCommandCalled()
         {
-            Mario.MarioSprite = new MarioDead(myGame);
+            if (!(Mario.MarioSprite is MarioDead))
+                Mario.MarioSprite = new MarioDead(myGame);
         }
 
         public void Update()
