@@ -11,11 +11,6 @@ namespace Game1
     {
         private Game1 myGame;
 
-        ICommand upCommand;
-        ICommand downCommand;
-        ICommand leftCommand;
-        ICommand rightCommand;
-
         private int invulnerabilityFrames = 100;
         private int invulnerabilityTimer = 100;
 
@@ -106,6 +101,8 @@ namespace Game1
         public void EnemyCollisionRespondTop(IEnemy enemy)
         {
             enemy.BeStomped();
+            if (enemy is Goomba)
+                objectLevel.TemporaryObjects.Add(new FlattenedGoomba(myGame, enemy.GetGameObjectLocation()));
             Mario.Bounce = true;
             objectLevel.EnemyObjects.Remove(enemy);
         }
