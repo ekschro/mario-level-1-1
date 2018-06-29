@@ -107,9 +107,9 @@ namespace Game1
         public void EnemyCollisionRespondTop(IEnemy enemy)
         {
             enemy.BeStomped();
+            Mario.Bounce = true;
             if (enemy is Goomba)
             {
-                Mario.Bounce = true;
                 objectLevel.EnemyObjects.Remove(enemy);
             }
         }
