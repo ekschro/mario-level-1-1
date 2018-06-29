@@ -144,12 +144,12 @@ namespace Game1
                         else if (intersect.Height > intersect.Width && enemyX < blockX)
                         {
                             Console.WriteLine("Collision!");
-                            collision.EnemyCollisionBlockandEnemyRespondLeft(enemyArray[j], intersect.Width, true);
+                            collision.EnemyCollisionBlockandEnemyRespondRight(enemyArray[j], intersect.Width, true);
                         }
                         else if (intersect.Height > intersect.Width && enemyX > blockX)
                         {
                             Console.WriteLine("Collision!!");
-                            collision.EnemyCollisionBlockandEnemyRespondRight(enemyArray[j], intersect.Width, false);
+                            collision.EnemyCollisionBlockandEnemyRespondLeft(enemyArray[j], intersect.Width, false);
                         }
                     }
                 }
@@ -184,11 +184,15 @@ namespace Game1
 
                         if (intersect.Height > intersect.Width && enemyX < enemyArrayX)
                         {
-                            collision.EnemyCollisionBlockandEnemyRespondXDirection(enemyArray[i], intersect.Width, true); ;
+                            collision.EnemyCollisionBlockandEnemyRespondRight(enemyArray[j], intersect.Width, true);
+                            collision.EnemyCollisionBlockandEnemyRespondLeft(enemyArray[i], intersect.Width, true);
+                            //collision.EnemyCollisionBlockandEnemyRespondXDirection(enemyArray[i], intersect.Width, true); ;
                         }
                         else if (intersect.Height > intersect.Width && enemyX > enemyArrayX)
                         {
-                            collision.EnemyCollisionBlockandEnemyRespondXDirection(enemyArray[i], intersect.Width, true);
+                            collision.EnemyCollisionBlockandEnemyRespondLeft(enemyArray[j], intersect.Width, true);
+                            collision.EnemyCollisionBlockandEnemyRespondRight(enemyArray[i], intersect.Width, true);
+                            //collision.EnemyCollisionBlockandEnemyRespondXDirection(enemyArray[i], intersect.Width, true);
                         }
                         else if (intersect.Height < intersect.Width && enemyY < enemyArrayY)
                         {

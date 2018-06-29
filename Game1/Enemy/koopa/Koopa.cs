@@ -77,8 +77,8 @@ namespace Game1
             if (cyclePosition == cycleLength)
             {
                 cyclePosition = 0;
-                KoopaSprite.Update();
                 stateMachine.Update();
+                KoopaSprite.Update();
             }
         }
         public bool GetDead()

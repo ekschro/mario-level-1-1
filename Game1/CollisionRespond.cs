@@ -261,7 +261,6 @@ namespace Game1
             }
             else if (pickup is GreenMushroom)
             {
-                //Mario.marioSprite.BigMarioCommandCalled();
             }
             else if (pickup is RedMushroom)
             {
