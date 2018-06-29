@@ -112,12 +112,7 @@ namespace Game1
 
             
         }
-        public static void Update2()
-        {
-            if (!(Mario.MarioSprite is MarioDead))
-                physics.Update();
-            
-        }
+     
         public Vector2 GetGameObjectLocation()
         {
             return new Vector2(currentXPosition, currentYPosition);
