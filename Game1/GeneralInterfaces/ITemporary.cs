@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Game1
 {
-    public interface IBlock : IGameObject
+    public interface ITemporary : IGameObject
     {
     }
 }

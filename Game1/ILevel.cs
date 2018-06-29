@@ -13,6 +13,7 @@ namespace Game1
         List<IBlock> BlockObjects { get; }
         List<IEnemy> EnemyObjects { get; }
         List<IPickup> PickupObjects { get; }
+        List<ITemporary> TemporaryObjects { get; }
         IPlayer PlayerObject { get; set; }
         ICamera LevelCamera { get; set; }
     }

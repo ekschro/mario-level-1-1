@@ -7,13 +7,15 @@ using Microsoft.Xna.Framework;
 
 namespace Game1
 {
-    public class CoinSprite : IPickupSprite
+    public class CoinSprite : ITemporarySprite
     {
         private Coin coinObject;
         private Game1 myGame;
         private int currentFrame;
         private int startFrame;
         private int endFrame;
+        private int cyclePosition = 0;
+        private int cycleLength = 16;
 
         public CoinSprite(Game1 game, Coin coin)
         {
@@ -31,9 +33,14 @@ namespace Game1
 
         public void Update()
         {
-            currentFrame++;
-            if (currentFrame == endFrame)
-                currentFrame = startFrame;
+            cyclePosition++;
+            if (cyclePosition == cycleLength)
+            {
+                cyclePosition = 0;
+                currentFrame++;
+                if (currentFrame == endFrame)
+                    currentFrame = startFrame;
+            }
         }
 
         public void Draw()

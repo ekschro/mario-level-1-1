@@ -265,7 +265,7 @@ namespace Game1
                     {
                         collision.EnemyCollisionRespondTop( enemyArray[i]);
                     }
-                    else if (intersect.Height < intersect.Width && playerY > enemyY)
+                    else if (intersect.Height < intersect.Width && playerY > enemyY-4)
                     {
                         collision.EnemyCollisionRespondBottom( enemyArray[i]);
                     }

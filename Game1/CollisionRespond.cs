@@ -18,7 +18,6 @@ namespace Game1
 
         private int invulnerabilityFrames = 100;
         private int invulnerabilityTimer = 100;
-        private bool invulnerability = false;
 
         private ILevel objectLevel;
 
@@ -65,7 +64,7 @@ namespace Game1
             {
                 objectLevel.BlockObjects.Remove(block);
                 objectLevel.BlockObjects.Add(new UsedBlock(myGame, block.GetGameObjectLocation()));
-                objectLevel.PickupObjects.Add(new Coin(myGame, block.GetGameObjectLocation()));
+                objectLevel.TemporaryObjects.Add(new Coin(myGame, block.GetGameObjectLocation()));
             }
             else if (block is BrickBlockWithStar)
             {
@@ -83,7 +82,7 @@ namespace Game1
             {
                 objectLevel.BlockObjects.Remove(block);
                 objectLevel.BlockObjects.Add(new UsedBlock(myGame, block.GetGameObjectLocation()));
-                objectLevel.PickupObjects.Add(new Coin(myGame, block.GetGameObjectLocation()));
+                objectLevel.TemporaryObjects.Add(new Coin(myGame, block.GetGameObjectLocation()));
             }
 
             Mario.CanJump = false;
@@ -120,19 +119,19 @@ namespace Game1
             {
                 enemy.BeStomped();
                 objectLevel.EnemyObjects.Remove(enemy);
-            } else if (invulnerability)
+            } else if (Mario.Invulnerability)
             {
 
             }
             else if (Mario.MarioSprite.isFire())
             {
                 Mario.MarioSprite.BigMarioCommandCalled();
-                invulnerability = true;
+                Mario.Invulnerability = true;
             }
             else if (!Mario.MarioSprite.isSmall())
             {
                 Mario.MarioSprite.SmallMarioCommandCalled();
-                invulnerability = true;
+                Mario.Invulnerability = true;
             }
             else
             {
@@ -148,19 +147,19 @@ namespace Game1
                 enemy.BeFlipped();
                 //objectLevel.EnemyObjects.Remove(enemy);
             }
-            else if (invulnerability)
+            else if (Mario.Invulnerability)
             {
 
             }
             else if (Mario.MarioSprite.isFire())
             {
                 Mario.MarioSprite.BigMarioCommandCalled();
-                invulnerability = true;
+                Mario.Invulnerability = true;
             }
             else if (!Mario.MarioSprite.isSmall())
             {
                 Mario.MarioSprite.SmallMarioCommandCalled();
-                invulnerability = true;
+                Mario.Invulnerability = true;
             }
             else
             {
@@ -175,19 +174,19 @@ namespace Game1
                 enemy.BeFlipped();
                 //objectLevel.EnemyObjects.Remove(enemy);
             }
-            else if (invulnerability)
+            else if (Mario.Invulnerability)
             {
 
             }
             else if (Mario.MarioSprite.isFire())
             {
                 Mario.MarioSprite.BigMarioCommandCalled();
-                invulnerability = true;
+                Mario.Invulnerability = true;
             }
             else if (!Mario.MarioSprite.isSmall())
             {
                 Mario.MarioSprite.SmallMarioCommandCalled();
-                invulnerability = true;
+                Mario.Invulnerability = true;
             }
             else
             {
@@ -259,7 +258,7 @@ namespace Game1
             {
                 objectLevel.PlayerObject.IsStar = true;
                 invulnerabilityTimer = 1000;
-                invulnerability = true;
+                Mario.Invulnerability = true;
             }
 
             objectLevel.PickupObjects.Remove(pickup);
@@ -294,7 +293,7 @@ namespace Game1
             {
                 objectLevel.PlayerObject.IsStar = true;
                 invulnerabilityTimer = 1000;
-                invulnerability = true;
+                Mario.Invulnerability = true;
             }
 
             objectLevel.PickupObjects.Remove(pickup);
@@ -329,7 +328,7 @@ namespace Game1
             {
                 objectLevel.PlayerObject.IsStar = true;
                 invulnerabilityTimer = 1000;
-                invulnerability = true;
+                Mario.Invulnerability = true;
             }
 
             objectLevel.PickupObjects.Remove(pickup);
@@ -365,7 +364,7 @@ namespace Game1
             {
                 objectLevel.PlayerObject.IsStar = true;
                 invulnerabilityTimer = 1000;
-                invulnerability = true;
+                Mario.Invulnerability = true;
             }
 
             objectLevel.PickupObjects.Remove(pickup);
@@ -373,14 +372,14 @@ namespace Game1
 
         public void Update()
         {
-            if (invulnerability)
+            if (Mario.Invulnerability)
             {
                 invulnerabilityTimer--;
             }
             if (invulnerabilityTimer == 0)
             {
                 invulnerabilityTimer = invulnerabilityFrames;
-                invulnerability = false;
+                Mario.Invulnerability = false;
                 objectLevel.PlayerObject.IsStar = false;
             }
         }

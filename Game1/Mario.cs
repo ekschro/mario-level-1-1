@@ -6,7 +6,6 @@ namespace Game1
     {
         public float CurrentXPos { get; set; }
         public float CurrentYPos { get; set; }
-
         private static float currentXPosition;
         private static float currentYPosition;
         private static float oldXPosition;
@@ -19,8 +18,10 @@ namespace Game1
         private static int totalMarioColumns = 28;
         private static int totalMarioRows = 3;
         private static bool isStar = false;
+        private static bool invulnerability = false;
         private static int currentFrame = 0;
         private static int colorStartingTime;
+        private static int deathTimer;
         private static int colorTimer;
         private static ISprite playerSprite;
         private static  MarioPhysics physics;
@@ -35,6 +36,7 @@ namespace Game1
         public static int TotalMarioRows { get => totalMarioRows; set => totalMarioRows = value; }
         public static int TotalMarioColumns { get => totalMarioColumns; set => totalMarioColumns = value; }
         public bool IsStar { get => isStar; set => isStar = value; }
+        public static bool Invulnerability { get => invulnerability; set => invulnerability = value; }
         public static int CurrentFrame { get => currentFrame; set => currentFrame = value; }
         public static Game1 MyGame { get => myGame; set => myGame = value; }
         public static float OldXPosition { get => oldXPosition; set => oldXPosition = value; }
@@ -59,6 +61,8 @@ namespace Game1
             MarioSprite = new MarioSmallIdleRight(MyGame);
             colorStartingTime = 5;
             colorTimer = 0;
+            deathTimer = 0;
+
             MovingUp = false;
             MovingDown = false;
             MovingRight = false;
@@ -102,12 +106,19 @@ namespace Game1
 
                 colorTimer = colorStartingTime;
             }
-            else if (isStar && colorTimer > 0)
+            else if (Invulnerability && colorTimer == 0)
+            {
+                if(MarioColor == Color.White)
+                    MarioColor = Color.Transparent;
+                else
+                    MarioColor = Color.White;
+                colorTimer = colorStartingTime;
+            }
+            else if (colorTimer > 0)
                 colorTimer--;
             else
             {
                 MarioColor = Color.White;
-                
             }
         }
 
