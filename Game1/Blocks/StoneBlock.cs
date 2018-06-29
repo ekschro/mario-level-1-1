@@ -10,17 +10,21 @@ namespace Game1
     public class StoneBlock : IBlock
     {
         public float CurrentXPos { get; set; }
-        public float CurrentYPos { get; set; }
+        public float CurrentYPos { get; set; } 
 
         private IBlockSprite stoneBlockSprite;
         //private Game1 myGame;
         private Vector2 blockLocation;
 
-        public StoneBlock(Game1 game, Vector2 location)
+        private Vector2 blockSize;
+        public Vector2 BlockSize { get => blockSize; set => blockSize = value; }
+
+        public StoneBlock(Game1 game, Vector2 location, Vector2 size)
         {
             stoneBlockSprite = new StoneBlockSprite(game, this);
             //myGame = game;
             blockLocation = location;
+            blockSize = size;
         }
 
         public void Draw()

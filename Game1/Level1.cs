@@ -55,6 +55,8 @@ namespace Game1
             {
                 if (GameObject.GetGameObjectLocation().X > levelCamera.CameraPosition - 16  && GameObject.GetGameObjectLocation().X < levelCamera.CameraPosition + 400)
                     GameObject.Update();
+                else if (GameObject is StoneBlock)
+                    GameObject.Update();
             }
             foreach (IGameObject GameObject in EnemyObjects)
             {
@@ -68,9 +70,9 @@ namespace Game1
                     pickupObjectArray[i].Update();
             }
 
+            levelCamera.Update();
 
             collisionDetect.Update();
-            levelCamera.Update();
             //UpdateLevelObjects();
         }
 
@@ -82,6 +84,8 @@ namespace Game1
             {
                 if (GameObject.GetGameObjectLocation().X > levelCamera.CameraPosition - 16 && GameObject.GetGameObjectLocation().X < levelCamera.CameraPosition + 400)
                     GameObject.Draw();
+                else if (GameObject is StoneBlock)
+                    GameObject.Update();
             }
             foreach (IGameObject GameObject in EnemyObjects)
             {

@@ -58,8 +58,16 @@ namespace Game1
             {
                 int blockX = (int)blockArray[i].GetGameObjectLocation().X;
                 int blockY = (int)blockArray[i].GetGameObjectLocation().Y;
+                Rectangle blockBox;
 
-                Rectangle blockBox = new Rectangle(blockX, blockY, 16, 16);
+                if (!(blockArray[i] is StoneBlock))
+                    blockBox = new Rectangle(blockX, blockY, 16, 16);
+                else
+                {
+                    StoneBlock block = (StoneBlock)blockArray[i];
+                    blockBox = new Rectangle(blockX, blockY, (int)block.BlockSize.X, (int)block.BlockSize.Y);
+                }
+
                 Rectangle intersect;
 
                 if (playerBox.Intersects(blockBox))
@@ -101,6 +109,7 @@ namespace Game1
             //int playerY = (int)player.GetGameObjectLocation().Y;
             Rectangle enemyBox;
 
+
             bool bottom = false;
             int size = 0; 
             for (int j = 0; j < enemyArray.Length;j++)
@@ -113,16 +122,26 @@ namespace Game1
                 
                 for (int i = 0; i < blockArray.Length; i++)
                 {
+                    Rectangle blockBox;
+
                     int blockX = (int)blockArray[i].GetGameObjectLocation().X;
                     int blockY = (int)blockArray[i].GetGameObjectLocation().Y;
 
-                    Rectangle blockBox = new Rectangle(blockX, blockY, 16, 16);
+
+                    if (!(blockArray[i] is StoneBlock))
+                        blockBox = new Rectangle(blockX, blockY, 16, 16);
+                    else
+                    {
+                        StoneBlock block = (StoneBlock)blockArray[i];
+                        blockBox = new Rectangle(blockX, blockY, (int)block.BlockSize.X, (int)block.BlockSize.Y);
+                    }
+
                     Rectangle intersect;
 
                     if (enemyBox.Intersects(blockBox))
                     {
                         Rectangle.Intersect(ref enemyBox, ref blockBox, out intersect);
-                        if (intersect.Height < intersect.Width && enemyY < blockY)
+                        if (intersect.Height < intersect.Width && enemyY < blockY && enemyArray[j] is MarioFireBall)
                         {
                             MarioFireBall x = (MarioFireBall)enemyArray[j];
                             x.Update();

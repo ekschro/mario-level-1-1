@@ -29,8 +29,12 @@ namespace Game1
                 string GameObjectString = "";
                 string PositionXString = "";
                 string PositionYString = "";
+                string SizeXString = "";
+                string SizeYString = "";
                 int PositionX = 0;
                 int PositionY = 0;
+                int SizeX = 16;
+                int SizeY = 16;
                 
                 while(LoaderInput.Peek() >= 0 && (NextChar = (char)LoaderInput.Read()) != ',')
                 {
@@ -41,23 +45,48 @@ namespace Game1
                 {
                     PositionXString = PositionXString + NextChar;
                 }
-
-                while (LoaderInput.Peek() >= 0 && (NextChar = (char)LoaderInput.Read()) != '\n')
-                {
-                    PositionYString = PositionYString + NextChar;
-                }
                 
+
+                if(GameObjectString != "StoneBlock")
+                {
+                    while (LoaderInput.Peek() >= 0 && (NextChar = (char)LoaderInput.Read()) != '\n')
+                    {
+                        PositionYString = PositionYString + NextChar;
+                    }
+
+                } else
+                {
+                    while (LoaderInput.Peek() >= 0 && (NextChar = (char)LoaderInput.Read()) != ',')
+                    {
+                        PositionYString = PositionYString + NextChar;
+                    }
+
+                    while (LoaderInput.Peek() >= 0 && (NextChar = (char)LoaderInput.Read()) != ',')
+                    {
+                        SizeXString = SizeXString + NextChar;
+                    }
+
+                    while (LoaderInput.Peek() >= 0 && (NextChar = (char)LoaderInput.Read()) != '\n')
+                    {
+                        SizeYString = SizeYString + NextChar;
+                    }
+
+                    SizeX = Convert.ToInt32(SizeXString);
+                    SizeY = Convert.ToInt32(SizeYString);
+                }
+
                 PositionX = Convert.ToInt32(PositionXString);
                 PositionY = Convert.ToInt32(PositionYString);
 
-                gameObjects.Add(GenerateObject(GameObjectString, PositionX, PositionY));
+                gameObjects.Add(GenerateObject(GameObjectString, PositionX, PositionY, SizeX, SizeY));
             }
         }
 
 
-        public IGameObject GenerateObject(string objectName, int positionX, int positionY)
+        public IGameObject GenerateObject(string objectName, int positionX, int positionY, int sizeX, int sizeY)
         {
             Vector2 Position = new Vector2((float)positionX, (float)positionY);
+            Vector2 Size = new Vector2((float)sizeX, (float)sizeY);
             IGameObject GameObject = new Coin(myGame,Position);
             switch (objectName) {
                 case "Mario" :
@@ -112,7 +141,7 @@ namespace Game1
                     GameObject = new BrickBlock(myGame, Position);
                     break;
                 case "StoneBlock":
-                    GameObject = new StoneBlock(myGame, Position);
+                    GameObject = new StoneBlock(myGame, Position, Size);
                     break;
                 case "TopLeftPipeBlock":
                     GameObject = new TopLeftPipeBlock(myGame, Position);

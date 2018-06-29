@@ -47,12 +47,13 @@ namespace Game1
             {
                 cyclePosition = 0;
                 coinSprite.Update();
-                timeBeforeDisappearing--;
             }
             if (pickupLocation.Y > pickupOriginalLocation.Y - 30 )
             {
                 pickupLocation.Y -= 1;
             }
+
+            timeBeforeDisappearing--;
 
             if (timeBeforeDisappearing <= 0)
                 myGame.CurrentLevel.PickupObjects.Remove(this);
