@@ -13,7 +13,7 @@ namespace Game1
         public float CurrentYPos { get; set; }
         private bool falling;
         public bool IsFalling { get => falling; set => falling = value; }
-
+        public bool IsStomped { get; set; }
         private static IEnemySprite emptySprite;
         public static IEnemySprite EmptySprite { get => emptySprite; set => emptySprite = value; }
         public IEnemyStateMachine GetStateMachine { get; }

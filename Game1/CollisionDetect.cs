@@ -114,13 +114,13 @@ namespace Game1
                 int enemyX = (int)enemyArray[j].GetGameObjectLocation().X;
                 int enemyY = (int)enemyArray[j].GetGameObjectLocation().Y;
 
-                if (enemyArray[j] is Koopa)
+                if (enemyArray[j] is Koopa && !enemyArray[j].IsStomped)
                 {
                     enemyBox = new Rectangle(enemyX, enemyY+8, 16, 16);
                 }
                 else
                 {
-                    enemyBox = new Rectangle(enemyX, enemyY, 16, 16);
+                    enemyBox = new Rectangle(enemyX, enemyY+2, 16, 16);
                 }
 
                 blockArray = level1.BlockObjects.ToArray();
