@@ -23,5 +23,6 @@ namespace Game1
         void BigMarioCommandCalled();
         void FireMarioCommandCalled();
         void DeadMarioCommandCalled();
+       
     }  
 }

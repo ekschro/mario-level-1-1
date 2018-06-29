@@ -82,10 +82,37 @@ namespace Game1
 
         public void Update()
         {
-            if(!(Mario.MarioSprite is MarioDead))
+            if (!(Mario.MarioSprite is MarioDead))
+            {
                 physics.Update();
+                if (physics.XVelocity == 0 && Mario.MarioSprite is MarioBigWalkRight)
+                {
+                    Mario.MarioSprite = new MarioBigIdleRight(myGame);
+                } else if (physics.XVelocity == 0 && Mario.MarioSprite is MarioBigWalkLeft)
+                {
+                    Mario.MarioSprite = new MarioBigIdleLeft(myGame);
+                }
+                else if (physics.XVelocity == 0 && Mario.MarioSprite is MarioSmallWalkRight)
+                {
+                    Mario.MarioSprite = new MarioSmallIdleRight(myGame);
+                }
+                else if (physics.XVelocity == 0 && Mario.MarioSprite is MarioSmallWalkLeft)
+                {
+                    Mario.MarioSprite = new MarioSmallIdleLeft(myGame);
+                }
+                else if (physics.XVelocity == 0 && Mario.MarioSprite is MarioFireWalkRight)
+                {
+                    Mario.MarioSprite = new MarioFireIdleRight(myGame);
+                }
+                else if (physics.XVelocity == 0 && Mario.MarioSprite is MarioFireWalkLeft)
+                {
+                    Mario.MarioSprite = new MarioFireIdleLeft(myGame);
+                }
+            }
+
+            
         }
-        
+     
         public Vector2 GetGameObjectLocation()
         {
             return new Vector2(currentXPosition, currentYPosition);
