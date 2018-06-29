@@ -22,10 +22,10 @@ namespace Game1
             if (health == KoopaHealth.Flipped)
             {
                 facingLeft = !facingLeft;
-                if (facingLeft == true)
-                    koopaSprite.ChangeFrame(2, 4);
-                else
+                if (facingLeft == false)
                     koopaSprite.ChangeFrame(0, 2);
+                else
+                    koopaSprite.ChangeFrame(2, 4);
                 health = KoopaHealth.Normal;
             }
             else
