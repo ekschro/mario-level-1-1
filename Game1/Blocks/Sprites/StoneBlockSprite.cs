@@ -28,15 +28,13 @@ namespace Game1
 
         public void Draw()
         {
-            int width = TextureWareHouse.blockTexture.Width / 13;
-
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(stoneBlockObject.GetGameObjectLocation().X);
 
-            Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, TextureWareHouse.blockTexture.Height);
+            Rectangle sourceRectangle = new Rectangle(0,0,(int)stoneBlockObject.BlockSize.X,(int)stoneBlockObject.BlockSize.Y);
             Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)stoneBlockObject.GetGameObjectLocation().Y, (int)stoneBlockObject.BlockSize.X, (int)stoneBlockObject.BlockSize.Y);
 
-            myGame.SpriteBatch.Begin();
-            myGame.SpriteBatch.Draw(TextureWareHouse.blockTexture, destinationRectangle, sourceRectangle, Color.White);
+            myGame.SpriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.LinearWrap, null, null);
+            myGame.SpriteBatch.Draw(TextureWareHouse.stoneBlockTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.SpriteBatch.End();
         }
     }

@@ -9,6 +9,7 @@ namespace Game1 {
         public static Texture2D koopaTexture;
         public static Texture2D goombaTexture;
         public static Texture2D blockTexture;
+        public static Texture2D stoneBlockTexture;
         public static Texture2D backgroundTexture;
         public static Texture2D fireballs;
 
@@ -22,6 +23,7 @@ namespace Game1 {
             koopaTexture = myGame.Content.Load<Texture2D>("koopa1");
             goombaTexture = myGame.Content.Load<Texture2D>("goomba1");
             blockTexture = myGame.Content.Load<Texture2D>("tiles");
+            stoneBlockTexture = myGame.Content.Load<Texture2D>("stone");
             backgroundTexture = myGame.Content.Load<Texture2D>("1-1");
             fireballs = myGame.Content.Load<Texture2D>("fireball");
         }

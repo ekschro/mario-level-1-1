@@ -16,7 +16,6 @@ namespace Game1
         private List<IBlock> blocks;
         private List<IEnemy> enemies;
         private List<IPickup> pickups;
-        private List<MarioFireBall> projectiles;
         public IPlayer PlayerObject { get => playerObject; set => playerObject = value; }
         public IBackground BackgroundObject { get => backgroundObject; set => backgroundObject = value; }
         public List<IBlock> BlockObjects { get => blocks; }
@@ -85,7 +84,7 @@ namespace Game1
                 if (GameObject.GetGameObjectLocation().X > levelCamera.CameraPosition - 16 && GameObject.GetGameObjectLocation().X < levelCamera.CameraPosition + 400)
                     GameObject.Draw();
                 else if (GameObject is StoneBlock)
-                    GameObject.Update();
+                    GameObject.Draw();
             }
             foreach (IGameObject GameObject in EnemyObjects)
             {
