@@ -105,10 +105,7 @@ namespace Game1
 
         public void BlockEnemyCollisionDetect()
         {
-            //int playerX = (int)player.GetGameObjectLocation().X;
-            //int playerY = (int)player.GetGameObjectLocation().Y;
             Rectangle enemyBox;
-
 
             bool bottom = false;
             int size = 0; 
@@ -116,7 +113,15 @@ namespace Game1
             {
                 int enemyX = (int)enemyArray[j].GetGameObjectLocation().X;
                 int enemyY = (int)enemyArray[j].GetGameObjectLocation().Y;
-                enemyBox = new Rectangle(enemyX, enemyY, 16, 16);
+
+                if (enemyArray[j] is Koopa)
+                {
+                    enemyBox = new Rectangle(enemyX, enemyY+8, 16, 16);
+                }
+                else
+                {
+                    enemyBox = new Rectangle(enemyX, enemyY, 16, 16);
+                }
 
                 blockArray = level1.BlockObjects.ToArray();
                 
@@ -248,6 +253,15 @@ namespace Game1
 
                 Rectangle enemyBox = new Rectangle(enemyX, enemyY, 16, 16);
                 Rectangle intersect;
+
+                if (enemyArray[i] is Koopa)
+                {
+                    enemyBox = new Rectangle(enemyX, enemyY + 8, 16, 16);
+                }
+                else
+                {
+                    enemyBox = new Rectangle(enemyX, enemyY, 16, 16);
+                }
 
                 if (playerBox.Intersects(enemyBox))
                 {
