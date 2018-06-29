@@ -11,17 +11,17 @@ using System.Collections;
 
 namespace Game1
 {
-    public class HiddenStarBlockSprite : IBlockSprite
+    public class FlagBlockSprite : IBlockSprite
     {
-        private HiddenStarBlock hiddenStarBlockObject;
+        private FlagBlock flagBlockObject;
         private Game1 myGame;
         private int currentFrame;
 
-        public HiddenStarBlockSprite(Game1 game, IBlock hiddenStarBlock)
+        public FlagBlockSprite(Game1 game, IBlock flag)
         {
-            hiddenStarBlockObject = (HiddenStarBlock)hiddenStarBlock;
+            flagBlockObject = (FlagBlock)flag;
             myGame = game;
-            currentFrame = 0;
+            currentFrame = 2;
         }
 
         public void Update()
@@ -33,15 +33,14 @@ namespace Game1
         {
             int width = TextureWareHouse.blockTexture.Width / 13;
 
-            int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(hiddenStarBlockObject.GetGameObjectLocation().X);
+            int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(flagBlockObject.GetGameObjectLocation().X);
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, TextureWareHouse.blockTexture.Height);
-            Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)hiddenStarBlockObject.GetGameObjectLocation().Y, width, TextureWareHouse.blockTexture.Height);
+            Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)flagBlockObject.GetGameObjectLocation().Y, width, TextureWareHouse.blockTexture.Height);
 
             myGame.SpriteBatch.Begin();
-            myGame.SpriteBatch.Draw(TextureWareHouse.blockTexture, destinationRectangle, sourceRectangle, Color.Transparent);
+            myGame.SpriteBatch.Draw(TextureWareHouse.blockTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.SpriteBatch.End();
         }
-
     }
 }

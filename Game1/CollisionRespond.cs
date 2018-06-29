@@ -31,7 +31,7 @@ namespace Game1
 
         public void BlockCollisionRespondTop(IBlock block,int height,bool standing)
         {
-            if (!(block is HiddenBlock)&& !(block is HiddenStarBlock)&& !(block is HiddenGreenMushroomBlock) && !standing)
+            if (!(block is HiddenGreenMushroomBlock) && !standing)
                 Mario.CurrentYPosition -= height;
             Mario.CanJump = true;
             Mario.Falling = false;
@@ -52,11 +52,6 @@ namespace Game1
 
             if (block is BrickBlock && !Mario.MarioSprite.isSmall())
                 objectLevel.BlockObjects.Remove(block);
-            else if (block is HiddenBlock)
-            {
-                objectLevel.BlockObjects.Remove(block);
-                objectLevel.BlockObjects.Add(new UsedBlock(myGame, block.GetGameObjectLocation()));
-            }
             else if (block is QuestionPowerUpBlock)
             {
                 objectLevel.BlockObjects.Remove(block);
@@ -72,7 +67,7 @@ namespace Game1
                 objectLevel.BlockObjects.Add(new UsedBlock(myGame, block.GetGameObjectLocation()));
                 objectLevel.PickupObjects.Add(new Coin(myGame, block.GetGameObjectLocation()));
             }
-            else if (block is HiddenStarBlock)
+            else if (block is BrickBlockWithStar)
             {
                 objectLevel.BlockObjects.Remove(block);
                 objectLevel.BlockObjects.Add(new UsedBlock(myGame, block.GetGameObjectLocation()));
@@ -84,6 +79,12 @@ namespace Game1
                 objectLevel.BlockObjects.Add(new UsedBlock(myGame, block.GetGameObjectLocation()));
                 objectLevel.PickupObjects.Add(new GreenMushroom(myGame, block.GetGameObjectLocation()));
             }
+            else if (block is BrickBlockWithManyCoins)
+            {
+                objectLevel.BlockObjects.Remove(block);
+                objectLevel.BlockObjects.Add(new UsedBlock(myGame, block.GetGameObjectLocation()));
+                objectLevel.PickupObjects.Add(new Coin(myGame, block.GetGameObjectLocation()));
+            }
 
             Mario.CanJump = false;
             Mario.Falling = true;
@@ -93,13 +94,13 @@ namespace Game1
 
         public void BlockCollisionRespondRight(IBlock block,int width,bool right)
         {
-            if (!(block is HiddenBlock) && !(block is HiddenStarBlock) && !(block is HiddenGreenMushroomBlock) && !right)
+            if (!(block is HiddenGreenMushroomBlock) && !right)
                 Mario.CurrentXPosition += width;
         }
 
         public void BlockCollisionRespondLeft(IBlock block,int width,bool left)
         {
-            if (!(block is HiddenBlock) && !(block is HiddenStarBlock) && !(block is HiddenGreenMushroomBlock) && !left)
+            if (!(block is HiddenGreenMushroomBlock) && !left)
                 Mario.CurrentXPosition -= width;
         }
 

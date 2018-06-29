@@ -33,7 +33,7 @@ namespace Game1
             stateMachine = new GoombaStateMachine(GoombaSprite);
             //yVelocity = 0;
 
-            physics = new GeneralPhysics(game,this,1);
+            physics = new GeneralPhysics(game,this,2);
         }
 
         public void BeFlipped()

@@ -87,9 +87,6 @@ namespace Game1
                 case "HiddenBlockWith1Up":
                     GameObject = new HiddenGreenMushroomBlock(myGame, Position);
                     break;
-                case "HiddenBlockWithStar":
-                    GameObject = new HiddenStarBlock(myGame, Position);
-                    break;
                 case "StairBlock":
                     GameObject = new StairBlock(myGame, Position);
                     break;

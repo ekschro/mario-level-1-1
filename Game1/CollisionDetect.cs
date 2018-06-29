@@ -71,12 +71,12 @@ namespace Game1
                         collision.BlockCollisionRespondTop(blockArray[i],intersect.Height,standing);
                         standing = true;
                     }
-                    else if (intersect.Height < intersect.Width && playerY > blockY && !(blockArray[i] is HiddenBlock)) //Temp fix
+                    else if (intersect.Height < intersect.Width && playerY > blockY && !(blockArray[i] is HiddenGreenMushroomBlock)) //Temp fix
                     {
                         collision.BlockCollisionRespondBottom(blockArray[i],intersect.Height,head);
                         head = true;
                     }
-                    else if (intersect.Height < intersect.Width && playerY > blockY /*&& (blockArray[i] is HiddenBlock)*/ && Mario.MovingUp)
+                    else if (intersect.Height < intersect.Width && playerY > blockY && Mario.MovingUp)
                     {
                         collision.BlockCollisionRespondBottom(blockArray[i],intersect.Height,head);
                         head = true;
@@ -99,7 +99,7 @@ namespace Game1
         {
             //int playerX = (int)player.GetGameObjectLocation().X;
             //int playerY = (int)player.GetGameObjectLocation().Y;
-            Rectangle playerBox;
+            Rectangle enemyBox;
 
             bool bottom = false;
 
@@ -107,7 +107,7 @@ namespace Game1
             {
                 int enemyX = (int)enemyArray[j].GetGameObjectLocation().X;
                 int enemyY = (int)enemyArray[j].GetGameObjectLocation().Y;
-                playerBox = new Rectangle(enemyX, enemyY, 16, 16);
+                enemyBox = new Rectangle(enemyX, enemyY, 16, 16);
 
                 blockArray = level1.BlockObjects.ToArray();
 
@@ -119,9 +119,9 @@ namespace Game1
                     Rectangle blockBox = new Rectangle(blockX, blockY, 16, 16);
                     Rectangle intersect;
 
-                    if (playerBox.Intersects(blockBox))
+                    if (enemyBox.Intersects(blockBox))
                     {
-                        Rectangle.Intersect(ref playerBox, ref blockBox, out intersect);
+                        Rectangle.Intersect(ref enemyBox, ref blockBox, out intersect);
                         if (intersect.Height < intersect.Width && enemyY < blockY)
                         {
                             collision.EnemyCollisionBlockRespondYDirection(enemyArray[j], intersect.Height, bottom);

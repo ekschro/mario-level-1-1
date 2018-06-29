@@ -7,25 +7,22 @@ using Microsoft.Xna.Framework;
 
 namespace Game1
 {
-    public class HiddenStarBlock : IBlock
+    public class FlagpoleBlock : IBlock
     {
         public float CurrentXPos { get; set; }
         public float CurrentYPos { get; set; }
 
-        private IBlockSprite hiddenStarBlockSprite;
-        //private Game1 myGame;
+        private IBlockSprite flagpoleBlockSprite;
         private Vector2 blockLocation;
-
-        public HiddenStarBlock(Game1 game, Vector2 location)
+        public FlagpoleBlock(Game1 game, Vector2 location)
         {
-            hiddenStarBlockSprite = new HiddenStarBlockSprite(game, this);
-            //myGame = game;
+            flagpoleBlockSprite = new FlagpoleBlockSprite(game, this);
             blockLocation = location;
         }
 
         public void Draw()
         {
-            hiddenStarBlockSprite.Draw();
+            flagpoleBlockSprite.Draw();
         }
 
         public Vector2 GetGameObjectLocation()
@@ -35,13 +32,11 @@ namespace Game1
 
         public void Update()
         {
-            hiddenStarBlockSprite.Update();
+
         }
+
         public void TopCollision() { }
-        public void BottomCollision()
-        {
-            //hiddenStarBlockSprite = new UsedBlockSprite(myGame, new UsedBlock(myGame, blockLocation));
-        }
+        public void BottomCollision() { }
         public void LeftCollision() { }
         public void RightCollision() { }
     }

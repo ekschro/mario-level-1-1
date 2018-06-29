@@ -57,8 +57,15 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Blocks\BrickBlockWithStar.cs" />
+    <Compile Include="Blocks\BrickBlockWithManyCoins.cs" />
+    <Compile Include="Blocks\Sprites\FlagBlockSprite.cs" />
+    <Compile Include="Blocks\Sprites\FlagpoleBlockSprite.cs" />
+    <Compile Include="Blocks\Sprites\CastleBlockSprite.cs" />
     <Compile Include="Blocks\Sprites\HiddenGreenMushroomBlockSprite.cs" />
-    <Compile Include="Blocks\Sprites\HiddenStarBlockSprite.cs" />
+    <Compile Include="Blocks\FlagpoleBlock.cs" />
+    <Compile Include="Blocks\FlagBlock.cs" />
+    <Compile Include="Blocks\CastleBlock.cs" />
     <Compile Include="IBackground.cs" />
     <Compile Include="Level1Background.cs" />
     <Compile Include="Blocks\Sprites\QuestionCoinBlockSprite.cs" />
@@ -66,19 +73,16 @@
     <Compile Include="Blocks\BottomLeftPipeBlock.cs" />
     <Compile Include="Blocks\BottomRightPipeBlock.cs" />
     <Compile Include="Blocks\HiddenGreenMushroomBlock.cs" />
-    <Compile Include="Blocks\HiddenStarBlock.cs" />
     <Compile Include="Blocks\QuestionCoinBlock.cs" />
     <Compile Include="Blocks\QuestionPowerUpBlock.cs" />
     <Compile Include="Blocks\Sprites\BottomLeftPipeBlockSprite.cs" />
     <Compile Include="Blocks\Sprites\BottomRightPipeBlockSprite.cs" />
-    <Compile Include="Blocks\Sprites\HiddenBlockSprite.cs" />
     <Compile Include="Blocks\Sprites\TopRightPipeBlockSprite.cs" />
     <Compile Include="Blocks\Sprites\TopLeftPipeBlockSprite.cs" />
     <Compile Include="Blocks\TopLeftPipeBlock.cs" />
     <Compile Include="Blocks\TopRightPipeBlock.cs" />
     <Compile Include="Blocks\BrickBlock.cs" />
     <Compile Include="Blocks\EmptyBlock.cs" />
-    <Compile Include="Blocks\HIddenBlock.cs" />
     <Compile Include="Blocks\QuestionBlock.cs" />
     <Compile Include="Blocks\Sprites\BrickBlockSprite.cs" />
     <Compile Include="Blocks\Sprites\EmptyBlockSprite.cs" />
