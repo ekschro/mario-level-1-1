@@ -34,6 +34,30 @@ namespace Game1
                 Mario.CurrentYPosition -= height;
             Mario.CanJump = true;
             Mario.Falling = false;
+            if (Mario.MarioSprite is MarioBigJumpingRight)
+            {
+                Mario.MarioSprite = new MarioBigIdleRight(myGame);
+            }
+            else if (Mario.MarioSprite is MarioBigJumpingLeft)
+            {
+                Mario.MarioSprite = new MarioBigIdleLeft(myGame);
+            }
+            else if (Mario.MarioSprite is MarioSmallJumpingRight)
+            {
+                Mario.MarioSprite = new MarioSmallIdleRight(myGame);
+            }
+            else if (Mario.MarioSprite is MarioSmallJumpingLeft)
+            {
+                Mario.MarioSprite = new MarioSmallIdleLeft(myGame);
+            }
+            else if (Mario.MarioSprite is MarioFireJumpingRight)
+            {
+                Mario.MarioSprite = new MarioFireIdleRight(myGame);
+            }
+            else if (Mario.MarioSprite is MarioFireJumpingLeft)
+            {
+                Mario.MarioSprite = new MarioFireIdleLeft(myGame);
+            }
         }
 
         public void BlockCollisionRespondBottom(IBlock block,int height,bool head)
