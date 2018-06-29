@@ -20,8 +20,8 @@ namespace Game1
         {
             koopaObject = koopa;
             myGame = game;
-            startFrame = 2;
-            endFrame = 4;
+            startFrame = 0;
+            endFrame = 2;
             currentFrame = startFrame;
             KoopaSpriteEffects = SpriteEffects.None;
         }

@@ -18,6 +18,7 @@ namespace Game1
         public static IEnemySprite KoopaSprite { get => koopaSprite; set => koopaSprite = value; }
         public KoopaStateMachine stateMachine;
         public IEnemyStateMachine GetStateMachine { get => stateMachine; }
+        public bool IsStomped { get; set; }
 
         private int cyclePosition = 0;
         private int cycleLength = 8;
@@ -45,6 +46,7 @@ namespace Game1
         public void BeStomped()
         {
             stateMachine.BeStomped();
+            IsStomped = true;
         }
 
         public void ChangeDirection()

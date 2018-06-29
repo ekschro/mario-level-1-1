@@ -21,6 +21,7 @@ namespace Game1
         private int cycleLength = 8;
         private Vector2 goombaLocation;
         private Vector2 goombaOriginalLocation;
+        public bool IsStomped { get; set; }
 
         private bool dead = false;
         private GeneralPhysics physics;
