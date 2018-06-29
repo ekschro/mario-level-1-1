@@ -107,7 +107,10 @@ namespace Game1
         {
             enemy.BeStomped();
             if (enemy is Goomba)
-            { objectLevel.EnemyObjects.Remove(enemy); }
+            {
+                Mario.Bounce = true;
+                objectLevel.EnemyObjects.Remove(enemy);
+            }
         }
 
         public void EnemyCollisionRespondBottom(IEnemy enemy)

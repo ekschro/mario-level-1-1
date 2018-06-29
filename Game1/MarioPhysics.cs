@@ -91,6 +91,12 @@ namespace Game1
                 Mario.Falling = true;
             }
 
+            if (Mario.Bounce)
+            {
+                yVelocity = (float)-3.5;
+                Mario.Bounce = false;
+            }
+
             if (Mario.Bump)
             {
                 yVelocity = 0;
