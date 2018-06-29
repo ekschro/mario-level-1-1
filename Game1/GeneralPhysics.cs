@@ -46,7 +46,7 @@ namespace Game1
             if (obj.IsFalling)
                 yVelocity += (float)(0.5 * 0.002 * Math.Pow(delta, 2));
             else
-                yVelocity = 0;
+                yVelocity = (float)0;
 
             obj.SetGameObjectLocation(new Vector2(obj.GetGameObjectLocation().X,obj.GetGameObjectLocation().Y + yVelocity));
         }

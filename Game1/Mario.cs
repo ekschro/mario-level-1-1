@@ -47,6 +47,7 @@ namespace Game1
         public static bool Jumping { get; internal set; }
         public static bool Falling { get; internal set; }
         public static bool Bump { get; internal set; }
+        public static bool Bounce { get; internal set; }
 
         public Mario(Game1 game, Vector2 vector)
         {
@@ -64,6 +65,7 @@ namespace Game1
             MovingLeft = false;
             canJump = true;
             Falling = false;
+            Bounce = false;
         }
                 
 
