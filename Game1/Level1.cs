@@ -108,8 +108,7 @@ namespace Game1
             IGameObject[] temporaryObjectArray = TemporaryObjects.ToArray();
             for (int i = 0; i < temporaryObjectArray.Length; i++)
             {
-                if (temporaryObjectArray[i].GetGameObjectLocation().X > levelCamera.CameraPosition - 16 && temporaryObjectArray[i].GetGameObjectLocation().X < levelCamera.CameraPosition + 400)
-                    temporaryObjectArray[i].Draw();
+                temporaryObjectArray[i].Draw();
             }
         }
 

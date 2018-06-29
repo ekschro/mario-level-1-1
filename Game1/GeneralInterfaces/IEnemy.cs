@@ -18,6 +18,6 @@ namespace Game1
         bool GetDead();
         IEnemyStateMachine GetStateMachine { get; }
         bool IsFalling { get; set; }
-
+        bool IsStomped { get; set; }
     }
 }

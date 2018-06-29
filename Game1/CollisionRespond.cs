@@ -107,18 +107,17 @@ namespace Game1
         {
             enemy.BeStomped();
             Mario.Bounce = true;
-            if (enemy is Goomba)
-            {
-                objectLevel.EnemyObjects.Remove(enemy);
-            }
+            objectLevel.EnemyObjects.Remove(enemy);
         }
 
         public void EnemyCollisionRespondBottom(IEnemy enemy)
         {
             if (objectLevel.PlayerObject.IsStar)
             {
-                enemy.BeStomped();
-                objectLevel.EnemyObjects.Remove(enemy);
+                if (enemy is Goomba)
+                    objectLevel.TemporaryObjects.Add(new FlippedGoomba(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
+                else if (enemy is Koopa)
+                    objectLevel.TemporaryObjects.Add(new FlippedKoopa(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
             } else if (Mario.Invulnerability)
             {
 
@@ -144,8 +143,11 @@ namespace Game1
         {
             if (objectLevel.PlayerObject.IsStar)
             {
-                enemy.BeFlipped();
-                //objectLevel.EnemyObjects.Remove(enemy);
+                objectLevel.EnemyObjects.Remove(enemy);
+                if (enemy is Goomba)
+                    objectLevel.TemporaryObjects.Add(new FlippedGoomba(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
+                else if (enemy is Koopa)
+                    objectLevel.TemporaryObjects.Add(new FlippedKoopa(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
             }
             else if (Mario.Invulnerability)
             {
@@ -171,8 +173,11 @@ namespace Game1
         {
             if (objectLevel.PlayerObject.IsStar)
             {
-                enemy.BeFlipped();
-                //objectLevel.EnemyObjects.Remove(enemy);
+                objectLevel.EnemyObjects.Remove(enemy);
+                if(enemy is Goomba)
+                    objectLevel.TemporaryObjects.Add(new FlippedGoomba(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
+                else if(enemy is Koopa)
+                    objectLevel.TemporaryObjects.Add(new FlippedKoopa(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
             }
             else if (Mario.Invulnerability)
             {
@@ -193,6 +198,8 @@ namespace Game1
                 Mario.MarioSprite.DeadMarioCommandCalled();
             }
         }
+
+
         public void EnemyCollisionBlockandEnemyRespondLeft(IEnemy enemy, int width)
         {
 

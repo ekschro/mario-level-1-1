@@ -10,6 +10,8 @@ namespace Game1
         public bool IsFalling { get => falling; set => falling = value; }
         public IEnemyStateMachine GetStateMachine { get; }
         private int currentFrame;
+        public bool IsStomped { get; set; }
+
         public MarioFireBall(Game1 game)
         {
             myGame = game;
