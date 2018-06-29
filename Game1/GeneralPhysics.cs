@@ -50,7 +50,5 @@ namespace Game1
 
             obj.SetGameObjectLocation(new Vector2(obj.GetGameObjectLocation().X,obj.GetGameObjectLocation().Y + yVelocity));
         }
-
-
     }
 }

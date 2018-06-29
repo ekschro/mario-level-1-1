@@ -131,6 +131,7 @@
     <Compile Include="ILoader.cs" />
     <Compile Include="Level1.cs" />
     <Compile Include="MouseController.cs" />
+    <Compile Include="PickupItem\PickupPhysics.cs" />
     <Compile Include="TemporaryObjects\Coin.cs" />
     <Compile Include="PickupItem\EmptyPickup.cs" />
     <Compile Include="PickupItem\Fireflower.cs" />

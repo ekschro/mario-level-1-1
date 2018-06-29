@@ -12,6 +12,9 @@ namespace Game1
         public float CurrentXPos { get; set; }
         public float CurrentYPos { get; set; }
 
+        private bool falling;
+        public bool IsFalling { get => falling; set => falling = value; }
+
         private int cyclePosition = 0;
         private int cycleLength = 16;
 
@@ -19,6 +22,8 @@ namespace Game1
         private Game1 myGame;
         private Vector2 pickupLocation;
         private Vector2 pickupOriginalLocation;
+        private bool movingRight;
+
         public Star(Game1 game, Vector2 location)
         {
             starSprite = new StarSprite(game, this);
@@ -35,6 +40,11 @@ namespace Game1
         public Vector2 GetGameObjectLocation()
         {
             return pickupLocation;
+        }
+
+        public void SetGameObjectLocation(Vector2 value)
+        {
+            pickupLocation = value;
         }
 
         public void Update()
@@ -57,7 +67,12 @@ namespace Game1
 
         public void Collide()
         {
-            throw new NotImplementedException();
+            movingRight = !movingRight;
+        }
+
+        public bool MovingRight()
+        {
+            return movingRight;
         }
     }
 }

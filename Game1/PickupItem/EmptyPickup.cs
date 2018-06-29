@@ -12,10 +12,13 @@ namespace Game1
         public float CurrentXPos { get; set; }
         public float CurrentYPos { get; set; }
 
+        public bool IsFalling { get; set; }
+
         private IPickupSprite emptySprite;
 
         //private Game1 myGame;
         private Vector2 pickupLocation;
+        private bool movingRight;
 
         public EmptyPickup(Game1 game, Vector2 location)
         {
@@ -34,6 +37,11 @@ namespace Game1
             return pickupLocation;
         }
 
+        public void SetGameObjectLocation(Vector2 value)
+        {
+            pickupLocation = value;
+        }
+
         public void Update()
         {
         }
@@ -42,7 +50,12 @@ namespace Game1
 
         public void Collide()
         {
-            throw new NotImplementedException();
+            movingRight = !movingRight;
+        }
+
+        public bool MovingRight()
+        {
+            return movingRight;
         }
     }
 }

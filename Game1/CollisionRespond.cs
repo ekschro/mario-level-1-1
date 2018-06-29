@@ -299,6 +299,14 @@ namespace Game1
             objectLevel.PickupObjects.Remove(pickup);
         }
 
+        public void PickupCollisionBlockRespondBottom(IPickup pickup, int height, bool bottom)
+        {
+            float x = pickup.GetGameObjectLocation().X;
+            float y = pickup.GetGameObjectLocation().Y;
+            pickup.SetGameObjectLocation(new Vector2(x,y-height));
+            pickup.IsFalling = false;
+        }
+
         public void PickupCollisionRespondLeft(IPickup pickup)
         {
             pickup.Picked();
@@ -332,6 +340,22 @@ namespace Game1
             }
 
             objectLevel.PickupObjects.Remove(pickup);
+        }
+
+        public void PickupCollisionBlockRespondLeft(IPickup pickup, int width)
+        {
+            float x = pickup.GetGameObjectLocation().X;
+            float y = pickup.GetGameObjectLocation().Y;
+            pickup.SetGameObjectLocation(new Vector2(x + width, y));
+            pickup.Collide();
+        }
+
+        public void PickupCollisionBlockRespondRight(IPickup pickup, int width)
+        {
+            float x = pickup.GetGameObjectLocation().X;
+            float y = pickup.GetGameObjectLocation().Y;
+            pickup.SetGameObjectLocation(new Vector2(x - width, y));
+            pickup.Collide();
         }
 
         public void PickupCollisionRespondRight(IPickup pickup)

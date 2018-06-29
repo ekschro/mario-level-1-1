@@ -12,11 +12,17 @@ namespace Game1
         public float CurrentXPos { get; set; }
         public float CurrentYPos { get; set; }
 
+        private bool falling;
+        public bool IsFalling { get => falling; set => falling = value; }
+
         private static IPickupSprite redMushroomSprite;
 
         private Game1 myGame;
         private Vector2 pickupLocation;
         private Vector2 pickupOriginalLocation;
+        private PickupPhysics physics;
+        private bool moving = false;
+        private bool movingRight;
 
         public RedMushroom(Game1 game, Vector2 location)
         {
@@ -24,6 +30,7 @@ namespace Game1
             myGame = game;
             pickupLocation = location;
             pickupOriginalLocation = location;
+            physics = new PickupPhysics(myGame, this, 1);
         }
 
         public void Draw()
@@ -36,12 +43,23 @@ namespace Game1
             return pickupLocation;
         }
 
+        public void SetGameObjectLocation(Vector2 value)
+        {
+            pickupLocation = value;
+        }
+
         public void Update()
         {
             redMushroomSprite.Update();
-            if (pickupLocation.Y > pickupOriginalLocation.Y - 16)
+            if (pickupLocation.Y > pickupOriginalLocation.Y - 17 && !moving)
             {
-                pickupLocation.Y -= 1;
+                pickupLocation.Y -= (float)1;
+            }
+            else
+            {
+                moving = true;
+                physics.Update();
+                falling = true;
             }
         }
         public void Picked()
@@ -51,7 +69,12 @@ namespace Game1
 
         public void Collide()
         {
-            throw new NotImplementedException();
+            movingRight = !movingRight;
+        }
+
+        public bool MovingRight()
+        {
+            return movingRight;
         }
     }
 }

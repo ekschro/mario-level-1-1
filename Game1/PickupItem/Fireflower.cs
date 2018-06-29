@@ -12,6 +12,8 @@ namespace Game1
         public float CurrentXPos { get; set; }
         public float CurrentYPos { get; set; }
 
+        public bool IsFalling { get; set; }
+
         private int cyclePosition = 0;
         private int cycleLength = 16;
 
@@ -38,6 +40,11 @@ namespace Game1
             return pickupLocation;
         }
 
+        public void SetGameObjectLocation(Vector2 value)
+        {
+            pickupLocation = value;
+        }
+
         public void Update()
         {
             cyclePosition++;
@@ -58,7 +65,12 @@ namespace Game1
 
         public void Collide()
         {
-            throw new NotImplementedException();
+
+        }
+
+        public bool MovingRight()
+        {
+            return false;
         }
     }
 }
