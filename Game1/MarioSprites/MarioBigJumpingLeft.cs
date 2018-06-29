@@ -48,12 +48,11 @@ namespace Game1
 
         public void LeftCommandCalled()
         {
-            Mario.MarioSprite = new MarioBigIdleLeft(myGame);
+           
         }
 
         public void RightCommandCalled()
         {
-            Mario.MarioSprite = new MarioBigIdleRight(myGame);
         }
 
         public void SmallMarioCommandCalled()
