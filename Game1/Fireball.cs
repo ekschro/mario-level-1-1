@@ -71,11 +71,11 @@ namespace Game1
 
         public void Update()
         {
-            currentFrame++;
-            if (currentFrame == 3)
-            {
-                currentFrame = 0;
-            }
+            //currentFrame++;
+            //if (currentFrame == 3)
+            //{
+              //  currentFrame = 0;
+            //}
             fire.NewPosX();
             fire.NewPosY();
         }
