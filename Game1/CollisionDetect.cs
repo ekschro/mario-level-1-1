@@ -143,12 +143,10 @@ namespace Game1
                         }
                         else if (intersect.Height > intersect.Width && enemyX < blockX)
                         {
-                            Console.WriteLine("Collision!");
                             collision.EnemyCollisionBlockandEnemyRespondRight(enemyArray[j], intersect.Width);
                         }
                         else if (intersect.Height > intersect.Width && enemyX > blockX)
                         {
-                            Console.WriteLine("Collision!!");
                             collision.EnemyCollisionBlockandEnemyRespondLeft(enemyArray[j], intersect.Width);
                         }
                     }

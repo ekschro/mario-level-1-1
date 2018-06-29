@@ -224,6 +224,7 @@ namespace Game1
                 var y = enemy.GetGameObjectLocation().Y - height;
                 enemy.SetGameObjectLocation(new Vector2(x, y));
             }
+            enemy.IsFalling = false;
         }
 
         public void PickupCollisionRespondTop(IPickup pickup)

@@ -11,6 +11,8 @@ namespace Game1
     {
         public float CurrentXPos { get; set; }
         public float CurrentYPos { get; set; }
+        private bool falling;
+        public bool IsFalling { get => falling; set => falling = value; }
         private IEnemySprite goombaSprite;
         public IEnemySprite GoombaSprite { get => goombaSprite; set => goombaSprite = value; }
         public GoombaStateMachine stateMachine;
@@ -30,6 +32,7 @@ namespace Game1
             GoombaSprite = new GoombaSprite(game, this);
             stateMachine = new GoombaStateMachine(GoombaSprite);
             physics = new GeneralPhysics(game,this,1);
+            falling = true;
         }
 
         public void BeFlipped()
@@ -68,6 +71,7 @@ namespace Game1
         public void Update()
         {
             physics.Update();
+            falling = true;
             cyclePosition++;
             if (cyclePosition == cycleLength)
             {
@@ -76,7 +80,7 @@ namespace Game1
                 GoombaSprite.Update();
                 if (dead)
                 {
-                    goombaLocation.Y += 1;
+                    //goombaLocation.Y += 1;
                 }
             }
         }
