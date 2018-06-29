@@ -9,8 +9,8 @@ namespace Game1
 {
     public class Goomba : IEnemy
     {
-        public float CurrentXPos { get; set; }
-        public float CurrentYPos { get; set; }
+        public float CurrentXPos { get => goombaLocation.X; set => goombaLocation.X = value; }
+        public float CurrentYPos { get => goombaLocation.Y; set => goombaLocation.Y = value; }
         private bool falling;
         public bool IsFalling { get => falling; set => falling = value; }
         private IEnemySprite goombaSprite;

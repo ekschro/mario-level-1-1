@@ -137,6 +137,12 @@
     <Compile Include="PickupItem\Fireflower.cs" />
     <Compile Include="PickupItem\GreenMushroom.cs" />
     <Compile Include="PickupItem\RedMushroom.cs" />
+    <Compile Include="TemporaryObjects\FlattenedGoomba.cs" />
+    <Compile Include="TemporaryObjects\FlippedKoopa.cs" />
+    <Compile Include="TemporaryObjects\FlippedGoomba.cs" />
+    <Compile Include="TemporaryObjects\Sprites\FlattenedGoombaSprite.cs" />
+    <Compile Include="TemporaryObjects\Sprites\FlippedKoopaSprite.cs" />
+    <Compile Include="TemporaryObjects\Sprites\FlippedGoombaSprite.cs" />
     <Compile Include="TemporaryObjects\Sprites\CoinSprite.cs" />
     <Compile Include="PickupItem\Sprites\EmptyPickupSprite.cs" />
     <Compile Include="PickupItem\Sprites\FireflowerSprite.cs" />

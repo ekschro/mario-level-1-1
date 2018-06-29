@@ -9,8 +9,8 @@ namespace Game1
 {
     public class Koopa : IEnemy
     {
-        public float CurrentXPos { get; set; }
-        public float CurrentYPos { get; set; }
+        public float CurrentXPos { get => koopaLocation.X; set => koopaLocation.X = value; }
+        public float CurrentYPos { get => koopaLocation.Y; set => koopaLocation.Y = value; }
         private bool falling;
         public bool IsFalling { get => falling; set => falling = value; }
 

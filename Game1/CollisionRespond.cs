@@ -11,11 +11,6 @@ namespace Game1
     {
         private Game1 myGame;
 
-        ICommand upCommand;
-        ICommand downCommand;
-        ICommand leftCommand;
-        ICommand rightCommand;
-
         private int invulnerabilityFrames = 100;
         private int invulnerabilityTimer = 100;
 
@@ -34,6 +29,30 @@ namespace Game1
                 Mario.CurrentYPosition -= height;
             Mario.CanJump = true;
             Mario.Falling = false;
+            if (Mario.MarioSprite is MarioBigJumpingRight)
+            {
+                Mario.MarioSprite = new MarioBigIdleRight(myGame);
+            }
+            else if (Mario.MarioSprite is MarioBigJumpingLeft)
+            {
+                Mario.MarioSprite = new MarioBigIdleLeft(myGame);
+            }
+            else if (Mario.MarioSprite is MarioSmallJumpingRight)
+            {
+                Mario.MarioSprite = new MarioSmallIdleRight(myGame);
+            }
+            else if (Mario.MarioSprite is MarioSmallJumpingLeft)
+            {
+                Mario.MarioSprite = new MarioSmallIdleLeft(myGame);
+            }
+            else if (Mario.MarioSprite is MarioFireJumpingRight)
+            {
+                Mario.MarioSprite = new MarioFireIdleRight(myGame);
+            }
+            else if (Mario.MarioSprite is MarioFireJumpingLeft)
+            {
+                Mario.MarioSprite = new MarioFireIdleLeft(myGame);
+            }
         }
 
         public void BlockCollisionRespondBottom(IBlock block,int height,bool head)
@@ -106,19 +125,20 @@ namespace Game1
         public void EnemyCollisionRespondTop(IEnemy enemy)
         {
             enemy.BeStomped();
-            Mario.Bounce = true;
             if (enemy is Goomba)
-            {
-                objectLevel.EnemyObjects.Remove(enemy);
-            }
+                objectLevel.TemporaryObjects.Add(new FlattenedGoomba(myGame, enemy.GetGameObjectLocation()));
+            Mario.Bounce = true;
+            objectLevel.EnemyObjects.Remove(enemy);
         }
 
         public void EnemyCollisionRespondBottom(IEnemy enemy)
         {
             if (objectLevel.PlayerObject.IsStar)
             {
-                enemy.BeStomped();
-                objectLevel.EnemyObjects.Remove(enemy);
+                if (enemy is Goomba)
+                    objectLevel.TemporaryObjects.Add(new FlippedGoomba(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
+                else if (enemy is Koopa)
+                    objectLevel.TemporaryObjects.Add(new FlippedKoopa(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
             } else if (Mario.Invulnerability)
             {
 
@@ -144,8 +164,11 @@ namespace Game1
         {
             if (objectLevel.PlayerObject.IsStar)
             {
-                enemy.BeFlipped();
-                //objectLevel.EnemyObjects.Remove(enemy);
+                objectLevel.EnemyObjects.Remove(enemy);
+                if (enemy is Goomba)
+                    objectLevel.TemporaryObjects.Add(new FlippedGoomba(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
+                else if (enemy is Koopa)
+                    objectLevel.TemporaryObjects.Add(new FlippedKoopa(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
             }
             else if (Mario.Invulnerability)
             {
@@ -171,8 +194,11 @@ namespace Game1
         {
             if (objectLevel.PlayerObject.IsStar)
             {
-                enemy.BeFlipped();
-                //objectLevel.EnemyObjects.Remove(enemy);
+                objectLevel.EnemyObjects.Remove(enemy);
+                if(enemy is Goomba)
+                    objectLevel.TemporaryObjects.Add(new FlippedGoomba(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
+                else if(enemy is Koopa)
+                    objectLevel.TemporaryObjects.Add(new FlippedKoopa(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
             }
             else if (Mario.Invulnerability)
             {
@@ -193,6 +219,8 @@ namespace Game1
                 Mario.MarioSprite.DeadMarioCommandCalled();
             }
         }
+
+
         public void EnemyCollisionBlockandEnemyRespondLeft(IEnemy enemy, int width)
         {
 

@@ -12,6 +12,12 @@ namespace Game1 {
         public static Texture2D stoneBlockTexture;
         public static Texture2D backgroundTexture;
         public static Texture2D fireballs;
+        public static Texture2D flippedGoomba;
+        public static Texture2D flippedKoopa;
+        public static Texture2D castleTexture;
+        public static Texture2D flagpoleTexture;
+        public static Texture2D flagTexture;
+
 
         Game1 myGame;
         public TextureWareHouse(Game1 game)
@@ -26,6 +32,11 @@ namespace Game1 {
             stoneBlockTexture = myGame.Content.Load<Texture2D>("stone");
             backgroundTexture = myGame.Content.Load<Texture2D>("1-1");
             fireballs = myGame.Content.Load<Texture2D>("fireball");
+            flippedGoomba = myGame.Content.Load<Texture2D>("flippedGoomba");
+            flippedKoopa = myGame.Content.Load<Texture2D>("flippedKoopa");
+            castleTexture = myGame.Content.Load<Texture2D>("castle");
+            flagpoleTexture = myGame.Content.Load<Texture2D>("flagpole");
+            flagTexture = myGame.Content.Load<Texture2D>("flag");
         }
     }
 }
