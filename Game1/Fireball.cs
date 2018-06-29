@@ -41,6 +41,8 @@ namespace Game1
         private bool movingLeft;
         private bool movingUp;
         private bool movingDown;
+        private int xVelocity;
+        private int velCap;
 
         public float CurrentXPos { get => xPos; set => xPos = value; }
         public float CurrentYPos { get => yPos; set => yPos = value; }
@@ -71,14 +73,14 @@ namespace Game1
 
         public void Update()
         {
-            //currentFrame++;
-            //if (currentFrame == 3)
-            //{
-              //  currentFrame = 0;
-            //}
-            fire.NewPosX();
-            fire.NewPosY();
+            currentFrame++;
+            if (currentFrame == 3)
+            {
+               currentFrame = 0;
+            }
+            fire.Update();
         }
+        
 
         public Vector2 GameOriginalLocation()
         {
