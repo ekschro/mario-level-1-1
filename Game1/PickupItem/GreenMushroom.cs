@@ -21,6 +21,7 @@ namespace Game1
         private Vector2 pickupOriginalLocation;
         private PickupPhysics physics;
         private bool movingRight;
+        private bool moving;
 
         public GreenMushroom(Game1 game, Vector2 location)
         {
@@ -50,12 +51,13 @@ namespace Game1
         public void Update()
         {
             greenMushroomSprite.Update();
-            if (pickupLocation.Y > pickupOriginalLocation.Y - 16)
+            if (pickupLocation.Y > pickupOriginalLocation.Y - 16 && !moving)
             {
-                pickupLocation.Y -= (float)1.5;
+                pickupLocation.Y -= (float)1;
             }
             else
             {
+                moving = true;
                 physics.Update();
                 falling = true;
             }

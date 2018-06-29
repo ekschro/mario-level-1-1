@@ -51,7 +51,7 @@ namespace Game1
         public void Update()
         {
             redMushroomSprite.Update();
-            if (pickupLocation.Y > pickupOriginalLocation.Y - 17 && !moving)
+            if (pickupLocation.Y > pickupOriginalLocation.Y - 16 && !moving)
             {
                 pickupLocation.Y -= (float)1;
             }
