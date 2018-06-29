@@ -37,12 +37,6 @@ namespace Game1
         {
             hiddenGreenMushroomBlockSprite.Update();
         }
-        public void TopCollision() { }
-        public void BottomCollision()
-        {
-            //hiddenGreenMushroomBlockSprite = new UsedBlockSprite(myGame, new UsedBlock(myGame, blockLocation));
-        }
-        public void LeftCollision() { }
-        public void RightCollision() { }
+
     }
 }

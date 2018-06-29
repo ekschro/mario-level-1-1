@@ -1,0 +1,10 @@
+Dorothy Chow (.140)
+6/29/18
+Sprint 4
+MarioPhysics.cs
+Ericsson Schroeter
+20
+
+This file is clear and readable.The class name already explain what is implemented in this class. 
+Naming conventions are good. Have used meaningful names for variable and methods, don't need extra comments to explain them. Which there is a X Velocity, Y Velocity, and the maximum value for both x and y velocity.
+While updating the X position, the logic is quit clear. However, there are some magic numbers which it will be better if we know why the specific numbers were used.

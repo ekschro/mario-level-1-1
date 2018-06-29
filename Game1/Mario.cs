@@ -46,6 +46,7 @@ namespace Game1
         public static Color MarioColor { get => marioColor; set => marioColor = value; }
         public static bool Jumping { get; internal set; }
         public static bool Falling { get; internal set; }
+        public static bool Bump { get; internal set; }
 
         public Mario(Game1 game, Vector2 vector)
         {

@@ -144,6 +144,7 @@ BrickBlock,352,142
 QuestionBlockWithCoin,368,142
 BrickBlock,384,142
 QuestionBlockWithCoin,352,78
+Goomba,300,180
 Goomba,352,180
 BottomLeftPipeBlock,448,190
 BottomRightPipeBlock,464,190
@@ -356,7 +357,7 @@ QuestionBlockWithCoin,1696,142
 QuestionBlockWithCoin,1744,142
 QuestionBlockWithCoin,1792,142
 QuestionBlockWithPowerUp,1744,78
-Koopa,1712,170
+Koopa,1712,160
 Goomba,1824,180
 Goomba,1848,180
 BrickBlock,1888,142

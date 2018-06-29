@@ -20,8 +20,6 @@ namespace Game1
         public FireballCommand(Game1 game)
         {
             myGame = game;
-            IEnemy fireball = new MarioFireBall(game);
-            game.CurrentLevel.EnemyObjects.Add(fireball);
         }
 
         public void Execute()

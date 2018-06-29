@@ -50,11 +50,5 @@ namespace Game1
             myGame.SpriteBatch.Draw(TextureWareHouse.blockTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.SpriteBatch.End();
         }
-        /*
-        public bool isJumping()
-        {
-            throw new NotImplementedException();
-        }
-        */
     }
 }

@@ -41,12 +41,13 @@ namespace Game1
 
         public void Update()
         {
-            timeBeforeDisappearing--;
+            
             cyclePosition++;
             if (cyclePosition == cycleLength)
             {
                 cyclePosition = 0;
                 coinSprite.Update();
+                timeBeforeDisappearing--;
             }
             if (pickupLocation.Y > pickupOriginalLocation.Y - 30 )
             {

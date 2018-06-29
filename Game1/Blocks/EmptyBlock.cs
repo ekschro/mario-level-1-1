@@ -38,9 +38,5 @@ namespace Game1
             emptyBlockSprite.Update();
         }
 
-        public void TopCollision() { }
-        public void BottomCollision() { }
-        public void LeftCollision() { }
-        public void RightCollision() { }
     }
 }

@@ -31,7 +31,7 @@ namespace Game1
             collision = new CollisionRespond(mygame, level1);
         }
 
-        public void BlockCollisionDetect()
+        public void MarioBlockCollisionDetect()
         {
             int playerX = (int)player.GetGameObjectLocation().X;
             int playerY = (int)player.GetGameObjectLocation().Y;
@@ -102,7 +102,7 @@ namespace Game1
             Rectangle enemyBox;
 
             bool bottom = false;
-
+            int size = 0; 
             for (int j = 0; j < enemyArray.Length;j++)
             {
                 int enemyX = (int)enemyArray[j].GetGameObjectLocation().X;
@@ -110,7 +110,7 @@ namespace Game1
                 enemyBox = new Rectangle(enemyX, enemyY, 16, 16);
 
                 blockArray = level1.BlockObjects.ToArray();
-
+                
                 for (int i = 0; i < blockArray.Length; i++)
                 {
                     int blockX = (int)blockArray[i].GetGameObjectLocation().X;
@@ -124,31 +124,89 @@ namespace Game1
                         Rectangle.Intersect(ref enemyBox, ref blockBox, out intersect);
                         if (intersect.Height < intersect.Width && enemyY < blockY)
                         {
+                            MarioFireBall x = (MarioFireBall)enemyArray[j];
+                            x.Update();
+                        }
+                        else if (intersect.Height > intersect.Width && enemyX < blockX && enemyArray[j] is MarioFireBall)
+                        {
+                            level1.EnemyObjects.RemoveAt(size);
+                            size--;
+                            
+                        }
+                        else if (intersect.Height > intersect.Width && enemyX > blockX && enemyArray[j] is MarioFireBall)
+                        {
+                            level1.EnemyObjects.RemoveAt(size);
+                            size--;
+
+                        } else if (intersect.Height < intersect.Width && enemyY < blockY)
+                        {
                             collision.EnemyCollisionBlockRespondYDirection(enemyArray[j], intersect.Height, bottom);
                             bottom = true;
                         }
                         else if (intersect.Height > intersect.Width && enemyX < blockX)
                         {
-                            Console.WriteLine("Collision!");
-                            collision.EnemyCollisionBlockRespondXDirection(enemyArray[j], intersect.Width, true);
+                            collision.EnemyCollisionBlockandEnemyRespondRight(enemyArray[j], intersect.Width);
                         }
                         else if (intersect.Height > intersect.Width && enemyX > blockX)
                         {
-                            Console.WriteLine("Collision!!");
-                            collision.EnemyCollisionBlockRespondXDirection(enemyArray[j], intersect.Width, false);
+                            collision.EnemyCollisionBlockandEnemyRespondLeft(enemyArray[j], intersect.Width);
                         }
-                        /*
-                        else
+                    }
+                }
+                size++;
+            }
+        }
+        public void EnemyEnemyCollisionDetect()
+        {
+            Rectangle playerBox;
+
+            bool bottom = false;
+            int size = 0;
+            for (int j = 0; j < enemyArray.Length; j++)
+            {
+                int enemyX = (int)enemyArray[j].GetGameObjectLocation().X;
+                int enemyY = (int)enemyArray[j].GetGameObjectLocation().Y;
+                playerBox = new Rectangle(enemyX, enemyY, 16, 16);
+
+                enemyArray = level1.EnemyObjects.ToArray();
+
+                for (int i = 0; i < enemyArray.Length; i++)
+                {
+                    int enemyArrayX = (int)enemyArray[i].GetGameObjectLocation().X;
+                    int enemyArrayY = (int)enemyArray[i].GetGameObjectLocation().Y;
+
+                    Rectangle enemyBox = new Rectangle(enemyArrayX, enemyArrayY, 16, 16);
+                    Rectangle intersect;
+
+                    if (playerBox.Intersects(enemyBox))
+                    {
+                        Rectangle.Intersect(ref playerBox, ref enemyBox, out intersect);
+
+                        if (intersect.Height > intersect.Width && enemyX < enemyArrayX)
                         {
-                            collision.EnemyCollisionBlockRespondFalling(enemyArray[j]);
+                            collision.EnemyCollisionBlockandEnemyRespondRight(enemyArray[j], intersect.Width);
+                            collision.EnemyCollisionBlockandEnemyRespondLeft(enemyArray[i], intersect.Width);
+                            //collision.EnemyCollisionBlockandEnemyRespondXDirection(enemyArray[i], intersect.Width, true); ;
                         }
-                        */
+                        else if (intersect.Height > intersect.Width && enemyX > enemyArrayX)
+                        {
+                            collision.EnemyCollisionBlockandEnemyRespondLeft(enemyArray[j], intersect.Width);
+                            collision.EnemyCollisionBlockandEnemyRespondRight(enemyArray[i], intersect.Width);
+                            //collision.EnemyCollisionBlockandEnemyRespondXDirection(enemyArray[i], intersect.Width, true);
+                        }
+                        else if (intersect.Height < intersect.Width && enemyY < enemyArrayY)
+                        {
+                            //collision.EnemyCollisionRespondTop(enemyArray[i]);
+                        }
+                        else if (intersect.Height < intersect.Width && enemyY > enemyArrayY)
+                        {
+                            //collision.EnemyCollisionRespondBottom(enemyArray[i]);
+                        }
                     }
                 }
             }
         }
-
-        public void EnemyCollisionDetect()
+        public void MarioEnemyCollisionDetect()
         {
             int playerX = (int)player.GetGameObjectLocation().X;
             int playerY = (int)player.GetGameObjectLocation().Y;
@@ -196,7 +254,7 @@ namespace Game1
             }
         }
 
-        public void PickupCollisionDetect()
+        public void MarioPickupCollisionDetect()
         {
             int playerX = (int)player.GetGameObjectLocation().X;
             int playerY = (int)player.GetGameObjectLocation().Y;
@@ -246,10 +304,11 @@ namespace Game1
 
         public void Update()
         {
-            BlockCollisionDetect();
-            EnemyCollisionDetect();
-            PickupCollisionDetect();
+            MarioBlockCollisionDetect();
+            MarioEnemyCollisionDetect();
+            MarioPickupCollisionDetect();
             BlockEnemyCollisionDetect();
+            EnemyEnemyCollisionDetect();
             collision.Update();
         }
     }

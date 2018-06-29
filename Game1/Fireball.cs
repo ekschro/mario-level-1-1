@@ -6,6 +6,8 @@ namespace Game1
     public class MarioFireBall : IEnemy
     {
         private Game1 myGame;
+        private bool falling;
+        public bool IsFalling { get => falling; set => falling = value; }
         public IEnemyStateMachine GetStateMachine { get; }
         private int currentFrame;
         public MarioFireBall(Game1 game)

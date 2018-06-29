@@ -37,9 +37,5 @@ namespace Game1
             bottomLeftPipeBlockSprite.Update();
         }
 
-        public void TopCollision() { }
-        public void BottomCollision() { }
-        public void LeftCollision() { }
-        public void RightCollision() { }
     }
 }

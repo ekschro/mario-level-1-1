@@ -11,6 +11,8 @@ namespace Game1
     {
         public float CurrentXPos { get; set; }
         public float CurrentYPos { get; set; }
+        private bool falling;
+        public bool IsFalling { get => falling; set => falling = value; }
 
         private static IEnemySprite koopaSprite;
         public static IEnemySprite KoopaSprite { get => koopaSprite; set => koopaSprite = value; }
@@ -28,11 +30,11 @@ namespace Game1
         {
             KoopaSprite = new KoopaSprite(game,this);
             stateMachine = new KoopaStateMachine(koopaSprite);
-            //myGame = game;
             koopaLocation = location;
             koopaOriginalLocation = location;
 
             physics = new GeneralPhysics(game,this,1);
+            falling = true;
         }
 
         public void BeFlipped()
@@ -73,13 +75,13 @@ namespace Game1
         public void Update()
         {
             physics.Update();
-
+            falling = true;
             cyclePosition++;
             if (cyclePosition == cycleLength)
             {
                 cyclePosition = 0;
-                KoopaSprite.Update();
                 stateMachine.Update();
+                KoopaSprite.Update();
             }
         }
         public bool GetDead()

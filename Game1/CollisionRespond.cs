@@ -40,14 +40,14 @@ namespace Game1
         public void BlockCollisionRespondBottom(IBlock block,int height,bool head)
         {
             if (!head)
+            {
                 Mario.CurrentYPosition += height;
+                Mario.Bump = true;
+            }
+                
 
             if (Mario.MarioSprite.isSmall() && block is BrickBlock)
             {
-            }
-            else
-            {
-                block.BottomCollision();
             }
 
             if (block is BrickBlock && !Mario.MarioSprite.isSmall())
@@ -191,35 +191,41 @@ namespace Game1
                 Mario.MarioSprite.DeadMarioCommandCalled();
             }
         }
-        public void EnemyCollisionBlockRespondXDirection(IEnemy enemy, int width, bool left)
+        public void EnemyCollisionBlockandEnemyRespondLeft(IEnemy enemy, int width)
         {
+
             if (enemy.GetDead() == false)
             {
-                if (left)
-                {
-                    var x = enemy.GetGameObjectLocation().X - width;
-                    var y = enemy.GetGameObjectLocation().Y;
-                    enemy.SetGameObjectLocation(new Vector2(x, y));
-                }
-                else if (!left)
-                {
-                    var x = enemy.GetGameObjectLocation().X + width;
-                    var y = enemy.GetGameObjectLocation().Y;
-                    enemy.SetGameObjectLocation(new Vector2(x, y));
-                }
+                var x = enemy.GetGameObjectLocation().X + width;
+                var y = enemy.GetGameObjectLocation().Y;
+                enemy.SetGameObjectLocation(new Vector2(x, y));
+                
             }
+
+            enemy.ChangeDirection();
+        }
+        public void EnemyCollisionBlockandEnemyRespondRight(IEnemy enemy, int width)
+        {
+
+            if (enemy.GetDead() == false)
+            {
+                var x = enemy.GetGameObjectLocation().X - width;
+                var y = enemy.GetGameObjectLocation().Y;
+                enemy.SetGameObjectLocation(new Vector2(x, y));
+            }
+
             enemy.ChangeDirection();
         }
 
         public void EnemyCollisionBlockRespondYDirection(IEnemy enemy, int height,bool bottom)
-        {
-            // enemy.ReachGround();
+        { 
             if (!bottom && enemy.GetDead()==false)
             {
                 var x = enemy.GetGameObjectLocation().X;
                 var y = enemy.GetGameObjectLocation().Y - height;
                 enemy.SetGameObjectLocation(new Vector2(x, y));
             }
+            enemy.IsFalling = false;
         }
 
         public void PickupCollisionRespondTop(IPickup pickup)
@@ -232,7 +238,6 @@ namespace Game1
             }
             else if (pickup is GreenMushroom)
             {
-                //Mario.marioSprite.BigMarioCommandCalled();
             }
             else if (pickup is RedMushroom)
             {
