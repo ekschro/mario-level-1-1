@@ -13,18 +13,22 @@ namespace Game1
         public MarioFireBall(Game1 game)
         {
             myGame = game;
-            xPos = Mario.CurrentXPosition;
-            yPos = Mario.CurrentYPosition;
+            
+            
             if (Mario.MovingRight)
             {
                 currentFrame = 2;
                 MovingRight = true;
                 MovingLeft = false;
+                xPos = Mario.CurrentXPosition + 20;
+                yPos = Mario.CurrentYPosition + 16;
             } else
             {
                 currentFrame = 3;
                 MovingLeft = true;
                 MovingRight = false;
+                xPos = Mario.CurrentXPosition - 20;
+                yPos = Mario.CurrentYPosition + 16;
             }
             MovingUp = false;
             MovingDown = false;
@@ -78,37 +82,37 @@ namespace Game1
 
         public Vector2 GameOriginalLocation()
         {
-            throw new NotImplementedException();
+            return new Vector2(this.CurrentXPos, this.CurrentYPos);
         }
 
         public void ChangeDirection()
         {
-            throw new NotImplementedException();
+           
         }
 
         public void BeStomped()
         {
-            throw new NotImplementedException();
+           
         }
 
         public void BeFlipped()
         {
-            throw new NotImplementedException();
+            
         }
 
         public void Running()
         {
-            throw new NotImplementedException();
+            
         }
 
         public void ReachGround()
         {
-            throw new NotImplementedException();
+            
         }
 
         public void Falling()
         {
-            throw new NotImplementedException();
+            
         }
         public void SetGameObjectLocation(Vector2 vector)
         {
