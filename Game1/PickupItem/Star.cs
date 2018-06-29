@@ -22,7 +22,9 @@ namespace Game1
         private Game1 myGame;
         private Vector2 pickupLocation;
         private Vector2 pickupOriginalLocation;
+        private StarPhysics physics;
         private bool movingRight;
+        private bool moving;
 
         public Star(Game1 game, Vector2 location)
         {
@@ -30,6 +32,8 @@ namespace Game1
             myGame = game;
             pickupLocation = location;
             pickupOriginalLocation = location;
+
+            physics = new StarPhysics(myGame,this,0);
         }
 
         public void Draw()
@@ -58,6 +62,12 @@ namespace Game1
             if (pickupLocation.Y > pickupOriginalLocation.Y - 16)
             {
                 pickupLocation.Y -= 1;
+            }
+            else
+            {
+                moving = true;
+                physics.Update();
+                falling = true;
             }
         }
         public void Picked()
