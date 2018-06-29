@@ -40,6 +40,7 @@ namespace Game1
             controllerMappings.Add(Keys.O, new DeadMarioCommand(myGame));
             controllerMappings.Add(Keys.R, new ResetCommand(myGame));
             controllerMappings.Add(Keys.M, new MouseToggleCommand(myGame));
+            controllerMappings.Add(Keys.X, new FireballCommand(myGame));
     }
 
         public void Update()
