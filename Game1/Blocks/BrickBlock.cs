@@ -38,12 +38,6 @@ namespace Game1
             brickBlockSprite.Update();
             
         }
-        public void TopCollision() { }
-        public void BottomCollision()
-        {
-            //brickBlockSprite = new EmptyBlockSprite(myGame, new EmptyBlock(myGame, blockLocation));
-        }
-        public void LeftCollision() { }
-        public void RightCollision() { }
+
     }
 }

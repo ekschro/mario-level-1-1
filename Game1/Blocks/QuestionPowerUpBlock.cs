@@ -21,7 +21,6 @@ namespace Game1
         public QuestionPowerUpBlock(Game1 game, Vector2 location)
         {
             questionPowerUpBlockSprite = new QuestionPowerUpBlockSprite(game, this);
-            //myGame = game;
             blockLocation = location;
         }
 
@@ -45,13 +44,5 @@ namespace Game1
             }
 
         }
-
-        public void TopCollision() { }
-        public void BottomCollision()
-        {
-            //questionPowerUpBlockSprite = new UsedBlockSprite(myGame, new UsedBlock(myGame, blockLocation));
-        }
-        public void LeftCollision() { }
-        public void RightCollision() { }
     }
 }

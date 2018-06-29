@@ -47,12 +47,5 @@ namespace Game1
 
         }
 
-        public void TopCollision() { }
-        public void BottomCollision()
-        {
-            //questionCoinBlockSprite = new UsedBlockSprite(myGame, new UsedBlock(myGame, blockLocation));
-        }
-        public void LeftCollision() { }
-        public void RightCollision() { }
     }
 }

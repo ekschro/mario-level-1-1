@@ -37,12 +37,5 @@ namespace Game1
         {
             hiddenBlockSprite.Update();
         }
-        public void TopCollision() { }
-        public void BottomCollision()
-        {
-            //hiddenBlockSprite = new UsedBlockSprite(myGame, new UsedBlock(myGame, blockLocation));
-        }
-        public void LeftCollision() { }
-        public void RightCollision() { }
     }
 }

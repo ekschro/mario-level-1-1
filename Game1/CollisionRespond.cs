@@ -49,10 +49,6 @@ namespace Game1
             if (Mario.MarioSprite.isSmall() && block is BrickBlock)
             {
             }
-            else
-            {
-                block.BottomCollision();
-            }
 
             if (block is BrickBlock && !Mario.MarioSprite.isSmall())
                 objectLevel.BlockObjects.Remove(block);
@@ -194,28 +190,7 @@ namespace Game1
                 Mario.MarioSprite.DeadMarioCommandCalled();
             }
         }
-        public void EnemyCollisionBlockandEnemyRespondXDirection(IEnemy enemy, int width, bool left)
-        {
-            
-            if (enemy.GetDead() == false)
-            {
-                if (left)
-                {
-                    var x = enemy.GetGameObjectLocation().X - width;
-                    var y = enemy.GetGameObjectLocation().Y;
-                    enemy.SetGameObjectLocation(new Vector2(x, y));
-                }
-                else if (!left)
-                {
-                    var x = enemy.GetGameObjectLocation().X + width;
-                    var y = enemy.GetGameObjectLocation().Y;
-                    enemy.SetGameObjectLocation(new Vector2(x, y));
-                }
-            }
-            
-            enemy.ChangeDirection();
-        }
-        public void EnemyCollisionBlockandEnemyRespondLeft(IEnemy enemy, int width, bool left)
+        public void EnemyCollisionBlockandEnemyRespondLeft(IEnemy enemy, int width)
         {
 
             if (enemy.GetDead() == false)
@@ -228,7 +203,7 @@ namespace Game1
 
             enemy.ChangeDirection();
         }
-        public void EnemyCollisionBlockandEnemyRespondRight(IEnemy enemy, int width, bool left)
+        public void EnemyCollisionBlockandEnemyRespondRight(IEnemy enemy, int width)
         {
 
             if (enemy.GetDead() == false)
