@@ -102,7 +102,7 @@ namespace Game1
             Rectangle playerBox;
 
             bool bottom = false;
-
+            int size = 0; 
             for (int j = 0; j < enemyArray.Length;j++)
             {
                 int enemyX = (int)enemyArray[j].GetGameObjectLocation().X;
@@ -110,7 +110,7 @@ namespace Game1
                 playerBox = new Rectangle(enemyX, enemyY, 16, 16);
 
                 blockArray = level1.BlockObjects.ToArray();
-
+                
                 for (int i = 0; i < blockArray.Length; i++)
                 {
                     int blockX = (int)blockArray[i].GetGameObjectLocation().X;
@@ -122,7 +122,23 @@ namespace Game1
                     if (playerBox.Intersects(blockBox))
                     {
                         Rectangle.Intersect(ref playerBox, ref blockBox, out intersect);
-                        if (intersect.Height < intersect.Width && enemyY < blockY)
+                        if (intersect.Height < intersect.Width && enemyY < blockY && enemyArray[j] is MarioFireBall)
+                        {
+                            MarioFireBall x = (MarioFireBall)enemyArray[j];
+                            x.Update();
+                        }
+                        else if (intersect.Height > intersect.Width && enemyX < blockX && enemyArray[j] is MarioFireBall)
+                        {
+                            level1.EnemyObjects.RemoveAt(size);
+                            size--;
+                            
+                        }
+                        else if (intersect.Height > intersect.Width && enemyX > blockX && enemyArray[j] is MarioFireBall)
+                        {
+                            level1.EnemyObjects.RemoveAt(size);
+                            size--;
+
+                        } else if (intersect.Height < intersect.Width && enemyY < blockY)
                         {
                             collision.EnemyCollisionBlockRespondYDirection(enemyArray[j], intersect.Height, bottom);
                             bottom = true;
@@ -145,6 +161,7 @@ namespace Game1
                         */
                     }
                 }
+                size++;
             }
         }
 
