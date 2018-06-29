@@ -9,7 +9,7 @@ namespace Game1
     public class GoombaStateMachine : IEnemyStateMachine
     {
         private IEnemySprite goombaSprite;
-        private bool facingLeft = true;
+        private bool facingLeft = false;
         private enum GoombaHealth { Normal, Stomped, Flipped };
         private GoombaHealth health = GoombaHealth.Normal;
 
