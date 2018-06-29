@@ -27,12 +27,8 @@ namespace Game1
         {
             goombaLocation = location;
             goombaOriginalLocation = location;
-            //myGame = game;
-
             GoombaSprite = new GoombaSprite(game, this);
             stateMachine = new GoombaStateMachine(GoombaSprite);
-            //yVelocity = 0;
-
             physics = new GeneralPhysics(game,this,1);
         }
 
@@ -41,7 +37,6 @@ namespace Game1
             stateMachine.BeFlipped();
             dead = true;
         }
-
         public void BeStomped()
         {
             stateMachine.BeStomped();
@@ -72,9 +67,7 @@ namespace Game1
         }
         public void Update()
         {
-            //delta = myGame.delta.ElapsedGameTime.Milliseconds;
             physics.Update();
-            
             cyclePosition++;
             if (cyclePosition == cycleLength)
             {
@@ -86,7 +79,6 @@ namespace Game1
                     goombaLocation.Y += 1;
                 }
             }
-
         }
 
         public bool GetDead()

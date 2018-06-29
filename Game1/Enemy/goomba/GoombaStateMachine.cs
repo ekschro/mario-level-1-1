@@ -40,7 +40,6 @@ namespace Game1
             if (health != GoombaHealth.Flipped) 
             {
                 health = GoombaHealth.Flipped;
-
             }
         }
 

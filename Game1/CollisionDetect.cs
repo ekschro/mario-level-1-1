@@ -31,7 +31,7 @@ namespace Game1
             collision = new CollisionRespond(mygame, level1);
         }
 
-        public void BlockCollisionDetect()
+        public void MarioBlockCollisionDetect()
         {
             int playerX = (int)player.GetGameObjectLocation().X;
             int playerY = (int)player.GetGameObjectLocation().Y;
@@ -97,8 +97,6 @@ namespace Game1
 
         public void BlockEnemyCollisionDetect()
         {
-            //int playerX = (int)player.GetGameObjectLocation().X;
-            //int playerY = (int)player.GetGameObjectLocation().Y;
             Rectangle playerBox;
 
             bool bottom = false;
@@ -146,26 +144,65 @@ namespace Game1
                         else if (intersect.Height > intersect.Width && enemyX < blockX)
                         {
                             Console.WriteLine("Collision!");
-                            collision.EnemyCollisionBlockRespondXDirection(enemyArray[j], intersect.Width, true);
+                            collision.EnemyCollisionBlockandEnemyRespondLeft(enemyArray[j], intersect.Width, true);
                         }
                         else if (intersect.Height > intersect.Width && enemyX > blockX)
                         {
                             Console.WriteLine("Collision!!");
-                            collision.EnemyCollisionBlockRespondXDirection(enemyArray[j], intersect.Width, false);
+                            collision.EnemyCollisionBlockandEnemyRespondRight(enemyArray[j], intersect.Width, false);
                         }
-                        /*
-                        else
-                        {
-                            collision.EnemyCollisionBlockRespondFalling(enemyArray[j]);
-                        }
-                        */
                     }
                 }
                 size++;
             }
         }
+        public void EnemyEnemyCollisionDetect()
+        {
+            Rectangle playerBox;
 
-        public void EnemyCollisionDetect()
+            bool bottom = false;
+            int size = 0;
+            for (int j = 0; j < enemyArray.Length; j++)
+            {
+                int enemyX = (int)enemyArray[j].GetGameObjectLocation().X;
+                int enemyY = (int)enemyArray[j].GetGameObjectLocation().Y;
+                playerBox = new Rectangle(enemyX, enemyY, 16, 16);
+
+                enemyArray = level1.EnemyObjects.ToArray();
+
+                for (int i = 0; i < enemyArray.Length; i++)
+                {
+                    int enemyArrayX = (int)enemyArray[i].GetGameObjectLocation().X;
+                    int enemyArrayY = (int)enemyArray[i].GetGameObjectLocation().Y;
+
+                    Rectangle enemyBox = new Rectangle(enemyArrayX, enemyArrayY, 16, 16);
+                    Rectangle intersect;
+
+                    if (playerBox.Intersects(enemyBox))
+                    {
+                        Rectangle.Intersect(ref playerBox, ref enemyBox, out intersect);
+
+                        if (intersect.Height > intersect.Width && enemyX < enemyArrayX)
+                        {
+                            collision.EnemyCollisionBlockandEnemyRespondXDirection(enemyArray[i], intersect.Width, true); ;
+                        }
+                        else if (intersect.Height > intersect.Width && enemyX > enemyArrayX)
+                        {
+                            collision.EnemyCollisionBlockandEnemyRespondXDirection(enemyArray[i], intersect.Width, true);
+                        }
+                        else if (intersect.Height < intersect.Width && enemyY < enemyArrayY)
+                        {
+                            //collision.EnemyCollisionRespondTop(enemyArray[i]);
+                        }
+                        else if (intersect.Height < intersect.Width && enemyY > enemyArrayY)
+                        {
+                            //collision.EnemyCollisionRespondBottom(enemyArray[i]);
+                        }
+                    }
+                }
+            }
+        }
+        public void MarioEnemyCollisionDetect()
         {
             int playerX = (int)player.GetGameObjectLocation().X;
             int playerY = (int)player.GetGameObjectLocation().Y;
@@ -213,7 +250,7 @@ namespace Game1
             }
         }
 
-        public void PickupCollisionDetect()
+        public void MarioPickupCollisionDetect()
         {
             int playerX = (int)player.GetGameObjectLocation().X;
             int playerY = (int)player.GetGameObjectLocation().Y;
@@ -263,10 +300,11 @@ namespace Game1
 
         public void Update()
         {
-            BlockCollisionDetect();
-            EnemyCollisionDetect();
-            PickupCollisionDetect();
+            MarioBlockCollisionDetect();
+            MarioEnemyCollisionDetect();
+            MarioPickupCollisionDetect();
             BlockEnemyCollisionDetect();
+            EnemyEnemyCollisionDetect();
             collision.Update();
         }
     }

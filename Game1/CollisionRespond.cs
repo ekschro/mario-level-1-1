@@ -194,8 +194,9 @@ namespace Game1
                 Mario.MarioSprite.DeadMarioCommandCalled();
             }
         }
-        public void EnemyCollisionBlockRespondXDirection(IEnemy enemy, int width, bool left)
+        public void EnemyCollisionBlockandEnemyRespondXDirection(IEnemy enemy, int width, bool left)
         {
+            
             if (enemy.GetDead() == false)
             {
                 if (left)
@@ -211,12 +212,37 @@ namespace Game1
                     enemy.SetGameObjectLocation(new Vector2(x, y));
                 }
             }
+            
+            enemy.ChangeDirection();
+        }
+        public void EnemyCollisionBlockandEnemyRespondLeft(IEnemy enemy, int width, bool left)
+        {
+
+            if (enemy.GetDead() == false)
+            {
+                var x = enemy.GetGameObjectLocation().X + width;
+                var y = enemy.GetGameObjectLocation().Y;
+                enemy.SetGameObjectLocation(new Vector2(x, y));
+                
+            }
+
+            enemy.ChangeDirection();
+        }
+        public void EnemyCollisionBlockandEnemyRespondRight(IEnemy enemy, int width, bool left)
+        {
+
+            if (enemy.GetDead() == false)
+            {
+                var x = enemy.GetGameObjectLocation().X - width;
+                var y = enemy.GetGameObjectLocation().Y;
+                enemy.SetGameObjectLocation(new Vector2(x, y));
+            }
+
             enemy.ChangeDirection();
         }
 
         public void EnemyCollisionBlockRespondYDirection(IEnemy enemy, int height,bool bottom)
-        {
-            // enemy.ReachGround();
+        { 
             if (!bottom && enemy.GetDead()==false)
             {
                 var x = enemy.GetGameObjectLocation().X;

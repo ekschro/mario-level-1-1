@@ -28,7 +28,6 @@ namespace Game1
         {
             KoopaSprite = new KoopaSprite(game,this);
             stateMachine = new KoopaStateMachine(koopaSprite);
-            //myGame = game;
             koopaLocation = location;
             koopaOriginalLocation = location;
 
