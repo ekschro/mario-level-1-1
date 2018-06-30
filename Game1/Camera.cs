@@ -11,6 +11,7 @@ namespace Game1
         private float cameraPosition;
         private float cameraOffset;
         private ILevel gameLevel;
+        private float levelEnd;
 
         public float CameraPosition { get => cameraPosition; set => cameraPosition = value; }
         public float CameraOffset { get => cameraOffset; set => cameraOffset = value; }
@@ -24,7 +25,7 @@ namespace Game1
 
         public void Update()
         {
-            if (gameLevel.PlayerObject.GetGameObjectLocation().X > CameraPosition + cameraOffset)
+            if (gameLevel.PlayerObject.GetGameObjectLocation().X > CameraPosition + cameraOffset && CameraPosition < 2960)
                 CameraPosition += (gameLevel.PlayerObject.GetGameObjectLocation().X - CameraPosition) - cameraOffset;
         }
 

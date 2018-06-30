@@ -12,7 +12,6 @@ namespace Game1
         private ILevel level1;
         private IPlayer player;
         private IBlock[] blockArray;
-        private List<Action> commandArray;
         private IEnemy[] enemyArray;
         private IPickup[] pickupArray;
         private CollisionRespond collision;
@@ -169,11 +168,11 @@ namespace Game1
                         }
                         else if (intersect.Height > intersect.Width && enemyX < blockX)
                         {
-                            collision.EnemyCollisionBlockandEnemyRespondRight(enemyArray[j], intersect.Width);
+                            collision.EnemyCollisionBlockandEnemyRespondRight(enemyArray[j], enemyArray[j], intersect.Width);
                         }
                         else if (intersect.Height > intersect.Width && enemyX > blockX)
                         {
-                            collision.EnemyCollisionBlockandEnemyRespondLeft(enemyArray[j], intersect.Width);
+                            collision.EnemyCollisionBlockandEnemyRespondLeft(enemyArray[j], enemyArray[j], intersect.Width);
                         }
                     }
                 }
@@ -256,9 +255,7 @@ namespace Game1
         public void EnemyEnemyCollisionDetect()
         {
             Rectangle playerBox;
-
-            bool bottom = false;
-            int size = 0;
+            
             for (int j = 0; j < enemyArray.Length; j++)
             {
                 int enemyX = (int)enemyArray[j].GetGameObjectLocation().X;
@@ -267,7 +264,8 @@ namespace Game1
 
                 enemyArray = level1.EnemyObjects.ToArray();
 
-                for (int i = 0; i < enemyArray.Length; i++)
+                int i = j + 1;
+                for (i = j + 1; i < enemyArray.Length; i++)
                 {
                     int enemyArrayX = (int)enemyArray[i].GetGameObjectLocation().X;
                     int enemyArrayY = (int)enemyArray[i].GetGameObjectLocation().Y;
@@ -281,14 +279,14 @@ namespace Game1
 
                         if (intersect.Height > intersect.Width && enemyX < enemyArrayX)
                         {
-                            collision.EnemyCollisionBlockandEnemyRespondRight(enemyArray[j], intersect.Width);
-                            collision.EnemyCollisionBlockandEnemyRespondLeft(enemyArray[i], intersect.Width);
+                            collision.EnemyCollisionBlockandEnemyRespondRight(enemyArray[j], enemyArray[i], intersect.Width);
+                            collision.EnemyCollisionBlockandEnemyRespondLeft(enemyArray[i], enemyArray[j], intersect.Width);
                             //collision.EnemyCollisionBlockandEnemyRespondXDirection(enemyArray[i], intersect.Width, true); ;
                         }
                         else if (intersect.Height > intersect.Width && enemyX > enemyArrayX)
                         {
-                            collision.EnemyCollisionBlockandEnemyRespondLeft(enemyArray[j], intersect.Width);
-                            collision.EnemyCollisionBlockandEnemyRespondRight(enemyArray[i], intersect.Width);
+                            collision.EnemyCollisionBlockandEnemyRespondLeft(enemyArray[j], enemyArray[i], intersect.Width);
+                            collision.EnemyCollisionBlockandEnemyRespondRight(enemyArray[i], enemyArray[j], intersect.Width);
                             //collision.EnemyCollisionBlockandEnemyRespondXDirection(enemyArray[i], intersect.Width, true);
                         }
                         else if (intersect.Height < intersect.Width && enemyY < enemyArrayY)
@@ -417,6 +415,9 @@ namespace Game1
             EnemyEnemyCollisionDetect();
             BlockPickupCollisionDetect();
             collision.Update();
+
+            if (Mario.CurrentYPosition > 800)
+                mygame.Reset();
         }
     }
 }

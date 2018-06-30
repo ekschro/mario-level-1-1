@@ -250,7 +250,7 @@ namespace Game1
         }
 
 
-        public void EnemyCollisionBlockandEnemyRespondLeft(IEnemy enemy, int width)
+        public void EnemyCollisionBlockandEnemyRespondLeft(IEnemy enemy, IEnemy otherEnemy, int width)
         {
 
             if (enemy.GetDead() == false)
@@ -258,12 +258,13 @@ namespace Game1
                 var x = enemy.GetGameObjectLocation().X + width;
                 var y = enemy.GetGameObjectLocation().Y;
                 enemy.SetGameObjectLocation(new Vector2(x, y));
-                
             }
+            if (enemy is MarioFireBall || otherEnemy is MarioFireBall)
+                objectLevel.EnemyObjects.Remove(enemy);
 
             enemy.ChangeDirection();
         }
-        public void EnemyCollisionBlockandEnemyRespondRight(IEnemy enemy, int width)
+        public void EnemyCollisionBlockandEnemyRespondRight(IEnemy enemy, IEnemy otherEnemy, int width)
         {
 
             if (enemy.GetDead() == false)
@@ -272,6 +273,8 @@ namespace Game1
                 var y = enemy.GetGameObjectLocation().Y;
                 enemy.SetGameObjectLocation(new Vector2(x, y));
             }
+            if (enemy is MarioFireBall || otherEnemy is MarioFireBall)
+                objectLevel.EnemyObjects.Remove(enemy);
 
             enemy.ChangeDirection();
         }
@@ -285,6 +288,10 @@ namespace Game1
                 enemy.SetGameObjectLocation(new Vector2(x, y));
             }
             enemy.IsFalling = false;
+
+            
+            if (enemy is MarioFireBall)
+                enemy.IsFalling = false;
         }
 
         public void PickupCollisionRespondTop(IPickup pickup)

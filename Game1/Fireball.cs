@@ -29,14 +29,14 @@ namespace Game1
                 currentFrame = 3;
                 MovingLeft = true;
                 MovingRight = false;
-                xPos = Mario.CurrentXPosition - 20;
+                xPos = Mario.CurrentXPosition + 20;
                 yPos = Mario.CurrentYPosition + 16;
             }
             MovingUp = false;
             MovingDown = false;
-            fire = new FireBallPhysics(myGame, 2, this);
+            fire = new FireballPhysics(myGame, this, 2);
         }
-        FireBallPhysics fire;
+        private FireballPhysics fire;
         private float xPos;
         private float yPos;
         private bool movingRight;
@@ -59,12 +59,12 @@ namespace Game1
 
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(CurrentXPos);
 
-            Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, TextureWareHouse.blockTexture.Height);
+            Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, TextureWareHouse.fireballs.Height);
             Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)CurrentYPos, width, TextureWareHouse.fireballs.Height);
 
 
             myGame.SpriteBatch.Begin();
-            myGame.SpriteBatch.Draw(TextureWareHouse.blockTexture, destinationRectangle, sourceRectangle, Color.White);
+            myGame.SpriteBatch.Draw(TextureWareHouse.fireballs, destinationRectangle, sourceRectangle, Color.White);
             myGame.SpriteBatch.End();
         }
 

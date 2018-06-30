@@ -24,10 +24,17 @@ namespace Game1
 
         public void Execute()
         {
+            bool hasFireball = false;
             if (Mario.MarioSprite.isFire())
             {
-                IEnemy fireball = new MarioFireBall(myGame);
-                myGame.CurrentLevel.EnemyObjects.Add(fireball);
+                foreach (IEnemy obj in myGame.CurrentLevel.EnemyObjects)
+                {
+                    if (obj is MarioFireBall)
+                        hasFireball = true;
+                }
+
+                if(!hasFireball)
+                    myGame.CurrentLevel.EnemyObjects.Add(new MarioFireBall(myGame));
             }
         }
 
