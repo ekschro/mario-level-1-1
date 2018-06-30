@@ -1,0 +1,11 @@
+William Freeman (.694)
+6/29/18
+Sprint 4
+GeneralPhysics.cs
+Ericsson Schroeter
+30
+
+The name of this class does not specify exactly what this is meant to be used for. Since there are other physics classes, it may have made more sense to define this class in a way that is more self-explanitory. Since this class assumes that the object ha a fixed x and y velocity, it might have made more sense to call it SimpleMovementPhysics or something that explains what it is meant to be used by.
+The class has several private fields, each of which are short, but clear in their purpose (delta is not self-explanitory, but it is commonly used to denote the passage of time, so that is sufficient).
+The NewPosX and NewPosY methods are short, but they do contain some fairly long lines. These could be broken into several shorter lines.
+Lastly, NewPosY uses multiple magic numbers to generate yVelocity. Not only does this mean that every object using this class will have the same acceleration, it also makes the actual calculation unclear.
