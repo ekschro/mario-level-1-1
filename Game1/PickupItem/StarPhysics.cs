@@ -23,7 +23,9 @@ namespace Game1
 
             this.velCap = velCap;
             xVelocity = (float)1;
-            yVelocity = (float)0;
+            yVelocity = (float)-5;
+
+            obj.IsFalling = true;
         }
 
         public void Update()
@@ -44,9 +46,15 @@ namespace Game1
         public void NewPosY()
         {
             if (obj.IsFalling)
+            {
                 yVelocity += (float)(0.5 * 0.002 * Math.Pow(delta, 2));
+            }
             else
-                yVelocity = (float)0;
+            {
+                yVelocity = (float)-4;
+                obj.IsFalling = true;
+            }
+                
 
             obj.SetGameObjectLocation(new Vector2(obj.GetGameObjectLocation().X, obj.GetGameObjectLocation().Y + yVelocity));
         }

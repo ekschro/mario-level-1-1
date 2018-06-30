@@ -59,9 +59,10 @@ namespace Game1
                 starSprite.Update();
                 cyclePosition = 0;
             }
-            if (pickupLocation.Y > pickupOriginalLocation.Y - 16)
+            if (pickupLocation.Y > pickupOriginalLocation.Y - 17 && !moving)
             {
                 pickupLocation.Y -= 1;
+                IsFalling = true;
             }
             else
             {
