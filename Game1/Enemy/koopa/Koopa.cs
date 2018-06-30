@@ -24,7 +24,7 @@ namespace Game1
         private int cycleLength = 8;
         private Vector2 koopaLocation;
         private Vector2 koopaOriginalLocation;
-        private GeneralPhysics physics;
+        private EnemyPhysics physics;
         private bool dead = false;
 
         public Koopa(Game1 game, Vector2 location)
@@ -34,7 +34,7 @@ namespace Game1
             koopaLocation = location;
             koopaOriginalLocation = location;
 
-            physics = new GeneralPhysics(game,this,1);
+            physics = new EnemyPhysics(game,this,1);
             falling = true;
         }
 

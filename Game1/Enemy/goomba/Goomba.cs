@@ -24,7 +24,7 @@ namespace Game1
         public bool IsStomped { get; set; }
 
         private bool dead = false;
-        private GeneralPhysics physics;
+        private EnemyPhysics physics;
 
         public Goomba(Game1 game, Vector2 location)
         {
@@ -32,7 +32,7 @@ namespace Game1
             goombaOriginalLocation = location;
             GoombaSprite = new GoombaSprite(game, this);
             stateMachine = new GoombaStateMachine(GoombaSprite);
-            physics = new GeneralPhysics(game,this,1);
+            physics = new EnemyPhysics(game,this,1);
             falling = true;
         }
 

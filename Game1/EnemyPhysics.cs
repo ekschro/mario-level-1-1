@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Game1
 {
-    class GeneralPhysics
+    class EnemyPhysics
     {
         private Game1 game;
         private IEnemy obj;
@@ -16,7 +16,7 @@ namespace Game1
         private float xVelocity;
         private float yVelocity;
 
-        public GeneralPhysics(Game1 game,IEnemy obj,int velCap)
+        public EnemyPhysics(Game1 game,IEnemy obj,int velCap)
         {
             this.game = game;
             this.obj = obj;

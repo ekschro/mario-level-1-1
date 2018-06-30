@@ -25,7 +25,7 @@ namespace Game1
         
         private Vector2 koopaLocation;
         private Vector2 koopaOriginalLocation;
-        private GeneralPhysics physics;
+        private EnemyPhysics physics;
 
         private Game1 myGame;
 
@@ -38,7 +38,7 @@ namespace Game1
             myGame = game;
             stateMachine = new KoopaStateMachine(koopaSprite);
 
-            physics = new GeneralPhysics(game, this, 1);
+            physics = new EnemyPhysics(game, this, 1);
             falling = true;
         }
 

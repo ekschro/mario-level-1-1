@@ -24,7 +24,7 @@ namespace Game1
         
         private Vector2 koopaLocation;
         private Vector2 koopaOriginalLocation;
-        private GeneralPhysics physics;
+        private EnemyPhysics physics;
 
         private Game1 myGame;
         public bool isLeft;
@@ -35,7 +35,7 @@ namespace Game1
             koopaLocation = shell.GetGameObjectLocation();
             koopaOriginalLocation = shell.GetGameObjectLocation();
 
-            physics = new GeneralPhysics(game,this,4);
+            physics = new EnemyPhysics(game,this,4);
             falling = true;
 
             myGame = game;
@@ -48,7 +48,7 @@ namespace Game1
 
         public void BeStomped()
         {
-            new GeneralPhysics(myGame, this, 4);
+            new EnemyPhysics(myGame, this, 4);
         }
 
         public void ChangeDirection()
