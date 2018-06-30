@@ -7,23 +7,23 @@ using System.Threading.Tasks;
 
 namespace Game1
 {
-    class GeneralPhysics
+    class StarPhysics
     {
         private Game1 game;
-        private IEnemy obj;
+        private IPickup obj;
         private float delta;
         private int velCap;
         private float xVelocity;
         private float yVelocity;
 
-        public GeneralPhysics(Game1 game,IEnemy obj,int velCap)
+        public StarPhysics(Game1 game, IPickup obj, int velCap)
         {
             this.game = game;
             this.obj = obj;
 
             this.velCap = velCap;
-            xVelocity = (float)0.5;
-            yVelocity = (float)0.5;
+            xVelocity = (float)1;
+            yVelocity = (float)0;
         }
 
         public void Update()
@@ -35,10 +35,10 @@ namespace Game1
 
         public void NewPosX()
         {
-            if (obj.GetStateMachine.GetDirection())
-                obj.SetGameObjectLocation(new Vector2(obj.GetGameObjectLocation().X + xVelocity, obj.GetGameObjectLocation().Y));
-            else
+            if (obj.MovingRight())
                 obj.SetGameObjectLocation(new Vector2(obj.GetGameObjectLocation().X - xVelocity, obj.GetGameObjectLocation().Y));
+            else
+                obj.SetGameObjectLocation(new Vector2(obj.GetGameObjectLocation().X + xVelocity, obj.GetGameObjectLocation().Y));
         }
 
         public void NewPosY()
@@ -48,7 +48,7 @@ namespace Game1
             else
                 yVelocity = (float)0;
 
-            obj.SetGameObjectLocation(new Vector2(obj.GetGameObjectLocation().X,obj.GetGameObjectLocation().Y + yVelocity));
+            obj.SetGameObjectLocation(new Vector2(obj.GetGameObjectLocation().X, obj.GetGameObjectLocation().Y + yVelocity));
         }
     }
 }

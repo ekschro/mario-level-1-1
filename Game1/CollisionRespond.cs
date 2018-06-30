@@ -11,11 +11,6 @@ namespace Game1
     {
         private Game1 myGame;
 
-        ICommand upCommand;
-        ICommand downCommand;
-        ICommand leftCommand;
-        ICommand rightCommand;
-
         private int invulnerabilityFrames = 100;
         private int invulnerabilityTimer = 100;
 
@@ -130,6 +125,8 @@ namespace Game1
         public void EnemyCollisionRespondTop(IEnemy enemy)
         {
             enemy.BeStomped();
+            if (enemy is Goomba)
+                objectLevel.TemporaryObjects.Add(new FlattenedGoomba(myGame, enemy.GetGameObjectLocation()));
             Mario.Bounce = true;
             objectLevel.EnemyObjects.Remove(enemy);
         }
@@ -330,6 +327,14 @@ namespace Game1
             objectLevel.PickupObjects.Remove(pickup);
         }
 
+        public void PickupCollisionBlockRespondBottom(IPickup pickup, int height, bool bottom)
+        {
+            float x = pickup.GetGameObjectLocation().X;
+            float y = pickup.GetGameObjectLocation().Y;
+            pickup.SetGameObjectLocation(new Vector2(x,y-height));
+            pickup.IsFalling = false;
+        }
+
         public void PickupCollisionRespondLeft(IPickup pickup)
         {
             pickup.Picked();
@@ -363,6 +368,22 @@ namespace Game1
             }
 
             objectLevel.PickupObjects.Remove(pickup);
+        }
+
+        public void PickupCollisionBlockRespondLeft(IPickup pickup, int width)
+        {
+            float x = pickup.GetGameObjectLocation().X;
+            float y = pickup.GetGameObjectLocation().Y;
+            pickup.SetGameObjectLocation(new Vector2(x + width, y));
+            pickup.Collide();
+        }
+
+        public void PickupCollisionBlockRespondRight(IPickup pickup, int width)
+        {
+            float x = pickup.GetGameObjectLocation().X;
+            float y = pickup.GetGameObjectLocation().Y;
+            pickup.SetGameObjectLocation(new Vector2(x - width, y));
+            pickup.Collide();
         }
 
         public void PickupCollisionRespondRight(IPickup pickup)

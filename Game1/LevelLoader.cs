@@ -155,6 +155,15 @@ namespace Game1
                 case "BottomRightPipeBlock":
                     GameObject = new BottomRightPipeBlock(myGame, Position);
                     break;
+                case "Castle":
+                    GameObject = new CastleBlock(myGame, Position);
+                    break;
+                case "Flagpole":
+                    GameObject = new FlagpoleBlock(myGame, Position);
+                    break;
+                case "Flag":
+                    GameObject = new FlagBlock(myGame, Position);
+                    break;
             }
             return GameObject;
         }

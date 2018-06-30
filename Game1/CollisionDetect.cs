@@ -180,6 +180,79 @@ namespace Game1
                 size++;
             }
         }
+
+        public void BlockPickupCollisionDetect()
+        {
+            Rectangle pickupBox;
+
+            bool bottom = false;
+            int size = 0;
+            for (int j = 0; j < pickupArray.Length; j++)
+            {
+                int pickupX = (int)pickupArray[j].GetGameObjectLocation().X;
+                int pickupY = (int)pickupArray[j].GetGameObjectLocation().Y;
+
+                pickupBox = new Rectangle(pickupX, pickupY, 16, 16);
+
+                blockArray = level1.BlockObjects.ToArray();
+
+                for (int i = 0; i < blockArray.Length; i++)
+                {
+                    Rectangle blockBox;
+
+                    int blockX = (int)blockArray[i].GetGameObjectLocation().X;
+                    int blockY = (int)blockArray[i].GetGameObjectLocation().Y;
+
+
+                    if (!(blockArray[i] is StoneBlock))
+                        blockBox = new Rectangle(blockX, blockY, 16, 16);
+                    else
+                    {
+                        StoneBlock block = (StoneBlock)blockArray[i];
+                        blockBox = new Rectangle(blockX, blockY, (int)block.BlockSize.X, (int)block.BlockSize.Y);
+                    }
+
+                    Rectangle intersect;
+
+                    if (pickupBox.Intersects(blockBox))
+                    {
+                        Rectangle.Intersect(ref pickupBox, ref blockBox, out intersect);
+                        if (intersect.Height < intersect.Width && pickupY < blockY && enemyArray[j] is MarioFireBall)
+                        {
+                            MarioFireBall x = (MarioFireBall)pickupArray[j];
+                            x.Update();
+                        }
+                        else if (intersect.Height > intersect.Width && pickupX < blockX && enemyArray[j] is MarioFireBall)
+                        {
+                            level1.PickupObjects.RemoveAt(size);
+                            size--;
+
+                        }
+                        else if (intersect.Height > intersect.Width && pickupX > blockX && enemyArray[j] is MarioFireBall)
+                        {
+                            level1.PickupObjects.RemoveAt(size);
+                            size--;
+
+                        }
+                        else if (intersect.Height < intersect.Width && pickupY < blockY)
+                        {
+                            collision.PickupCollisionBlockRespondBottom(pickupArray[j], intersect.Height, bottom);
+                            bottom = true;
+                        }
+                        else if (intersect.Height > intersect.Width && pickupX < blockX)
+                        {
+                            collision.PickupCollisionBlockRespondRight(pickupArray[j], intersect.Width);
+                        }
+                        else if (intersect.Height > intersect.Width && pickupX > blockX)
+                        {
+                            collision.PickupCollisionBlockRespondLeft(pickupArray[j], intersect.Width);
+                        }
+                    }
+                }
+                size++;
+            }
+        }
+
         public void EnemyEnemyCollisionDetect()
         {
             Rectangle playerBox;
@@ -342,6 +415,7 @@ namespace Game1
             MarioPickupCollisionDetect();
             BlockEnemyCollisionDetect();
             EnemyEnemyCollisionDetect();
+            BlockPickupCollisionDetect();
             collision.Update();
         }
     }

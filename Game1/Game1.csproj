@@ -131,13 +131,17 @@
     <Compile Include="ILoader.cs" />
     <Compile Include="Level1.cs" />
     <Compile Include="MouseController.cs" />
+    <Compile Include="PickupItem\StarPhysics.cs" />
+    <Compile Include="PickupItem\PickupPhysics.cs" />
     <Compile Include="TemporaryObjects\Coin.cs" />
     <Compile Include="PickupItem\EmptyPickup.cs" />
     <Compile Include="PickupItem\Fireflower.cs" />
     <Compile Include="PickupItem\GreenMushroom.cs" />
     <Compile Include="PickupItem\RedMushroom.cs" />
+    <Compile Include="TemporaryObjects\FlattenedGoomba.cs" />
     <Compile Include="TemporaryObjects\FlippedKoopa.cs" />
     <Compile Include="TemporaryObjects\FlippedGoomba.cs" />
+    <Compile Include="TemporaryObjects\Sprites\FlattenedGoombaSprite.cs" />
     <Compile Include="TemporaryObjects\Sprites\FlippedKoopaSprite.cs" />
     <Compile Include="TemporaryObjects\Sprites\FlippedGoombaSprite.cs" />
     <Compile Include="TemporaryObjects\Sprites\CoinSprite.cs" />
