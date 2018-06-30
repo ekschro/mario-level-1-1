@@ -14,12 +14,14 @@ namespace Game1
 
     public class LeftCommand : ICommand
     {
-        //private Game1 myGame;
+        private Game1 myGame;
+        private IPlayer player;
         private int timer;
         
-        public LeftCommand()
+        public LeftCommand(Game1 game)
         {
-            //myGame = game;
+            myGame = game;
+            player = game.CurrentLevel.PlayerObject;
             timer = 0;
             
         }
@@ -29,19 +31,16 @@ namespace Game1
 
             if (timer == 5)
             {
-                Mario.MarioSprite.LeftCommandCalled();
+                player.MarioSprite.LeftCommandCalled();
                 timer = 0;
             }else
             {
                 timer++;
             }
 
-
-
-            
-            Mario.MovingRight = false;
-            Mario.MovingLeft = true;
-            //Mario.NewXPos();
+            player.MovingRight = false;
+            player.MovingLeft = true;
+            //player.NewXPos();
         }
     }
 }

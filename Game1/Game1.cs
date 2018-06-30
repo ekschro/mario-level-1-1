@@ -44,10 +44,12 @@ namespace Game1
         protected override void Initialize()
         {
             controllerList = new List<IController>();
-            
+
+            CurrentLevel = new Level1("../../../../Content/LevelInfo.csv", this);
+
             controllerList.Add(new KeyboardController(this));
             controllerList.Add(new GamePadController(this));
-            mouseController = new MouseController();
+            mouseController = new MouseController(this);
             
             base.Initialize();
         }

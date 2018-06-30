@@ -28,17 +28,17 @@ namespace Game1
             //recentKeys = new List<Buttons>();
             controllerMappings.Add(Buttons.Start, new ExitGameCommand(myGame));
 
-            controllerMappings.Add(Buttons.LeftThumbstickUp, new UpCommand());
-            controllerMappings.Add(Buttons.DPadUp, new UpCommand());
+            controllerMappings.Add(Buttons.LeftThumbstickUp, new UpCommand(myGame));
+            controllerMappings.Add(Buttons.DPadUp, new UpCommand(myGame));
 
-            controllerMappings.Add(Buttons.LeftThumbstickDown, new DownCommand());
-            controllerMappings.Add(Buttons.DPadDown, new DownCommand());
+            controllerMappings.Add(Buttons.LeftThumbstickDown, new DownCommand(myGame));
+            controllerMappings.Add(Buttons.DPadDown, new DownCommand(myGame));
 
-            controllerMappings.Add(Buttons.LeftThumbstickLeft, new LeftCommand());
-            controllerMappings.Add(Buttons.DPadLeft, new LeftCommand());
+            controllerMappings.Add(Buttons.LeftThumbstickLeft, new LeftCommand(myGame));
+            controllerMappings.Add(Buttons.DPadLeft, new LeftCommand(myGame));
 
-            controllerMappings.Add(Buttons.LeftThumbstickRight, new RightCommand());
-            controllerMappings.Add(Buttons.DPadRight, new RightCommand());
+            controllerMappings.Add(Buttons.LeftThumbstickRight, new RightCommand(myGame));
+            controllerMappings.Add(Buttons.DPadRight, new RightCommand(myGame));
 
             controllerMappings.Add(Buttons.Back, new ResetCommand(myGame));
             controllerMappings.Add(Buttons.B, new FireballCommand(myGame));

@@ -8,7 +8,8 @@ namespace Game1
         public float CurrentYPos { get; set; }
 
         private Game1 myGame;
-        
+        private IPlayer player;
+
 
         //private int currentFrame = 11;
         private int startFrame = 11;
@@ -19,35 +20,36 @@ namespace Game1
         public MarioBigWalkLeft(Game1 game)
         {
             myGame = game;
+            player = game.CurrentLevel.PlayerObject;
             currentFrame = startFrame;
         }
 
 
         public void Draw()
         {
-            int width = TextureWareHouse.marioTexture.Width / Mario.TotalMarioColumns;
-            int height = TextureWareHouse.marioTexture.Height / Mario.TotalMarioRows;
-            int row = (int)((float)currentFrame / (float)Mario.TotalMarioColumns);
-            int column = currentFrame % Mario.TotalMarioColumns;
+            int width = TextureWareHouse.marioTexture.Width / player.TotalMarioColumns;
+            int height = TextureWareHouse.marioTexture.Height / player.TotalMarioRows;
+            int row = (int)((float)currentFrame / (float)player.TotalMarioColumns);
+            int column = currentFrame % player.TotalMarioColumns;
 
-            int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(Mario.CurrentXPosition);
+            int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(player.CurrentXPosition);
 
             Rectangle sourceRectangle = new Rectangle(width * column, (height * row), width, height);
-            Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)Mario.CurrentYPosition, width, height);
+            Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)player.CurrentYPosition, width, height);
 
             myGame.SpriteBatch.Begin();
-            myGame.SpriteBatch.Draw(TextureWareHouse.marioTexture, destinationRectangle, sourceRectangle, Mario.MarioColor);
+            myGame.SpriteBatch.Draw(TextureWareHouse.marioTexture, destinationRectangle, sourceRectangle, player.MarioColor);
             myGame.SpriteBatch.End();
         }
 
         public void UpCommandCalled()
         {
-            Mario.MarioSprite = new MarioBigJumpingLeft(myGame);
+            player.MarioSprite = new MarioBigJumpingLeft(myGame);
         }
 
         public void DownCommandCalled()
         {
-            Mario.MarioSprite = new MarioBigCrouchingLeft(myGame);
+            player.MarioSprite = new MarioBigCrouchingLeft(myGame);
         }
 
         public void LeftCommandCalled()
@@ -55,17 +57,17 @@ namespace Game1
             currentFrame--;
             if (currentFrame == endFrame)
                 currentFrame = startFrame;
-            //Mario.marioSprite = new MarioBigWalkLeftPart2(myGame);
+            //player.marioSprite = new MarioBigWalkLeftPart2(myGame);
         }
 
         public void RightCommandCalled()
         {
-            Mario.MarioSprite = new MarioBigIdleLeft(myGame);
+            player.MarioSprite = new MarioBigIdleLeft(myGame);
         }
 
         public void SmallMarioCommandCalled()
         {
-            Mario.MarioSprite = new MarioSmallWalkLeft(myGame);
+            player.MarioSprite = new MarioSmallWalkLeft(myGame);
         }
 
         public void BigMarioCommandCalled()
@@ -75,13 +77,13 @@ namespace Game1
 
         public void FireMarioCommandCalled()
         {
-            Mario.MarioSprite = new MarioFireWalkLeft(myGame);
+            player.MarioSprite = new MarioFireWalkLeft(myGame);
         }
 
         public void DeadMarioCommandCalled()
         {
-            if (!(Mario.MarioSprite is MarioDead))
-                Mario.MarioSprite = new MarioDead(myGame);
+            if (!(player.MarioSprite is MarioDead))
+                player.MarioSprite = new MarioDead(myGame);
         }
 
         public void Update()
@@ -105,7 +107,7 @@ namespace Game1
 
         public Vector2 GetGameObjectLocation()
         {
-            return new Vector2(Mario.CurrentXPosition, Mario.CurrentYPosition);
+            return new Vector2(player.CurrentXPosition, player.CurrentYPosition);
         }
     }
 }

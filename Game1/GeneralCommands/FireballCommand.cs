@@ -15,17 +15,18 @@ namespace Game1
     {
         //private int timer;
         private Game1 myGame;
-
+        private IPlayer player;
 
         public FireballCommand(Game1 game)
         {
             myGame = game;
+            player = game.CurrentLevel.PlayerObject;
         }
 
         public void Execute()
         {
             bool hasFireball = false;
-            if (Mario.MarioSprite.isFire())
+            if (player.MarioSprite.isFire())
             {
                 foreach (IEnemy obj in myGame.CurrentLevel.EnemyObjects)
                 {

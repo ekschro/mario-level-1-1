@@ -13,12 +13,14 @@ namespace Game1
 {
     public class UpCommand : ICommand
     {
-        //private Game1 myGame;
+        private Game1 myGame;
+        private IPlayer player;
         private int timer;
         
-        public UpCommand()
+        public UpCommand(Game1 game)
         {
-            //myGame = game;
+            myGame = game;
+            player = game.CurrentLevel.PlayerObject;
             timer = 0;
             
         }
@@ -27,7 +29,7 @@ namespace Game1
         {
             if (timer == 5)
             {
-                Mario.MarioSprite.UpCommandCalled();
+                player.MarioSprite.UpCommandCalled();
                 timer = 0;
             }
             else
@@ -35,10 +37,10 @@ namespace Game1
                 timer++;
             }
 
-            Mario.MovingDown = false;
-            Mario.MovingUp = true;
+            player.MovingDown = false;
+            player.MovingUp = true;
            
-            //Mario.NewYPos();
+            //player.NewYPos();
         }
     }
 }

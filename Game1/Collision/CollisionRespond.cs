@@ -15,43 +15,44 @@ namespace Game1
         private int invulnerabilityTimer = 100;
 
         private ILevel objectLevel;
+        private IPlayer player;
 
         public CollisionRespond(Game1 game, ILevel level)
         {
             myGame = game;
-
             objectLevel = level;
+            player = objectLevel.PlayerObject;
         }
 
         public void BlockCollisionRespondTop(IBlock block,int height,bool standing)
         {
             if (!(block is HiddenGreenMushroomBlock) && !standing)
-                Mario.CurrentYPosition -= height;
-            Mario.CanJump = true;
-            Mario.Falling = false;
-            if (Mario.MarioSprite is MarioBigJumpingRight)
+                player.CurrentYPosition -= height;
+            player.CanJump = true;
+            player.Falling = false;
+            if (player.MarioSprite is MarioBigJumpingRight)
             {
-                Mario.MarioSprite = new MarioBigIdleRight(myGame);
+                player.MarioSprite = new MarioBigIdleRight(myGame);
             }
-            else if (Mario.MarioSprite is MarioBigJumpingLeft)
+            else if (player.MarioSprite is MarioBigJumpingLeft)
             {
-                Mario.MarioSprite = new MarioBigIdleLeft(myGame);
+                player.MarioSprite = new MarioBigIdleLeft(myGame);
             }
-            else if (Mario.MarioSprite is MarioSmallJumpingRight)
+            else if (player.MarioSprite is MarioSmallJumpingRight)
             {
-                Mario.MarioSprite = new MarioSmallIdleRight(myGame);
+                player.MarioSprite = new MarioSmallIdleRight(myGame);
             }
-            else if (Mario.MarioSprite is MarioSmallJumpingLeft)
+            else if (player.MarioSprite is MarioSmallJumpingLeft)
             {
-                Mario.MarioSprite = new MarioSmallIdleLeft(myGame);
+                player.MarioSprite = new MarioSmallIdleLeft(myGame);
             }
-            else if (Mario.MarioSprite is MarioFireJumpingRight)
+            else if (player.MarioSprite is MarioFireJumpingRight)
             {
-                Mario.MarioSprite = new MarioFireIdleRight(myGame);
+                player.MarioSprite = new MarioFireIdleRight(myGame);
             }
-            else if (Mario.MarioSprite is MarioFireJumpingLeft)
+            else if (player.MarioSprite is MarioFireJumpingLeft)
             {
-                Mario.MarioSprite = new MarioFireIdleLeft(myGame);
+                player.MarioSprite = new MarioFireIdleLeft(myGame);
             }
         }
 
@@ -59,23 +60,23 @@ namespace Game1
         {
             if (!head)
             {
-                Mario.CurrentYPosition += height;
-                Mario.Bump = true;
+                player.CurrentYPosition += height;
+                player.Bump = true;
             }
                 
 
-            if (Mario.MarioSprite.isSmall() && block is BrickBlock)
+            if (player.MarioSprite.isSmall() && block is BrickBlock)
             {
                 ((BrickBlock)block).Bounce();
             }
 
-            if (block is BrickBlock && !Mario.MarioSprite.isSmall())
+            if (block is BrickBlock && !player.MarioSprite.isSmall())
                 objectLevel.BlockObjects.Remove(block);
             else if (block is QuestionPowerUpBlock)
             {
                 objectLevel.BlockObjects.Remove(block);
                 objectLevel.BlockObjects.Add(new UsedBlock(myGame, block.GetGameObjectLocation()));
-                if (Mario.MarioSprite.isSmall())
+                if (player.MarioSprite.isSmall())
                     objectLevel.PickupObjects.Add(new RedMushroom(myGame, block.GetGameObjectLocation()));
                 else
                     objectLevel.PickupObjects.Add(new Fireflower(myGame, block.GetGameObjectLocation()));
@@ -114,22 +115,22 @@ namespace Game1
                 }
             }
 
-            Mario.CanJump = false;
-            Mario.Falling = true;
-            Mario.Jumping = false;
+            player.CanJump = false;
+            player.Falling = true;
+            player.Jumping = false;
 
         }
 
         public void BlockCollisionRespondRight(IBlock block,int width,bool right)
         {
             if (!(block is HiddenGreenMushroomBlock) && !right)
-                Mario.CurrentXPosition += width;
+                player.CurrentXPosition += width;
         }
 
         public void BlockCollisionRespondLeft(IBlock block,int width,bool left)
         {
             if (!(block is HiddenGreenMushroomBlock) && !left)
-                Mario.CurrentXPosition -= width;
+                player.CurrentXPosition -= width;
         }
 
         public void EnemyCollisionRespondTop(IEnemy enemy)
@@ -140,14 +141,14 @@ namespace Game1
             else if (enemy is Koopa)
                 objectLevel.EnemyObjects.Add(new KoopaShell(myGame, enemy.GetGameObjectLocation()));
             else if (enemy is KoopaShell) {
-                if (Mario.MovingRight)
+                if (player.MovingRight)
                     objectLevel.EnemyObjects.Add(new KoopaShellMoving(myGame, (KoopaShell)enemy, false));
                 else
                     objectLevel.EnemyObjects.Add(new KoopaShellMoving(myGame, (KoopaShell)enemy, true));
             }
 
 
-            Mario.Bounce = true;
+            player.Bounce = true;
             objectLevel.EnemyObjects.Remove(enemy);
         }
 
@@ -160,23 +161,23 @@ namespace Game1
                 else if (enemy is Koopa)
                     objectLevel.TemporaryObjects.Add(new FlippedKoopa(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
 
-            } else if (Mario.Invulnerability)
+            } else if (player.Invulnerability)
             {
 
             }
-            else if (Mario.MarioSprite.isFire())
+            else if (player.MarioSprite.isFire())
             {
-                Mario.MarioSprite.BigMarioCommandCalled();
-                Mario.Invulnerability = true;
+                player.MarioSprite.BigMarioCommandCalled();
+                player.Invulnerability = true;
             }
-            else if (!Mario.MarioSprite.isSmall())
+            else if (!player.MarioSprite.isSmall())
             {
-                Mario.MarioSprite.SmallMarioCommandCalled();
-                Mario.Invulnerability = true;
+                player.MarioSprite.SmallMarioCommandCalled();
+                player.Invulnerability = true;
             }
             else
             {
-                Mario.MarioSprite.DeadMarioCommandCalled();
+                player.MarioSprite.DeadMarioCommandCalled();
             }
             
         }
@@ -195,23 +196,23 @@ namespace Game1
                 else if (enemy is Koopa)
                     objectLevel.TemporaryObjects.Add(new FlippedKoopa(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
             }
-            else if (Mario.Invulnerability)
+            else if (player.Invulnerability)
             {
 
             }
-            else if (Mario.MarioSprite.isFire())
+            else if (player.MarioSprite.isFire())
             {
-                Mario.MarioSprite.BigMarioCommandCalled();
-                Mario.Invulnerability = true;
+                player.MarioSprite.BigMarioCommandCalled();
+                player.Invulnerability = true;
             }
-            else if (!Mario.MarioSprite.isSmall())
+            else if (!player.MarioSprite.isSmall())
             {
-                Mario.MarioSprite.SmallMarioCommandCalled();
-                Mario.Invulnerability = true;
+                player.MarioSprite.SmallMarioCommandCalled();
+                player.Invulnerability = true;
             }
             else
             {
-                Mario.MarioSprite.DeadMarioCommandCalled();
+                player.MarioSprite.DeadMarioCommandCalled();
             }
         }
 
@@ -229,23 +230,23 @@ namespace Game1
                 else if(enemy is Koopa)
                     objectLevel.TemporaryObjects.Add(new FlippedKoopa(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
             }
-            else if (Mario.Invulnerability)
+            else if (player.Invulnerability)
             {
 
             }
-            else if (Mario.MarioSprite.isFire())
+            else if (player.MarioSprite.isFire())
             {
-                Mario.MarioSprite.BigMarioCommandCalled();
-                Mario.Invulnerability = true;
+                player.MarioSprite.BigMarioCommandCalled();
+                player.Invulnerability = true;
             }
-            else if (!Mario.MarioSprite.isSmall())
+            else if (!player.MarioSprite.isSmall())
             {
-                Mario.MarioSprite.SmallMarioCommandCalled();
-                Mario.Invulnerability = true;
+                player.MarioSprite.SmallMarioCommandCalled();
+                player.Invulnerability = true;
             }
             else
             {
-                Mario.MarioSprite.DeadMarioCommandCalled();
+                player.MarioSprite.DeadMarioCommandCalled();
             }
         }
 
@@ -300,15 +301,15 @@ namespace Game1
            
             if (pickup is Fireflower)
             {
-                Mario.MarioSprite.FireMarioCommandCalled();
+                player.MarioSprite.FireMarioCommandCalled();
             }
             else if (pickup is GreenMushroom)
             {
             }
             else if (pickup is RedMushroom)
             {
-                if (!Mario.MarioSprite.isFire())
-                    Mario.MarioSprite.BigMarioCommandCalled();
+                if (!player.MarioSprite.isFire())
+                    player.MarioSprite.BigMarioCommandCalled();
             }
             else if (pickup is Coin)
             {
@@ -322,7 +323,7 @@ namespace Game1
             {
                 objectLevel.PlayerObject.IsStar = true;
                 invulnerabilityTimer = 1000;
-                Mario.Invulnerability = true;
+                player.Invulnerability = true;
             }
 
             objectLevel.PickupObjects.Remove(pickup);
@@ -334,16 +335,16 @@ namespace Game1
          
             if (pickup is Fireflower)
             {
-                Mario.MarioSprite.FireMarioCommandCalled();
+                player.MarioSprite.FireMarioCommandCalled();
             }
             else if (pickup is GreenMushroom)
             {
-                //Mario.marioSprite.BigMarioCommandCalled();
+                //player.marioSprite.BigMarioCommandCalled();
             }
             else if (pickup is RedMushroom)
             {
-                if (!Mario.MarioSprite.isFire())
-                Mario.MarioSprite.BigMarioCommandCalled();
+                if (!player.MarioSprite.isFire())
+                player.MarioSprite.BigMarioCommandCalled();
             }
             else if (pickup is Coin)
             {
@@ -357,7 +358,7 @@ namespace Game1
             {
                 objectLevel.PlayerObject.IsStar = true;
                 invulnerabilityTimer = 1000;
-                Mario.Invulnerability = true;
+                player.Invulnerability = true;
             }
 
             objectLevel.PickupObjects.Remove(pickup);
@@ -377,16 +378,16 @@ namespace Game1
             
             if (pickup is Fireflower)
             {
-                Mario.MarioSprite.FireMarioCommandCalled();
+                player.MarioSprite.FireMarioCommandCalled();
             }
             else if (pickup is GreenMushroom)
             {
-                //Mario.marioSprite.BigMarioCommandCalled();
+                //player.marioSprite.BigMarioCommandCalled();
             }
             else if (pickup is RedMushroom)
             {
-                if (!Mario.MarioSprite.isFire())
-                    Mario.MarioSprite.BigMarioCommandCalled();
+                if (!player.MarioSprite.isFire())
+                    player.MarioSprite.BigMarioCommandCalled();
             }
             else if (pickup is Coin)
             {
@@ -400,7 +401,7 @@ namespace Game1
             {
                 objectLevel.PlayerObject.IsStar = true;
                 invulnerabilityTimer = 1000;
-                Mario.Invulnerability = true;
+                player.Invulnerability = true;
             }
 
             objectLevel.PickupObjects.Remove(pickup);
@@ -429,16 +430,16 @@ namespace Game1
 
             if (pickup is Fireflower)
             {
-                Mario.MarioSprite.FireMarioCommandCalled();
+                player.MarioSprite.FireMarioCommandCalled();
             }
             else if (pickup is GreenMushroom)
             {
-                //Mario.marioSprite.BigMarioCommandCalled();
+                //player.marioSprite.BigMarioCommandCalled();
             }
             else if (pickup is RedMushroom)
             {
-                if (!Mario.MarioSprite.isFire())
-                    Mario.MarioSprite.BigMarioCommandCalled();
+                if (!player.MarioSprite.isFire())
+                    player.MarioSprite.BigMarioCommandCalled();
             }
             else if (pickup is Coin)
             {
@@ -452,7 +453,7 @@ namespace Game1
             {
                 objectLevel.PlayerObject.IsStar = true;
                 invulnerabilityTimer = 1000;
-                Mario.Invulnerability = true;
+                player.Invulnerability = true;
             }
 
             objectLevel.PickupObjects.Remove(pickup);
@@ -460,14 +461,14 @@ namespace Game1
 
         public void Update()
         {
-            if (Mario.Invulnerability)
+            if (player.Invulnerability)
             {
                 invulnerabilityTimer--;
             }
             if (invulnerabilityTimer == 0)
             {
                 invulnerabilityTimer = invulnerabilityFrames;
-                Mario.Invulnerability = false;
+                player.Invulnerability = false;
                 objectLevel.PlayerObject.IsStar = false;
             }
         }

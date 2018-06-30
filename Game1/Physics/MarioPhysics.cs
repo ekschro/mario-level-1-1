@@ -13,6 +13,7 @@ namespace Game1
         private Game1 game;
         private float delta;
         private int velCap;
+        private IPlayer player;
         private float xVelocity;
         private float yVelocity;
 
@@ -22,6 +23,7 @@ namespace Game1
         {
             this.game = game;
             this.velCap = velCap;
+            player = game.CurrentLevel.PlayerObject;
             xVelocity = 0;
             yVelocity = 0;
         }
@@ -35,7 +37,7 @@ namespace Game1
 
         public void NewPosX()
         {
-            if (Mario.MovingRight)
+            if (player.MovingRight)
             {
                 if (xVelocity < velCap)
                 {
@@ -46,7 +48,7 @@ namespace Game1
                     xVelocity = velCap;
                 }
             }
-            else if (Mario.MovingLeft)
+            else if (player.MovingLeft)
             {
                 if (Math.Abs(xVelocity) < velCap)
                 {
@@ -57,7 +59,7 @@ namespace Game1
                     xVelocity = -1 * velCap;
                 }
 
-                if (Mario.CurrentXPosition < (game.CurrentLevel.LevelCamera.CameraPosition + 4))
+                if (player.CurrentXPosition < (game.CurrentLevel.LevelCamera.CameraPosition + 4))
                     xVelocity = 0;
             }
             else
@@ -77,38 +79,38 @@ namespace Game1
 
             }
 
-            Mario.CurrentXPosition += xVelocity;
+            player.CurrentXPosition += xVelocity;
         }
 
         public void NewPosY()
         {
-            if (Mario.MovingUp && Mario.CanJump && !Mario.Falling)
+            if (player.MovingUp && player.CanJump && !player.Falling)
             {
                 yVelocity = (float)-6.5;
-                Mario.CanJump = false;
+                player.CanJump = false;
             }
-            else if (!Mario.MovingUp && !Mario.Falling)
+            else if (!player.MovingUp && !player.Falling)
             {
                 yVelocity = 1;
-                Mario.Falling = true;
+                player.Falling = true;
             }
 
-            if (Mario.Bounce)
+            if (player.Bounce)
             {
                 yVelocity = (float)-3.5;
-                Mario.Bounce = false;
+                player.Bounce = false;
             }
 
-            if (Mario.Bump)
+            if (player.Bump)
             {
                 yVelocity = 0;
-                Mario.Falling = true;
-                Mario.Bump = false;
+                player.Falling = true;
+                player.Bump = false;
             }
                 
 
             yVelocity += (float)(0.5 * 0.002 * Math.Pow(delta, 2));
-            Mario.CurrentYPosition += yVelocity;
+            player.CurrentYPosition += yVelocity;
         }
     }
 }

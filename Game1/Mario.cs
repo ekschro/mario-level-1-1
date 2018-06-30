@@ -29,27 +29,32 @@ namespace Game1
         private static bool canJump;
         //prvate static bool falling;
 
-        public static bool CanJump { get => canJump; set => canJump = value; }
-        public static ISprite MarioSprite { get => playerSprite; set => playerSprite = value; }
-        public static float CurrentXPosition { get => currentXPosition; set => currentXPosition = value; }
-        public static float CurrentYPosition { get => currentYPosition; set => currentYPosition = value; }
-        public static int TotalMarioRows { get => totalMarioRows; set => totalMarioRows = value; }
-        public static int TotalMarioColumns { get => totalMarioColumns; set => totalMarioColumns = value; }
+
+        public ISprite MarioSprite { get => playerSprite; set => playerSprite = value; }
+        public float CurrentXPosition { get => currentXPosition; set => currentXPosition = value; }
+        public float CurrentYPosition { get => currentYPosition; set => currentYPosition = value; }
+
+        public bool Jumping { get; set; }
+        public bool Falling { get; set; }
+        public bool Bump { get; set; }
+        public bool Bounce { get; set; }
+        public bool CanJump { get => canJump; set => canJump = value; }
+
+        public bool MovingUp { get => movingUp; set => movingUp = value; }
+        public bool MovingRight { get => movingRight; set => movingRight = value; }
+        public bool MovingLeft { get => movingLeft; set => movingLeft = value; }
+        public bool MovingDown { get => movingDown; set => movingDown = value; }
+        
+        public int TotalMarioRows { get => totalMarioRows; set => totalMarioRows = value; }
+        public int TotalMarioColumns { get => totalMarioColumns; set => totalMarioColumns = value; }
         public bool IsStar { get => isStar; set => isStar = value; }
-        public static bool Invulnerability { get => invulnerability; set => invulnerability = value; }
+        public bool Invulnerability { get => invulnerability; set => invulnerability = value; }
         public static int CurrentFrame { get => currentFrame; set => currentFrame = value; }
         public static Game1 MyGame { get => myGame; set => myGame = value; }
         public static float OldXPosition { get => oldXPosition; set => oldXPosition = value; }
         public static float OldYPosition { get => oldYPosition; set => oldYPosition = value; }
-        public static bool MovingUp { get => movingUp; set => movingUp = value; }
-        public static bool MovingRight { get => movingRight; set => movingRight = value; }
-        public static bool MovingLeft { get => movingLeft; set => movingLeft = value; }
-        public static bool MovingDown { get => movingDown; set => movingDown = value; }
-        public static Color MarioColor { get => marioColor; set => marioColor = value; }
-        public static bool Jumping { get; internal set; }
-        public static bool Falling { get; internal set; }
-        public static bool Bump { get; internal set; }
-        public static bool Bounce { get; internal set; }
+
+        public Color MarioColor { get => marioColor; set => marioColor = value; }
 
         public Mario(Game1 game, Vector2 vector)
         {
@@ -82,31 +87,31 @@ namespace Game1
 
         public void Update()
         {
-            if (!(Mario.MarioSprite is MarioDead))
+            if (!(MarioSprite is MarioDead))
             {
                 physics.Update();
-                if (physics.XVelocity == 0 && Mario.MarioSprite is MarioBigWalkRight)
+                if (physics.XVelocity == 0 && MarioSprite is MarioBigWalkRight)
                 {
-                    Mario.MarioSprite = new MarioBigIdleRight(myGame);
-                } else if (physics.XVelocity == 0 && Mario.MarioSprite is MarioBigWalkLeft)
+                    MarioSprite = new MarioBigIdleRight(myGame);
+                } else if (physics.XVelocity == 0 && MarioSprite is MarioBigWalkLeft)
                 {
-                    Mario.MarioSprite = new MarioBigIdleLeft(myGame);
+                    MarioSprite = new MarioBigIdleLeft(myGame);
                 }
-                else if (physics.XVelocity == 0 && Mario.MarioSprite is MarioSmallWalkRight)
+                else if (physics.XVelocity == 0 && MarioSprite is MarioSmallWalkRight)
                 {
-                    Mario.MarioSprite = new MarioSmallIdleRight(myGame);
+                    MarioSprite = new MarioSmallIdleRight(myGame);
                 }
-                else if (physics.XVelocity == 0 && Mario.MarioSprite is MarioSmallWalkLeft)
+                else if (physics.XVelocity == 0 && MarioSprite is MarioSmallWalkLeft)
                 {
-                    Mario.MarioSprite = new MarioSmallIdleLeft(myGame);
+                    MarioSprite = new MarioSmallIdleLeft(myGame);
                 }
-                else if (physics.XVelocity == 0 && Mario.MarioSprite is MarioFireWalkRight)
+                else if (physics.XVelocity == 0 && MarioSprite is MarioFireWalkRight)
                 {
-                    Mario.MarioSprite = new MarioFireIdleRight(myGame);
+                    MarioSprite = new MarioFireIdleRight(myGame);
                 }
-                else if (physics.XVelocity == 0 && Mario.MarioSprite is MarioFireWalkLeft)
+                else if (physics.XVelocity == 0 && MarioSprite is MarioFireWalkLeft)
                 {
-                    Mario.MarioSprite = new MarioFireIdleLeft(myGame);
+                    MarioSprite = new MarioFireIdleLeft(myGame);
                 }
             }
 
@@ -151,14 +156,14 @@ namespace Game1
 
         public static Boolean CanGenerateProjectiles()
         {
-            if (MarioSprite.isFire())
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            //if (MarioSprite.isFire())
+            //{
+            //    return true;
+            //}
+            //else
+            //{
+               return false;
+            //}
         }
     }
 }

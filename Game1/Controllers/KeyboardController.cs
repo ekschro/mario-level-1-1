@@ -16,31 +16,29 @@ namespace Game1
     {
         private Dictionary<Keys, ICommand> controllerMappings;
         //private List<Keys> recentKeys;
-        private Game1 myGame;
         private ICommand none;
         
         public KeyboardController(Game1 game)
         {
-            none = new NoCommand();
-            myGame = game;
+            none = new NoCommand(game);
             controllerMappings = new Dictionary<Keys, ICommand>();
             //recentKeys = new List<Keys>();
-            controllerMappings.Add(Keys.Q, new ExitGameCommand(myGame));
-            controllerMappings.Add(Keys.W, new UpCommand());
-            controllerMappings.Add(Keys.S, new DownCommand());
-            controllerMappings.Add(Keys.A, new LeftCommand());
-            controllerMappings.Add(Keys.D, new RightCommand());
-            controllerMappings.Add(Keys.Up, new UpCommand());
-            controllerMappings.Add(Keys.Down, new DownCommand());
-            controllerMappings.Add(Keys.Left, new LeftCommand());
-            controllerMappings.Add(Keys.Right, new RightCommand());
-            controllerMappings.Add(Keys.Y, new SmallMarioCommand());
-            controllerMappings.Add(Keys.U, new BigMarioCommand());
-            controllerMappings.Add(Keys.I, new FireMarioCommand());
-            controllerMappings.Add(Keys.O, new DeadMarioCommand(myGame));
-            controllerMappings.Add(Keys.R, new ResetCommand(myGame));
-            controllerMappings.Add(Keys.M, new MouseToggleCommand(myGame));
-            controllerMappings.Add(Keys.X, new FireballCommand(myGame));
+            controllerMappings.Add(Keys.Q, new ExitGameCommand(game));
+            controllerMappings.Add(Keys.W, new UpCommand(game));
+            controllerMappings.Add(Keys.S, new DownCommand(game));
+            controllerMappings.Add(Keys.A, new LeftCommand(game));
+            controllerMappings.Add(Keys.D, new RightCommand(game));
+            controllerMappings.Add(Keys.Up, new UpCommand(game));
+            controllerMappings.Add(Keys.Down, new DownCommand(game));
+            controllerMappings.Add(Keys.Left, new LeftCommand(game));
+            controllerMappings.Add(Keys.Right, new RightCommand(game));
+            controllerMappings.Add(Keys.Y, new SmallMarioCommand(game));
+            controllerMappings.Add(Keys.U, new BigMarioCommand(game));
+            controllerMappings.Add(Keys.I, new FireMarioCommand(game));
+            controllerMappings.Add(Keys.O, new DeadMarioCommand(game));
+            controllerMappings.Add(Keys.R, new ResetCommand(game));
+            controllerMappings.Add(Keys.M, new MouseToggleCommand(game));
+            controllerMappings.Add(Keys.X, new FireballCommand(game));
     }
 
         public void Update()

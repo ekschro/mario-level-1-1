@@ -8,38 +8,37 @@ namespace Game1
         public float CurrentYPos { get; set; }
 
         private Game1 myGame;
-        
-
+        private IPlayer player;
         private int currentFrame = 14 + 28;
 
         public MarioSmallIdleRight(Game1 game)
         {
             myGame = game;
-            
+            player = game.CurrentLevel.PlayerObject;
         }
 
 
         public void Draw()
         {
-            int width = TextureWareHouse.marioTexture.Width / Mario.TotalMarioColumns;
-            int height = TextureWareHouse.marioTexture.Height / Mario.TotalMarioRows;
-            int row = (int)((float)currentFrame / (float)Mario.TotalMarioColumns);
-            int column = currentFrame % Mario.TotalMarioColumns;
+            int width = TextureWareHouse.marioTexture.Width / player.TotalMarioColumns;
+            int height = TextureWareHouse.marioTexture.Height / player.TotalMarioRows;
+            int row = (int)((float)currentFrame / (float)player.TotalMarioColumns);
+            int column = currentFrame % player.TotalMarioColumns;
 
-            int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(Mario.CurrentXPosition);
+            int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(player.CurrentXPosition);
 
             Rectangle sourceRectangle = new Rectangle(width * column, (height * row), width, height);
-            Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)Mario.CurrentYPosition, width, height);
+            Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)player.CurrentYPosition, width, height);
 
 
             myGame.SpriteBatch.Begin();
-            myGame.SpriteBatch.Draw(TextureWareHouse.marioTexture, destinationRectangle, sourceRectangle, Mario.MarioColor);
+            myGame.SpriteBatch.Draw(TextureWareHouse.marioTexture, destinationRectangle, sourceRectangle, player.MarioColor);
             myGame.SpriteBatch.End();
         }
 
         public void UpCommandCalled()
         {
-            Mario.MarioSprite = new MarioSmallJumpingRight(myGame);
+            player.MarioSprite = new MarioSmallJumpingRight(myGame);
         }
 
         public void DownCommandCalled()
@@ -49,12 +48,12 @@ namespace Game1
 
         public void LeftCommandCalled()
         {
-            Mario.MarioSprite = new MarioSmallIdleLeft(myGame);
+            player.MarioSprite = new MarioSmallIdleLeft(myGame);
         }
 
         public void RightCommandCalled()
         {
-            Mario.MarioSprite = new MarioSmallWalkRight(myGame);
+            player.MarioSprite = new MarioSmallWalkRight(myGame);
         }
 
         public void SmallMarioCommandCalled()
@@ -64,18 +63,18 @@ namespace Game1
 
         public void BigMarioCommandCalled()
         {
-            Mario.MarioSprite = new MarioBigIdleRight(myGame);
+            player.MarioSprite = new MarioBigIdleRight(myGame);
         }
 
         public void FireMarioCommandCalled()
         {
-            Mario.MarioSprite = new MarioFireIdleRight(myGame);
+            player.MarioSprite = new MarioFireIdleRight(myGame);
         }
 
         public void DeadMarioCommandCalled()
         {
-            if (!(Mario.MarioSprite is MarioDead))
-                Mario.MarioSprite = new MarioDead(myGame);
+            if (!(player.MarioSprite is MarioDead))
+                player.MarioSprite = new MarioDead(myGame);
         }
 
         public void Update()
@@ -99,7 +98,7 @@ namespace Game1
 
         public Vector2 GetGameObjectLocation()
         {
-            return new Vector2(Mario.CurrentXPosition, Mario.CurrentYPosition);
+            return new Vector2(player.CurrentXPosition, player.CurrentYPosition);
         }
     }
 }

@@ -7,9 +7,8 @@ public class MarioDead : ISprite
         public float CurrentYPos { get; set; }
 
         private Game1 myGame;
-    
-
-    private int currentFrame = 12 + 28;
+        private IPlayer player;
+        private int currentFrame = 12 + 28;
 
         private float bouncePosition;
         private float bounceVelocity;
@@ -19,7 +18,7 @@ public class MarioDead : ISprite
     public MarioDead(Game1 game)
     {
         myGame = game;
-
+            player = game.CurrentLevel.PlayerObject;
             bouncePosition = 0f;
             bounceVelocity = -3.0f;
             bounceGravity = .07f;
@@ -29,20 +28,20 @@ public class MarioDead : ISprite
 
         public void Draw()
         {
-            int width = TextureWareHouse.marioTexture.Width / Mario.TotalMarioColumns;
-            int height = TextureWareHouse.marioTexture.Height / Mario.TotalMarioRows;
-            int row = (int)((float)currentFrame / (float)Mario.TotalMarioColumns);
-            int column = currentFrame % Mario.TotalMarioColumns;
+            int width = TextureWareHouse.marioTexture.Width / player.TotalMarioColumns;
+            int height = TextureWareHouse.marioTexture.Height / player.TotalMarioRows;
+            int row = (int)((float)currentFrame / (float)player.TotalMarioColumns);
+            int column = currentFrame % player.TotalMarioColumns;
             Bounce();
 
-            int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(Mario.CurrentXPosition);
-            int drawLocationY = (int)(Mario.CurrentYPosition  + bouncePosition);
+            int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(player.CurrentXPosition);
+            int drawLocationY = (int)(player.CurrentYPosition  + bouncePosition);
 
             Rectangle sourceRectangle = new Rectangle(width * column, (height * row), width, height);
             Rectangle destinationRectangle = new Rectangle(drawLocationX, drawLocationY, width, height);
 
             myGame.SpriteBatch.Begin();
-            myGame.SpriteBatch.Draw(TextureWareHouse.marioTexture, destinationRectangle, sourceRectangle, Mario.MarioColor);
+            myGame.SpriteBatch.Draw(TextureWareHouse.marioTexture, destinationRectangle, sourceRectangle, player.MarioColor);
             myGame.SpriteBatch.End();
         }
 
@@ -67,17 +66,17 @@ public class MarioDead : ISprite
         }
     public void SmallMarioCommandCalled()
     {
-        Mario.MarioSprite = new MarioSmallIdleRight(myGame);
+        player.MarioSprite = new MarioSmallIdleRight(myGame);
     }
 
-        public void BigMarioCommandCalled() => Mario.MarioSprite = new MarioBigIdleRight(myGame);
+        public void BigMarioCommandCalled() => player.MarioSprite = new MarioBigIdleRight(myGame);
 
-        public void FireMarioCommandCalled() => Mario.MarioSprite = new MarioFireIdleRight(myGame);
+        public void FireMarioCommandCalled() => player.MarioSprite = new MarioFireIdleRight(myGame);
 
         public void DeadMarioCommandCalled()
         {
-            if (!(Mario.MarioSprite is MarioDead))
-                Mario.MarioSprite = new MarioDead(myGame);
+            if (!(player.MarioSprite is MarioDead))
+                player.MarioSprite = new MarioDead(myGame);
         }
 
         public void Update()
@@ -102,7 +101,7 @@ public class MarioDead : ISprite
 
         public Vector2 GetGameObjectLocation()
         {
-            return new Vector2(Mario.CurrentXPosition, Mario.CurrentYPosition);
+            return new Vector2(player.CurrentXPosition, player.CurrentYPosition);
         }
 
         public void Bounce()
