@@ -36,7 +36,7 @@ namespace Game1
             MovingDown = false;
             fire = new FireballPhysics(myGame, this, 2);
         }
-        private FireballPhysics fire;
+        private IPhysics fire;
         private float xPos;
         private float yPos;
         private bool movingRight;

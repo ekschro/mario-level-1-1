@@ -105,10 +105,10 @@
     <Compile Include="GeneralCommands\NoCommand.cs" />
     <Compile Include="Physics\EnemyPhysics.cs" />
     <Compile Include="ICamera.cs" />
-    <Compile Include="FireballPhysics.cs" />
+    <Compile Include="Physics\FireballPhysics.cs" />
     <Compile Include="Physics\MarioPhysics.cs" />
-    <Compile Include="CollisionRespond.cs" />
-    <Compile Include="CollisionDetect.cs" />
+    <Compile Include="Collision\CollisionRespond.cs" />
+    <Compile Include="Collision\CollisionDetect.cs" />
     <Compile Include="Controllers\GamePadController.cs" />
     <Compile Include="Enemy\EmptyEnemy.cs" />
     <Compile Include="Enemy\EmptyEnemySprite.cs" />
@@ -135,7 +135,7 @@
     <Compile Include="ILoader.cs" />
     <Compile Include="Level1.cs" />
     <Compile Include="MouseController.cs" />
-    <Compile Include="FireballPhysics1.cs" />
+    <Compile Include="Physics\FireballPhysics1.cs" />
     <Compile Include="Physics\StarPhysics.cs" />
     <Compile Include="Physics\PickupPhysics.cs" />
     <Compile Include="TemporaryObjects\Coin.cs" />

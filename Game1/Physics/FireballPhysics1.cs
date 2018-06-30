@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Game1
 {
-    class FireballPhysics
+    class FireballPhysics : IPhysics
     {
         private Game1 game;
         private MarioFireBall obj;
@@ -15,6 +15,8 @@ namespace Game1
         private int velCap;
         private float xVelocity;
         private float yVelocity;
+
+        public float XVelocity { get => xVelocity; }
 
         public FireballPhysics(Game1 game, MarioFireBall obj, int velCap)
         {
