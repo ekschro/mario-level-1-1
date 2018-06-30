@@ -66,6 +66,7 @@ namespace Game1
 
             if (Mario.MarioSprite.isSmall() && block is BrickBlock)
             {
+                ((BrickBlock)block).Bounce();
             }
 
             if (block is BrickBlock && !Mario.MarioSprite.isSmall())
@@ -99,9 +100,18 @@ namespace Game1
             }
             else if (block is BrickBlockWithManyCoins)
             {
-                objectLevel.BlockObjects.Remove(block);
-                objectLevel.BlockObjects.Add(new UsedBlock(myGame, block.GetGameObjectLocation()));
-                objectLevel.TemporaryObjects.Add(new Coin(myGame, block.GetGameObjectLocation()));
+                if (((BrickBlockWithManyCoins)block).CoinsLeft > 1)
+                {
+                    objectLevel.TemporaryObjects.Add(new Coin(myGame, block.GetGameObjectLocation()));
+                    ((BrickBlockWithManyCoins)block).CoinsLeft--;
+                    ((BrickBlockWithManyCoins)block).Bounce();
+                }
+                else
+                {
+                    objectLevel.TemporaryObjects.Add(new Coin(myGame, block.GetGameObjectLocation()));
+                    objectLevel.BlockObjects.Remove(block);
+                    objectLevel.BlockObjects.Add(new UsedBlock(myGame, block.GetGameObjectLocation()));
+                }
             }
 
             Mario.CanJump = false;

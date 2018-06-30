@@ -16,11 +16,15 @@ namespace Game1
         //private Game1 myGame;
         private Vector2 blockLocation;
 
+        private int coinsLeft;
+        public int CoinsLeft { get => coinsLeft; set => coinsLeft = value; }
+
         public BrickBlockWithManyCoins(Game1 game, Vector2 location)
         {
             brickBlockSprite = new BrickBlockSprite(game, this);
             //myGame = game;
             blockLocation = location;
+            coinsLeft = 10;
         }
 
         public void Draw()
@@ -45,5 +49,10 @@ namespace Game1
         }
         public void LeftCollision() { }
         public void RightCollision() { }
+
+        public void Bounce()
+        {
+            ((BrickBlockSprite)brickBlockSprite).Bounce();
+        }
     }
 }

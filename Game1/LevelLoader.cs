@@ -128,17 +128,14 @@ namespace Game1
                 case "QuestionBlockWithCoin":
                     GameObject = new QuestionCoinBlock(myGame, Position);
                     break;
-                case "QuestionBlockWithManyCoins":
-                    GameObject = new QuestionCoinBlock(myGame, Position);
-                    break;
                 case "BrickBlock":
                     GameObject = new BrickBlock(myGame, Position);
                     break;
                 case "BrickBlockWithStar":
-                    GameObject = new BrickBlock(myGame, Position);
+                    GameObject = new BrickBlockWithStar(myGame, Position);
                     break;
                 case "BrickBlockWithManyCoins":
-                    GameObject = new BrickBlock(myGame, Position);
+                    GameObject = new BrickBlockWithManyCoins(myGame, Position);
                     break;
                 case "StoneBlock":
                     GameObject = new StoneBlock(myGame, Position, Size);

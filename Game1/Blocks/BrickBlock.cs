@@ -39,5 +39,9 @@ namespace Game1
             
         }
 
+        public void Bounce()
+        {
+            ((BrickBlockSprite)brickBlockSprite).Bounce();
+        }
     }
 }
