@@ -66,6 +66,9 @@
     <Compile Include="Blocks\FlagpoleBlock.cs" />
     <Compile Include="Blocks\FlagBlock.cs" />
     <Compile Include="Blocks\CastleBlock.cs" />
+    <Compile Include="Enemy\koopa\KoopaShellMoving.cs" />
+    <Compile Include="Enemy\koopa\KoopaShell.cs" />
+    <Compile Include="Enemy\koopa\KoopaShellSprite.cs" />
     <Compile Include="GeneralInterfaces\ITemporarySprite.cs" />
     <Compile Include="GeneralInterfaces\ITemporary.cs" />
     <Compile Include="IBackground.cs" />

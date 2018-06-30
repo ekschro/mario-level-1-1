@@ -137,6 +137,16 @@ namespace Game1
             enemy.BeStomped();
             if (enemy is Goomba)
                 objectLevel.TemporaryObjects.Add(new FlattenedGoomba(myGame, enemy.GetGameObjectLocation()));
+            else if (enemy is Koopa)
+                objectLevel.EnemyObjects.Add(new KoopaShell(myGame, enemy.GetGameObjectLocation()));
+            else if (enemy is KoopaShell) {
+                if (Mario.MovingRight)
+                    objectLevel.EnemyObjects.Add(new KoopaShellMoving(myGame, (KoopaShell)enemy, false));
+                else
+                    objectLevel.EnemyObjects.Add(new KoopaShellMoving(myGame, (KoopaShell)enemy, true));
+            }
+
+
             Mario.Bounce = true;
             objectLevel.EnemyObjects.Remove(enemy);
         }
@@ -149,6 +159,7 @@ namespace Game1
                     objectLevel.TemporaryObjects.Add(new FlippedGoomba(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
                 else if (enemy is Koopa)
                     objectLevel.TemporaryObjects.Add(new FlippedKoopa(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
+
             } else if (Mario.Invulnerability)
             {
 
@@ -172,7 +183,11 @@ namespace Game1
 
         public void EnemyCollisionRespondLeft(IEnemy enemy)
         {
-            if (objectLevel.PlayerObject.IsStar)
+            if (enemy is KoopaShell)
+            {
+                    objectLevel.EnemyObjects.Add(new KoopaShellMoving(myGame, (KoopaShell)enemy, true));
+            }
+            else if (objectLevel.PlayerObject.IsStar)
             {
                 objectLevel.EnemyObjects.Remove(enemy);
                 if (enemy is Goomba)
@@ -202,7 +217,11 @@ namespace Game1
 
         public void EnemyCollisionRespondRight(IEnemy enemy)
         {
-            if (objectLevel.PlayerObject.IsStar)
+            if (enemy is KoopaShell)
+            {
+                    objectLevel.EnemyObjects.Add(new KoopaShellMoving(myGame, (KoopaShell)enemy, false));
+            }
+            else if (objectLevel.PlayerObject.IsStar)
             {
                 objectLevel.EnemyObjects.Remove(enemy);
                 if(enemy is Goomba)
