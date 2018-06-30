@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Game1
 {
-    class MarioPhysics
+    class MarioPhysics : IPhysics
     {
 
         private Game1 game;
@@ -16,13 +16,13 @@ namespace Game1
         private float xVelocity;
         private float yVelocity;
 
-        public float XVelocity { get => xVelocity; set => xVelocity = value; }
+        public float XVelocity { get => xVelocity; }
 
         public MarioPhysics(Game1 game,int velCap)
         {
             this.game = game;
             this.velCap = velCap;
-            XVelocity = 0;
+            xVelocity = 0;
             yVelocity = 0;
         }
 
@@ -37,47 +37,47 @@ namespace Game1
         {
             if (Mario.MovingRight)
             {
-                if (XVelocity < velCap)
+                if (xVelocity < velCap)
                 {
-                    XVelocity += (float)(0.5 * 0.001 * Math.Pow(delta, 2));
+                    xVelocity += (float)(0.5 * 0.001 * Math.Pow(delta, 2));
                 }
                 else
                 {
-                    XVelocity = velCap;
+                    xVelocity = velCap;
                 }
             }
             else if (Mario.MovingLeft)
             {
-                if (Math.Abs(XVelocity) < velCap)
+                if (Math.Abs(xVelocity) < velCap)
                 {
-                    XVelocity -= (float)(0.5 * 0.001 * Math.Pow(delta, 2));
+                    xVelocity -= (float)(0.5 * 0.001 * Math.Pow(delta, 2));
                 }
                 else
                 {
-                    XVelocity = -1 * velCap;
+                    xVelocity = -1 * velCap;
                 }
 
                 if (Mario.CurrentXPosition < (game.CurrentLevel.LevelCamera.CameraPosition + 4))
-                    XVelocity = 0;
+                    xVelocity = 0;
             }
             else
             {
-                if (Math.Abs(XVelocity) < 0.2)
+                if (Math.Abs(xVelocity) < 0.2)
                 {
-                    XVelocity = 0;
+                    xVelocity = 0;
                 }
-                else if (XVelocity < 0)
+                else if (xVelocity < 0)
                 {
-                    XVelocity += (float)(0.5 * 0.001 * Math.Pow(delta, 2));
+                    xVelocity += (float)(0.5 * 0.001 * Math.Pow(delta, 2));
                 }
-                else if (XVelocity > 0)
+                else if (xVelocity > 0)
                 {
-                    XVelocity -= (float)(0.5 * 0.001 * Math.Pow(delta, 2));
+                    xVelocity -= (float)(0.5 * 0.001 * Math.Pow(delta, 2));
                 }
 
             }
 
-            Mario.CurrentXPosition += XVelocity;
+            Mario.CurrentXPosition += xVelocity;
         }
 
         public void NewPosY()

@@ -3,8 +3,8 @@ using System;
 
 namespace Game1
 {
-        class PickupPhysics
-        {
+        class PickupPhysics : IPhysics
+    {
             private Game1 game;
             private IPickup obj;
             private float delta;
@@ -12,7 +12,9 @@ namespace Game1
             private float xVelocity;
             private float yVelocity;
 
-            public PickupPhysics(Game1 game, IPickup obj, int velCap)
+        public float XVelocity { get => xVelocity; }
+
+        public PickupPhysics(Game1 game, IPickup obj, int velCap)
             {
                 this.game = game;
                 this.obj = obj;

@@ -72,6 +72,7 @@
     <Compile Include="GeneralInterfaces\ITemporarySprite.cs" />
     <Compile Include="GeneralInterfaces\ITemporary.cs" />
     <Compile Include="IBackground.cs" />
+    <Compile Include="IPhysics.cs" />
     <Compile Include="Level1Background.cs" />
     <Compile Include="Blocks\Sprites\QuestionCoinBlockSprite.cs" />
     <Compile Include="Blocks\Sprites\QuestionPowerUpBlockSprite.cs" />
@@ -102,10 +103,10 @@
     <Compile Include="Fireball.cs" />
     <Compile Include="GeneralCommands\FireballCommand.cs" />
     <Compile Include="GeneralCommands\NoCommand.cs" />
-    <Compile Include="GeneralPhysics.cs" />
+    <Compile Include="Physics\EnemyPhysics.cs" />
     <Compile Include="ICamera.cs" />
     <Compile Include="FireballPhysics.cs" />
-    <Compile Include="MarioPhysics.cs" />
+    <Compile Include="Physics\MarioPhysics.cs" />
     <Compile Include="CollisionRespond.cs" />
     <Compile Include="CollisionDetect.cs" />
     <Compile Include="Controllers\GamePadController.cs" />
@@ -135,8 +136,8 @@
     <Compile Include="Level1.cs" />
     <Compile Include="MouseController.cs" />
     <Compile Include="FireballPhysics1.cs" />
-    <Compile Include="PickupItem\StarPhysics.cs" />
-    <Compile Include="PickupItem\PickupPhysics.cs" />
+    <Compile Include="Physics\StarPhysics.cs" />
+    <Compile Include="Physics\PickupPhysics.cs" />
     <Compile Include="TemporaryObjects\Coin.cs" />
     <Compile Include="PickupItem\EmptyPickup.cs" />
     <Compile Include="PickupItem\Fireflower.cs" />

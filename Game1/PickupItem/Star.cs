@@ -22,7 +22,7 @@ namespace Game1
         private Game1 myGame;
         private Vector2 pickupLocation;
         private Vector2 pickupOriginalLocation;
-        private StarPhysics physics;
+        private IPhysics physics;
         private bool movingRight;
         private bool moving;
 

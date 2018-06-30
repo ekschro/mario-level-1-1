@@ -24,7 +24,7 @@ namespace Game1
         private static int deathTimer;
         private static int colorTimer;
         private static ISprite playerSprite;
-        private static  MarioPhysics physics;
+        private static  IPhysics physics;
         private static Color marioColor;
         private static bool canJump;
         //prvate static bool falling;

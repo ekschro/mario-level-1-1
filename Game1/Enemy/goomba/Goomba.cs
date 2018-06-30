@@ -24,7 +24,7 @@ namespace Game1
         public bool IsStomped { get; set; }
 
         private bool dead = false;
-        private EnemyPhysics physics;
+        private IPhysics physics;
 
         public Goomba(Game1 game, Vector2 location)
         {
