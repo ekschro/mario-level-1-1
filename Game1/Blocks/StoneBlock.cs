@@ -17,6 +17,8 @@ namespace Game1
         private Vector2 blockLocation;
 
         private Vector2 blockSize;
+        private Rectangle blockRectangle;
+
         public Vector2 BlockSize { get => blockSize; set => blockSize = value; }
 
         public StoneBlock(Game1 game, Vector2 location, Vector2 size)
@@ -25,6 +27,7 @@ namespace Game1
             //myGame = game;
             blockLocation = location;
             blockSize = size;
+            blockRectangle = new Rectangle((int)location.X, (int)location.Y, 16, 16);
         }
 
         public void Draw()
@@ -35,6 +38,11 @@ namespace Game1
         public Vector2 GetGameObjectLocation()
         {
             return blockLocation;
+        }
+
+        public Rectangle BlockRectangle()
+        {
+            return blockRectangle;
         }
 
         public void Update()

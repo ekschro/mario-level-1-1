@@ -14,10 +14,13 @@ namespace Game1
 
         private IBlockSprite castleBlockSprite;
         private Vector2 blockLocation;
+        private Rectangle blockRectangle;
+
         public CastleBlock(Game1 game, Vector2 location)
         {
             castleBlockSprite = new CastleBlockSprite(game, this);
             blockLocation = location;
+            blockRectangle = new Rectangle((int)location.X, (int)location.Y, 16, 16);
         }
 
         public void Draw()
@@ -28,6 +31,11 @@ namespace Game1
         public Vector2 GetGameObjectLocation()
         {
             return blockLocation;
+        }
+
+        public Rectangle BlockRectangle()
+        {
+            return blockRectangle;
         }
 
         public void Update()

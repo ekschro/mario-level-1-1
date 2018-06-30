@@ -9,5 +9,6 @@ namespace Game1
 {
     public interface IBlock : IGameObject
     {
+        Rectangle BlockRectangle();
     }
 }

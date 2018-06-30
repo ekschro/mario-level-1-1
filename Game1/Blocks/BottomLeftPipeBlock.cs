@@ -14,12 +14,14 @@ namespace Game1
 
         private  IBlockSprite bottomLeftPipeBlockSprite;
         private Vector2 blockLocation;
+        private Rectangle blockRectangle;
 
         public BottomLeftPipeBlock(Game1 game, Vector2 location)
         {
             bottomLeftPipeBlockSprite = new BottomLeftPipeBlockSprite(game, this);
             //myGame = game;
             blockLocation = location;
+            blockRectangle = new Rectangle((int)location.X, (int)location.Y, 16, 16);
         }
 
         public void Draw()
@@ -32,10 +34,14 @@ namespace Game1
             return blockLocation;
         }
 
+        public Rectangle BlockRectangle()
+        {
+            return blockRectangle;
+        }
+
         public void Update()
         {
             bottomLeftPipeBlockSprite.Update();
         }
-
     }
 }
