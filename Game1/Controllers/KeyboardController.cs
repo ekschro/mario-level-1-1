@@ -32,13 +32,13 @@ namespace Game1
             controllerMappings.Add(Keys.Down, new DownCommand(game));
             controllerMappings.Add(Keys.Left, new LeftCommand(game));
             controllerMappings.Add(Keys.Right, new RightCommand(game));
-            controllerMappings.Add(Keys.Y, new SmallMarioCommand(game));
-            controllerMappings.Add(Keys.U, new BigMarioCommand(game));
-            controllerMappings.Add(Keys.I, new FireMarioCommand(game));
-            controllerMappings.Add(Keys.O, new DeadMarioCommand(game));
+            //controllerMappings.Add(Keys.Y, new SmallMarioCommand(game));
+            //controllerMappings.Add(Keys.U, new BigMarioCommand(game));
+            //controllerMappings.Add(Keys.I, new FireMarioCommand(game));
+            //controllerMappings.Add(Keys.O, new DeadMarioCommand(game));
             controllerMappings.Add(Keys.R, new ResetCommand(game));
             controllerMappings.Add(Keys.M, new MouseToggleCommand(game));
-            controllerMappings.Add(Keys.X, new FireballCommand(game));
+            //controllerMappings.Add(Keys.X, new FireballCommand(game));
     }
 
         public void Update()

@@ -51,6 +51,10 @@ namespace Game1
         public bool Invulnerability { get => invulnerability; set => invulnerability = value; }
         public static int CurrentFrame { get => currentFrame; set => currentFrame = value; }
         public static Game1 MyGame { get => myGame; set => myGame = value; }
+
+        private IControllerHandler controllerHandler;
+        private int animationTimer;
+
         public static float OldXPosition { get => oldXPosition; set => oldXPosition = value; }
         public static float OldYPosition { get => oldYPosition; set => oldYPosition = value; }
 
@@ -59,6 +63,7 @@ namespace Game1
         public Mario(Game1 game, Vector2 vector)
         {
             MyGame = game;
+            controllerHandler = game.controllerHandler;
             physics = new MarioPhysics(game,this,2);
             CurrentXPosition = vector.X;
             CurrentYPosition = vector.Y;
@@ -67,6 +72,7 @@ namespace Game1
             colorStartingTime = 5;
             colorTimer = 0;
             deathTimer = 0;
+            animationTimer = 0;
 
             MovingUp = false;
             MovingDown = false;
@@ -115,9 +121,75 @@ namespace Game1
                 }
             }
 
-            
+            if (controllerHandler.MovingDown)
+            {
+                DownAnimation();
+            }
+            if (controllerHandler.MovingRight && !controllerHandler.MovingUp)
+            {
+                RightAnimation();
+            }
+            if (controllerHandler.MovingLeft && !controllerHandler.MovingUp)
+            {
+                LeftAnimation();
+            }
+            if(controllerHandler.MovingUp)
+            {
+                UpAnimation();
+            }
         }
-     
+
+        private void RightAnimation()
+        {
+            if (animationTimer == 5)
+            {
+                this.MarioSprite.RightCommandCalled();
+                animationTimer = 0;
+            } else
+            {
+                animationTimer++;
+            }
+        }
+
+        private void UpAnimation()
+        {
+            if (animationTimer == 5)
+            {
+                this.MarioSprite.UpCommandCalled();
+                animationTimer = 0;
+            }
+            else
+            {
+                animationTimer++;
+            }
+        }
+
+        private void DownAnimation()
+        {
+            if (animationTimer == 5)
+            {
+                this.MarioSprite.DownCommandCalled();
+                animationTimer = 0;
+            }
+            else
+            {
+                animationTimer++;
+            }
+        }
+
+        private void LeftAnimation()
+        {
+            if (animationTimer == 5)
+            {
+                this.MarioSprite.LeftCommandCalled();
+                animationTimer = 0;
+            }
+            else
+            {
+                animationTimer++;
+            }
+        }
+
         public Vector2 GetGameObjectLocation()
         {
             return new Vector2(currentXPosition, currentYPosition);

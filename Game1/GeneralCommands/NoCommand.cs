@@ -8,19 +8,19 @@ namespace Game1
 {
     public class NoCommand : ICommand
     {
-        private IPlayer player;
+        private IControllerHandler controllerHandler;
 
         public NoCommand(Game1 game)
         {
-            player = game.CurrentLevel.PlayerObject;
+            controllerHandler = game.controllerHandler;
         }
 
         public void Execute()
         {
-            player.MovingDown = false;
-            player.MovingUp = false;
-            player.MovingRight = false;
-            player.MovingLeft = false;
+            controllerHandler.MovingDown = false;
+            controllerHandler.MovingUp = false;
+            controllerHandler.MovingRight = false;
+            controllerHandler.MovingLeft = false;
         }
     }
 }

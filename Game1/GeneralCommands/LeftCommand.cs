@@ -15,32 +15,18 @@ namespace Game1
     public class LeftCommand : ICommand
     {
         private Game1 myGame;
-        private IPlayer player;
-        private int timer;
+        private IControllerHandler controllerHandler;
         
         public LeftCommand(Game1 game)
         {
             myGame = game;
-            player = game.CurrentLevel.PlayerObject;
-            timer = 0;
-            
+            controllerHandler = game.controllerHandler; 
         }
 
         public void Execute()
         {
-
-            if (timer == 5)
-            {
-                player.MarioSprite.LeftCommandCalled();
-                timer = 0;
-            }else
-            {
-                timer++;
-            }
-
-            player.MovingRight = false;
-            player.MovingLeft = true;
-            //player.NewXPos();
+            controllerHandler.MovingLeft = true;
+            //controllerHandler.MovingRight = false;
         }
     }
 }

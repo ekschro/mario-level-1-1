@@ -66,12 +66,14 @@
     <Compile Include="Blocks\FlagpoleBlock.cs" />
     <Compile Include="Blocks\FlagBlock.cs" />
     <Compile Include="Blocks\CastleBlock.cs" />
+    <Compile Include="ControllerHandler.cs" />
     <Compile Include="Enemy\koopa\KoopaShellMoving.cs" />
     <Compile Include="Enemy\koopa\KoopaShell.cs" />
     <Compile Include="Enemy\koopa\KoopaShellSprite.cs" />
     <Compile Include="GeneralInterfaces\ITemporarySprite.cs" />
     <Compile Include="GeneralInterfaces\ITemporary.cs" />
     <Compile Include="IBackground.cs" />
+    <Compile Include="IControllerHandler.cs" />
     <Compile Include="IPhysics.cs" />
     <Compile Include="Level1Background.cs" />
     <Compile Include="Blocks\Sprites\QuestionCoinBlockSprite.cs" />

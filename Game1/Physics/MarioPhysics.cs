@@ -11,6 +11,7 @@ namespace Game1
     {
 
         private Game1 game;
+        private IControllerHandler controllerHandler;
         private float delta;
         private int velCap;
         private IPlayer player;
@@ -22,6 +23,7 @@ namespace Game1
         public MarioPhysics(Game1 game,IPlayer player,int velCap)
         {
             this.game = game;
+            controllerHandler = game.controllerHandler;
             this.velCap = velCap;
             this.player = player;
             xVelocity = 0;
@@ -37,7 +39,7 @@ namespace Game1
 
         public void NewPosX()
         {
-            if (player.MovingRight)
+            if (controllerHandler.MovingRight && !controllerHandler.MovingDown)
             {
                 if (xVelocity < velCap)
                 {
@@ -48,7 +50,7 @@ namespace Game1
                     xVelocity = velCap;
                 }
             }
-            else if (player.MovingLeft)
+            else if (controllerHandler.MovingLeft && !controllerHandler.MovingDown)
             {
                 if (Math.Abs(xVelocity) < velCap)
                 {
@@ -84,12 +86,12 @@ namespace Game1
 
         public void NewPosY()
         {
-            if (player.MovingUp && player.CanJump && !player.Falling)
+            if (controllerHandler.MovingUp && player.CanJump && !player.Falling)
             {
                 yVelocity = (float)-6.5;
                 player.CanJump = false;
             }
-            else if (!player.MovingUp && !player.Falling)
+            else if (!controllerHandler.MovingUp && !player.Falling)
             {
                 yVelocity = 1;
                 player.Falling = true;

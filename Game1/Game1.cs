@@ -16,6 +16,7 @@ namespace Game1
         private SpriteBatch spriteBatch;
         public IController mouseController;
         public IList<IController> controllerList;
+        public IControllerHandler controllerHandler;
         private ILevel currentLevel;
         //public int totalBlockFrames = 12;
         public TextureWareHouse warehouse;
@@ -43,11 +44,11 @@ namespace Game1
       
         protected override void Initialize()
         {
-            //controllerList = new List<IController>();
+            controllerList = new List<IController>();
 
-            //CurrentLevel = new Level1("../../../../Content/LevelInfo.csv", this);
+            controllerHandler = new ControllerHandler();
 
-            //controllerList.Add(new KeyboardController(this));
+            controllerList.Add(new KeyboardController(this));
             //controllerList.Add(new GamePadController(this));
             //mouseController = new MouseController(this);
             
@@ -75,8 +76,8 @@ namespace Game1
         
         protected override void Update(GameTime gameTime)
         {
-            //foreach (IController controller in controllerList.ToArray())
-                //controller.Update();
+            foreach (IController controller in controllerList.ToArray())
+                controller.Update();
 
             delta = gameTime;
 
