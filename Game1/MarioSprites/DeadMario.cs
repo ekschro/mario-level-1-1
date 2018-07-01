@@ -34,8 +34,8 @@ public class MarioDead : ISprite
             int column = currentFrame % player.TotalMarioColumns;
             Bounce();
 
-            int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(player.CurrentXPosition);
-            int drawLocationY = (int)(player.CurrentYPosition  + bouncePosition);
+            int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(player.CurrentXPos);
+            int drawLocationY = (int)(player.CurrentYPos  + bouncePosition);
 
             Rectangle sourceRectangle = new Rectangle(width * column, (height * row), width, height);
             Rectangle destinationRectangle = new Rectangle(drawLocationX, drawLocationY, width, height);
@@ -101,7 +101,7 @@ public class MarioDead : ISprite
 
         public Vector2 GetGameObjectLocation()
         {
-            return new Vector2(player.CurrentXPosition, player.CurrentYPosition);
+            return new Vector2(player.CurrentXPos, player.CurrentYPos);
         }
 
         public void Bounce()

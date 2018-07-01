@@ -61,7 +61,7 @@ namespace Game1
                     xVelocity = -1 * velCap;
                 }
 
-                if (player.CurrentXPosition < (game.CurrentLevel.LevelCamera.CameraPosition + 4))
+                if (player.CurrentXPos < (game.CurrentLevel.LevelCamera.CameraPosition + 4))
                     xVelocity = 0;
             }
             else
@@ -81,7 +81,7 @@ namespace Game1
 
             }
 
-            player.CurrentXPosition += xVelocity;
+            player.CurrentXPos += xVelocity;
         }
 
         public void NewPosY()
@@ -112,7 +112,7 @@ namespace Game1
                 
 
             yVelocity += (float)(0.5 * 0.002 * Math.Pow(delta, 2));
-            player.CurrentYPosition += yVelocity;
+            player.CurrentYPos += yVelocity;
         }
     }
 }

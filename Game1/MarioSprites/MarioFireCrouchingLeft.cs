@@ -24,10 +24,10 @@ namespace Game1
             int row = (int)((float)currentFrame / (float)player.TotalMarioColumns);
             int column = currentFrame % player.TotalMarioColumns;
 
-            int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(player.CurrentXPosition);
+            int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(player.CurrentXPos);
 
             Rectangle sourceRectangle = new Rectangle(width * column, (height * row), width, height);
-            Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)player.CurrentYPosition, width, height);
+            Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)player.CurrentYPos, width, height);
 
             myGame.SpriteBatch.Begin();
             myGame.SpriteBatch.Draw(TextureWareHouse.marioTexture, destinationRectangle, sourceRectangle, player.MarioColor);
@@ -96,7 +96,7 @@ namespace Game1
 
         public Vector2 GetGameObjectLocation()
         {
-            return new Vector2(player.CurrentXPosition, player.CurrentYPosition);
+            return new Vector2(player.CurrentXPos, player.CurrentYPos);
         }
     }
 

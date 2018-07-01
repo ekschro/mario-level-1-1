@@ -4,81 +4,50 @@ namespace Game1
 {
     public class Mario : IPlayer
     {
-        public float CurrentXPos { get; set; }
-        public float CurrentYPos { get; set; }
+        private IControllerHandler controllerHandler;
+        private Game1 myGame;
+        private int animationTimer;
+
+        private static ISprite playerSprite;
+        private static IPhysics physics;
+        private static Color marioColor;
         private static float currentXPosition;
         private static float currentYPosition;
-        private static float oldXPosition;
-        private static float oldYPosition;
-        private static bool movingUp;
-        private static bool movingRight;
-        private static bool movingLeft;
-        private static bool movingDown;
-        private static Game1 myGame;
         private static int totalMarioColumns = 28;
         private static int totalMarioRows = 3;
+        private static int colorStartingTime;
+        private static int colorTimer;
         private static bool isStar = false;
         private static bool invulnerability = false;
-        private static int currentFrame = 0;
-        private static int colorStartingTime;
-        private static int deathTimer;
-        private static int colorTimer;
-        private static ISprite playerSprite;
-        private static  IPhysics physics;
-        private static Color marioColor;
-        private static bool canJump;
-        //prvate static bool falling;
-
 
         public ISprite MarioSprite { get => playerSprite; set => playerSprite = value; }
-        public float CurrentXPosition { get => currentXPosition; set => currentXPosition = value; }
-        public float CurrentYPosition { get => currentYPosition; set => currentYPosition = value; }
-
+        public Color MarioColor { get => marioColor; set => marioColor = value; }
+        public float CurrentXPos { get => currentXPosition; set => currentXPosition = value; }
+        public float CurrentYPos { get => currentYPosition; set => currentYPosition = value; }
         public bool Jumping { get; set; }
         public bool Falling { get; set; }
         public bool Bump { get; set; }
         public bool Bounce { get; set; }
-        public bool CanJump { get => canJump; set => canJump = value; }
-
-        public bool MovingUp { get => movingUp; set => movingUp = value; }
-        public bool MovingRight { get => movingRight; set => movingRight = value; }
-        public bool MovingLeft { get => movingLeft; set => movingLeft = value; }
-        public bool MovingDown { get => movingDown; set => movingDown = value; }
-        
-        public int TotalMarioRows { get => totalMarioRows; set => totalMarioRows = value; }
-        public int TotalMarioColumns { get => totalMarioColumns; set => totalMarioColumns = value; }
+        public bool CanJump { get; set; }
         public bool IsStar { get => isStar; set => isStar = value; }
         public bool Invulnerability { get => invulnerability; set => invulnerability = value; }
-        public static int CurrentFrame { get => currentFrame; set => currentFrame = value; }
-        public static Game1 MyGame { get => myGame; set => myGame = value; }
-
-        private IControllerHandler controllerHandler;
-        private int animationTimer;
-
-        public static float OldXPosition { get => oldXPosition; set => oldXPosition = value; }
-        public static float OldYPosition { get => oldYPosition; set => oldYPosition = value; }
-
-        public Color MarioColor { get => marioColor; set => marioColor = value; }
+        public int TotalMarioRows { get => totalMarioRows; set => totalMarioRows = value; }
+        public int TotalMarioColumns { get => totalMarioColumns; set => totalMarioColumns = value; }
 
         public Mario(Game1 game, Vector2 vector)
         {
-            MyGame = game;
+            myGame = game;
             controllerHandler = game.controllerHandler;
             physics = new MarioPhysics(game,this,2);
-            CurrentXPosition = vector.X;
-            CurrentYPosition = vector.Y;
+            CurrentXPos = vector.X;
+            CurrentYPos = vector.Y;
             MarioColor = Color.White;
-            MarioSprite = new MarioSmallIdleRight(MyGame,this);
+            MarioSprite = new MarioSmallIdleRight(game,this);
             colorStartingTime = 5;
             colorTimer = 0;
-            deathTimer = 0;
             animationTimer = 0;
 
-            MovingUp = false;
-            MovingDown = false;
-            MovingRight = false;
-            MovingLeft = false;
-            canJump = true;
+            CanJump = true;
             Falling = false;
             Bounce = false;
         }
@@ -89,7 +58,6 @@ namespace Game1
             ColorSelect();
             MarioSprite.Draw();
         }
-
 
         public void Update()
         {

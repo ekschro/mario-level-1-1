@@ -16,10 +16,12 @@ namespace Game1
 
         private ILevel objectLevel;
         private IPlayer player;
+        private IControllerHandler controllerHandler;
 
         public CollisionRespond(Game1 game, ILevel level)
         {
             myGame = game;
+            controllerHandler = game.controllerHandler;
             objectLevel = level;
             this.player = level.PlayerObject;
         }
@@ -27,7 +29,7 @@ namespace Game1
         public void BlockCollisionRespondTop(IBlock block,int height,bool standing)
         {
             if (!(block is HiddenGreenMushroomBlock) && !standing)
-                player.CurrentYPosition -= height;
+                player.CurrentYPos -= height;
             player.CanJump = true;
             player.Falling = false;
             if (player.MarioSprite is MarioBigJumpingRight)
@@ -60,7 +62,7 @@ namespace Game1
         {
             if (!head)
             {
-                player.CurrentYPosition += height;
+                player.CurrentYPos += height;
                 player.Bump = true;
             }
                 
@@ -124,13 +126,13 @@ namespace Game1
         public void BlockCollisionRespondRight(IBlock block,int width,bool right)
         {
             if (!(block is HiddenGreenMushroomBlock) && !right)
-                player.CurrentXPosition += width;
+                player.CurrentXPos += width;
         }
 
         public void BlockCollisionRespondLeft(IBlock block,int width,bool left)
         {
             if (!(block is HiddenGreenMushroomBlock) && !left)
-                player.CurrentXPosition -= width;
+                player.CurrentXPos -= width;
         }
 
         public void EnemyCollisionRespondTop(IEnemy enemy)
@@ -141,7 +143,7 @@ namespace Game1
             else if (enemy is Koopa)
                 objectLevel.EnemyObjects.Add(new KoopaShell(myGame, enemy.GetGameObjectLocation()));
             else if (enemy is KoopaShell) {
-                if (player.MovingRight)
+                if (controllerHandler.MovingRight)
                     objectLevel.EnemyObjects.Add(new KoopaShellMoving(myGame, (KoopaShell)enemy, false));
                 else
                     objectLevel.EnemyObjects.Add(new KoopaShellMoving(myGame, (KoopaShell)enemy, true));

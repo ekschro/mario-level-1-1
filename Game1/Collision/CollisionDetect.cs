@@ -15,6 +15,7 @@ namespace Game1
         private IEnemy[] enemyArray;
         private IPickup[] pickupArray;
         private CollisionRespond collision;
+        private IControllerHandler controllerHandler;
         
         private Game1 mygame;
         private int tileOffset = 16;
@@ -23,7 +24,7 @@ namespace Game1
         public CollisionDetect(Game1 game, ILevel Level1)
         {
             mygame = game;
-
+            controllerHandler = this.controllerHandler;
             level1 = Level1;
             player = Level1.PlayerObject;
 
@@ -83,7 +84,7 @@ namespace Game1
                         collision.BlockCollisionRespondBottom(blockArray[i],intersect.Height,head);
                         head = true;
                     }
-                    else if (intersect.Height < intersect.Width && playerY > blockY && player.MovingUp)
+                    else if (intersect.Height < intersect.Width && playerY > blockY && controllerHandler.MovingUp)
                     {
                         collision.BlockCollisionRespondBottom(blockArray[i],intersect.Height,head);
                         head = true;
@@ -416,7 +417,7 @@ namespace Game1
             BlockPickupCollisionDetect();
             collision.Update();
 
-            if (player.CurrentYPosition > 800)
+            if (player.CurrentYPos > 800)
                 mygame.Reset();
         }
     }

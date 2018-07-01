@@ -6,6 +6,7 @@ namespace Game1
     public class MarioFireBall : IEnemy
     {
         private Game1 myGame;
+        private IControllerHandler controllerHandler;
         private IPlayer player;
         private bool falling;
         public bool IsFalling { get => falling; set => falling = value; }
@@ -16,23 +17,24 @@ namespace Game1
         public MarioFireBall(Game1 game)
         {
             myGame = game;
+            controllerHandler = game.controllerHandler;
             player = game.CurrentLevel.PlayerObject;
             
             
-            if (player.MovingRight)
+            if (controllerHandler.MovingRight)
             {
                 currentFrame = 2;
                 MovingRight = true;
                 MovingLeft = false;
-                xPos = player.CurrentXPosition + 20;
-                yPos = player.CurrentYPosition + 16;
+                xPos = player.CurrentXPos + 20;
+                yPos = player.CurrentYPos + 16;
             } else
             {
                 currentFrame = 3;
                 MovingLeft = true;
                 MovingRight = false;
-                xPos = player.CurrentXPosition + 20;
-                yPos = player.CurrentYPosition + 16;
+                xPos = player.CurrentXPos + 20;
+                yPos = player.CurrentYPos + 16;
             }
             MovingUp = false;
             MovingDown = false;
