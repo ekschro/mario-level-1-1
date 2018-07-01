@@ -21,7 +21,7 @@ namespace Game1
         {
             myGame = game;
             objectLevel = level;
-            player = objectLevel.PlayerObject;
+            this.player = level.PlayerObject;
         }
 
         public void BlockCollisionRespondTop(IBlock block,int height,bool standing)
@@ -32,27 +32,27 @@ namespace Game1
             player.Falling = false;
             if (player.MarioSprite is MarioBigJumpingRight)
             {
-                player.MarioSprite = new MarioBigIdleRight(myGame);
+                player.MarioSprite = new MarioBigIdleRight(myGame,player);
             }
             else if (player.MarioSprite is MarioBigJumpingLeft)
             {
-                player.MarioSprite = new MarioBigIdleLeft(myGame);
+                player.MarioSprite = new MarioBigIdleLeft(myGame,player);
             }
             else if (player.MarioSprite is MarioSmallJumpingRight)
             {
-                player.MarioSprite = new MarioSmallIdleRight(myGame);
+                player.MarioSprite = new MarioSmallIdleRight(myGame,player);
             }
             else if (player.MarioSprite is MarioSmallJumpingLeft)
             {
-                player.MarioSprite = new MarioSmallIdleLeft(myGame);
+                player.MarioSprite = new MarioSmallIdleLeft(myGame,player);
             }
             else if (player.MarioSprite is MarioFireJumpingRight)
             {
-                player.MarioSprite = new MarioFireIdleRight(myGame);
+                player.MarioSprite = new MarioFireIdleRight(myGame,player);
             }
             else if (player.MarioSprite is MarioFireJumpingLeft)
             {
-                player.MarioSprite = new MarioFireIdleLeft(myGame);
+                player.MarioSprite = new MarioFireIdleLeft(myGame,player);
             }
         }
 

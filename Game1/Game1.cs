@@ -43,13 +43,13 @@ namespace Game1
       
         protected override void Initialize()
         {
-            controllerList = new List<IController>();
+            //controllerList = new List<IController>();
 
-            CurrentLevel = new Level1("../../../../Content/LevelInfo.csv", this);
+            //CurrentLevel = new Level1("../../../../Content/LevelInfo.csv", this);
 
-            controllerList.Add(new KeyboardController(this));
-            controllerList.Add(new GamePadController(this));
-            mouseController = new MouseController(this);
+            //controllerList.Add(new KeyboardController(this));
+            //controllerList.Add(new GamePadController(this));
+            //mouseController = new MouseController(this);
             
             base.Initialize();
         }
@@ -75,8 +75,8 @@ namespace Game1
         
         protected override void Update(GameTime gameTime)
         {
-            foreach (IController controller in controllerList.ToArray())
-                controller.Update();
+            //foreach (IController controller in controllerList.ToArray())
+                //controller.Update();
 
             delta = gameTime;
 

@@ -11,10 +11,10 @@ namespace Game1
         private IPlayer player;
         private int currentFrame = 15;
 
-        public MarioBigCrouchingRight(Game1 game)
+        public MarioBigCrouchingRight(Game1 game, IPlayer player)
         {
             myGame = game;
-            player = game.CurrentLevel.PlayerObject;
+            this.player = player;
         }
 
 
@@ -37,7 +37,7 @@ namespace Game1
 
         public void UpCommandCalled()
         {
-            player.MarioSprite = new MarioBigIdleRight(myGame);
+            player.MarioSprite = new MarioBigIdleRight(myGame, player);
         }
 
         public void DownCommandCalled()
@@ -47,17 +47,17 @@ namespace Game1
 
         public void LeftCommandCalled()
         {
-            player.MarioSprite = new MarioBigIdleLeft(myGame);
+            player.MarioSprite = new MarioBigIdleLeft(myGame, player);
         }
 
         public void RightCommandCalled()
         {
-            player.MarioSprite = new MarioBigIdleRight(myGame);
+            player.MarioSprite = new MarioBigIdleRight(myGame, player);
         }
 
         public void SmallMarioCommandCalled()
         {
-            player.MarioSprite = new MarioSmallIdleRight(myGame);
+            player.MarioSprite = new MarioSmallIdleRight(myGame,player);
         }
 
         public void BigMarioCommandCalled()
@@ -67,13 +67,13 @@ namespace Game1
 
         public void FireMarioCommandCalled()
         {
-            player.MarioSprite = new MarioFireCrouchingRight(myGame);
+            player.MarioSprite = new MarioFireCrouchingRight(myGame, player);
         }
 
         public void DeadMarioCommandCalled()
         {
             if (!(player.MarioSprite is MarioDead))
-                player.MarioSprite = new MarioDead(myGame);
+                player.MarioSprite = new MarioDead(myGame,player);
         }
 
         public void Update()

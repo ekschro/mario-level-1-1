@@ -19,11 +19,11 @@ namespace Game1
 
         public float XVelocity { get => xVelocity; }
 
-        public MarioPhysics(Game1 game,int velCap)
+        public MarioPhysics(Game1 game,IPlayer player,int velCap)
         {
             this.game = game;
             this.velCap = velCap;
-            player = game.CurrentLevel.PlayerObject;
+            this.player = player;
             xVelocity = 0;
             yVelocity = 0;
         }

@@ -15,10 +15,10 @@ public class MarioDead : ISprite
         private float bounceGravity;
         private float bounceTimer;
 
-    public MarioDead(Game1 game)
+    public MarioDead(Game1 game,IPlayer player)
     {
         myGame = game;
-            player = game.CurrentLevel.PlayerObject;
+            this.player = player;
             bouncePosition = 0f;
             bounceVelocity = -3.0f;
             bounceGravity = .07f;
@@ -66,17 +66,17 @@ public class MarioDead : ISprite
         }
     public void SmallMarioCommandCalled()
     {
-        player.MarioSprite = new MarioSmallIdleRight(myGame);
+        player.MarioSprite = new MarioSmallIdleRight(myGame,player);
     }
 
-        public void BigMarioCommandCalled() => player.MarioSprite = new MarioBigIdleRight(myGame);
+        public void BigMarioCommandCalled() => player.MarioSprite = new MarioBigIdleRight(myGame, player);
 
-        public void FireMarioCommandCalled() => player.MarioSprite = new MarioFireIdleRight(myGame);
+        public void FireMarioCommandCalled() => player.MarioSprite = new MarioFireIdleRight(myGame, player);
 
         public void DeadMarioCommandCalled()
         {
             if (!(player.MarioSprite is MarioDead))
-                player.MarioSprite = new MarioDead(myGame);
+                player.MarioSprite = new MarioDead(myGame,player);
         }
 
         public void Update()

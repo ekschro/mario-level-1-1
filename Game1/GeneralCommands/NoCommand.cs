@@ -12,15 +12,15 @@ namespace Game1
 
         public NoCommand(Game1 game)
         {
-            //player = game.CurrentLevel.PlayerObject;
+            player = game.CurrentLevel.PlayerObject;
         }
 
         public void Execute()
         {
-            /*player.MovingDown = false;
+            player.MovingDown = false;
             player.MovingUp = false;
             player.MovingRight = false;
-            player.MovingLeft = false;*/
+            player.MovingLeft = false;
         }
     }
 }
