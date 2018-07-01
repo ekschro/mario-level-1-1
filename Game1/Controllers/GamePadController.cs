@@ -41,7 +41,7 @@ namespace Game1
             controllerMappings.Add(Buttons.DPadRight, new RightCommand(myGame));
 
             controllerMappings.Add(Buttons.Back, new ResetCommand(myGame));
-            controllerMappings.Add(Buttons.B, new FireballCommand(myGame));
+            //controllerMappings.Add(Buttons.B, new FireballCommand(myGame));
             
     }
 

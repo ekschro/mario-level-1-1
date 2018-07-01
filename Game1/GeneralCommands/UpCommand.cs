@@ -24,7 +24,6 @@ namespace Game1
 
         public void Execute()
         {
-            //controllerHandler.MovingDown = false;
             controllerHandler.MovingUp = true;
         }
     }

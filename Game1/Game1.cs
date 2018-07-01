@@ -49,7 +49,7 @@ namespace Game1
             controllerHandler = new ControllerHandler();
 
             controllerList.Add(new KeyboardController(this));
-            //controllerList.Add(new GamePadController(this));
+            controllerList.Add(new GamePadController(this));
             //mouseController = new MouseController(this);
             
             base.Initialize();
