@@ -37,7 +37,7 @@ namespace Game1
                 yPos = player.CurrentYPos + 16;
             }
             
-            MovingUp = false;
+            MovingUp = true;
             MovingDown = false;
            
         }
@@ -50,6 +50,7 @@ namespace Game1
         private bool movingDown;
         private int xVelocity;
         private int velCap;
+        private float yPosMax;
 
         public float CurrentXPos { get => xPos; set => xPos = value; }
         public float CurrentYPos { get => yPos; set => yPos = value; }
@@ -85,7 +86,7 @@ namespace Game1
             {
                currentFrame = 0;
             }
-            if (movingUp)
+            if (movingUp && yPosMax - yPos < 3)
             {
                 yPos = yPos - 1;
             } else
