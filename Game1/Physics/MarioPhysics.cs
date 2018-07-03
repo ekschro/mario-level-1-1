@@ -24,7 +24,7 @@ namespace Game1
 
         public float XVelocity { get => xVelocity; }
 
-        public MarioPhysics(Game1 game,IPlayer player,int velCap)
+        public MarioPhysics(Game1 game, Mario player, int velCap)
         {
             this.game = game;
             controllerHandler = game.controllerHandler;
@@ -42,6 +42,7 @@ namespace Game1
             delta = game.delta.ElapsedGameTime.Milliseconds;
             NewPosX();
             NewPosY();
+            RunningHandler();
         }
 
         public void NewPosX()
@@ -124,12 +125,12 @@ namespace Game1
 
         public void RunningHandler()
         {
-
+            velCap = walkVelCap;
         }
 
         public void RunningCheck()
         {
-
+            velCap = runVelCap;
         }
     }
 }

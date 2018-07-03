@@ -15,7 +15,7 @@ namespace Game1
     {
         //private int timer;
         private Game1 myGame;
-        private IPlayer player;
+        //private IPlayer player;
 
         public FireballCommand(Game1 game)
         {
@@ -25,7 +25,11 @@ namespace Game1
 
         public void Execute()
         {
-            
+            if(myGame.CurrentLevel.PlayerObject is Mario)
+            {
+                IPhysics physics = Mario.physics;
+                ((MarioPhysics)physics).RunningCheck();
+            }
 
             /*bool hasFireball = false;
             if (player.MarioSprite.isFire())

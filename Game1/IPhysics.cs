@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Game1
 {
-    interface IPhysics
+    public interface IPhysics
     {
         void Update();
         void NewPosX();

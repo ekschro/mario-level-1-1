@@ -9,7 +9,7 @@ namespace Game1
         private int animationTimer;
 
         private static ISprite playerSprite;
-        private static IPhysics physics;
+        public static IPhysics physics;
         private static Color marioColor;
         private static float currentXPosition;
         private static float currentYPosition;

@@ -24,7 +24,7 @@ namespace Game1
         public CollisionDetect(Game1 game, ILevel Level1)
         {
             mygame = game;
-            controllerHandler = this.controllerHandler;
+            controllerHandler = game.controllerHandler;
             level1 = Level1;
             player = Level1.PlayerObject;
 
@@ -84,6 +84,7 @@ namespace Game1
                         collision.BlockCollisionRespondBottom(blockArray[i],intersect.Height,head);
                         head = true;
                     }
+                    //An unhandled exception of type 'System.NullReferenceException' occurred in Game1.exe   Object reference not set to an instance of an object.    ControllerHandler == null
                     else if (intersect.Height < intersect.Width && playerY > blockY && controllerHandler.MovingUp)
                     {
                         collision.BlockCollisionRespondBottom(blockArray[i],intersect.Height,head);
