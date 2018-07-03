@@ -3,34 +3,47 @@ using System;
 namespace Game1 { 
 public class MarioDead : ISprite
 {
-    private Game1 myGame;
-    
+        public float CurrentXPos { get; set; }
+        public float CurrentYPos { get; set; }
 
-    private int currentFrame = 12 + 28;
+        private Game1 myGame;
+        private IPlayer player;
+        private int currentFrame = 12 + 28;
 
-    public MarioDead(Game1 game)
+        private float bouncePosition;
+        private float bounceVelocity;
+        private float bounceGravity;
+        private float bounceTimer;
+
+    public MarioDead(Game1 game,IPlayer player)
     {
         myGame = game;
-        
+            this.player = player;
+            bouncePosition = 0f;
+            bounceVelocity = -3.0f;
+            bounceGravity = .07f;
+            bounceTimer = ((bounceVelocity * bounceVelocity) / bounceGravity);
     }
 
 
-    public void Draw()
-    {
-        int width = TextureWareHouse.marioTexture.Width / Mario.TotalMarioColumns;
-        int height = TextureWareHouse.marioTexture.Height / Mario.TotalMarioRows;
-        int row = (int)((float)currentFrame / (float)Mario.TotalMarioColumns);
-        int column = currentFrame % Mario.TotalMarioColumns;
+        public void Draw()
+        {
+            int width = TextureWareHouse.marioTexture.Width / player.TotalMarioColumns;
+            int height = TextureWareHouse.marioTexture.Height / player.TotalMarioRows;
+            int row = (int)((float)currentFrame / (float)player.TotalMarioColumns);
+            int column = currentFrame % player.TotalMarioColumns;
+            Bounce();
 
+            int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(player.CurrentXPos);
+            int drawLocationY = (int)(player.CurrentYPos  + bouncePosition);
 
-        Rectangle sourceRectangle = new Rectangle(width * column, (height * row), width, height);
-        Rectangle destinationRectangle = new Rectangle((int)Mario.CurrentXPosition, (int)Mario.CurrentYPosition, width, height);
+            Rectangle sourceRectangle = new Rectangle(width * column, (height * row), width, height);
+            Rectangle destinationRectangle = new Rectangle(drawLocationX, drawLocationY, width, height);
 
-
-        myGame.SpriteBatch.Begin();
-        myGame.SpriteBatch.Draw(TextureWareHouse.marioTexture, destinationRectangle, sourceRectangle, Mario.MarioColor);
-        myGame.SpriteBatch.End();
-    }
+            myGame.SpriteBatch.Begin();
+            myGame.SpriteBatch.Draw(TextureWareHouse.marioTexture, destinationRectangle, sourceRectangle, player.MarioColor);
+            myGame.SpriteBatch.End();
+        }
 
     public void UpCommandCalled()
     {
@@ -53,18 +66,21 @@ public class MarioDead : ISprite
         }
     public void SmallMarioCommandCalled()
     {
-        Mario.playerSprite = new MarioSmallIdleRight(myGame);
+        player.MarioSprite = new MarioSmallIdleRight(myGame,player);
     }
 
-        public void BigMarioCommandCalled() => Mario.playerSprite = new MarioBigIdleRight(myGame);
+        public void BigMarioCommandCalled() => player.MarioSprite = new MarioBigIdleRight(myGame, player);
 
-        public void FireMarioCommandCalled() => Mario.playerSprite = new MarioFireIdleRight(myGame);
+        public void FireMarioCommandCalled() => player.MarioSprite = new MarioFireIdleRight(myGame, player);
 
-        public void DeadMarioCommandCalled() => Mario.playerSprite = new MarioDead(myGame);
+        public void DeadMarioCommandCalled()
+        {
+            if (!(player.MarioSprite is MarioDead))
+                player.MarioSprite = new MarioDead(myGame,player);
+        }
 
         public void Update()
     {
-
     }
 
         public bool isSmall()
@@ -83,9 +99,17 @@ public class MarioDead : ISprite
         }
 
 
-        public Vector2 GameObjectLocation()
+        public Vector2 GetGameObjectLocation()
         {
-            return new Vector2(Mario.CurrentXPosition, Mario.CurrentYPosition);
+            return new Vector2(player.CurrentXPos, player.CurrentYPos);
+        }
+
+        public void Bounce()
+        {
+            bounceVelocity += bounceGravity;
+            bouncePosition += bounceVelocity;
+            if (--bounceTimer < 0)
+                myGame.Reset();
         }
     }
 }

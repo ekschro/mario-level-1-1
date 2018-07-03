@@ -4,42 +4,53 @@ namespace Game1
 {
     public class Mario : IPlayer
     {
+        private IControllerHandler controllerHandler;
+        private Game1 myGame;
+        private int animationTimer;
+
+        private static ISprite playerSprite;
+        public static IPhysics physics;
+        private static Color marioColor;
         private static float currentXPosition;
         private static float currentYPosition;
-        private static Game1 myGame;
         private static int totalMarioColumns = 28;
         private static int totalMarioRows = 3;
+        private static int colorStartingTime;
+        private static int colorTimer;
         private static bool isStar = false;
-        private static int currentFrame = 0;
+        private static bool invulnerability = false;
 
-
-        public static ISprite playerSprite;
-
-        public static ISprite MarioSprite { get => playerSprite; set => playerSprite = value; }
-        public static float CurrentXPosition { get => currentXPosition; set => currentXPosition = value; }
-        public static float CurrentYPosition { get => currentYPosition; set => currentYPosition = value; }
-        public static int TotalMarioRows { get => totalMarioRows; set => totalMarioRows = value; }
-        public static int TotalMarioColumns { get => totalMarioColumns; set => totalMarioColumns = value; }
+        public ISprite MarioSprite { get => playerSprite; set => playerSprite = value; }
+        public Color MarioColor { get => marioColor; set => marioColor = value; }
+        public float CurrentXPos { get => currentXPosition; set => currentXPosition = value; }
+        public float CurrentYPos { get => currentYPosition; set => currentYPosition = value; }
+        public bool Jumping { get; set; }
+        public bool Falling { get; set; }
+        public bool Bump { get; set; }
+        public bool Bounce { get; set; }
+        public bool CanJump { get; set; }
         public bool IsStar { get => isStar; set => isStar = value; }
-        public static int CurrentFrame { get => currentFrame; set => currentFrame = value; }
-        public static Game1 MyGame { get => myGame; set => myGame = value; }
-        public static Color MarioColor;
-        private int colorTimer;
-        private int colorStartingTime;
-        //public Color MarioColor { get => marioColor; set => marioColor = value; }
+        public bool Invulnerability { get => invulnerability; set => invulnerability = value; }
+        public int TotalMarioRows { get => totalMarioRows; set => totalMarioRows = value; }
+        public int TotalMarioColumns { get => totalMarioColumns; set => totalMarioColumns = value; }
 
         public Mario(Game1 game, Vector2 vector)
         {
-            MyGame = game;
-            CurrentXPosition = vector.X;
-            CurrentYPosition = vector.Y;
+            myGame = game;
+            controllerHandler = game.controllerHandler;
+            physics = new MarioPhysics(game,this,2);
+            CurrentXPos = vector.X;
+            CurrentYPos = vector.Y;
             MarioColor = Color.White;
-            MarioSprite = new MarioSmallIdleRight(MyGame);
+            MarioSprite = new MarioSmallIdleRight(game,this);
             colorStartingTime = 5;
             colorTimer = 0;
-        }
+            animationTimer = 0;
 
-        
+            CanJump = true;
+            Falling = false;
+            Bounce = false;
+        }
 
         public void Draw()
         {
@@ -47,13 +58,106 @@ namespace Game1
             MarioSprite.Draw();
         }
 
-
         public void Update()
         {
+            if (!(MarioSprite is MarioDead))
+            {
+                physics.Update();
+                if (physics.XVelocity == 0 && MarioSprite is MarioBigWalkRight)
+                {
+                    MarioSprite = new MarioBigIdleRight(myGame,this);
+                } else if (physics.XVelocity == 0 && MarioSprite is MarioBigWalkLeft)
+                {
+                    MarioSprite = new MarioBigIdleLeft(myGame,this);
+                }
+                else if (physics.XVelocity == 0 && MarioSprite is MarioSmallWalkRight)
+                {
+                    MarioSprite = new MarioSmallIdleRight(myGame,this);
+                }
+                else if (physics.XVelocity == 0 && MarioSprite is MarioSmallWalkLeft)
+                {
+                    MarioSprite = new MarioSmallIdleLeft(myGame,this);
+                }
+                else if (physics.XVelocity == 0 && MarioSprite is MarioFireWalkRight)
+                {
+                    MarioSprite = new MarioFireIdleRight(myGame,this);
+                }
+                else if (physics.XVelocity == 0 && MarioSprite is MarioFireWalkLeft)
+                {
+                    MarioSprite = new MarioFireIdleLeft(myGame,this);
+                }
+            }
 
+            if (controllerHandler.MovingDown)
+            {
+                DownAnimation();
+            }
+            if (controllerHandler.MovingRight && !controllerHandler.MovingUp)
+            {
+                RightAnimation();
+            }
+            if (controllerHandler.MovingLeft && !controllerHandler.MovingUp)
+            {
+                LeftAnimation();
+            }
+            if(controllerHandler.MovingUp)
+            {
+                UpAnimation();
+            }
         }
-        
-        public Vector2 GameObjectLocation()
+
+        private void RightAnimation()
+        {
+            if (animationTimer == 5)
+            {
+                this.MarioSprite.RightCommandCalled();
+                animationTimer = 0;
+            } else
+            {
+                animationTimer++;
+            }
+        }
+
+        private void UpAnimation()
+        {
+            if (animationTimer == 5)
+            {
+                this.MarioSprite.UpCommandCalled();
+                animationTimer = 0;
+            }
+            else
+            {
+                animationTimer++;
+            }
+        }
+
+        private void DownAnimation()
+        {
+            if (animationTimer == 5)
+            {
+                this.MarioSprite.DownCommandCalled();
+                animationTimer = 0;
+            }
+            else
+            {
+                animationTimer++;
+            }
+        }
+
+        private void LeftAnimation()
+        {
+            if (animationTimer == 5)
+            {
+                this.MarioSprite.LeftCommandCalled();
+                animationTimer = 0;
+            }
+            else
+            {
+                animationTimer++;
+            }
+        }
+
+        public Vector2 GetGameObjectLocation()
         {
             return new Vector2(currentXPosition, currentYPosition);
         }
@@ -73,7 +177,15 @@ namespace Game1
 
                 colorTimer = colorStartingTime;
             }
-            else if (isStar && colorTimer > 0)
+            else if (Invulnerability && colorTimer == 0)
+            {
+                if(MarioColor == Color.White)
+                    MarioColor = Color.Transparent;
+                else
+                    MarioColor = Color.White;
+                colorTimer = colorStartingTime;
+            }
+            else if (colorTimer > 0)
                 colorTimer--;
             else
             {
@@ -81,12 +193,16 @@ namespace Game1
             }
         }
 
-
-
-
-
-
-
-
+        public static Boolean CanGenerateProjectiles()
+        {
+            //if (MarioSprite.isFire())
+            //{
+            //    return true;
+            //}
+            //else
+            //{
+               return false;
+            //}
+        }
     }
 }

@@ -1,0 +1,10 @@
+William Freeman (.694)
+6/19/18
+Sprint 3
+Mario.cs
+Tim Regrut
+
+The Mario.cs class functions as a container for the Mario states to access and alter information about the Player object. Because of this, it contains a large number of public static properties and their respective private fields. Arguably this information could be better handled in smaller, more niche classes so that any class needing to use this information does not get access to properties it should not be able to modify. 
+However, the Mario states and sprites (which are currently and unfortunately combined at the moment) use all of this information, so moving any of this information to a new class would just result in more references in those classes. Ideally, the sprite information and the object information would be kept in separate classes, (Mario and MarioSprite, for example) and used separately most of the time and in tandem when neccesary. 
+Other than the information this class provides, its constructor initializes its properties, it has a class that returns the object's location, the Draw and Update methods, and a class that determines what color Mario should be, used primarily for the Star powerup. Again, the drawing task and the ColorSelect function could be used in a MarioSprite class while the GameLocation could be used in a Mario object class. The ColorSelect function has a slightly concerning amount of cyclomatic complexity, but since each path uses a single assignment statment, this is not a pressing issue. 
+This class has low coupling (relying only on the Game class and the ISprite interface) and fairly high cohesion (storing and reporting relevant information about the Mario object) by itself, but presents the problem that might cause other classes to be tightly coupled to it by storing much of the relevant Mario information.

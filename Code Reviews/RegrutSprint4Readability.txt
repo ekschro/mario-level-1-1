@@ -1,0 +1,13 @@
+Tim Regrut
+6/29/2018
+Sprint 4
+
+Level1Background.cs
+
+Will is the author
+5
+
+The cohesion and coupling in this class is excellent. However, the draw method is used by all of our classes. Therefore, an abstract class could be used with proper perameters.
+All of the variables in this class are properly named.
+
+

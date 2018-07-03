@@ -13,30 +13,18 @@ namespace Game1
 {
     public class DownCommand : ICommand
     {
-        private int timer;
-        //private Game1 myGame;
-        
+        private Game1 myGame;
+        private IControllerHandler controllerHandler;
 
-        public DownCommand()
+        public DownCommand(Game1 game)
         {
-            //myGame = game;
-            timer = 0;
-           
+            myGame = game;
+            controllerHandler = game.controllerHandler;
         }
 
         public void Execute()
         {
-            if (timer == 5) {
-                Mario.playerSprite.DownCommandCalled();
-                timer = 0;
-            }
-            else
-            {
-                timer++;
-            }
-
-            
-            Mario.CurrentYPosition = Mario.CurrentYPosition + 1;
+            controllerHandler.MovingDown = true;
         }
     }
 }

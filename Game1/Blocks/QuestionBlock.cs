@@ -9,18 +9,20 @@ namespace Game1
 {
     public class QuestionBlock : IBlock
     {
+        public float CurrentXPos { get; set; }
+        public float CurrentYPos { get; set; }
 
         private IBlockSprite questionBlockSprite;
-        private Game1 myGame;
         private Vector2 blockLocation;
+        private Rectangle blockRectangle;
         private int cyclePosition = 0;
-        private int cycleLength = 16;
+        private int cycleLength = 8;
 
         public QuestionBlock(Game1 game, Vector2 location)
         {
             questionBlockSprite = new QuestionBlockSprite(game, this);
-            myGame = game;
             blockLocation = location;
+            blockRectangle = new Rectangle((int)location.X, (int)location.Y, 16, 16);
         }
 
         public void Draw()
@@ -28,9 +30,14 @@ namespace Game1
             questionBlockSprite.Draw();
         }
 
-        public Vector2 GameObjectLocation()
+        public Vector2 GetGameObjectLocation()
         {
             return blockLocation;
+        }
+
+        public Rectangle BlockRectangle()
+        {
+            return blockRectangle;
         }
 
         public void Update()
@@ -40,16 +47,8 @@ namespace Game1
             {
                 questionBlockSprite.Update();
                 cyclePosition = 0;
+                blockLocation.Y -= 1;
             }
-            
         }
-
-        public void TopCollision() { }
-        public void BottomCollision()
-        {
-            questionBlockSprite = new UsedBlockSprite(myGame, new UsedBlock(myGame, blockLocation));
-        }
-        public void LeftCollision() { }
-        public void RightCollision() { }
     }
 }

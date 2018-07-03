@@ -13,18 +13,18 @@ namespace Game1
 {
     public class BigMarioCommand : ICommand
     {
-        //private Game1 myGame;
-        
+        private Game1 myGame;
+        private IPlayer player;
 
-        public BigMarioCommand()
+        public BigMarioCommand(Game1 game)
         {
-            //myGame = game;
-            
+            myGame = game;
+            player = game.CurrentLevel.PlayerObject;
         }
 
         public void Execute()
         {
-            Mario.playerSprite.BigMarioCommandCalled();
+            player.MarioSprite.BigMarioCommandCalled();
         }
     }
 }

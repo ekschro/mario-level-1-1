@@ -13,28 +13,18 @@ namespace Game1
 {
     public class RightCommand : ICommand
     {
-        //private Game1 myGame;
-        private int timer;
+        private Game1 myGame;
+        private IControllerHandler controllerHandler;
         
-        public RightCommand()
+        public RightCommand(Game1 game)
         {
-            //myGame = game;
-            timer = 0;
+            myGame = game;
+            controllerHandler = game.controllerHandler;
         }
 
         public void Execute()
         {
-            if (timer == 5)
-            {
-                Mario.playerSprite.RightCommandCalled();
-                timer = 0;
-            } else
-            {
-                timer++;
-            }
-
-            
-            Mario.CurrentXPosition = Mario.CurrentXPosition + 1;
+            controllerHandler.MovingRight = true;
         }
     }
 }

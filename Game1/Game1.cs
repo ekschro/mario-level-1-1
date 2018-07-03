@@ -12,14 +12,17 @@ namespace Game1
     public class Game1 : Game
     {
         GraphicsDeviceManager graphics;
+        public GameTime delta;
         private SpriteBatch spriteBatch;
         public IController mouseController;
         public IList<IController> controllerList;
-        public ILevel PlatformerLevel;
+        public IControllerHandler controllerHandler;
+        private ILevel currentLevel;
         //public int totalBlockFrames = 12;
         public TextureWareHouse warehouse;
 
         public SpriteBatch SpriteBatch { get => spriteBatch; set => spriteBatch = value; }
+        public ILevel CurrentLevel { get => currentLevel; set => currentLevel = value; }
 
         /*
         public Texture2D marioTexture;
@@ -32,17 +35,23 @@ namespace Game1
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
+            graphics.PreferredBackBufferWidth = 400;
+            graphics.PreferredBackBufferHeight = 230;
+            graphics.ApplyChanges();
+            
             Content.RootDirectory = "Content";
         }
       
         protected override void Initialize()
         {
             controllerList = new List<IController>();
-            
+
+            controllerHandler = new ControllerHandler();
+
             controllerList.Add(new KeyboardController(this));
             controllerList.Add(new GamePadController(this));
-            mouseController = new MouseController();
-
+            //mouseController = new MouseController(this);
+            
             base.Initialize();
         }
 
@@ -51,7 +60,7 @@ namespace Game1
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             warehouse = new TextureWareHouse(this);
-            PlatformerLevel = new Level1("LevelInfo.csv", this);
+            CurrentLevel = new Level1("../../../../Content/LevelInfo.csv", this);
         }
 
         public void Reset()
@@ -70,7 +79,9 @@ namespace Game1
             foreach (IController controller in controllerList.ToArray())
                 controller.Update();
 
-            PlatformerLevel.Update();
+            delta = gameTime;
+
+            CurrentLevel.Update();
 
             base.Update(gameTime);
         }
@@ -86,7 +97,7 @@ namespace Game1
 
             spriteBatch.End();
 
-            PlatformerLevel.Draw();
+            CurrentLevel.Draw();
 
             base.Draw(gameTime);
         }

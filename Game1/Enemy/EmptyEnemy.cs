@@ -9,9 +9,14 @@ namespace Game1
 {
     public class Empty : IEnemy
     {
+        public float CurrentXPos { get; set; }
+        public float CurrentYPos { get; set; }
+        private bool falling;
+        public bool IsFalling { get => falling; set => falling = value; }
+        public bool IsStomped { get; set; }
         private static IEnemySprite emptySprite;
         public static IEnemySprite EmptySprite { get => emptySprite; set => emptySprite = value; }
-        //private Game1 myGame;
+        public IEnemyStateMachine GetStateMachine { get; }
 
         private Vector2 emptyLocation;
         private Vector2 emptyOriginalLocation;
@@ -46,10 +51,16 @@ namespace Game1
             EmptySprite.Draw();
         }
 
-        public Vector2 GameObjectLocation()
+        public Vector2 GetGameObjectLocation()
         {
             return emptyLocation;
         }
+
+        public void SetGameObjectLocation(Vector2 newPos)
+        {
+            emptyLocation = newPos;
+        }
+
         public Vector2 GameOriginalLocation()
         {
             return emptyOriginalLocation;
@@ -57,6 +68,11 @@ namespace Game1
 
         public void Update()
         {
+        }
+
+        public bool GetDead()
+        {
+            throw new NotImplementedException();
         }
     }
 }

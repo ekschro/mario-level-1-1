@@ -9,26 +9,33 @@ namespace Game1
 {
     public class Koopa : IEnemy
     {
+        public float CurrentXPos { get => koopaLocation.X; set => koopaLocation.X = value; }
+        public float CurrentYPos { get => koopaLocation.Y; set => koopaLocation.Y = value; }
+        private bool falling;
+        public bool IsFalling { get => falling; set => falling = value; }
+
         private static IEnemySprite koopaSprite;
         public static IEnemySprite KoopaSprite { get => koopaSprite; set => koopaSprite = value; }
-        private KoopaStateMachine stateMachine;
+        public KoopaStateMachine stateMachine;
+        public IEnemyStateMachine GetStateMachine { get => stateMachine; }
+        public bool IsStomped { get; set; }
 
-        //private Game1 myGame;
-        private bool direction = true;
         private int cyclePosition = 0;
         private int cycleLength = 8;
         private Vector2 koopaLocation;
         private Vector2 koopaOriginalLocation;
-
-
+        private IPhysics physics;
+        private bool dead = false;
 
         public Koopa(Game1 game, Vector2 location)
         {
             KoopaSprite = new KoopaSprite(game,this);
             stateMachine = new KoopaStateMachine(koopaSprite);
-            //myGame = game;
             koopaLocation = location;
             koopaOriginalLocation = location;
+
+            physics = new EnemyPhysics(game,this,1);
+            falling = true;
         }
 
         public void BeFlipped()
@@ -39,12 +46,12 @@ namespace Game1
         public void BeStomped()
         {
             stateMachine.BeStomped();
+            IsStomped = true;
         }
 
         public void ChangeDirection()
         {
             stateMachine.ChangeDirection();
-            direction = !direction;
         }
 
         public void Draw()
@@ -52,10 +59,16 @@ namespace Game1
             KoopaSprite.Draw();
         }
 
-        public Vector2 GameObjectLocation()
+        public Vector2 GetGameObjectLocation()
         {
             return koopaLocation;
         }
+
+        public void SetGameObjectLocation(Vector2 newPos)
+        {
+            koopaLocation = newPos;
+        }
+
         public Vector2 GameOriginalLocation()
         {
             return koopaOriginalLocation;
@@ -63,19 +76,20 @@ namespace Game1
 
         public void Update()
         {
+            physics.Update();
+            falling = true;
             cyclePosition++;
             if (cyclePosition == cycleLength)
             {
                 cyclePosition = 0;
-                KoopaSprite.Update();
                 stateMachine.Update();
-                if (koopaLocation.X == (koopaOriginalLocation.X - 20) || koopaLocation.X == koopaOriginalLocation.X + 20)
-                    ChangeDirection();
-                if (direction == true)
-                    koopaLocation.X += 1;
-                else if (direction == false)
-                    koopaLocation.X -= 1;
+                KoopaSprite.Update();
             }
         }
+        public bool GetDead()
+        {
+            return dead;
+        }
+
     }
 }

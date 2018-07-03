@@ -14,18 +14,19 @@ namespace Game1
     public class DeadMarioCommand : ICommand
     {
         private Game1 myGame;
-        
+        private IPlayer player;
 
         public DeadMarioCommand(Game1 game)
         {
             myGame = game;
-            
+            player = game.CurrentLevel.PlayerObject;
         }
 
         public void Execute()
         {
-            Mario.playerSprite.DeadMarioCommandCalled();
-            myGame.PlatformerLevel.PlayerObject.IsStar = false;
+            if (!(player.MarioSprite is MarioDead))
+                player.MarioSprite.DeadMarioCommandCalled();
+            myGame.CurrentLevel.PlayerObject.IsStar = false;
         }
     }
 }

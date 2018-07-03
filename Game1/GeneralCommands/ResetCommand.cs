@@ -14,15 +14,21 @@ namespace Game1
     public class ResetCommand : ICommand
     {
         private Game1 myGame;
+        private IControllerHandler controllerHandler;
 
         public ResetCommand(Game1 game)
         {
             myGame = game;
+            controllerHandler = game.controllerHandler;
         }
 
         public void Execute()
         {
             myGame.Reset();
+            controllerHandler.MovingDown = false;
+            controllerHandler.MovingUp = false;
+            controllerHandler.MovingRight = false;
+            controllerHandler.MovingLeft = false;
         }
     }
 }

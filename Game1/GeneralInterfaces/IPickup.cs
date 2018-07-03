@@ -9,7 +9,13 @@ namespace Game1
 {
     public interface IPickup : IGameObject
     {
-        //Vector2 GameObjectLocation();
+        //object GetStateMachine { get; set; }
+        bool IsFalling { get; set; }
+
+        Vector2 GetGameObjectLocation();
+        void SetGameObjectLocation(Vector2 x);
         void Picked();
+        void Collide();
+        bool MovingRight();
     }
 }

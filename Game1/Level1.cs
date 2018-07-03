@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 
 namespace Game1
 {
@@ -6,60 +8,135 @@ namespace Game1
     {
         private List<IGameObject> levelObjects;
         private ICollision collisionDetect;
+        private ICamera levelCamera;
+        private Game1 myGame;
 
         private IPlayer playerObject;
+        private IBackground backgroundObject;
         private List<IBlock> blocks;
         private List<IEnemy> enemies;
         private List<IPickup> pickups;
-
+        private List<ITemporary> temporaries;
         public IPlayer PlayerObject { get => playerObject; set => playerObject = value; }
+        public IBackground BackgroundObject { get => backgroundObject; set => backgroundObject = value; }
         public List<IBlock> BlockObjects { get => blocks; }
         public List<IEnemy> EnemyObjects { get => enemies; }
         public List<IPickup> PickupObjects { get => pickups; }
+        public List<ITemporary> TemporaryObjects { get => temporaries; }
+        public List<IGameObject> LevelObjects { get => levelObjects; }
+        
+
+        public ICamera LevelCamera { get => levelCamera; set => levelCamera = value; }
+
 
         public Level1(string fileName, Game1 game)
         {
+            myGame = game;
             levelObjects = new List<IGameObject>();
             ILoader loader = new LevelLoader(game);
 
             loader.Load(fileName, levelObjects);
-
-            GetPlayerObjects();
+            
+            GetPlayerObject();
+            GetBackgroundObject();
             GetBlockObjects();
             GetEnemyObjects();
             GetPickupObjects();
+            GetTemporaryObjects();
+
 
             collisionDetect = new CollisionDetect(game,this);
+
+            levelCamera = new Camera(this);
+            backgroundObject = new Level1Background(myGame, new Vector2(0,0));
         }
 
         public void Update()
         {
-            foreach (IGameObject GameObject in levelObjects)
+            PlayerObject.Update();
+            foreach (IGameObject GameObject in BlockObjects)
             {
-                GameObject.Update();
+                if (GameObject.GetGameObjectLocation().X > levelCamera.CameraPosition - 16  && GameObject.GetGameObjectLocation().X < levelCamera.CameraPosition + 400)
+                    GameObject.Update();
+                else if (GameObject is StoneBlock)
+                    GameObject.Update();
             }
+            foreach (IGameObject GameObject in EnemyObjects)
+            {
+                if (GameObject.GetGameObjectLocation().X > levelCamera.CameraPosition - 16 && GameObject.GetGameObjectLocation().X < levelCamera.CameraPosition + 400)
+                    GameObject.Update();
+            }
+            IGameObject[] pickupObjectArray = PickupObjects.ToArray();
+            for(int i = 0; i < pickupObjectArray.Length; i++)
+            {
+                if (pickupObjectArray[i].GetGameObjectLocation().X > levelCamera.CameraPosition - 16 && pickupObjectArray[i].GetGameObjectLocation().X < levelCamera.CameraPosition + 400)
+                    pickupObjectArray[i].Update();
+            }
+            IGameObject[] temporaryObjectArray = TemporaryObjects.ToArray();
+            for (int i = 0; i < temporaryObjectArray.Length; i++)
+            {
+                if (temporaryObjectArray[i].GetGameObjectLocation().X > levelCamera.CameraPosition - 16 && temporaryObjectArray[i].GetGameObjectLocation().X < levelCamera.CameraPosition + 400)
+                    temporaryObjectArray[i].Update();
+            }
+
+            levelCamera.Update();
 
             collisionDetect.Update();
         }
 
         public void Draw()
         {
-            foreach (IGameObject GameObject in levelObjects)
+            BackgroundObject.Draw();
+            PlayerObject.Draw();
+            foreach (IGameObject GameObject in BlockObjects)
             {
-                GameObject.Draw();
+                if (GameObject.GetGameObjectLocation().X > levelCamera.CameraPosition - 16 && GameObject.GetGameObjectLocation().X < levelCamera.CameraPosition + 400)
+                    GameObject.Draw();
+                else if (GameObject is StoneBlock)
+                    GameObject.Draw();
+            }
+            foreach (IGameObject GameObject in EnemyObjects)
+            {
+                if (GameObject.GetGameObjectLocation().X > levelCamera.CameraPosition - 16 && GameObject.GetGameObjectLocation().X < levelCamera.CameraPosition + 400)
+                    GameObject.Draw();
+            }
+            foreach (IGameObject GameObject in PickupObjects)
+            {
+                if (GameObject.GetGameObjectLocation().X > levelCamera.CameraPosition - 16 && GameObject.GetGameObjectLocation().X < levelCamera.CameraPosition + 400)
+                    GameObject.Draw();
+            }
+            IGameObject[] temporaryObjectArray = TemporaryObjects.ToArray();
+            for (int i = 0; i < temporaryObjectArray.Length; i++)
+            {
+                temporaryObjectArray[i].Draw();
             }
         }
 
-        private void GetPlayerObjects()
+        private void GetPlayerObject()
         {
             IPlayer playerObject = null;
             foreach(IGameObject player in levelObjects)
             {
-                if(player is IPlayer)
+                if (player is IPlayer)
+                {
                     playerObject = (IPlayer)player;
+                } 
             }
 
             this.playerObject = playerObject;
+        }
+        private void GetBackgroundObject()
+        {
+            IBackground backgroundObject = null;
+            foreach (IGameObject background in levelObjects)
+            {
+                if (background is IBackground)
+                {
+                    backgroundObject = (IBackground)background;
+                }
+            }
+
+            this.backgroundObject = backgroundObject;
         }
         private void GetBlockObjects()
         {
@@ -90,6 +167,29 @@ namespace Game1
                     pickupObjects.Add((IPickup)pickup);
             }
             this.pickups = pickupObjects;
+        }
+
+        private void GetTemporaryObjects()
+        {
+            List<ITemporary> temporaryObjects = new List<ITemporary>();
+            foreach (IGameObject temporary in levelObjects)
+            {
+                if (temporary is ITemporary)
+                    temporaryObjects.Add((ITemporary)temporary);
+            }
+            this.temporaries = temporaryObjects;
+        }
+
+        private void UpdateLevelObjects()
+        {
+            levelObjects = new List<IGameObject>();
+            levelObjects.Add(PlayerObject);
+            levelObjects.Add(BackgroundObject);
+            levelObjects.AddRange(BlockObjects);
+            levelObjects.AddRange(PickupObjects);
+            levelObjects.AddRange(EnemyObjects);
+            LevelObjects.AddRange(TemporaryObjects);
+            
         }
     }
 }

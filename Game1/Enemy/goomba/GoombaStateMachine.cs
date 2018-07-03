@@ -9,7 +9,7 @@ namespace Game1
     public class GoombaStateMachine : IEnemyStateMachine
     {
         private IEnemySprite goombaSprite;
-        private bool facingLeft = true;
+        private bool facingLeft = false;
         private enum GoombaHealth { Normal, Stomped, Flipped };
         private GoombaHealth health = GoombaHealth.Normal;
 
@@ -21,7 +21,6 @@ namespace Game1
         public void ChangeDirection()
         {
             facingLeft = !facingLeft;
-
         }
 
         public void BeStomped()
@@ -37,20 +36,20 @@ namespace Game1
 
         public void BeFlipped()
         {
+            goombaSprite.FlipSprite();
             if (health != GoombaHealth.Flipped) 
             {
                 health = GoombaHealth.Flipped;
-
             }
         }
 
         public void Update()
         {
-            if (health == GoombaHealth.Flipped)
-            {
-                ChangeDirection();
-                health = GoombaHealth.Normal;
-            }
         }
+        public bool GetDirection()
+        {
+            return facingLeft;
+        }
+
     }
 }

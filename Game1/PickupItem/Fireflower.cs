@@ -9,18 +9,25 @@ namespace Game1
 {
     public class Fireflower : IPickup
     {
+        public float CurrentXPos { get; set; }
+        public float CurrentYPos { get; set; }
+
+        public bool IsFalling { get; set; }
+
         private int cyclePosition = 0;
         private int cycleLength = 16;
 
         private IPickupSprite fireflowerSprite;
         private Game1 myGame;
         private Vector2 pickupLocation;
+        private Vector2 pickupOriginalLocation;
 
         public Fireflower(Game1 game, Vector2 location)
         {
             fireflowerSprite = new FireflowerSprite(game, this);
             myGame = game;
             pickupLocation = location;
+            pickupOriginalLocation = location;
         }
 
         public void Draw()
@@ -28,9 +35,14 @@ namespace Game1
             fireflowerSprite.Draw();
         }
 
-        public Vector2 GameObjectLocation()
+        public Vector2 GetGameObjectLocation()
         {
             return pickupLocation;
+        }
+
+        public void SetGameObjectLocation(Vector2 value)
+        {
+            pickupLocation = value;
         }
 
         public void Update()
@@ -41,10 +53,24 @@ namespace Game1
                 fireflowerSprite.Update();
                 cyclePosition = 0;
             }
+            if (pickupLocation.Y > pickupOriginalLocation.Y - 16)
+            {
+                pickupLocation.Y -= 1;
+            }
         }
         public void Picked()
         {
             fireflowerSprite = new EmptyPickupSprite(myGame, new EmptyPickup(myGame, pickupLocation));
+        }
+
+        public void Collide()
+        {
+
+        }
+
+        public bool MovingRight()
+        {
+            return false;
         }
     }
 }

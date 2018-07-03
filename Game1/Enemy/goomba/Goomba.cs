@@ -9,31 +9,38 @@ namespace Game1
 {
     public class Goomba : IEnemy
     {
-        private static IEnemySprite goombaSprite;
-        public static IEnemySprite GoombaSprite { get => goombaSprite; set => goombaSprite = value; }
-        private GoombaStateMachine stateMachine;
-        //private Game1 myGame;
-        private bool direction = true;
+        public float CurrentXPos { get => goombaLocation.X; set => goombaLocation.X = value; }
+        public float CurrentYPos { get => goombaLocation.Y; set => goombaLocation.Y = value; }
+        private bool falling;
+        public bool IsFalling { get => falling; set => falling = value; }
+        private IEnemySprite goombaSprite;
+        public IEnemySprite GoombaSprite { get => goombaSprite; set => goombaSprite = value; }
+        public GoombaStateMachine stateMachine;
+        public IEnemyStateMachine GetStateMachine { get => stateMachine; }
         private int cyclePosition = 0;
         private int cycleLength = 8;
         private Vector2 goombaLocation;
         private Vector2 goombaOriginalLocation;
+        public bool IsStomped { get; set; }
+
+        private bool dead = false;
+        private IPhysics physics;
 
         public Goomba(Game1 game, Vector2 location)
         {
-            
-            GoombaSprite = new GoombaSprite(game,this);
-            stateMachine = new GoombaStateMachine(GoombaSprite);
-            //myGame = game;
             goombaLocation = location;
             goombaOriginalLocation = location;
+            GoombaSprite = new GoombaSprite(game, this);
+            stateMachine = new GoombaStateMachine(GoombaSprite);
+            physics = new EnemyPhysics(game,this,1);
+            falling = true;
         }
 
         public void BeFlipped()
         {
             stateMachine.BeFlipped();
+            dead = true;
         }
-
         public void BeStomped()
         {
             stateMachine.BeStomped();
@@ -41,8 +48,7 @@ namespace Game1
 
         public void ChangeDirection()
         {
-            stateMachine.ChangeDirection();
-            direction = !direction;
+            stateMachine.ChangeDirection(); 
         }
 
         public void Draw()
@@ -50,30 +56,40 @@ namespace Game1
             GoombaSprite.Draw();
         }
 
-        public Vector2 GameObjectLocation()
+        public Vector2 GetGameObjectLocation()
         {
             return goombaLocation;
         }
+        public void SetGameObjectLocation(Vector2 newPos)
+        {
+            goombaLocation = newPos;
+        }
+
         public Vector2 GameOriginalLocation()
         {
             return goombaOriginalLocation;
         }
-
         public void Update()
         {
+            physics.Update();
+            falling = true;
             cyclePosition++;
             if (cyclePosition == cycleLength)
             {
                 cyclePosition = 0;
-                GoombaSprite.Update();
                 stateMachine.Update();
-                if (goombaLocation.X == (goombaOriginalLocation.X - 20) || goombaLocation.X == (goombaOriginalLocation.X + 20))
-                    ChangeDirection();
-                if (direction == true)
-                    goombaLocation.X += 1;
-                else if (direction == false)
-                    goombaLocation.X -= 1;
+                GoombaSprite.Update();
+                if (dead)
+                {
+                    //goombaLocation.Y += 1;
+                }
             }
         }
+
+        public bool GetDead()
+        {
+            return dead;
+        }
+
     }
 }

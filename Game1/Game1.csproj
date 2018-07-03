@@ -57,8 +57,34 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Blocks\BrickBlockWithStar.cs" />
+    <Compile Include="Blocks\BrickBlockWithManyCoins.cs" />
+    <Compile Include="Blocks\Sprites\FlagBlockSprite.cs" />
+    <Compile Include="Blocks\Sprites\FlagpoleBlockSprite.cs" />
+    <Compile Include="Blocks\Sprites\CastleBlockSprite.cs" />
+    <Compile Include="Blocks\Sprites\HiddenGreenMushroomBlockSprite.cs" />
+    <Compile Include="Blocks\FlagpoleBlock.cs" />
+    <Compile Include="Blocks\FlagBlock.cs" />
+    <Compile Include="Blocks\CastleBlock.cs" />
+    <Compile Include="Collision\CollisionDetectionLogic.cs" />
+    <Compile Include="ControllerHandler.cs" />
+    <Compile Include="Enemy\koopa\KoopaShellMoving.cs" />
+    <Compile Include="Enemy\koopa\KoopaShell.cs" />
+    <Compile Include="Enemy\koopa\KoopaShellSprite.cs" />
+    <Compile Include="Enemy\koopa\KoopaShellStateMachine.cs" />
+    <Compile Include="GeneralInterfaces\ITemporarySprite.cs" />
+    <Compile Include="GeneralInterfaces\ITemporary.cs" />
+    <Compile Include="IBackground.cs" />
+    <Compile Include="IControllerHandler.cs" />
+    <Compile Include="IPhysics.cs" />
+    <Compile Include="Level1Background.cs" />
+    <Compile Include="Blocks\Sprites\QuestionCoinBlockSprite.cs" />
+    <Compile Include="Blocks\Sprites\QuestionPowerUpBlockSprite.cs" />
     <Compile Include="Blocks\BottomLeftPipeBlock.cs" />
     <Compile Include="Blocks\BottomRightPipeBlock.cs" />
+    <Compile Include="Blocks\HiddenGreenMushroomBlock.cs" />
+    <Compile Include="Blocks\QuestionCoinBlock.cs" />
+    <Compile Include="Blocks\QuestionPowerUpBlock.cs" />
     <Compile Include="Blocks\Sprites\BottomLeftPipeBlockSprite.cs" />
     <Compile Include="Blocks\Sprites\BottomRightPipeBlockSprite.cs" />
     <Compile Include="Blocks\Sprites\TopRightPipeBlockSprite.cs" />
@@ -67,11 +93,9 @@
     <Compile Include="Blocks\TopRightPipeBlock.cs" />
     <Compile Include="Blocks\BrickBlock.cs" />
     <Compile Include="Blocks\EmptyBlock.cs" />
-    <Compile Include="Blocks\HIddenBlock.cs" />
     <Compile Include="Blocks\QuestionBlock.cs" />
     <Compile Include="Blocks\Sprites\BrickBlockSprite.cs" />
     <Compile Include="Blocks\Sprites\EmptyBlockSprite.cs" />
-    <Compile Include="Blocks\Sprites\HiddenBlockSprite.cs" />
     <Compile Include="Blocks\Sprites\QuestionBlockSprite.cs" />
     <Compile Include="Blocks\Sprites\StairBlockSprite.cs" />
     <Compile Include="Blocks\Sprites\StoneBlockSprite.cs" />
@@ -79,8 +103,16 @@
     <Compile Include="Blocks\StairBlock.cs" />
     <Compile Include="Blocks\StoneBlock.cs" />
     <Compile Include="Blocks\UsedBlock.cs" />
-    <Compile Include="CollisionRespond.cs" />
-    <Compile Include="CollisionDetect.cs" />
+    <Compile Include="Camera.cs" />
+    <Compile Include="Fireball.cs" />
+    <Compile Include="GeneralCommands\FireballCommand.cs" />
+    <Compile Include="GeneralCommands\NoCommand.cs" />
+    <Compile Include="Physics\EnemyPhysics.cs" />
+    <Compile Include="ICamera.cs" />
+    <Compile Include="Physics\FireballPhysics.cs" />
+    <Compile Include="Physics\MarioPhysics.cs" />
+    <Compile Include="Collision\CollisionRespond.cs" />
+    <Compile Include="Collision\CollisionDetect.cs" />
     <Compile Include="Controllers\GamePadController.cs" />
     <Compile Include="Enemy\EmptyEnemy.cs" />
     <Compile Include="Enemy\EmptyEnemySprite.cs" />
@@ -97,6 +129,7 @@
     <Compile Include="GeneralInterfaces\IEnemyStateMachine.cs" />
     <Compile Include="GeneralInterfaces\IPickup.cs" />
     <Compile Include="GeneralInterfaces\IPickupSprite.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="IPlayer.cs" />
     <Compile Include="LevelLoader.cs" />
     <Compile Include="Mario.cs" />
@@ -106,17 +139,26 @@
     <Compile Include="ILoader.cs" />
     <Compile Include="Level1.cs" />
     <Compile Include="MouseController.cs" />
-    <Compile Include="PickupItem\Coin.cs" />
+    <Compile Include="Physics\FireballPhysics1.cs" />
+    <Compile Include="Physics\StarPhysics.cs" />
+    <Compile Include="Physics\PickupPhysics.cs" />
+    <Compile Include="TemporaryObjects\Coin.cs" />
     <Compile Include="PickupItem\EmptyPickup.cs" />
     <Compile Include="PickupItem\Fireflower.cs" />
     <Compile Include="PickupItem\GreenMushroom.cs" />
     <Compile Include="PickupItem\RedMushroom.cs" />
-    <Compile Include="PickupItem\Sprite\CoinSprite.cs" />
-    <Compile Include="PickupItem\Sprite\EmptyPickupSprite.cs" />
-    <Compile Include="PickupItem\Sprite\FireflowerSprite.cs" />
-    <Compile Include="PickupItem\Sprite\GreenMushroomSprite.cs" />
-    <Compile Include="PickupItem\Sprite\RedMushroonSprite.cs" />
-    <Compile Include="PickupItem\Sprite\StarSprite.cs" />
+    <Compile Include="TemporaryObjects\FlattenedGoomba.cs" />
+    <Compile Include="TemporaryObjects\FlippedKoopa.cs" />
+    <Compile Include="TemporaryObjects\FlippedGoomba.cs" />
+    <Compile Include="TemporaryObjects\Sprites\FlattenedGoombaSprite.cs" />
+    <Compile Include="TemporaryObjects\Sprites\FlippedKoopaSprite.cs" />
+    <Compile Include="TemporaryObjects\Sprites\FlippedGoombaSprite.cs" />
+    <Compile Include="TemporaryObjects\Sprites\CoinSprite.cs" />
+    <Compile Include="PickupItem\Sprites\EmptyPickupSprite.cs" />
+    <Compile Include="PickupItem\Sprites\FireflowerSprite.cs" />
+    <Compile Include="PickupItem\Sprites\GreenMushroomSprite.cs" />
+    <Compile Include="PickupItem\Sprites\RedMushroonSprite.cs" />
+    <Compile Include="PickupItem\Sprites\StarSprite.cs" />
     <Compile Include="PickupItem\Star.cs" />
     <Compile Include="MarioCommands\DeadMarioCommand.cs" />
     <Compile Include="GeneralCommands\DownCommand.cs" />
@@ -176,7 +218,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="app.manifest" />
-    <None Include="LevelInfo.csv">
+    <None Include="Content\LevelInfo.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
