@@ -23,8 +23,9 @@ namespace Game1
             none = new NoCommand(game);
             controllerMappings = new Dictionary<Keys, ICommand>();
             //recentKeys = new List<Keys>();
+
             controllerMappings.Add(Keys.Q, new ExitGameCommand(game));
-            controllerMappings.Add(Keys.W, new UpCommand(game));
+            controllerMappings.Add(Keys.Z, new UpCommand(game));
             controllerMappings.Add(Keys.S, new DownCommand(game));
             controllerMappings.Add(Keys.A, new LeftCommand(game));
             controllerMappings.Add(Keys.D, new RightCommand(game));
@@ -38,7 +39,7 @@ namespace Game1
             //controllerMappings.Add(Keys.O, new DeadMarioCommand(game));
             controllerMappings.Add(Keys.R, new ResetCommand(game));
             controllerMappings.Add(Keys.M, new MouseToggleCommand(game));
-            //controllerMappings.Add(Keys.X, new FireballCommand(game));
+            controllerMappings.Add(Keys.X, new FireballCommand(game));
     }
 
         public void Update()
@@ -49,13 +50,13 @@ namespace Game1
 
             foreach (Keys key in pressedKeys)
             {
-                for (int i = 0; i < 50; i++)
+                if (controllerMappings.ContainsKey(key))
                 {
-                    if (i == 0 && controllerMappings.ContainsKey(key))
-                    {
-                        controllerMappings[key].Execute();
-                    }
+                    controllerMappings[key].Execute();
+                    //recentKeys.Add(key);
                 }
+                //else if (recentKeys.Contains(key))
+                //    recentKeys.Remove(key);
             }
         }
     }

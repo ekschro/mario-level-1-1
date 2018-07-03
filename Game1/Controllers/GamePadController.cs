@@ -17,19 +17,19 @@ namespace Game1
         private Dictionary<Buttons, ICommand> controllerMappings;
         //private List<Buttons> recentKeys;
         private Game1 myGame;
-        
 
-        
+        private const float xSensitivity = 0.2f;
+
+        private const float ySensitivity = 0.6f;
+
         public GamePadController(Game1 game)
         {
-            
             myGame = game;
-            controllerMappings = new Dictionary<Buttons, ICommand>();
-            //recentKeys = new List<Buttons>();
-            controllerMappings.Add(Buttons.Start, new ExitGameCommand(myGame));
 
-            controllerMappings.Add(Buttons.LeftThumbstickUp, new UpCommand(myGame));
-            controllerMappings.Add(Buttons.DPadUp, new UpCommand(myGame));
+            controllerMappings = new Dictionary<Buttons, ICommand>();
+
+            controllerMappings.Add(Buttons.Start, new ExitGameCommand(myGame));
+            controllerMappings.Add(Buttons.Back, new ResetCommand(myGame));
 
             controllerMappings.Add(Buttons.LeftThumbstickDown, new DownCommand(myGame));
             controllerMappings.Add(Buttons.DPadDown, new DownCommand(myGame));
@@ -39,9 +39,9 @@ namespace Game1
 
             controllerMappings.Add(Buttons.LeftThumbstickRight, new RightCommand(myGame));
             controllerMappings.Add(Buttons.DPadRight, new RightCommand(myGame));
-
-            controllerMappings.Add(Buttons.Back, new ResetCommand(myGame));
-            //controllerMappings.Add(Buttons.B, new FireballCommand(myGame));
+            
+            controllerMappings.Add(Buttons.A, new UpCommand(myGame));
+            controllerMappings.Add(Buttons.B, new FireballCommand(myGame));
             
     }
 
@@ -51,21 +51,16 @@ namespace Game1
 
             foreach (Buttons button in pressedButtons)
             {
-                for (int i = 0; i < 50; i++)
-                {
-                    if (i == 0 && controllerMappings.ContainsKey(button))
-                    {
-                        controllerMappings[button].Execute();
-                    }
+                if (controllerMappings.ContainsKey(button))
+                { 
+                    controllerMappings[button].Execute();
                 }
-
             }
-            
         }
 
         private Buttons[] GetPressedButtons()
         {
-            Buttons[] PressedButtons = new Buttons[10];
+            Buttons[] PressedButtons = new Buttons[12];
             
             if (GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed)
                     PressedButtons[0] = Buttons.Start;
@@ -74,17 +69,27 @@ namespace Game1
 
             if (GamePad.GetState(PlayerIndex.One).DPad.Up == ButtonState.Pressed)
                 PressedButtons[2] = Buttons.DPadUp;
-
             if (GamePad.GetState(PlayerIndex.One).DPad.Down == ButtonState.Pressed)
-                PressedButtons[4] = Buttons.DPadDown;
-
-
+                PressedButtons[3] = Buttons.DPadDown;
             if (GamePad.GetState(PlayerIndex.One).DPad.Left == ButtonState.Pressed)
-                PressedButtons[6] = Buttons.DPadLeft;
-
-            
+                PressedButtons[4] = Buttons.DPadLeft;
             if (GamePad.GetState(PlayerIndex.One).DPad.Right == ButtonState.Pressed)
-                PressedButtons[8] = Buttons.DPadRight;
+                PressedButtons[5] = Buttons.DPadRight;
+
+            if (GamePad.GetState(PlayerIndex.One).Buttons.A == ButtonState.Pressed)
+                PressedButtons[6] = Buttons.A;
+            if (GamePad.GetState(PlayerIndex.One).Buttons.B == ButtonState.Pressed)
+                PressedButtons[7] = Buttons.B;
+
+            if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.X > xSensitivity)
+                PressedButtons[8] = Buttons.LeftThumbstickRight;
+            if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.X < -xSensitivity)
+                PressedButtons[9] = Buttons.LeftThumbstickLeft;
+            if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y > ySensitivity)
+                PressedButtons[10] = Buttons.LeftThumbstickUp;
+            if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y < -ySensitivity)
+                PressedButtons[11] = Buttons.LeftThumbstickDown;
+
 
 
             return PressedButtons;

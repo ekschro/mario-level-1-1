@@ -25,6 +25,8 @@ namespace Game1
 
         public void Execute()
         {
+            
+
             /*bool hasFireball = false;
             if (player.MarioSprite.isFire())
             {
