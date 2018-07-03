@@ -51,7 +51,6 @@ namespace Game1
             Falling = false;
             Bounce = false;
         }
-                
 
         public void Draw()
         {
