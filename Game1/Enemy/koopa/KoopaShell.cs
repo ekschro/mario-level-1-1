@@ -18,7 +18,7 @@ namespace Game1
         public static IEnemySprite KoopaSprite { get => koopaSprite; set => koopaSprite = value; }
         public bool IsStomped { get; set; }
 
-        public KoopaStateMachine stateMachine;
+        public KoopaSStateMachine stateMachine;
         public IEnemyStateMachine GetStateMachine { get => stateMachine; }
 
         private bool dead;
@@ -36,10 +36,11 @@ namespace Game1
             koopaOriginalLocation = location;
 
             myGame = game;
-            stateMachine = new KoopaStateMachine(koopaSprite);
+            stateMachine = new KoopaSStateMachine(koopaSprite);
 
             physics = new EnemyPhysics(game, this, 1);
             falling = true;
+            dead = false;
         }
 
         public void BeFlipped()
@@ -51,6 +52,7 @@ namespace Game1
         {
             stateMachine.BeStomped();
             IsStomped = true;
+            dead = !dead;
         }
 
         public void ChangeDirection()
@@ -80,8 +82,11 @@ namespace Game1
 
         public void Update()
         {
-            physics.Update();
-            falling = true;
+            if (dead==false)
+            {
+                physics.Update();
+                falling = true;
+            }
         }
         public bool GetDead()
         {

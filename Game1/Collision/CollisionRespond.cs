@@ -139,19 +139,27 @@ namespace Game1
         {
             enemy.BeStomped();
             if (enemy is Goomba)
+            {
                 objectLevel.TemporaryObjects.Add(new FlattenedGoomba(myGame, enemy.GetGameObjectLocation()));
+                objectLevel.EnemyObjects.Remove(enemy);
+            }
             else if (enemy is Koopa)
+            {
+                objectLevel.EnemyObjects.Remove(enemy);
                 objectLevel.EnemyObjects.Add(new KoopaShell(myGame, enemy.GetGameObjectLocation()));
-            else if (enemy is KoopaShell) {
+            }
+            /*
+            else if (enemy is KoopaShell)
+            {
                 if (controllerHandler.MovingRight)
                     objectLevel.EnemyObjects.Add(new KoopaShellMoving(myGame, (KoopaShell)enemy, false));
                 else
                     objectLevel.EnemyObjects.Add(new KoopaShellMoving(myGame, (KoopaShell)enemy, true));
             }
-
+            */
 
             player.Bounce = true;
-            objectLevel.EnemyObjects.Remove(enemy);
+            
         }
 
         public void EnemyCollisionRespondBottom(IEnemy enemy)
@@ -188,7 +196,7 @@ namespace Game1
         {
             if (enemy is KoopaShell)
             {
-                    objectLevel.EnemyObjects.Add(new KoopaShellMoving(myGame, (KoopaShell)enemy, true));
+                    //objectLevel.EnemyObjects.Add(new KoopaShellMoving(myGame, (KoopaShell)enemy, true));
             }
             else if (objectLevel.PlayerObject.IsStar)
             {
@@ -222,7 +230,7 @@ namespace Game1
         {
             if (enemy is KoopaShell)
             {
-                    objectLevel.EnemyObjects.Add(new KoopaShellMoving(myGame, (KoopaShell)enemy, false));
+                    //objectLevel.EnemyObjects.Add(new KoopaShellMoving(myGame, (KoopaShell)enemy, false));
             }
             else if (objectLevel.PlayerObject.IsStar)
             {
@@ -256,13 +264,13 @@ namespace Game1
         public void EnemyCollisionBlockandEnemyRespondLeft(IEnemy enemy, IEnemy otherEnemy, int width)
         {
 
-            if (enemy.GetDead() == false)
+            if (enemy.GetDead() == false || enemy is KoopaShell)
             {
                 var x = enemy.GetGameObjectLocation().X + width;
                 var y = enemy.GetGameObjectLocation().Y;
                 enemy.SetGameObjectLocation(new Vector2(x, y));
             }
-            if (enemy is MarioFireBall || otherEnemy is MarioFireBall)
+            if (enemy is MarioFireBall || otherEnemy is MarioFireBall|| otherEnemy is KoopaShell)
                 objectLevel.EnemyObjects.Remove(enemy);
 
             enemy.ChangeDirection();
@@ -270,13 +278,13 @@ namespace Game1
         public void EnemyCollisionBlockandEnemyRespondRight(IEnemy enemy, IEnemy otherEnemy, int width)
         {
 
-            if (enemy.GetDead() == false)
+            if (enemy.GetDead() == false || enemy is KoopaShell)
             {
                 var x = enemy.GetGameObjectLocation().X - width;
                 var y = enemy.GetGameObjectLocation().Y;
                 enemy.SetGameObjectLocation(new Vector2(x, y));
             }
-            if (enemy is MarioFireBall || otherEnemy is MarioFireBall)
+            if (enemy is MarioFireBall || otherEnemy is MarioFireBall || otherEnemy is KoopaShell)
                 objectLevel.EnemyObjects.Remove(enemy);
 
             enemy.ChangeDirection();
@@ -284,7 +292,7 @@ namespace Game1
 
         public void EnemyCollisionBlockRespondYDirection(IEnemy enemy, int height,bool bottom)
         { 
-            if (!bottom && enemy.GetDead()==false)
+            if (!bottom && enemy.GetDead()==false ||enemy is KoopaShell)
             {
                 var x = enemy.GetGameObjectLocation().X;
                 var y = enemy.GetGameObjectLocation().Y - height;

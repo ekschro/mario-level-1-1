@@ -13,14 +13,21 @@ namespace Game1
         private IEnemy koopaObject;
         private Game1 myGame;
         private int currentFrame;
+        private int startFrame;
+        private int endFrame;
         public KoopaShellSprite(Game1 game, IEnemy koopa)
         {
             koopaObject = koopa;
             myGame = game;
-            currentFrame = 3;
+            startFrame = 4;
+            endFrame = 6;
+            currentFrame = startFrame;
         }
         public void ChangeFrame(int start, int end)
         {
+            startFrame = start;
+            endFrame = end;
+            currentFrame = startFrame;
         }
         public void FlipSprite()
         {
@@ -28,6 +35,9 @@ namespace Game1
 
         public void Update()
         {
+            currentFrame++;
+            if (currentFrame == endFrame)
+                currentFrame = startFrame;
         }
 
         public void Draw()
