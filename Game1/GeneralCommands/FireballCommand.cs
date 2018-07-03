@@ -31,7 +31,7 @@ namespace Game1
                 ((MarioPhysics)physics).RunningCheck();
             }
 
-            /*bool hasFireball = false;
+            bool hasFireball = false;
             if (player.MarioSprite.isFire())
             {
                 foreach (IEnemy obj in myGame.CurrentLevel.EnemyObjects)
@@ -42,7 +42,7 @@ namespace Game1
 
                 if(!hasFireball)
                     myGame.CurrentLevel.EnemyObjects.Add(new MarioFireBall(myGame));
-            }*/
+            }
         }
 
     }

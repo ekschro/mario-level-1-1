@@ -36,11 +36,12 @@ namespace Game1
                 xPos = player.CurrentXPos + 20;
                 yPos = player.CurrentYPos + 16;
             }
+            
             MovingUp = false;
             MovingDown = false;
-            fire = new FireballPhysics(myGame, this, 2);
+           
         }
-        private IPhysics fire;
+       
         private float xPos;
         private float yPos;
         private bool movingRight;
@@ -84,7 +85,20 @@ namespace Game1
             {
                currentFrame = 0;
             }
-            fire.Update();
+            if (movingUp)
+            {
+                yPos = yPos - 1;
+            } else
+            {
+                yPos = yPos + 1;
+            }
+            if (movingRight)
+            {
+                xPos = xPos + 1;
+            } else
+            {
+                xPos = xPos - 1;
+            }
         }
         
 
