@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Game1
 {
-    class MarioPhysics : IPhysics
+    public class MarioPhysics : IPhysics
     {
 
         private Game1 game;
@@ -17,6 +17,10 @@ namespace Game1
         private IPlayer player;
         private float xVelocity;
         private float yVelocity;
+
+        private int runVelCap;
+        private int walkVelCap;
+        private bool isRunning;
 
         public float XVelocity { get => xVelocity; }
 
@@ -28,6 +32,9 @@ namespace Game1
             this.player = player;
             xVelocity = 0;
             yVelocity = 0;
+
+            walkVelCap = velCap;
+            runVelCap = velCap * 2;
         }
 
         public void Update()
@@ -113,6 +120,16 @@ namespace Game1
 
             yVelocity += (float)(0.5 * 0.002 * Math.Pow(delta, 2));
             player.CurrentYPos += yVelocity;
+        }
+
+        public void RunningHandler()
+        {
+
+        }
+
+        public void RunningCheck()
+        {
+
         }
     }
 }
