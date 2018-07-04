@@ -30,7 +30,7 @@ namespace Game1
                 ((MarioPhysics)(Mario.physics)).RunningCheck();
             }
 
-            /*
+            
             bool hasFireball = false;
             if (player.MarioSprite.isFire())
             {
