@@ -15,22 +15,18 @@ namespace Game1
     {
         //private int timer;
         private Game1 myGame;
-        //private IPlayer player;
+        private IPlayer player;
 
         public FireballCommand(Game1 game)
         {
             myGame = game;
-            //player = game.CurrentLevel.PlayerObject;
+            player = game.CurrentLevel.PlayerObject;
         }
 
         public void Execute()
         {
-            /*if(myGame.CurrentLevel.PlayerObject is Mario)
-            {
-                IPhysics physics = Mario.physics;
-                ((MarioPhysics)physics).RunningCheck();
-            }
 
+            
             bool hasFireball = false;
             if (player.MarioSprite.isFire())
             {
@@ -42,8 +38,14 @@ namespace Game1
 
                 if(!hasFireball)
                     myGame.CurrentLevel.EnemyObjects.Add(new MarioFireBall(myGame));
-            }*/
+                    
+            }else if(myGame.CurrentLevel.PlayerObject is Mario)
+            {
+                IPhysics physics = Mario.physics;
+                ((MarioPhysics)physics).RunningCheck();
+            }
         }
 
     }
 }
+ 
