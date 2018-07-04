@@ -1,0 +1,7 @@
+William Freeman (.694)
+7/03/18
+Sprint 4
+EnemyPhysics.cs
+Ericsson Schroeter
+
+The EnemyPhysics class does exactly what its name suggests: provide a general-use physics engine for most enemies. The class has six fields, which is sizeable for a class this small, but are all private, so external coupling for this class is reduced. It does, however, have an xVelocity public property, which does not make much sense, as the class is not public. Additionally, the two methods other than Update, NewPosX() and NewPosY() are both also public functions, despite their usage being exclusively for the Update method (which is clear, since the functions don't pass or change a given value, just incrementing the object's location by its speed). These should be private helper methods instead. Beyond that, the constructor and Update function are both fairly concise, with the construcor simply setting up the aforementioned fields and the Update function simply calling thr two helper functions. The coupling in this class is also low, relying soley upon the Game1 class (which is to be expected in order to obtain GameTime information) and the IEnemy interface (since it needs to know what object it is acting upon). Overall, this class has some minor accessability issuses, but otherwise has fairly high cohesion and low coupling.
