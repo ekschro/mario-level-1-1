@@ -114,7 +114,7 @@ namespace Game1
 
         private void GetPlayerObject()
         {
-            IPlayer playerObject = null;
+            playerObject = null;
             foreach(IGameObject player in levelObjects)
             {
                 if (player is IPlayer)
