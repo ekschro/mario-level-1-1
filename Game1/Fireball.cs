@@ -12,7 +12,6 @@ namespace Game1
 
         public bool IsFalling { get => falling; set => falling = value; }
         private int currentFrame;
-        private bool falling;
         public MarioFireBall(Game1 game)
         {
             myGame = game;

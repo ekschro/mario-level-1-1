@@ -20,12 +20,12 @@ namespace Game1
         public FireballCommand(Game1 game)
         {
             myGame = game;
-            player = myGame.CurrentLevel.PlayerObject;
         }
 
         public void Execute()
         {
-            if(myGame.CurrentLevel.PlayerObject is Mario)
+            player = myGame.CurrentLevel.PlayerObject;
+            if (myGame.CurrentLevel.PlayerObject is Mario)
             {
                 ((MarioPhysics)(Mario.physics)).RunningCheck();
             }
