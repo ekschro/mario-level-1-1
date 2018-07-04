@@ -3,16 +3,13 @@ using Microsoft.Xna.Framework;
 
 namespace Game1
 {
-    public class MarioFireBall : IEnemy
+    public class MarioFireBall : IProjectile
     {
         private Game1 myGame;
         private IControllerHandler controllerHandler;
         private IPlayer player;
-        private bool falling;
         public bool IsFalling { get => falling; set => falling = value; }
-        public IEnemyStateMachine GetStateMachine { get; }
         private int currentFrame;
-        public bool IsStomped { get; set; }
 
         public MarioFireBall(Game1 game)
         {
@@ -27,14 +24,14 @@ namespace Game1
                 MovingRight = true;
                 MovingLeft = false;
                 xPos = player.CurrentXPos + 20;
-                yPos = player.CurrentYPos + 16;
+                yPos = player.CurrentYPos + 8;
             } else
             {
                 currentFrame = 3;
                 MovingLeft = true;
                 MovingRight = false;
-                xPos = player.CurrentXPos + 20;
-                yPos = player.CurrentYPos + 16;
+                xPos = player.CurrentXPos - 4;
+                yPos = player.CurrentYPos + 8;
             }
             
             MovingUp = true;

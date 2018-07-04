@@ -77,6 +77,7 @@
     <Compile Include="IBackground.cs" />
     <Compile Include="IControllerHandler.cs" />
     <Compile Include="IPhysics.cs" />
+    <Compile Include="IProjectile.cs" />
     <Compile Include="Level1Background.cs" />
     <Compile Include="Blocks\Sprites\QuestionCoinBlockSprite.cs" />
     <Compile Include="Blocks\Sprites\QuestionPowerUpBlockSprite.cs" />
