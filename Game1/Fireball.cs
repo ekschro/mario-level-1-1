@@ -3,14 +3,14 @@ using Microsoft.Xna.Framework;
 
 namespace Game1
 {
-    public class MarioFireBall : IProjectile
+    public class MarioFireBall : IEnemy
     {
         private Game1 myGame;
         private IControllerHandler controllerHandler;
         private IPlayer player;
         public bool IsFalling { get => falling; set => falling = value; }
         private int currentFrame;
-
+        private bool falling;
         public MarioFireBall(Game1 game)
         {
             myGame = game;
@@ -45,8 +45,8 @@ namespace Game1
         private bool movingLeft;
         private bool movingUp;
         private bool movingDown;
-        private int xVelocity;
-        private int velCap;
+        //private int xVelocity;
+        //private int velCap;
         private float yPosMax;
 
         public float CurrentXPos { get => xPos; set => xPos = value; }
@@ -56,6 +56,10 @@ namespace Game1
         public bool MovingUp { get => movingUp; set => movingUp = value; }
         public bool MovingDown { get => movingDown; set => movingDown = value; }
 
+        public IEnemyStateMachine GetStateMachine => throw new NotImplementedException();
+
+        public bool IsStomped { get => true; set => stomped = value; }
+        private bool stomped;
         public void Draw()
         {
             int width = TextureWareHouse.fireballs.Width / 4;

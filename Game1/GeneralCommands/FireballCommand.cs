@@ -20,7 +20,7 @@ namespace Game1
         public FireballCommand(Game1 game)
         {
             myGame = game;
-            player = game.CurrentLevel.PlayerObject;
+            player = myGame.CurrentLevel.PlayerObject;
         }
 
         public void Execute()
@@ -36,7 +36,7 @@ namespace Game1
                         hasFireball = true;
                 }
 
-                if(!hasFireball)
+                if (!hasFireball)
                     myGame.CurrentLevel.EnemyObjects.Add(new MarioFireBall(myGame));
                     
             }else if(myGame.CurrentLevel.PlayerObject is Mario)

@@ -20,7 +20,7 @@ namespace Game1
 
         private int runVelCap;
         private int walkVelCap;
-        private bool isRunning;
+        //private bool isRunning;
 
         public float XVelocity { get => xVelocity; }
 
