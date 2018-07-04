@@ -149,9 +149,14 @@ namespace Game1
             {
                 objectLevel.EnemyObjects.Remove(enemy);
                 objectLevel.EnemyObjects.Add(new KoopaShell(myGame, enemy.GetGameObjectLocation()));
-            } 
-
-            player.Bounce = true;
+            }
+            if (enemy is MarioFireBall)
+            {
+                
+            } else
+            {
+                player.Bounce = true;
+            }
             
         }
 
@@ -193,6 +198,9 @@ namespace Game1
                     objectLevel.TemporaryObjects.Add(new FlippedGoomba(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
                 else if (enemy is Koopa)
                     objectLevel.TemporaryObjects.Add(new FlippedKoopa(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
+            } else if (enemy is MarioFireBall)
+            {
+
             }
             else
                 MarioHit();
@@ -223,6 +231,10 @@ namespace Game1
                     objectLevel.TemporaryObjects.Add(new FlippedGoomba(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
                 else if (enemy is Koopa)
                     objectLevel.TemporaryObjects.Add(new FlippedKoopa(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
+            }
+            else if (enemy is MarioFireBall)
+            {
+
             }
             else
                 MarioHit();
@@ -268,9 +280,19 @@ namespace Game1
             }
             enemy.IsFalling = false;
 
-            
+
             if (enemy is MarioFireBall)
+            {
                 enemy.IsFalling = false;
+                MarioFireBall temp = (MarioFireBall)enemy;
+                if (temp.MovingUp)
+                {
+                    temp.MovingUp = false;
+                } else
+                {
+                    temp.MovingUp = true;
+                }
+            }
         }
 
         public void PickupCollisionRespondTop(IPickup pickup)

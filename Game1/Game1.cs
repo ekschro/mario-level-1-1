@@ -45,9 +45,8 @@ namespace Game1
         protected override void Initialize()
         {
             controllerList = new List<IController>();
-
+            
             controllerHandler = new ControllerHandler();
-
             controllerList.Add(new KeyboardController(this));
             controllerList.Add(new GamePadController(this));
             //mouseController = new MouseController(this);
@@ -59,8 +58,10 @@ namespace Game1
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            warehouse = new TextureWareHouse(this);
             CurrentLevel = new Level1("../../../../Content/LevelInfo.csv", this);
+
+            warehouse = new TextureWareHouse(this);
+
         }
 
         public void Reset()
