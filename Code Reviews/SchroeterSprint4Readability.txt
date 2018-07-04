@@ -1,0 +1,11 @@
+Ericsson Schroeter (.12)
+6/29/18
+Sprint 4
+EmptyEnemy.cs
+Dorothy Chow
+10
+
+All methods are very simple and concise.  Very few of them even exceed 1 line.  Understanding their
+purpose is not hard but there functionality is masked by the nest method that is called with in
+most of the methods.  Other than that a little tidying up and refactoring could clean up the class 
+to remove unused code that distracts the reader.

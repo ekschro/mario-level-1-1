@@ -1,0 +1,11 @@
+Ericsson Schroeter (.12)
+7/3/18
+Sprint 4
+Mario.cs
+Tim Regrut
+10
+
+The cycilic complexity in this file is not bad, it never exceeds a degree of 2.  All methods seem to 
+be only related to the Mario object and the all seem to have high cohesion. The Sprite Animation methods 
+seem like they could have a better location elsewhere. The static fields have been eliminated since 
+previous sprints which has lowered coupling for thei class greatly.

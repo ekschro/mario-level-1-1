@@ -1,0 +1,11 @@
+Dorothy Chow 
+7/3/2018
+Sprint 4
+EnemyPhysics.cs
+Ericsson Schroeter
+10
+
+This class was was under the interface of Iphysics which is a good idea of classifying different physics for enemy, mario, etc. In term of number of line in the whole class and each methods, it is pretty good, not too long. 
+Also each if statement the complexity is not hight. 
+
+Anything it can be change is can combine the xVelociy and yVelocity. Although currently separating two would still be fine.
