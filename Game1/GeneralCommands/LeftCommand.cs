@@ -26,6 +26,7 @@ namespace Game1
         public void Execute()
         {
             controllerHandler.MovingLeft = true;
+            controllerHandler.MovingRight = false;
         }
     }
 }

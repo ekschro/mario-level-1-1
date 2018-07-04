@@ -34,7 +34,7 @@ namespace Game1
                 xPos = player.CurrentXPos - 4;
                 yPos = player.CurrentYPos + 8;
             }
-            
+            yPosMax = yPos;
             MovingUp = true;
             MovingDown = false;
            
@@ -83,25 +83,26 @@ namespace Game1
 
         public void Update()
         {
+            
             currentFrame++;
             if (currentFrame == 3)
             {
                currentFrame = 0;
             }
-            if (movingUp && yPosMax - yPos < 3)
+            if (movingUp && yPosMax - yPos > 3)
             {
                 yPos = yPos - 1;
             } else
             {
                 yPos = yPos + 1;
             }
-            if (movingRight)
+            /*if (movingRight)
             {
                 xPos = xPos + 1;
             } else
             {
                 xPos = xPos - 1;
-            }
+            }*/
         }
         
 
