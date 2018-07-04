@@ -25,12 +25,12 @@ namespace Game1
 
         public void Execute()
         {
-            /*if(myGame.CurrentLevel.PlayerObject is Mario)
+            if(myGame.CurrentLevel.PlayerObject is Mario)
             {
-                IPhysics physics = Mario.physics;
-                ((MarioPhysics)physics).RunningCheck();
+                ((MarioPhysics)(Mario.physics)).RunningCheck();
             }
 
+            /*
             bool hasFireball = false;
             if (player.MarioSprite.isFire())
             {

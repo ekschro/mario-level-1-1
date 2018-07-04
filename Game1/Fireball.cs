@@ -8,6 +8,8 @@ namespace Game1
         private Game1 myGame;
         private IControllerHandler controllerHandler;
         private IPlayer player;
+        private bool falling;
+
         public bool IsFalling { get => falling; set => falling = value; }
         private int currentFrame;
 
@@ -16,7 +18,7 @@ namespace Game1
             myGame = game;
             controllerHandler = game.controllerHandler;
             player = game.CurrentLevel.PlayerObject;
-            
+            falling = true;
             
             if (controllerHandler.MovingRight)
             {

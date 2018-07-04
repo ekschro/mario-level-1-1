@@ -9,7 +9,7 @@ namespace Game1
     public class KoopaSStateMachine : IEnemyStateMachine
     {
         private IEnemySprite koopaSprite;
-        private bool facingLeft = false;
+        private bool facingLeft = true;
         private enum KoopaHealth { Normal, Stomped };
         private KoopaHealth health = KoopaHealth.Normal;
         public KoopaSStateMachine(IEnemySprite sprite)

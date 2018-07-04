@@ -28,8 +28,9 @@ namespace Game1
                     koopaSprite.ChangeFrame(2, 4);
                 health = KoopaHealth.Normal;
             }
-            else
-            { facingLeft = !facingLeft; }
+
+
+            facingLeft = !facingLeft; 
             
         }
 

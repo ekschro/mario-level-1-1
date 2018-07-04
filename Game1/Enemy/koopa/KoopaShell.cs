@@ -20,6 +20,7 @@ namespace Game1
 
         public KoopaSStateMachine stateMachine;
         public IEnemyStateMachine GetStateMachine { get => stateMachine; }
+        public bool isMoving { get => !dead; }
 
         private bool dead;
         
@@ -38,7 +39,7 @@ namespace Game1
             myGame = game;
             stateMachine = new KoopaSStateMachine(koopaSprite);
 
-            physics = new EnemyPhysics(game, this, 1);
+            physics = new EnemyPhysics(game, this, 4);
             falling = true;
             dead = false;
         }

@@ -24,8 +24,8 @@ namespace Game1
             this.obj = obj;
 
             this.velCap = velCap;
-            xVelocity = (float)0.5;
-            yVelocity = (float)0.5;
+            xVelocity = (float)0.5 * velCap;
+            yVelocity = (float)0.5 * velCap;
         }
 
         public void Update()

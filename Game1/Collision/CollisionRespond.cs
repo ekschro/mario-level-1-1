@@ -12,7 +12,7 @@ namespace Game1
         private Game1 myGame;
 
         private int invulnerabilityFrames = 100;
-        private int invulnerabilityTimer = 100;
+        private int invulnerabilityTimer;
 
         private ILevel objectLevel;
         private IPlayer player;
@@ -24,6 +24,8 @@ namespace Game1
             controllerHandler = game.controllerHandler;
             objectLevel = level;
             this.player = level.PlayerObject;
+
+            invulnerabilityTimer = 100;
         }
 
         public void BlockCollisionRespondTop(IBlock block,int height,bool standing)
@@ -147,16 +149,7 @@ namespace Game1
             {
                 objectLevel.EnemyObjects.Remove(enemy);
                 objectLevel.EnemyObjects.Add(new KoopaShell(myGame, enemy.GetGameObjectLocation()));
-            }
-            /*
-            else if (enemy is KoopaShell)
-            {
-                if (controllerHandler.MovingRight)
-                    objectLevel.EnemyObjects.Add(new KoopaShellMoving(myGame, (KoopaShell)enemy, false));
-                else
-                    objectLevel.EnemyObjects.Add(new KoopaShellMoving(myGame, (KoopaShell)enemy, true));
-            }
-            */
+            } 
 
             player.Bounce = true;
             
@@ -170,25 +163,8 @@ namespace Game1
                     objectLevel.TemporaryObjects.Add(new FlippedGoomba(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
                 else if (enemy is Koopa)
                     objectLevel.TemporaryObjects.Add(new FlippedKoopa(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
-
-            } else if (player.Invulnerability)
-            {
-
             }
-            else if (player.MarioSprite.isFire())
-            {
-                player.MarioSprite.BigMarioCommandCalled();
-                player.Invulnerability = true;
-            }
-            else if (!player.MarioSprite.isSmall())
-            {
-                player.MarioSprite.SmallMarioCommandCalled();
-                player.Invulnerability = true;
-            }
-            else
-            {
-                player.MarioSprite.DeadMarioCommandCalled();
-            }
+                MarioHit();
             
         }
 
@@ -196,7 +172,19 @@ namespace Game1
         {
             if (enemy is KoopaShell)
             {
-                    //objectLevel.EnemyObjects.Add(new KoopaShellMoving(myGame, (KoopaShell)enemy, true));
+                if (!((KoopaShell)enemy).isMoving)
+                {
+                    if (!enemy.GetStateMachine.GetDirection())
+                    {
+                        enemy.ChangeDirection();
+                    }
+                    enemy.BeStomped();
+                    enemy.CurrentXPos = enemy.CurrentXPos + 5;
+                }
+                else
+                {
+                    MarioHit();
+                }
             }
             else if (objectLevel.PlayerObject.IsStar)
             {
@@ -206,58 +194,38 @@ namespace Game1
                 else if (enemy is Koopa)
                     objectLevel.TemporaryObjects.Add(new FlippedKoopa(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
             }
-            else if (player.Invulnerability)
-            {
-
-            }
-            else if (player.MarioSprite.isFire())
-            {
-                player.MarioSprite.BigMarioCommandCalled();
-                player.Invulnerability = true;
-            }
-            else if (!player.MarioSprite.isSmall())
-            {
-                player.MarioSprite.SmallMarioCommandCalled();
-                player.Invulnerability = true;
-            }
             else
-            {
-                player.MarioSprite.DeadMarioCommandCalled();
-            }
+                MarioHit();
         }
 
         public void EnemyCollisionRespondRight(IEnemy enemy)
         {
             if (enemy is KoopaShell)
             {
-                    //objectLevel.EnemyObjects.Add(new KoopaShellMoving(myGame, (KoopaShell)enemy, false));
+                if (!((KoopaShell)enemy).isMoving)
+                {
+                    if (enemy.GetStateMachine.GetDirection())
+                    {
+                        enemy.ChangeDirection();
+                    }
+                    enemy.BeStomped();
+                    enemy.CurrentXPos = enemy.CurrentXPos - 5;
+                }
+                else
+                {
+                    MarioHit();
+                }
             }
             else if (objectLevel.PlayerObject.IsStar)
             {
                 objectLevel.EnemyObjects.Remove(enemy);
-                if(enemy is Goomba)
+                if (enemy is Goomba)
                     objectLevel.TemporaryObjects.Add(new FlippedGoomba(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
-                else if(enemy is Koopa)
+                else if (enemy is Koopa)
                     objectLevel.TemporaryObjects.Add(new FlippedKoopa(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
             }
-            else if (player.Invulnerability)
-            {
-
-            }
-            else if (player.MarioSprite.isFire())
-            {
-                player.MarioSprite.BigMarioCommandCalled();
-                player.Invulnerability = true;
-            }
-            else if (!player.MarioSprite.isSmall())
-            {
-                player.MarioSprite.SmallMarioCommandCalled();
-                player.Invulnerability = true;
-            }
             else
-            {
-                player.MarioSprite.DeadMarioCommandCalled();
-            }
+                MarioHit();
         }
 
 
@@ -467,6 +435,28 @@ namespace Game1
             }
 
             objectLevel.PickupObjects.Remove(pickup);
+        }
+
+        private void MarioHit()
+        {
+            if (player.Invulnerability)
+            {
+
+            }
+            else if (player.MarioSprite.isFire())
+            {
+                player.MarioSprite.BigMarioCommandCalled();
+                player.Invulnerability = true;
+            }
+            else if (!player.MarioSprite.isSmall())
+            {
+                player.MarioSprite.SmallMarioCommandCalled();
+                player.Invulnerability = true;
+            }
+            else
+            {
+                player.MarioSprite.DeadMarioCommandCalled();
+            }
         }
 
         public void Update()
