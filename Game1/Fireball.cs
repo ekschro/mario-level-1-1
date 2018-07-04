@@ -89,7 +89,11 @@ namespace Game1
             {
                currentFrame = 0;
             }
-            if (movingUp && yPosMax - yPos > 3)
+            if (yPos - yPosMax == -3)
+                MovingUp = false;
+            else
+                MovingUp = true;
+            if (MovingUp)
             {
                 yPos = yPos - 1;
             } else
