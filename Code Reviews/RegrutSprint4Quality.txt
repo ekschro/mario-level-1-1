@@ -1,0 +1,7 @@
+Author: Tim Regrut
+6/19/2018
+Sprint 3
+StarPhysics.cs
+Will Freeman and Ericsson
+
+Star Physics implements the physics of the star. Everything in the class is readable in terms of camel case and pascal case. Location could be shortened to Loc or something like that. The change could easily occur in the given implementation.
