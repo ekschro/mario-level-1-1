@@ -17,6 +17,8 @@ namespace Game1
         private static int totalMarioRows = 3;
         private static int colorStartingTime;
         private static int colorTimer;
+        private static int fireballTimer;
+
         private static bool isStar = false;
         private static bool invulnerability = false;
 
@@ -33,6 +35,7 @@ namespace Game1
         public bool Invulnerability { get => invulnerability; set => invulnerability = value; }
         public int TotalMarioRows { get => totalMarioRows; set => totalMarioRows = value; }
         public int TotalMarioColumns { get => totalMarioColumns; set => totalMarioColumns = value; }
+        public int FireBallTimer { get => fireballTimer; set => fireballTimer = value; }
 
         public Mario(Game1 game, Vector2 vector)
         {
@@ -46,6 +49,7 @@ namespace Game1
             colorStartingTime = 5;
             colorTimer = 0;
             animationTimer = 0;
+            fireballTimer = 0;
 
             CanJump = true;
             Falling = false;
@@ -104,6 +108,9 @@ namespace Game1
             {
                 UpAnimation();
             }
+
+            if (fireballTimer > 0)
+                fireballTimer--;
         }
 
         private void RightAnimation()

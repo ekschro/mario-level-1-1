@@ -29,24 +29,13 @@ namespace Game1
             {
                 ((MarioPhysics)(Mario.physics)).RunningCheck();
             }
-
             
-            bool hasFireball = false;
             if (player.MarioSprite.isFire())
             {
-                foreach (IEnemy obj in myGame.CurrentLevel.EnemyObjects)
-                {
-                    if (obj is MarioFireBall)
-                        hasFireball = true;
-                }
-
-                if (!hasFireball)
+                if (((Mario)player).FireBallTimer == 0) {
                     myGame.CurrentLevel.EnemyObjects.Add(new MarioFireBall(myGame));
-                    
-            }else if(myGame.CurrentLevel.PlayerObject is Mario)
-            {
-                IPhysics physics = Mario.physics;
-                ((MarioPhysics)physics).RunningCheck();
+                    ((Mario)player).FireBallTimer = 30;
+                }
             }
         }
 

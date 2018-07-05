@@ -18,8 +18,8 @@ namespace Game1
             controllerHandler = game.controllerHandler;
             player = game.CurrentLevel.PlayerObject;
             falling = true;
-            
-            if (controllerHandler.MovingRight)
+
+            if (controllerHandler.MovingRight || ((Mario)player).MarioSprite is MarioFireIdleRight)
             {
                 currentFrame = 2;
                 MovingRight = true;
@@ -93,6 +93,7 @@ namespace Game1
                 MovingUp = false;
             else
                 MovingUp = true;
+            
             if (MovingUp)
             {
                 yPos = yPos - 1;
@@ -100,13 +101,14 @@ namespace Game1
             {
                 yPos = yPos + 1;
             }
-            /*if (movingRight)
+
+            if (movingRight)
             {
-                xPos = xPos + 1;
+                xPos = xPos + 5;
             } else
             {
-                xPos = xPos - 1;
-            }*/
+                xPos = xPos - 5;
+            }
         }
         
 
