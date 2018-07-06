@@ -20,7 +20,7 @@ namespace Game1
         {
             marioObject = Mario;
             myGame = game;
-            startFrame = 14 + 28; //MarioSmllIdleRight
+            startFrame = 42 - 28; //MarioBigIdleRight
             endFrame = 2;
             currentFrame = startFrame;
         }
@@ -51,10 +51,7 @@ namespace Game1
             myGame.SpriteBatch.End();
         }
 
-        public void ChangeFrame()
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public Vector2 GetGameObjectLocation()
         {

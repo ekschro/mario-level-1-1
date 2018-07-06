@@ -51,11 +51,7 @@ namespace Game1
             myGame.SpriteBatch.End();
         }
 
-        public void ChangeFrame()
-        {
-            throw new NotImplementedException();
-        }
-
+        
         public Vector2 GetGameObjectLocation()
         {
             throw new NotImplementedException();

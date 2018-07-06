@@ -2,7 +2,7 @@
 namespace Game1 {
     public interface ITestMarioSprite //: IGameObject
     {
-        void ChangeFrame();
+        void ChangeFrame(int start, int end);
         void Update();
         void Draw();
     }

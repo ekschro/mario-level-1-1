@@ -107,13 +107,14 @@
     <Compile Include="Fireball.cs" />
     <Compile Include="GeneralCommands\FireballCommand.cs" />
     <Compile Include="GeneralCommands\NoCommand.cs" />
-    <Compile Include="TestMario\Interface\ISpriteTest.cs" />
+    <Compile Include="TestMario\Interface\ITestMarioSprite.cs" />
     <Compile Include="TestMario\Interface\ITestMario.cs" />
     <Compile Include="TestMario\Interface\ITestMarioStateMachine.cs" />
     <Compile Include="TestMario\Object\TestMario.cs" />
     <Compile Include="TestMario\Sprite\TestBigMarioSprite.cs" />
     <Compile Include="TestMario\Sprite\TestDeadMarioSprite.cs" />
     <Compile Include="TestMario\Sprite\TestFireMarioSprite.cs" />
+    <Compile Include="TestMario\Sprite\TestMarioSprite.cs" />
     <Compile Include="TestMario\Sprite\TestSmallMarioSprite.cs" />
     <Compile Include="TestMario\StateMachine\TestMarioStateMachine.cs" />
     <Compile Include="Physics\EnemyPhysics.cs" />

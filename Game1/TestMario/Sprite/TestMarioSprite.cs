@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Game1
 {
-    public class TestSmallMarioSprite :ITestMarioSprite
+    public class TestMarioSprite : ITestMarioSprite
     {
         private TestMario marioObject;
         private Game1 myGame;
@@ -16,11 +16,11 @@ namespace Game1
         private int startFrame;
         private int endFrame;
 
-        public TestSmallMarioSprite(Game1 game, TestMario Mario)
+        public TestMarioSprite(Game1 game, TestMario Mario)
         {
             marioObject = Mario;
             myGame = game;
-            startFrame = 14+28; //MarioSmllIdleRight
+            startFrame = 14 + 28; //MarioSmllIdleRight
             endFrame = 2;
             currentFrame = startFrame;
         }
@@ -29,7 +29,7 @@ namespace Game1
             startFrame = start;
             endFrame = end;
         }
-       
+
         public void Update()
         {
             currentFrame++;
@@ -51,7 +51,7 @@ namespace Game1
             myGame.SpriteBatch.End();
         }
 
-        
+
 
         public Vector2 GetGameObjectLocation()
         {
