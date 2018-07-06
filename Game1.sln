@@ -9,6 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		Class1.cs = Class1.cs
 		Class2.cs = Class2.cs
+		Cursor1.cur = Cursor1.cur
 	EndProjectSection
 EndProject
 Global
