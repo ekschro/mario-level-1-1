@@ -97,8 +97,6 @@ public class MarioDead : ISprite
         {
             return true;
         }
-
-
         public Vector2 GetGameObjectLocation()
         {
             return new Vector2(player.CurrentXPos, player.CurrentYPos);

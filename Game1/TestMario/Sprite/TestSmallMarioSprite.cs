@@ -8,19 +8,19 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Game1
 {
-    public class TestSmallMarioSprite
+    public class TestSmallMarioSprite :ITestMarioSprite
     {
-        private TestSmallMario marioObject;
+        private TestMario marioObject;
         private Game1 myGame;
         private int currentFrame;
         private int startFrame;
         private int endFrame;
 
-        public TestSmallMarioSprite(Game1 game, TestSmallMario SmallMario)
+        public TestSmallMarioSprite(Game1 game, TestMario Mario)
         {
-            marioObject = SmallMario;
+            marioObject = Mario;
             myGame = game;
-            startFrame = 0;
+            startFrame = 14+28; //MarioSmllIdleRight
             endFrame = 2;
             currentFrame = startFrame;
         }
@@ -47,8 +47,18 @@ namespace Game1
             Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)marioObject.GetGameObjectLocation().Y, width, TextureWareHouse.goombaTexture.Height);
 
             myGame.SpriteBatch.Begin();
-            myGame.SpriteBatch.Draw(TextureWareHouse.goombaTexture, destinationRectangle, sourceRectangle, Color.White);
+            myGame.SpriteBatch.Draw(TextureWareHouse.goombaTexture, destinationRectangle, sourceRectangle, Color.Yellow);
             myGame.SpriteBatch.End();
+        }
+
+        public void ChangeFrame()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Vector2 GetGameObjectLocation()
+        {
+            throw new NotImplementedException();
         }
     }
 }

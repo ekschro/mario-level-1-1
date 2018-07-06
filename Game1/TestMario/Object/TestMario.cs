@@ -7,38 +7,37 @@ using Microsoft.Xna.Framework;
 
 namespace Game1
 {
-    public class TestSmallMario
+    public class TestMario : ITestMario
     {
         public float CurrentXPos { get => testMarioLocation.X; set => testMarioLocation.X = value; }
         public float CurrentYPos { get => testMarioLocation.Y; set => testMarioLocation.Y = value; }
         private ITestMarioSprite marioSprite;
-        //private IEnemySprite goombaSprite;
-        public ItestMarioSprite MarioSprite { get => marioSprite; set => MarioSprite = value; }
-        //public IEnemySprite GoombaSprite { get => goombaSprite; set => goombaSprite = value; }
-        public TestSmallMarioStateMachine stateMachine;
-        //public GoombaStateMachine stateMachine;
+        public ITestMarioSprite MarioSprite { get => marioSprite; set => MarioSprite = value; }
+        public TestMarioStateMachine stateMachine;
         public ITestMarioStateMachine GetStateMachine { get => stateMachine; }
-        //public IEnemyStateMachine GetStateMachine { get => stateMachine; }
         private int cyclePosition = 0;
         private int cycleLength = 8;
         private Vector2 testMarioLocation;
-        //private Vector2 goombaLocation;
-        //private Vector2 goombaOriginalLocation;
+
         
         private bool dead = false;
         private IPhysics physics;
 
-        public TestSmallMario(Game1 game, Vector2 location)
+        public TestMario(Game1 game, Vector2 location)
         {
             testMarioLocation = location;
-            //goombaOriginalLocation = location;
             marioSprite = new TestSmallMarioSprite(game, this);
-            stateMachine = new TestSmallMarioStateMachine(TestSmallMarioSprite);
-            physics = new MarioPhysics(game, this, 1);
-            
+            stateMachine = new TestMarioStateMachine(marioSprite);
         }
 
-        
+        public void Upgrade()
+        {
+            stateMachine.Upgrade();
+        }
+        public void DownGrade()
+        {
+            stateMachine.Downgrade();
+        }
         public void ChangeDirection()
         {
             stateMachine.ChangeDirection();
@@ -69,7 +68,6 @@ namespace Game1
                 MarioSprite.Update();
                 if (dead)
                 {
-                    //goombaLocation.Y += 1;
                 }
             }
         }

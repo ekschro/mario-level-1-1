@@ -66,7 +66,6 @@
     <Compile Include="Blocks\FlagpoleBlock.cs" />
     <Compile Include="Blocks\FlagBlock.cs" />
     <Compile Include="Blocks\CastleBlock.cs" />
-    <Compile Include="ISpriteTest.cs" />
     <Compile Include="Collision\CollisionDetectionLogic.cs" />
     <Compile Include="ControllerHandler.cs" />
     <Compile Include="Enemy\koopa\KoopaShell.cs" />
@@ -108,9 +107,15 @@
     <Compile Include="Fireball.cs" />
     <Compile Include="GeneralCommands\FireballCommand.cs" />
     <Compile Include="GeneralCommands\NoCommand.cs" />
-    <Compile Include="TestSmallMario.cs" />
-    <Compile Include="TestSmallMarioSprite.cs" />
-    <Compile Include="TestSmallMarioStateMachine.cs" />
+    <Compile Include="TestMario\Interface\ISpriteTest.cs" />
+    <Compile Include="TestMario\Interface\ITestMario.cs" />
+    <Compile Include="TestMario\Interface\ITestMarioStateMachine.cs" />
+    <Compile Include="TestMario\Object\TestMario.cs" />
+    <Compile Include="TestMario\Sprite\TestBigMarioSprite.cs" />
+    <Compile Include="TestMario\Sprite\TestDeadMarioSprite.cs" />
+    <Compile Include="TestMario\Sprite\TestFireMarioSprite.cs" />
+    <Compile Include="TestMario\Sprite\TestSmallMarioSprite.cs" />
+    <Compile Include="TestMario\StateMachine\TestMarioStateMachine.cs" />
     <Compile Include="Physics\EnemyPhysics.cs" />
     <Compile Include="ICamera.cs" />
     <Compile Include="Physics\FireballPhysics.cs" />
