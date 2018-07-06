@@ -107,6 +107,9 @@
     <Compile Include="Fireball.cs" />
     <Compile Include="GeneralCommands\FireballCommand.cs" />
     <Compile Include="GeneralCommands\NoCommand.cs" />
+    <Compile Include="TestSmallMario.cs" />
+    <Compile Include="TestSmallMarioSprite.cs" />
+    <Compile Include="TestSmallMarioStateMachine.cs" />
     <Compile Include="Physics\EnemyPhysics.cs" />
     <Compile Include="ICamera.cs" />
     <Compile Include="Physics\FireballPhysics.cs" />
