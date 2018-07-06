@@ -45,12 +45,6 @@ namespace Game1
             brickBlockSprite.Update();
             
         }
-        public void TopCollision() { }
-        public void BottomCollision()
-        {
-            
-        }
-        public void LeftCollision() { }
-        public void RightCollision() { }
+       
     }
 }
