@@ -24,10 +24,10 @@ namespace Game1
                 return new Rectangle(playerX, playerY, 16, 32);
         }
 
-        public MarioCollisionDetectionLogic(Game1 game,ILevel level)
+        public MarioCollisionDetectionLogic(Game1 game,ILevel level,CollisionRespond res)
         {
             player = level.PlayerObject;
-            collisionRes = new CollisionRespond(game,level);
+            collisionRes = res;
             controllerHandler = new ControllerHandler();
         }
 
