@@ -30,7 +30,7 @@ namespace Game1
             player = Level1.PlayerObject;
 
             collision = new CollisionRespond(mygame, level1);
-            marioLogic = new MarioCollisionDetectionLogic(game,Level1);
+            marioLogic = new MarioCollisionDetectionLogic(game,Level1,collision);
         }
 
         public void MarioBlockCollisionDetect()

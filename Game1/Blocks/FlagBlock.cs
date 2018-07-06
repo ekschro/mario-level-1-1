@@ -43,9 +43,6 @@ namespace Game1
 
         }
 
-        public void TopCollision() { }
-        public void BottomCollision() { }
-        public void LeftCollision() { }
-        public void RightCollision() { }
+
     }
 }

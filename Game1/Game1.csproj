@@ -68,7 +68,6 @@
     <Compile Include="Blocks\CastleBlock.cs" />
     <Compile Include="Collision\CollisionDetectionLogic.cs" />
     <Compile Include="ControllerHandler.cs" />
-    <Compile Include="Enemy\koopa\KoopaShellMoving.cs" />
     <Compile Include="Enemy\koopa\KoopaShell.cs" />
     <Compile Include="Enemy\koopa\KoopaShellSprite.cs" />
     <Compile Include="Enemy\koopa\KoopaShellStateMachine.cs" />
@@ -143,6 +142,8 @@
     <Compile Include="Physics\FireballPhysics1.cs" />
     <Compile Include="Physics\StarPhysics.cs" />
     <Compile Include="Physics\PickupPhysics.cs" />
+    <Compile Include="PickupItem\Coin.cs" />
+    <Compile Include="PickupItem\Sprites\CoinSprite.cs" />
     <Compile Include="TemporaryObjects\Coin.cs" />
     <Compile Include="PickupItem\EmptyPickup.cs" />
     <Compile Include="PickupItem\Fireflower.cs" />
