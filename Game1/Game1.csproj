@@ -66,6 +66,7 @@
     <Compile Include="Blocks\FlagpoleBlock.cs" />
     <Compile Include="Blocks\FlagBlock.cs" />
     <Compile Include="Blocks\CastleBlock.cs" />
+    <Compile Include="ISpriteTest.cs" />
     <Compile Include="Collision\CollisionDetectionLogic.cs" />
     <Compile Include="ControllerHandler.cs" />
     <Compile Include="Enemy\koopa\KoopaShell.cs" />

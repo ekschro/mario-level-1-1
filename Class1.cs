@@ -1,6 +1,6 @@
 ﻿using System;
 
-public abstract class MarioSprite: ISprite
+public interface ISpriteTest: 
 {
 	public Class1()
 	{
