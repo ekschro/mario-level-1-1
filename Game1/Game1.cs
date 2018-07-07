@@ -14,26 +14,18 @@ namespace Game1
     {
         GraphicsDeviceManager graphics;
         public GameTime delta;
-        private SpriteBatch spriteBatch;
         public IController mouseController;
         public IList<IController> controllerList;
         public IControllerHandler controllerHandler;
-        private ILevel currentLevel;
-        //public int totalBlockFrames = 12;
         public TextureWarehouse textureWarehouse;
+
         private SoundWarehouse soundWarehouse;
+        private ILevel currentLevel;
+        private SpriteBatch spriteBatch;
 
         public SpriteBatch SpriteBatch { get => spriteBatch; set => spriteBatch = value; }
         public ILevel CurrentLevel { get => currentLevel; set => currentLevel = value; }
         internal SoundWarehouse SoundWarehouse { get => soundWarehouse; set => soundWarehouse = value; }
-
-        /*
-        public Texture2D marioTexture;
-        public Texture2D pickupTexture;
-        public Texture2D koopaTexture;
-        public Texture2D goombaTexture;
-        public Texture2D blockTexture;
-        */
 
         public Game1()
         {
