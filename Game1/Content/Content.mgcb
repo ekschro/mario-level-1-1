@@ -226,3 +226,9 @@
 /processorParam:Quality=Best
 /build:01-main-theme-overworld.mp3
 
+#begin smb_jumpsmall.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:smb_jumpsmall.wav
+
