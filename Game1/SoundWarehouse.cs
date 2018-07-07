@@ -10,11 +10,17 @@ namespace Game1
 {
     class SoundWarehouse
     {
-        public static Song theme;
+        public static Song main_theme;
+
+        public static SoundEffect jump;
 
         public SoundWarehouse(Game1 game)
         {
-            theme = game.Content.Load<Song>("01-main-theme-overworld");
+            main_theme = game.Content.Load<Song>("01-main-theme-overworld");
+
+            jump = game.Content.Load<SoundEffect>("smb_jumpsmall");
+
+            
         }
     }
 }
