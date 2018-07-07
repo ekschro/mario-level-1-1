@@ -220,3 +220,9 @@
 /processorParam:TextureFormat=Color
 /build:flippedKoopa.png
 
+#begin 01-main-theme-overworld.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:01-main-theme-overworld.mp3
+

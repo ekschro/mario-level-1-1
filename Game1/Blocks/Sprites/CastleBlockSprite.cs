@@ -31,11 +31,11 @@ namespace Game1
         {
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(castleBlockObject.GetGameObjectLocation().X);
 
-            Rectangle sourceRectangle = new Rectangle(0, 0, TextureWareHouse.castleTexture.Width, TextureWareHouse.castleTexture.Height);
-            Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)castleBlockObject.GetGameObjectLocation().Y, TextureWareHouse.castleTexture.Width, TextureWareHouse.castleTexture.Height);
+            Rectangle sourceRectangle = new Rectangle(0, 0, TextureWarehouse.castleTexture.Width, TextureWarehouse.castleTexture.Height);
+            Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)castleBlockObject.GetGameObjectLocation().Y, TextureWarehouse.castleTexture.Width, TextureWarehouse.castleTexture.Height);
 
             myGame.SpriteBatch.Begin();
-            myGame.SpriteBatch.Draw(TextureWareHouse.castleTexture, destinationRectangle, sourceRectangle, Color.White);
+            myGame.SpriteBatch.Draw(TextureWarehouse.castleTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.SpriteBatch.End();
         }
     }

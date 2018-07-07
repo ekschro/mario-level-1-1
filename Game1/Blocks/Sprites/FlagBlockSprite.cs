@@ -32,11 +32,11 @@ namespace Game1
 
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(flagObject.GetGameObjectLocation().X);
 
-            Rectangle sourceRectangle = new Rectangle(0, 0, TextureWareHouse.flagTexture.Width, TextureWareHouse.flagTexture.Height);
-            Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)flagObject.GetGameObjectLocation().Y, TextureWareHouse.flagTexture.Width, TextureWareHouse.flagTexture.Height);
+            Rectangle sourceRectangle = new Rectangle(0, 0, TextureWarehouse.flagTexture.Width, TextureWarehouse.flagTexture.Height);
+            Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)flagObject.GetGameObjectLocation().Y, TextureWarehouse.flagTexture.Width, TextureWarehouse.flagTexture.Height);
 
             myGame.SpriteBatch.Begin();
-            myGame.SpriteBatch.Draw(TextureWareHouse.flagTexture, destinationRectangle, sourceRectangle, Color.White);
+            myGame.SpriteBatch.Draw(TextureWarehouse.flagTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.SpriteBatch.End();
         }
     }

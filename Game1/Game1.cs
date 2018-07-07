@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Input;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Xna.Framework.Media;
 
 [assembly:CLSCompliant(true)]
 namespace Game1
@@ -19,10 +20,12 @@ namespace Game1
         public IControllerHandler controllerHandler;
         private ILevel currentLevel;
         //public int totalBlockFrames = 12;
-        public TextureWareHouse warehouse;
+        public TextureWarehouse textureWarehouse;
+        private SoundWarehouse soundWarehouse;
 
         public SpriteBatch SpriteBatch { get => spriteBatch; set => spriteBatch = value; }
         public ILevel CurrentLevel { get => currentLevel; set => currentLevel = value; }
+        internal SoundWarehouse SoundWarehouse { get => soundWarehouse; set => soundWarehouse = value; }
 
         /*
         public Texture2D marioTexture;
@@ -31,7 +34,7 @@ namespace Game1
         public Texture2D goombaTexture;
         public Texture2D blockTexture;
         */
-       
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -54,14 +57,16 @@ namespace Game1
             base.Initialize();
         }
 
-       
+
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             CurrentLevel = new Level1("../../../../Content/LevelInfo.csv", this);
 
-            warehouse = new TextureWareHouse(this);
+            textureWarehouse = new TextureWarehouse(this);
+            soundWarehouse = new SoundWarehouse(this);
 
+            MediaPlayer.Play(SoundWarehouse.theme);
         }
 
         public void Reset()
@@ -94,7 +99,7 @@ namespace Game1
 
             spriteBatch.Begin();
 
-            spriteBatch.Draw(TextureWareHouse.backgroundTexture, new Rectangle(0, 0, 800, 480), Color.White);
+            spriteBatch.Draw(TextureWarehouse.backgroundTexture, new Rectangle(0, 0, 800, 480), Color.White);
 
             spriteBatch.End();
 

@@ -31,11 +31,11 @@ namespace Game1
         {
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(flagpoleObject.GetGameObjectLocation().X);
 
-            Rectangle sourceRectangle = new Rectangle(0, 0, TextureWareHouse.flagpoleTexture.Width, TextureWareHouse.flagpoleTexture.Height);
-            Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)flagpoleObject.GetGameObjectLocation().Y, TextureWareHouse.flagpoleTexture.Width, TextureWareHouse.flagpoleTexture.Height);
+            Rectangle sourceRectangle = new Rectangle(0, 0, TextureWarehouse.flagpoleTexture.Width, TextureWarehouse.flagpoleTexture.Height);
+            Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)flagpoleObject.GetGameObjectLocation().Y, TextureWarehouse.flagpoleTexture.Width, TextureWarehouse.flagpoleTexture.Height);
 
             myGame.SpriteBatch.Begin();
-            myGame.SpriteBatch.Draw(TextureWareHouse.flagpoleTexture, destinationRectangle, sourceRectangle, Color.White);
+            myGame.SpriteBatch.Draw(TextureWarehouse.flagpoleTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.SpriteBatch.End();
         }
     }
