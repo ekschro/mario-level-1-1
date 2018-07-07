@@ -37,6 +37,8 @@ namespace Game1
             yPosMax = yPos;
             MovingUp = true;
             MovingDown = false;
+
+            physics = new FireballPhysics(game, this, 0);
            
         }
        
@@ -56,6 +58,8 @@ namespace Game1
         public bool MovingLeft { get => movingLeft; set => movingLeft = value; }
         public bool MovingUp { get => movingUp; set => movingUp = value; }
         public bool MovingDown { get => movingDown; set => movingDown = value; }
+
+        private FireballPhysics physics;
 
         public IEnemyStateMachine GetStateMachine => throw new NotImplementedException();
 
@@ -83,7 +87,10 @@ namespace Game1
 
         public void Update()
         {
-            
+            physics.Update();
+
+            Console.WriteLine(IsFalling);
+
             currentFrame++;
             if (currentFrame == 3)
             {
@@ -94,7 +101,7 @@ namespace Game1
             else
                 MovingUp = true;
             
-            if (MovingUp)
+            /*if (MovingUp)
             {
                 yPos = yPos - 1;
             } else
@@ -108,7 +115,7 @@ namespace Game1
             } else
             {
                 xPos = xPos - 5;
-            }
+            }*/
         }
         
 

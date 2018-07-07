@@ -71,6 +71,7 @@
     <Compile Include="Enemy\koopa\KoopaShell.cs" />
     <Compile Include="Enemy\koopa\KoopaShellSprite.cs" />
     <Compile Include="Enemy\koopa\KoopaShellStateMachine.cs" />
+    <Compile Include="FireballPhysics.cs" />
     <Compile Include="GeneralInterfaces\ITemporarySprite.cs" />
     <Compile Include="GeneralInterfaces\ITemporary.cs" />
     <Compile Include="IBackground.cs" />
@@ -150,7 +151,6 @@
     <Compile Include="ILoader.cs" />
     <Compile Include="Level1.cs" />
     <Compile Include="MouseController.cs" />
-    <Compile Include="Physics\FireballPhysics1.cs" />
     <Compile Include="Physics\StarPhysics.cs" />
     <Compile Include="Physics\PickupPhysics.cs" />
     <Compile Include="PickupItem\Coin.cs" />

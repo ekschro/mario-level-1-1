@@ -12,6 +12,7 @@ namespace Game1
         public float CurrentXPos { get => goombaLocation.X; set => goombaLocation.X = value; }
         public float CurrentYPos { get => goombaLocation.Y; set => goombaLocation.Y = value; }
         private bool falling;
+        public bool MovingRight { get; set; }
         public bool IsFalling { get => falling; set => falling = value; }
         private IEnemySprite goombaSprite;
         public IEnemySprite GoombaSprite { get => goombaSprite; set => goombaSprite = value; }

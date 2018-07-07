@@ -13,7 +13,7 @@ namespace Game1
         public float CurrentYPos { get => koopaLocation.Y; set => koopaLocation.Y = value; }
         private bool falling;
         public bool IsFalling { get => falling; set => falling = value; }
-
+        public bool MovingRight { get; set; }
         private static IEnemySprite koopaSprite;
         public static IEnemySprite KoopaSprite { get => koopaSprite; set => koopaSprite = value; }
         public KoopaStateMachine stateMachine;

@@ -66,7 +66,7 @@ namespace Game1
             textureWarehouse = new TextureWarehouse(this);
             soundWarehouse = new SoundWarehouse(this);
 
-            MediaPlayer.Play(SoundWarehouse.theme);
+            MediaPlayer.Play(SoundWarehouse.main_theme);
         }
 
         public void Reset()
