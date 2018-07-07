@@ -89,12 +89,6 @@ namespace Game1
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            spriteBatch.Begin();
-
-            spriteBatch.Draw(TextureWarehouse.backgroundTexture, new Rectangle(0, 0, 800, 480), Color.White);
-
-            spriteBatch.End();
-
             CurrentLevel.Draw();
 
             base.Draw(gameTime);
