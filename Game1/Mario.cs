@@ -200,16 +200,16 @@ namespace Game1
             }
         }
 
-        public static Boolean CanGenerateProjectiles()
-        {
+        //public static Boolean CanGenerateProjectiles()
+        //{
             //if (MarioSprite.isFire())
             //{
             //    return true;
             //}
             //else
             //{
-               return false;
+              // return false;
             //}
-        }
+        //}
     }
 }
