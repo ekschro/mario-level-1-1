@@ -18,6 +18,7 @@ namespace Game1
         public IList<IController> controllerList;
         public IControllerHandler controllerHandler;
         public TextureWarehouse textureWarehouse;
+        public PersistentData persistentData;
 
         private SoundWarehouse soundWarehouse;
         private ILevel currentLevel;
@@ -40,10 +41,10 @@ namespace Game1
         protected override void Initialize()
         {
             controllerList = new List<IController>();
-            
             controllerHandler = new ControllerHandler();
             controllerList.Add(new KeyboardController(this));
             controllerList.Add(new GamePadController(this));
+            persistentData = new PersistentData();
             //mouseController = new MouseController(this);
             
             base.Initialize();
@@ -53,7 +54,7 @@ namespace Game1
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            CurrentLevel = new Level1("../../../../Content/LevelInfo.csv", this);
+            CurrentLevel = new Level1("../../../../Content/LevelInfo.csv", this, persistentData);
 
             textureWarehouse = new TextureWarehouse(this);
             soundWarehouse = new SoundWarehouse(this);
