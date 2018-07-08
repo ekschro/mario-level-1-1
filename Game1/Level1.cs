@@ -27,12 +27,12 @@ namespace Game1
         
 
         public ICamera LevelCamera { get => levelCamera; set => levelCamera = value; }
-        public PersistentData PersistentData { get => persistentData; set => persistentData = value; }
+        public PersistentData PersistentData { get => persistentData; }
 
         public Level1(string fileName, Game1 game, PersistentData persistantData)
         {
             myGame = game;
-            this.PersistentData = persistantData;
+            this.persistentData = persistantData;
             levelObjects = new List<IGameObject>();
             ILoader loader = new LevelLoader(game);
 

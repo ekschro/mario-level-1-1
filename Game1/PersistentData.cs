@@ -19,13 +19,18 @@ namespace Game1
             coins = 0;
         }
 
-        public int Lives { get => lives; set => lives = value; }
-        public int Points { get => points; set => points = value; }
-        public int Coins { get => coins; set => coins = value; }
+        public int Lives { get => lives;  }
+        public int Points { get => points; }
+        public int Coins { get => coins; }
 
         public void Draw()
         {
 
+        }
+        
+        public void EnemyStompedPoints()
+        {
+            points += 100;
         }
     }
 }
