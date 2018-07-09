@@ -9,6 +9,10 @@ namespace Game1
     public interface ITestMarioStateMachine
     {
         void ChangeDirection();
+        void Idle();
+        void Walking();
+        void Jumping();
+        void Crouching();
         void Upgrade();
         void Downgrade();
         void Update();

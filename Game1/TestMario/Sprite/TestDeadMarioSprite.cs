@@ -10,17 +10,17 @@ namespace Game1
 {
     public class TestDeadMarioSprite : ITestMarioSprite
     {
-        private TestMario marioObject;
+        private TestDeadMario marioObject;
         private Game1 myGame;
         private int currentFrame;
         private int startFrame;
         private int endFrame;
 
-        public TestDeadMarioSprite(Game1 game, TestMario Mario)
+        public TestDeadMarioSprite(Game1 game, TestDeadMario Mario)
         {
             marioObject = Mario;
             myGame = game;
-            startFrame = 14 + 28; //MarioSmllIdleRight
+            startFrame = 12 + 28; //MarioDead
             endFrame = 2;
             currentFrame = startFrame;
         }

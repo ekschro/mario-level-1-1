@@ -10,13 +10,13 @@ namespace Game1
 {
     public class TestBigMarioSprite : ITestMarioSprite
     {
-        private TestMario marioObject;
+        private TestBigMario marioObject;
         private Game1 myGame;
         private int currentFrame;
         private int startFrame;
         private int endFrame;
 
-        public TestBigMarioSprite(Game1 game, TestMario Mario)
+        public TestBigMarioSprite(Game1 game, TestBigMario Mario)
         {
             marioObject = Mario;
             myGame = game;

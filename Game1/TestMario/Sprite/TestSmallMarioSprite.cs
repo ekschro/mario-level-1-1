@@ -10,13 +10,13 @@ namespace Game1
 {
     public class TestSmallMarioSprite :ITestMarioSprite
     {
-        private TestMario marioObject;
+        private TestSmallMario marioObject;
         private Game1 myGame;
         private int currentFrame;
         private int startFrame;
         private int endFrame;
 
-        public TestSmallMarioSprite(Game1 game, TestMario Mario)
+        public TestSmallMarioSprite(Game1 game, TestSmallMario Mario)
         {
             marioObject = Mario;
             myGame = game;
@@ -29,7 +29,7 @@ namespace Game1
             startFrame = start;
             endFrame = end;
         }
-       
+
         public void Update()
         {
             currentFrame++;
@@ -37,6 +37,7 @@ namespace Game1
                 currentFrame = startFrame;
         }
 
+    
         public void Draw()
         {
             int width = TextureWarehouse.marioTexture.Width / 4;
