@@ -17,6 +17,8 @@ namespace Game1 {
         public static Texture2D castleTexture;
         public static Texture2D flagpoleTexture;
         public static Texture2D flagTexture;
+        public static Texture2D blueStoneBlockTexture;
+        public static Texture2D blueBrickBlockTexture;
 
 
         Game1 myGame;
@@ -37,6 +39,8 @@ namespace Game1 {
             castleTexture = myGame.Content.Load<Texture2D>("castle");
             flagpoleTexture = myGame.Content.Load<Texture2D>("flagpole");
             flagTexture = myGame.Content.Load<Texture2D>("flag");
+            blueStoneBlockTexture = myGame.Content.Load<Texture2D>("blueStone");
+            blueBrickBlockTexture = myGame.Content.Load<Texture2D>("blueBrick");
         }
     }
 }
