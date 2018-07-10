@@ -19,7 +19,7 @@ namespace Game1
         public IControllerHandler controllerHandler;
         public TextureWarehouse textureWarehouse;
         public PersistentData persistentData;
-        
+        public GameTime temp;
 
         private SoundWarehouse soundWarehouse;
         private ILevel currentLevel;
@@ -27,13 +27,14 @@ namespace Game1
         private HeadsUpDisplay headsUpDisplay;
         private SpriteBatch spriteBatch;
         private SpriteFont spriteFont;
-
+        private bool pause;
         public SpriteBatch SpriteBatch { get => spriteBatch; set => spriteBatch = value; }
         public SpriteFont SpriteFont { get => spriteFont; set => spriteFont = value; }
         public ILevel CurrentLevel { get => currentLevel; set => currentLevel = value; }
         public HeadsUpDisplay HeadsUpDisplay { get => headsUpDisplay; set => headsUpDisplay = value; }
         public LevelTransition TransitionLevel { get => transitionLevel; set => transitionLevel = value; }
         internal SoundWarehouse SoundWarehouse { get => soundWarehouse; set => soundWarehouse = value; }
+        public bool Pause { get => pause; set => pause = value; }
 
         public Game1()
         {
@@ -41,7 +42,7 @@ namespace Game1
             graphics.PreferredBackBufferWidth = 400;
             graphics.PreferredBackBufferHeight = 230;
             graphics.ApplyChanges();
-            
+            pause = true;
             Content.RootDirectory = "Content";
         }
       
@@ -83,9 +84,28 @@ namespace Game1
         
         protected override void Update(GameTime gameTime)
         {
-            foreach (IController controller in controllerList.ToArray())
-                controller.Update();
+            if (pause)
+            {
+                foreach (IController controller in controllerList.ToArray())
+                {
+                    controller.Update();
+                }
 
+            }
+            else if (controllerList.ToArray()[0] is PauseCommand)
+            {
+                pause = true;
+            } else
+            {
+                foreach (IController controller in controllerList.ToArray())
+                {
+                    if (controller is Pause2Command)
+                    {
+                        controller.Update();
+                    }
+                }
+            }
+            
             delta = gameTime;
 
             CurrentLevel.Update();
