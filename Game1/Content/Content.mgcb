@@ -232,6 +232,13 @@
 /processorParam:Quality=Best
 /build:smb_jumpsmall.wav
 
+#begin arial.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:arial.spritefont
+
 #begin blueBrick.png
 /importer:TextureImporter
 /processor:TextureProcessor
