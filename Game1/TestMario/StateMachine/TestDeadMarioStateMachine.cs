@@ -14,6 +14,9 @@ namespace Game1
         private enum MarioState { Idle, Walking, Jumping, Crouching };
         private MarioSize size = MarioSize.Dead;
         private MarioState state = MarioState.Idle;
+
+        private MarioState State { get => state; set => state = value; }
+
         public TestDeadMarioStateMachine(ITestMarioSprite sprite)
         {
             marioSprite = sprite;

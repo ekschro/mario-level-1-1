@@ -15,5 +15,7 @@ namespace Game1
         void Crouching();
         void Update();
         bool GetDirection();
+        
+
     }
 }
