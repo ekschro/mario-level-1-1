@@ -19,17 +19,20 @@ namespace Game1
         {
             int width = TextureWarehouse.marioTexture.Width / 28;
 
-            //int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(marioObject.GetGameObjectLocation().X);
+            int height = TextureWarehouse.marioTexture.Height / 3;
+            int row = (int)((float)(14+28) / (float)28);
+            int column = (14+28) % 28;
 
-            Rectangle sourceRectangle = new Rectangle(width * (14+28), 0, width, TextureWarehouse.marioTexture.Height);
-            Rectangle destinationRectangle = new Rectangle(100,100, width, TextureWarehouse.marioTexture.Height);
-
+           
+            Rectangle sourceRectangle = new Rectangle(width * column, (height * row), width, height);
+            Rectangle destinationRectangle = new Rectangle(160, 100, width, height);
             
             myGame.SpriteBatch.Begin();
             myGame.SpriteBatch.Draw(TextureWarehouse.blackBackGroundTexture,new Vector2(0,0),Color.Black);
-            //myGame.SpriteBatch.DrawString(myGame.SpriteFont, "Hello World", new Vector2(100, 100), Color.Black);
+            myGame.SpriteBatch.DrawString(myGame.SpriteFont, "WORLD1-1", new Vector2(150, 80), Color.White);
+            myGame.SpriteBatch.DrawString(myGame.SpriteFont, "X", new Vector2(180, 120), Color.White);
+            myGame.SpriteBatch.DrawString(myGame.SpriteFont, "3", new Vector2(200, 120), Color.White);
             myGame.SpriteBatch.Draw(TextureWarehouse.marioTexture, destinationRectangle, sourceRectangle, Color.White);
-            myGame.SpriteBatch.Draw(TextureWarehouse.backgroundTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.SpriteBatch.End();
         }
     }

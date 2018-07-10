@@ -24,12 +24,14 @@ namespace Game1
         private SoundWarehouse soundWarehouse;
         private ILevel currentLevel;
         private LevelTransition transitionLevel;
+        private HeadsUpDisplay headsUpDisplay;
         private SpriteBatch spriteBatch;
         private SpriteFont spriteFont;
 
         public SpriteBatch SpriteBatch { get => spriteBatch; set => spriteBatch = value; }
         public SpriteFont SpriteFont { get => spriteFont; set => spriteFont = value; }
         public ILevel CurrentLevel { get => currentLevel; set => currentLevel = value; }
+        public HeadsUpDisplay HeadsUpDisplay { get => headsUpDisplay; set => headsUpDisplay = value; }
         public LevelTransition TransitionLevel { get => transitionLevel; set => transitionLevel = value; }
         internal SoundWarehouse SoundWarehouse { get => soundWarehouse; set => soundWarehouse = value; }
 
@@ -61,6 +63,7 @@ namespace Game1
             spriteBatch = new SpriteBatch(GraphicsDevice);
             CurrentLevel = new Level1("../../../../Content/LevelInfo.csv", this, persistentData);
             TransitionLevel = new LevelTransition(this);
+            HeadsUpDisplay = new HeadsUpDisplay(this);
             textureWarehouse = new TextureWarehouse(this);
             soundWarehouse = new SoundWarehouse(this);
             spriteFont = Content.Load<SpriteFont>("arial");
@@ -86,6 +89,7 @@ namespace Game1
             delta = gameTime;
 
             CurrentLevel.Update();
+            HeadsUpDisplay.Update();
 
             base.Update(gameTime);
         }
@@ -94,13 +98,9 @@ namespace Game1
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            transitionLevel.Draw();
             CurrentLevel.Draw();
-            spriteBatch.Begin();
-            spriteBatch.DrawString(spriteFont, "MARIO", new Vector2(10, 10), Color.White);
-            spriteBatch.DrawString(spriteFont, "WORLD", new Vector2(200, 10), Color.White);
-            spriteBatch.DrawString(spriteFont, "TIME", new Vector2(300, 10), Color.White);
-            spriteBatch.End();
+            transitionLevel.Draw();
+            HeadsUpDisplay.Draw();
             base.Draw(gameTime);
         }
     }
