@@ -31,7 +31,7 @@ namespace Game1
             myGame.SpriteBatch.Draw(TextureWarehouse.blackBackGroundTexture,new Vector2(0,0),Color.Black);
             myGame.SpriteBatch.DrawString(myGame.SpriteFont, "WORLD1-1", new Vector2(150, 80), Color.White);
             myGame.SpriteBatch.DrawString(myGame.SpriteFont, "X", new Vector2(180, 120), Color.White);
-            myGame.SpriteBatch.DrawString(myGame.SpriteFont, "3", new Vector2(200, 120), Color.White);
+            myGame.SpriteBatch.DrawString(myGame.SpriteFont, "3", new Vector2(200, 120), Color.White); //need to update
             myGame.SpriteBatch.Draw(TextureWarehouse.marioTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.SpriteBatch.End();
         }
