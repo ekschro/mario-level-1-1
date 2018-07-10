@@ -109,5 +109,16 @@ namespace Game1
                 return false;
             }
         }
+
+        bool ITestMarioStateMachine.FacingLeft()
+        {
+            if (facingLeft)
+            {
+                return true;
+            } else
+            {
+                return false;
+            }
+        }
     }
 }

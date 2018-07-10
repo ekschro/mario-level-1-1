@@ -32,11 +32,17 @@ namespace Game1
 
         public void Update()
         {
-            TestBigMarioStateMachine stateMachine = (TestBigMarioStateMachine)marioObject.GetStateMachine;
-            if (stateMachine.IsJumping() && stateMachine.FacingLeft)
+            
+            if (marioObject.GetStateMachine.FacingLeft())
             {
+                currentFrame--;
 
+            } else
+            {
+                currentFrame++;
             }
+            if (currentFrame == endFrame)
+                currentFrame = startFrame;
         }
 
         public void Draw()

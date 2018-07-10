@@ -65,5 +65,16 @@ namespace Game1
             return facingLeft;
         }
 
+        public bool FacingLeft()
+        {
+            if (facingLeft)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

@@ -32,7 +32,15 @@ namespace Game1
 
         public void Update()
         {
-            currentFrame++;
+            if (marioObject.GetStateMachine.FacingLeft())
+            {
+                currentFrame--;
+
+            }
+            else
+            {
+                currentFrame++;
+            }
             if (currentFrame == endFrame)
                 currentFrame = startFrame;
         }
