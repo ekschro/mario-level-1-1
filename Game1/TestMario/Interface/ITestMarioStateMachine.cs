@@ -13,8 +13,6 @@ namespace Game1
         void Walking();
         void Jumping();
         void Crouching();
-        void Upgrade();
-        void Downgrade();
         void Update();
         bool GetDirection();
     }

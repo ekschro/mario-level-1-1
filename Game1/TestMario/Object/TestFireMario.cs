@@ -24,21 +24,24 @@ namespace Game1
 
         private bool dead = false;
         private IPhysics physics;
-
-        public TestFireMario(Game1 game, Vector2 location)
+        Mario character;
+        Game1 myGame;
+        public TestFireMario(Game1 game, Vector2 location, Mario mario)
         {
             testMarioLocation = location;
             marioSprite = new TestFireMarioSprite(game, this);
             stateMachine = new TestFireMarioStateMachine(marioSprite);
+            character = mario;
+            myGame = game;
         }
 
         public void Upgrade()
         {
-            //stateMachine.Upgrade();
+            
         }
         public void Downgrade()
         {
-            //stateMachine.Downgrade();
+            character.TestMario = new TestBigMario(myGame, testMarioLocation, character);
         }
         public void ChangeDirection()
         {

@@ -7,7 +7,7 @@ namespace Game1
         private IControllerHandler controllerHandler;
         private Game1 myGame;
         private int animationTimer;
-
+        private ITestMario testMario;
         private static ISprite playerSprite;
         public static IPhysics physics;
         private static Color marioColor;
@@ -39,6 +39,7 @@ namespace Game1
         public int TotalMarioRows { get => totalMarioRows; set => totalMarioRows = value; }
         public int TotalMarioColumns { get => totalMarioColumns; set => totalMarioColumns = value; }
         public int FireBallTimer { get => fireballTimer; set => fireballTimer = value; }
+        internal ITestMario TestMario { get => testMario; set => testMario = value; }
 
         public Mario(Game1 game, Vector2 vector)
         {
@@ -53,7 +54,7 @@ namespace Game1
             colorTimer = 0;
             animationTimer = 0;
             fireballTimer = 0;
-
+            testMario = new TestSmallMario(game, vector, this);
             CanJump = true;
             Falling = false;
             Bounce = false;

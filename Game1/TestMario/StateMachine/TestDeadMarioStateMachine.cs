@@ -50,12 +50,7 @@ namespace Game1
             else
                 marioSprite.ChangeFrame(15, 15 + 1);
         }
-        public void Upgrade()
-        {
-        }
-        public void Downgrade()
-        {
-        }
+        
         public void Update()
         {
         }
