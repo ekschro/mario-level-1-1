@@ -72,6 +72,7 @@
     <Compile Include="Enemy\koopa\KoopaShellSprite.cs" />
     <Compile Include="Enemy\koopa\KoopaShellStateMachine.cs" />
     <Compile Include="FireballPhysics.cs" />
+    <Compile Include="FontWarehourse.cs" />
     <Compile Include="GeneralInterfaces\ITemporarySprite.cs" />
     <Compile Include="GeneralInterfaces\ITemporary.cs" />
     <Compile Include="IBackground.cs" />

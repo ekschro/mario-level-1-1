@@ -29,6 +29,7 @@ namespace Game1
             Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)GetGameObjectLocation().Y, TextureWarehouse.backgroundTexture.Width, TextureWarehouse.backgroundTexture.Height);
 
             myGame.SpriteBatch.Begin();
+            //myGame.SpriteBatch.DrawString(myGame.SpriteFont, "Hello World", new Vector2(100, 100), Color.Black);
             myGame.SpriteBatch.Draw(TextureWarehouse.backgroundTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.SpriteBatch.End();
         }
