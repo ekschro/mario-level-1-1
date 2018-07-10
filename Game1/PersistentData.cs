@@ -14,7 +14,7 @@ namespace Game1
 
         public PersistentData()
         {
-            lives = 4;
+            lives = 3;
             points = 0;
             coins = 0;
         }
@@ -43,6 +43,7 @@ namespace Game1
         public void CoinCollectedPoints()
         {
             points += 200;
+            coins += 1;
             testPrint(200);
         }
 
@@ -62,6 +63,12 @@ namespace Game1
         {
             points += 200;
             testPrint(200);
+        }
+
+        public void ResetPointsAndCoins()
+        {
+            points = 0;
+            coins = 0;
         }
     }
 }

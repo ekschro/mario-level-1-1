@@ -89,8 +89,6 @@ namespace Game1
         {
             physics.Update();
 
-            Console.WriteLine(IsFalling);
-
             currentFrame++;
             if (currentFrame == 3)
             {

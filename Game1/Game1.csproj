@@ -77,7 +77,7 @@
     <Compile Include="Enemy\koopa\KoopaShellSprite.cs" />
     <Compile Include="Enemy\koopa\KoopaShellStateMachine.cs" />
     <Compile Include="FireballPhysics.cs" />
-    <Compile Include="FontWarehourse.cs" />
+    <Compile Include="HeadsUpDisplay.cs" />
     <Compile Include="GeneralInterfaces\ITemporarySprite.cs" />
     <Compile Include="GeneralInterfaces\ITemporary.cs" />
     <Compile Include="IBackground.cs" />
@@ -114,6 +114,7 @@
     <Compile Include="Fireball.cs" />
     <Compile Include="GeneralCommands\FireballCommand.cs" />
     <Compile Include="GeneralCommands\NoCommand.cs" />
+    <Compile Include="LevelTransition.cs" />
     <Compile Include="PersistentData.cs" />
     <Compile Include="SoundWarehouse.cs" />
     <Compile Include="TestMario\Interface\ITestMarioSprite.cs" />

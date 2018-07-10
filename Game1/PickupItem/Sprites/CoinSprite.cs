@@ -19,8 +19,8 @@ namespace Game1
         {
             coinPickupObject = coinPickup;
             myGame = game;
-            startFrame = 2;
-            endFrame = 6;
+            startFrame = 10;
+            endFrame = 14;
             currentFrame = startFrame;
         }
         public void ChangeFrame(int start, int end)
