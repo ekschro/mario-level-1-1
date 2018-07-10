@@ -19,7 +19,8 @@ namespace Game1
         Boolean IsWalking();
         Boolean IsJumping();
         Boolean IsIdle();
-        Boolean IsCrouching()
+        Boolean IsCrouching();
+        void ChangeState();
 
     }
 }

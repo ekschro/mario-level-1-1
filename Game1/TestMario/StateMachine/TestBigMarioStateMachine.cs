@@ -42,6 +42,7 @@ namespace Game1
                 marioSprite.ChangeFrame(16 + 56, 19 + 56);
             State = MarioState.Walking;
         }
+
         public void Jumping()
         {
             if (FacingLeft)
@@ -119,6 +120,11 @@ namespace Game1
             {
                 return false;
             }
+        }
+
+        public void ChangeState()
+        {
+            State = MarioState.Idle;
         }
     }
 }

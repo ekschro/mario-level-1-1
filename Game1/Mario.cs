@@ -72,28 +72,9 @@ namespace Game1
             if (!(testMario is TestDeadMario))
             {
                 physics.Update();
-                if (physics.XVelocity == 0 && MarioSprite is MarioBigWalkRight && )
+                if (physics.XVelocity == 0 && testMario.GetStateMachine.IsWalking())
                 {
-                    MarioSprite = new MarioBigIdleRight(myGame,this);
-                } else if (physics.XVelocity == 0 && MarioSprite is MarioBigWalkLeft)
-                {
-                    MarioSprite = new MarioBigIdleLeft(myGame,this);
-                }
-                else if (physics.XVelocity == 0 && MarioSprite is MarioSmallWalkRight)
-                {
-                    MarioSprite = new MarioSmallIdleRight(myGame,this);
-                }
-                else if (physics.XVelocity == 0 && MarioSprite is MarioSmallWalkLeft)
-                {
-                    MarioSprite = new MarioSmallIdleLeft(myGame,this);
-                }
-                else if (physics.XVelocity == 0 && MarioSprite is MarioFireWalkRight)
-                {
-                    MarioSprite = new MarioFireIdleRight(myGame,this);
-                }
-                else if (physics.XVelocity == 0 && MarioSprite is MarioFireWalkLeft)
-                {
-                    MarioSprite = new MarioFireIdleLeft(myGame,this);
+                    testMario.GetStateMachine.ChangeState();
                 }
             }
 

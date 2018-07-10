@@ -93,5 +93,9 @@ namespace Game1
         {
             return false;
         }
+        public void ChangeState()
+        {
+            State = MarioState.Idle;
+        }
     }
 }
