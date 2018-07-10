@@ -18,12 +18,13 @@ namespace Game1
 
         public ITestMarioStateMachine stateMachine;
         public ITestMarioStateMachine GetStateMachine { get => stateMachine; }
+        ITestMarioStateMachine ITestMario.GetStateMachine { get => stateMachine;}
 
         private int cyclePosition = 0;
         private int cycleLength = 8;
 
         private bool dead = false;
-        private IPhysics physics;
+        
         private Game1 myGame;
         Mario character;
 
@@ -78,7 +79,7 @@ namespace Game1
         }
         public void Update()
         {
-            physics.Update();
+            
             cyclePosition++;
             if (cyclePosition == cycleLength)
             {

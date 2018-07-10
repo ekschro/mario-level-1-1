@@ -23,7 +23,7 @@ namespace Game1
         private int cycleLength = 8;
         
         private bool dead = false;
-        private IPhysics physics;
+       
         private IPlayer player;
         Mario character;
         Game1 myGame;
@@ -75,7 +75,7 @@ namespace Game1
         }
         public void Update()
         {
-            physics.Update();
+            
             cyclePosition++;
             if (cyclePosition == cycleLength)
             {

@@ -23,7 +23,7 @@ namespace Game1
         private int cycleLength = 8;
 
         private bool dead = false;
-        private IPhysics physics;
+        
         Mario character;
         Game1 myGame;
         public TestFireMario(Game1 game, Vector2 location, Mario mario)
@@ -77,7 +77,7 @@ namespace Game1
         }
         public void Update()
         {
-            physics.Update();
+            
             cyclePosition++;
             if (cyclePosition == cycleLength)
             {

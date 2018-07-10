@@ -76,5 +76,57 @@ namespace Game1
                 return false;
             }
         }
+
+        public bool IsWalking()
+        {
+            if (State == MarioState.Walking)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool IsJumping()
+        {
+            if (State == MarioState.Jumping)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool IsIdle()
+        {
+            if (State == MarioState.Idle)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool IsCrouching()
+        {
+            if (State == MarioState.Crouching)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public void ChangeState()
+        {
+            State = MarioState.Idle;
+        }
     }
 }
