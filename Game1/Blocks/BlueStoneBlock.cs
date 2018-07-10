@@ -47,7 +47,7 @@ namespace Game1
 
         public void Update()
         {
-            stoneBlockSprite.Update();
+            blueStoneBlockSprite.Update();
         }
 
     }
