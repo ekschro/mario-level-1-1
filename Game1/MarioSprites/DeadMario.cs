@@ -26,6 +26,7 @@ public class MarioDead : ISprite
             bounceTimer = 2*((bounceVelocity * bounceVelocity) / bounceGravity);
 
             MediaPlayer.Play(SoundWarehouse.died_theme);
+
         }
 
 

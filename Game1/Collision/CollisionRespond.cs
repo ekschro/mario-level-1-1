@@ -74,7 +74,10 @@ namespace Game1
             }
 
             if (block is BrickBlock && !player.MarioSprite.isSmall())
+            {
                 objectLevel.BlockObjects.Remove(block);
+                objectLevel.PersistentData.BlockDestroyPoints();
+            }
             else if (block is QuestionPowerUpBlock)
             {
                 objectLevel.BlockObjects.Remove(block);
@@ -167,14 +170,21 @@ namespace Game1
 
         public void EnemyCollisionRespondBottom(IEnemy enemy)
         {
-            if (objectLevel.PlayerObject.IsStar)
+            if (player.IsStar)
             {
+                objectLevel.EnemyObjects.Remove(enemy);
                 if (enemy is Goomba)
+                {
                     objectLevel.TemporaryObjects.Add(new FlippedGoomba(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
+                    objectLevel.PersistentData.EnemyStompedPoints();
+                }
                 else if (enemy is Koopa)
+                {
                     objectLevel.TemporaryObjects.Add(new FlippedKoopa(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
+                    objectLevel.PersistentData.KoopaFireOrStarPoints();
+                }
             }
-                MarioHit();
+            MarioHit();
             
         }
 
@@ -196,13 +206,19 @@ namespace Game1
                     MarioHit();
                 }
             }
-            else if (objectLevel.PlayerObject.IsStar)
+            else if (player.IsStar)
             {
                 objectLevel.EnemyObjects.Remove(enemy);
                 if (enemy is Goomba)
+                {
                     objectLevel.TemporaryObjects.Add(new FlippedGoomba(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
+                    objectLevel.PersistentData.EnemyStompedPoints();
+                }
                 else if (enemy is Koopa)
+                {
                     objectLevel.TemporaryObjects.Add(new FlippedKoopa(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
+                    objectLevel.PersistentData.KoopaFireOrStarPoints();
+                }
             } else if (enemy is MarioFireBall)
             {
 
@@ -229,13 +245,19 @@ namespace Game1
                     MarioHit();
                 }
             }
-            else if (objectLevel.PlayerObject.IsStar)
+            else if (player.IsStar)
             {
                 objectLevel.EnemyObjects.Remove(enemy);
                 if (enemy is Goomba)
+                {
                     objectLevel.TemporaryObjects.Add(new FlippedGoomba(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
+                    objectLevel.PersistentData.EnemyStompedPoints();
+                }
                 else if (enemy is Koopa)
+                {
                     objectLevel.TemporaryObjects.Add(new FlippedKoopa(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
+                    objectLevel.PersistentData.KoopaFireOrStarPoints();
+                }
             }
             else if (enemy is MarioFireBall)
             {
@@ -245,34 +267,36 @@ namespace Game1
                 MarioHit();
         }
 
-
         public void EnemyCollisionBlockandEnemyRespondLeft(IEnemy enemy, IEnemy otherEnemy, int width)
         {
 
-            if (enemy.GetDead() == false || enemy is KoopaShell)
+            if (enemy.GetDead() == false && !(enemy is KoopaShell))
             {
                 var x = enemy.GetGameObjectLocation().X + width;
                 var y = enemy.GetGameObjectLocation().Y;
                 enemy.SetGameObjectLocation(new Vector2(x, y));
+                enemy.ChangeDirection();
             }
             if (enemy is MarioFireBall || otherEnemy is MarioFireBall|| otherEnemy is KoopaShell)
                 objectLevel.EnemyObjects.Remove(enemy);
 
-            enemy.ChangeDirection();
+            //enemy.ChangeDirection();
         }
         public void EnemyCollisionBlockandEnemyRespondRight(IEnemy enemy, IEnemy otherEnemy, int width)
         {
-
-            if (enemy.GetDead() == false || enemy is KoopaShell)
+            if (enemy.GetDead() == false && !(enemy is KoopaShell))
             {
                 var x = enemy.GetGameObjectLocation().X - width;
                 var y = enemy.GetGameObjectLocation().Y;
                 enemy.SetGameObjectLocation(new Vector2(x, y));
+                enemy.ChangeDirection();
             }
             if (enemy is MarioFireBall || otherEnemy is MarioFireBall || otherEnemy is KoopaShell)
+            {
                 objectLevel.EnemyObjects.Remove(enemy);
+            }
 
-            enemy.ChangeDirection();
+            //enemy.ChangeDirection();
         }
 
         public void EnemyCollisionBlockRespondYDirection(IEnemy enemy, int height,bool bottom)
@@ -311,6 +335,7 @@ namespace Game1
             }
             else if (pickup is GreenMushroom)
             {
+                objectLevel.PersistentData.OneUpLives();
             }
             else if (pickup is RedMushroom)
             {
@@ -346,7 +371,7 @@ namespace Game1
             }
             else if (pickup is GreenMushroom)
             {
-                //player.marioSprite.BigMarioCommandCalled();
+                objectLevel.PersistentData.OneUpLives();
             }
             else if (pickup is RedMushroom)
             {
@@ -390,7 +415,7 @@ namespace Game1
             }
             else if (pickup is GreenMushroom)
             {
-                //player.marioSprite.BigMarioCommandCalled();
+                objectLevel.PersistentData.OneUpLives();
             }
             else if (pickup is RedMushroom)
             {
@@ -443,7 +468,7 @@ namespace Game1
             }
             else if (pickup is GreenMushroom)
             {
-                //player.marioSprite.BigMarioCommandCalled();
+                objectLevel.PersistentData.OneUpLives();
             }
             else if (pickup is RedMushroom)
             {
