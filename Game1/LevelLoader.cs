@@ -140,6 +140,12 @@ namespace Game1
                 case "StoneBlock":
                     GameObject = new StoneBlock(myGame, Position, Size);
                     break;
+                case "BlueStoneBlock":
+                    GameObject = new BlueStoneBlock(myGame, Position, Size);
+                    break;
+                case "BlueBrickBlock":
+                    GameObject = new BlueBrickBlock(myGame, Position, Size);
+                    break;
                 case "TopLeftPipeBlock":
                     GameObject = new TopLeftPipeBlock(myGame, Position);
                     break;

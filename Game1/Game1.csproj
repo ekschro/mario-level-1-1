@@ -57,8 +57,10 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Blocks\BlueBrickBlock.cs" />
     <Compile Include="Blocks\BrickBlockWithStar.cs" />
     <Compile Include="Blocks\BrickBlockWithManyCoins.cs" />
+    <Compile Include="Blocks\Sprites\BlueBrickBlockSprite.cs" />
     <Compile Include="Blocks\Sprites\FlagBlockSprite.cs" />
     <Compile Include="Blocks\Sprites\FlagpoleBlockSprite.cs" />
     <Compile Include="Blocks\Sprites\CastleBlockSprite.cs" />
@@ -66,6 +68,8 @@
     <Compile Include="Blocks\FlagpoleBlock.cs" />
     <Compile Include="Blocks\FlagBlock.cs" />
     <Compile Include="Blocks\CastleBlock.cs" />
+    <Compile Include="Blocks\BlueStoneBlock.cs" />
+    <Compile Include="Blocks\Sprites\BlueStoneBlockSprite.cs" />
     <Compile Include="Collision\CollisionDetectionLogic.cs" />
     <Compile Include="ControllerHandler.cs" />
     <Compile Include="Enemy\koopa\KoopaShell.cs" />
