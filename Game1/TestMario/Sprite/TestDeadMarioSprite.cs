@@ -32,14 +32,22 @@ namespace Game1
 
         public void Update()
         {
-            currentFrame++;
+            if (marioObject.GetStateMachine.FacingLeft())
+            {
+                currentFrame--;
+
+            }
+            else
+            {
+                currentFrame++;
+            }
             if (currentFrame == endFrame)
                 currentFrame = startFrame;
         }
 
         public void Draw()
         {
-            int width = TextureWarehouse.marioTexture.Width / 4;
+            int width = TextureWarehouse.marioTexture.Width / 28;
 
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(marioObject.GetGameObjectLocation().X);
 
