@@ -263,3 +263,15 @@
 /processorParam:TextureFormat=Color
 /build:blueStone.png
 
+#begin smb_mariodie.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:smb_mariodie.wav
+
+#begin 08-you-re-dead.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:08-you-re-dead.mp3
+
