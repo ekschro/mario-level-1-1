@@ -54,12 +54,7 @@ namespace Game1
                 marioSprite.ChangeFrame(15 + 56, 15 + 56 + 1);
             state = MarioState.Crouching;
         }
-        public void Upgrade()
-        {
-        }
-        public void Downgrade()
-        {
-        }
+        
         public void Update()
         {
         }
