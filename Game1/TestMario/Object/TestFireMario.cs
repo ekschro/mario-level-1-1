@@ -7,47 +7,43 @@ using Microsoft.Xna.Framework;
 
 namespace Game1
 {
-    public class TestMario : ITestMario
+    public class TestFireMario : ITestMario
     {
         public float CurrentXPos { get => testMarioLocation.X; set => testMarioLocation.X = value; }
         public float CurrentYPos { get => testMarioLocation.Y; set => testMarioLocation.Y = value; }
-        private ITestMarioSprite marioSprite;
-        public ITestMarioSprite MarioSprite { get => marioSprite; set => MarioSprite = value; }
-        public TestMarioStateMachine stateMachine;
-        public ITestMarioStateMachine GetStateMachine { get => stateMachine; }
-        private int cyclePosition = 0;
-        private int cycleLength = 8;
         private Vector2 testMarioLocation;
 
-        
+        private ITestMarioSprite marioSprite;
+        public ITestMarioSprite MarioSprite { get => marioSprite; set => MarioSprite = value; }
+
+        public ITestMarioStateMachine stateMachine;
+        public ITestMarioStateMachine GetStateMachine { get => stateMachine; }
+
+        private int cyclePosition = 0;
+        private int cycleLength = 8;
+
         private bool dead = false;
         private IPhysics physics;
 
-        public TestMario(Game1 game, Vector2 location)
+        public TestFireMario(Game1 game, Vector2 location)
         {
             testMarioLocation = location;
-            marioSprite = new TestSmallMarioSprite(game, this);
-            stateMachine = new TestMarioStateMachine(marioSprite);
+            marioSprite = new TestFireMarioSprite(game, this);
+            stateMachine = new TestFireMarioStateMachine(marioSprite);
         }
 
         public void Upgrade()
         {
-            stateMachine.Upgrade();
+            //stateMachine.Upgrade();
         }
-        public void DownGrade()
+        public void Downgrade()
         {
-            stateMachine.Downgrade();
+            //stateMachine.Downgrade();
         }
         public void ChangeDirection()
         {
             stateMachine.ChangeDirection();
         }
-
-        public void Draw()
-        {
-            MarioSprite.Draw();
-        }
-
         public Vector2 GetGameObjectLocation()
         {
             return testMarioLocation;
@@ -56,7 +52,26 @@ namespace Game1
         {
             testMarioLocation = newPos;
         }
-        
+        public bool GetDead()
+        {
+            return dead;
+        }
+        public void Idle()
+        {
+            stateMachine.Idle();
+        }
+        public void Walking()
+        {
+            stateMachine.Walking();
+        }
+        public void Jumping()
+        {
+            stateMachine.Jumping();
+        }
+        public void Crouching()
+        {
+            stateMachine.Crouching();
+        }
         public void Update()
         {
             physics.Update();
@@ -71,11 +86,9 @@ namespace Game1
                 }
             }
         }
-
-        public bool GetDead()
+        public void Draw()
         {
-            return dead;
+            MarioSprite.Draw();
         }
-
     }
 }

@@ -19,12 +19,15 @@ namespace Game1
         public IControllerHandler controllerHandler;
         public TextureWarehouse textureWarehouse;
         public PersistentData persistentData;
+        
 
         private SoundWarehouse soundWarehouse;
         private ILevel currentLevel;
         private SpriteBatch spriteBatch;
+        private SpriteFont spriteFont;
 
         public SpriteBatch SpriteBatch { get => spriteBatch; set => spriteBatch = value; }
+        public SpriteFont SpriteFont { get => spriteFont; set => spriteFont = value; }
         public ILevel CurrentLevel { get => currentLevel; set => currentLevel = value; }
         internal SoundWarehouse SoundWarehouse { get => soundWarehouse; set => soundWarehouse = value; }
 
@@ -58,7 +61,7 @@ namespace Game1
 
             textureWarehouse = new TextureWarehouse(this);
             soundWarehouse = new SoundWarehouse(this);
-
+            spriteFont = Content.Load<SpriteFont>("arial");
             MediaPlayer.Play(SoundWarehouse.main_theme);
         }
 
@@ -89,9 +92,7 @@ namespace Game1
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
             CurrentLevel.Draw();
-
             base.Draw(gameTime);
         }
     }

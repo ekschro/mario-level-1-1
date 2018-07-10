@@ -25,7 +25,7 @@ namespace Game1
             objectLevel = level;
             this.player = level.PlayerObject;
 
-            invulnerabilityTimer = 100;
+            invulnerabilityTimer = 0;
         }
 
         public void BlockCollisionRespondTop(IBlock block,int height,bool standing)

@@ -57,8 +57,10 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Blocks\BlueBrickBlock.cs" />
     <Compile Include="Blocks\BrickBlockWithStar.cs" />
     <Compile Include="Blocks\BrickBlockWithManyCoins.cs" />
+    <Compile Include="Blocks\Sprites\BlueBrickBlockSprite.cs" />
     <Compile Include="Blocks\Sprites\FlagBlockSprite.cs" />
     <Compile Include="Blocks\Sprites\FlagpoleBlockSprite.cs" />
     <Compile Include="Blocks\Sprites\CastleBlockSprite.cs" />
@@ -66,12 +68,15 @@
     <Compile Include="Blocks\FlagpoleBlock.cs" />
     <Compile Include="Blocks\FlagBlock.cs" />
     <Compile Include="Blocks\CastleBlock.cs" />
+    <Compile Include="Blocks\BlueStoneBlock.cs" />
+    <Compile Include="Blocks\Sprites\BlueStoneBlockSprite.cs" />
     <Compile Include="Collision\CollisionDetectionLogic.cs" />
     <Compile Include="ControllerHandler.cs" />
     <Compile Include="Enemy\koopa\KoopaShell.cs" />
     <Compile Include="Enemy\koopa\KoopaShellSprite.cs" />
     <Compile Include="Enemy\koopa\KoopaShellStateMachine.cs" />
     <Compile Include="FireballPhysics.cs" />
+    <Compile Include="FontWarehourse.cs" />
     <Compile Include="GeneralInterfaces\ITemporarySprite.cs" />
     <Compile Include="GeneralInterfaces\ITemporary.cs" />
     <Compile Include="IBackground.cs" />
@@ -113,13 +118,19 @@
     <Compile Include="TestMario\Interface\ITestMarioSprite.cs" />
     <Compile Include="TestMario\Interface\ITestMario.cs" />
     <Compile Include="TestMario\Interface\ITestMarioStateMachine.cs" />
-    <Compile Include="TestMario\Object\TestMario.cs" />
+    <Compile Include="TestMario\Object\TestDeadMario.cs" />
+    <Compile Include="TestMario\Object\TestFireMario.cs" />
+    <Compile Include="TestMario\Object\TestBigMario.cs" />
+    <Compile Include="TestMario\Object\TestSmallMario.cs" />
     <Compile Include="TestMario\Sprite\TestBigMarioSprite.cs" />
     <Compile Include="TestMario\Sprite\TestDeadMarioSprite.cs" />
     <Compile Include="TestMario\Sprite\TestFireMarioSprite.cs" />
     <Compile Include="TestMario\Sprite\TestMarioSprite.cs" />
     <Compile Include="TestMario\Sprite\TestSmallMarioSprite.cs" />
-    <Compile Include="TestMario\StateMachine\TestMarioStateMachine.cs" />
+    <Compile Include="TestMario\StateMachine\TestBigMarioStateMachine.cs" />
+    <Compile Include="TestMario\StateMachine\TestDeadMarioStateMachine.cs" />
+    <Compile Include="TestMario\StateMachine\TestFireMarioStateMachine.cs" />
+    <Compile Include="TestMario\StateMachine\TestSmallMarioStateMachine.cs" />
     <Compile Include="Physics\EnemyPhysics.cs" />
     <Compile Include="ICamera.cs" />
     <Compile Include="Physics\FireballPhysics.cs" />
