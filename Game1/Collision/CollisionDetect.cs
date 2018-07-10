@@ -269,7 +269,6 @@ namespace Game1
             EnemyEnemyCollisionDetect();
             BlockPickupCollisionDetect();
             collision.Update();
-
         }
     }
 }
