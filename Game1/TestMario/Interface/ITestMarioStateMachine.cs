@@ -16,6 +16,10 @@ namespace Game1
         void Update();
         bool GetDirection();
         bool FacingLeft();
+        Boolean IsWalking();
+        Boolean IsJumping();
+        Boolean IsIdle();
+        Boolean IsCrouching()
 
     }
 }

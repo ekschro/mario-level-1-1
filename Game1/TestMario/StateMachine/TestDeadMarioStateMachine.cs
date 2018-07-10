@@ -73,5 +73,25 @@ namespace Game1
                 return false;
             }
         }
+
+        public bool IsWalking()
+        {
+            return false;
+        }
+
+        public bool IsJumping()
+        {
+            return false;
+        }
+
+        public bool IsIdle()
+        {
+            return false;
+        }
+
+        public bool IsCrouching()
+        {
+            return false;
+        }
     }
 }

@@ -49,7 +49,7 @@ namespace Game1
             CurrentXPos = vector.X;
             CurrentYPos = vector.Y;
             MarioColor = Color.White;
-            MarioSprite = new MarioSmallIdleRight(game,this);
+            
             colorStartingTime = 5;
             colorTimer = 0;
             animationTimer = 0;
@@ -64,15 +64,15 @@ namespace Game1
         public void Draw()
         {
             ColorSelect();
-            MarioSprite.Draw();
+            testMario.Draw();
         }
 
         public void Update()
         {
-            if (!(MarioSprite is MarioDead))
+            if (!(testMario is TestDeadMario))
             {
                 physics.Update();
-                if (physics.XVelocity == 0 && MarioSprite is MarioBigWalkRight)
+                if (physics.XVelocity == 0 && MarioSprite is MarioBigWalkRight && )
                 {
                     MarioSprite = new MarioBigIdleRight(myGame,this);
                 } else if (physics.XVelocity == 0 && MarioSprite is MarioBigWalkLeft)
