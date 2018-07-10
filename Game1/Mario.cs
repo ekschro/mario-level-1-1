@@ -30,6 +30,9 @@ namespace Game1
         public bool Falling { get; set; }
         public bool Bump { get; set; }
         public bool Bounce { get; set; }
+
+        private bool play;
+
         public bool CanJump { get; set; }
         public bool IsStar { get => isStar; set => isStar = value; }
         public bool Invulnerability { get => invulnerability; set => invulnerability = value; }
@@ -54,6 +57,7 @@ namespace Game1
             CanJump = true;
             Falling = false;
             Bounce = false;
+            play = true;
         }
 
         public void Draw()
@@ -107,7 +111,15 @@ namespace Game1
             if(controllerHandler.MovingUp)
             {
                 UpAnimation();
+                /*if (play)
+                {
+                    SoundWarehouse.jump.Play();
+                    play = false;
+                }*/
             }
+
+            //if (CanJump)
+                //play = true;
 
             if (fireballTimer > 0)
                 fireballTimer--;
@@ -198,18 +210,6 @@ namespace Game1
             {
                 MarioColor = Color.White;
             }
-        }
-
-        public static Boolean CanGenerateProjectiles()
-        {
-            //if (MarioSprite.isFire())
-            //{
-            //    return true;
-            //}
-            //else
-            //{
-               return false;
-            //}
         }
     }
 }

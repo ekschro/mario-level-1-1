@@ -10,7 +10,7 @@ namespace Game1
     class FireballPhysics : IPhysics
     {
         private Game1 game;
-        private MarioFireBall obj;
+        private IEnemy obj;
         private float delta;
         private int velCap;
         private float xVelocity;
@@ -18,14 +18,14 @@ namespace Game1
 
         public float XVelocity { get => xVelocity; }
 
-        public FireballPhysics(Game1 game, MarioFireBall obj, int velCap)
+        public FireballPhysics(Game1 game, IEnemy obj, int velCap)
         {
             this.game = game;
             this.obj = obj;
 
             this.velCap = velCap;
-            xVelocity = (float)2;
-            yVelocity = (float)-1;
+            xVelocity = (float)5;
+            yVelocity = (float)-3;
 
             obj.IsFalling = true;
         }
@@ -40,20 +40,20 @@ namespace Game1
         public void NewPosX()
         {
             if (obj.MovingRight)
-                obj.SetGameObjectLocation(new Vector2(obj.GetGameObjectLocation().X - xVelocity, obj.GetGameObjectLocation().Y));
-            else
                 obj.SetGameObjectLocation(new Vector2(obj.GetGameObjectLocation().X + xVelocity, obj.GetGameObjectLocation().Y));
+            else
+                obj.SetGameObjectLocation(new Vector2(obj.GetGameObjectLocation().X - xVelocity, obj.GetGameObjectLocation().Y));
         }
 
         public void NewPosY()
         {
             if (obj.IsFalling)
             {
-                yVelocity += (float)(0.5 * 0.001 * Math.Pow(delta, 2));
+                yVelocity += (float)(0.5 * 0.005 * Math.Pow(delta, 2));
             }
             else
             {
-                yVelocity = (float)-1;
+                yVelocity = (float)-4.5;
                 obj.IsFalling = true;
             }
 

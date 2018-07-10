@@ -28,8 +28,8 @@ public class MarioDead : ISprite
 
         public void Draw()
         {
-            int width = TextureWareHouse.marioTexture.Width / player.TotalMarioColumns;
-            int height = TextureWareHouse.marioTexture.Height / player.TotalMarioRows;
+            int width = TextureWarehouse.marioTexture.Width / player.TotalMarioColumns;
+            int height = TextureWarehouse.marioTexture.Height / player.TotalMarioRows;
             int row = (int)((float)currentFrame / (float)player.TotalMarioColumns);
             int column = currentFrame % player.TotalMarioColumns;
             Bounce();
@@ -41,7 +41,7 @@ public class MarioDead : ISprite
             Rectangle destinationRectangle = new Rectangle(drawLocationX, drawLocationY, width, height);
 
             myGame.SpriteBatch.Begin();
-            myGame.SpriteBatch.Draw(TextureWareHouse.marioTexture, destinationRectangle, sourceRectangle, player.MarioColor);
+            myGame.SpriteBatch.Draw(TextureWarehouse.marioTexture, destinationRectangle, sourceRectangle, player.MarioColor);
             myGame.SpriteBatch.End();
         }
 
@@ -97,8 +97,6 @@ public class MarioDead : ISprite
         {
             return true;
         }
-
-
         public Vector2 GetGameObjectLocation()
         {
             return new Vector2(player.CurrentXPos, player.CurrentYPos);

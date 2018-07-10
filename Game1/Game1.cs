@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Input;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Xna.Framework.Media;
 
 [assembly:CLSCompliant(true)]
 namespace Game1
@@ -13,25 +14,20 @@ namespace Game1
     {
         GraphicsDeviceManager graphics;
         public GameTime delta;
-        private SpriteBatch spriteBatch;
         public IController mouseController;
         public IList<IController> controllerList;
         public IControllerHandler controllerHandler;
+        public TextureWarehouse textureWarehouse;
+        public PersistentData persistentData;
+
+        private SoundWarehouse soundWarehouse;
         private ILevel currentLevel;
-        //public int totalBlockFrames = 12;
-        public TextureWareHouse warehouse;
+        private SpriteBatch spriteBatch;
 
         public SpriteBatch SpriteBatch { get => spriteBatch; set => spriteBatch = value; }
         public ILevel CurrentLevel { get => currentLevel; set => currentLevel = value; }
+        internal SoundWarehouse SoundWarehouse { get => soundWarehouse; set => soundWarehouse = value; }
 
-        /*
-        public Texture2D marioTexture;
-        public Texture2D pickupTexture;
-        public Texture2D koopaTexture;
-        public Texture2D goombaTexture;
-        public Texture2D blockTexture;
-        */
-       
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -45,23 +41,25 @@ namespace Game1
         protected override void Initialize()
         {
             controllerList = new List<IController>();
-            
             controllerHandler = new ControllerHandler();
             controllerList.Add(new KeyboardController(this));
             controllerList.Add(new GamePadController(this));
+            persistentData = new PersistentData();
             //mouseController = new MouseController(this);
             
             base.Initialize();
         }
 
-       
+
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            CurrentLevel = new Level1("../../../../Content/LevelInfo.csv", this);
+            CurrentLevel = new Level1("../../../../Content/LevelInfo.csv", this, persistentData);
 
-            warehouse = new TextureWareHouse(this);
+            textureWarehouse = new TextureWarehouse(this);
+            soundWarehouse = new SoundWarehouse(this);
 
+            MediaPlayer.Play(SoundWarehouse.main_theme);
         }
 
         public void Reset()
@@ -91,12 +89,6 @@ namespace Game1
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            spriteBatch.Begin();
-
-            spriteBatch.Draw(TextureWareHouse.backgroundTexture, new Rectangle(0, 0, 800, 480), Color.White);
-
-            spriteBatch.End();
 
             CurrentLevel.Draw();
 

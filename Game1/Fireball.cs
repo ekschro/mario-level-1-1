@@ -37,6 +37,8 @@ namespace Game1
             yPosMax = yPos;
             MovingUp = true;
             MovingDown = false;
+
+            physics = new FireballPhysics(game, this, 0);
            
         }
        
@@ -57,22 +59,24 @@ namespace Game1
         public bool MovingUp { get => movingUp; set => movingUp = value; }
         public bool MovingDown { get => movingDown; set => movingDown = value; }
 
+        private FireballPhysics physics;
+
         public IEnemyStateMachine GetStateMachine => throw new NotImplementedException();
 
         public bool IsStomped { get => true; set => stomped = value; }
         private bool stomped;
         public void Draw()
         {
-            int width = TextureWareHouse.fireballs.Width / 4;
+            int width = TextureWarehouse.fireballs.Width / 4;
 
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(CurrentXPos);
 
-            Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, TextureWareHouse.fireballs.Height);
-            Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)CurrentYPos, width, TextureWareHouse.fireballs.Height);
+            Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, TextureWarehouse.fireballs.Height);
+            Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)CurrentYPos, width, TextureWarehouse.fireballs.Height);
 
 
             myGame.SpriteBatch.Begin();
-            myGame.SpriteBatch.Draw(TextureWareHouse.fireballs, destinationRectangle, sourceRectangle, Color.White);
+            myGame.SpriteBatch.Draw(TextureWarehouse.fireballs, destinationRectangle, sourceRectangle, Color.White);
             myGame.SpriteBatch.End();
         }
 
@@ -83,7 +87,10 @@ namespace Game1
 
         public void Update()
         {
-            
+            physics.Update();
+
+            Console.WriteLine(IsFalling);
+
             currentFrame++;
             if (currentFrame == 3)
             {
@@ -94,7 +101,7 @@ namespace Game1
             else
                 MovingUp = true;
             
-            if (MovingUp)
+            /*if (MovingUp)
             {
                 yPos = yPos - 1;
             } else
@@ -108,7 +115,7 @@ namespace Game1
             } else
             {
                 xPos = xPos - 5;
-            }
+            }*/
         }
         
 

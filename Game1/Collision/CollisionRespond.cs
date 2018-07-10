@@ -140,6 +140,9 @@ namespace Game1
         public void EnemyCollisionRespondTop(IEnemy enemy)
         {
             enemy.BeStomped();
+
+            objectLevel.PersistentData.EnemyStompedPoints();
+
             if (enemy is Goomba)
             {
                 objectLevel.TemporaryObjects.Add(new FlattenedGoomba(myGame, enemy.GetGameObjectLocation()));

@@ -16,5 +16,6 @@ namespace Game1
         List<ITemporary> TemporaryObjects { get; }
         IPlayer PlayerObject { get; set; }
         ICamera LevelCamera { get; set; }
+        PersistentData PersistentData { get; }
     }
 }

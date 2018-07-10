@@ -11,6 +11,7 @@ namespace Game1
     {
         public float CurrentXPos { get; set; }
         public float CurrentYPos { get; set; }
+        public bool MovingRight { get; set; }
         private bool falling;
         public bool IsFalling { get => falling; set => falling = value; }
         public bool IsStomped { get; set; }

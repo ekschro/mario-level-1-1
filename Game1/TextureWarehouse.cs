@@ -2,7 +2,7 @@
 using System;
 
 namespace Game1 {
-    public class TextureWareHouse
+    public class TextureWarehouse
     {
         public static Texture2D marioTexture;
         public static Texture2D pickupTexture;
@@ -22,7 +22,7 @@ namespace Game1 {
 
 
         Game1 myGame;
-        public TextureWareHouse(Game1 game)
+        public TextureWarehouse(Game1 game)
         {
             myGame = game;
 

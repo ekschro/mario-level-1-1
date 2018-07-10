@@ -83,9 +83,17 @@ namespace Game1
                 {
                     enemyBox = new Rectangle(enemyX, enemyY+8, 16, 16);
                 }
+                else if (enemyArray[j] is Koopa && enemyArray[j].IsStomped)
+                {
+                    enemyBox = new Rectangle(enemyX, enemyY + 2, 16, 16);
+                }
+                else if (enemyArray[j] is MarioFireBall)
+                {
+                    enemyBox = new Rectangle(enemyX, enemyY, 6, 6);
+                }
                 else
                 {
-                    enemyBox = new Rectangle(enemyX, enemyY+2, 16, 16);
+                    enemyBox = new Rectangle(enemyX, enemyY, 16, 16);
                 }
 
                 blockArray = level1.BlockObjects.ToArray();
@@ -111,23 +119,7 @@ namespace Game1
                     if (enemyBox.Intersects(blockBox))
                     {
                         Rectangle.Intersect(ref enemyBox, ref blockBox, out intersect);
-                        if (intersect.Height < intersect.Width && enemyY < blockY && enemyArray[j] is MarioFireBall)
-                        {
-                            MarioFireBall x = (MarioFireBall)enemyArray[j];
-                            x.Update();
-                        }
-                        else if (intersect.Height > intersect.Width && enemyX < blockX && enemyArray[j] is MarioFireBall)
-                        {
-                            level1.EnemyObjects.RemoveAt(size);
-                            size--;
-                            
-                        }
-                        else if (intersect.Height > intersect.Width && enemyX > blockX && enemyArray[j] is MarioFireBall)
-                        {
-                            level1.EnemyObjects.RemoveAt(size);
-                            size--;
-
-                        } else if (intersect.Height < intersect.Width && enemyY < blockY)
+                        if (intersect.Height < intersect.Width && enemyY < blockY)
                         {
                             collision.EnemyCollisionBlockRespondYDirection(enemyArray[j], intersect.Height, bottom);
                             bottom = true;

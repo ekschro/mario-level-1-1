@@ -10,7 +10,7 @@ namespace Game1
         private ICollision collisionDetect;
         private ICamera levelCamera;
         private Game1 myGame;
-
+        private PersistentData persistentData;
         private IPlayer playerObject;
         private IBackground backgroundObject;
         private List<IBlock> blocks;
@@ -27,11 +27,12 @@ namespace Game1
         
 
         public ICamera LevelCamera { get => levelCamera; set => levelCamera = value; }
+        public PersistentData PersistentData { get => persistentData; }
 
-
-        public Level1(string fileName, Game1 game)
+        public Level1(string fileName, Game1 game, PersistentData persistantData)
         {
             myGame = game;
+            this.persistentData = persistantData;
             levelObjects = new List<IGameObject>();
             ILoader loader = new LevelLoader(game);
 
