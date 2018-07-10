@@ -111,15 +111,15 @@ namespace Game1
             if(controllerHandler.MovingUp)
             {
                 UpAnimation();
-                /*if (play)
+                if (play)
                 {
                     SoundWarehouse.jump.Play();
                     play = false;
-                }*/
+                }
             }
 
-            //if (CanJump)
-                //play = true;
+           if (CanJump)
+                play = true;
 
             if (fireballTimer > 0)
                 fireballTimer--;
