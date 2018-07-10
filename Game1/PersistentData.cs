@@ -65,8 +65,14 @@ namespace Game1
             testPrint(200);
         }
 
-        public void ResetPointsAndCoins()
+        public void OneUpLives()
         {
+            lives += 1;
+        }
+
+        public void ResetAndUpdateLives()
+        {
+            lives -= 1;
             points = 0;
             coins = 0;
         }
