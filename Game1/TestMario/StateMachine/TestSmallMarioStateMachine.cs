@@ -17,18 +17,11 @@ namespace Game1
         public TestSmallMarioStateMachine(ITestMarioSprite sprite)
         {
             marioSprite = sprite;
+            
         }
         public void ChangeDirection()
         {
             facingLeft = !facingLeft;
-        }
-        public void Upgrade()
-        {
-            
-        }
-        public void Downgrade()
-        {
-           
         }
         public void Idle()
         {

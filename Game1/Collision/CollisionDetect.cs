@@ -269,9 +269,6 @@ namespace Game1
             EnemyEnemyCollisionDetect();
             BlockPickupCollisionDetect();
             collision.Update();
-
-            if (player.CurrentYPos > 800)
-                mygame.Reset();
         }
     }
 }
