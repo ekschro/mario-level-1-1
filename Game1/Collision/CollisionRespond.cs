@@ -67,7 +67,6 @@ namespace Game1
                 player.CurrentYPos += height;
                 player.Bump = true;
             }
-                
 
             if (player.MarioSprite.isSmall() && block is BrickBlock)
             {
@@ -90,6 +89,7 @@ namespace Game1
                 objectLevel.BlockObjects.Remove(block);
                 objectLevel.BlockObjects.Add(new UsedBlock(myGame, block.GetGameObjectLocation()));
                 objectLevel.TemporaryObjects.Add(new Coin(myGame, block.GetGameObjectLocation()));
+                objectLevel.PersistentData.CoinCollectedPoints();
             }
             else if (block is BrickBlockWithStar)
             {
@@ -110,12 +110,14 @@ namespace Game1
                     objectLevel.TemporaryObjects.Add(new Coin(myGame, block.GetGameObjectLocation()));
                     ((BrickBlockWithManyCoins)block).CoinsLeft--;
                     ((BrickBlockWithManyCoins)block).Bounce();
+                    objectLevel.PersistentData.CoinCollectedPoints();
                 }
                 else
                 {
                     objectLevel.TemporaryObjects.Add(new Coin(myGame, block.GetGameObjectLocation()));
                     objectLevel.BlockObjects.Remove(block);
                     objectLevel.BlockObjects.Add(new UsedBlock(myGame, block.GetGameObjectLocation()));
+                    objectLevel.PersistentData.CoinCollectedPoints();
                 }
             }
 
@@ -301,7 +303,8 @@ namespace Game1
         public void PickupCollisionRespondTop(IPickup pickup)
         {
             pickup.Picked();
-           
+            objectLevel.PersistentData.PowerUpCollectPoints();
+
             if (pickup is Fireflower)
             {
                 player.MarioSprite.FireMarioCommandCalled();
@@ -335,7 +338,8 @@ namespace Game1
         public void PickupCollisionRespondBottom(IPickup pickup)
         {
             pickup.Picked();
-         
+            objectLevel.PersistentData.PowerUpCollectPoints();
+
             if (pickup is Fireflower)
             {
                 player.MarioSprite.FireMarioCommandCalled();
@@ -378,7 +382,8 @@ namespace Game1
         public void PickupCollisionRespondLeft(IPickup pickup)
         {
             pickup.Picked();
-            
+            objectLevel.PersistentData.PowerUpCollectPoints();
+
             if (pickup is Fireflower)
             {
                 player.MarioSprite.FireMarioCommandCalled();
@@ -429,7 +434,8 @@ namespace Game1
         public void PickupCollisionRespondRight(IPickup pickup)
         {
             pickup.Picked();
-            
+            objectLevel.PersistentData.PowerUpCollectPoints();
+
 
             if (pickup is Fireflower)
             {
