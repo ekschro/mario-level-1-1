@@ -21,7 +21,7 @@ namespace Game1
             marioObject = Mario;
             myGame = game;
             startFrame = 12 + 28; //MarioDead
-            endFrame = 2;
+            //endFrame = ;
             currentFrame = startFrame;
             this.player = player;
         }
@@ -33,6 +33,7 @@ namespace Game1
 
         public void Update()
         {
+            /*
             if (marioObject.GetStateMachine.FacingLeft())
             {
                 currentFrame--;
@@ -44,6 +45,7 @@ namespace Game1
             }
             if (currentFrame == endFrame)
                 currentFrame = startFrame;
+                */
         }
 
         public void Draw()

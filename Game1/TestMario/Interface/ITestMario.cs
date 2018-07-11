@@ -15,7 +15,7 @@ namespace Game1
         void Upgrade();
         void Downgrade();
         void WalkLeft();
-        void walkRight();
+        void WalkRight();
 
         ITestMarioStateMachine GetStateMachine { get; }
     }

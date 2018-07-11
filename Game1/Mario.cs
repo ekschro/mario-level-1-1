@@ -8,7 +8,7 @@ namespace Game1
         private Game1 myGame;
         private int animationTimer;
         private ITestMario testMario;
-        private static ISprite playerSprite;
+        //private static ISprite playerSprite;
         public static IPhysics physics;
         private static Color marioColor;
         private static float currentXPosition;
@@ -22,7 +22,7 @@ namespace Game1
         private static bool isStar = false;
         private static bool invulnerability = false;
 
-        public ISprite MarioSprite { get => playerSprite; set => playerSprite = value; }
+        //public ISprite MarioSprite { get => playerSprite; set => playerSprite = value; }
         public Color MarioColor { get => marioColor; set => marioColor = value; }
         public float CurrentXPos { get => currentXPosition; set => currentXPosition = value; }
         public float CurrentYPos { get => currentYPosition; set => currentYPosition = value; }
@@ -112,7 +112,7 @@ namespace Game1
             if (animationTimer == 5)
             {
                 //this.MarioSprite.RightCommandCalled();
-                this.TestMario.walkRight();
+                this.TestMario.WalkRight();
                 animationTimer = 0;
             } else
             {

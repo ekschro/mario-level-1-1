@@ -97,7 +97,7 @@ namespace Game1
         {
             testMarioLocation.X -= 1;
         }
-        public void walkRight()
+        public void WalkRight()
         {
             testMarioLocation.X = +1;
         }

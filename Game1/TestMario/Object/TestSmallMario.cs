@@ -22,7 +22,7 @@ namespace Game1
         private int cyclePosition = 0;
         private int cycleLength = 8;
         
-        private bool dead = false;
+        //private bool dead = false;
        
         private IPlayer player;
         Mario character;
@@ -92,7 +92,7 @@ namespace Game1
         {
             testMarioLocation.X -= 1;
         }
-        public void walkRight()
+        public void WalkRight()
         {
             testMarioLocation.X = +1;
         }
