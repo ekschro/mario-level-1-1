@@ -99,20 +99,7 @@ namespace Game1
                     controller.Update();
                 }
 
-            }
-            else if (controllerList.ToArray()[0] is PauseCommand)
-            {
-                pause = true;
-            } else
-            {
-                foreach (IController controller in controllerList.ToArray())
-                {
-                    if (controller is Pause2Command)
-                    {
-                        controller.Update();
-                    }
-                }
-            }
+           
             cyclePosition++;
             if (cyclePosition == cycleLength)
             {
