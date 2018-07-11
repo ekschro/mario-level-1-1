@@ -7,32 +7,27 @@ using Microsoft.Xna.Framework;
 
 namespace Game1
 {
-    public class BlueBrickBlock : IBlock
+    public class PipeOnSideBlock : IBlock
     {
         public float CurrentXPos { get; set; }
-        public float CurrentYPos { get; set; } 
+        public float CurrentYPos { get; set; }
 
-        private IBlockSprite blueBrickBlockSprite;
+        private IBlockSprite pipeOnSideBlockSprite;
         //private Game1 myGame;
         private Vector2 blockLocation;
-
-        private Vector2 blockSize;
         private Rectangle blockRectangle;
 
-        public Vector2 BlockSize { get => blockSize; set => blockSize = value; }
-
-        public BlueBrickBlock(Game1 game, Vector2 location, Vector2 size)
+        public PipeOnSideBlock(Game1 game, Vector2 location)
         {
-            blueBrickBlockSprite = new BlueBrickBlockSprite(game, this);
+            pipeOnSideBlockSprite = new PipeOnSideBlockSprite(game, this);
             //myGame = game;
             blockLocation = location;
-            blockSize = size;
-            blockRectangle = new Rectangle((int)location.X, (int)location.Y, (int)size.X, (int)size.Y);
+            blockRectangle = new Rectangle((int)location.X, (int)location.Y, 48, 32);
         }
 
         public void Draw()
         {
-            blueBrickBlockSprite.Draw();
+            pipeOnSideBlockSprite.Draw();
         }
 
         public Vector2 GetGameObjectLocation()
@@ -47,7 +42,7 @@ namespace Game1
 
         public void Update()
         {
-            blueBrickBlockSprite.Update();
+            pipeOnSideBlockSprite.Update();
         }
 
     }

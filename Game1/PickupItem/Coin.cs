@@ -56,7 +56,7 @@ namespace Game1
         }
         public void Picked()
         {
-            coinPickupSprite = new EmptyPickupSprite(myGame, new EmptyPickup(myGame, pickupLocation));
+            //coinPickupSprite = new EmptyPickupSprite(myGame, new EmptyPickup(myGame, pickupLocation));
         }
 
         public void Collide()
