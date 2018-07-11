@@ -24,7 +24,13 @@ namespace Game1
 
         public void Execute()
         {
-            myGame.Pause = false;
+            if (myGame.Pause)
+            {
+                myGame.Pause = false;
+            } else
+            {
+                myGame.Pause = true;
+            }
         }
     }
 }

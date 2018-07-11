@@ -42,7 +42,7 @@ namespace Game1
             
             controllerMappings.Add(Buttons.A, new UpCommand(myGame));
             controllerMappings.Add(Buttons.B, new FireballCommand(myGame));
-            
+            controllerMappings.Add(Buttons.DPadUp, new Pause2Command(myGame));
     }
 
         public void Update()
@@ -51,8 +51,12 @@ namespace Game1
 
             foreach (Buttons button in pressedButtons)
             {
-                if (controllerMappings.ContainsKey(button))
-                { 
+                if (controllerMappings.ContainsKey(button) && myGame.Pause)
+                {
+                    controllerMappings[button].Execute();
+                    //recentKeys.Add(key);
+                }
+                else if (button.Equals(Buttons.DPadUp)){
                     controllerMappings[button].Execute();
                 }
             }

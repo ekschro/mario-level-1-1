@@ -17,13 +17,13 @@ namespace Game1
         private Dictionary<Keys, ICommand> controllerMappings;
         //private List<Keys> recentKeys;
         private ICommand none;
-        
+        Game1 myGame;
         public KeyboardController(Game1 game)
         {
             none = new NoCommand(game);
             controllerMappings = new Dictionary<Keys, ICommand>();
             //recentKeys = new List<Keys>();
-
+            myGame = game;
             controllerMappings.Add(Keys.Q, new ExitGameCommand(game));
             controllerMappings.Add(Keys.Z, new UpCommand(game));
             controllerMappings.Add(Keys.S, new DownCommand(game));
@@ -40,6 +40,7 @@ namespace Game1
             controllerMappings.Add(Keys.R, new ResetCommand(game));
             controllerMappings.Add(Keys.M, new MouseToggleCommand(game));
             controllerMappings.Add(Keys.X, new FireballCommand(game));
+            controllerMappings.Add(Keys.P, new Pause2Command(myGame));
     }
 
         public void Update()
@@ -50,10 +51,12 @@ namespace Game1
 
             foreach (Keys key in pressedKeys)
             {
-                if (controllerMappings.ContainsKey(key))
+                if (controllerMappings.ContainsKey(key) && myGame.Pause)
                 {
                     controllerMappings[key].Execute();
                     //recentKeys.Add(key);
+                } else if (key.Equals(Keys.P)){
+                    controllerMappings[key].Execute();
                 }
                 //else if (recentKeys.Contains(key))
                 //    recentKeys.Remove(key);
