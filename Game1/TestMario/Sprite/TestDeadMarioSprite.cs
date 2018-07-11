@@ -15,14 +15,15 @@ namespace Game1
         private int currentFrame;
         private int startFrame;
         private int endFrame;
-
-        public TestDeadMarioSprite(Game1 game, TestDeadMario Mario)
+        private IPlayer player;
+        public TestDeadMarioSprite(Game1 game, TestDeadMario Mario, IPlayer player)
         {
             marioObject = Mario;
             myGame = game;
             startFrame = 12 + 28; //MarioDead
             endFrame = 2;
             currentFrame = startFrame;
+            this.player = player;
         }
         public void ChangeFrame(int start, int end)
         {
@@ -47,6 +48,7 @@ namespace Game1
 
         public void Draw()
         {
+            /*
             int width = TextureWarehouse.marioTexture.Width / 28;
 
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(marioObject.GetGameObjectLocation().X);
@@ -56,6 +58,21 @@ namespace Game1
 
             myGame.SpriteBatch.Begin();
             myGame.SpriteBatch.Draw(TextureWarehouse.goombaTexture, destinationRectangle, sourceRectangle, Color.Yellow);
+            myGame.SpriteBatch.End();
+            */
+            int width = TextureWarehouse.marioTexture.Width / player.TotalMarioColumns;
+            int height = TextureWarehouse.marioTexture.Height / player.TotalMarioRows;
+            int row = (int)((float)currentFrame / (float)player.TotalMarioColumns);
+            int column = currentFrame % player.TotalMarioColumns;
+
+            int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(player.CurrentXPos);
+
+            Rectangle sourceRectangle = new Rectangle(width * column, (height * row), width, height);
+            Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)player.CurrentYPos, width, height);
+
+
+            myGame.SpriteBatch.Begin();
+            myGame.SpriteBatch.Draw(TextureWarehouse.marioTexture, destinationRectangle, sourceRectangle, player.MarioColor);
             myGame.SpriteBatch.End();
         }
 

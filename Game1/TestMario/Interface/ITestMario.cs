@@ -14,7 +14,9 @@ namespace Game1
         void Crouching();
         void Upgrade();
         void Downgrade();
-        
+        void WalkLeft();
+        void walkRight();
+
         ITestMarioStateMachine GetStateMachine { get; }
     }
 }
