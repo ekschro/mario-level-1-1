@@ -42,7 +42,7 @@ namespace Game1 {
             flagTexture = myGame.Content.Load<Texture2D>("flag");
             blueStoneBlockTexture = myGame.Content.Load<Texture2D>("blueStone");
             blueBrickBlockTexture = myGame.Content.Load<Texture2D>("blueBrick");
-            pipeOnSideBlockTexture = myGame.Content.Load<Texture2D>("pipeOnSide");
+           // pipeOnSideBlockTexture = myGame.Content.Load<Texture2D>("pipeOnSide");
         }
     }
 }

@@ -6,7 +6,7 @@ namespace Game1
     public interface IPlayer : IGameObject
     {
         bool IsStar { get; set; }
-        ISprite MarioSprite { get; set; }
+        ITestMario TestMario { get; set; }
         bool CanJump { get; set; }
         bool Falling { get; set; }
         bool Bump { get; set; }

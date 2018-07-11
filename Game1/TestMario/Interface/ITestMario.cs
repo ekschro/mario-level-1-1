@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Game1
 {
-    interface ITestMario : IGameObject
+    public interface ITestMario : IGameObject
     {
         void Idle();
         void Walking();

@@ -30,7 +30,7 @@ namespace Game1
         public bool Falling { get; set; }
         public bool Bump { get; set; }
         public bool Bounce { get; set; }
-
+       
         private bool play;
 
         public bool CanJump { get; set; }
@@ -39,7 +39,7 @@ namespace Game1
         public int TotalMarioRows { get => totalMarioRows; set => totalMarioRows = value; }
         public int TotalMarioColumns { get => totalMarioColumns; set => totalMarioColumns = value; }
         public int FireBallTimer { get => fireballTimer; set => fireballTimer = value; }
-        internal ITestMario TestMario { get => testMario; set => testMario = value; }
+        public ITestMario TestMario { get => testMario; set => testMario = value; }
 
         public Mario(Game1 game, Vector2 vector)
         {
