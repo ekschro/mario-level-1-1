@@ -82,6 +82,7 @@ namespace Game1
         public void Reset()
         {
             LoadContent();
+            cyclePosition = 0;
         }
 
         protected override void UnloadContent()
