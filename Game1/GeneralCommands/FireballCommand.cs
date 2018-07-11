@@ -30,7 +30,7 @@ namespace Game1
                 ((MarioPhysics)(Mario.physics)).RunningCheck();
             }
             
-            if (player.MarioSprite.isFire())
+            if (player.TestMario.GetStateMachine is TestFireMarioStateMachine)
             {
                 if (((Mario)player).FireBallTimer == 0) {
                     myGame.CurrentLevel.EnemyObjects.Add(new MarioFireBall(myGame));

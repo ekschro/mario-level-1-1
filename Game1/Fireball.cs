@@ -19,7 +19,7 @@ namespace Game1
             player = game.CurrentLevel.PlayerObject;
             falling = true;
 
-            if (controllerHandler.MovingRight || ((Mario)player).MarioSprite is MarioFireIdleRight)
+            if (controllerHandler.MovingRight || ((Mario)player).TestMario is TestFireMario)
             {
                 currentFrame = 2;
                 MovingRight = true;

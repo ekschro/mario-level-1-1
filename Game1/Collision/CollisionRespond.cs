@@ -49,12 +49,12 @@ namespace Game1
                 player.Bump = true;
             }
 
-            if (player.MarioSprite.isSmall() && block is BrickBlock)
+            if (player.TestMario.GetStateMachine is TestSmallMarioStateMachine && block is BrickBlock)
             {
                 ((BrickBlock)block).Bounce();
             }
 
-            if (block is BrickBlock && !player.MarioSprite.isSmall())
+            if (block is BrickBlock && !(player.TestMario.GetStateMachine is TestSmallMarioStateMachine))
             {
                 objectLevel.BlockObjects.Remove(block);
                 objectLevel.PersistentData.BlockDestroyPoints();
@@ -63,7 +63,7 @@ namespace Game1
             {
                 objectLevel.BlockObjects.Remove(block);
                 objectLevel.BlockObjects.Add(new UsedBlock(myGame, block.GetGameObjectLocation()));
-                if (player.MarioSprite.isSmall())
+                if (player.TestMario.GetStateMachine is TestSmallMarioStateMachine)
                     objectLevel.PickupObjects.Add(new RedMushroom(myGame, block.GetGameObjectLocation()));
                 else
                     objectLevel.PickupObjects.Add(new Fireflower(myGame, block.GetGameObjectLocation()));
@@ -312,7 +312,7 @@ namespace Game1
 
             if (pickup is Fireflower)
             {
-                player.MarioSprite.FireMarioCommandCalled();
+                player.TestMario = new TestFireMario(myGame, new Vector2(player.CurrentXPos, player.CurrentYPos), (Mario)player);
             }
             else if (pickup is GreenMushroom)
             {
@@ -320,8 +320,8 @@ namespace Game1
             }
             else if (pickup is RedMushroom)
             {
-                if (!player.MarioSprite.isFire())
-                    player.MarioSprite.BigMarioCommandCalled();
+                if (!(player.TestMario is TestFireMario))
+                    player.TestMario = new TestBigMario(myGame, new Vector2(player.CurrentXPos, player.CurrentYPos), (Mario)player);
             }
             else if (pickup is Coin)
             {
@@ -348,7 +348,7 @@ namespace Game1
 
             if (pickup is Fireflower)
             {
-                player.MarioSprite.FireMarioCommandCalled();
+                player.TestMario = new TestFireMario(myGame, new Vector2(player.CurrentXPos, player.CurrentYPos), (Mario)player);
             }
             else if (pickup is GreenMushroom)
             {
@@ -356,8 +356,11 @@ namespace Game1
             }
             else if (pickup is RedMushroom)
             {
-                if (!player.MarioSprite.isFire())
-                player.MarioSprite.BigMarioCommandCalled();
+                if (!(player.TestMario is TestFireMario))
+                {
+                    player.TestMario = new TestBigMario(myGame, new Vector2(player.CurrentXPos, player.CurrentYPos), (Mario)player);
+                }
+               
             }
             else if (pickup is Coin)
             {
@@ -392,7 +395,7 @@ namespace Game1
 
             if (pickup is Fireflower)
             {
-                player.MarioSprite.FireMarioCommandCalled();
+                player.TestMario = new TestFireMario(myGame, new Vector2(player.CurrentXPos, player.CurrentYPos), (Mario)player);
             }
             else if (pickup is GreenMushroom)
             {
@@ -400,8 +403,8 @@ namespace Game1
             }
             else if (pickup is RedMushroom)
             {
-                if (!player.MarioSprite.isFire())
-                    player.MarioSprite.BigMarioCommandCalled();
+                if (!(player.TestMario is TestFireMario))
+                    player.TestMario = new TestBigMario(myGame, new Vector2(player.CurrentXPos, player.CurrentYPos), (Mario)player);
             }
             else if (pickup is Coin)
             {
@@ -445,7 +448,7 @@ namespace Game1
 
             if (pickup is Fireflower)
             {
-                player.MarioSprite.FireMarioCommandCalled();
+                player.TestMario = new TestFireMario(myGame, new Vector2(player.CurrentXPos, player.CurrentYPos), (Mario)player);
             }
             else if (pickup is GreenMushroom)
             {
@@ -453,8 +456,8 @@ namespace Game1
             }
             else if (pickup is RedMushroom)
             {
-                if (!player.MarioSprite.isFire())
-                    player.MarioSprite.BigMarioCommandCalled();
+                if (!(player.TestMario is TestFireMario))
+                    player.TestMario = new TestBigMario(myGame, new Vector2(player.CurrentXPos, player.CurrentYPos), (Mario)player);
             }
             else if (pickup is Coin)
             {
@@ -480,19 +483,19 @@ namespace Game1
             {
 
             }
-            else if (player.MarioSprite.isFire())
+            else if (player.TestMario is TestFireMario)
             {
-                player.MarioSprite.BigMarioCommandCalled();
+                player.TestMario = new TestBigMario(myGame, new Vector2(player.CurrentXPos, player.CurrentYPos), (Mario)player);
                 player.Invulnerability = true;
             }
-            else if (!player.MarioSprite.isSmall())
+            else if (!(player.TestMario is TestSmallMario))
             {
-                player.MarioSprite.SmallMarioCommandCalled();
+                player.TestMario = new TestSmallMario(myGame, new Vector2(player.CurrentXPos, player.CurrentYPos), (Mario)player);
                 player.Invulnerability = true;
             }
             else
             {
-                player.MarioSprite.DeadMarioCommandCalled();
+                player.TestMario = new TestDeadMario(myGame, new Vector2(player.CurrentXPos, player.CurrentYPos), (Mario)player);
             }
         }
 
