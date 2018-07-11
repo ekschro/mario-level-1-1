@@ -16,7 +16,7 @@ namespace Game1
         private int startFrame;
         private int endFrame;
         private SpriteEffects GoombaSpriteEffects;
-        private int goombaColumn;
+        private const int goombaColumn = 4;
 
         public GoombaSprite(Game1 game,Goomba goomba)
         {

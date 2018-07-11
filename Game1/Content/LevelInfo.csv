@@ -10,14 +10,12 @@ QuestionBlockWithCoin,352,78
 Goomba,300,190
 BottomLeftPipeBlock,448,190
 BottomRightPipeBlock,464,190
-TopLeftPipeBlock,448,174
-TopRightPipeBlock,464,174
+TopPipeBlock,448,174
 BottomLeftPipeBlock,592,190
 BottomRightPipeBlock,608,190
 BottomLeftPipeBlock,592,174
 BottomRightPipeBlock,608,174
-TopLeftPipeBlock,592,158
-TopRightPipeBlock,608,158
+TopPipeBlock,592,158
 Goomba,624,190
 BottomLeftPipeBlock,720,190
 BottomRightPipeBlock,736,190
@@ -25,8 +23,7 @@ BottomLeftPipeBlock,720,174
 BottomRightPipeBlock,736,174
 BottomLeftPipeBlock,720,158
 BottomRightPipeBlock,736,158
-TopLeftPipeBlock,720,142
-TopRightPipeBlock,736,142
+TopPipeBlock,720,142
 Goomba,852,190
 Goomba,876,190
 BottomLeftPipeBlock,896,190
@@ -35,8 +32,7 @@ BottomLeftPipeBlock,896,174
 BottomRightPipeBlock,912,174
 BottomLeftPipeBlock,896,158
 BottomRightPipeBlock,912,158
-TopLeftPipeBlock,896,142
-TopRightPipeBlock,912,142
+TopPipeBlock,896,142
 HiddenBlockWith1Up,1024,126
 StoneBlock,1136,206,224,32
 BrickBlock,1232,142
@@ -130,8 +126,7 @@ StairBlock,2496,158
 StairBlock,2480,142
 BottomLeftPipeBlock,2608,190
 BottomRightPipeBlock,2624,190
-TopLeftPipeBlock,2608,174
-TopRightPipeBlock,2624,174
+TopPipeBlock,2608,174
 BrickBlock,2688,142
 BrickBlock,2704,142
 QuestionBlockWithCoin,2720,142
@@ -140,8 +135,7 @@ Goomba,2748,190
 Goomba,2808,190
 BottomLeftPipeBlock,2896,190
 BottomRightPipeBlock,2912,190
-TopLeftPipeBlock,2896,174
-TopRightPipeBlock,2912,174
+TopPipeBlock,2896,174
 StairBlock,2928,190
 StairBlock,2944,190
 StairBlock,2960,190

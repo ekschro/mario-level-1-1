@@ -7,28 +7,25 @@ using Microsoft.Xna.Framework;
 
 namespace Game1
 {
-    public class TopRightPipeBlock : IBlock
+    public class TopPipeBlock : IBlock
     {
         public float CurrentXPos { get; set; }
         public float CurrentYPos { get; set; }
 
-        private IBlockSprite topRightPipeBlockSprite;
-        //private Game1 myGame;
+        private IBlockSprite topPipeBlockSprite;
         private Vector2 blockLocation;
         private Rectangle blockRectangle;
 
-        public TopRightPipeBlock(Game1 game, Vector2 location)
+        public TopPipeBlock(Game1 game, Vector2 location)
         {
-            topRightPipeBlockSprite = new TopRightPipeBlockSprite(game, this);
-            //myGame = game;
+            topPipeBlockSprite = new TopPipeBlockSprite(game, this);
             blockLocation = location;
-
-            blockRectangle = new Rectangle((int)location.X, (int)location.Y, 16, 16);
+            blockRectangle = new Rectangle((int)location.X, (int)location.Y, 32, 16);
         }
 
         public void Draw()
         {
-            topRightPipeBlockSprite.Draw();
+            topPipeBlockSprite.Draw();
         }
 
         public Vector2 GetGameObjectLocation()
@@ -43,7 +40,8 @@ namespace Game1
 
         public void Update()
         {
-            topRightPipeBlockSprite.Update();
+            topPipeBlockSprite.Update();
         }
+
     }
 }

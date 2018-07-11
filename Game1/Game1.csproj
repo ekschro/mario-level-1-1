@@ -98,10 +98,8 @@
     <Compile Include="Blocks\QuestionPowerUpBlock.cs" />
     <Compile Include="Blocks\Sprites\BottomLeftPipeBlockSprite.cs" />
     <Compile Include="Blocks\Sprites\BottomRightPipeBlockSprite.cs" />
-    <Compile Include="Blocks\Sprites\TopRightPipeBlockSprite.cs" />
-    <Compile Include="Blocks\Sprites\TopLeftPipeBlockSprite.cs" />
-    <Compile Include="Blocks\TopLeftPipeBlock.cs" />
-    <Compile Include="Blocks\TopRightPipeBlock.cs" />
+    <Compile Include="Blocks\Sprites\TopPipeBlockSprite.cs" />
+    <Compile Include="Blocks\TopPipeBlock.cs" />
     <Compile Include="Blocks\BrickBlock.cs" />
     <Compile Include="Blocks\EmptyBlock.cs" />
     <Compile Include="Blocks\QuestionBlock.cs" />
