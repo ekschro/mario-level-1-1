@@ -29,7 +29,7 @@ namespace Game1
         public TestFireMario(Game1 game, Vector2 location, Mario mario)
         {
             testMarioLocation = location;
-            marioSprite = new TestFireMarioSprite(game, this);
+            marioSprite = new TestFireMarioSprite(game, this, (IPlayer) mario);
             stateMachine = new TestFireMarioStateMachine(marioSprite);
             character = mario;
             myGame = game;

@@ -32,7 +32,7 @@ namespace Game1
         {
             testMarioLocation = location;
             myGame = game;
-            marioSprite = new TestBigMarioSprite(game, this);
+            marioSprite = new TestBigMarioSprite(game, this, (IPlayer) mario);
             stateMachine = new TestBigMarioStateMachine(marioSprite);
             character = mario;
         }

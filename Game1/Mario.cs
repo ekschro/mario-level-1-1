@@ -111,7 +111,7 @@ namespace Game1
         {
             if (animationTimer == 5)
             {
-                this.MarioSprite.RightCommandCalled();
+                this.testMario.Update();
                 animationTimer = 0;
             } else
             {
@@ -123,7 +123,7 @@ namespace Game1
         {
             if (animationTimer == 5)
             {
-                this.MarioSprite.UpCommandCalled();
+                this.testMario.Update();
                 animationTimer = 0;
             }
             else
@@ -136,7 +136,7 @@ namespace Game1
         {
             if (animationTimer == 5)
             {
-                this.MarioSprite.DownCommandCalled();
+                this.testMario.Update();
                 animationTimer = 0;
             }
             else
@@ -149,7 +149,7 @@ namespace Game1
         {
             if (animationTimer == 5)
             {
-                this.MarioSprite.LeftCommandCalled();
+                this.testMario.Update();
                 animationTimer = 0;
             }
             else

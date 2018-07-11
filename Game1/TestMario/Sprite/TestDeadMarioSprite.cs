@@ -15,15 +15,28 @@ namespace Game1
         private int currentFrame;
         private int startFrame;
         private int endFrame;
-
-        public TestDeadMarioSprite(Game1 game, TestDeadMario Mario)
+        private IPlayer player2;
+        private float bouncePosition;
+        private float bounceVelocity;
+        private float bounceGravity;
+        private float bounceTimer;
+        public TestDeadMarioSprite(Game1 game, TestDeadMario Mario, IPlayer player)
         {
             marioObject = Mario;
             myGame = game;
             startFrame = 12 + 28; //MarioDead
             endFrame = 2;
             currentFrame = startFrame;
-        }
+            player2 = player;
+           
+        bouncePosition = 0f;
+            bounceVelocity = -3.0f;
+            bounceGravity = .07f;
+            bounceTimer = 2*((bounceVelocity* bounceVelocity) / bounceGravity);
+
+            Microsoft.Xna.Framework.Media.MediaPlayer.Play(SoundWarehouse.died_theme);
+
+    }
         public void ChangeFrame(int start, int end)
         {
             startFrame = start;
@@ -47,19 +60,30 @@ namespace Game1
 
         public void Draw()
         {
-            int width = TextureWarehouse.marioTexture.Width / 28;
+            int width = TextureWarehouse.marioTexture.Width / player2.TotalMarioColumns;
+            int height = TextureWarehouse.marioTexture.Height / player2.TotalMarioRows;
+            int row = (int)((float)currentFrame / (float)player2.TotalMarioColumns);
+            int column = currentFrame % player2.TotalMarioColumns;
+            Bounce();
 
-            int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(marioObject.GetGameObjectLocation().X);
+            int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(player2.CurrentXPos);
+            int drawLocationY = (int)(player2.CurrentYPos + bouncePosition);
 
-            Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, TextureWarehouse.goombaTexture.Height);
-            Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)marioObject.GetGameObjectLocation().Y, width, TextureWarehouse.goombaTexture.Height);
+            Rectangle sourceRectangle = new Rectangle(width * column, (height * row), width, height);
+            Rectangle destinationRectangle = new Rectangle(drawLocationX, drawLocationY, width, height);
 
             myGame.SpriteBatch.Begin();
-            myGame.SpriteBatch.Draw(TextureWarehouse.goombaTexture, destinationRectangle, sourceRectangle, Color.Yellow);
+            myGame.SpriteBatch.Draw(TextureWarehouse.marioTexture, destinationRectangle, sourceRectangle, player2.MarioColor);
             myGame.SpriteBatch.End();
         }
 
-        
+        public void Bounce()
+        {
+            bounceVelocity += bounceGravity;
+            bouncePosition += bounceVelocity;
+            if (--bounceTimer < 0)
+                myGame.Reset();
+        }
         public Vector2 GetGameObjectLocation()
         {
             throw new NotImplementedException();

@@ -30,7 +30,7 @@ namespace Game1
         public TestSmallMario(Game1 game, Vector2 location, Mario mario)
         {
             testMarioLocation = location;
-            marioSprite = new TestSmallMarioSprite(game, this);
+            marioSprite = new TestSmallMarioSprite(game, this, (IPlayer) mario);
             stateMachine = new TestSmallMarioStateMachine(marioSprite);
             character = mario;
             myGame = game;
