@@ -16,6 +16,7 @@ namespace Game1
         private int startFrame;
         private int endFrame;
         private SpriteEffects GoombaSpriteEffects;
+        private int goombaColumn;
 
         public GoombaSprite(Game1 game,Goomba goomba)
         {
@@ -44,7 +45,7 @@ namespace Game1
 
         public void Draw()
         {
-            int width = TextureWarehouse.goombaTexture.Width / 4;
+            int width = TextureWarehouse.goombaTexture.Width / goombaColumn;
 
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(goombaObject.GetGameObjectLocation().X);
 

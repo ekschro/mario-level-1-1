@@ -16,6 +16,7 @@ namespace Game1
         private int startFrame;
         private int endFrame;
         private SpriteEffects KoopaSpriteEffects;
+        private int koopaColumn = 6;
         public KoopaSprite(Game1 game, IEnemy koopa)
         {
             koopaObject = koopa;
@@ -45,7 +46,7 @@ namespace Game1
 
         public void Draw()
         {
-            int width = TextureWarehouse.koopaTexture.Width / 6;
+            int width = TextureWarehouse.koopaTexture.Width / koopaColumn;
 
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(koopaObject.GetGameObjectLocation().X);
 
