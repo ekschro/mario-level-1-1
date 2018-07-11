@@ -15,7 +15,8 @@ namespace Game1
         private int currentFrame;
         private int startFrame;
         private int endFrame;
-        IPlayer player2;
+        private IPlayer player;
+
         public TestBigMarioSprite(Game1 game, TestBigMario Mario, IPlayer player)
         {
             marioObject = Mario;
@@ -23,7 +24,7 @@ namespace Game1
             startFrame = 42 - 28; //MarioBigIdleRight
             endFrame = 2;
             currentFrame = startFrame;
-            player2 = player;
+            this.player = player;
         }
         public void ChangeFrame(int start, int end)
         {
@@ -48,10 +49,8 @@ namespace Game1
 
         public void Draw()
         {
-            int width = TextureWarehouse.marioTexture.Width / player2.TotalMarioColumns;
-            int height = TextureWarehouse.marioTexture.Height / player2.TotalMarioRows;
-            int row = (int)((float)currentFrame / (float)player2.TotalMarioColumns);
-            int column = currentFrame % player2.TotalMarioColumns;
+            /*
+            int width = TextureWarehouse.marioTexture.Width / 28;
 
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(player2.CurrentXPos);
 
@@ -60,6 +59,21 @@ namespace Game1
 
             myGame.SpriteBatch.Begin();
             myGame.SpriteBatch.Draw(TextureWarehouse.marioTexture, destinationRectangle, sourceRectangle, player2.MarioColor);
+            myGame.SpriteBatch.End();
+            */
+            int width = TextureWarehouse.marioTexture.Width / player.TotalMarioColumns;
+            int height = TextureWarehouse.marioTexture.Height / player.TotalMarioRows;
+            int row = (int)((float)currentFrame / (float)player.TotalMarioColumns);
+            int column = currentFrame % player.TotalMarioColumns;
+
+            int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(player.CurrentXPos);
+
+            Rectangle sourceRectangle = new Rectangle(width * column, (height * row), width, height);
+            Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)player.CurrentYPos, width, height);
+
+
+            myGame.SpriteBatch.Begin();
+            myGame.SpriteBatch.Draw(TextureWarehouse.marioTexture, destinationRectangle, sourceRectangle, player.MarioColor);
             myGame.SpriteBatch.End();
         }
 

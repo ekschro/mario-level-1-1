@@ -15,28 +15,16 @@ namespace Game1
         private int currentFrame;
         private int startFrame;
         private int endFrame;
-        private IPlayer player2;
-        private float bouncePosition;
-        private float bounceVelocity;
-        private float bounceGravity;
-        private float bounceTimer;
+        private IPlayer player;
         public TestDeadMarioSprite(Game1 game, TestDeadMario Mario, IPlayer player)
         {
             marioObject = Mario;
             myGame = game;
             startFrame = 12 + 28; //MarioDead
-            endFrame = 2;
+            //endFrame = ;
             currentFrame = startFrame;
-            player2 = player;
-           
-        bouncePosition = 0f;
-            bounceVelocity = -3.0f;
-            bounceGravity = .07f;
-            bounceTimer = 2*((bounceVelocity* bounceVelocity) / bounceGravity);
-
-            Microsoft.Xna.Framework.Media.MediaPlayer.Play(SoundWarehouse.died_theme);
-
-    }
+            this.player = player;
+        }
         public void ChangeFrame(int start, int end)
         {
             startFrame = start;
@@ -45,6 +33,7 @@ namespace Game1
 
         public void Update()
         {
+            /*
             if (marioObject.GetStateMachine.FacingLeft())
             {
                 currentFrame--;
@@ -56,15 +45,13 @@ namespace Game1
             }
             if (currentFrame == endFrame)
                 currentFrame = startFrame;
+                */
         }
 
         public void Draw()
         {
-            int width = TextureWarehouse.marioTexture.Width / player2.TotalMarioColumns;
-            int height = TextureWarehouse.marioTexture.Height / player2.TotalMarioRows;
-            int row = (int)((float)currentFrame / (float)player2.TotalMarioColumns);
-            int column = currentFrame % player2.TotalMarioColumns;
-            Bounce();
+            /*
+            int width = TextureWarehouse.marioTexture.Width / 28;
 
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(player2.CurrentXPos);
             int drawLocationY = (int)(player2.CurrentYPos + bouncePosition);
@@ -74,6 +61,21 @@ namespace Game1
 
             myGame.SpriteBatch.Begin();
             myGame.SpriteBatch.Draw(TextureWarehouse.marioTexture, destinationRectangle, sourceRectangle, player2.MarioColor);
+            myGame.SpriteBatch.End();
+            */
+            int width = TextureWarehouse.marioTexture.Width / player.TotalMarioColumns;
+            int height = TextureWarehouse.marioTexture.Height / player.TotalMarioRows;
+            int row = (int)((float)currentFrame / (float)player.TotalMarioColumns);
+            int column = currentFrame % player.TotalMarioColumns;
+
+            int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(player.CurrentXPos);
+
+            Rectangle sourceRectangle = new Rectangle(width * column, (height * row), width, height);
+            Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)player.CurrentYPos, width, height);
+
+
+            myGame.SpriteBatch.Begin();
+            myGame.SpriteBatch.Draw(TextureWarehouse.marioTexture, destinationRectangle, sourceRectangle, player.MarioColor);
             myGame.SpriteBatch.End();
         }
 

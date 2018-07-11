@@ -81,8 +81,10 @@ namespace Game1
 
         public void Reset()
         {
-            LoadContent();
+            GameState = GameScreenState.Transition;
             cyclePosition = 0;
+            LoadContent();
+            
         }
 
         protected override void UnloadContent()

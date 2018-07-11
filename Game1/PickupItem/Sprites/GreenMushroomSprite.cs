@@ -12,7 +12,7 @@ namespace Game1
         private GreenMushroom greenMushroomOject;
         private Game1 myGame;
         private int currentFrame;
-        private int pickupColumn;
+        private int pickupColumn = 15;
         public GreenMushroomSprite(Game1 game, GreenMushroom greenMushroom)
         {
             greenMushroomOject = greenMushroom;
