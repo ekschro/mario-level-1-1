@@ -23,24 +23,26 @@ namespace Game1
         private int cycleLength = 8;
         
         private bool dead = false;
-        private IPhysics physics;
+       
         private IPlayer player;
-
-        public TestSmallMario(Game1 game, Vector2 location)
+        Mario character;
+        Game1 myGame;
+        public TestSmallMario(Game1 game, Vector2 location, Mario mario)
         {
             testMarioLocation = location;
             marioSprite = new TestSmallMarioSprite(game, this);
             stateMachine = new TestSmallMarioStateMachine(marioSprite);
-
+            character = mario;
+            myGame = game;
         }
 
         public void Upgrade()
         {
-            //stateMachine.Upgrade();
+            character.TestMario = new TestBigMario(myGame, testMarioLocation, character);
         }
         public void Downgrade()
         {
-            //stateMachine.Downgrade();
+            character.TestMario = new TestDeadMario(myGame, testMarioLocation, character);
         }
         public void ChangeDirection()
         {
@@ -73,7 +75,7 @@ namespace Game1
         }
         public void Update()
         {
-            physics.Update();
+            
             cyclePosition++;
             if (cyclePosition == cycleLength)
             {

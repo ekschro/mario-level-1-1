@@ -14,21 +14,17 @@ namespace Game1
         private enum MarioState {Idle, Walking, Jumping, Crouching};
         private MarioSize size = MarioSize.Small;
         private MarioState state = MarioState.Idle;
+
+        private MarioState State { get => state; set => state = value; }
+
         public TestSmallMarioStateMachine(ITestMarioSprite sprite)
         {
             marioSprite = sprite;
+            
         }
         public void ChangeDirection()
         {
             facingLeft = !facingLeft;
-        }
-        public void Upgrade()
-        {
-            
-        }
-        public void Downgrade()
-        {
-           
         }
         public void Idle()
         {
@@ -37,7 +33,7 @@ namespace Game1
                 marioSprite.ChangeFrame(41, 42);
             else
                 marioSprite.ChangeFrame(14 + 28, 14 + 28 + 1);
-            state = MarioState.Idle;
+            State = MarioState.Idle;
         }
         public void Walking()
         {
@@ -46,7 +42,7 @@ namespace Game1
                 marioSprite.ChangeFrame(11 + 28, 8 + 28);
             else
                 marioSprite.ChangeFrame(16 + 28, 19 + 28);
-            state = MarioState.Walking;
+            State = MarioState.Walking;
         }
         public void Jumping()
         {
@@ -55,11 +51,11 @@ namespace Game1
                 marioSprite.ChangeFrame(7 + 28, 7 + 28 + 1);
             else
                 marioSprite.ChangeFrame(20 + 28, 20 + 28 + 1);
-            state = MarioState.Jumping;
+            State = MarioState.Jumping;
         }
         public void Crouching()
         {
-            state = MarioState.Crouching;
+            State = MarioState.Crouching;
         }
         public void Update()
         {
@@ -69,5 +65,68 @@ namespace Game1
             return facingLeft;
         }
 
+        public bool FacingLeft()
+        {
+            if (facingLeft)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool IsWalking()
+        {
+            if (State == MarioState.Walking)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool IsJumping()
+        {
+            if (State == MarioState.Jumping)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool IsIdle()
+        {
+            if (State == MarioState.Idle)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool IsCrouching()
+        {
+            if (State == MarioState.Crouching)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public void ChangeState()
+        {
+            State = MarioState.Idle;
+        }
     }
 }

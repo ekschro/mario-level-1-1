@@ -13,9 +13,14 @@ namespace Game1
         void Walking();
         void Jumping();
         void Crouching();
-        void Upgrade();
-        void Downgrade();
         void Update();
         bool GetDirection();
+        bool FacingLeft();
+        Boolean IsWalking();
+        Boolean IsJumping();
+        Boolean IsIdle();
+        Boolean IsCrouching();
+        void ChangeState();
+
     }
 }

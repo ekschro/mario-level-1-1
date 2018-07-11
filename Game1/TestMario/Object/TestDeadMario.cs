@@ -16,20 +16,23 @@ namespace Game1
         private ITestMarioSprite marioSprite;
         public ITestMarioSprite MarioSprite { get => marioSprite; set => MarioSprite = value; }
 
-        public ITestMarioStateMachine stateMachine;
-        public ITestMarioStateMachine GetStateMachine { get => stateMachine; }
+        public ITestMarioStateMachine GetStateMachine { get => stateMachine;}
+
+    public ITestMarioStateMachine stateMachine;
+       
 
         private int cyclePosition = 0;
         private int cycleLength = 8;
-
+        private Mario character;
         private bool dead = false;
-        private IPhysics physics;
+        
 
-        public TestDeadMario(Game1 game, Vector2 location)
+        public TestDeadMario(Game1 game, Vector2 location, Mario mario)
         {
             testMarioLocation = location;
             marioSprite = new TestDeadMarioSprite(game, this);
             stateMachine = new TestDeadMarioStateMachine(marioSprite);
+            character = mario;
         }
 
         public void Upgrade()
@@ -60,7 +63,7 @@ namespace Game1
         { }
         public void Update()
         {
-            physics.Update();
+            
             cyclePosition++;
             if (cyclePosition == cycleLength)
             {

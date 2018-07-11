@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Media;
 using System;
 namespace Game1 { 
 public class MarioDead : ISprite
@@ -22,8 +23,11 @@ public class MarioDead : ISprite
             bouncePosition = 0f;
             bounceVelocity = -3.0f;
             bounceGravity = .07f;
-            bounceTimer = ((bounceVelocity * bounceVelocity) / bounceGravity);
-    }
+            bounceTimer = 2*((bounceVelocity * bounceVelocity) / bounceGravity);
+
+            MediaPlayer.Play(SoundWarehouse.died_theme);
+
+        }
 
 
         public void Draw()

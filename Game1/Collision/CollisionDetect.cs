@@ -271,7 +271,7 @@ namespace Game1
             collision.Update();
 
             if (player.CurrentYPos > 800)
-                mygame.Reset();
+                player.MarioSprite.DeadMarioCommandCalled();
         }
     }
 }

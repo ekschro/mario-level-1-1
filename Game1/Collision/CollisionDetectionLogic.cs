@@ -57,12 +57,12 @@ namespace Game1
             {
                 Rectangle.Intersect(ref playerBox, ref blockBox, out intersect);
 
-                if (intersect.Height < intersect.Width && playerY < blockY)
+                if (intersect.Height < intersect.Width && playerY < blockY && !(block is HiddenGreenMushroomBlock))
                 {
                     collisionRes.BlockCollisionRespondTop(block, intersect.Height, standing);
                     standing = true;
                 }
-                else if (intersect.Height < intersect.Width && playerY > blockY && !(block is HiddenGreenMushroomBlock)) //Temp fix
+                else if (intersect.Height < intersect.Width && playerY > blockY) //Temp fix
                 {
                     collisionRes.BlockCollisionRespondBottom(block, intersect.Height, head);
                     head = true;
@@ -73,12 +73,12 @@ namespace Game1
                     collisionRes.BlockCollisionRespondBottom(block, intersect.Height, head);
                     head = true;
                 }
-                else if (intersect.Height - 3 > intersect.Width && playerX < blockX)
+                else if (intersect.Height - 3 > intersect.Width && playerX < blockX && !(block is HiddenGreenMushroomBlock))
                 {
                     collisionRes.BlockCollisionRespondLeft(block, intersect.Width, left);
                     left = true;
                 }
-                else if (intersect.Height - 3 > intersect.Width && playerX > blockX)
+                else if (intersect.Height - 3 > intersect.Width && playerX > blockX && !(block is HiddenGreenMushroomBlock))
                 {
                     collisionRes.BlockCollisionRespondRight(block, intersect.Width, right);
                     right = true;

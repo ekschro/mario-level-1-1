@@ -7,7 +7,7 @@ namespace Game1
         private IControllerHandler controllerHandler;
         private Game1 myGame;
         private int animationTimer;
-
+        private ITestMario testMario;
         private static ISprite playerSprite;
         public static IPhysics physics;
         private static Color marioColor;
@@ -39,6 +39,7 @@ namespace Game1
         public int TotalMarioRows { get => totalMarioRows; set => totalMarioRows = value; }
         public int TotalMarioColumns { get => totalMarioColumns; set => totalMarioColumns = value; }
         public int FireBallTimer { get => fireballTimer; set => fireballTimer = value; }
+        internal ITestMario TestMario { get => testMario; set => testMario = value; }
 
         public Mario(Game1 game, Vector2 vector)
         {
@@ -48,12 +49,12 @@ namespace Game1
             CurrentXPos = vector.X;
             CurrentYPos = vector.Y;
             MarioColor = Color.White;
-            MarioSprite = new MarioSmallIdleRight(game,this);
+            
             colorStartingTime = 5;
             colorTimer = 0;
             animationTimer = 0;
             fireballTimer = 0;
-
+            testMario = new TestSmallMario(game, vector, this);
             CanJump = true;
             Falling = false;
             Bounce = false;
@@ -63,36 +64,17 @@ namespace Game1
         public void Draw()
         {
             ColorSelect();
-            MarioSprite.Draw();
+            testMario.Draw();
         }
 
         public void Update()
         {
-            if (!(MarioSprite is MarioDead))
+            if (!(testMario is TestDeadMario))
             {
                 physics.Update();
-                if (physics.XVelocity == 0 && MarioSprite is MarioBigWalkRight)
+                if (physics.XVelocity == 0 && testMario.GetStateMachine.IsWalking())
                 {
-                    MarioSprite = new MarioBigIdleRight(myGame,this);
-                } else if (physics.XVelocity == 0 && MarioSprite is MarioBigWalkLeft)
-                {
-                    MarioSprite = new MarioBigIdleLeft(myGame,this);
-                }
-                else if (physics.XVelocity == 0 && MarioSprite is MarioSmallWalkRight)
-                {
-                    MarioSprite = new MarioSmallIdleRight(myGame,this);
-                }
-                else if (physics.XVelocity == 0 && MarioSprite is MarioSmallWalkLeft)
-                {
-                    MarioSprite = new MarioSmallIdleLeft(myGame,this);
-                }
-                else if (physics.XVelocity == 0 && MarioSprite is MarioFireWalkRight)
-                {
-                    MarioSprite = new MarioFireIdleRight(myGame,this);
-                }
-                else if (physics.XVelocity == 0 && MarioSprite is MarioFireWalkLeft)
-                {
-                    MarioSprite = new MarioFireIdleLeft(myGame,this);
+                    testMario.GetStateMachine.ChangeState();
                 }
             }
 
@@ -111,15 +93,15 @@ namespace Game1
             if(controllerHandler.MovingUp)
             {
                 UpAnimation();
-                if (play)
+                /*if (play)
                 {
                     SoundWarehouse.jump.Play();
                     play = false;
-                }
+                }*/
             }
 
-           if (CanJump)
-                play = true;
+           //if (CanJump)
+                //play = true;
 
             if (fireballTimer > 0)
                 fireballTimer--;

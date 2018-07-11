@@ -14,7 +14,7 @@ namespace Game1
 
         public PersistentData()
         {
-            lives = 0;
+            lives = 3;
             points = 0;
             coins = 0;
         }
@@ -27,10 +27,54 @@ namespace Game1
         {
 
         }
+
+        private void testPrint(int x)
+        {
+            Console.WriteLine(x);
+            Console.WriteLine(points);
+        }
+
+        public void PowerUpCollectPoints()
+        {
+            points += 1000;
+            testPrint(1000);
+        }
+
+        public void CoinCollectedPoints()
+        {
+            points += 200;
+            coins += 1;
+            testPrint(200);
+        }
+
+        public void BlockDestroyPoints()
+        {
+            points += 50;
+            testPrint(50);
+        }
         
         public void EnemyStompedPoints()
         {
             points += 100;
+            testPrint(100);
+        }
+
+        public void KoopaFireOrStarPoints()
+        {
+            points += 200;
+            testPrint(200);
+        }
+
+        public void OneUpLives()
+        {
+            lives += 1;
+        }
+
+        public void ResetAndUpdateLives()
+        {
+            lives -= 1;
+            points = 0;
+            coins = 0;
         }
     }
 }

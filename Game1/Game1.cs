@@ -19,17 +19,29 @@ namespace Game1
         public IControllerHandler controllerHandler;
         public TextureWarehouse textureWarehouse;
         public PersistentData persistentData;
-        
+        public GameTime temp;
 
         private SoundWarehouse soundWarehouse;
         private ILevel currentLevel;
+        private LevelTransition transitionLevel;
+        private HeadsUpDisplay headsUpDisplay;
         private SpriteBatch spriteBatch;
         private SpriteFont spriteFont;
+        private bool pause;
+        private enum GameScreenState { Transition, GamePlay }
+        private GameScreenState GameState;
+        private int cyclePosition = 0;
+        private int cycleLength = 100;
 
         public SpriteBatch SpriteBatch { get => spriteBatch; set => spriteBatch = value; }
         public SpriteFont SpriteFont { get => spriteFont; set => spriteFont = value; }
         public ILevel CurrentLevel { get => currentLevel; set => currentLevel = value; }
+        public HeadsUpDisplay HeadsUpDisplay { get => headsUpDisplay; set => headsUpDisplay = value; }
+        public LevelTransition TransitionLevel { get => transitionLevel; set => transitionLevel = value; }
         internal SoundWarehouse SoundWarehouse { get => soundWarehouse; set => soundWarehouse = value; }
+        public bool Pause { get => pause; set => pause = value; }
+        
+
 
         public Game1()
         {
@@ -37,8 +49,9 @@ namespace Game1
             graphics.PreferredBackBufferWidth = 400;
             graphics.PreferredBackBufferHeight = 230;
             graphics.ApplyChanges();
-            
+            pause = true;
             Content.RootDirectory = "Content";
+            GameState = GameScreenState.Transition;
         }
       
         protected override void Initialize()
@@ -58,7 +71,8 @@ namespace Game1
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             CurrentLevel = new Level1("../../../../Content/LevelInfo.csv", this, persistentData);
-
+            TransitionLevel = new LevelTransition(this);
+            HeadsUpDisplay = new HeadsUpDisplay(this);
             textureWarehouse = new TextureWarehouse(this);
             soundWarehouse = new SoundWarehouse(this);
             spriteFont = Content.Load<SpriteFont>("arial");
@@ -68,6 +82,7 @@ namespace Game1
         public void Reset()
         {
             LoadContent();
+            cyclePosition = 0;
         }
 
         protected override void UnloadContent()
@@ -78,21 +93,63 @@ namespace Game1
         
         protected override void Update(GameTime gameTime)
         {
-            foreach (IController controller in controllerList.ToArray())
-                controller.Update();
+            if (pause)
+            {
+                foreach (IController controller in controllerList.ToArray())
+                {
+                    controller.Update();
+                }
 
-            delta = gameTime;
+            }
+            else if (controllerList.ToArray()[0] is PauseCommand)
+            {
+                pause = true;
+            } else
+            {
+                foreach (IController controller in controllerList.ToArray())
+                {
+                    if (controller is Pause2Command)
+                    {
+                        controller.Update();
+                    }
+                }
+            }
+            cyclePosition++;
+            if (cyclePosition == cycleLength)
+            {
+                GameState= GameScreenState.GamePlay;
+            }
 
-            CurrentLevel.Update();
-
-            base.Update(gameTime);
+                delta = gameTime;
+            
+            //CurrentLevel.Update();
+            HeadsUpDisplay.Update();
+            switch (GameState)
+            {
+                case GameScreenState.GamePlay:
+                    CurrentLevel.Update();
+                    break;
+            }
+                    base.Update(gameTime);
+            
         }
 
        
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-            CurrentLevel.Draw();
+            GraphicsDevice.Clear(Color.Black);
+            switch (GameState)
+            {
+                case GameScreenState.Transition:
+                    transitionLevel.Draw();
+                    break;
+                case GameScreenState.GamePlay:
+                    CurrentLevel.Draw();
+                    break;
+            }
+            //CurrentLevel.Draw();
+            //
+            HeadsUpDisplay.Draw();
             base.Draw(gameTime);
         }
     }

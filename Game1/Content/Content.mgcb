@@ -263,6 +263,12 @@
 /processorParam:TextureFormat=Color
 /build:blueStone.png
 
+#begin 08-you-re-dead.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:08-you-re-dead.mp3
+
 #begin pipeOnSide.png
 /importer:TextureImporter
 /processor:TextureProcessor
