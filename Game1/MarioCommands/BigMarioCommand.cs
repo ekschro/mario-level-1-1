@@ -15,6 +15,7 @@ namespace Game1
     {
         private Game1 myGame;
         private IPlayer player;
+        private ITestMario mario;
 
         public BigMarioCommand(Game1 game)
         {
@@ -24,7 +25,8 @@ namespace Game1
 
         public void Execute()
         {
-            player.MarioSprite.BigMarioCommandCalled();
+            //player.MarioSprite.BigMarioCommandCalled();
+            mario.Upgrade();
         }
     }
 }
