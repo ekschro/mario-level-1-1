@@ -12,7 +12,7 @@ namespace Game1
         public float CurrentXPos { get => testMarioLocation.X; set => testMarioLocation.X = value; }
         public float CurrentYPos { get => testMarioLocation.Y; set => testMarioLocation.Y = value; }
         private Vector2 testMarioLocation;
-
+        
         private ITestMarioSprite marioSprite;
         public ITestMarioSprite MarioSprite { get => marioSprite; set => MarioSprite = value; }
 

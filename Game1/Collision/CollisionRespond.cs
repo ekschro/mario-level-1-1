@@ -34,30 +34,11 @@ namespace Game1
                 player.CurrentYPos -= height;
             player.CanJump = true;
             player.Falling = false;
-            if (player.MarioSprite is MarioBigJumpingRight)
+            if (player.TestMario.GetStateMachine.IsJumping())
             {
-                player.MarioSprite = new MarioBigIdleRight(myGame,player);
+                player.TestMario.GetStateMachine.ChangeState();
             }
-            else if (player.MarioSprite is MarioBigJumpingLeft)
-            {
-                player.MarioSprite = new MarioBigIdleLeft(myGame,player);
-            }
-            else if (player.MarioSprite is MarioSmallJumpingRight)
-            {
-                player.MarioSprite = new MarioSmallIdleRight(myGame,player);
-            }
-            else if (player.MarioSprite is MarioSmallJumpingLeft)
-            {
-                player.MarioSprite = new MarioSmallIdleLeft(myGame,player);
-            }
-            else if (player.MarioSprite is MarioFireJumpingRight)
-            {
-                player.MarioSprite = new MarioFireIdleRight(myGame,player);
-            }
-            else if (player.MarioSprite is MarioFireJumpingLeft)
-            {
-                player.MarioSprite = new MarioFireIdleLeft(myGame,player);
-            }
+            
         }
 
         public void BlockCollisionRespondBottom(IBlock block,int height,bool head)

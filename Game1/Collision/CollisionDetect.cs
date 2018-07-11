@@ -271,7 +271,7 @@ namespace Game1
             collision.Update();
 
             if (player.CurrentYPos > 800)
-                player.MarioSprite.DeadMarioCommandCalled();
+                player.TestMario = new TestDeadMario(mygame, new Vector2(player.TestMario.CurrentXPos, player.TestMario.CurrentYPos), (Mario)player);
         }
     }
 }
