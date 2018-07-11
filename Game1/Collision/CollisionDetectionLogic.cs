@@ -15,13 +15,13 @@ namespace Game1
 
         private Rectangle GetMarioRectangle(ref int playerX, ref int playerY)
         {
-            if (player.MarioSprite.isCrouching())
-                playerY += 16;
+            //if (player.MarioSprite.isCrouching())
+            //    playerY += 16;
 
-            if (player.MarioSprite.isSmall() || player.MarioSprite.isCrouching())
+            //if (player.MarioSprite.isSmall() || player.MarioSprite.isCrouching())
                 return new Rectangle(playerX, playerY, 16, 16);
-            else
-                return new Rectangle(playerX, playerY, 16, 32);
+            //else
+                //return new Rectangle(playerX, playerY, 16, 32);
         }
 
         public MarioCollisionDetectionLogic(Game1 game,ILevel level,CollisionRespond res)
