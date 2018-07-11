@@ -54,6 +54,15 @@ namespace Game1
 
             currentCamera = movingCamera = new Camera(this);
             staticCamera = new CameraStatic(this, secretRoomLocation);
+
+            /*
+             * DEBUG
+             */
+            //currentCamera = staticCamera;
+            /*
+             * DEBUG
+             */
+
             backgroundObject = new Level1Background(myGame, new Vector2(0,0));
         }
 

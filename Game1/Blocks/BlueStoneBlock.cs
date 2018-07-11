@@ -27,7 +27,7 @@ namespace Game1
             //myGame = game;
             blockLocation = location;
             blockSize = size;
-            blockRectangle = new Rectangle((int)location.X, (int)location.Y, 16, 16);
+            blockRectangle = new Rectangle((int)location.X, (int)location.Y, (int)size.X, (int)size.Y);
         }
 
         public void Draw()

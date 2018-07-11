@@ -21,11 +21,12 @@ namespace Game1
             cameraPosition = 0;
             cameraOffset = 200;
             gameLevel = level;
+            levelEnd = 2960;
         }
 
         public void Update()
         {
-            if (gameLevel.PlayerObject.GetGameObjectLocation().X > CameraPosition + cameraOffset && CameraPosition < 2960)
+            if (gameLevel.PlayerObject.GetGameObjectLocation().X > CameraPosition + cameraOffset && CameraPosition < levelEnd)
                 CameraPosition += (gameLevel.PlayerObject.GetGameObjectLocation().X - CameraPosition) - cameraOffset;
         }
 

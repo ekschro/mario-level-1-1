@@ -47,7 +47,7 @@ namespace Game1
                 }
                 
 
-                if(GameObjectString != "StoneBlock")
+                if(GameObjectString != "StoneBlock" && GameObjectString != "BlueStoneBlock" && GameObjectString != "BlueBrickBlock")
                 {
                     while (LoaderInput.Peek() >= 0 && (NextChar = (char)LoaderInput.Read()) != '\n')
                     {
@@ -96,7 +96,7 @@ namespace Game1
                     GameObject = new Fireflower(myGame, Position);
                     break;
                 case "Coin":
-                    GameObject = new Coin(myGame, Position);
+                    GameObject = new CoinPickup(myGame, Position);
                     break;
                 case "RedMushroom":
                     GameObject = new RedMushroom(myGame, Position);
@@ -157,6 +157,9 @@ namespace Game1
                     break;
                 case "BottomRightPipeBlock":
                     GameObject = new BottomRightPipeBlock(myGame, Position);
+                    break;
+                case "PipeOnSide":
+                    GameObject = new PipeOnSideBlock(myGame, Position);
                     break;
                 case "Castle":
                     GameObject = new CastleBlock(myGame, Position);
