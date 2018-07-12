@@ -29,7 +29,6 @@ namespace Game1
         Game1 myGame;
         public TestSmallMario(Game1 game, Vector2 location, Mario mario)
         {
-            testMarioLocation = location;
             marioSprite = new TestSmallMarioSprite(game, this, mario);
             stateMachine = new TestSmallMarioStateMachine(marioSprite);
             character = mario;
@@ -90,11 +89,9 @@ namespace Game1
         }
         public void WalkLeft()
         {
-            testMarioLocation.X -= 1;
         }
         public void WalkRight()
         {
-            testMarioLocation.X = +1;
         }
 
     }
