@@ -11,15 +11,15 @@ using System.Collections;
 
 namespace Game1
 {
-    public class TopPipeBlockSprite : IBlockSprite
+    public class TopWarpPipeBlockSprite : IBlockSprite
     {
-        private TopPipeBlock topPipeBlockObject;
+        private TopWarpPipeBlock topWarpPipeBlockObject;
         private Game1 myGame;
         private int currentFrame;
 
-        public TopPipeBlockSprite(Game1 game, IBlock topPipe)
+        public TopWarpPipeBlockSprite(Game1 game, IBlock topPipe)
         {
-            topPipeBlockObject = (TopPipeBlock)topPipe;
+            topWarpPipeBlockObject = (TopWarpPipeBlock)topPipe;
             myGame = game;
             currentFrame = 8;
         }
@@ -33,10 +33,10 @@ namespace Game1
         {
             int width = (TextureWarehouse.blockTexture.Width * 2) / 13;
 
-            int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(topPipeBlockObject.GetGameObjectLocation().X);
+            int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(topWarpPipeBlockObject.GetGameObjectLocation().X);
 
             Rectangle sourceRectangle = new Rectangle((width / 2) * currentFrame, 0, width, TextureWarehouse.blockTexture.Height);
-            Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)topPipeBlockObject.GetGameObjectLocation().Y, width, TextureWarehouse.blockTexture.Height);
+            Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)topWarpPipeBlockObject.GetGameObjectLocation().Y, width, TextureWarehouse.blockTexture.Height);
 
             myGame.SpriteBatch.Begin();
             myGame.SpriteBatch.Draw(TextureWarehouse.blockTexture, destinationRectangle, sourceRectangle, Color.White);

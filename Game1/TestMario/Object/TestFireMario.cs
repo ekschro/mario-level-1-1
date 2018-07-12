@@ -82,13 +82,15 @@ namespace Game1
             if (cyclePosition == cycleLength)
             {
                 cyclePosition = 0;
-                stateMachine.Update();
-                MarioSprite.Update();
+               
                 if (dead)
                 {
                 }
+                stateMachine.Update();
+                MarioSprite.Update();
             }
             
+
         }
         public void Draw()
         {
