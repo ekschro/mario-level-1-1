@@ -174,6 +174,7 @@ namespace Game1
                     if (pickupBox.Intersects(blockBox))
                     {
                         Rectangle.Intersect(ref pickupBox, ref blockBox, out intersect);
+                        /*
                         if (intersect.Height < intersect.Width && pickupY < blockY && enemyArray[j] is MarioFireBall)
                         {
                             MarioFireBall x = (MarioFireBall)pickupArray[j];
@@ -190,8 +191,8 @@ namespace Game1
                             level1.PickupObjects.RemoveAt(size);
                             size--;
 
-                        }
-                        else if (intersect.Height < intersect.Width && pickupY < blockY)
+                        }*/
+                        if (intersect.Height < intersect.Width && pickupY < blockY)
                         {
                             collision.PickupCollisionBlockRespondBottom(pickupArray[j], intersect.Height, bottom);
                             bottom = true;

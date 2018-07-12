@@ -75,6 +75,7 @@ namespace Game1
                 stateMachine.Update();
                 MarioSprite.Update();
             }
+            
         }
         public void Draw()
         {
