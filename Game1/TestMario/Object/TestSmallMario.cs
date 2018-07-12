@@ -11,7 +11,7 @@ namespace Game1
     {
         public float CurrentXPos { get => character.CurrentXPos; set => character.CurrentXPos = value; }
         public float CurrentYPos { get => character.CurrentYPos; set => character.CurrentYPos = value; }
-        //private Vector2 testMarioLocation;
+        private Vector2 testMarioLocation;
 
         private ITestMarioSprite marioSprite;
         public ITestMarioSprite MarioSprite { get => marioSprite; set => MarioSprite = value; }
@@ -50,11 +50,12 @@ namespace Game1
         }
         public Vector2 GetGameObjectLocation()
         {
-            return new Vector2(character.CurrentXPos,character.CurrentYPos);
+            return testMarioLocation;
+            //return new Vector2(character.CurrentXPos,character.CurrentYPos);
         }
         public void SetGameObjectLocation(Vector2 newPos)
         {
-            //testMarioLocation = newPos;
+            testMarioLocation = newPos;
         }
 
         public void Idle()

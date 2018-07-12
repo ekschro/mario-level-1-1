@@ -15,7 +15,7 @@ namespace Game1
 
         private Rectangle GetMarioRectangle(ref int playerX, ref int playerY)
         {
-            if (player.TestMario.GetStateMachine.IsCrouching())
+            if (player.TestMario.GetStateMachine.IsCrouching()||player.TestMario is TestSmallMario)
                 playerY += 16;
 
             if (player.TestMario.GetStateMachine is TestSmallMarioStateMachine || player.TestMario.GetStateMachine.IsCrouching())
