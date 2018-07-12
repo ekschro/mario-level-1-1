@@ -87,13 +87,14 @@ namespace Game1
         }
         public void Update()
         {
-            
             cyclePosition++;
-            if (cyclePosition == cycleLength)
+            if (myGame.controllerHandler.MovingUp)
+            { stateMachine.Jumping(); }
+            else if (cyclePosition == cycleLength)
             {
-                cyclePosition = 0;
                 stateMachine.Update();
                 MarioSprite.Update();
+                cyclePosition = 0;
             }
             else if (myGame.controllerHandler.MovingLeft)
             {
@@ -103,8 +104,9 @@ namespace Game1
             }
             else if (myGame.controllerHandler.MovingRight)
             {
-                stateMachine.Walking();
                 stateMachine.ChangeDirection(false);
+                stateMachine.Walking();
+
             }
             else if (myGame.controllerHandler.MovingUp || (myGame.controllerHandler.MovingUp && myGame.controllerHandler.MovingLeft))
                 stateMachine.Jumping();
@@ -112,6 +114,7 @@ namespace Game1
                 stateMachine.Crouching();
             else
                 Idle();
+
 
 
         }

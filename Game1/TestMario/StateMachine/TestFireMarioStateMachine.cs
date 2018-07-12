@@ -29,7 +29,7 @@ namespace Game1
         public void Idle()
         {
             if (facingLeft)
-                marioSprite.ChangeFrame(41 + 28, 42 + 28 - 1);
+                marioSprite.ChangeFrame(70, 69);
             else
                 marioSprite.ChangeFrame(42 + 28, 42 + 28 + 1);
             State = MarioState.Idle;
@@ -45,7 +45,7 @@ namespace Game1
         public void Jumping()
         {
             if (facingLeft)
-                marioSprite.ChangeFrame(7 + 56, 7 + 56 - 1);
+                marioSprite.ChangeFrame(7 + 56, 62);
             else
                 marioSprite.ChangeFrame(20 + 56, 20 + 56 + 1);
             State = MarioState.Jumping;

@@ -43,37 +43,10 @@ namespace Game1
 
         public void Update()
         {
-            /*
-            if (marioObject.GetStateMachine.FacingLeft())
-            {
-                currentFrame--;
-
-            }
-            else
-            {
-                currentFrame++;
-            }
-            if (currentFrame == endFrame)
-                currentFrame = startFrame;
-                */
         }
 
         public void Draw()
-        {
-            /*
-            int width = TextureWarehouse.marioTexture.Width / 28;
-
-            int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(player2.CurrentXPos);
-            int drawLocationY = (int)(player2.CurrentYPos + bouncePosition);
-
-            Rectangle sourceRectangle = new Rectangle(width * column, (height * row), width, height);
-            Rectangle destinationRectangle = new Rectangle(drawLocationX, drawLocationY, width, height);
-
-            myGame.SpriteBatch.Begin();
-            myGame.SpriteBatch.Draw(TextureWarehouse.marioTexture, destinationRectangle, sourceRectangle, player2.MarioColor);
-            myGame.SpriteBatch.End();
-            */
-            
+        {   
                 int width = TextureWarehouse.marioTexture.Width / player.TotalMarioColumns;
                 int height = TextureWarehouse.marioTexture.Height / player.TotalMarioRows;
                 int row = (int)((float)currentFrame / (float)player.TotalMarioColumns);
