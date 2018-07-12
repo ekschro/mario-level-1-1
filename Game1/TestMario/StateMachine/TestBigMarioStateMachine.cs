@@ -38,9 +38,9 @@ namespace Game1
         public void Walking()
         {
             if (FacingLeft)
-                marioSprite.ChangeFrame(11 + 56, 8 + 56);
+                marioSprite.ChangeFrame(11 , 8 );
             else
-                marioSprite.ChangeFrame(16 + 56, 19 + 56);
+                marioSprite.ChangeFrame(16, 19 );
             State = MarioState.Walking;
         }
 
