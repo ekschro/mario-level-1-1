@@ -32,8 +32,8 @@ namespace Game1
         public List<IPickup> PickupObjects { get => pickups; }
         public List<ITemporary> TemporaryObjects { get => temporaries; }
         public List<IGameObject> LevelObjects { get => levelObjects; }
-        
-
+        private int time;
+        public int Time { get => time; }
         public ICamera LevelCamera { get => currentCamera; set => currentCamera = value; }
         public PersistentData PersistentData { get => persistentData; }
 
@@ -48,6 +48,8 @@ namespace Game1
             secretExit = new Vector2(2616, 142);
 
         loader.Load(fileName, levelObjects);
+            time = 365;
+            loader.Load(fileName, levelObjects);
             
             GetPlayerObject();
             GetBackgroundObject();
@@ -226,5 +228,10 @@ namespace Game1
             playerObject.CurrentYPos = secretExit.Y;
             currentCamera = movingCamera;
         }
+        public void DockTime()
+        {
+            time -= 1;
+        }
+
     }
 }

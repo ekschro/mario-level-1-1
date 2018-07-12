@@ -110,15 +110,16 @@ namespace Game1
             }
 
                 delta = gameTime;
+            Level1 level = (Level1)currentLevel;
             if (counter == 60)
             {
-                persistentData.DockTime();
+                level.DockTime();
                 counter = 0;
             } else
             {
                 counter++;
             }
-            if (persistentData.Time == 0)
+            if (level.Time == 0)
             {
                 currentLevel.PlayerObject.TestMario.Downgrade();
                 currentLevel.PlayerObject.TestMario.Downgrade();
