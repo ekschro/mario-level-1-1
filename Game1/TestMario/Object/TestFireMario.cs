@@ -9,8 +9,8 @@ namespace Game1
 {
     public class TestFireMario : ITestMario
     {
-        public float CurrentXPos { get => testMarioLocation.X; set => testMarioLocation.X = value; }
-        public float CurrentYPos { get => testMarioLocation.Y; set => testMarioLocation.Y = value; }
+        public float CurrentXPos { get => character.CurrentXPos; set => character.CurrentXPos = value; }
+        public float CurrentYPos { get => character.CurrentYPos; set => character.CurrentYPos = value; }
         private Vector2 testMarioLocation;
 
         private ITestMarioSprite marioSprite;
