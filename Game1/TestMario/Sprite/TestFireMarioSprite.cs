@@ -28,6 +28,8 @@ namespace Game1
         }
         public void ChangeFrame(int start, int end)
         {
+            if (!(start == startFrame && end == endFrame))
+                currentFrame = start;
             startFrame = start;
             endFrame = end;
         }

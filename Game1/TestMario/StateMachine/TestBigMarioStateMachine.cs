@@ -30,9 +30,9 @@ namespace Game1
         public void Idle()
         {
             if (FacingLeft)
-                marioSprite.ChangeFrame(41 - 28, 42 - 28 + 1);
+                marioSprite.ChangeFrame(13,14);
             else
-                marioSprite.ChangeFrame(42 - 28, 42 - 28 + 1);
+                marioSprite.ChangeFrame(14,15);
             State = MarioState.Idle;
         }
         public void Walking()

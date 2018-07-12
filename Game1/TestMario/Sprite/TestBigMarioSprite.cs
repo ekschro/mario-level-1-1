@@ -22,29 +22,33 @@ namespace Game1
             marioObject = Mario;
             myGame = game;
             startFrame = 42 - 28; //MarioBigIdleRight
-            endFrame = 2;
+            endFrame = 43 - 28;
             currentFrame = startFrame;
             this.player = player;
         }
         public void ChangeFrame(int start, int end)
         {
+            if (!(start == startFrame && end == endFrame))
+                currentFrame = start;
             startFrame = start;
             endFrame = end;
         }
 
         public void Update()
         {
-            
             if (marioObject.GetStateMachine.FacingLeft())
             {
                 currentFrame--;
+                if (currentFrame == endFrame)
+                    currentFrame = startFrame;
 
-            } else
+            }
+            else
             {
                 currentFrame++;
+                if (currentFrame == endFrame)
+                    currentFrame = startFrame;
             }
-            if (currentFrame == endFrame)
-                currentFrame = startFrame;
         }
 
         public void Draw()

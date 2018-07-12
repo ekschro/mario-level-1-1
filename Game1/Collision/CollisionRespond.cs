@@ -30,15 +30,21 @@ namespace Game1
 
         public void BlockCollisionRespondTop(IBlock block,int height,bool standing)
         {
-            if (!(block is HiddenGreenMushroomBlock) && !standing)
-                player.CurrentYPos -= height;
-            player.CanJump = true;
-            player.Falling = false;
-            if (player.TestMario.GetStateMachine.IsJumping())
+            if (block is TopWarpPipeBlock)
             {
-                player.TestMario.GetStateMachine.ChangeState();
+
             }
-            
+            else
+            {
+                if (!(block is HiddenGreenMushroomBlock) && !standing)
+                    player.CurrentYPos -= height;
+                player.CanJump = true;
+                player.Falling = false;
+                if (player.TestMario.GetStateMachine.IsJumping())
+                {
+                    player.TestMario.GetStateMachine.ChangeState();
+                }
+            }
         }
 
         public void BlockCollisionRespondBottom(IBlock block,int height,bool head)
