@@ -13,16 +13,15 @@ namespace Game1
         private TestSmallMario marioObject;
         private Game1 myGame;
         private int currentFrame;
-        private int startFrame;
-        private int endFrame;
+        private int startFrame=42;
+        private int endFrame=43;
         private IPlayer player;
+
 
         public TestSmallMarioSprite(Game1 game, TestSmallMario Mario, IPlayer player)
         {
             marioObject = Mario;
             myGame = game;
-            startFrame = 14+28; //MarioSmllIdleRight
-            endFrame = 2;
             currentFrame = startFrame;
             this.player = player;
         }
@@ -34,17 +33,21 @@ namespace Game1
 
         public void Update()
         {
+            
             if (marioObject.GetStateMachine.FacingLeft())
             {
                 currentFrame--;
+                if (currentFrame == endFrame)
+                    currentFrame = startFrame;
 
             }
             else
             {
                 currentFrame++;
+                if (currentFrame == endFrame)
+                    currentFrame = startFrame;
             }
-            if (currentFrame == endFrame)
-                currentFrame = startFrame;
+            
         }
 
 
