@@ -30,7 +30,7 @@ namespace Game1
         public TestDeadMario(Game1 game, Vector2 location, Mario mario)
         {
             testMarioLocation = location;
-            marioSprite = new TestDeadMarioSprite(game, this);
+            marioSprite = new TestDeadMarioSprite(game, this, mario);
             stateMachine = new TestDeadMarioStateMachine(marioSprite);
             character = mario;
         }
@@ -76,7 +76,14 @@ namespace Game1
         {
             MarioSprite.Draw();
         }
-
+        public void WalkLeft()
+        {
+            //testMarioLocation.X -= 1;
+        }
+        public void WalkRight()
+        {
+            //testMarioLocation.X = +1;
+        }
 
     }
 }

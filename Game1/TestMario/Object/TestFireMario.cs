@@ -29,7 +29,7 @@ namespace Game1
         public TestFireMario(Game1 game, Vector2 location, Mario mario)
         {
             testMarioLocation = location;
-            marioSprite = new TestFireMarioSprite(game, this);
+            marioSprite = new TestFireMarioSprite(game, this, mario);
             stateMachine = new TestFireMarioStateMachine(marioSprite);
             character = mario;
             myGame = game;
@@ -92,6 +92,14 @@ namespace Game1
         public void Draw()
         {
             MarioSprite.Draw();
+        }
+        public void WalkLeft()
+        {
+            testMarioLocation.X -= 1;
+        }
+        public void WalkRight()
+        {
+            testMarioLocation.X = +1;
         }
     }
 }

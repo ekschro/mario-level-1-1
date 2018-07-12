@@ -22,14 +22,15 @@ namespace Game1
         private int cyclePosition = 0;
         private int cycleLength = 8;
         
-        private bool dead = false;
+        //private bool dead = false;
        
         private IPlayer player;
         Mario character;
         Game1 myGame;
         public TestSmallMario(Game1 game, Vector2 location, Mario mario)
         {
-            marioSprite = new TestSmallMarioSprite(game, this);
+            testMarioLocation = location;
+            marioSprite = new TestSmallMarioSprite(game, this, mario);
             stateMachine = new TestSmallMarioStateMachine(marioSprite);
             character = mario;
             myGame = game;
@@ -87,7 +88,14 @@ namespace Game1
         {
             MarioSprite.Draw();
         }
+        public void WalkLeft()
+        {
+            testMarioLocation.X -= 1;
+        }
+        public void WalkRight()
+        {
+            testMarioLocation.X = +1;
+        }
 
-        
     }
 }

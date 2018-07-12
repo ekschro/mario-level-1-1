@@ -14,7 +14,7 @@ namespace Game1
         private int currentFrame;
         private int startFrame;
         private int endFrame;
-        private int pickupColumn;
+        private int pickupColumn = 15;
         public FireflowerSprite(Game1 game, Fireflower fireflower)
         {
             fireflowerObject = fireflower;

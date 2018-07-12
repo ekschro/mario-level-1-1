@@ -32,7 +32,7 @@ namespace Game1
         {
             testMarioLocation = location;
             myGame = game;
-            marioSprite = new TestBigMarioSprite(game, this);
+            marioSprite = new TestBigMarioSprite(game, this,mario);
             stateMachine = new TestBigMarioStateMachine(marioSprite);
             character = mario;
         }
@@ -48,6 +48,14 @@ namespace Game1
         public void ChangeDirection()
         {
             stateMachine.ChangeDirection();
+        }
+        public void WalkLeft()
+        {
+            testMarioLocation.X -= 1;
+        }
+        public void WalkRight()
+        {
+            testMarioLocation.X = +1;
         }
         public Vector2 GetGameObjectLocation()
         {
