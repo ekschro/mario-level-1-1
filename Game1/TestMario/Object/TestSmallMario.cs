@@ -79,13 +79,13 @@ namespace Game1
                 MarioSprite.Update();
                 cyclePosition = 0;
             }
-            if (myGame.controllerHandler.MovingLeft)
+            else if (myGame.controllerHandler.MovingLeft)
             {
                 stateMachine.ChangeDirection(true);
                 stateMachine.Walking();
                 
             }
-            if (myGame.controllerHandler.MovingRight)
+            else if (myGame.controllerHandler.MovingRight)
             {
                 stateMachine.ChangeDirection(false);
                 stateMachine.Walking();
