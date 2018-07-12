@@ -72,6 +72,8 @@
     <Compile Include="Blocks\Sprites\BlueStoneBlockSprite.cs" />
     <Compile Include="Blocks\PipeOnSideBlock.cs" />
     <Compile Include="Blocks\Sprites\PipeOnSideBlockSprite.cs" />
+    <Compile Include="Blocks\Sprites\TopWarpPipeBlockSprite.cs" />
+    <Compile Include="Blocks\TopWarpPipeBlock.cs" />
     <Compile Include="CameraStatic.cs" />
     <Compile Include="Collision\CollisionDetectionLogic.cs" />
     <Compile Include="ControllerHandler.cs" />

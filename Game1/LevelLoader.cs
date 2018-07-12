@@ -149,6 +149,9 @@ namespace Game1
                 case "TopPipeBlock":
                     GameObject = new TopPipeBlock(myGame, Position);
                     break;
+                case "TopWarpPipeBlock":
+                    GameObject = new TopWarpPipeBlock(myGame, Position);
+                    break;
                 case "BottomLeftPipeBlock":
                     GameObject = new BottomLeftPipeBlock(myGame, Position);
                     break;

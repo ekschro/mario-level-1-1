@@ -9,7 +9,7 @@ namespace Game1
     public class TestSmallMarioStateMachine : ITestMarioStateMachine
     {
         private ITestMarioSprite marioSprite;
-        private bool facingLeft = true;
+        private bool facingLeft = false;
         private enum MarioSize { Small, Big, Fire, Dead};
         private enum MarioState {Idle, Walking, Jumping, Crouching};
         private MarioSize size = MarioSize.Small;
@@ -29,21 +29,20 @@ namespace Game1
         }
         public void Idle()
         {
-            
             if (facingLeft)
                 marioSprite.ChangeFrame(41, 42);
             else
-                marioSprite.ChangeFrame(14 + 28, 14 + 28 + 1);
+                marioSprite.ChangeFrame(42, 43);
             State = MarioState.Idle;
         }
         public void Walking()
         {
-            
+            State = MarioState.Walking;
             if (facingLeft)
                 marioSprite.ChangeFrame(11 + 28, 8 + 28);
             else
                 marioSprite.ChangeFrame(16 + 28, 19 + 28);
-            State = MarioState.Walking;
+            
         }
         public void Jumping()
         {
@@ -60,6 +59,14 @@ namespace Game1
         }
         public void Update()
         {
+            if (state == MarioState.Crouching)
+                Crouching();
+            else if (state == MarioState.Idle)
+                Idle();
+            else if (state == MarioState.Jumping)
+                Jumping();
+            else if (state == MarioState.Walking)
+                Walking();
         }
         public bool GetDirection()
         {
