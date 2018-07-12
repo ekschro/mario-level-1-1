@@ -15,6 +15,7 @@ namespace Game1
         private int endFrame;
         private int cyclePosition = 0;
         private int cycleLength = 16;
+        
 
 
         public HeadsUpDisplay(Game1 game)
@@ -47,14 +48,21 @@ namespace Game1
             myGame.SpriteBatch.Begin();
             myGame.SpriteBatch.DrawString(myGame.SpriteFont, "MARIO", new Vector2(10, 10), Color.White);
             myGame.SpriteBatch.DrawString(myGame.SpriteFont, "WORLD", new Vector2(200, 10), Color.White);
-            myGame.SpriteBatch.DrawString(myGame.SpriteFont, "TIME", new Vector2(300, 10), Color.White);
+            
             myGame.SpriteBatch.DrawString(myGame.SpriteFont, myGame.persistentData.Points.ToString(), new Vector2(10, 25), Color.White); //need to update
             myGame.SpriteBatch.Draw(TextureWarehouse.pickupTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.SpriteBatch.DrawString(myGame.SpriteFont, "X", new Vector2(105, 25), Color.White);
             myGame.SpriteBatch.DrawString(myGame.SpriteFont, myGame.persistentData.Coins.ToString(), new Vector2(115, 25), Color.White); //need to update
             myGame.SpriteBatch.DrawString(myGame.SpriteFont, "1-1", new Vector2(205, 25), Color.White); //need to update
             PlatformerLevel level = (PlatformerLevel)myGame.CurrentLevel;
-            myGame.SpriteBatch.DrawString(myGame.SpriteFont,level.Time.ToString(), new Vector2(300, 25), Color.White); //need to update
+            if (myGame.HudCounter == 100)
+            {
+                myGame.SpriteBatch.DrawString(myGame.SpriteFont, "TIME", new Vector2(300, 10), Color.White);
+                myGame.SpriteBatch.DrawString(myGame.SpriteFont, level.Time.ToString(), new Vector2(300, 25), Color.White); //need to update
+            } else
+            {
+                myGame.HudCounter++;
+            }
             myGame.SpriteBatch.End();
         }
     }

@@ -32,7 +32,7 @@ namespace Game1
         private GameScreenState GameState;
         private int cyclePosition = 0;
         private int cycleLength = 100;
-
+        private int hudCounter = 0;
         public SpriteBatch SpriteBatch { get => spriteBatch; set => spriteBatch = value; }
         public SpriteFont SpriteFont { get => spriteFont; set => spriteFont = value; }
         public ILevel CurrentLevel { get => currentLevel; set => currentLevel = value; }
@@ -40,8 +40,7 @@ namespace Game1
         public LevelTransition TransitionLevel { get => transitionLevel; set => transitionLevel = value; }
         internal SoundWarehouse SoundWarehouse { get => soundWarehouse; set => soundWarehouse = value; }
         public bool Pause { get => pause; set => pause = value; }
-        
-
+        public int HudCounter { get => hudCounter; set => hudCounter = value; }
 
         public Game1()
         {

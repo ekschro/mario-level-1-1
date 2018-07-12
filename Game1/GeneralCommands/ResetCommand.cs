@@ -25,6 +25,7 @@ namespace Game1
         public void Execute()
         {
             myGame.GameReset();
+            myGame.HudCounter = 0;
             controllerHandler.MovingDown = false;
             controllerHandler.MovingUp = false;
             controllerHandler.MovingRight = false;
