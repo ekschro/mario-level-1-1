@@ -70,11 +70,9 @@ namespace Game1
             lives += 1;
         }
 
-        public void ResetAndUpdateLives()
+        public void DockLife()
         {
             lives -= 1;
-            points = 0;
-            coins = 0;
         }
 
         public void Reset()
