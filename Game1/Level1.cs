@@ -28,8 +28,8 @@ namespace Game1
         public List<IPickup> PickupObjects { get => pickups; }
         public List<ITemporary> TemporaryObjects { get => temporaries; }
         public List<IGameObject> LevelObjects { get => levelObjects; }
-        
-
+        private int time;
+        public int Time { get => time; }
         public ICamera LevelCamera { get => currentCamera; set => currentCamera = value; }
         public PersistentData PersistentData { get => persistentData; }
 
@@ -39,7 +39,7 @@ namespace Game1
             this.persistentData = persistantData;
             levelObjects = new List<IGameObject>();
             ILoader loader = new LevelLoader(game);
-
+            time = 365;
             loader.Load(fileName, levelObjects);
             
             GetPlayerObject();
@@ -205,5 +205,10 @@ namespace Game1
             levelObjects.AddRange(EnemyObjects);
             LevelObjects.AddRange(TemporaryObjects);
         }
+        public void DockTime()
+        {
+            time -= 1;
+        }
+
     }
 }
