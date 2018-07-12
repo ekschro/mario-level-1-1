@@ -30,7 +30,7 @@ namespace Game1
         public void Idle()
         {
             if (facingLeft)
-                marioSprite.ChangeFrame(41, 42);
+                marioSprite.ChangeFrame(41, 40);
             else
                 marioSprite.ChangeFrame(42, 43);
             State = MarioState.Idle;

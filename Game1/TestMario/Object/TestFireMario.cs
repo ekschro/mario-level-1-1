@@ -89,7 +89,24 @@ namespace Game1
                 stateMachine.Update();
                 MarioSprite.Update();
             }
-            
+            if (myGame.controllerHandler.MovingLeft)
+            {
+                stateMachine.ChangeDirection(true);
+                stateMachine.Walking();
+
+            }
+            if (myGame.controllerHandler.MovingRight)
+            {
+                stateMachine.Walking();
+                stateMachine.ChangeDirection(false);
+            }
+            else if (myGame.controllerHandler.MovingUp || (myGame.controllerHandler.MovingUp&& myGame.controllerHandler.MovingLeft))
+                stateMachine.Jumping();
+            else if (myGame.controllerHandler.MovingDown || (myGame.controllerHandler.MovingDown && myGame.controllerHandler.MovingRight))
+                stateMachine.Crouching();
+
+            else
+                Idle();
 
         }
         public void Draw()
