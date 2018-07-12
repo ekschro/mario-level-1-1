@@ -89,10 +89,6 @@ namespace Game1
                 myGame.SpriteBatch.Begin();
                 myGame.SpriteBatch.Draw(TextureWarehouse.marioTexture, destinationRectangle, sourceRectangle, player.MarioColor);
                 myGame.SpriteBatch.End();
-            
-
-
-            
         }
 
         public void Bounce()

@@ -483,7 +483,9 @@ namespace Game1
             {
 
             }
-            else if (player.TestMario is TestFireMario)
+            else
+                player.TestMario.Downgrade();
+            /*if (player.TestMario is TestFireMario)
             {
                 player.TestMario = new TestBigMario(myGame, new Vector2(player.CurrentXPos, player.CurrentYPos), (Mario)player);
                 player.Invulnerability = true;
@@ -497,6 +499,7 @@ namespace Game1
             {
                 player.TestMario = new TestDeadMario(myGame, new Vector2(player.CurrentXPos, player.CurrentYPos), (Mario)player);
             }
+            */
         }
 
         public void Update()
