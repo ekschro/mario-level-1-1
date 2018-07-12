@@ -110,7 +110,7 @@ namespace Game1
             }
 
                 delta = gameTime;
-            Level1 level = (Level1)currentLevel;
+            PlatformerLevel level = (PlatformerLevel)currentLevel;
             if (counter == 60)
             {
                 level.DockTime();

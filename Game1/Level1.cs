@@ -47,7 +47,7 @@ namespace Game1
             secretEntrance = new Vector2(3432, 14);
             secretExit = new Vector2(2616, 142);
 
-        loader.Load(fileName, levelObjects);
+        
             time = 365;
             loader.Load(fileName, levelObjects);
             
