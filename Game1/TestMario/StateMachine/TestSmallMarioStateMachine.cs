@@ -48,7 +48,7 @@ namespace Game1
         {
             
             if (facingLeft)
-                marioSprite.ChangeFrame(7 + 28, 7 + 28 + 1);
+                marioSprite.ChangeFrame(7 + 28, 7 + 28 - 1);
             else
                 marioSprite.ChangeFrame(20 + 28, 20 + 28 + 1);
             State = MarioState.Jumping;
