@@ -21,9 +21,10 @@ namespace Game1
         {
             marioSprite = sprite;
         }
-        public void ChangeDirection()
+        public void ChangeDirection(bool left)
         {
-            facingLeft = !facingLeft;
+            //facingLeft = !facingLeft;
+            facingLeft = left;
         }
         public void Idle()
         {

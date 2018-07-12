@@ -45,9 +45,9 @@ namespace Game1
         {
             character.TestMario = new TestSmallMario(myGame, testMarioLocation, character);
         }
-        public void ChangeDirection()
+        public void ChangeDirection(bool left)
         {
-            stateMachine.ChangeDirection();
+            stateMachine.ChangeDirection(left);
         }
         public void WalkLeft()
         {
