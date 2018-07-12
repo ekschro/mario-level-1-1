@@ -20,7 +20,7 @@ namespace Game1
         public TextureWarehouse textureWarehouse;
         public PersistentData persistentData;
         public GameTime temp;
-
+        int counter = 0;
         private SoundWarehouse soundWarehouse;
         private ILevel currentLevel;
         private LevelTransition transitionLevel;
@@ -110,7 +110,20 @@ namespace Game1
             }
 
                 delta = gameTime;
-            
+            if (counter == 60)
+            {
+                persistentData.DockTime();
+                counter = 0;
+            } else
+            {
+                counter++;
+            }
+            if (persistentData.Time == 0)
+            {
+                currentLevel.PlayerObject.TestMario.Downgrade();
+                currentLevel.PlayerObject.TestMario.Downgrade();
+                currentLevel.PlayerObject.TestMario.Downgrade();
+            }
             //CurrentLevel.Update();
             HeadsUpDisplay.Update();
             switch (GameState)
