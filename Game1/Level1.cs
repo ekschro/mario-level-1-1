@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Game1
 {
-    public class Level1 : ILevel
+    public class PlatformerLevel : ILevel
     {
         private const int secretRoomLocation = 3408;
 
@@ -21,6 +21,10 @@ namespace Game1
         private List<IEnemy> enemies;
         private List<IPickup> pickups;
         private List<ITemporary> temporaries;
+
+        public Vector2 secretEntrance;
+        public Vector2 secretExit;
+
         public IPlayer PlayerObject { get => playerObject; set => playerObject = value; }
         public IBackground BackgroundObject { get => backgroundObject; set => backgroundObject = value; }
         public List<IBlock> BlockObjects { get => blocks; }
@@ -33,14 +37,17 @@ namespace Game1
         public ICamera LevelCamera { get => currentCamera; set => currentCamera = value; }
         public PersistentData PersistentData { get => persistentData; }
 
-        public Level1(string fileName, Game1 game, PersistentData persistantData)
+        public PlatformerLevel(string fileName, Game1 game, PersistentData persistantData)
         {
             myGame = game;
             this.persistentData = persistantData;
             levelObjects = new List<IGameObject>();
             ILoader loader = new LevelLoader(game);
 
-            loader.Load(fileName, levelObjects);
+            secretEntrance = new Vector2(3432, 14);
+            secretExit = new Vector2(2616, 142);
+
+        loader.Load(fileName, levelObjects);
             
             GetPlayerObject();
             GetBackgroundObject();
@@ -63,7 +70,7 @@ namespace Game1
              * DEBUG
              */
 
-            backgroundObject = new Level1Background(myGame, new Vector2(0,0));
+            backgroundObject = new PlatformerLevelBackground(myGame, new Vector2(0,0));
         }
 
         public void Update()
@@ -204,6 +211,20 @@ namespace Game1
             levelObjects.AddRange(PickupObjects);
             levelObjects.AddRange(EnemyObjects);
             LevelObjects.AddRange(TemporaryObjects);
+        }
+
+        public void WarpToSecret()
+        {
+            playerObject.CurrentXPos = secretEntrance.X;
+            playerObject.CurrentYPos = secretEntrance.Y;
+            currentCamera = staticCamera;
+        }
+
+        public void WarpFromSecret()
+        {
+            playerObject.CurrentXPos = secretExit.X;
+            playerObject.CurrentYPos = secretExit.Y;
+            currentCamera = movingCamera;
         }
     }
 }

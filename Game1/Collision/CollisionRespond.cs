@@ -30,9 +30,10 @@ namespace Game1
 
         public void BlockCollisionRespondTop(IBlock block,int height,bool standing)
         {
-            if (block is TopWarpPipeBlock)
+            if (block is TopWarpPipeBlock && controllerHandler.MovingDown)
             {
-
+                player.CurrentXPos = block.CurrentXPos + 24;
+                ((PlatformerLevel)objectLevel).WarpToSecret();
             }
             else
             {
@@ -127,6 +128,9 @@ namespace Game1
         {
             if (!(block is HiddenGreenMushroomBlock) && !left)
                 player.CurrentXPos -= width;
+
+            if (block is PipeOnSideBlock && controllerHandler.MovingRight)
+                ((PlatformerLevel)objectLevel).WarpFromSecret();
         }
 
         public void EnemyCollisionRespondTop(IEnemy enemy)
@@ -329,9 +333,9 @@ namespace Game1
                 if (!(player.TestMario is TestFireMario))
                     player.TestMario = new TestBigMario(myGame, new Vector2(player.CurrentXPos, player.CurrentYPos), (Mario)player);
             }
-            else if (pickup is Coin)
+            else if (pickup is CoinPickup)
             {
-
+                objectLevel.PersistentData.CoinCollectedPoints();
             }
             else if (pickup is EmptyPickup)
             {
@@ -368,9 +372,9 @@ namespace Game1
                 }
                
             }
-            else if (pickup is Coin)
+            else if (pickup is CoinPickup)
             {
-
+                objectLevel.PersistentData.CoinCollectedPoints();
             }
             else if (pickup is EmptyPickup)
             {
@@ -412,9 +416,46 @@ namespace Game1
                 if (!(player.TestMario is TestFireMario))
                     player.TestMario = new TestBigMario(myGame, new Vector2(player.CurrentXPos, player.CurrentYPos), (Mario)player);
             }
-            else if (pickup is Coin)
+            else if (pickup is CoinPickup)
+            {
+                objectLevel.PersistentData.CoinCollectedPoints();
+            }
+            else if (pickup is EmptyPickup)
             {
 
+            }
+            else if (pickup is Star)
+            {
+                objectLevel.PlayerObject.IsStar = true;
+                invulnerabilityTimer = 1000;
+                player.Invulnerability = true;
+            }
+
+            objectLevel.PickupObjects.Remove(pickup);
+        }
+
+        public void PickupCollisionRespondRight(IPickup pickup)
+        {
+            pickup.Picked();
+            objectLevel.PersistentData.PowerUpCollectPoints();
+
+
+            if (pickup is Fireflower)
+            {
+                player.TestMario = new TestFireMario(myGame, new Vector2(player.CurrentXPos, player.CurrentYPos), (Mario)player);
+            }
+            else if (pickup is GreenMushroom)
+            {
+                objectLevel.PersistentData.OneUpLives();
+            }
+            else if (pickup is RedMushroom)
+            {
+                if (!(player.TestMario is TestFireMario))
+                    player.TestMario = new TestBigMario(myGame, new Vector2(player.CurrentXPos, player.CurrentYPos), (Mario)player);
+            }
+            else if (pickup is CoinPickup)
+            {
+                objectLevel.PersistentData.CoinCollectedPoints();
             }
             else if (pickup is EmptyPickup)
             {
@@ -446,43 +487,6 @@ namespace Game1
             pickup.Collide();
         }
 
-        public void PickupCollisionRespondRight(IPickup pickup)
-        {
-            pickup.Picked();
-            objectLevel.PersistentData.PowerUpCollectPoints();
-
-
-            if (pickup is Fireflower)
-            {
-                player.TestMario = new TestFireMario(myGame, new Vector2(player.CurrentXPos, player.CurrentYPos), (Mario)player);
-            }
-            else if (pickup is GreenMushroom)
-            {
-                objectLevel.PersistentData.OneUpLives();
-            }
-            else if (pickup is RedMushroom)
-            {
-                if (!(player.TestMario is TestFireMario))
-                    player.TestMario = new TestBigMario(myGame, new Vector2(player.CurrentXPos, player.CurrentYPos), (Mario)player);
-            }
-            else if (pickup is Coin)
-            {
-                
-            }
-            else if (pickup is EmptyPickup)
-            {
-                
-            }
-            else if (pickup is Star)
-            {
-                objectLevel.PlayerObject.IsStar = true;
-                invulnerabilityTimer = 1000;
-                player.Invulnerability = true;
-            }
-
-            objectLevel.PickupObjects.Remove(pickup);
-        }
-
         private void MarioHit()
         {
             if (player.Invulnerability)
@@ -490,11 +494,13 @@ namespace Game1
 
             }
             else
+            {
                 player.TestMario.Downgrade();
+                player.Invulnerability = true;
+            }
             /*if (player.TestMario is TestFireMario)
             {
                 player.TestMario = new TestBigMario(myGame, new Vector2(player.CurrentXPos, player.CurrentYPos), (Mario)player);
-                player.Invulnerability = true;
             }
             else if (!(player.TestMario is TestSmallMario))
             {
