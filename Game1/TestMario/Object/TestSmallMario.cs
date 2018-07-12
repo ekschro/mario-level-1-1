@@ -44,9 +44,9 @@ namespace Game1
         {
             character.TestMario = new TestDeadMario(myGame, new Vector2(character.CurrentXPos, character.CurrentYPos), character);
         }
-        public void ChangeDirection()
+        public void ChangeDirection(bool left)
         {
-            stateMachine.ChangeDirection();
+            stateMachine.ChangeDirection(left);
         }
         public Vector2 GetGameObjectLocation()
         {
@@ -76,13 +76,12 @@ namespace Game1
         }
         public void Update()
         {
-            
             cyclePosition++;
             if (cyclePosition == cycleLength)
             {
-                cyclePosition = 0;
                 stateMachine.Update();
                 MarioSprite.Update();
+                cyclePosition = 0;
             }
             
         }
@@ -93,10 +92,14 @@ namespace Game1
         public void WalkLeft()
         {
             character.CurrentXPos -= 1;
+            stateMachine.ChangeDirection(true);
+
         }
         public void WalkRight()
         {
             character.CurrentXPos = +1;
+            stateMachine.ChangeDirection(false);
+            
         }
 
     }

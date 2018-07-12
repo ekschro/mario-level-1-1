@@ -43,9 +43,9 @@ namespace Game1
         {
             character.TestMario = new TestBigMario(myGame, testMarioLocation, character);
         }
-        public void ChangeDirection()
+        public void ChangeDirection(bool left)
         {
-            stateMachine.ChangeDirection();
+            stateMachine.ChangeDirection(left);
         }
         public Vector2 GetGameObjectLocation()
         {

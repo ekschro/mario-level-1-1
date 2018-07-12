@@ -97,10 +97,12 @@ namespace Game1
 
         public void Bounce()
         {
+            /*
             bounceVelocity += bounceGravity;
             bouncePosition += bounceVelocity;
             if (--bounceTimer < 0)
                 myGame.Reset();
+                */
         }
         public Vector2 GetGameObjectLocation()
         {

@@ -8,7 +8,7 @@ namespace Game1
 {
     public interface ITestMarioStateMachine
     {
-        void ChangeDirection();
+        void ChangeDirection(bool left);
         void Idle();
         void Walking();
         void Jumping();
