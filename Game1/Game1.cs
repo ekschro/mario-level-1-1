@@ -70,7 +70,7 @@ namespace Game1
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            CurrentLevel = new Level1("../../../../Content/LevelInfo.csv", this, persistentData);
+            CurrentLevel = new PlatformerLevel("../../../../Content/LevelInfo.csv", this, persistentData);
             TransitionLevel = new LevelTransition(this);
             HeadsUpDisplay = new HeadsUpDisplay(this);
             textureWarehouse = new TextureWarehouse(this);

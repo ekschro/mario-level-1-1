@@ -22,15 +22,15 @@ namespace Game1
         private int tileOffset = 16;
 
 
-        public CollisionDetect(Game1 game, ILevel Level1)
+        public CollisionDetect(Game1 game, ILevel PlatformerLevel)
         {
             mygame = game;
             controllerHandler = game.controllerHandler;
-            level1 = Level1;
-            player = Level1.PlayerObject;
+            level1 = PlatformerLevel;
+            player = PlatformerLevel.PlayerObject;
 
             collision = new CollisionRespond(mygame, level1);
-            marioLogic = new MarioCollisionDetectionLogic(game,Level1,collision);
+            marioLogic = new MarioCollisionDetectionLogic(game,PlatformerLevel,collision);
         }
 
         public void MarioBlockCollisionDetect()

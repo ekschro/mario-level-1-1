@@ -7,12 +7,12 @@ using Microsoft.Xna.Framework;
 
 namespace Game1
 {
-    public class Level1Background : IBackground
+    public class PlatformerLevelBackground : IBackground
     {
         private Game1 myGame;
         private Vector2 backgroundLocation;
 
-        public Level1Background(Game1 game, Vector2 location)
+        public PlatformerLevelBackground(Game1 game, Vector2 location)
         {
             myGame = game;
             backgroundLocation = location;
