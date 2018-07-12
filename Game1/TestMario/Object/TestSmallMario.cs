@@ -73,30 +73,37 @@ namespace Game1
         public void Update()
         {
             cyclePosition++;
-            if (cyclePosition == cycleLength)
+            if (myGame.controllerHandler.MovingUp)
             {
-                stateMachine.Update();
-                MarioSprite.Update();
-                cyclePosition = 0;
-            }
-            else if (myGame.controllerHandler.MovingLeft)
-            {
-                stateMachine.ChangeDirection(true);
-                stateMachine.Walking();
-                
-            }
-            else if (myGame.controllerHandler.MovingRight)
-            {
-                stateMachine.ChangeDirection(false);
-                stateMachine.Walking();
-                
-            }
-            else if (myGame.controllerHandler.MovingUp || (myGame.controllerHandler.MovingUp && myGame.controllerHandler.MovingLeft))
                 stateMachine.Jumping();
-            else if (myGame.controllerHandler.MovingDown || (myGame.controllerHandler.MovingDown && myGame.controllerHandler.MovingRight))
-                stateMachine.Jumping();
-            else
-                Idle();
+            }
+            else { 
+                if (cyclePosition == cycleLength)
+                {
+                    stateMachine.Update();
+                    MarioSprite.Update();
+                    cyclePosition = 0;
+                }
+                else if (myGame.controllerHandler.MovingLeft)
+                {
+                    stateMachine.ChangeDirection(true);
+                    stateMachine.Walking();
+
+                }
+                else if (myGame.controllerHandler.MovingRight)
+                {
+                    stateMachine.ChangeDirection(false);
+                    stateMachine.Walking();
+
+                }
+                else if (myGame.controllerHandler.MovingUp || (myGame.controllerHandler.MovingUp && myGame.controllerHandler.MovingLeft))
+                    stateMachine.Jumping();
+                else if (myGame.controllerHandler.MovingDown || (myGame.controllerHandler.MovingDown && myGame.controllerHandler.MovingRight))
+                    stateMachine.Jumping();
+                else
+                    Idle();
+            }
+            
             
         }
         public void Draw()
