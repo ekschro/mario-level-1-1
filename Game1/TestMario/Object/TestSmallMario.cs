@@ -11,7 +11,7 @@ namespace Game1
     {
         public float CurrentXPos { get => character.CurrentXPos; set => character.CurrentXPos = value; }
         public float CurrentYPos { get => character.CurrentYPos; set => character.CurrentYPos = value; }
-        //private Vector2 testMarioLocation;
+        private Vector2 testMarioLocation;
 
         private ITestMarioSprite marioSprite;
         public ITestMarioSprite MarioSprite { get => marioSprite; set => MarioSprite = value; }
@@ -29,6 +29,7 @@ namespace Game1
         Game1 myGame;
         public TestSmallMario(Game1 game, Vector2 location, Mario mario)
         {
+            
             marioSprite = new TestSmallMarioSprite(game, this, mario);
             stateMachine = new TestSmallMarioStateMachine(marioSprite);
             character = mario;
@@ -43,17 +44,18 @@ namespace Game1
         {
             character.TestMario = new TestDeadMario(myGame, new Vector2(character.CurrentXPos, character.CurrentYPos), character);
         }
-        public void ChangeDirection()
+        public void ChangeDirection(bool left)
         {
-            stateMachine.ChangeDirection();
+            stateMachine.ChangeDirection(left);
         }
         public Vector2 GetGameObjectLocation()
         {
-            return new Vector2(character.CurrentXPos,character.CurrentYPos);
+            return testMarioLocation;
+            //return new Vector2(character.CurrentXPos,character.CurrentYPos);
         }
         public void SetGameObjectLocation(Vector2 newPos)
         {
-            //testMarioLocation = newPos;
+            testMarioLocation = newPos;
         }
 
         public void Idle()
@@ -74,14 +76,14 @@ namespace Game1
         }
         public void Update()
         {
-            
             cyclePosition++;
             if (cyclePosition == cycleLength)
             {
-                cyclePosition = 0;
                 stateMachine.Update();
                 MarioSprite.Update();
+                cyclePosition = 0;
             }
+            
         }
         public void Draw()
         {
@@ -89,9 +91,15 @@ namespace Game1
         }
         public void WalkLeft()
         {
+            character.CurrentXPos -= 1;
+            stateMachine.ChangeDirection(true);
+
         }
         public void WalkRight()
         {
+            character.CurrentXPos = +1;
+            stateMachine.ChangeDirection(false);
+            
         }
 
     }

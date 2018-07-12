@@ -9,8 +9,8 @@ namespace Game1
 {
     public class TestBigMario : ITestMario
     {
-        public float CurrentXPos { get => testMarioLocation.X; set => testMarioLocation.X = value; }
-        public float CurrentYPos { get => testMarioLocation.Y; set => testMarioLocation.Y = value; }
+        public float CurrentXPos { get => character.CurrentXPos; set => character.CurrentXPos = value; }
+        public float CurrentYPos { get => character.CurrentYPos; set => character.CurrentYPos = value; }
         private Vector2 testMarioLocation;
         
         private ITestMarioSprite marioSprite;
@@ -30,7 +30,7 @@ namespace Game1
 
         public TestBigMario(Game1 game, Vector2 location, Mario mario)
         {
-            testMarioLocation = location;
+            
             myGame = game;
             marioSprite = new TestBigMarioSprite(game, this,mario);
             stateMachine = new TestBigMarioStateMachine(marioSprite);
@@ -45,9 +45,9 @@ namespace Game1
         {
             character.TestMario = new TestSmallMario(myGame, testMarioLocation, character);
         }
-        public void ChangeDirection()
+        public void ChangeDirection(bool left)
         {
-            stateMachine.ChangeDirection();
+            stateMachine.ChangeDirection(left);
         }
         public void WalkLeft()
         {
@@ -95,6 +95,7 @@ namespace Game1
                 stateMachine.Update();
                 MarioSprite.Update();
             }
+            
         }
         public void Draw()
         {

@@ -9,8 +9,8 @@ namespace Game1
 {
     public class TestDeadMario : ITestMario
     {
-        public float CurrentXPos { get => testMarioLocation.X; set => testMarioLocation.X = value; }
-        public float CurrentYPos { get => testMarioLocation.Y; set => testMarioLocation.Y = value; }
+        public float CurrentXPos { get => character.CurrentXPos; set => character.CurrentXPos = value; }
+        public float CurrentYPos { get => character.CurrentYPos; set => character.CurrentYPos = value; }
         private Vector2 testMarioLocation;
 
         private ITestMarioSprite marioSprite;
@@ -19,7 +19,10 @@ namespace Game1
         public ITestMarioStateMachine GetStateMachine { get => stateMachine;}
 
     public ITestMarioStateMachine stateMachine;
-       
+        private float bouncePosition;
+        private float bounceVelocity;
+        private float bounceGravity;
+        private float bounceTimer;
 
         private int cyclePosition = 0;
         private int cycleLength = 8;
@@ -33,6 +36,7 @@ namespace Game1
             marioSprite = new TestDeadMarioSprite(game, this, mario);
             stateMachine = new TestDeadMarioStateMachine(marioSprite);
             character = mario;
+            
         }
 
         public void Upgrade()
@@ -71,6 +75,7 @@ namespace Game1
                 stateMachine.Update();
                 MarioSprite.Update();
             }
+            
         }
         public void Draw()
         {
