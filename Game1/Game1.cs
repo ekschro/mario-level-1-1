@@ -83,26 +83,27 @@ namespace Game1
         {
             GameState = GameScreenState.Transition;
             cyclePosition = 0;
-            persistentData.Reset();
             LoadContent();
-            
+        }
+
+        public void GameReset()
+        {
+            GameState = GameScreenState.Transition;
+            Initialize();
+            LoadContent();
         }
 
         protected override void UnloadContent()
         {
-            
         }
-
         
         protected override void Update(GameTime gameTime)
         {
-            
                 foreach (IController controller in controllerList.ToArray())
                 {
                     controller.Update();
                 }
-
-           
+                
             cyclePosition++;
             if (cyclePosition == cycleLength)
             {

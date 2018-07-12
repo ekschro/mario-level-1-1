@@ -489,11 +489,7 @@ namespace Game1
 
         private void MarioHit()
         {
-            if (player.Invulnerability)
-            {
-
-            }
-            else
+            if (!player.Invulnerability)
             {
                 player.TestMario.Downgrade();
                 player.Invulnerability = true;

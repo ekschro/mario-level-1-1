@@ -87,18 +87,21 @@ namespace Game1
                 Rectangle destinationRectangle = new Rectangle(drawLocationX, drawLocationY, width, height);
 
                 myGame.SpriteBatch.Begin();
-                myGame.SpriteBatch.Draw(TextureWarehouse.marioTexture, destinationRectangle, sourceRectangle, player.MarioColor);
+                myGame.SpriteBatch.Draw(TextureWarehouse.marioTexture, destinationRectangle, sourceRectangle, Color.White);
                 myGame.SpriteBatch.End();
         }
 
         public void Bounce()
         {
-            /*
+            
             bounceVelocity += bounceGravity;
             bouncePosition += bounceVelocity;
             if (--bounceTimer < 0)
+            {
                 myGame.Reset();
-                */
+                myGame.persistentData.DockLife();
+            }
+            
         }
         public Vector2 GetGameObjectLocation()
         {
