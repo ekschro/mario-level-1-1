@@ -106,7 +106,7 @@ namespace Game1
             cyclePosition++;
             if (cyclePosition == cycleLength)
             {
-                GameState= GameScreenState.GamePlay;
+                GameState = GameScreenState.GamePlay;
             }
 
                 delta = gameTime;
