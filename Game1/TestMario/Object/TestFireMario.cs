@@ -78,14 +78,14 @@ namespace Game1
         public void Update()
         {
             cyclePosition++;
-            if (myGame.controllerHandler.MovingUp)
-            { stateMachine.Jumping(); }
-            else if (cyclePosition == cycleLength)
+            if (cyclePosition == cycleLength)
             {
                 stateMachine.Update();
                 MarioSprite.Update();
                 cyclePosition = 0;
             }
+            if (myGame.controllerHandler.MovingUp)
+            { stateMachine.Jumping(); }
             else if (myGame.controllerHandler.MovingLeft)
             {
                 stateMachine.ChangeDirection(true);

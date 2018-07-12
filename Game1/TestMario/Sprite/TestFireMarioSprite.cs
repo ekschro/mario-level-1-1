@@ -41,7 +41,6 @@ namespace Game1
                 currentFrame--;
                 if (currentFrame == endFrame)
                     currentFrame = startFrame;
-
             }
             else
             {

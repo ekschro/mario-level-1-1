@@ -31,7 +31,7 @@ namespace Game1
             if (facingLeft)
                 marioSprite.ChangeFrame(70, 69);
             else
-                marioSprite.ChangeFrame(42 + 28, 42 + 28 + 1);
+                marioSprite.ChangeFrame(71, 72);
             State = MarioState.Idle;
         }
         public void Walking()
