@@ -39,15 +39,15 @@ namespace Game1
             if (marioObject.GetStateMachine.FacingLeft())
             {
                 currentFrame--;
-
+                if (currentFrame == endFrame)
+                    currentFrame = startFrame;
             }
             else
             {
                 currentFrame++;
+                if (currentFrame == endFrame)
+                    currentFrame = startFrame;
             }
-            if (currentFrame == endFrame)
-                currentFrame = startFrame;
-
         }
 
         public void Draw()
