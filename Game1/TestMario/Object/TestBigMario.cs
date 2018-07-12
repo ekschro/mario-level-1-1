@@ -96,6 +96,7 @@ namespace Game1
                 MarioSprite.Update();
             }
             
+
         }
         public void Draw()
         {

@@ -76,6 +76,7 @@ namespace Game1
                 {
                     testMario.GetStateMachine.ChangeState();
                 }
+                testMario.Update();
             }
 
             /*
