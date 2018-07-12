@@ -78,6 +78,8 @@ namespace Game1
                 }
             }
 
+            /*
+
             if (controllerHandler.MovingDown)
             {
                 DownAnimation();
@@ -93,19 +95,22 @@ namespace Game1
             if(controllerHandler.MovingUp)
             {
                 UpAnimation();
-                /*if (play)
+                /* if (play)
                 {
                     SoundWarehouse.jump.Play();
                     play = false;
-                }*/
+                } * /
             }
 
+            */
            //if (CanJump)
                 //play = true;
 
             if (fireballTimer > 0)
                 fireballTimer--;
         }
+
+        /*
 
         private void RightAnimation()
         {
@@ -157,6 +162,8 @@ namespace Game1
                 animationTimer++;
             }
         }
+
+        */
 
         public Vector2 GetGameObjectLocation()
         {

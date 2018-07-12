@@ -9,9 +9,9 @@ namespace Game1
 {
     public class TestSmallMario : ITestMario
     {
-        public float CurrentXPos { get => testMarioLocation.X; set => testMarioLocation.X = value; }
-        public float CurrentYPos { get => testMarioLocation.Y; set => testMarioLocation.Y = value; }
-        private Vector2 testMarioLocation;
+        public float CurrentXPos { get => character.CurrentXPos; set => character.CurrentXPos = value; }
+        public float CurrentYPos { get => character.CurrentYPos; set => character.CurrentYPos = value; }
+        //private Vector2 testMarioLocation;
 
         private ITestMarioSprite marioSprite;
         public ITestMarioSprite MarioSprite { get => marioSprite; set => MarioSprite = value; }
@@ -29,7 +29,6 @@ namespace Game1
         Game1 myGame;
         public TestSmallMario(Game1 game, Vector2 location, Mario mario)
         {
-            testMarioLocation = location;
             marioSprite = new TestSmallMarioSprite(game, this);
             stateMachine = new TestSmallMarioStateMachine(marioSprite);
             character = mario;
@@ -38,11 +37,11 @@ namespace Game1
 
         public void Upgrade()
         {
-            character.TestMario = new TestBigMario(myGame, testMarioLocation, character);
+            character.TestMario = new TestBigMario(myGame, new Vector2(character.CurrentXPos, character.CurrentYPos), character);
         }
         public void Downgrade()
         {
-            character.TestMario = new TestDeadMario(myGame, testMarioLocation, character);
+            character.TestMario = new TestDeadMario(myGame, new Vector2(character.CurrentXPos, character.CurrentYPos), character);
         }
         public void ChangeDirection()
         {
@@ -50,11 +49,11 @@ namespace Game1
         }
         public Vector2 GetGameObjectLocation()
         {
-            return testMarioLocation;
+            return new Vector2(character.CurrentXPos,character.CurrentYPos);
         }
         public void SetGameObjectLocation(Vector2 newPos)
         {
-            testMarioLocation = newPos;
+            //testMarioLocation = newPos;
         }
 
         public void Idle()

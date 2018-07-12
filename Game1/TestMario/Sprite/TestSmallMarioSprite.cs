@@ -48,15 +48,19 @@ namespace Game1
     
         public void Draw()
         {
+
             int width = TextureWarehouse.marioTexture.Width / 28;
+            int height = TextureWarehouse.marioTexture.Height / 6;
+            int row = currentFrame / 28;
+            int column = currentFrame % 28;
 
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(marioObject.GetGameObjectLocation().X);
 
-            Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, TextureWarehouse.goombaTexture.Height);
-            Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)marioObject.GetGameObjectLocation().Y, width, TextureWarehouse.goombaTexture.Height);
+            Rectangle sourceRectangle = new Rectangle(width * column, 32, width, height);
+            Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)(marioObject.GetGameObjectLocation().Y), width, height);
 
             myGame.SpriteBatch.Begin();
-            myGame.SpriteBatch.Draw(TextureWarehouse.goombaTexture, destinationRectangle, sourceRectangle, Color.Yellow);
+            myGame.SpriteBatch.Draw(TextureWarehouse.marioTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.SpriteBatch.End();
         }
 
