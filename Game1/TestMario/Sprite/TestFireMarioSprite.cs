@@ -47,6 +47,7 @@ namespace Game1
             }
             if (currentFrame == endFrame)
                 currentFrame = startFrame;
+
         }
 
         public void Draw()

@@ -9,7 +9,7 @@ namespace Game1
     public class TestBigMarioStateMachine : ITestMarioStateMachine
     {
         private ITestMarioSprite marioSprite;
-        private bool facingLeft = true;
+        private bool facingLeft = false;
         private enum MarioSize { Small, Big, Fire, Dead};
         public enum MarioState { Idle, Walking, Jumping, Crouching };
         private MarioSize size = MarioSize.Big;
@@ -30,7 +30,7 @@ namespace Game1
         public void Idle()
         {
             if (FacingLeft)
-                marioSprite.ChangeFrame(13,14);
+                marioSprite.ChangeFrame(13,12);
             else
                 marioSprite.ChangeFrame(14,15);
             State = MarioState.Idle;
@@ -38,16 +38,16 @@ namespace Game1
         public void Walking()
         {
             if (FacingLeft)
-                marioSprite.ChangeFrame(11 + 56, 8 + 56);
+                marioSprite.ChangeFrame(11 , 8 );
             else
-                marioSprite.ChangeFrame(16 + 56, 19 + 56);
+                marioSprite.ChangeFrame(16, 19 );
             State = MarioState.Walking;
         }
 
         public void Jumping()
         {
             if (FacingLeft)
-                marioSprite.ChangeFrame(7, 7 + 1);
+                marioSprite.ChangeFrame(7, 6);
             else
                 marioSprite.ChangeFrame(20, 20 + 1);
             State = MarioState.Jumping;
@@ -55,7 +55,7 @@ namespace Game1
         public void Crouching()
         {
             if (FacingLeft)
-                marioSprite.ChangeFrame(12, 12 + 1);
+                marioSprite.ChangeFrame(12, 11);
             else
                 marioSprite.ChangeFrame(15, 15 + 1);
             State = MarioState.Crouching;
