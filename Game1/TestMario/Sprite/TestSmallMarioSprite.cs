@@ -32,7 +32,6 @@ namespace Game1
             if (!(start == startFrame && end == endFrame))
             {
                 currentFrame = start;
-                endFrame = end;
             }
             startFrame = start;
             endFrame = end;
