@@ -87,8 +87,9 @@ namespace Game1
             }
             if (myGame.controllerHandler.MovingRight)
             {
-                stateMachine.Walking();
                 stateMachine.ChangeDirection(false);
+                stateMachine.Walking();
+                
             }
             else if (myGame.controllerHandler.MovingUp || (myGame.controllerHandler.MovingUp && myGame.controllerHandler.MovingLeft))
                 stateMachine.Jumping();
