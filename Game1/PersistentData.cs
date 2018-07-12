@@ -12,7 +12,7 @@ namespace Game1
         private int lives;
         private int points;
         private int coins;
-        private int time;
+       
         
 
         public PersistentData()
@@ -20,14 +20,14 @@ namespace Game1
             lives = 3;
             points = 0;
             coins = 0;
-            time = 365;
+            
         }
 
         public int Lives { get => lives;  }
         public int Points { get => points; }
         public int Coins { get => coins; }
 
-        public int Time { get => time; }
+        
 
         public void Draw()
         {
@@ -81,11 +81,7 @@ namespace Game1
             lives -= 1;
         }
 
-        public void DockTime()
-        {
-            time -= 1;
-        }
-
+       
         public void Reset()
         {
             lives = 3;
