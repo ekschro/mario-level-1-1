@@ -13,8 +13,8 @@ namespace Game1
         private TestSmallMario marioObject;
         private Game1 myGame;
         private int currentFrame;
-        private int startFrame=42;
-        private int endFrame=43;
+        private int startFrame;
+        private int endFrame;
         private IPlayer player;
 
 
@@ -24,6 +24,8 @@ namespace Game1
             myGame = game;
             currentFrame = startFrame;
             this.player = player;
+            startFrame = 41;
+            endFrame = 42;
         }
         public void ChangeFrame(int start, int end)
         {
@@ -33,7 +35,7 @@ namespace Game1
 
         public void Update()
         {
-            
+            currentFrame = startFrame;
             if (marioObject.GetStateMachine.FacingLeft())
             {
                 currentFrame--;
