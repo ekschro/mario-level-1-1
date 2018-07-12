@@ -76,5 +76,12 @@ namespace Game1
             points = 0;
             coins = 0;
         }
+
+        public void Reset()
+        {
+            lives = 3;
+            points = 0;
+            coins = 0;
+        }
     }
 }

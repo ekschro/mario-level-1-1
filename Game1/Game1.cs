@@ -83,6 +83,7 @@ namespace Game1
         {
             GameState = GameScreenState.Transition;
             cyclePosition = 0;
+            persistentData.Reset();
             LoadContent();
             
         }
