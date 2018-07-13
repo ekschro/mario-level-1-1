@@ -62,11 +62,6 @@ namespace Game1
                 falling = true;
             }
         }
-        public void Picked()
-        {
-            //redMushroomSprite = new EmptyPickupSprite(myGame, new EmptyPickup(myGame, pickupLocation));
-        }
-
         public void Collide()
         {
             movingRight = !movingRight;

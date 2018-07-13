@@ -78,6 +78,11 @@
     <Compile Include="CameraStatic.cs" />
     <Compile Include="Collision\CollisionUtilityClass.cs" />
     <Compile Include="Collision\CollisionDetectionLogic.cs" />
+    <Compile Include="PickupItem\Object\Coin.cs" />
+    <Compile Include="PickupItem\Object\Fireflower.cs" />
+    <Compile Include="PickupItem\Object\GreenMushroom.cs" />
+    <Compile Include="PickupItem\Object\RedMushroom.cs" />
+    <Compile Include="PickupItem\Object\Star.cs" />
     <Compile Include="UniqueAnimation.cs" />
     <Compile Include="ControllerHandler.cs" />
     <Compile Include="Enemy\koopa\KoopaShell.cs" />
@@ -106,10 +111,8 @@
     <Compile Include="Blocks\Sprites\TopPipeBlockSprite.cs" />
     <Compile Include="Blocks\TopPipeBlock.cs" />
     <Compile Include="Blocks\BrickBlock.cs" />
-    <Compile Include="Blocks\EmptyBlock.cs" />
     <Compile Include="Blocks\QuestionBlock.cs" />
     <Compile Include="Blocks\Sprites\BrickBlockSprite.cs" />
-    <Compile Include="Blocks\Sprites\EmptyBlockSprite.cs" />
     <Compile Include="Blocks\Sprites\QuestionBlockSprite.cs" />
     <Compile Include="Blocks\Sprites\StairBlockSprite.cs" />
     <Compile Include="Blocks\Sprites\StoneBlockSprite.cs" />
@@ -147,8 +150,6 @@
     <Compile Include="Collision\CollisionRespond.cs" />
     <Compile Include="Collision\CollisionDetect.cs" />
     <Compile Include="Controllers\GamePadController.cs" />
-    <Compile Include="Enemy\EmptyEnemy.cs" />
-    <Compile Include="Enemy\EmptyEnemySprite.cs" />
     <Compile Include="Enemy\goomba\Goomba.cs" />
     <Compile Include="Enemy\goomba\GoombaSprite.cs" />
     <Compile Include="Enemy\goomba\GoombaStateMachine.cs" />
@@ -174,13 +175,8 @@
     <Compile Include="MouseController.cs" />
     <Compile Include="Physics\StarPhysics.cs" />
     <Compile Include="Physics\PickupPhysics.cs" />
-    <Compile Include="PickupItem\Coin.cs" />
     <Compile Include="PickupItem\Sprites\CoinSprite.cs" />
     <Compile Include="TemporaryObjects\Coin.cs" />
-    <Compile Include="PickupItem\EmptyPickup.cs" />
-    <Compile Include="PickupItem\Fireflower.cs" />
-    <Compile Include="PickupItem\GreenMushroom.cs" />
-    <Compile Include="PickupItem\RedMushroom.cs" />
     <Compile Include="TemporaryObjects\FlattenedGoomba.cs" />
     <Compile Include="TemporaryObjects\FlippedKoopa.cs" />
     <Compile Include="TemporaryObjects\FlippedGoomba.cs" />
@@ -193,7 +189,6 @@
     <Compile Include="PickupItem\Sprites\GreenMushroomSprite.cs" />
     <Compile Include="PickupItem\Sprites\RedMushroonSprite.cs" />
     <Compile Include="PickupItem\Sprites\StarSprite.cs" />
-    <Compile Include="PickupItem\Star.cs" />
     <Compile Include="MarioCommands\DeadMarioCommand.cs" />
     <Compile Include="GeneralCommands\DownCommand.cs" />
     <Compile Include="GeneralCommands\ExitGameCommand.cs" />

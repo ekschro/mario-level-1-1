@@ -317,7 +317,6 @@ namespace Game1
 
         public void PickupCollisionRespondTop(IPickup pickup)
         {
-            pickup.Picked();
             objectLevel.PersistentData.PowerUpCollectPoints();
 
             if (pickup is Fireflower)
@@ -337,10 +336,6 @@ namespace Game1
             {
                 objectLevel.PersistentData.CoinCollectedPoints();
             }
-            else if (pickup is EmptyPickup)
-            {
-
-            }
             else if (pickup is Star)
             {
                 objectLevel.PlayerObject.IsStar = true;
@@ -353,7 +348,6 @@ namespace Game1
 
         public void PickupCollisionRespondBottom(IPickup pickup)
         {
-            pickup.Picked();
             objectLevel.PersistentData.PowerUpCollectPoints();
 
             if (pickup is Fireflower)
@@ -376,10 +370,6 @@ namespace Game1
             {
                 objectLevel.PersistentData.CoinCollectedPoints();
             }
-            else if (pickup is EmptyPickup)
-            {
-
-            }
             else if (pickup is Star)
             {
                 objectLevel.PlayerObject.IsStar = true;
@@ -400,7 +390,6 @@ namespace Game1
 
         public void PickupCollisionRespondLeft(IPickup pickup)
         {
-            pickup.Picked();
             objectLevel.PersistentData.PowerUpCollectPoints();
 
             if (pickup is Fireflower)
@@ -419,10 +408,6 @@ namespace Game1
             else if (pickup is CoinPickup)
             {
                 objectLevel.PersistentData.CoinCollectedPoints();
-            }
-            else if (pickup is EmptyPickup)
-            {
-
             }
             else if (pickup is Star)
             {
@@ -436,7 +421,6 @@ namespace Game1
 
         public void PickupCollisionRespondRight(IPickup pickup)
         {
-            pickup.Picked();
             objectLevel.PersistentData.PowerUpCollectPoints();
 
 
@@ -456,10 +440,6 @@ namespace Game1
             else if (pickup is CoinPickup)
             {
                 objectLevel.PersistentData.CoinCollectedPoints();
-            }
-            else if (pickup is EmptyPickup)
-            {
-
             }
             else if (pickup is Star)
             {

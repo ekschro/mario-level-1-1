@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace Game1
 {
-    public class GreenMushroom : IPickup
+    public class Star : IPickup
     {
         public float CurrentXPos { get; set; }
         public float CurrentYPos { get; set; }
@@ -15,7 +15,10 @@ namespace Game1
         private bool falling;
         public bool IsFalling { get => falling; set => falling = value; }
 
-        private IPickupSprite greenMushroomSprite;
+        //private int cyclePosition = 0;
+        //private int cycleLength = 16;
+
+        private IPickupSprite starSprite;
         private Game1 myGame;
         private Vector2 pickupLocation;
         private Vector2 pickupOriginalLocation;
@@ -24,20 +27,19 @@ namespace Game1
         private bool moving;
         private PickupUtilityClass utility;
 
-        public GreenMushroom(Game1 game, Vector2 location)
+        public Star(Game1 game, Vector2 location)
         {
-            greenMushroomSprite = new GreenMushroomSprite(game, this);
+            starSprite = new StarSprite(game, this);
             myGame = game;
             pickupLocation = location;
             pickupOriginalLocation = location;
-
-            physics = new PickupPhysics(myGame, this, 2);
+            physics = new StarPhysics(myGame,this,0);
             utility = new PickupUtilityClass();
         }
 
         public void Draw()
         {
-            greenMushroomSprite.Draw();
+            starSprite.Draw();
         }
 
         public Vector2 GetGameObjectLocation()
@@ -52,10 +54,18 @@ namespace Game1
 
         public void Update()
         {
-            greenMushroomSprite.Update();
-            if (pickupLocation.Y > pickupOriginalLocation.Y - utility.BlockSize && !moving)
+            utility.PickpupCyclePosition++;
+            //cyclePosition++;
+            if (utility.PickpupCyclePosition == utility.PickpupCycleLength)
             {
-                pickupLocation.Y -= (float)1;
+                starSprite.Update();
+                //cyclePosition = 0;
+                utility.PickpupCyclePosition = 0;
+            }
+            if (pickupLocation.Y > pickupOriginalLocation.Y - /*17*/utility.BlockSize && !moving)
+            {
+                pickupLocation.Y --;
+                IsFalling = true;
             }
             else
             {
@@ -64,10 +74,7 @@ namespace Game1
                 falling = true;
             }
         }
-        public void Picked()
-        {
-            //greenMushroomSprite = new EmptyPickupSprite(myGame, new EmptyPickup(myGame, pickupLocation));
-        }
+
 
         public void Collide()
         {
