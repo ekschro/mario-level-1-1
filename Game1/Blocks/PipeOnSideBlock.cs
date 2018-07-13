@@ -16,13 +16,15 @@ namespace Game1
         //private Game1 myGame;
         private Vector2 blockLocation;
         private Rectangle blockRectangle;
+        BlockUtilityClass utility;
 
         public PipeOnSideBlock(Game1 game, Vector2 location)
         {
             pipeOnSideBlockSprite = new PipeOnSideBlockSprite(game, this);
             //myGame = game;
             blockLocation = location;
-            blockRectangle = new Rectangle((int)location.X, (int)location.Y, 48, 32);
+            utility = new BlockUtilityClass();
+            blockRectangle = new Rectangle((int)location.X, (int)location.Y, utility.PipeWidth, utility.PipeHeight);
         }
 
         public void Draw()

@@ -57,6 +57,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Blocks\BlockUtilityClass.cs" />
     <Compile Include="Blocks\BlueBrickBlock.cs" />
     <Compile Include="Blocks\BrickBlockWithStar.cs" />
     <Compile Include="Blocks\BrickBlockWithManyCoins.cs" />

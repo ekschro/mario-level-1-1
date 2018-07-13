@@ -16,13 +16,14 @@ namespace Game1
         //private Game1 myGame;
         private Vector2 blockLocation;
         private Rectangle blockRectangle;
-
+        private BlockUtilityClass utility;
         public StairBlock(Game1 game, Vector2 location)
         {
+            utility = new BlockUtilityClass();
             stairBlockSprite = new StairBlockSprite(game, this);
             //myGame = game;
             blockLocation = location;
-            blockRectangle = new Rectangle((int)location.X, (int)location.Y, 16, 16);
+            blockRectangle = new Rectangle((int)location.X, (int)location.Y, utility.Width, utility.Height);
         }
 
         public void Draw()

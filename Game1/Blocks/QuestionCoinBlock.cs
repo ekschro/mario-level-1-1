@@ -15,16 +15,19 @@ namespace Game1
         private IBlockSprite questionCoinBlockSprite;
         //private Game1 myGame;
         private Vector2 blockLocation;
+        private BlockUtilityClass utility = new BlockUtilityClass();
         private Rectangle blockRectangle;
-        private int cyclePosition = 0;
-        private int cycleLength = 16;
+        private int cyclePosition;
+        private int cycleLength;
 
         public QuestionCoinBlock(Game1 game, Vector2 location)
         {
+            cyclePosition = utility.QuestionCyclePosition;
+            cycleLength = utility.QuestionCoinLength;
             questionCoinBlockSprite = new QuestionCoinBlockSprite(game, this);
             //myGame = game;
             blockLocation = location;
-            blockRectangle = new Rectangle((int)location.X, (int)location.Y, 16, 16);
+            blockRectangle = new Rectangle((int)location.X, (int)location.Y, utility.Width, utility.Height);
         }
 
         public void Draw()
@@ -49,7 +52,7 @@ namespace Game1
             {
                 
                 questionCoinBlockSprite.Update();
-                cyclePosition = 0;
+                cyclePosition = utility.QuestionCyclePosition;
             }
 
         }

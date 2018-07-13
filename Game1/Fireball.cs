@@ -19,7 +19,7 @@ namespace Game1
             player = game.CurrentLevel.PlayerObject;
             falling = true;
 
-            if (controllerHandler.MovingRight || ((Mario)player).TestMario is TestFireMario)
+            if (!player.TestMario.GetStateMachine.FacingLeft())
             {
                 currentFrame = 2;
                 MovingRight = true;

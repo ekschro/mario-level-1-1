@@ -18,7 +18,7 @@ namespace Game1
 
         private int coinsLeft;
         private Rectangle blockRectangle;
-
+        private BlockUtilityClass utility;
         public int CoinsLeft { get => coinsLeft; set => coinsLeft = value; }
 
         public BrickBlockWithManyCoins(Game1 game, Vector2 location)
@@ -26,8 +26,9 @@ namespace Game1
             brickBlockSprite = new BrickBlockSprite(game, this);
             //myGame = game;
             blockLocation = location;
-            coinsLeft = 10;
-            blockRectangle = new Rectangle((int)location.X, (int)location.Y, 16, 16);
+            utility = new BlockUtilityClass();
+            coinsLeft = utility.CoinsLeft;
+            blockRectangle = new Rectangle((int)location.X, (int)location.Y, utility.Width, utility.Height);
         }
 
         public void Draw()

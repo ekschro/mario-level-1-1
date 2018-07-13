@@ -18,16 +18,17 @@ namespace Game1
 
         private Vector2 blockSize;
         private Rectangle blockRectangle;
-
+        private BlockUtilityClass utility;
         public Vector2 BlockSize { get => blockSize; set => blockSize = value; }
 
         public StoneBlock(Game1 game, Vector2 location, Vector2 size)
         {
+            utility = new BlockUtilityClass();
             stoneBlockSprite = new StoneBlockSprite(game, this);
             //myGame = game;
             blockLocation = location;
             blockSize = size;
-            blockRectangle = new Rectangle((int)location.X, (int)location.Y, 16, 16);
+            blockRectangle = new Rectangle((int)location.X, (int)location.Y, utility.Width, utility.Height);
         }
 
         public void Draw()
