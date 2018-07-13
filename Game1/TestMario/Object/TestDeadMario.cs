@@ -18,7 +18,7 @@ namespace Game1
 
         public ITestMarioStateMachine GetStateMachine { get => stateMachine;}
 
-    public ITestMarioStateMachine stateMachine;
+        private ITestMarioStateMachine stateMachine;
         private float bouncePosition;
         private float bounceVelocity;
         private float bounceGravity;
@@ -27,7 +27,7 @@ namespace Game1
         private int cyclePosition = 0;
         private int cycleLength = 8;
         private Mario character;
-        private bool dead = false;
+        //private bool dead = false;
         
 
         public TestDeadMario(Game1 game, Vector2 location, Mario mario)
@@ -36,14 +36,11 @@ namespace Game1
             marioSprite = new TestDeadMarioSprite(game, this, mario);
             stateMachine = new TestDeadMarioStateMachine(marioSprite);
             character = mario;
-            
         }
 
         public void Upgrade()
         { }
         public void Downgrade()
-        { }
-        public void ChangeDirection()
         { }
         public Vector2 GetGameObjectLocation()
         {
@@ -52,10 +49,6 @@ namespace Game1
         public void SetGameObjectLocation(Vector2 newPos)
         {
             testMarioLocation = newPos;
-        }
-        public bool GetDead()
-        {
-            return dead;
         }
         public void Idle()
         { }
@@ -67,27 +60,12 @@ namespace Game1
         { }
         public void Update()
         {
-            
-            cyclePosition++;
-            if (cyclePosition == cycleLength)
-            {
-                cyclePosition = 0;
-                stateMachine.Update();
-                MarioSprite.Update();
-            }
-            
+            stateMachine.Update();
+            MarioSprite.Update();
         }
         public void Draw()
         {
             MarioSprite.Draw();
-        }
-        public void WalkLeft()
-        {
-            //testMarioLocation.X -= 1;
-        }
-        public void WalkRight()
-        {
-            //testMarioLocation.X = +1;
         }
 
     }

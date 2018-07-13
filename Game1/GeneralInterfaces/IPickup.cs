@@ -12,7 +12,7 @@ namespace Game1
         //object GetStateMachine { get; set; }
         bool IsFalling { get; set; }
 
-        Vector2 GetGameObjectLocation();
+        //Vector2 GetGameObjectLocation();
         void SetGameObjectLocation(Vector2 x);
         void Picked();
         void Collide();

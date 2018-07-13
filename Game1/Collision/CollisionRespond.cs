@@ -183,7 +183,7 @@ namespace Game1
         {
             if (enemy is KoopaShell)
             {
-                if (!((KoopaShell)enemy).isMoving)
+                if (!((KoopaShell)enemy).IsMoving)
                 {
                     if (!enemy.GetStateMachine.GetDirection())
                     {
@@ -222,7 +222,7 @@ namespace Game1
         {
             if (enemy is KoopaShell)
             {
-                if (!((KoopaShell)enemy).isMoving)
+                if (!((KoopaShell)enemy).IsMoving)
                 {
                     if (enemy.GetStateMachine.GetDirection())
                     {

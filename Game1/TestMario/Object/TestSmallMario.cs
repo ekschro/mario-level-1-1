@@ -16,7 +16,7 @@ namespace Game1
         private ITestMarioSprite marioSprite;
         public ITestMarioSprite MarioSprite { get => marioSprite; set => MarioSprite = value; }
 
-        public ITestMarioStateMachine stateMachine;
+        private ITestMarioStateMachine stateMachine;
         public ITestMarioStateMachine GetStateMachine { get => stateMachine; }
 
         private int cyclePosition = 0;
@@ -24,7 +24,7 @@ namespace Game1
         
         //private bool dead = false;
        
-        private IPlayer player;
+        //private IPlayer player;
         Mario character;
         Game1 myGame;
         public TestSmallMario(Game1 game, Vector2 location, Mario mario)
@@ -81,46 +81,25 @@ namespace Game1
                 cyclePosition = 0;
             }
             else if (myGame.controllerHandler.MovingUp || (myGame.controllerHandler.MovingUp && myGame.controllerHandler.MovingLeft))
-                stateMachine.Jumping();
+                Jumping();
             else if (myGame.controllerHandler.MovingDown || (myGame.controllerHandler.MovingDown && myGame.controllerHandler.MovingRight))
-                stateMachine.Crouching();
+                Crouching();
             else if (myGame.controllerHandler.MovingLeft)
             {
                 stateMachine.ChangeDirection(true);
-                stateMachine.Walking();
-
+                Walking();
             }
             else if (myGame.controllerHandler.MovingRight)
             {
                 stateMachine.ChangeDirection(false);
-                stateMachine.Walking();
-
+                Walking();
             }
-            
             else
                 Idle();
-
-
         }
         public void Draw()
         {
             MarioSprite.Draw();
         }
-        public void WalkLeft()
-        {
-            stateMachine.Walking();
-            character.CurrentXPos -= 1;
-            stateMachine.ChangeDirection(true);
-            
-
-        }
-        public void WalkRight()
-        {
-            stateMachine.Walking();
-            character.CurrentXPos = +1;
-            stateMachine.ChangeDirection(false);
-            
-        }
-
     }
 }

@@ -10,9 +10,9 @@ namespace Game1
     {
         private ITestMarioSprite marioSprite;
         private bool facingLeft = true;
-        private enum MarioSize { Small, Big, Fire, Dead };
+        //private enum MarioSize { Small, Big, Fire, Dead };
         private enum MarioState { Idle, Walking, Jumping, Crouching };
-        private MarioSize size = MarioSize.Dead;
+        //private MarioSize size = MarioSize.Dead;
         private MarioState state = MarioState.Idle;
 
         private MarioState State { get => state; set => state = value; }
