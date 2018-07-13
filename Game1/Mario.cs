@@ -171,6 +171,17 @@ namespace Game1
 
         */
 
+            /*
+        public void Pipe(bool enter)
+        {
+            testMario.Pipe(enter);
+        }
+        public void EnterSidePipe(bool left)
+        {
+            testMario.SidePipe(left);
+        }
+        */
+
         public Vector2 GetGameObjectLocation()
         {
             return new Vector2(currentXPosition, currentYPosition);

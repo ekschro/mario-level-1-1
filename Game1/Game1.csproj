@@ -133,7 +133,6 @@
     <Compile Include="TestMario\Sprite\TestBigMarioSprite.cs" />
     <Compile Include="TestMario\Sprite\TestDeadMarioSprite.cs" />
     <Compile Include="TestMario\Sprite\TestFireMarioSprite.cs" />
-    <Compile Include="TestMario\Sprite\TestMarioSprite.cs" />
     <Compile Include="TestMario\Sprite\TestSmallMarioSprite.cs" />
     <Compile Include="TestMario\StateMachine\TestBigMarioStateMachine.cs" />
     <Compile Include="TestMario\StateMachine\TestDeadMarioStateMachine.cs" />

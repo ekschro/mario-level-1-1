@@ -21,7 +21,7 @@ namespace Game1
             flagpoleBlockSprite = new FlagpoleBlockSprite(game, this);
             blockLocation = location;
             utility = new BlockUtilityClass();
-            blockRectangle = new Rectangle((int)location.X, (int)location.Y, utility.Width, utility.Height);
+            blockRectangle = new Rectangle((int)location.X, (int)location.Y, TextureWarehouse.flagpoleTexture.Width, TextureWarehouse.flagpoleTexture.Height);
         }
 
         public void Draw()

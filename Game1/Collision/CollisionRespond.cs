@@ -152,13 +152,19 @@ namespace Game1
                 player.CurrentXPos += width;
         }
 
-        public void BlockCollisionRespondLeft(IBlock block,int width,bool left)
+        public void BlockCollisionRespondLeft(IBlock block, int width, bool left)
         {
-            if (!(block is HiddenGreenMushroomBlock) && !left)
-                player.CurrentXPos -= width;
-
-            if (block is PipeOnSideBlock && controllerHandler.MovingRight)
+            if (block is FlagpoleBlock)
+            {
+                myGame.Pause = true;
+            }
+            else if (block is PipeOnSideBlock && controllerHandler.MovingRight) { 
                 ((PlatformerLevel)objectLevel).WarpFromSecret();
+            }
+            else if (!(block is HiddenGreenMushroomBlock) && !left) { 
+                player.CurrentXPos -= width;
+        
+            }
         }
 
         public void EnemyCollisionRespondTop(IEnemy enemy)
