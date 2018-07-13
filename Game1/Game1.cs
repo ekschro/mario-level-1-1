@@ -69,12 +69,12 @@ namespace Game1
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            CurrentLevel = new PlatformerLevel("../../../../Content/LevelInfo.csv", this, persistentData);
             TransitionLevel = new LevelTransition(this);
             HeadsUpDisplay = new HeadsUpDisplay(this);
             textureWarehouse = new TextureWarehouse(this);
             soundWarehouse = new SoundWarehouse(this);
             spriteFont = Content.Load<SpriteFont>("arial");
+            CurrentLevel = new PlatformerLevel("../../../../Content/LevelInfo.csv", this, persistentData);
             MediaPlayer.Play(SoundWarehouse.main_theme);
         }
 
@@ -83,6 +83,8 @@ namespace Game1
             GameState = GameScreenState.Transition;
             cyclePosition = 0;
             LoadContent();
+            pause = false;
+            currentLevel.PlayerObject.Invulnerability = false;
         }
 
         public void GameReset()
@@ -91,6 +93,8 @@ namespace Game1
             cyclePosition = 0;
             Initialize();
             LoadContent();
+            pause = false;
+            currentLevel.PlayerObject.Invulnerability = false;
         }
 
         protected override void UnloadContent()

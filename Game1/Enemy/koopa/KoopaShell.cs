@@ -21,6 +21,9 @@ namespace Game1
         private KoopaSStateMachine stateMachine;
         public IEnemyStateMachine GetStateMachine { get => stateMachine; }
         public bool IsMoving { get => !dead; }
+        private int killedNum = 0;
+
+        public int KilledNum { get => killedNum; set => killedNum = value; }
 
         private bool dead;
         

@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace Game1
 {
-    public class Star : IPickup
+    public class GreenMushroom : IPickup
     {
         public float CurrentXPos { get; set; }
         public float CurrentYPos { get; set; }
@@ -15,30 +15,29 @@ namespace Game1
         private bool falling;
         public bool IsFalling { get => falling; set => falling = value; }
 
-        private int cyclePosition = 0;
-        private int cycleLength = 16;
-
-        private IPickupSprite starSprite;
+        private IPickupSprite greenMushroomSprite;
         private Game1 myGame;
         private Vector2 pickupLocation;
         private Vector2 pickupOriginalLocation;
         private IPhysics physics;
         private bool movingRight;
         private bool moving;
+        private PickupUtilityClass utility;
 
-        public Star(Game1 game, Vector2 location)
+        public GreenMushroom(Game1 game, Vector2 location)
         {
-            starSprite = new StarSprite(game, this);
+            greenMushroomSprite = new GreenMushroomSprite(game, this);
             myGame = game;
             pickupLocation = location;
             pickupOriginalLocation = location;
 
-            physics = new StarPhysics(myGame,this,0);
+            physics = new PickupPhysics(myGame, this, 2);
+            utility = new PickupUtilityClass();
         }
 
         public void Draw()
         {
-            starSprite.Draw();
+            greenMushroomSprite.Draw();
         }
 
         public Vector2 GetGameObjectLocation()
@@ -53,16 +52,10 @@ namespace Game1
 
         public void Update()
         {
-            cyclePosition++;
-            if (cyclePosition == cycleLength)
+            greenMushroomSprite.Update();
+            if (pickupLocation.Y > pickupOriginalLocation.Y - utility.BlockSize && !moving)
             {
-                starSprite.Update();
-                cyclePosition = 0;
-            }
-            if (pickupLocation.Y > pickupOriginalLocation.Y - 17 && !moving)
-            {
-                pickupLocation.Y -= 1;
-                IsFalling = true;
+                pickupLocation.Y --;
             }
             else
             {
@@ -70,10 +63,6 @@ namespace Game1
                 physics.Update();
                 falling = true;
             }
-        }
-        public void Picked()
-        {
-            starSprite = new EmptyPickupSprite(myGame, new EmptyPickup(myGame, pickupLocation));
         }
 
         public void Collide()

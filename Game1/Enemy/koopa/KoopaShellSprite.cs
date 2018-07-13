@@ -15,13 +15,16 @@ namespace Game1
         private int currentFrame;
         private int startFrame;
         private int endFrame;
-        private int koopaColumn = 6;
+        private EnemyUtilityClass utility;
         public KoopaShellSprite(Game1 game, IEnemy koopa)
         {
+            utility = new EnemyUtilityClass();
             koopaObject = koopa;
             myGame = game;
-            startFrame = 4;
-            endFrame = 6;
+            //startFrame = 4;
+            //endFrame = 6;
+            startFrame = utility.KoopaShellStartFrame;
+            endFrame = utility.KoopaShellEndFrame;
             currentFrame = startFrame;
         }
         public void ChangeFrame(int start, int end)
@@ -43,7 +46,7 @@ namespace Game1
 
         public void Draw()
         {
-            int width = TextureWarehouse.koopaTexture.Width / koopaColumn;
+            int width = TextureWarehouse.koopaTexture.Width / utility.KoopaColumn;
 
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(koopaObject.GetGameObjectLocation().X);
 

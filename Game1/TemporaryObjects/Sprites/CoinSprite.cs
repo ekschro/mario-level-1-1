@@ -14,15 +14,19 @@ namespace Game1
         private int currentFrame;
         private int startFrame;
         private int endFrame;
-        private int cyclePosition = 0;
-        private int cycleLength = 16;
+        //private int cyclePosition = 0;
+        //private int cycleLength = 16;
+        private PickupUtilityClass utility;
 
         public CoinSprite(Game1 game, Coin coin)
         {
+            utility = new PickupUtilityClass();
             coinObject = coin;
             myGame = game;
-            startFrame = 10;
-            endFrame = 14;
+            //startFrame = 10;
+            //endFrame = 14;
+            startFrame = utility.CoinStartFrame;
+            endFrame = utility.CoinEndFrame;
             currentFrame = startFrame;
         }
         public void ChangeFrame(int start, int end)
@@ -33,10 +37,10 @@ namespace Game1
 
         public void Update()
         {
-            cyclePosition++;
-            if (cyclePosition == cycleLength)
+            utility.PickpupCyclePosition++;
+            if (utility.PickpupCyclePosition == utility.PickpupCycleLength)
             {
-                cyclePosition = 0;
+                utility.PickpupCyclePosition = 0;
                 currentFrame++;
                 if (currentFrame == endFrame)
                     currentFrame = startFrame;
@@ -45,7 +49,7 @@ namespace Game1
 
         public void Draw()
         {
-            int width = TextureWarehouse.pickupTexture.Width / 15;
+            int width = TextureWarehouse.pickupTexture.Width / utility.PickupColumn;
             
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(coinObject.GetGameObjectLocation().X);
 

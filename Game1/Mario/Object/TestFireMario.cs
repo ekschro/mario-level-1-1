@@ -7,53 +7,62 @@ using Microsoft.Xna.Framework;
 
 namespace Game1
 {
-    public class TestSmallMario : ITestMario
+    public class TestFireMario : ITestMario
     {
         public float CurrentXPos { get => character.CurrentXPos; set => character.CurrentXPos = value; }
         public float CurrentYPos { get => character.CurrentYPos; set => character.CurrentYPos = value; }
         private Vector2 testMarioLocation;
 
-        private ITestMarioSprite marioSprite;
-        public ITestMarioSprite MarioSprite { get => marioSprite; set => MarioSprite = value; }
+        private TestFireMarioSprite marioSprite;
+        public TestFireMarioSprite MarioSprite { get => marioSprite; set => MarioSprite = value; }
 
         private ITestMarioStateMachine stateMachine;
         public ITestMarioStateMachine GetStateMachine { get => stateMachine; }
 
         private int cyclePosition = 0;
         private int cycleLength = 8;
+
+        private bool dead = false;
         
-        //private bool dead = false;
-       
-        //private IPlayer player;
         Mario character;
         Game1 myGame;
-        public TestSmallMario(Game1 game, Vector2 location, Mario mario)
+        public TestFireMario(Game1 game, Vector2 location, Mario mario)
         {
-            
-            marioSprite = new TestSmallMarioSprite(game, this, mario);
-            stateMachine = new TestSmallMarioStateMachine(marioSprite);
+            testMarioLocation = location;
+            marioSprite = new TestFireMarioSprite(game, this, mario);
+            stateMachine = new TestFireMarioStateMachine(marioSprite);
             character = mario;
             myGame = game;
         }
 
         public void Upgrade()
         {
-            character.TestMario = new TestBigMario(myGame, new Vector2(character.CurrentXPos, character.CurrentYPos), character);
+            
         }
         public void Downgrade()
         {
-            character.TestMario = new TestDeadMario(myGame, new Vector2(character.CurrentXPos, character.CurrentYPos), character);
+            character.TestMario = new TestBigMario(myGame, testMarioLocation, character);
         }
+        /*
+        public void ChangeDirection(bool left)
+        {
+            stateMachine.ChangeDirection(left);
+        }
+        */
         public Vector2 GetGameObjectLocation()
         {
             return testMarioLocation;
-            //return new Vector2(character.CurrentXPos,character.CurrentYPos);
         }
+        /*
         public void SetGameObjectLocation(Vector2 newPos)
         {
             testMarioLocation = newPos;
         }
-
+        public bool GetDead()
+        {
+            return dead;
+        }
+        */
         public void Idle()
         {
             stateMachine.Idle();
@@ -73,8 +82,8 @@ namespace Game1
         public void Update()
         {
             cyclePosition++;
-            
-             if (cyclePosition == cycleLength)
+
+            if (cyclePosition == cycleLength)
             {
                 stateMachine.Update();
                 MarioSprite.Update();
@@ -93,9 +102,12 @@ namespace Game1
             {
                 stateMachine.ChangeDirection(false);
                 Walking();
+
             }
+
             else
                 Idle();
+
         }
         public void Draw()
         {

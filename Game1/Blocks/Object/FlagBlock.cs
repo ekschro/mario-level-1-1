@@ -7,26 +7,27 @@ using Microsoft.Xna.Framework;
 
 namespace Game1
 {
-    public class FlagpoleBlock : IBlock
+    public class FlagBlock : IBlock
     {
         public float CurrentXPos { get; set; }
         public float CurrentYPos { get; set; }
 
-        private IBlockSprite flagpoleBlockSprite;
+        private IBlockSprite flagBlockSprite;
         private Vector2 blockLocation;
         private Rectangle blockRectangle;
         private BlockUtilityClass utility;
-        public FlagpoleBlock(Game1 game, Vector2 location)
+        public FlagBlock(Game1 game, Vector2 location)
         {
-            flagpoleBlockSprite = new FlagpoleBlockSprite(game, this);
+            flagBlockSprite = new FlagBlockSprite(game, this);
             blockLocation = location;
             utility = new BlockUtilityClass();
-            blockRectangle = new Rectangle((int)location.X, (int)location.Y, utility.Width, utility.Height);
+            blockRectangle = new Rectangle((int)location.X + 16, (int)location.Y, utility.Width, utility.Height);
+            
         }
 
         public void Draw()
         {
-            flagpoleBlockSprite.Draw();
+            flagBlockSprite.Draw();
         }
 
         public Vector2 GetGameObjectLocation()
@@ -43,6 +44,7 @@ namespace Game1
         {
 
         }
-        
+
+
     }
 }

@@ -7,72 +7,53 @@ using Microsoft.Xna.Framework;
 
 namespace Game1
 {
-    public class TestBigMario : ITestMario
+    public class TestSmallMario : ITestMario
     {
         public float CurrentXPos { get => character.CurrentXPos; set => character.CurrentXPos = value; }
         public float CurrentYPos { get => character.CurrentYPos; set => character.CurrentYPos = value; }
         private Vector2 testMarioLocation;
-        
-        private ITestMarioSprite marioSprite;
-        public ITestMarioSprite MarioSprite { get => marioSprite; set => MarioSprite = value; }
+
+        private TestSmallMarioSprite marioSprite;
+        public TestSmallMarioSprite MarioSprite { get => marioSprite; set => MarioSprite = value; }
 
         private ITestMarioStateMachine stateMachine;
         public ITestMarioStateMachine GetStateMachine { get => stateMachine; }
-        ITestMarioStateMachine ITestMario.GetStateMachine { get => stateMachine;}
 
         private int cyclePosition = 0;
         private int cycleLength = 8;
-
-        private bool dead = false;
         
-        private Game1 myGame;
+        //private bool dead = false;
+       
+        //private IPlayer player;
         Mario character;
-
-        public TestBigMario(Game1 game, Vector2 location, Mario mario)
+        Game1 myGame;
+        public TestSmallMario(Game1 game, Vector2 location, Mario mario)
         {
             
-            myGame = game;
-            marioSprite = new TestBigMarioSprite(game, this,mario);
-            stateMachine = new TestBigMarioStateMachine(marioSprite);
+            marioSprite = new TestSmallMarioSprite(game, this, mario);
+            stateMachine = new TestSmallMarioStateMachine(marioSprite);
             character = mario;
+            myGame = game;
         }
 
         public void Upgrade()
         {
-            character.TestMario = new TestFireMario(myGame, testMarioLocation, character);
+            character.TestMario = new TestBigMario(myGame, new Vector2(character.CurrentXPos, character.CurrentYPos), character);
         }
         public void Downgrade()
         {
-            character.TestMario = new TestSmallMario(myGame, testMarioLocation, character);
+            character.TestMario = new TestDeadMario(myGame, new Vector2(character.CurrentXPos, character.CurrentYPos), character);
         }
-        public void ChangeDirection(bool left)
-        {
-            stateMachine.ChangeDirection(left);
-        }
-        /*
-        public void WalkLeft()
-        {
-            testMarioLocation.X -= 1;
-        }
-        public void WalkRight()
-        {
-            testMarioLocation.X = +1;
-        }
-        */
         public Vector2 GetGameObjectLocation()
         {
             return testMarioLocation;
+            //return new Vector2(character.CurrentXPos,character.CurrentYPos);
         }
         public void SetGameObjectLocation(Vector2 newPos)
         {
             testMarioLocation = newPos;
         }
-        /*
-        public bool GetDead()
-        {
-            return dead;
-        }
-        */
+
         public void Idle()
         {
             stateMachine.Idle();
@@ -92,28 +73,27 @@ namespace Game1
         public void Update()
         {
             cyclePosition++;
-
-            if (cyclePosition == cycleLength)
+            
+             if (cyclePosition == cycleLength)
             {
                 stateMachine.Update();
                 MarioSprite.Update();
                 cyclePosition = 0;
             }
             else if (myGame.controllerHandler.MovingUp || (myGame.controllerHandler.MovingUp && myGame.controllerHandler.MovingLeft))
-                stateMachine.Jumping();
+                Jumping();
             else if (myGame.controllerHandler.MovingDown || (myGame.controllerHandler.MovingDown && myGame.controllerHandler.MovingRight))
-                stateMachine.Crouching();
+                Crouching();
             else if (myGame.controllerHandler.MovingLeft)
             {
                 stateMachine.ChangeDirection(true);
-                stateMachine.Walking();
+                Walking();
             }
             else if (myGame.controllerHandler.MovingRight)
             {
                 stateMachine.ChangeDirection(false);
-                stateMachine.Walking();
+                Walking();
             }
-
             else
                 Idle();
         }
@@ -121,7 +101,5 @@ namespace Game1
         {
             MarioSprite.Draw();
         }
-
-        
     }
 }

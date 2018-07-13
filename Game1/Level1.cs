@@ -230,7 +230,7 @@ namespace Game1
         }
         public void DockTime()
         {
-            time -= 1;
+            time--;
         }
 
     }

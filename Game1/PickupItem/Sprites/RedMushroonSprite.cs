@@ -12,20 +12,23 @@ namespace Game1
         private RedMushroom redMushroomObject;
         private Game1 myGame;
         private int currentFrame;
-        private int pickupColumn = 15;
+        //private int pickupColumn = 15;
+        private PickupUtilityClass utility;
 
         public RedMushroomSprite(Game1 game, RedMushroom redMushroom)
         {
+            utility = new PickupUtilityClass();
             redMushroomObject = redMushroom;
             myGame = game;
-            currentFrame = 0;
+            //currentFrame = 0;
+            currentFrame = utility.RedMushroomFrame;
         }
         public void Update()
         {}
 
         public void Draw()
         {
-            int width = TextureWarehouse.pickupTexture.Width / pickupColumn;
+            int width = TextureWarehouse.pickupTexture.Width / utility.PickupColumn;
 
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(redMushroomObject.GetGameObjectLocation().X);
 

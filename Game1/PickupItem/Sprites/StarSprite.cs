@@ -14,14 +14,17 @@ namespace Game1
         private int currentFrame;
         private int startFrame;
         private int endFrame;
-        private int pickupColumn = 15;
-
+        //private int pickupColumn = 15;
+        private PickupUtilityClass utility;
         public StarSprite(Game1 game, Star star)
         {
+            utility = new PickupUtilityClass();
             starObject = star;
             myGame = game;
-            startFrame = 6;
-            endFrame = 10;
+            //startFrame = 6;
+            //endFrame = 10;
+            startFrame = utility.StarStartFrame;
+            endFrame = utility.StarEndFrame;
             currentFrame = startFrame;
         }
         public void Update()
@@ -33,7 +36,7 @@ namespace Game1
 
         public void Draw()
         {
-            int width = TextureWarehouse.pickupTexture.Width / pickupColumn;
+            int width = TextureWarehouse.pickupTexture.Width / utility.PickupColumn;
 
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(starObject.GetGameObjectLocation().X);
 

@@ -7,29 +7,31 @@ using Microsoft.Xna.Framework;
 
 namespace Game1
 {
-    public class EmptyPickup : IPickup
+    public class CoinPickup : IPickup
     {
         public float CurrentXPos { get; set; }
         public float CurrentYPos { get; set; }
 
         public bool IsFalling { get; set; }
 
-        private IPickupSprite emptySprite;
-
-        //private Game1 myGame;
+        private IPickupSprite coinPickupSprite;
+        private Game1 myGame;
         private Vector2 pickupLocation;
-        private bool movingRight;
+        private Vector2 pickupOriginalLocation;
+        private PickupUtilityClass utility;
 
-        public EmptyPickup(Game1 game, Vector2 location)
+        public CoinPickup(Game1 game, Vector2 location)
         {
-            emptySprite = new EmptyPickupSprite(game, this);
-            //myGame = game;
+            coinPickupSprite = new CoinPickupSprite(game, this);
+            myGame = game;
             pickupLocation = location;
+            pickupOriginalLocation = location;
+            utility = new PickupUtilityClass();
         }
 
         public void Draw()
         {
-            emptySprite.Draw();
+            coinPickupSprite.Draw();
         }
 
         public Vector2 GetGameObjectLocation()
@@ -44,18 +46,21 @@ namespace Game1
 
         public void Update()
         {
+            utility.PickpupCyclePosition++;
+            if (utility.PickpupCyclePosition == utility.PickpupCycleLength)
+            {
+                coinPickupSprite.Update();
+                utility.PickpupCyclePosition = 0;
+            }
         }
-        public void Picked()
-        { }
 
         public void Collide()
         {
-            movingRight = !movingRight;
         }
 
         public bool MovingRight()
         {
-            return movingRight;
+            return false;
         }
     }
 }

@@ -11,9 +11,7 @@ namespace Game1
     {
         private Game1 myGame;
 
-        private int lethalFall;
-        private CollisionUtilityClass utility;
-        private int invulnerabilityFrames;
+        private int invulnerabilityFrames = 100;
         private int invulnerabilityTimer;
 
         private ILevel objectLevel;
@@ -22,22 +20,19 @@ namespace Game1
 
         public CollisionRespond(Game1 game, ILevel level)
         {
-            utility = new CollisionUtilityClass();
-            lethalFall = utility.LethalFall;
-            invulnerabilityFrames = utility.InvulnerabilityFrames;
             myGame = game;
             controllerHandler = game.controllerHandler;
             objectLevel = level;
             this.player = level.PlayerObject;
 
-            invulnerabilityTimer = utility.Size;
+            invulnerabilityTimer = 0;
         }
 
         public void BlockCollisionRespondTop(IBlock block,int height,bool standing)
         {
             if (block is TopWarpPipeBlock && controllerHandler.MovingDown)
             {
-                player.CurrentXPos = block.CurrentXPos + utility.Twentyfour;
+                player.CurrentXPos = block.CurrentXPos + 24;
                 ((PlatformerLevel)objectLevel).WarpToSecret();
             }
             else
@@ -101,7 +96,7 @@ namespace Game1
             }
             else if (block is BrickBlockWithManyCoins)
             {
-                if (((BrickBlockWithManyCoins)block).CoinsLeft > utility.One)
+                if (((BrickBlockWithManyCoins)block).CoinsLeft > 1)
                 {
                     objectLevel.TemporaryObjects.Add(new Coin(myGame, block.GetGameObjectLocation()));
                     ((BrickBlockWithManyCoins)block).CoinsLeft--;
@@ -115,32 +110,6 @@ namespace Game1
                     objectLevel.BlockObjects.Add(new UsedBlock(myGame, block.GetGameObjectLocation()));
                     objectLevel.PersistentData.CoinCollectedPoints();
                 }
-            }
-
-            if(!(block is UsedBlock))
-            {
-                IEnemy[] enemyArray = new IEnemy[5];
-                foreach (IEnemy enemy in objectLevel.EnemyObjects)
-                {
-                    int i = 0;
-                    if((enemy.CurrentXPos > block.CurrentXPos - 15 && enemy.CurrentXPos < block.CurrentXPos + 15) && (enemy.CurrentYPos < block.CurrentYPos && enemy.CurrentYPos > block.CurrentYPos - 24))
-                    {
-                        enemyArray[i] = enemy;
-                        i++;
-                        if (enemy is Goomba)
-                        {
-                            objectLevel.TemporaryObjects.Add(new FlippedGoomba(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
-                            objectLevel.PersistentData.EnemyStompedPoints();
-                        }
-                        else if (enemy is Koopa)
-                        {
-                            objectLevel.TemporaryObjects.Add(new FlippedKoopa(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
-                            objectLevel.PersistentData.KoopaFireOrStarPoints();
-                        }
-                    }
-                }
-                foreach (IEnemy enemy in enemyArray)
-                    objectLevel.EnemyObjects.Remove(enemy);
             }
 
             player.CanJump = false;
@@ -299,8 +268,17 @@ namespace Game1
                 enemy.SetGameObjectLocation(new Vector2(x, y));
                 enemy.ChangeDirection();
             }
-            if (enemy is MarioFireBall || otherEnemy is MarioFireBall|| otherEnemy is KoopaShell)
+            if (enemy is MarioFireBall || otherEnemy is MarioFireBall)
+            {
                 objectLevel.EnemyObjects.Remove(enemy);
+                
+            }   
+            else if (otherEnemy is KoopaShell)
+            {
+                objectLevel.EnemyObjects.Remove(enemy);
+                ((KoopaShell)otherEnemy).KilledNum += 1;
+                myGame.persistentData.KoopaShell((KoopaShell)otherEnemy);
+            }
 
             //enemy.ChangeDirection();
         }
@@ -348,7 +326,6 @@ namespace Game1
 
         public void PickupCollisionRespondTop(IPickup pickup)
         {
-            pickup.Picked();
             objectLevel.PersistentData.PowerUpCollectPoints();
 
             if (pickup is Fireflower)
@@ -368,10 +345,6 @@ namespace Game1
             {
                 objectLevel.PersistentData.CoinCollectedPoints();
             }
-            else if (pickup is EmptyPickup)
-            {
-
-            }
             else if (pickup is Star)
             {
                 objectLevel.PlayerObject.IsStar = true;
@@ -384,7 +357,6 @@ namespace Game1
 
         public void PickupCollisionRespondBottom(IPickup pickup)
         {
-            pickup.Picked();
             objectLevel.PersistentData.PowerUpCollectPoints();
 
             if (pickup is Fireflower)
@@ -407,10 +379,6 @@ namespace Game1
             {
                 objectLevel.PersistentData.CoinCollectedPoints();
             }
-            else if (pickup is EmptyPickup)
-            {
-
-            }
             else if (pickup is Star)
             {
                 objectLevel.PlayerObject.IsStar = true;
@@ -431,7 +399,6 @@ namespace Game1
 
         public void PickupCollisionRespondLeft(IPickup pickup)
         {
-            pickup.Picked();
             objectLevel.PersistentData.PowerUpCollectPoints();
 
             if (pickup is Fireflower)
@@ -450,10 +417,6 @@ namespace Game1
             else if (pickup is CoinPickup)
             {
                 objectLevel.PersistentData.CoinCollectedPoints();
-            }
-            else if (pickup is EmptyPickup)
-            {
-
             }
             else if (pickup is Star)
             {
@@ -467,7 +430,6 @@ namespace Game1
 
         public void PickupCollisionRespondRight(IPickup pickup)
         {
-            pickup.Picked();
             objectLevel.PersistentData.PowerUpCollectPoints();
 
 
@@ -487,10 +449,6 @@ namespace Game1
             else if (pickup is CoinPickup)
             {
                 objectLevel.PersistentData.CoinCollectedPoints();
-            }
-            else if (pickup is EmptyPickup)
-            {
-
             }
             else if (pickup is Star)
             {
@@ -543,13 +501,6 @@ namespace Game1
 
         public void Update()
         {
-            if (player.CurrentYPos > lethalFall)
-            {
-                player.TestMario.Downgrade();
-                player.TestMario.Downgrade();
-                player.TestMario.Downgrade();
-            }
-
             if (player.Invulnerability)
             {
                 invulnerabilityTimer--;
