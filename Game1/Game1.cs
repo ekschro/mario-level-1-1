@@ -28,8 +28,8 @@ namespace Game1
         private SpriteBatch spriteBatch;
         private SpriteFont spriteFont;
         private bool pause;
-        private enum GameScreenState { Transition, GamePlay }
-        private GameScreenState GameState;
+        public enum GameScreenState { Transition, GamePlay }
+        public GameScreenState GameState;
         private int cyclePosition = 0;
         private int cycleLength = 100;
         private int hudCounter = 0;
@@ -48,7 +48,7 @@ namespace Game1
             graphics.PreferredBackBufferWidth = 400;
             graphics.PreferredBackBufferHeight = 230;
             graphics.ApplyChanges();
-            pause = true;
+            pause = false;
             Content.RootDirectory = "Content";
             GameState = GameScreenState.Transition;
         }
@@ -99,42 +99,47 @@ namespace Game1
         
         protected override void Update(GameTime gameTime)
         {
-                foreach (IController controller in controllerList.ToArray())
-                {
-                    controller.Update();
-                }
-                
-            cyclePosition++;
-            if (cyclePosition == cycleLength)
+            foreach (IController controller in controllerList.ToArray())
             {
-                GameState = GameScreenState.GamePlay;
+               controller.Update();
             }
 
+            if (!Pause)
+            {
+                cyclePosition++;
+                if (cyclePosition == cycleLength)
+                {
+                    GameState = GameScreenState.GamePlay;
+                }
+
                 delta = gameTime;
-            PlatformerLevel level = (PlatformerLevel)currentLevel;
-            if (counter == 60)
-            {
-                level.DockTime();
-                counter = 0;
-            } else
-            {
-                counter++;
+                PlatformerLevel level = (PlatformerLevel)currentLevel;
+                if (counter == 60)
+                {
+                    level.DockTime();
+                    counter = 0;
+                }
+                else
+                {
+                    counter++;
+                }
+                if (level.Time == 0)
+                {
+                    currentLevel.PlayerObject.TestMario.Downgrade();
+                    currentLevel.PlayerObject.TestMario.Downgrade();
+                    currentLevel.PlayerObject.TestMario.Downgrade();
+                }
+                //CurrentLevel.Update();
+                HeadsUpDisplay.Update();
+                switch (GameState)
+                {
+                    case GameScreenState.GamePlay:
+                        CurrentLevel.Update();
+                        break;
+                }
+                base.Update(gameTime);
+
             }
-            if (level.Time == 0)
-            {
-                currentLevel.PlayerObject.TestMario.Downgrade();
-                currentLevel.PlayerObject.TestMario.Downgrade();
-                currentLevel.PlayerObject.TestMario.Downgrade();
-            }
-            //CurrentLevel.Update();
-            HeadsUpDisplay.Update();
-            switch (GameState)
-            {
-                case GameScreenState.GamePlay:
-                    CurrentLevel.Update();
-                    break;
-            }
-                    base.Update(gameTime);
             
         }
 
@@ -151,8 +156,6 @@ namespace Game1
                     CurrentLevel.Draw();
                     break;
             }
-            //CurrentLevel.Draw();
-            //
             HeadsUpDisplay.Draw();
             base.Draw(gameTime);
         }

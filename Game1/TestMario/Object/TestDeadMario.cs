@@ -36,6 +36,7 @@ namespace Game1
             marioSprite = new TestDeadMarioSprite(game, this, mario);
             stateMachine = new TestDeadMarioStateMachine(marioSprite);
             character = mario;
+            game.Pause = true;
         }
 
         public void Upgrade()

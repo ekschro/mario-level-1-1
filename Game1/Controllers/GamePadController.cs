@@ -51,7 +51,7 @@ namespace Game1
 
             foreach (Buttons button in pressedButtons)
             {
-                if (controllerMappings.ContainsKey(button) && myGame.Pause)
+                if (controllerMappings.ContainsKey(button))
                 {
                     controllerMappings[button].Execute();
                     //recentKeys.Add(key);

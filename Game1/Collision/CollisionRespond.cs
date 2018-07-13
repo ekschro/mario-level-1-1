@@ -11,6 +11,8 @@ namespace Game1
     {
         private Game1 myGame;
 
+        private int lethalFall = 400;
+
         private int invulnerabilityFrames = 100;
         private int invulnerabilityTimer;
 
@@ -110,6 +112,32 @@ namespace Game1
                     objectLevel.BlockObjects.Add(new UsedBlock(myGame, block.GetGameObjectLocation()));
                     objectLevel.PersistentData.CoinCollectedPoints();
                 }
+            }
+
+            if(!(block is UsedBlock))
+            {
+                IEnemy[] enemyArray = new IEnemy[5];
+                foreach (IEnemy enemy in objectLevel.EnemyObjects)
+                {
+                    int i = 0;
+                    if((enemy.CurrentXPos > block.CurrentXPos - 15 && enemy.CurrentXPos < block.CurrentXPos + 15) && (enemy.CurrentYPos < block.CurrentYPos && enemy.CurrentYPos > block.CurrentYPos - 24))
+                    {
+                        enemyArray[i] = enemy;
+                        i++;
+                        if (enemy is Goomba)
+                        {
+                            objectLevel.TemporaryObjects.Add(new FlippedGoomba(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
+                            objectLevel.PersistentData.EnemyStompedPoints();
+                        }
+                        else if (enemy is Koopa)
+                        {
+                            objectLevel.TemporaryObjects.Add(new FlippedKoopa(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
+                            objectLevel.PersistentData.KoopaFireOrStarPoints();
+                        }
+                    }
+                }
+                foreach (IEnemy enemy in enemyArray)
+                    objectLevel.EnemyObjects.Remove(enemy);
             }
 
             player.CanJump = false;
@@ -512,6 +540,13 @@ namespace Game1
 
         public void Update()
         {
+            if (player.CurrentYPos > lethalFall)
+            {
+                player.TestMario.Downgrade();
+                player.TestMario.Downgrade();
+                player.TestMario.Downgrade();
+            }
+
             if (player.Invulnerability)
             {
                 invulnerabilityTimer--;

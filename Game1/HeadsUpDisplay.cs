@@ -58,7 +58,8 @@ namespace Game1
             if (myGame.HudCounter == 100)
             {
                 myGame.SpriteBatch.DrawString(myGame.SpriteFont, "TIME", new Vector2(300, 10), Color.White);
-                myGame.SpriteBatch.DrawString(myGame.SpriteFont, level.Time.ToString(), new Vector2(300, 25), Color.White); //need to update
+                if(myGame.GameState.Equals(Game1.GameScreenState.GamePlay))
+                    myGame.SpriteBatch.DrawString(myGame.SpriteFont, level.Time.ToString(), new Vector2(300, 25), Color.White); //need to update
             } else
             {
                 myGame.HudCounter++;
