@@ -12,25 +12,17 @@ namespace Game1
         private int lives;
         private int points;
         private int coins;
-        private bool koopaShellMoving = false;        
 
         public PersistentData()
         {
             lives = 3;
             points = 0;
             coins = 0;
-            
         }
 
         public int Lives { get => lives;  }
         public int Points { get => points; }
         public int Coins { get => coins; }
-
-        private void testPrint(int x)
-        {
-            Console.WriteLine(x);
-            Console.WriteLine(points);
-        }
 
         public void PowerUpCollectPoints()
         {
@@ -50,7 +42,6 @@ namespace Game1
         
         public void EnemyStompedPoints(int combo)
         {
-            Console.WriteLine(combo);
             if (combo == 1)
             {
                 points += 100;
@@ -148,7 +139,6 @@ namespace Game1
             lives -= 1;
         }
 
-       
         public void Reset()
         {
             lives = 3;
