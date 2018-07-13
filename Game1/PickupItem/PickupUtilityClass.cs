@@ -23,7 +23,7 @@ public class PickupUtilityClass
     public int PickpupCyclePosition { get => cyclePosition; set => cyclePosition = value; }
     public int PickpupCycleLength { get => cycleLength; }
     public int CoinStartFrame { get => coinStartFrame; }
-    public int CoinEndFramw { get => coinEndFrame; }
+    public int CoinEndFrame { get => coinEndFrame; }
     public int FireflowerStartFrame { get => fireflowerStartFrame; }
     public int FireflowerEndFrame { get => fireflowerEndFrame; }
     public int GreenMushroomFrame { get => greenMushroomFrame; }

@@ -12,8 +12,11 @@ namespace Game1
         private bool facingLeft = true;
         private enum KoopaHealth { Normal, Stomped };
         private KoopaHealth health = KoopaHealth.Normal;
+        private EnemyUtilityClass utility;
+
         public KoopaSStateMachine(IEnemySprite sprite)
         {
+            utility = new EnemyUtilityClass();
             koopaSprite = sprite;
         }
 

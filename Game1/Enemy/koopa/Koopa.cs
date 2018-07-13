@@ -19,9 +19,8 @@ namespace Game1
         private KoopaStateMachine stateMachine;
         public IEnemyStateMachine GetStateMachine { get => stateMachine; }
         public bool IsStomped { get; set; }
+        private EnemyUtilityClass utility;
 
-        private int cyclePosition = 0;
-        private int cycleLength = 8;
         private Vector2 koopaLocation;
         private Vector2 koopaOriginalLocation;
         private IPhysics physics;
@@ -29,6 +28,7 @@ namespace Game1
 
         public Koopa(Game1 game, Vector2 location)
         {
+            utility = new EnemyUtilityClass();
             KoopaSprite = new KoopaSprite(game,this);
             stateMachine = new KoopaStateMachine(koopaSprite);
             koopaLocation = location;
@@ -78,10 +78,10 @@ namespace Game1
         {
             physics.Update();
             falling = true;
-            cyclePosition++;
-            if (cyclePosition == cycleLength)
+            utility.EnemyupCyclePosition++;
+            if (utility.EnemyupCyclePosition == utility.EnemyupCyclePosition)
             {
-                cyclePosition = 0;
+                utility.EnemyupCyclePosition = 0;
                 stateMachine.Update();
                 KoopaSprite.Update();
             }

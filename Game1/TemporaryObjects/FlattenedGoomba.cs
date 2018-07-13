@@ -15,14 +15,17 @@ namespace Game1
         public ITemporarySprite GoombaSprite { get => goombaSprite; set => goombaSprite = value; }
         private Vector2 goombaOriginalLocation;
         private int timeBeforeDisappearing;
-        Game1 myGame;
+        private Game1 myGame;
+        private EnemyUtilityClass utility;
 
         public FlattenedGoomba(Game1 game, Vector2 location)
         {
+            utility = new EnemyUtilityClass();
             myGame = game;
             goombaOriginalLocation = location;
             GoombaSprite = new FlattenedGoombaSprite(game, this);
-            timeBeforeDisappearing = 10;
+            //timeBeforeDisappearing = 10;
+            timeBeforeDisappearing = utility.DisappearTime;
         }
        
         public Vector2 GetGameObjectLocation()
