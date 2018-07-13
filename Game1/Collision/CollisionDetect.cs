@@ -45,8 +45,8 @@ namespace Game1
 
             for (int i = 0; i < blockArray.Length; i++)
             {
-                for (int j = 0; j < enemyArray.Length; j++)
-                    marioLogic.MarioBlockCollisionCheck(blockArray[i],head,standing,right,left,enemyArray[j]);
+
+                marioLogic.MarioBlockCollisionCheck(blockArray[i], head, standing, right, left);
             }
         }
 

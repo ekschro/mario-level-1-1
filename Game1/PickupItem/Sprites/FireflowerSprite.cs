@@ -18,6 +18,7 @@ namespace Game1
         private PickupUtilityClass utility;
         public FireflowerSprite(Game1 game, Fireflower fireflower)
         {
+            utility = new PickupUtilityClass();
             fireflowerObject = fireflower;
             myGame = game;
             //startFrame = 2;
