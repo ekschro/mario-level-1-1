@@ -19,9 +19,11 @@ namespace Game1
         private int startFrame;
         private int endFrame;
         private int numberOfFrame = 13;
+        private BlockUtilityClass utility;
 
         public QuestionCoinBlockSprite(Game1 game, IBlock questionCoinBlock)
         {
+            utility = new BlockUtilityClass();
             questionCoinBlockObject = (QuestionCoinBlock)questionCoinBlock;
             myGame = game;
             startFrame = 4;
@@ -39,7 +41,7 @@ namespace Game1
 
         public void Draw()
         {
-            int width = TextureWarehouse.blockTexture.Width / numberOfFrame;
+            int width = TextureWarehouse.blockTexture.Width / utility.BlockColumn;
 
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(questionCoinBlockObject.GetGameObjectLocation().X);
 
