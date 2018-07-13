@@ -7,6 +7,7 @@ namespace Game1
         private IControllerHandler controllerHandler;
         private Game1 myGame;
         private int animationTimer;
+        private int killedNum = 0;
         private ITestMario testMario;
         //private static ISprite playerSprite;
         public static IPhysics physics;
@@ -18,7 +19,6 @@ namespace Game1
         private static int colorStartingTime;
         private static int colorTimer;
         private static int fireballTimer;
-
         private static bool isStar = false;
         private static bool invulnerability = false;
 
@@ -39,6 +39,7 @@ namespace Game1
         public int TotalMarioRows { get => totalMarioRows; set => totalMarioRows = value; }
         public int TotalMarioColumns { get => totalMarioColumns; set => totalMarioColumns = value; }
         public int FireBallTimer { get => fireballTimer; set => fireballTimer = value; }
+        public int KilledNum { get => killedNum; set => killedNum = value; }
         public ITestMario TestMario { get => testMario; set => testMario = value; }
 
         public Mario(Game1 game, Vector2 vector)

@@ -12,25 +12,17 @@ namespace Game1
         private int lives;
         private int points;
         private int coins;
-        private bool koopaShellMoving = false;        
 
         public PersistentData()
         {
             lives = 3;
             points = 0;
             coins = 0;
-            
         }
 
         public int Lives { get => lives;  }
         public int Points { get => points; }
         public int Coins { get => coins; }
-
-        private void testPrint(int x)
-        {
-            Console.WriteLine(x);
-            Console.WriteLine(points);
-        }
 
         public void PowerUpCollectPoints()
         {
@@ -48,9 +40,52 @@ namespace Game1
             points += 50;
         }
         
-        public void EnemyStompedPoints()
+        public void EnemyStompedPoints(int combo)
         {
-            points += 100;
+            if (combo == 1)
+            {
+                points += 100;
+            }
+            else if (combo == 2)
+            {
+                points += 200;
+            }
+            else if (combo == 3)
+            {
+                points += 400;
+            }
+            else if (combo == 4)
+            {
+                points += 500;
+            }
+            else if (combo == 5)
+            {
+                points += 800;
+            }
+            else if (combo == 6)
+            {
+                points += 1000;
+            }
+            else if (combo == 7)
+            {
+                points += 2000;
+            }
+            else if (combo == 8)
+            {
+                points += 4000;
+            }
+            else if (combo == 9)
+            {
+                points += 5000;
+            }
+            else if (combo == 10)
+            {
+                points += 8000;
+            }
+            else if (combo >= 11)
+            {
+                OneUpLives();
+            }
         }
 
         public void KoopaFireOrStarPoints()
@@ -63,44 +98,35 @@ namespace Game1
             if (shell.KilledNum == 1)
             {
                 points += 500;
-                testPrint(500);
             }
             else if (shell.KilledNum == 2)
             {
                 points += 800;
-                testPrint(800);
             }
             else if (shell.KilledNum == 3)
             {
                 points += 1000;
-                testPrint(1000);
             }
             else if (shell.KilledNum == 4)
             {
                 points += 2000;
-                testPrint(2000);
             }
             else if (shell.KilledNum == 5)
             {
                 points += 4000;
-                testPrint(4000);
             }
             else if (shell.KilledNum == 6)
             {
                 points += 5000;
-                testPrint(5000);
             }
             else if (shell.KilledNum == 7)
             {
                 points += 8000;
-                testPrint(8000);
             }
             else if (shell.KilledNum >= 8)
             {
                 OneUpLives();
-                testPrint(111111);
             }
-
         }
 
         public void OneUpLives()
@@ -113,7 +139,6 @@ namespace Game1
             lives -= 1;
         }
 
-       
         public void Reset()
         {
             lives = 3;

@@ -45,7 +45,6 @@ namespace Game1
 
             for (int i = 0; i < blockArray.Length; i++)
             {
-
                 marioLogic.MarioBlockCollisionCheck(blockArray[i], head, standing, right, left);
             }
         }
@@ -68,6 +67,11 @@ namespace Game1
             {
                 marioLogic.MarioPickupCollisionCheck(pickupArray[i]);
             }
+        }
+
+        public void MarioFlagPoleDetect()
+        {
+
         }
 
         public void BlockEnemyCollisionDetect()

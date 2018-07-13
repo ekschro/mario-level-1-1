@@ -41,6 +41,7 @@ namespace Game1
                     player.CurrentYPos -= height;
                 player.CanJump = true;
                 player.Falling = false;
+                ((Mario)player).KilledNum = 0;
                 if (player.TestMario.GetStateMachine.IsJumping())
                 {
                     player.TestMario.GetStateMachine.ChangeState();
@@ -136,8 +137,8 @@ namespace Game1
         public void EnemyCollisionRespondTop(IEnemy enemy)
         {
             enemy.BeStomped();
-
-            objectLevel.PersistentData.EnemyStompedPoints();
+            ((Mario)player).KilledNum += 1;
+            objectLevel.PersistentData.EnemyStompedPoints(((Mario)player).KilledNum);
 
             if (enemy is Goomba)
             {
@@ -167,7 +168,7 @@ namespace Game1
                 if (enemy is Goomba)
                 {
                     objectLevel.TemporaryObjects.Add(new FlippedGoomba(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
-                    objectLevel.PersistentData.EnemyStompedPoints();
+                    objectLevel.PersistentData.EnemyStompedPoints(1);
                 }
                 else if (enemy is Koopa)
                 {
@@ -203,7 +204,7 @@ namespace Game1
                 if (enemy is Goomba)
                 {
                     objectLevel.TemporaryObjects.Add(new FlippedGoomba(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
-                    objectLevel.PersistentData.EnemyStompedPoints();
+                    objectLevel.PersistentData.EnemyStompedPoints(1);
                 }
                 else if (enemy is Koopa)
                 {
@@ -242,7 +243,7 @@ namespace Game1
                 if (enemy is Goomba)
                 {
                     objectLevel.TemporaryObjects.Add(new FlippedGoomba(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
-                    objectLevel.PersistentData.EnemyStompedPoints();
+                    objectLevel.PersistentData.EnemyStompedPoints(1);
                 }
                 else if (enemy is Koopa)
                 {
@@ -270,8 +271,15 @@ namespace Game1
             }
             if (enemy is MarioFireBall || otherEnemy is MarioFireBall)
             {
+                if (enemy is Goomba || otherEnemy is Goomba)
+                {
+                    myGame.persistentData.EnemyStompedPoints(1);
+                }
+                else if (enemy is Koopa || otherEnemy is Koopa)
+                {
+                    myGame.persistentData.KoopaFireOrStarPoints();
+                }
                 objectLevel.EnemyObjects.Remove(enemy);
-                
             }   
             else if (otherEnemy is KoopaShell)
             {
@@ -291,9 +299,23 @@ namespace Game1
                 enemy.SetGameObjectLocation(new Vector2(x, y));
                 enemy.ChangeDirection();
             }
-            if (enemy is MarioFireBall || otherEnemy is MarioFireBall || otherEnemy is KoopaShell)
+            if (enemy is MarioFireBall || otherEnemy is MarioFireBall)
+            {
+                if (enemy is Goomba || otherEnemy is Goomba)
+                {
+                    myGame.persistentData.EnemyStompedPoints(1);
+                }
+                else if (enemy is Koopa || otherEnemy is Koopa)
+                {
+                    myGame.persistentData.KoopaFireOrStarPoints();
+                }
+                objectLevel.EnemyObjects.Remove(enemy);
+            }
+            else if (otherEnemy is KoopaShell)
             {
                 objectLevel.EnemyObjects.Remove(enemy);
+                ((KoopaShell)otherEnemy).KilledNum += 1;
+                myGame.persistentData.KoopaShell((KoopaShell)otherEnemy);
             }
 
             //enemy.ChangeDirection();
