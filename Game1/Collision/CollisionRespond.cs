@@ -167,12 +167,12 @@ namespace Game1
                 if (enemy is Goomba)
                 {
                     objectLevel.TemporaryObjects.Add(new FlippedGoomba(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
-                    objectLevel.PersistentData.EnemyStompedPoints();
+                    //objectLevel.PersistentData.EnemyStompedPoints();
                 }
                 else if (enemy is Koopa)
                 {
                     objectLevel.TemporaryObjects.Add(new FlippedKoopa(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
-                    objectLevel.PersistentData.KoopaFireOrStarPoints();
+                    //objectLevel.PersistentData.KoopaFireOrStarPoints();
                 }
             }
             MarioHit();
@@ -203,12 +203,12 @@ namespace Game1
                 if (enemy is Goomba)
                 {
                     objectLevel.TemporaryObjects.Add(new FlippedGoomba(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
-                    objectLevel.PersistentData.EnemyStompedPoints();
+                    //objectLevel.PersistentData.EnemyStompedPoints();
                 }
                 else if (enemy is Koopa)
                 {
                     objectLevel.TemporaryObjects.Add(new FlippedKoopa(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
-                    objectLevel.PersistentData.KoopaFireOrStarPoints();
+                    //objectLevel.PersistentData.KoopaFireOrStarPoints();
                 }
             } else if (enemy is MarioFireBall)
             {
@@ -242,12 +242,12 @@ namespace Game1
                 if (enemy is Goomba)
                 {
                     objectLevel.TemporaryObjects.Add(new FlippedGoomba(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
-                    objectLevel.PersistentData.EnemyStompedPoints();
+                    //objectLevel.PersistentData.EnemyStompedPoints();
                 }
                 else if (enemy is Koopa)
                 {
                     objectLevel.TemporaryObjects.Add(new FlippedKoopa(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
-                    objectLevel.PersistentData.KoopaFireOrStarPoints();
+                    //objectLevel.PersistentData.KoopaFireOrStarPoints();
                 }
             }
             else if (enemy is MarioFireBall)
@@ -270,8 +270,15 @@ namespace Game1
             }
             if (enemy is MarioFireBall || otherEnemy is MarioFireBall)
             {
+                if (enemy is Goomba || otherEnemy is Goomba)
+                {
+                    myGame.persistentData.EnemyStompedPoints();
+                }
+                else if (enemy is Koopa || otherEnemy is Koopa)
+                {
+                    myGame.persistentData.KoopaFireOrStarPoints();
+                }
                 objectLevel.EnemyObjects.Remove(enemy);
-                
             }   
             else if (otherEnemy is KoopaShell)
             {
@@ -291,9 +298,23 @@ namespace Game1
                 enemy.SetGameObjectLocation(new Vector2(x, y));
                 enemy.ChangeDirection();
             }
-            if (enemy is MarioFireBall || otherEnemy is MarioFireBall || otherEnemy is KoopaShell)
+            if (enemy is MarioFireBall || otherEnemy is MarioFireBall)
+            {
+                if (enemy is Goomba || otherEnemy is Goomba)
+                {
+                    myGame.persistentData.EnemyStompedPoints();
+                }
+                else if (enemy is Koopa || otherEnemy is Koopa)
+                {
+                    myGame.persistentData.KoopaFireOrStarPoints();
+                }
+                objectLevel.EnemyObjects.Remove(enemy);
+            }
+            else if (otherEnemy is KoopaShell)
             {
                 objectLevel.EnemyObjects.Remove(enemy);
+                ((KoopaShell)otherEnemy).KilledNum += 1;
+                myGame.persistentData.KoopaShell((KoopaShell)otherEnemy);
             }
 
             //enemy.ChangeDirection();

@@ -63,44 +63,35 @@ namespace Game1
             if (shell.KilledNum == 1)
             {
                 points += 500;
-                testPrint(500);
             }
             else if (shell.KilledNum == 2)
             {
                 points += 800;
-                testPrint(800);
             }
             else if (shell.KilledNum == 3)
             {
                 points += 1000;
-                testPrint(1000);
             }
             else if (shell.KilledNum == 4)
             {
                 points += 2000;
-                testPrint(2000);
             }
             else if (shell.KilledNum == 5)
             {
                 points += 4000;
-                testPrint(4000);
             }
             else if (shell.KilledNum == 6)
             {
                 points += 5000;
-                testPrint(5000);
             }
             else if (shell.KilledNum == 7)
             {
                 points += 8000;
-                testPrint(8000);
             }
             else if (shell.KilledNum >= 8)
             {
                 OneUpLives();
-                testPrint(111111);
             }
-
         }
 
         public void OneUpLives()
