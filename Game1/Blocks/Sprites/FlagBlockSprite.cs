@@ -15,11 +15,12 @@ namespace Game1
     {
         private FlagBlock flagObject;
         private Game1 myGame;
-
+        private BlockUtilityClass utility;
         public FlagBlockSprite(Game1 game, IBlock flag)
         {
             flagObject = (FlagBlock)flag;
             myGame = game;
+            utility = new BlockUtilityClass();
         }
 
         public void Update()
@@ -32,7 +33,7 @@ namespace Game1
 
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(flagObject.GetGameObjectLocation().X);
 
-            Rectangle sourceRectangle = new Rectangle(0, 0, TextureWarehouse.flagTexture.Width, TextureWarehouse.flagTexture.Height);
+            Rectangle sourceRectangle = new Rectangle(utility.Zero1, utility.Zero1, TextureWarehouse.flagTexture.Width, TextureWarehouse.flagTexture.Height);
             Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)flagObject.GetGameObjectLocation().Y, TextureWarehouse.flagTexture.Width, TextureWarehouse.flagTexture.Height);
 
             myGame.SpriteBatch.Begin();

@@ -18,7 +18,7 @@ namespace Game1
         private int currentFrame;
         private int startFrame;
         private int endFrame;
-        private int numberOfFrame = 13;
+        private int numberOfFrame;
         private BlockUtilityClass utility;
 
         public QuestionCoinBlockSprite(Game1 game, IBlock questionCoinBlock)
@@ -26,9 +26,10 @@ namespace Game1
             utility = new BlockUtilityClass();
             questionCoinBlockObject = (QuestionCoinBlock)questionCoinBlock;
             myGame = game;
-            startFrame = 4;
-            endFrame = 7;
+            startFrame = utility.Four;
+            endFrame = utility.Seven;
             currentFrame = startFrame;
+            numberOfFrame = utility.Thirteen;
             //jumpig = true;
         }
 
@@ -45,7 +46,7 @@ namespace Game1
 
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(questionCoinBlockObject.GetGameObjectLocation().X);
 
-            Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, TextureWarehouse.blockTexture.Height);
+            Rectangle sourceRectangle = new Rectangle(width * currentFrame, utility.Zero1, width, TextureWarehouse.blockTexture.Height);
             Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)questionCoinBlockObject.GetGameObjectLocation().Y, width, TextureWarehouse.blockTexture.Height);
 
             myGame.SpriteBatch.Begin();

@@ -26,8 +26,8 @@ namespace Game1
             utility = new BlockUtilityClass();
             questionBlockObject = (QuestionBlock)questionBlock;
             myGame = game;
-            startFrame = 4;
-            endFrame = 7;
+            startFrame = utility.Four;
+            endFrame = utility.Seven;
             currentFrame = startFrame;
             //jumpig = true;
         }

@@ -21,7 +21,7 @@ namespace Game1
             flagBlockSprite = new FlagBlockSprite(game, this);
             blockLocation = location;
             utility = new BlockUtilityClass();
-            blockRectangle = new Rectangle((int)location.X + 16, (int)location.Y, utility.Width, utility.Height);
+            blockRectangle = new Rectangle((int)location.X + utility.Width, (int)location.Y, utility.Width, utility.Height);
             
         }
 
