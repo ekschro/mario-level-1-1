@@ -9,8 +9,8 @@ namespace Game1
 {
     public class QuestionCoinBlock : IBlock
     {
-        public float CurrentXPos { get; set; }
-        public float CurrentYPos { get; set; }
+        public float CurrentXPos { get => blockLocation.X; set => blockLocation.X = value; }
+        public float CurrentYPos { get => blockLocation.Y; set => blockLocation.Y = value; }
 
         private IBlockSprite questionCoinBlockSprite;
         //private Game1 myGame;
