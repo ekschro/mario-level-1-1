@@ -41,7 +41,6 @@ namespace Game1
                 currentFrame--;
                 if (currentFrame == endFrame)
                     currentFrame = startFrame;
-
             }
             else
             {
@@ -63,16 +62,9 @@ namespace Game1
             Rectangle sourceRectangle = new Rectangle(width * column, (height * row), width, height);
             Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)player.CurrentYPos, width, height);
 
-
             myGame.SpriteBatch.Begin();
             myGame.SpriteBatch.Draw(TextureWarehouse.marioTexture, destinationRectangle, sourceRectangle, player.MarioColor);
             myGame.SpriteBatch.End();
-        }
-
-
-        public Vector2 GetGameObjectLocation()
-        {
-            throw new NotImplementedException();
         }
     }
 }

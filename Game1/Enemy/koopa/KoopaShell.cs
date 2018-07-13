@@ -18,9 +18,9 @@ namespace Game1
         public static IEnemySprite KoopaSprite { get => koopaSprite; set => koopaSprite = value; }
         public bool IsStomped { get; set; }
 
-        public KoopaSStateMachine stateMachine;
+        private KoopaSStateMachine stateMachine;
         public IEnemyStateMachine GetStateMachine { get => stateMachine; }
-        public bool isMoving { get => !dead; }
+        public bool IsMoving { get => !dead; }
 
         private bool dead;
         
@@ -28,7 +28,7 @@ namespace Game1
         private Vector2 koopaOriginalLocation;
         private EnemyPhysics physics;
 
-        private Game1 myGame;
+        //private Game1 myGame;
 
         public KoopaShell(Game1 game, Vector2 location)
         {
@@ -36,7 +36,7 @@ namespace Game1
             koopaLocation = location;
             koopaOriginalLocation = location;
 
-            myGame = game;
+            //myGame = game;
             stateMachine = new KoopaSStateMachine(koopaSprite);
 
             physics = new EnemyPhysics(game, this, 4);

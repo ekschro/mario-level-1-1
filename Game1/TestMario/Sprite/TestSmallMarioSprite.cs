@@ -17,7 +17,6 @@ namespace Game1
         private int endFrame;
         private IPlayer player;
 
-
         public TestSmallMarioSprite(Game1 game, TestSmallMario Mario, IPlayer player)
         {
             marioObject = Mario;
@@ -44,7 +43,6 @@ namespace Game1
                 currentFrame--;
                 if (currentFrame == endFrame)
                     currentFrame = startFrame;
-
             }
             else
             {
@@ -52,9 +50,7 @@ namespace Game1
                 if (currentFrame == endFrame)
                     currentFrame = startFrame;
             }
-            
         }
-
 
         public void Draw()
         {
@@ -72,13 +68,6 @@ namespace Game1
             myGame.SpriteBatch.Begin();
             myGame.SpriteBatch.Draw(TextureWarehouse.marioTexture, destinationRectangle, sourceRectangle, player.MarioColor);
             myGame.SpriteBatch.End();
-        }
-
-
-
-        public Vector2 GetGameObjectLocation()
-        {
-            throw new NotImplementedException();
         }
     }
 }

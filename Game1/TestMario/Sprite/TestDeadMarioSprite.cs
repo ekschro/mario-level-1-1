@@ -76,9 +76,11 @@ namespace Game1
             }
             
         }
+        /*
         public Vector2 GetGameObjectLocation()
         {
             throw new NotImplementedException();
         }
+        */
     }
 }

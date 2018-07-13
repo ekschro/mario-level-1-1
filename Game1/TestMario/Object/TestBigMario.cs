@@ -16,7 +16,7 @@ namespace Game1
         private ITestMarioSprite marioSprite;
         public ITestMarioSprite MarioSprite { get => marioSprite; set => MarioSprite = value; }
 
-        public ITestMarioStateMachine stateMachine;
+        private ITestMarioStateMachine stateMachine;
         public ITestMarioStateMachine GetStateMachine { get => stateMachine; }
         ITestMarioStateMachine ITestMario.GetStateMachine { get => stateMachine;}
 
@@ -49,6 +49,7 @@ namespace Game1
         {
             stateMachine.ChangeDirection(left);
         }
+        /*
         public void WalkLeft()
         {
             testMarioLocation.X -= 1;
@@ -57,6 +58,7 @@ namespace Game1
         {
             testMarioLocation.X = +1;
         }
+        */
         public Vector2 GetGameObjectLocation()
         {
             return testMarioLocation;
@@ -65,10 +67,12 @@ namespace Game1
         {
             testMarioLocation = newPos;
         }
+        /*
         public bool GetDead()
         {
             return dead;
         }
+        */
         public void Idle()
         {
             stateMachine.Idle();
@@ -103,20 +107,15 @@ namespace Game1
             {
                 stateMachine.ChangeDirection(true);
                 stateMachine.Walking();
-
             }
             else if (myGame.controllerHandler.MovingRight)
             {
                 stateMachine.ChangeDirection(false);
                 stateMachine.Walking();
-
             }
 
             else
                 Idle();
-
-
-
         }
         public void Draw()
         {

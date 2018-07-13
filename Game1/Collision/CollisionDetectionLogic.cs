@@ -23,6 +23,7 @@ namespace Game1
             else
                 return new Rectangle(playerX, playerY, 16, 32);
         }
+        
 
         public MarioCollisionDetectionLogic(Game1 game,ILevel level,CollisionRespond res)
         {
@@ -31,7 +32,7 @@ namespace Game1
             controllerHandler = new ControllerHandler();
         }
 
-        public void MarioBlockCollisionCheck(IBlock block, bool head, bool standing, bool right, bool left)
+        public void MarioBlockCollisionCheck(IBlock block, bool head, bool standing, bool right, bool left, IEnemy enemy)
         {
             var playerY = (int)player.GetGameObjectLocation().Y;
             var playerX = (int)player.GetGameObjectLocation().X;
@@ -43,6 +44,11 @@ namespace Game1
 
             Rectangle blockBox;
 
+            int enemyX = (int)enemy.GetGameObjectLocation().X;
+            int enemyY = (int)enemy.GetGameObjectLocation().Y;
+
+            Rectangle enemyBox = new Rectangle((int)enemy.GetGameObjectLocation().X,(int)enemy.GetGameObjectLocation().Y,16,16);
+
             if (!(block is StoneBlock))
                 blockBox = block.BlockRectangle();
             else
@@ -52,10 +58,12 @@ namespace Game1
             }
 
             Rectangle intersect;
+            Rectangle intersectBlockEnemy;//
 
             if (playerBox.Intersects(blockBox))
             {
                 Rectangle.Intersect(ref playerBox, ref blockBox, out intersect);
+                Rectangle.Intersect(ref enemyBox, ref blockBox, out intersectBlockEnemy);//
 
                 if (intersect.Height < intersect.Width && playerY < blockY && !(block is HiddenGreenMushroomBlock))
                 {
@@ -66,12 +74,16 @@ namespace Game1
                 {
                     collisionRes.BlockCollisionRespondBottom(block, intersect.Height, head);
                     head = true;
+                    if (intersectBlockEnemy.Height < intersectBlockEnemy.Width && blockY > enemyY)//
+                        collisionRes.EnemyCollisionRespondTop(enemy);//
                 }
                 //An unhandled exception of type 'System.NullReferenceException' occurred in Game1.exe   Object reference not set to an instance of an object.    ControllerHandler == null
                 else if (intersect.Height < intersect.Width && playerY > blockY && controllerHandler.MovingUp)
                 {
                     collisionRes.BlockCollisionRespondBottom(block, intersect.Height, head);
                     head = true;
+                    if (intersectBlockEnemy.Height < intersectBlockEnemy.Width && blockY > enemyY)//
+                        collisionRes.EnemyCollisionRespondTop(enemy);//
                 }
                 else if (intersect.Height - 3 > intersect.Width && playerX < blockX && !(block is HiddenGreenMushroomBlock))
                 {
