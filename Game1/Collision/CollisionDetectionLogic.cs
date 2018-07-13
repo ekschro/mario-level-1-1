@@ -1,8 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,16 +12,17 @@ namespace Game1
         private IPlayer player;
         private CollisionRespond collisionRes;
         private IControllerHandler controllerHandler;
+        private CollisionUtilityClass utility = new CollisionUtilityClass();
 
         private Rectangle GetMarioRectangle(ref int playerX, ref int playerY)
         {
             if (player.TestMario.GetStateMachine.IsCrouching()||player.TestMario is TestSmallMario)
-                playerY += 16;
+                playerY += utility.MainHeight;
 
             if (player.TestMario.GetStateMachine is TestSmallMarioStateMachine || player.TestMario.GetStateMachine.IsCrouching())
-                return new Rectangle(playerX, playerY, 16, 16);
+                return new Rectangle(playerX, playerY, utility.MainWidth, utility.MainHeight);
             else
-                return new Rectangle(playerX, playerY, 16, 32);
+                return new Rectangle(playerX, playerY, utility.MainWidth, utility.BiggerHeight);
         }
         
 
@@ -49,7 +48,7 @@ namespace Game1
             int enemyX = (int)enemy.GetGameObjectLocation().X;
             int enemyY = (int)enemy.GetGameObjectLocation().Y;
 
-            Rectangle enemyBox = new Rectangle((int)enemy.GetGameObjectLocation().X,(int)enemy.GetGameObjectLocation().Y+8,16,16);
+            Rectangle enemyBox = new Rectangle((int)enemy.GetGameObjectLocation().X,(int)enemy.GetGameObjectLocation().Y,utility.MainWidth,utility.MainWidth);
 
             if (!(block is StoneBlock))
                 blockBox = block.BlockRectangle();
@@ -76,35 +75,16 @@ namespace Game1
                 {
                     collisionRes.BlockCollisionRespondBottom(block, intersect.Height, head);
                     head = true;
-                    Debug.WriteLine("enemyX");
-                    Debug.WriteLine(enemy.GetGameObjectLocation().X);
-                    //Debug.WriteLine("playerX");
-                    //Debug.WriteLine(playerX);
-                    Debug.WriteLine("blockX");
-                    Debug.WriteLine(block.GetGameObjectLocation().X);
-                    Debug.WriteLine("______________");
-                    if (intersectBlockEnemy.Height < intersectBlockEnemy.Width && blockY < enemyY)//
+                    if (intersectBlockEnemy.Height < intersectBlockEnemy.Width && blockY > enemyY)//
                         collisionRes.EnemyCollisionRespondTop(enemy);//
-                    if (playerX == enemyX)
-                        collisionRes.EnemyCollisionRespondTop(enemy);
-                    if (enemy.GetGameObjectLocation().X+1078 == block.GetGameObjectLocation().X)
-                        collisionRes.EnemyCollisionRespondTop(enemy);
                 }
                 //An unhandled exception of type 'System.NullReferenceException' occurred in Game1.exe   Object reference not set to an instance of an object.    ControllerHandler == null
                 else if (intersect.Height < intersect.Width && playerY > blockY && controllerHandler.MovingUp)
                 {
                     collisionRes.BlockCollisionRespondBottom(block, intersect.Height, head);
                     head = true;
-                    Debug.WriteLine("hi");
-                    Debug.WriteLine(enemyX);
-                    Debug.WriteLine(playerX);
-                    Debug.WriteLine(blockX); ;
-                    if (intersectBlockEnemy.Height < intersectBlockEnemy.Width && blockY < enemyY)//
+                    if (intersectBlockEnemy.Height < intersectBlockEnemy.Width && blockY > enemyY)//
                         collisionRes.EnemyCollisionRespondTop(enemy);//
-                    if (playerX == enemyX)
-                        collisionRes.EnemyCollisionRespondTop(enemy);
-                    if (enemy.GetGameObjectLocation().X == block.GetGameObjectLocation().X)
-                        collisionRes.EnemyCollisionRespondTop(enemy);
                 }
                 else if (intersect.Height - 3 > intersect.Width && playerX < blockX && !(block is HiddenGreenMushroomBlock))
                 {
@@ -129,16 +109,16 @@ namespace Game1
             int enemyX = (int)enemy.GetGameObjectLocation().X;
             int enemyY = (int)enemy.GetGameObjectLocation().Y;
 
-            Rectangle enemyBox = new Rectangle(enemyX, enemyY, 16, 16);
+            Rectangle enemyBox = new Rectangle(enemyX, enemyY, utility.MainWidth, utility.MainHeight);
             Rectangle intersect;
 
             if (enemy is Koopa)
             {
-                enemyBox = new Rectangle(enemyX, enemyY + 8, 16, 16);
+                enemyBox = new Rectangle(enemyX, enemyY + utility.Eight, utility.MainWidth, utility.MainHeight);
             }
             else
             {
-                enemyBox = new Rectangle(enemyX, enemyY, 16, 16);
+                enemyBox = new Rectangle(enemyX, enemyY, utility.MainWidth, utility.MainHeight);
             }
 
             if (playerBox.Intersects(enemyBox))
@@ -157,7 +137,7 @@ namespace Game1
                 {
                     collisionRes.EnemyCollisionRespondTop(enemy);
                 }
-                else if (intersect.Height < intersect.Width && playerY > enemyY - 4)
+                else if (intersect.Height < intersect.Width && playerY > enemyY - utility.Four)
                 {
                     collisionRes.EnemyCollisionRespondBottom(enemy);
                 }
@@ -174,7 +154,7 @@ namespace Game1
             int pickupX = (int)pickup.GetGameObjectLocation().X;
             int pickupY = (int)pickup.GetGameObjectLocation().Y;
 
-            Rectangle pickupBox = new Rectangle(pickupX, pickupY, 16, 16);
+            Rectangle pickupBox = new Rectangle(pickupX, pickupY, utility.MainWidth, utility.MainHeight);
             Rectangle intersect;
 
             if (playerBox.Intersects(pickupBox))

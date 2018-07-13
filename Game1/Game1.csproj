@@ -76,6 +76,7 @@
     <Compile Include="Blocks\Sprites\TopWarpPipeBlockSprite.cs" />
     <Compile Include="Blocks\TopWarpPipeBlock.cs" />
     <Compile Include="CameraStatic.cs" />
+    <Compile Include="Collision\CollisionUtilityClass.cs" />
     <Compile Include="Collision\CollisionDetectionLogic.cs" />
     <Compile Include="UniqueAnimation.cs" />
     <Compile Include="ControllerHandler.cs" />
@@ -134,7 +135,6 @@
     <Compile Include="TestMario\Sprite\TestBigMarioSprite.cs" />
     <Compile Include="TestMario\Sprite\TestDeadMarioSprite.cs" />
     <Compile Include="TestMario\Sprite\TestFireMarioSprite.cs" />
-    <Compile Include="TestMario\Sprite\TestMarioSprite.cs" />
     <Compile Include="TestMario\Sprite\TestSmallMarioSprite.cs" />
     <Compile Include="TestMario\StateMachine\TestBigMarioStateMachine.cs" />
     <Compile Include="TestMario\StateMachine\TestDeadMarioStateMachine.cs" />

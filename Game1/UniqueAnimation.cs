@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿/*
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +24,8 @@ namespace Game1
         public void EnterPipe()
         {
             myGame.Pause = true;
-            
+            player.
         }
     }
 }
+*/
