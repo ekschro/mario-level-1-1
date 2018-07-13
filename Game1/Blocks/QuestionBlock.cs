@@ -15,14 +15,16 @@ namespace Game1
         private IBlockSprite questionBlockSprite;
         private Vector2 blockLocation;
         private Rectangle blockRectangle;
-        private int cyclePosition = 0;
-        private int cycleLength = 8;
+        private int cyclePosition;
+        private int cycleLength;
         private BlockUtilityClass utility;
         public QuestionBlock(Game1 game, Vector2 location)
         {
             questionBlockSprite = new QuestionBlockSprite(game, this);
             blockLocation = location;
             utility = new BlockUtilityClass();
+            cyclePosition = utility.QuestionCyclePosition;
+            cycleLength = utility.QuestionCycleLength;
             blockRectangle = new Rectangle((int)location.X, (int)location.Y, utility.Width, utility.Height);
         }
 
