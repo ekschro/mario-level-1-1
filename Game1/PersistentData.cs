@@ -12,8 +12,7 @@ namespace Game1
         private int lives;
         private int points;
         private int coins;
-       
-        
+        private bool koopaShellMoving = false;        
 
         public PersistentData()
         {
@@ -70,6 +69,14 @@ namespace Game1
             points += 200;
             testPrint(200);
         }
+
+        //public void KoopaShell(KoopaShell shell)
+        //{
+        //    if (shell.isMoving)
+        //    {
+        //        koopaShellMoving = true;
+        //    }
+        //}
 
         public void OneUpLives()
         {
