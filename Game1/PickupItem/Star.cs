@@ -15,8 +15,8 @@ namespace Game1
         private bool falling;
         public bool IsFalling { get => falling; set => falling = value; }
 
-        private int cyclePosition = 0;
-        private int cycleLength = 16;
+        //private int cyclePosition = 0;
+        //private int cycleLength = 16;
 
         private IPickupSprite starSprite;
         private Game1 myGame;
@@ -25,6 +25,7 @@ namespace Game1
         private IPhysics physics;
         private bool movingRight;
         private bool moving;
+        private PickupUtilityClass utility;
 
         public Star(Game1 game, Vector2 location)
         {
@@ -32,8 +33,8 @@ namespace Game1
             myGame = game;
             pickupLocation = location;
             pickupOriginalLocation = location;
-
             physics = new StarPhysics(myGame,this,0);
+            utility = new PickupUtilityClass();
         }
 
         public void Draw()
@@ -53,15 +54,17 @@ namespace Game1
 
         public void Update()
         {
-            cyclePosition++;
-            if (cyclePosition == cycleLength)
+            utility.PickpupCyclePosition++;
+            //cyclePosition++;
+            if (utility.PickpupCyclePosition == utility.PickpupCycleLength)
             {
                 starSprite.Update();
-                cyclePosition = 0;
+                //cyclePosition = 0;
+                utility.PickpupCyclePosition = 0;
             }
-            if (pickupLocation.Y > pickupOriginalLocation.Y - 17 && !moving)
+            if (pickupLocation.Y > pickupOriginalLocation.Y - /*17*/utility.BlockSize && !moving)
             {
-                pickupLocation.Y -= 1;
+                pickupLocation.Y --;
                 IsFalling = true;
             }
             else
@@ -73,7 +76,7 @@ namespace Game1
         }
         public void Picked()
         {
-            starSprite = new EmptyPickupSprite(myGame, new EmptyPickup(myGame, pickupLocation));
+            //starSprite = new EmptyPickupSprite(myGame, new EmptyPickup(myGame, pickupLocation));
         }
 
         public void Collide()

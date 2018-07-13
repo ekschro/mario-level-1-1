@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,7 +23,7 @@ namespace Game1
 
         public EmptyPickup(Game1 game, Vector2 location)
         {
-            emptySprite = new EmptyPickupSprite(game, this);
+            //emptySprite = new EmptyPickupSprite(game, this);
             //myGame = game;
             pickupLocation = location;
         }
