@@ -11,9 +11,9 @@ namespace Game1
     {
         private Game1 myGame;
 
-        private int lethalFall = 400;
-
-        private int invulnerabilityFrames = 100;
+        private int lethalFall;
+        private CollisionUtilityClass utility;
+        private int invulnerabilityFrames;
         private int invulnerabilityTimer;
 
         private ILevel objectLevel;
@@ -22,19 +22,22 @@ namespace Game1
 
         public CollisionRespond(Game1 game, ILevel level)
         {
+            utility = new CollisionUtilityClass();
+            lethalFall = utility.LethalFall;
+            invulnerabilityFrames = utility.InvulnerabilityFrames;
             myGame = game;
             controllerHandler = game.controllerHandler;
             objectLevel = level;
             this.player = level.PlayerObject;
 
-            invulnerabilityTimer = 0;
+            invulnerabilityTimer = utility.Size;
         }
 
         public void BlockCollisionRespondTop(IBlock block,int height,bool standing)
         {
             if (block is TopWarpPipeBlock && controllerHandler.MovingDown)
             {
-                player.CurrentXPos = block.CurrentXPos + 24;
+                player.CurrentXPos = block.CurrentXPos + utility.Twentyfour;
                 ((PlatformerLevel)objectLevel).WarpToSecret();
             }
             else
@@ -98,7 +101,7 @@ namespace Game1
             }
             else if (block is BrickBlockWithManyCoins)
             {
-                if (((BrickBlockWithManyCoins)block).CoinsLeft > 1)
+                if (((BrickBlockWithManyCoins)block).CoinsLeft > utility.One)
                 {
                     objectLevel.TemporaryObjects.Add(new Coin(myGame, block.GetGameObjectLocation()));
                     ((BrickBlockWithManyCoins)block).CoinsLeft--;

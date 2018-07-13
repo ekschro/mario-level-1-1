@@ -76,6 +76,7 @@
     <Compile Include="Blocks\Sprites\TopWarpPipeBlockSprite.cs" />
     <Compile Include="Blocks\TopWarpPipeBlock.cs" />
     <Compile Include="CameraStatic.cs" />
+    <Compile Include="Collision\CollisionUtilityClass.cs" />
     <Compile Include="Collision\CollisionDetectionLogic.cs" />
     <Compile Include="UniqueAnimation.cs" />
     <Compile Include="ControllerHandler.cs" />

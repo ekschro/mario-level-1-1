@@ -17,14 +17,15 @@ namespace Game1
         private CollisionRespond collision;
         private MarioCollisionDetectionLogic marioLogic;
         private IControllerHandler controllerHandler;
-        
+        private CollisionUtilityClass utility = new CollisionUtilityClass();
         private Game1 mygame;
-        private int tileOffset = 16;
+        private int tileOffset;
 
 
         public CollisionDetect(Game1 game, ILevel PlatformerLevel)
         {
             mygame = game;
+            tileOffset = utility.TileOffset;
             controllerHandler = game.controllerHandler;
             level1 = PlatformerLevel;
             player = PlatformerLevel.PlayerObject;
@@ -74,7 +75,7 @@ namespace Game1
             Rectangle enemyBox;
 
             bool bottom = false;
-            int size = 0; 
+            int size = utility.Size; 
             for (int j = 0; j < enemyArray.Length;j++)
             {
                 int enemyX = (int)enemyArray[j].GetGameObjectLocation().X;
@@ -82,19 +83,19 @@ namespace Game1
 
                 if (enemyArray[j] is Koopa && !enemyArray[j].IsStomped)
                 {
-                    enemyBox = new Rectangle(enemyX, enemyY+8, 16, 16);
+                    enemyBox = new Rectangle(enemyX, enemyY+8, utility.MainWidth, utility.MainHeight);
                 }
                 else if (enemyArray[j] is Koopa && enemyArray[j].IsStomped)
                 {
-                    enemyBox = new Rectangle(enemyX, enemyY + 2, 16, 16);
+                    enemyBox = new Rectangle(enemyX, enemyY + utility.Two, utility.MainWidth, utility.MainHeight);
                 }
                 else if (enemyArray[j] is MarioFireBall)
                 {
-                    enemyBox = new Rectangle(enemyX, enemyY, 6, 6);
+                    enemyBox = new Rectangle(enemyX, enemyY, utility.SmallWidth, utility.SmallHeight);
                 }
                 else
                 {
-                    enemyBox = new Rectangle(enemyX, enemyY, 16, 16);
+                    enemyBox = new Rectangle(enemyX, enemyY, utility.MainWidth, utility.MainWidth);
                 }
 
                 blockArray = level1.BlockObjects.ToArray();
@@ -108,7 +109,7 @@ namespace Game1
 
 
                     if (!(blockArray[i] is StoneBlock))
-                        blockBox = new Rectangle(blockX, blockY, 16, 16);
+                        blockBox = new Rectangle(blockX, blockY, utility.MainWidth, utility.MainHeight);
                     else
                     {
                         StoneBlock block = (StoneBlock)blockArray[i];
@@ -144,13 +145,13 @@ namespace Game1
             Rectangle pickupBox;
 
             bool bottom = false;
-            int size = 0;
+            int size = utility.Size;
             for (int j = 0; j < pickupArray.Length; j++)
             {
                 int pickupX = (int)pickupArray[j].GetGameObjectLocation().X;
                 int pickupY = (int)pickupArray[j].GetGameObjectLocation().Y;
 
-                pickupBox = new Rectangle(pickupX, pickupY, 16, 16);
+                pickupBox = new Rectangle(pickupX, pickupY, utility.MainWidth, utility.MainHeight);
 
                 blockArray = level1.BlockObjects.ToArray();
 
@@ -163,7 +164,7 @@ namespace Game1
 
 
                     if (!(blockArray[i] is StoneBlock))
-                        blockBox = new Rectangle(blockX, blockY, 16, 16);
+                        blockBox = new Rectangle(blockX, blockY, utility.MainWidth, utility.MainHeight);
                     else
                     {
                         StoneBlock block = (StoneBlock)blockArray[i];
@@ -220,17 +221,17 @@ namespace Game1
             {
                 int enemyX = (int)enemyArray[j].GetGameObjectLocation().X;
                 int enemyY = (int)enemyArray[j].GetGameObjectLocation().Y;
-                playerBox = new Rectangle(enemyX, enemyY, 16, 16);
+                playerBox = new Rectangle(enemyX, enemyY, utility.MainWidth, utility.MainHeight);
 
                 enemyArray = level1.EnemyObjects.ToArray();
 
-                int i = j + 1;
-                for (i = j + 1; i < enemyArray.Length; i++)
+                 
+                for (int i = j + 1; i < enemyArray.Length; i++)
                 {
                     int enemyArrayX = (int)enemyArray[i].GetGameObjectLocation().X;
                     int enemyArrayY = (int)enemyArray[i].GetGameObjectLocation().Y;
 
-                    Rectangle enemyBox = new Rectangle(enemyArrayX, enemyArrayY, 16, 16);
+                    Rectangle enemyBox = new Rectangle(enemyArrayX, enemyArrayY, utility.MainWidth, utility.MainHeight);
                     Rectangle intersect;
 
                     if (playerBox.Intersects(enemyBox))
@@ -272,7 +273,7 @@ namespace Game1
             BlockPickupCollisionDetect();
             collision.Update();
 
-            if (player.CurrentYPos > 800)
+            if (player.CurrentYPos > utility.YMax)
                 player.TestMario = new TestDeadMario(mygame, new Vector2(player.TestMario.CurrentXPos, player.TestMario.CurrentYPos), (Mario)player);
         }
     }
