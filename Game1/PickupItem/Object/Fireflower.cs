@@ -7,22 +7,25 @@ using Microsoft.Xna.Framework;
 
 namespace Game1
 {
-    public class CoinPickup : IPickup
+    public class Fireflower : IPickup
     {
         public float CurrentXPos { get; set; }
         public float CurrentYPos { get; set; }
 
         public bool IsFalling { get; set; }
 
-        private IPickupSprite coinPickupSprite;
+        //private int cyclePosition = 0;
+        //private int cycleLength = 16;
+
+        private IPickupSprite fireflowerSprite;
         private Game1 myGame;
         private Vector2 pickupLocation;
         private Vector2 pickupOriginalLocation;
         private PickupUtilityClass utility;
 
-        public CoinPickup(Game1 game, Vector2 location)
+        public Fireflower(Game1 game, Vector2 location)
         {
-            coinPickupSprite = new CoinPickupSprite(game, this);
+            fireflowerSprite = new FireflowerSprite(game, this);
             myGame = game;
             pickupLocation = location;
             pickupOriginalLocation = location;
@@ -31,7 +34,7 @@ namespace Game1
 
         public void Draw()
         {
-            coinPickupSprite.Draw();
+            fireflowerSprite.Draw();
         }
 
         public Vector2 GetGameObjectLocation()
@@ -47,18 +50,19 @@ namespace Game1
         public void Update()
         {
             utility.PickpupCyclePosition++;
-            if (utility.PickpupCyclePosition == utility.PickpupCycleLength)
+            if (utility.PickpupCyclePosition==utility.PickpupCycleLength)
             {
-                coinPickupSprite.Update();
+                fireflowerSprite.Update();
                 utility.PickpupCyclePosition = 0;
             }
+            if (pickupLocation.Y > pickupOriginalLocation.Y - utility.BlockSize)
+            {
+                pickupLocation.Y--;
+            }
         }
-        public void Picked()
-        {
-        }
-
         public void Collide()
         {
+
         }
 
         public bool MovingRight()
