@@ -64,7 +64,7 @@ namespace Game1
         }
         public void Picked()
         {
-            //redMushroomSprite = new EmptyPickupSprite(myGame, new EmptyPickup(myGame, pickupLocation));
+            redMushroomSprite = new EmptyPickupSprite(myGame, new EmptyPickup(myGame, pickupLocation));
         }
 
         public void Collide()

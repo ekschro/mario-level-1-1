@@ -14,19 +14,15 @@ namespace Game1
         private int currentFrame;
         private int startFrame;
         private int endFrame;
-        //private int pickupColumn = 15;
-        private PickupUtilityClass utility;
+        private int pickupColumn = 15;
 
         public CoinPickupSprite(Game1 game, CoinPickup coinPickup)
         {
-            utility = new PickupUtilityClass();
             coinPickupObject = coinPickup;
             myGame = game;
-            //startFrame = 10;
-            //endFrame = 14;
-            startFrame = utility.CoinStartFrame;
-            endFrame = utility.CoinEndFramw;
-            currentFrame = startFrame;   
+            startFrame = 10;
+            endFrame = 14;
+            currentFrame = startFrame;
         }
         public void ChangeFrame(int start, int end)
         {
@@ -42,7 +38,7 @@ namespace Game1
 
         public void Draw()
         {
-            int width = TextureWarehouse.pickupTexture.Width / utility.PickupColumn ;
+            int width = TextureWarehouse.pickupTexture.Width / pickupColumn;
 
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(coinPickupObject.GetGameObjectLocation().X);
 

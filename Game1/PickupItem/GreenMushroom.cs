@@ -22,7 +22,6 @@ namespace Game1
         private IPhysics physics;
         private bool movingRight;
         private bool moving;
-        private PickupUtilityClass utility;
 
         public GreenMushroom(Game1 game, Vector2 location)
         {
@@ -32,7 +31,6 @@ namespace Game1
             pickupOriginalLocation = location;
 
             physics = new PickupPhysics(myGame, this, 2);
-            utility = new PickupUtilityClass();
         }
 
         public void Draw()
@@ -53,7 +51,7 @@ namespace Game1
         public void Update()
         {
             greenMushroomSprite.Update();
-            if (pickupLocation.Y > pickupOriginalLocation.Y - utility.BlockSize && !moving)
+            if (pickupLocation.Y > pickupOriginalLocation.Y - 16 && !moving)
             {
                 pickupLocation.Y -= (float)1;
             }
@@ -66,7 +64,7 @@ namespace Game1
         }
         public void Picked()
         {
-            //greenMushroomSprite = new EmptyPickupSprite(myGame, new EmptyPickup(myGame, pickupLocation));
+            greenMushroomSprite = new EmptyPickupSprite(myGame, new EmptyPickup(myGame, pickupLocation));
         }
 
         public void Collide()

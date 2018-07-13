@@ -14,16 +14,13 @@ namespace Game1
         private int currentFrame;
         private int startFrame;
         private int endFrame;
-        //private int pickupColumn = 15;
-        private PickupUtilityClass utility;
+        private int pickupColumn = 15;
         public FireflowerSprite(Game1 game, Fireflower fireflower)
         {
             fireflowerObject = fireflower;
             myGame = game;
-            //startFrame = 2;
-            //endFrame = 6;
-            startFrame = utility.CoinStartFrame;
-            endFrame = utility.CoinEndFramw;
+            startFrame = 2;
+            endFrame = 6;
             currentFrame = startFrame;
         }
         public void ChangeFrame(int start, int end)
@@ -40,7 +37,7 @@ namespace Game1
 
         public void Draw()
         {
-            int width = TextureWarehouse.pickupTexture.Width / utility.PickupColumn;
+            int width = TextureWarehouse.pickupTexture.Width / pickupColumn;
 
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(fireflowerObject.GetGameObjectLocation().X);
 

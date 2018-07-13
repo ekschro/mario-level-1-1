@@ -14,14 +14,13 @@ namespace Game1
 
         public bool IsFalling { get; set; }
 
-        //private int cyclePosition = 0;
-        //private int cycleLength = 16;
+        private int cyclePosition = 0;
+        private int cycleLength = 16;
 
         private IPickupSprite fireflowerSprite;
         private Game1 myGame;
         private Vector2 pickupLocation;
         private Vector2 pickupOriginalLocation;
-        private PickupUtilityClass utility;
 
         public Fireflower(Game1 game, Vector2 location)
         {
@@ -29,7 +28,6 @@ namespace Game1
             myGame = game;
             pickupLocation = location;
             pickupOriginalLocation = location;
-            utility = new PickupUtilityClass();
         }
 
         public void Draw()
@@ -49,20 +47,20 @@ namespace Game1
 
         public void Update()
         {
-            utility.PickpupCyclePosition++;
-            if (utility.PickpupCyclePosition==utility.PickpupCycleLength)
+            cyclePosition++;
+            if (cyclePosition == cycleLength)
             {
                 fireflowerSprite.Update();
-                utility.PickpupCyclePosition = 0;
+                cyclePosition = 0;
             }
-            if (pickupLocation.Y > pickupOriginalLocation.Y - utility.BlockSize)
+            if (pickupLocation.Y > pickupOriginalLocation.Y - 16)
             {
-                pickupLocation.Y--;
+                pickupLocation.Y -= 1;
             }
         }
         public void Picked()
         {
-            //fireflowerSprite = new EmptyPickupSprite(myGame, new EmptyPickup(myGame, pickupLocation));
+            fireflowerSprite = new EmptyPickupSprite(myGame, new EmptyPickup(myGame, pickupLocation));
         }
 
         public void Collide()
