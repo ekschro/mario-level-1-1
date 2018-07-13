@@ -168,12 +168,12 @@ namespace Game1
                 if (enemy is Goomba)
                 {
                     objectLevel.TemporaryObjects.Add(new FlippedGoomba(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
-                    //objectLevel.PersistentData.EnemyStompedPoints();
+                    objectLevel.PersistentData.EnemyStompedPoints(1);
                 }
                 else if (enemy is Koopa)
                 {
                     objectLevel.TemporaryObjects.Add(new FlippedKoopa(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
-                    //objectLevel.PersistentData.KoopaFireOrStarPoints();
+                    objectLevel.PersistentData.KoopaFireOrStarPoints();
                 }
             }
             MarioHit();
@@ -204,12 +204,12 @@ namespace Game1
                 if (enemy is Goomba)
                 {
                     objectLevel.TemporaryObjects.Add(new FlippedGoomba(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
-                    //objectLevel.PersistentData.EnemyStompedPoints();
+                    objectLevel.PersistentData.EnemyStompedPoints(1);
                 }
                 else if (enemy is Koopa)
                 {
                     objectLevel.TemporaryObjects.Add(new FlippedKoopa(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
-                    //objectLevel.PersistentData.KoopaFireOrStarPoints();
+                    objectLevel.PersistentData.KoopaFireOrStarPoints();
                 }
             } else if (enemy is MarioFireBall)
             {
@@ -243,12 +243,12 @@ namespace Game1
                 if (enemy is Goomba)
                 {
                     objectLevel.TemporaryObjects.Add(new FlippedGoomba(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
-                    //objectLevel.PersistentData.EnemyStompedPoints();
+                    objectLevel.PersistentData.EnemyStompedPoints(1);
                 }
                 else if (enemy is Koopa)
                 {
                     objectLevel.TemporaryObjects.Add(new FlippedKoopa(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
-                    //objectLevel.PersistentData.KoopaFireOrStarPoints();
+                    objectLevel.PersistentData.KoopaFireOrStarPoints();
                 }
             }
             else if (enemy is MarioFireBall)
