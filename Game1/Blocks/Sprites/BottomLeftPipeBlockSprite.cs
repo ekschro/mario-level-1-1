@@ -16,9 +16,11 @@ namespace Game1
         private BottomLeftPipeBlock bottomLeftPipeBlockObject;
         private Game1 myGame;
         private int currentFrame;
+        private BlockUtilityClass utility;
 
         public BottomLeftPipeBlockSprite(Game1 game, IBlock bottomLeftPipe)
         {
+            utility = new BlockUtilityClass();
             bottomLeftPipeBlockObject = (BottomLeftPipeBlock)bottomLeftPipe;
             myGame = game;
             currentFrame = 10;
@@ -31,7 +33,7 @@ namespace Game1
 
         public void Draw()
         {
-            int width = TextureWarehouse.blockTexture.Width / 13;
+            int width = TextureWarehouse.blockTexture.Width / utility.BlockColumn;
 
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(bottomLeftPipeBlockObject.GetGameObjectLocation().X);
 

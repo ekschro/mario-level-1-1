@@ -16,9 +16,11 @@ namespace Game1
         private HiddenGreenMushroomBlock hiddenGreenMushroomBlockObject;
         private Game1 myGame;
         private int currentFrame;
+        private BlockUtilityClass utility;
 
         public HiddenGreenMushroomBlockSprite(Game1 game, IBlock hiddenGreenMushroomBlock)
         {
+            utility = new BlockUtilityClass();
             hiddenGreenMushroomBlockObject = (HiddenGreenMushroomBlock)hiddenGreenMushroomBlock;
             myGame = game;
             currentFrame = 0;
@@ -31,7 +33,7 @@ namespace Game1
 
         public void Draw()
         {
-            int width = TextureWarehouse.blockTexture.Width / 13;
+            int width = TextureWarehouse.blockTexture.Width / utility.BlockColumn;
 
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(hiddenGreenMushroomBlockObject.GetGameObjectLocation().X);
 
