@@ -121,6 +121,7 @@
     <Compile Include="GeneralCommands\NoCommand.cs" />
     <Compile Include="LevelTransition.cs" />
     <Compile Include="PersistentData.cs" />
+    <Compile Include="PickupUtilityClass.cs" />
     <Compile Include="SoundWarehouse.cs" />
     <Compile Include="TestMario\Interface\ITestMarioSprite.cs" />
     <Compile Include="TestMario\Interface\ITestMario.cs" />

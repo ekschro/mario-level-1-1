@@ -14,13 +14,11 @@ namespace Game1
 
         public bool IsFalling { get; set; }
 
-        private int cyclePosition = 0;
-        private int cycleLength = 16;
-
         private IPickupSprite coinPickupSprite;
         private Game1 myGame;
         private Vector2 pickupLocation;
         private Vector2 pickupOriginalLocation;
+        private PickupUtilityClass utility;
 
         public CoinPickup(Game1 game, Vector2 location)
         {
@@ -28,6 +26,7 @@ namespace Game1
             myGame = game;
             pickupLocation = location;
             pickupOriginalLocation = location;
+            utility = new PickupUtilityClass();
         }
 
         public void Draw()
@@ -47,21 +46,19 @@ namespace Game1
 
         public void Update()
         {
-            cyclePosition++;
-            if (cyclePosition == cycleLength)
+            utility.PickpupCyclePosition++;
+            if (utility.PickpupCyclePosition == utility.PickpupCycleLength)
             {
                 coinPickupSprite.Update();
-                cyclePosition = 0;
+                utility.PickpupCyclePosition = 0;
             }
         }
         public void Picked()
         {
-            //coinPickupSprite = new EmptyPickupSprite(myGame, new EmptyPickup(myGame, pickupLocation));
         }
 
         public void Collide()
         {
-
         }
 
         public bool MovingRight()
