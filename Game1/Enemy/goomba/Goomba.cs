@@ -18,17 +18,19 @@ namespace Game1
         public IEnemySprite GoombaSprite { get => goombaSprite; set => goombaSprite = value; }
         public GoombaStateMachine stateMachine;
         public IEnemyStateMachine GetStateMachine { get => stateMachine; }
-        private int cyclePosition = 0;
-        private int cycleLength = 8;
+        //private int cyclePosition = 0;
+        //private int cycleLength = 8;
         private Vector2 goombaLocation;
         private Vector2 goombaOriginalLocation;
         public bool IsStomped { get; set; }
 
         private bool dead = false;
         private IPhysics physics;
+        private EnemyUtilityClass utility;
 
         public Goomba(Game1 game, Vector2 location)
         {
+            utility = new EnemyUtilityClass();
             goombaLocation = location;
             goombaOriginalLocation = location;
             GoombaSprite = new GoombaSprite(game, this);
@@ -74,15 +76,14 @@ namespace Game1
         {
             physics.Update();
             falling = true;
-            cyclePosition++;
-            if (cyclePosition == cycleLength)
+            utility.EnemyupCyclePosition++;
+            if (utility.EnemyupCyclePosition == utility.EnemyCycleLength)
             {
-                cyclePosition = 0;
+                utility.EnemyupCyclePosition = 0;
                 stateMachine.Update();
                 GoombaSprite.Update();
                 if (dead)
                 {
-                    //goombaLocation.Y += 1;
                 }
             }
         }

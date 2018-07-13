@@ -55,7 +55,7 @@ namespace Game1
             greenMushroomSprite.Update();
             if (pickupLocation.Y > pickupOriginalLocation.Y - utility.BlockSize && !moving)
             {
-                pickupLocation.Y -= (float)1;
+                pickupLocation.Y --;
             }
             else
             {

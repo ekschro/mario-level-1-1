@@ -78,11 +78,13 @@
     <Compile Include="CameraStatic.cs" />
     <Compile Include="Collision\CollisionUtilityClass.cs" />
     <Compile Include="Collision\CollisionDetectionLogic.cs" />
+    <Compile Include="Enemy\EnemyUtilityClass.cs" />
     <Compile Include="PickupItem\Object\Coin.cs" />
     <Compile Include="PickupItem\Object\Fireflower.cs" />
     <Compile Include="PickupItem\Object\GreenMushroom.cs" />
     <Compile Include="PickupItem\Object\RedMushroom.cs" />
     <Compile Include="PickupItem\Object\Star.cs" />
+    <Compile Include="PickupItem\PickupUtilityClass.cs" />
     <Compile Include="UniqueAnimation.cs" />
     <Compile Include="ControllerHandler.cs" />
     <Compile Include="Enemy\koopa\KoopaShell.cs" />
@@ -126,7 +128,6 @@
     <Compile Include="GeneralCommands\NoCommand.cs" />
     <Compile Include="LevelTransition.cs" />
     <Compile Include="PersistentData.cs" />
-    <Compile Include="PickupUtilityClass.cs" />
     <Compile Include="SoundWarehouse.cs" />
     <Compile Include="TestMario\Interface\ITestMarioSprite.cs" />
     <Compile Include="TestMario\Interface\ITestMario.cs" />

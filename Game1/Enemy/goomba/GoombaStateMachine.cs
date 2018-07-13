@@ -12,9 +12,11 @@ namespace Game1
         private bool facingLeft = false;
         private enum GoombaHealth { Normal, Stomped, Flipped };
         private GoombaHealth health = GoombaHealth.Normal;
+        private EnemyUtilityClass utility;
 
         public GoombaStateMachine(IEnemySprite sprite)
         {
+            utility = new EnemyUtilityClass();
             goombaSprite = sprite;
         }
 
@@ -25,8 +27,9 @@ namespace Game1
 
         public void BeStomped()
         {
-            goombaSprite.ChangeFrame(2, 3);
-            goombaSprite.ChangeFrame(3, 4);
+            //goombaSprite.ChangeFrame(2, 3);
+            // goombaSprite.ChangeFrame(3, 4);
+            goombaSprite.ChangeFrame(utility.GoombaStompedStartFrame, utility.GoombaStompedEndFrame);
             if (health != GoombaHealth.Stomped) 
             {
                 health = GoombaHealth.Stomped;

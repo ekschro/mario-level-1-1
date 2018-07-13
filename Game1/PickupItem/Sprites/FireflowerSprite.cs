@@ -23,8 +23,8 @@ namespace Game1
             myGame = game;
             //startFrame = 2;
             //endFrame = 6;
-            startFrame = utility.CoinStartFrame;
-            endFrame = utility.CoinEndFramw;
+            startFrame = utility.FireflowerStartFrame;
+            endFrame = utility.FireflowerEndFrame;
             currentFrame = startFrame;
         }
         public void ChangeFrame(int start, int end)
