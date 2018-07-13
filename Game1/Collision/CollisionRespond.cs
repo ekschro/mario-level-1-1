@@ -268,8 +268,17 @@ namespace Game1
                 enemy.SetGameObjectLocation(new Vector2(x, y));
                 enemy.ChangeDirection();
             }
-            if (enemy is MarioFireBall || otherEnemy is MarioFireBall|| otherEnemy is KoopaShell)
+            if (enemy is MarioFireBall || otherEnemy is MarioFireBall)
+            {
                 objectLevel.EnemyObjects.Remove(enemy);
+                
+            }   
+            else if (otherEnemy is KoopaShell)
+            {
+                objectLevel.EnemyObjects.Remove(enemy);
+                ((KoopaShell)otherEnemy).KilledNum += 1;
+                myGame.persistentData.KoopaShell((KoopaShell)otherEnemy);
+            }
 
             //enemy.ChangeDirection();
         }
