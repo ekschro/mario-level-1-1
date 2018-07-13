@@ -27,7 +27,7 @@ namespace Game1
             cycleLength = utility.QuestionCoinLength;
             questionPowerUpBlockSprite = new QuestionPowerUpBlockSprite(game, this);
             blockLocation = location;
-            blockRectangle = new Rectangle((int)location.X, (int)location.Y, 16, 16);
+            blockRectangle = new Rectangle((int)location.X, (int)location.Y, utility.Width, utility.Height);
         }
 
         public void Draw()
