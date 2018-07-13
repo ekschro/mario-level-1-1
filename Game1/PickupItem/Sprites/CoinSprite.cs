@@ -25,7 +25,7 @@ namespace Game1
             //startFrame = 10;
             //endFrame = 14;
             startFrame = utility.CoinStartFrame;
-            endFrame = utility.CoinEndFramw;
+            endFrame = utility.CoinEndFrame;
             currentFrame = startFrame;   
         }
         public void ChangeFrame(int start, int end)

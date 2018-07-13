@@ -25,6 +25,7 @@ namespace Game1
 
         private int cyclePosition = 0;
         private int cycleLength = 8;
+        private int disapperTime = 10;
 
 
         public EnemyUtilityClass()
@@ -48,5 +49,6 @@ namespace Game1
 
         public int EnemyupCyclePosition { get => cyclePosition; set => cyclePosition = value; }
         public int EnemyCycleLength { get => cycleLength; }
+        public int DisappearTime { get => disapperTime; }
     }
 }

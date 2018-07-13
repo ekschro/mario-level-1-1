@@ -12,9 +12,11 @@ namespace Game1
     {
         private FlattenedGoomba goombaObject;
         private Game1 myGame;
+        private EnemyUtilityClass utility;
 
         public FlattenedGoombaSprite(Game1 game, FlattenedGoomba goomba)
         {
+            utility = new EnemyUtilityClass();
             goombaObject = goomba;
             myGame = game;
         }
@@ -25,7 +27,7 @@ namespace Game1
 
         public void Draw()
         {
-            int width = (int)TextureWarehouse.goombaTexture.Width / 4;
+            int width = (int)TextureWarehouse.goombaTexture.Width / utility.GoombaColumn;
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(goombaObject.CurrentXPos);
             int drawLocationY = (int)(goombaObject.CurrentYPos);
 
