@@ -41,6 +41,7 @@ namespace Game1
                     player.CurrentYPos -= height;
                 player.CanJump = true;
                 player.Falling = false;
+                ((Mario)player).KilledNum = 0;
                 if (player.TestMario.GetStateMachine.IsJumping())
                 {
                     player.TestMario.GetStateMachine.ChangeState();
@@ -136,8 +137,8 @@ namespace Game1
         public void EnemyCollisionRespondTop(IEnemy enemy)
         {
             enemy.BeStomped();
-
-            objectLevel.PersistentData.EnemyStompedPoints();
+            ((Mario)player).KilledNum += 1;
+            objectLevel.PersistentData.EnemyStompedPoints(((Mario)player).KilledNum);
 
             if (enemy is Goomba)
             {
@@ -272,7 +273,7 @@ namespace Game1
             {
                 if (enemy is Goomba || otherEnemy is Goomba)
                 {
-                    myGame.persistentData.EnemyStompedPoints();
+                    myGame.persistentData.EnemyStompedPoints(1);
                 }
                 else if (enemy is Koopa || otherEnemy is Koopa)
                 {
@@ -302,7 +303,7 @@ namespace Game1
             {
                 if (enemy is Goomba || otherEnemy is Goomba)
                 {
-                    myGame.persistentData.EnemyStompedPoints();
+                    myGame.persistentData.EnemyStompedPoints(1);
                 }
                 else if (enemy is Koopa || otherEnemy is Koopa)
                 {

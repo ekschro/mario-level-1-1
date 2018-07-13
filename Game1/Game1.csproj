@@ -89,6 +89,7 @@
     <Compile Include="CameraStatic.cs" />
     <Compile Include="Collision\CollisionUtilityClass.cs" />
     <Compile Include="Collision\CollisionDetectionLogic.cs" />
+    <Compile Include="Controllers\ControllerUtilityClass.cs" />
     <Compile Include="Enemy\EnemyUtilityClass.cs" />
     <Compile Include="PickupItem\Object\Coin.cs" />
     <Compile Include="PickupItem\Object\Fireflower.cs" />

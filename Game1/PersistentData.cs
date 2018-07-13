@@ -48,9 +48,53 @@ namespace Game1
             points += 50;
         }
         
-        public void EnemyStompedPoints()
+        public void EnemyStompedPoints(int combo)
         {
-            points += 100;
+            Console.WriteLine(combo);
+            if (combo == 1)
+            {
+                points += 100;
+            }
+            else if (combo == 2)
+            {
+                points += 200;
+            }
+            else if (combo == 3)
+            {
+                points += 400;
+            }
+            else if (combo == 4)
+            {
+                points += 500;
+            }
+            else if (combo == 5)
+            {
+                points += 800;
+            }
+            else if (combo == 6)
+            {
+                points += 1000;
+            }
+            else if (combo == 7)
+            {
+                points += 2000;
+            }
+            else if (combo == 8)
+            {
+                points += 4000;
+            }
+            else if (combo == 9)
+            {
+                points += 5000;
+            }
+            else if (combo == 10)
+            {
+                points += 8000;
+            }
+            else if (combo >= 11)
+            {
+                OneUpLives();
+            }
         }
 
         public void KoopaFireOrStarPoints()
