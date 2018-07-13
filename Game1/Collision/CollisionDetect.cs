@@ -36,7 +36,7 @@ namespace Game1
         public void MarioBlockCollisionDetect()
         {
             blockArray = level1.BlockObjects.ToArray();
-
+            enemyArray = level1.EnemyObjects.ToArray();
             bool standing = false;
             bool head = false;
             bool right = false;
@@ -44,7 +44,8 @@ namespace Game1
 
             for (int i = 0; i < blockArray.Length; i++)
             {
-                marioLogic.MarioBlockCollisionCheck(blockArray[i],head,standing,right,left);
+                for (int j = 0; j < enemyArray.Length; j++)
+                    marioLogic.MarioBlockCollisionCheck(blockArray[i],head,standing,right,left,enemyArray[j]);
             }
         }
 
