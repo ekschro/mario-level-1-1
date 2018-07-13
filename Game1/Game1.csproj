@@ -78,6 +78,7 @@
     <Compile Include="CameraStatic.cs" />
     <Compile Include="Collision\CollisionUtilityClass.cs" />
     <Compile Include="Collision\CollisionDetectionLogic.cs" />
+    <Compile Include="Controllers\ControllerUtilityClass.cs" />
     <Compile Include="UniqueAnimation.cs" />
     <Compile Include="ControllerHandler.cs" />
     <Compile Include="Enemy\koopa\KoopaShell.cs" />

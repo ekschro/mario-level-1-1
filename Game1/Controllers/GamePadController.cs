@@ -17,15 +17,16 @@ namespace Game1
         private Dictionary<Buttons, ICommand> controllerMappings;
         //private List<Buttons> recentKeys;
         private Game1 myGame;
+        private ControllerUtilityClass utility = new ControllerUtilityClass();
+        private float xSensitivity;
 
-        private const float xSensitivity = 0.2f;
-
-        private const float ySensitivity = 0.6f;
+        private float ySensitivity;
 
         public GamePadController(Game1 game)
         {
             myGame = game;
-
+            xSensitivity = utility.XSensativity;
+            ySensitivity = utility.YSensativity;
             controllerMappings = new Dictionary<Buttons, ICommand>();
 
             controllerMappings.Add(Buttons.Start, new ExitGameCommand(myGame));
