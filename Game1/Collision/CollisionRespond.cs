@@ -11,21 +11,25 @@ namespace Game1
     {
         private Game1 myGame;
 
-        private int invulnerabilityFrames = 100;
+        //private int invulnerabilityFrames = 100;
+        private int invulnerabilityFrames;
         private int invulnerabilityTimer;
 
         private ILevel objectLevel;
         private IPlayer player;
         private IControllerHandler controllerHandler;
+        private CollisionUtilityClass utility;
 
         public CollisionRespond(Game1 game, ILevel level)
         {
+            utility = new CollisionUtilityClass();
             myGame = game;
             controllerHandler = game.controllerHandler;
             objectLevel = level;
             this.player = level.PlayerObject;
 
             invulnerabilityTimer = 0;
+            invulnerabilityFrames = utility.InvulnerabilityRespondFrames;
         }
 
         public void BlockCollisionRespondTop(IBlock block,int height,bool standing)

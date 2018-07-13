@@ -14,11 +14,13 @@ namespace Game1
         private enum MarioState {Idle, Walking, Jumping, Crouching};
         //private MarioSize size = MarioSize.Small;
         private MarioState state = MarioState.Idle;
+        private MarioSpriteUtility spriteUtility;
 
         private MarioState State { get => state; set => state = value; }
 
         public TestSmallMarioStateMachine(ITestMarioSprite sprite)
         {
+            spriteUtility = new MarioSpriteUtility();
             marioSprite = sprite;
             
         }
@@ -30,19 +32,22 @@ namespace Game1
         public void Idle()
         {
             if (facingLeft)
-                marioSprite.ChangeFrame(41, 40);
+                //marioSprite.ChangeFrame(41, 40);
+                marioSprite.ChangeFrame(spriteUtility.SmallMarioLeftIdleStart, spriteUtility.SmallMarioLeftIdleEnd);
             else
-                marioSprite.ChangeFrame(42, 43);
+                //marioSprite.ChangeFrame(42, 43);
+                marioSprite.ChangeFrame(spriteUtility.SmallMarioRightIdleStart, spriteUtility.SmallMarioRightIdleEnd);
             State = MarioState.Idle;
         }
         public void Walking()
         {
             State = MarioState.Walking;
             if (facingLeft)
-                marioSprite.ChangeFrame(11 + 28, 8 + 28);
+                //marioSprite.ChangeFrame(11 + 28, 8 + 28);
+                marioSprite.ChangeFrame(spriteUtility.SmallMarioLeftWalkingStart, spriteUtility.SmallMarioLeftWalkingEnd);
             else
-                marioSprite.ChangeFrame(16 + 28, 19 + 28);
-            
+                //marioSprite.ChangeFrame(16 + 28, 19 + 28);
+                marioSprite.ChangeFrame(spriteUtility.SmallMarioRightWalkingStart, spriteUtility.SmallMarioRightWalkingEnd);
         }
         public void Jumping()
         {
