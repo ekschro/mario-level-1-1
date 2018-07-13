@@ -17,6 +17,7 @@ public class CollisionUtilityClass
     private int invulnerabilityFrames = 100;
     private int twentyfour = 24;
     private int one = 1;
+    
 	public CollisionUtilityClass()
 	{
 	}
@@ -36,4 +37,6 @@ public class CollisionUtilityClass
     public int InvulnerabilityFrames { get => invulnerabilityFrames; set => invulnerabilityFrames = value; }
     public int Twentyfour { get => twentyfour; set => twentyfour = value; }
     public int One { get => one; set => one = value; }
+   
+    
 }

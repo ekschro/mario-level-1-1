@@ -15,11 +15,13 @@ namespace Game1
     {
         private CastleBlock castleBlockObject;
         private Game1 myGame;
+        BlockUtilityClass utility;
 
         public CastleBlockSprite(Game1 game, IBlock castle)
         {
             castleBlockObject = (CastleBlock)castle;
             myGame = game;
+            utility = new BlockUtilityClass();
         }
 
         public void Update()
@@ -31,7 +33,7 @@ namespace Game1
         {
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(castleBlockObject.GetGameObjectLocation().X);
 
-            Rectangle sourceRectangle = new Rectangle(0, 0, TextureWarehouse.castleTexture.Width, TextureWarehouse.castleTexture.Height);
+            Rectangle sourceRectangle = new Rectangle(utility.Zero1, utility.Zero1, TextureWarehouse.castleTexture.Width, TextureWarehouse.castleTexture.Height);
             Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)castleBlockObject.GetGameObjectLocation().Y, TextureWarehouse.castleTexture.Width, TextureWarehouse.castleTexture.Height);
 
             myGame.SpriteBatch.Begin();
