@@ -15,12 +15,13 @@ namespace Game1
         private IBlockSprite topWarpPipeBlockSprite;
         private Vector2 blockLocation;
         private Rectangle blockRectangle;
-
+        private BlockUtilityClass utility;
         public TopWarpPipeBlock(Game1 game, Vector2 location)
         {
+            utility = new BlockUtilityClass();
             topWarpPipeBlockSprite = new TopWarpPipeBlockSprite(game, this);
             blockLocation = location;
-            blockRectangle = new Rectangle((int)location.X, (int)location.Y, 32, 16);
+            blockRectangle = new Rectangle((int)location.X, (int)location.Y, utility.PipeHeight, utility.Height);
         }
 
         public void Draw()

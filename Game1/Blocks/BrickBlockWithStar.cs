@@ -16,13 +16,14 @@ namespace Game1
         //private Game1 myGame;
         private Vector2 blockLocation;
         private Rectangle blockRectangle;
-
+        private BlockUtilityClass utility;
         public BrickBlockWithStar(Game1 game, Vector2 location)
         {
             brickBlockSprite = new BrickBlockSprite(game, this);
             //myGame = game;
             blockLocation = location;
-            blockRectangle = new Rectangle((int)location.X, (int)location.Y, 16, 16);
+            utility = new BlockUtilityClass();
+            blockRectangle = new Rectangle((int)location.X, (int)location.Y, utility.Width, utility.Height);
         }
 
         public void Draw()

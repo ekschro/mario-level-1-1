@@ -17,12 +17,13 @@ namespace Game1
         private Rectangle blockRectangle;
         private int cyclePosition = 0;
         private int cycleLength = 8;
-
+        private BlockUtilityClass utility;
         public QuestionBlock(Game1 game, Vector2 location)
         {
             questionBlockSprite = new QuestionBlockSprite(game, this);
             blockLocation = location;
-            blockRectangle = new Rectangle((int)location.X, (int)location.Y, 16, 16);
+            utility = new BlockUtilityClass();
+            blockRectangle = new Rectangle((int)location.X, (int)location.Y, utility.Width, utility.Height);
         }
 
         public void Draw()
@@ -46,7 +47,7 @@ namespace Game1
             if (cyclePosition == cycleLength)
             {
                 questionBlockSprite.Update();
-                cyclePosition = 0;
+                cyclePosition = utility.QuestionCyclePosition;
                 blockLocation.Y -= 1;
             }
         }
