@@ -10,12 +10,12 @@ namespace Game1
         private int killedNum = 0;
         private ITestMario testMario;
         //private static ISprite playerSprite;
-        public static IPhysics physics;
-        private Color marioColor;
-        private float currentXPosition;
-        private float currentYPosition;
-        private int totalMarioColumns = 28;
-        private int totalMarioRows = 3;
+        public static MarioPhysics physics;
+        private static Color marioColor;
+        private static float currentXPosition;
+        private static float currentYPosition;
+        private static int totalMarioColumns = 28;
+        private static int totalMarioRows = 3;
         private static int colorStartingTime;
         private static int colorTimer;
         private int fireballTimer;
@@ -199,6 +199,12 @@ namespace Game1
             {
                 MarioColor = Color.White;
             }
+        }
+
+        public void Stop()
+        {
+            physics.XVelocity = 0;
+            physics.YVelocity = 0;
         }
     }
 }

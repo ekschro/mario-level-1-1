@@ -36,6 +36,43 @@ namespace Game1
 
         public void MarioBlockCollisionDetect()
         {
+            /*
+             * 
+             * 
+             * 
+             * 
+             * 
+             * 
+             * 
+             * 
+             * 
+             * 
+             * 
+             * 
+             * 
+             * 
+             * 
+             * 
+             * 
+             * 
+             * WHAT IS THIS AND WHY ARE WE CHECKING MARIO AGAINST EVERY BLOCK (NUMBER OF ENEMIES) TIMES PER TICK????????????
+             * 
+             * 
+             * 
+             * 
+             * 
+             * 
+             * 
+             * 
+             * 
+             * 
+             * 
+             * 
+             * 
+             * 
+             * 
+             * 
+             */
             blockArray = level1.BlockObjects.ToArray();
             enemyArray = level1.EnemyObjects.ToArray();
             bool standing = false;

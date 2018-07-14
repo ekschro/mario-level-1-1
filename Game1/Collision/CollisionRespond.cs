@@ -125,15 +125,27 @@ namespace Game1
 
         public void BlockCollisionRespondRight(IBlock block,int width,bool right)
         {
-            if (!(block is HiddenGreenMushroomBlock) && !right)
+            if (!(block is HiddenGreenMushroomBlock || block is FlagpoleBlock) && !right)
                 player.CurrentXPos += width;
         }
 
         public void BlockCollisionRespondLeft(IBlock block,int width,bool left)
         {
-            if (!(block is HiddenGreenMushroomBlock) && !left)
+            if (block is FlagpoleBlock)
+            {
+                FlagBlock temp = (FlagBlock)objectLevel.BlockObjects.Find(x => x is FlagBlock);
+                temp.Activate((int)(player.CurrentYPos - temp.GetGameObjectLocation().Y));
+                player.TestMario.Flag();
+                objectLevel.PersistentData.KoopaFireOrStarPoints();             //CHANGE THIS LATER
+            }
+            else if (block is PipeOnSideBlock && controllerHandler.MovingRight)
+            {
+                ((PlatformerLevel)objectLevel).WarpFromSecret();
+            }
+            else if (!(block is HiddenGreenMushroomBlock) && !left)
+            {
                 player.CurrentXPos -= width;
-
+            }
             if (block is PipeOnSideBlock && controllerHandler.MovingRight)
                 ((PlatformerLevel)objectLevel).WarpFromSecret();
         }

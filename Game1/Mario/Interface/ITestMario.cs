@@ -15,5 +15,6 @@ namespace Game1
         void Upgrade();
         void Downgrade();
         ITestMarioStateMachine GetStateMachine { get; }
+        void Flag();
     }
 }

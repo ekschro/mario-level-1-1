@@ -23,7 +23,11 @@ namespace Game1
         private int cyclePosition;
         private int cycleLength;
 
+        private int timer = 400;
         private bool dead = false;
+
+        private bool endSequence;
+
         private MarioUtility utility;
         private Game1 myGame;
         Mario character;
@@ -37,6 +41,7 @@ namespace Game1
             character = mario;
             cyclePosition = utility.CyclePosition;
             cycleLength = utility.CycleLength;
+            endSequence = false;
         }
 
         public void Upgrade()
@@ -93,37 +98,78 @@ namespace Game1
         }
         public void Update()
         {
-            cyclePosition++;
-
-            if (cyclePosition == cycleLength)
+            if (endSequence)
             {
-                stateMachine.Update();
-                MarioSprite.Update();
-                cyclePosition = utility.CyclePosition;
+                EndSequence();
             }
-            else if (myGame.controllerHandler.MovingUp || (myGame.controllerHandler.MovingUp && myGame.controllerHandler.MovingLeft))
-                stateMachine.Jumping();
-            else if (myGame.controllerHandler.MovingDown || (myGame.controllerHandler.MovingDown && myGame.controllerHandler.MovingRight))
-                stateMachine.Crouching();
-            else if (myGame.controllerHandler.MovingLeft)
-            {
-                stateMachine.ChangeDirection(true);
-                stateMachine.Walking();
-            }
-            else if (myGame.controllerHandler.MovingRight)
-            {
-                stateMachine.ChangeDirection(false);
-                stateMachine.Walking();
-            }
-
             else
-                Idle();
+            {
+                if (endSequence)
+                {
+                    EndSequence();
+                }
+                else
+                {
+                    cyclePosition++;
+
+                    if (cyclePosition == cycleLength)
+                    {
+                        stateMachine.Update();
+                        MarioSprite.Update();
+                        cyclePosition = utility.CyclePosition;
+                    }
+                    else if (myGame.controllerHandler.MovingUp || (myGame.controllerHandler.MovingUp && myGame.controllerHandler.MovingLeft))
+                        stateMachine.Jumping();
+                    else if (myGame.controllerHandler.MovingDown || (myGame.controllerHandler.MovingDown && myGame.controllerHandler.MovingRight))
+                        stateMachine.Crouching();
+                    else if (myGame.controllerHandler.MovingLeft)
+                    {
+                        stateMachine.ChangeDirection(true);
+                        stateMachine.Walking();
+                    }
+                    else if (myGame.controllerHandler.MovingRight)
+                    {
+                        stateMachine.ChangeDirection(false);
+                        stateMachine.Walking();
+                    }
+
+                    else
+                        Idle();
+                }
+            }
         }
+
         public void Draw()
         {
             MarioSprite.Draw();
         }
 
-        
+        public void Flag()
+        {
+            endSequence = true;
+            character.Falling = false;
+            character.Stop();
+        }
+        public void EndSequence()
+        {
+            if (timer != 0)
+            {
+                timer--;
+            }
+            else if (character.CurrentYPos < 140)
+            {
+            }
+            else if (character.CurrentXPos < myGame.CurrentLevel.EndLocation)
+            {
+                Walking();
+                cyclePosition++; if (cyclePosition == cycleLength)
+                {
+                    stateMachine.Update();
+                    MarioSprite.Update();
+                    cyclePosition = 0;
+                }
+                character.CurrentXPos += 0.5f;
+            }
+        }
     }
 }
