@@ -16,19 +16,19 @@ namespace Game1
         private int startFrame;
         private int endFrame;
         private IPlayer player;
-        private MarioSpriteUtility spriteUtility;
+        //private MarioSpriteUtility spriteUtility;
 
         public TestSmallMarioSprite(Game1 game, TestSmallMario Mario, IPlayer player)
         {
-            spriteUtility = new MarioSpriteUtility();
+            //spriteUtility = new MarioSpriteUtility();
             marioObject = Mario;
             myGame = game;
             currentFrame = startFrame;
             this.player = player;
             //startFrame = 41;
             //endFrame = 42;
-            startFrame = spriteUtility.SmallMarioRightIdleStart;
-            endFrame = spriteUtility.SmallMarioRightIdleEnd;
+            //startFrame = spriteUtility.SmallMarioRightIdleStart;
+            //endFrame = spriteUtility.SmallMarioRightIdleEnd;
         }
         public void ChangeFrame(int start, int end)
         {
