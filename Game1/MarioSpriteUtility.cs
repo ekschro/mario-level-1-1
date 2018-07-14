@@ -58,14 +58,12 @@ namespace Game1
         public int SmallMarioLeftWalkingEnd { get => ( bigMarioLeftWalkingEnd+ turnSmallMario); }
         public int SmallMarioRightWalkingStart { get => ( bigMarioRightWalkingStart+ turnSmallMario); }
         public int SmallMarioRightWalkingEnd { get => ( bigMarioRightWalkingEnd+ turnSmallMario); }
-        public int SmallMarioLeftJumpingStart { get => (bigMarioLeftJumpingStart); }
+        public int SmallMarioLeftJumpingStart { get => (bigMarioLeftJumpingStart + turnSmallMario); }
         public int SmallMarioLeftJumpingEnd { get => ( bigMarioLeftJumpingEnd+ turnSmallMario); }
         public int SmallMarioRightJumpingStart { get => ( bigMarioRightJumpingStart+ turnSmallMario); }
         public int SmallMarioRightJumpingEnd { get => ( bigMarioRightJumpingEnd+ turnSmallMario); }
         public int SmallMarioLeftCrounchingStart { get => ( bigMarioLeftCrounchingStart+ turnSmallMario); }
         public int SmallMarioLeftCrounchingEnd { get => ( bigMarioLeftCrounchingEnd+ turnSmallMario); }
-        public int SmallMarioRightCrounchingStart { get => ( bigMarioRightCrounchingStart+ turnSmallMario); }
-        public int SmallMarioRightCrounchingEnd { get => ( bigMarioRightCrounchingEnd+ turnSmallMario); }
 
         public int FireMarioLeftIdleStart { get => (bigMarioLeftIdleStart + turnFireMario); }
         public int FireMarioLeftIdleEnd { get => (bigMarioLeftIdleEnd + turnFireMario); }
@@ -75,7 +73,7 @@ namespace Game1
         public int FireMarioLeftWalkingEnd { get => (bigMarioLeftWalkingEnd + turnFireMario); }
         public int FireMarioRightWalkingStart { get => (bigMarioRightWalkingStart + turnFireMario); }
         public int FireMarioRightWalkingEnd { get => (bigMarioRightWalkingEnd + turnFireMario); }
-        public int FireMarioLeftJumpingStart { get => (bigMarioLeftJumpingStart); }
+        public int FireMarioLeftJumpingStart { get => (bigMarioLeftJumpingStart + turnFireMario); }
         public int FireMarioLeftJumpingEnd { get => (bigMarioLeftJumpingEnd + turnFireMario); }
         public int FireMarioRightJumpingStart { get => (bigMarioRightJumpingStart + turnFireMario); }
         public int FireMarioRightJumpingEnd { get => (bigMarioRightJumpingEnd + turnFireMario); }

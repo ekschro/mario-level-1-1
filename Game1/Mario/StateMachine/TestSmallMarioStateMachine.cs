@@ -51,12 +51,14 @@ namespace Game1
         }
         public void Jumping()
         {
-            
+
             if (facingLeft)
-                marioSprite.ChangeFrame(7 + 28, 7 + 28 - 1);
+                //marioSprite.ChangeFrame(7 + 28, 7 + 28 - 1);
+                marioSprite.ChangeFrame(spriteUtility.SmallMarioLeftJumpingStart, spriteUtility.SmallMarioLeftJumpingEnd);
             else
-                marioSprite.ChangeFrame(20 + 28, 20 + 28 + 1);
-            State = MarioState.Jumping;
+                //marioSprite.ChangeFrame(20 + 28, 20 + 28 + 1);
+                marioSprite.ChangeFrame(spriteUtility.SmallMarioRightJumpingStart, spriteUtility.SmallMarioRightJumpingEnd);
+                State = MarioState.Jumping;
         }
         public void Crouching()
         {
