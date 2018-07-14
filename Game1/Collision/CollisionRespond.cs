@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Media;
 
 namespace Game1
 {
@@ -385,6 +386,7 @@ namespace Game1
             }
             else if (pickup is Star)
             {
+                MediaPlayer.Play(SoundWarehouse.star_theme);
                 objectLevel.PlayerObject.IsStar = true;
                 invulnerabilityTimer = 1000;
                 player.Invulnerability = true;
@@ -419,6 +421,7 @@ namespace Game1
             }
             else if (pickup is Star)
             {
+                MediaPlayer.Play(SoundWarehouse.star_theme);
                 objectLevel.PlayerObject.IsStar = true;
                 invulnerabilityTimer = 1000;
                 player.Invulnerability = true;
@@ -458,6 +461,7 @@ namespace Game1
             }
             else if (pickup is Star)
             {
+                MediaPlayer.Play(SoundWarehouse.star_theme);
                 objectLevel.PlayerObject.IsStar = true;
                 invulnerabilityTimer = 1000;
                 player.Invulnerability = true;
@@ -490,6 +494,7 @@ namespace Game1
             }
             else if (pickup is Star)
             {
+                MediaPlayer.Play(SoundWarehouse.star_theme);
                 objectLevel.PlayerObject.IsStar = true;
                 invulnerabilityTimer = 1000;
                 player.Invulnerability = true;

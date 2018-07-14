@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Media;
 using System;
 namespace Game1
 {
@@ -31,6 +32,8 @@ namespace Game1
         public bool Bump { get; set; }
         public bool Bounce { get; set; }
         private bool play;
+        private bool starStopped = false;
+
         public bool CanJump { get; set; }
         public bool IsStar { get => isStar; set => isStar = value; }
         public bool Invulnerability { get => invulnerability; set => invulnerability = value; }
@@ -79,17 +82,17 @@ namespace Game1
                 testMario.Update();
             }
 
-            if(controllerHandler.MovingUp)
-            {
-                if (play)
-                {
-                    SoundWarehouse.jump.Play();
-                    play = false;
-                } 
-            }
+           // if(controllerHandler.MovingUp)
+           // {
+           //     if (play)
+           //     {
+           //         SoundWarehouse.jump.Play();
+           //         play = false;
+           //     } 
+           // }
 
-           if (CanJump)
-                play = true;
+           //if (CanJump)
+           //     play = true;
 
             if (fireballTimer > 0)
                 fireballTimer--;
@@ -174,6 +177,7 @@ namespace Game1
         {
             if (isStar && colorTimer == 0)
             {
+                starStopped = true;
                 if (MarioColor == Color.White)
                     MarioColor = Color.Red;
                 else if (MarioColor == Color.Red)
@@ -187,7 +191,8 @@ namespace Game1
             }
             else if (Invulnerability && colorTimer == 0)
             {
-                if(MarioColor == Color.White)
+               
+                if (MarioColor == Color.White)
                     MarioColor = Color.Transparent;
                 else
                     MarioColor = Color.White;
@@ -195,6 +200,11 @@ namespace Game1
             }
             else if (colorTimer > 0)
                 colorTimer--;
+            else if (!isStar && colorTimer == 0 && starStopped)
+            {
+                MediaPlayer.Play(SoundWarehouse.main_theme);
+                starStopped = false;
+            }
             else
             {
                 MarioColor = Color.White;
