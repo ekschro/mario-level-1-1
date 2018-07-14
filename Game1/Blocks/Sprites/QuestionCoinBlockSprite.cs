@@ -18,7 +18,7 @@ namespace Game1
         private int currentFrame;
         private int startFrame;
         private int endFrame;
-        private int numberOfFrame;
+        //private int numberOfFrame;
         private BlockUtilityClass utility;
 
         public QuestionCoinBlockSprite(Game1 game, IBlock questionCoinBlock)
@@ -29,7 +29,7 @@ namespace Game1
             startFrame = utility.Four;
             endFrame = utility.Seven;
             currentFrame = startFrame;
-            numberOfFrame = utility.Thirteen;
+            //numberOfFrame = utility.Thirteen;
             //jumpig = true;
         }
 

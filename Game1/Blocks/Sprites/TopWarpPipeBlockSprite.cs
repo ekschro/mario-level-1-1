@@ -33,7 +33,7 @@ namespace Game1
 
         public void Draw()
         {
-            int width = (TextureWarehouse.blockTexture.Width * utility.Two) / utility.Thirteen;
+            int width = (TextureWarehouse.blockTexture.Width * utility.Two) / utility.BlockColumn;
 
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(topWarpPipeBlockObject.GetGameObjectLocation().X);
 
