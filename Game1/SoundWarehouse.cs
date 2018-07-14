@@ -21,7 +21,6 @@ namespace Game1
 
             jump = game.Content.Load<SoundEffect>("smb_jumpsmall");
 
-            
         }
     }
 }

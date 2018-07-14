@@ -30,7 +30,7 @@ namespace Game1
         public bool Falling { get; set; }
         public bool Bump { get; set; }
         public bool Bounce { get; set; }
-        //private bool play;
+        private bool play;
         public bool CanJump { get; set; }
         public bool IsStar { get => isStar; set => isStar = value; }
         public bool Invulnerability { get => invulnerability; set => invulnerability = value; }
@@ -79,33 +79,17 @@ namespace Game1
                 testMario.Update();
             }
 
-            /*
-
-            if (controllerHandler.MovingDown)
-            {
-                DownAnimation();
-            }
-            if (controllerHandler.MovingRight && !controllerHandler.MovingUp)
-            {
-                RightAnimation();
-            }
-            if (controllerHandler.MovingLeft && !controllerHandler.MovingUp)
-            {
-                LeftAnimation();
-            }
             if(controllerHandler.MovingUp)
             {
-                UpAnimation();
-                /* if (play)
+                if (play)
                 {
                     SoundWarehouse.jump.Play();
                     play = false;
-                } * /
+                } 
             }
 
-            */
-           //if (CanJump)
-                //play = true;
+           if (CanJump)
+                play = true;
 
             if (fireballTimer > 0)
                 fireballTimer--;
