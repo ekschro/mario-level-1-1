@@ -16,6 +16,15 @@ namespace Game1
         public static Song game_over_theme;
         public static Song star_theme;
         public static SoundEffect jump;
+        public static SoundEffect stomp;
+        public static SoundEffect bump;
+        public static SoundEffect powerup_appears;
+        public static SoundEffect powerup;
+        public static SoundEffect pipe;
+        public static SoundEffect pause;
+        public static SoundEffect fireball;
+        public static SoundEffect breakblock;
+        public static SoundEffect coin;
 
         public SoundWarehouse(Game1 game)
         {
@@ -26,6 +35,15 @@ namespace Game1
             star_theme = game.Content.Load<Song>("05-starman");
 
             jump = game.Content.Load<SoundEffect>("smb_jumpsmall");
+            stomp = game.Content.Load<SoundEffect>("smb_stomp");
+            bump = game.Content.Load<SoundEffect>("smb_bump");
+            powerup_appears = game.Content.Load<SoundEffect>("smb_powerup_appears");
+            powerup = game.Content.Load<SoundEffect>("smb_powerup");
+            pipe = game.Content.Load<SoundEffect>("smb_pipe");
+            pause = game.Content.Load<SoundEffect>("smb_pause");
+            fireball = game.Content.Load<SoundEffect>("smb_fireball");
+            breakblock = game.Content.Load<SoundEffect>("smb_breakblock");
+            coin = game.Content.Load<SoundEffect>("smb_coin");
 
         }
     }

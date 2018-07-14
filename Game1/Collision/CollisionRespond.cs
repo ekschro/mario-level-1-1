@@ -64,16 +64,19 @@ namespace Game1
 
             if (player.TestMario.GetStateMachine is TestSmallMarioStateMachine && block is BrickBlock)
             {
+                SoundWarehouse.bump.Play();
                 ((BrickBlock)block).Bounce();
             }
 
             if (block is BrickBlock && !(player.TestMario.GetStateMachine is TestSmallMarioStateMachine))
             {
+                SoundWarehouse.breakblock.Play();
                 objectLevel.BlockObjects.Remove(block);
                 objectLevel.PersistentData.BlockDestroyPoints();
             }
             else if (block is QuestionPowerUpBlock)
             {
+                SoundWarehouse.powerup_appears.Play();
                 objectLevel.BlockObjects.Remove(block);
                 objectLevel.BlockObjects.Add(new UsedBlock(myGame, block.GetGameObjectLocation()));
                 if (player.TestMario.GetStateMachine is TestSmallMarioStateMachine)
@@ -83,6 +86,7 @@ namespace Game1
             }
             else if (block is QuestionCoinBlock)
             {
+                SoundWarehouse.coin.Play();
                 objectLevel.BlockObjects.Remove(block);
                 objectLevel.BlockObjects.Add(new UsedBlock(myGame, block.GetGameObjectLocation()));
                 objectLevel.TemporaryObjects.Add(new Coin(myGame, block.GetGameObjectLocation()));
