@@ -91,7 +91,7 @@
     <Compile Include="Collision\CollisionDetectionLogic.cs" />
     <Compile Include="Controllers\ControllerUtilityClass.cs" />
     <Compile Include="Enemy\EnemyUtilityClass.cs" />
-    <Compile Include="MarioSpriteUtility.cs" />
+    <Compile Include="Mario\MarioSpriteUtility.cs" />
     <Compile Include="PickupItem\Object\Coin.cs" />
     <Compile Include="PickupItem\Object\Fireflower.cs" />
     <Compile Include="PickupItem\Object\GreenMushroom.cs" />
