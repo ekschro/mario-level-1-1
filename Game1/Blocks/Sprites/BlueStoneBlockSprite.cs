@@ -16,12 +16,15 @@ namespace Game1
         private BlueStoneBlock blueStoneBlockObject;
         private Game1 myGame;
         private int currentFrame;
-
+        private BlockUtilityClass utility;
         public BlueStoneBlockSprite(Game1 game, IBlock blueStoneBlock)
         {
             blueStoneBlockObject = (BlueStoneBlock)blueStoneBlock;
             myGame = game;
-            currentFrame = 0;
+            
+            utility = new BlockUtilityClass();
+            currentFrame = utility.Zero1;
+
         }
 
         public void Update(){}
@@ -30,7 +33,7 @@ namespace Game1
         {
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(blueStoneBlockObject.GetGameObjectLocation().X);
 
-            Rectangle sourceRectangle = new Rectangle(0,0,(int)blueStoneBlockObject.BlockSize.X,(int)blueStoneBlockObject.BlockSize.Y);
+            Rectangle sourceRectangle = new Rectangle(utility.Zero1,utility.Zero1,(int)blueStoneBlockObject.BlockSize.X,(int)blueStoneBlockObject.BlockSize.Y);
             Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)blueStoneBlockObject.GetGameObjectLocation().Y, (int)blueStoneBlockObject.BlockSize.X, (int)blueStoneBlockObject.BlockSize.Y);
 
             myGame.SpriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.LinearWrap, null, null);

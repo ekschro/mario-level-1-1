@@ -6,7 +6,8 @@ namespace Game1
     {
         private IControllerHandler controllerHandler;
         private Game1 myGame;
-        private int animationTimer;
+        //private int animationTimer;
+        private int killedNum = 0;
         private ITestMario testMario;
         //private static ISprite playerSprite;
         public static MarioPhysics physics;
@@ -17,10 +18,9 @@ namespace Game1
         private static int totalMarioRows = 3;
         private static int colorStartingTime;
         private static int colorTimer;
-        private static int fireballTimer;
-
-        private static bool isStar = false;
-        private static bool invulnerability = false;
+        private int fireballTimer;
+        private bool isStar = false;
+        private bool invulnerability = false;
 
         //public ISprite MarioSprite { get => playerSprite; set => playerSprite = value; }
         public Color MarioColor { get => marioColor; set => marioColor = value; }
@@ -30,15 +30,14 @@ namespace Game1
         public bool Falling { get; set; }
         public bool Bump { get; set; }
         public bool Bounce { get; set; }
-       
-        private bool play;
-
+        //private bool play;
         public bool CanJump { get; set; }
         public bool IsStar { get => isStar; set => isStar = value; }
         public bool Invulnerability { get => invulnerability; set => invulnerability = value; }
         public int TotalMarioRows { get => totalMarioRows; set => totalMarioRows = value; }
         public int TotalMarioColumns { get => totalMarioColumns; set => totalMarioColumns = value; }
         public int FireBallTimer { get => fireballTimer; set => fireballTimer = value; }
+        public int KilledNum { get => killedNum; set => killedNum = value; }
         public ITestMario TestMario { get => testMario; set => testMario = value; }
 
         public Mario(Game1 game, Vector2 vector)
@@ -52,13 +51,13 @@ namespace Game1
             
             colorStartingTime = 5;
             colorTimer = 0;
-            animationTimer = 0;
+            //animationTimer = 0;
             fireballTimer = 0;
             testMario = new TestSmallMario(game, vector, this);
             CanJump = true;
             Falling = false;
             Bounce = false;
-            play = true;
+            //play = true;
         }
 
         public void Draw()

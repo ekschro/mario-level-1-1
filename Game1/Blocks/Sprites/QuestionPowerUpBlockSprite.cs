@@ -18,14 +18,16 @@ namespace Game1
         private int currentFrame;
         private int startFrame;
         private int endFrame;
-        private int numberOfFrame = 13;
+        //private int numberOfFrame = 13;
+        private BlockUtilityClass utility;
 
         public QuestionPowerUpBlockSprite(Game1 game, IBlock questionPowerUpBlock)
         {
+            utility = new BlockUtilityClass();
             questionPowerUpBlockObject = (QuestionPowerUpBlock)questionPowerUpBlock;
             myGame = game;
-            startFrame = 4;
-            endFrame = 7;
+            startFrame = utility.Four;
+            endFrame = utility.Seven;
             currentFrame = startFrame;
             //jumpig = true;
         }
@@ -39,11 +41,11 @@ namespace Game1
 
         public void Draw()
         {
-            int width = TextureWarehouse.blockTexture.Width / numberOfFrame;
+            int width = TextureWarehouse.blockTexture.Width / utility.BlockColumn;
 
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(questionPowerUpBlockObject.GetGameObjectLocation().X);
 
-            Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, TextureWarehouse.blockTexture.Height);
+            Rectangle sourceRectangle = new Rectangle(width * currentFrame, utility.Zero1, width, TextureWarehouse.blockTexture.Height);
             Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)questionPowerUpBlockObject.GetGameObjectLocation().Y, width, TextureWarehouse.blockTexture.Height);
 
             myGame.SpriteBatch.Begin();

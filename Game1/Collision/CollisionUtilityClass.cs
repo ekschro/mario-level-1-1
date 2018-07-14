@@ -17,23 +17,27 @@ public class CollisionUtilityClass
     private int invulnerabilityFrames = 100;
     private int twentyfour = 24;
     private int one = 1;
-	public CollisionUtilityClass()
+    private int invulnerabilityRespondFrames = 1000;
+
+
+    public CollisionUtilityClass()
 	{
 	}
 
-    public int TileOffset { get => tileOffset; set => tileOffset = value; }
-    public int MainHeight { get => mainHeight; set => mainHeight = value; }
-    public int MainWidth { get => mainWidth; set => mainWidth = value; }
-    public int SmallWidth { get => smallWidth; set => smallWidth = value; }
-    public int SmallHeight { get => smallHeight; set => smallHeight = value; }
-    public int Two { get => two; set => two = value; }
-    public int YMax { get => yMax; set => yMax = value; }
-    public int Size { get => size; set => size = value; }
-    public int BiggerHeight { get => biggerHeight; set => biggerHeight = value; }
-    public int Eight { get => eight; set => eight = value; }
-    public int Four { get => four; set => four = value; }
-    public int LethalFall { get => lethalFall; set => lethalFall = value; }
-    public int InvulnerabilityFrames { get => invulnerabilityFrames; set => invulnerabilityFrames = value; }
-    public int Twentyfour { get => twentyfour; set => twentyfour = value; }
-    public int One { get => one; set => one = value; }
+    public int TileOffset { get => tileOffset; }
+    public int MainHeight { get => mainHeight;  }
+    public int MainWidth { get => mainWidth;  }
+    public int SmallWidth { get => smallWidth;  }
+    public int SmallHeight { get => smallHeight; }
+    public int Two { get => two; }
+    public int YMax { get => yMax; }
+    public int Size { get => size; }
+    public int BiggerHeight { get => biggerHeight;  }
+    public int Eight { get => eight; }
+    public int Four { get => four; }
+    public int LethalFall { get => lethalFall;}
+    public int InvulnerabilityFrames { get => invulnerabilityFrames;}
+    public int Twentyfour { get => twentyfour; }
+    public int One { get => one;}
+    public int InvulnerabilityRespondFrames { get => invulnerabilityRespondFrames; }
 }

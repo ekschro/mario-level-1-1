@@ -16,12 +16,14 @@ namespace Game1
         private HiddenGreenMushroomBlock hiddenGreenMushroomBlockObject;
         private Game1 myGame;
         private int currentFrame;
+        private BlockUtilityClass utility;
 
         public HiddenGreenMushroomBlockSprite(Game1 game, IBlock hiddenGreenMushroomBlock)
         {
+            utility = new BlockUtilityClass();
             hiddenGreenMushroomBlockObject = (HiddenGreenMushroomBlock)hiddenGreenMushroomBlock;
             myGame = game;
-            currentFrame = 0;
+            currentFrame = utility.Zero1;
         }
 
         public void Update()
@@ -31,11 +33,11 @@ namespace Game1
 
         public void Draw()
         {
-            int width = TextureWarehouse.blockTexture.Width / 13;
+            int width = TextureWarehouse.blockTexture.Width / utility.BlockColumn;
 
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(hiddenGreenMushroomBlockObject.GetGameObjectLocation().X);
 
-            Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, TextureWarehouse.blockTexture.Height);
+            Rectangle sourceRectangle = new Rectangle(width * currentFrame, utility.Zero1, width, TextureWarehouse.blockTexture.Height);
             Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)hiddenGreenMushroomBlockObject.GetGameObjectLocation().Y, width, TextureWarehouse.blockTexture.Height);
 
             myGame.SpriteBatch.Begin();

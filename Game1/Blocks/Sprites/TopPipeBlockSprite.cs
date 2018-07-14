@@ -16,12 +16,14 @@ namespace Game1
         private TopPipeBlock topPipeBlockObject;
         private Game1 myGame;
         private int currentFrame;
+        BlockUtilityClass utility;
 
         public TopPipeBlockSprite(Game1 game, IBlock topPipe)
         {
             topPipeBlockObject = (TopPipeBlock)topPipe;
             myGame = game;
-            currentFrame = 8;
+            utility = new BlockUtilityClass();
+            currentFrame = utility.Eight;
         }
 
         public void Update()
@@ -31,11 +33,11 @@ namespace Game1
 
         public void Draw()
         {
-            int width = (TextureWarehouse.blockTexture.Width * 2) / 13;
+            int width = (TextureWarehouse.blockTexture.Width * utility.Two) / utility.BlockColumn;
 
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(topPipeBlockObject.GetGameObjectLocation().X);
 
-            Rectangle sourceRectangle = new Rectangle((width / 2) * currentFrame, 0, width, TextureWarehouse.blockTexture.Height);
+            Rectangle sourceRectangle = new Rectangle((width / utility.Two) * currentFrame, utility.Zero1, width, TextureWarehouse.blockTexture.Height);
             Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)topPipeBlockObject.GetGameObjectLocation().Y, width, TextureWarehouse.blockTexture.Height);
 
             myGame.SpriteBatch.Begin();

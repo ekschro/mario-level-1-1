@@ -19,14 +19,18 @@ namespace Game1
 
         private bool up = true;
         private bool endofJumping = false;
-        private int jumpDistance = 10;
-        private int currentJumpLocation = 0;
+        private int jumpDistance;
+        private int currentJumpLocation;
+        private BlockUtilityClass utility;
 
         public UsedBlockSprite(Game1 game, IBlock usedBlock)
         {
+            utility = new BlockUtilityClass();
             usedBlockObject = (UsedBlock)usedBlock;
             myGame = game;
-            currentFrame = 3;
+            jumpDistance = utility.Ten;
+            currentJumpLocation = utility.Zero1;
+            currentFrame = utility.Three;
         }
 
         public void Update()
@@ -41,12 +45,12 @@ namespace Game1
                 if (currentJumpLocation == jumpDistance)
                 { up = false; }
                 if (up == true)
-                { currentJumpLocation += 2; }
-                else if ( currentJumpLocation > 0)
-                { currentJumpLocation -= 2; }
+                { currentJumpLocation += utility.Two; }
+                else if ( currentJumpLocation > utility.Zero1)
+                { currentJumpLocation -= utility.Two; }
             }
 
-            int width = TextureWarehouse.blockTexture.Width / 13;
+            int width = TextureWarehouse.blockTexture.Width / utility.BlockColumn;
 
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(usedBlockObject.GetGameObjectLocation().X);
 

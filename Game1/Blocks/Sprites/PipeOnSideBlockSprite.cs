@@ -15,11 +15,13 @@ namespace Game1
     {
         private PipeOnSideBlock pipeOnSideBlockObject;
         private Game1 myGame;
+        BlockUtilityClass utility;
 
         public PipeOnSideBlockSprite(Game1 game, IBlock pipeOnSide)
         {
             pipeOnSideBlockObject = (PipeOnSideBlock)pipeOnSide;
             myGame = game;
+            utility = new BlockUtilityClass();
         }
 
         public void Update()
@@ -31,7 +33,7 @@ namespace Game1
         {
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(pipeOnSideBlockObject.GetGameObjectLocation().X);
 
-            Rectangle sourceRectangle = new Rectangle(0, 0, TextureWarehouse.pipeOnSideBlockTexture.Width, TextureWarehouse.pipeOnSideBlockTexture.Height);
+            Rectangle sourceRectangle = new Rectangle(utility.Zero1, utility.Zero1, TextureWarehouse.pipeOnSideBlockTexture.Width, TextureWarehouse.pipeOnSideBlockTexture.Height);
             Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)pipeOnSideBlockObject.GetGameObjectLocation().Y, TextureWarehouse.pipeOnSideBlockTexture.Width, TextureWarehouse.pipeOnSideBlockTexture.Height);
 
             myGame.SpriteBatch.Begin();

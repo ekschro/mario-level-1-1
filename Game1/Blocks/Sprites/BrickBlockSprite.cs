@@ -19,14 +19,18 @@ namespace Game1
 
         private bool up = false;
         private bool endofJumping = true;
-        private int jumpDistance = 10;
-        private int currentJumpLocation = 0;
+        private int jumpDistance;
+        private int currentJumpLocation;
+        private BlockUtilityClass utility;
 
         public BrickBlockSprite(Game1 game, IBlock brick)
         {
+            utility = new BlockUtilityClass();
+            jumpDistance = utility.Ten;
+            currentJumpLocation = utility.Zero1;
             brickBlockObject = brick;
             myGame = game;
-            currentFrame = 2;
+            currentFrame = utility.Two;
         }
 
         public void Update()
@@ -46,11 +50,11 @@ namespace Game1
                 { currentJumpLocation -= 2; }
             }
 
-            int width = TextureWarehouse.blockTexture.Width / 13;
+            int width = TextureWarehouse.blockTexture.Width / utility.BlockColumn;
 
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(brickBlockObject.GetGameObjectLocation().X);
 
-            Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, TextureWarehouse.blockTexture.Height);
+            Rectangle sourceRectangle = new Rectangle(width * currentFrame, utility.Zero1, width, TextureWarehouse.blockTexture.Height);
             Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)brickBlockObject.GetGameObjectLocation().Y - currentJumpLocation, width, TextureWarehouse.blockTexture.Height);
 
             myGame.SpriteBatch.Begin();

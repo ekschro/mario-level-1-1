@@ -14,7 +14,6 @@ namespace Game1
 
         //Vector2 GetGameObjectLocation();
         void SetGameObjectLocation(Vector2 x);
-        void Picked();
         void Collide();
         bool MovingRight();
     }

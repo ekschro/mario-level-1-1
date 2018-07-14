@@ -16,12 +16,14 @@ namespace Game1
         private StairBlock stairBlockObject;
         private Game1 myGame;
         private int currentFrame;
+        private BlockUtilityClass utility;
 
         public StairBlockSprite(Game1 game, IBlock stairBlock)
         {
+            utility = new BlockUtilityClass();
             stairBlockObject = (StairBlock)stairBlock;
             myGame = game;
-            currentFrame = 1;
+            currentFrame = utility.One;
             //blockLocation = location;
         }
 
@@ -32,11 +34,11 @@ namespace Game1
 
         public void Draw()
         {
-            int width = TextureWarehouse.blockTexture.Width / 13;
+            int width = TextureWarehouse.blockTexture.Width / utility.BlockColumn;
 
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(stairBlockObject.GetGameObjectLocation().X);
 
-            Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, TextureWarehouse.blockTexture.Height);
+            Rectangle sourceRectangle = new Rectangle(width * currentFrame, utility.Zero1, width, TextureWarehouse.blockTexture.Height);
             Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)stairBlockObject.GetGameObjectLocation().Y, width, TextureWarehouse.blockTexture.Height);
 
             myGame.SpriteBatch.Begin();
