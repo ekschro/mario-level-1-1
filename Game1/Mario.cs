@@ -82,17 +82,19 @@ namespace Game1
                 testMario.Update();
             }
 
-           // if(controllerHandler.MovingUp)
-           // {
-           //     if (play)
-           //     {
-           //         SoundWarehouse.jump.Play();
-           //         play = false;
-           //     } 
-           // }
+            if (controllerHandler.MovingUp)
+            {
+                if (play)
+                {
+                    var j = SoundWarehouse.jump.CreateInstance();
+                    j.Volume = 0.07f;
+                    j.Play();
+                    play = false;
+                }
+            }
 
-           //if (CanJump)
-           //     play = true;
+            if (CanJump)
+                play = true;
 
             if (fireballTimer > 0)
                 fireballTimer--;
