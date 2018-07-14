@@ -18,6 +18,7 @@ namespace Game1
             controllerHandler = game.controllerHandler;
             player = game.CurrentLevel.PlayerObject;
             falling = true;
+            SoundWarehouse.fireball.Play();
 
             if (!player.TestMario.GetStateMachine.FacingLeft())
             {

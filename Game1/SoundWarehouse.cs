@@ -25,6 +25,7 @@ namespace Game1
         public static SoundEffect fireball;
         public static SoundEffect breakblock;
         public static SoundEffect coin;
+        public static SoundEffect oneup;
 
         public SoundWarehouse(Game1 game)
         {
@@ -44,6 +45,7 @@ namespace Game1
             fireball = game.Content.Load<SoundEffect>("smb_fireball");
             breakblock = game.Content.Load<SoundEffect>("smb_breakblock");
             coin = game.Content.Load<SoundEffect>("smb_coin");
+            oneup = game.Content.Load<SoundEffect>("smb_1-up");
 
         }
     }

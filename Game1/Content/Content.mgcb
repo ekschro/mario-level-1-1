@@ -359,3 +359,9 @@
 /processorParam:Quality=Best
 /build:smb_coin.wav
 
+#begin smb_1-up.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:smb_1-up.wav
+
