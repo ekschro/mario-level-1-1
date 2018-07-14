@@ -1,0 +1,12 @@
+Dorothy Chow (.140)
+6/29/18
+Sprint 4
+BockUtilityClass.cs
+Tim
+20
+
+The class name has explain what is implemented in this class, all number are store in this class which it will be easier to manage. 
+However the naming conventions are not quit good. 
+Names were not meaningful. For example, Zero, Seven, Four, it only tell what is the number which store inside it but not what it mean. Need to look through other class to know what the number represent.
+To change it it might be call QuestionBlockSprite, BrickBlockSprite, etc. 
+
