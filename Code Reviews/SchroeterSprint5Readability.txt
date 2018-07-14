@@ -1,0 +1,9 @@
+Ericsson Schroeter (.12)
+7/13/18
+Sprint 5
+TestBigMarioStateMachine.cs
+Time Regrut & Dorothy Chow
+10
+
+The readability of this file is good.  All method definitions are terse and direct.  All method name are descriptive
+and self-describable.  If anything some of the nested method call could be broken down to make them more readable.
