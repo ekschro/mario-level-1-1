@@ -1,0 +1,8 @@
+William Freeman (.694)
+6/29/18
+Sprint 4
+HeadsUpDisplay.cs
+Tim Regrut
+30
+
+The HeadsUpDisplay class is in charge of creating and Drawing the HUD, while another class actually manages the persistent data within (PersistentData). The class begins with 6 private fields which already are confusing, since they use terminology that is not consistent with the purpose of the class. cyclePosition always referred to sprite animation in the various object classes, so having the same name used here confuses its purpose. Additionally, there are values assigned above that would be better assigned in the constructor, in addition to the magic numbers sprinkled throughout. The Update method is the same as many of the Sprite Updates, so the methodology is clear to someone familiar with the project, but its purpose is not. In the Draw mthod, it is finally made clear that all the updating is done to draw the coin animating in the HUD. This confusion could have been avoided by using more descriptive names for the animation variables. Ultimately, the Draw method is long, uses a significant amount of magic numbers, and could be better organized, but the way the HUD operates is having a bunch of text drawn, and this class does it in a suboptimal, yet functional way. This class could easily be refactored to be much more readable by simply renaming a few variables and eliminating the magic numbers.

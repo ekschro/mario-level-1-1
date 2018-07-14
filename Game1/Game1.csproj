@@ -99,7 +99,6 @@
     <Compile Include="PickupItem\Object\RedMushroom.cs" />
     <Compile Include="PickupItem\Object\Star.cs" />
     <Compile Include="PickupItem\PickupUtilityClass.cs" />
-    <Compile Include="UniqueAnimation.cs" />
     <Compile Include="ControllerHandler.cs" />
     <Compile Include="Enemy\koopa\KoopaShell.cs" />
     <Compile Include="Enemy\koopa\KoopaShellSprite.cs" />
