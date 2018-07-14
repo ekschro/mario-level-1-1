@@ -159,7 +159,10 @@ namespace Game1
         {
             if (block is FlagpoleBlock)
             {
-                myGame.Pause = true;
+                FlagBlock temp = (FlagBlock)objectLevel.BlockObjects.Find(x => x is FlagBlock);
+                temp.Activate((int)(player.CurrentYPos - temp.GetGameObjectLocation().Y));
+                player.TestMario.Flag();
+                objectLevel.PersistentData.KoopaFireOrStarPoints();             //CHANGE THIS LATER
             }
             else if (block is PipeOnSideBlock && controllerHandler.MovingRight) { 
                 ((PlatformerLevel)objectLevel).WarpFromSecret();

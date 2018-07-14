@@ -16,17 +16,26 @@ namespace Game1
         private Vector2 blockLocation;
         private Rectangle blockRectangle;
         private BlockUtilityClass utility;
+
+        private bool pulled;
+        private int pullDistance;
+            
         public FlagBlock(Game1 game, Vector2 location)
         {
             flagBlockSprite = new FlagBlockSprite(game, this);
             blockLocation = location;
             utility = new BlockUtilityClass();
             blockRectangle = new Rectangle((int)location.X + 16, (int)location.Y, utility.Width, utility.Height);
-            
+            pulled = false;
         }
 
         public void Draw()
         {
+            if (pulled && pullDistance > 0)
+            {
+                blockLocation.Y++;
+                pullDistance--;
+            }
             flagBlockSprite.Draw();
         }
 
@@ -42,9 +51,16 @@ namespace Game1
 
         public void Update()
         {
-
         }
 
+        public void Activate(int distance)
+        {
+            if (!pulled)
+            {
+                pulled = true;
+                pullDistance = distance;
+            }
+        }
 
     }
 }

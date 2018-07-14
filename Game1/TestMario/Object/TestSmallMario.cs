@@ -21,6 +21,9 @@ namespace Game1
 
         private int cyclePosition = 0;
         private int cycleLength = 8;
+        private int timer = 400;
+
+        private bool endSequence;
         
         //private bool dead = false;
        
@@ -34,6 +37,7 @@ namespace Game1
             stateMachine = new TestSmallMarioStateMachine(marioSprite);
             character = mario;
             myGame = game;
+            endSequence = false;
         }
 
         public void Upgrade()
@@ -72,34 +76,68 @@ namespace Game1
         }
         public void Update()
         {
-            cyclePosition++;
-            
-             if (cyclePosition == cycleLength)
+            if (endSequence)
             {
-                stateMachine.Update();
-                MarioSprite.Update();
-                cyclePosition = 0;
-            }
-            else if (myGame.controllerHandler.MovingUp || (myGame.controllerHandler.MovingUp && myGame.controllerHandler.MovingLeft))
-                Jumping();
-            else if (myGame.controllerHandler.MovingDown || (myGame.controllerHandler.MovingDown && myGame.controllerHandler.MovingRight))
-                Crouching();
-            else if (myGame.controllerHandler.MovingLeft)
-            {
-                stateMachine.ChangeDirection(true);
-                Walking();
-            }
-            else if (myGame.controllerHandler.MovingRight)
-            {
-                stateMachine.ChangeDirection(false);
-                Walking();
+                EndSequence();
             }
             else
-                Idle();
+            {
+                cyclePosition++;
+
+                if (cyclePosition == cycleLength)
+                {
+                    stateMachine.Update();
+                    MarioSprite.Update();
+                    cyclePosition = 0;
+                }
+                else if (myGame.controllerHandler.MovingUp || (myGame.controllerHandler.MovingUp && myGame.controllerHandler.MovingLeft))
+                    Jumping();
+                else if (myGame.controllerHandler.MovingDown || (myGame.controllerHandler.MovingDown && myGame.controllerHandler.MovingRight))
+                    Crouching();
+                else if (myGame.controllerHandler.MovingLeft)
+                {
+                    stateMachine.ChangeDirection(true);
+                    Walking();
+                }
+                else if (myGame.controllerHandler.MovingRight)
+                {
+                    stateMachine.ChangeDirection(false);
+                    Walking();
+                }
+                else
+                    Idle();
+            }
         }
         public void Draw()
         {
             MarioSprite.Draw();
+        }
+        public void Flag()
+        {
+            endSequence = true;
+            character.Falling = false;
+            character.Stop();
+        }
+        public void EndSequence()
+        {
+            if(timer != 0)
+            {
+                timer--;
+            }
+            else if(character.CurrentYPos < 140)
+            {
+            }
+            else if(character.CurrentXPos < myGame.CurrentLevel.EndLocation)
+            {
+                Walking();
+                cyclePosition++; if (cyclePosition == cycleLength)
+                {
+                    stateMachine.Update();
+                    MarioSprite.Update();
+                    cyclePosition = 0;
+                }
+                character.CurrentXPos += 0.5f;
+            }
         }
     }
 }

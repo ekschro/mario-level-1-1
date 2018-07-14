@@ -5,6 +5,5 @@ namespace Game1 {
         void ChangeFrame(int startFrame, int endFrame);
         void Update();
         void Draw();
-
     }
 }

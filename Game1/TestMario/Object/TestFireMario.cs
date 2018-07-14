@@ -23,7 +23,9 @@ namespace Game1
         private int cycleLength = 8;
 
         private bool dead = false;
-        
+
+        private bool endSequence;
+
         Mario character;
         Game1 myGame;
         public TestFireMario(Game1 game, Vector2 location, Mario mario)
@@ -33,6 +35,7 @@ namespace Game1
             stateMachine = new TestFireMarioStateMachine(marioSprite);
             character = mario;
             myGame = game;
+            endSequence = false;
         }
 
         public void Upgrade()
@@ -81,37 +84,51 @@ namespace Game1
         }
         public void Update()
         {
-            cyclePosition++;
-
-            if (cyclePosition == cycleLength)
+            if (endSequence)
             {
-                stateMachine.Update();
-                MarioSprite.Update();
-                cyclePosition = 0;
+                EndSequence();
             }
-            else if (myGame.controllerHandler.MovingUp || (myGame.controllerHandler.MovingUp && myGame.controllerHandler.MovingLeft))
-                Jumping();
-            else if (myGame.controllerHandler.MovingDown || (myGame.controllerHandler.MovingDown && myGame.controllerHandler.MovingRight))
-                Crouching();
-            else if (myGame.controllerHandler.MovingLeft)
-            {
-                stateMachine.ChangeDirection(true);
-                Walking();
-            }
-            else if (myGame.controllerHandler.MovingRight)
-            {
-                stateMachine.ChangeDirection(false);
-                Walking();
-
-            }
-
             else
-                Idle();
+            {
+                cyclePosition++;
 
+                if (cyclePosition == cycleLength)
+                {
+                    stateMachine.Update();
+                    MarioSprite.Update();
+                    cyclePosition = 0;
+                }
+                else if (myGame.controllerHandler.MovingUp || (myGame.controllerHandler.MovingUp && myGame.controllerHandler.MovingLeft))
+                    Jumping();
+                else if (myGame.controllerHandler.MovingDown || (myGame.controllerHandler.MovingDown && myGame.controllerHandler.MovingRight))
+                    Crouching();
+                else if (myGame.controllerHandler.MovingLeft)
+                {
+                    stateMachine.ChangeDirection(true);
+                    Walking();
+                }
+                else if (myGame.controllerHandler.MovingRight)
+                {
+                    stateMachine.ChangeDirection(false);
+                    Walking();
+
+                }
+
+                else
+                    Idle();
+            }
         }
         public void Draw()
         {
             MarioSprite.Draw();
+        }
+        public void Flag()
+        {
+            endSequence = true;
+        }
+        public void EndSequence()
+        {
+
         }
     }
 }

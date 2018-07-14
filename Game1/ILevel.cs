@@ -17,5 +17,6 @@ namespace Game1
         IPlayer PlayerObject { get; set; }
         ICamera LevelCamera { get; set; }
         PersistentData PersistentData { get; }
+        int EndLocation { get; }
     }
 }

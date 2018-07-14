@@ -9,7 +9,7 @@ namespace Game1
         private int animationTimer;
         private ITestMario testMario;
         //private static ISprite playerSprite;
-        public static IPhysics physics;
+        public static MarioPhysics physics;
         private static Color marioColor;
         private static float currentXPosition;
         private static float currentYPosition;
@@ -216,6 +216,12 @@ namespace Game1
             {
                 MarioColor = Color.White;
             }
+        }
+
+        public void Stop()
+        {
+            physics.XVelocity = 0;
+            physics.YVelocity = 0;
         }
     }
 }

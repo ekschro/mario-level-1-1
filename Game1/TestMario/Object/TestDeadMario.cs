@@ -28,8 +28,9 @@ namespace Game1
         private int cycleLength = 8;
         private Mario character;
         //private bool dead = false;
-        
 
+        private bool endSequence;
+        
         public TestDeadMario(Game1 game, Vector2 location, Mario mario)
         {
             testMarioLocation = location;
@@ -37,6 +38,7 @@ namespace Game1
             stateMachine = new TestDeadMarioStateMachine(marioSprite);
             character = mario;
             game.Pause = true;
+            endSequence = false;
         }
 
         public void Upgrade()
@@ -69,5 +71,9 @@ namespace Game1
             MarioSprite.Draw();
         }
 
+        public void Flag()
+        {
+            endSequence = true;
+        }
     }
 }

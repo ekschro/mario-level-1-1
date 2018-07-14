@@ -36,6 +36,7 @@ namespace Game1
         public int Time { get => time; }
         public ICamera LevelCamera { get => currentCamera; set => currentCamera = value; }
         public PersistentData PersistentData { get => persistentData; }
+        public int EndLocation { get => 3292; }
 
         public PlatformerLevel(string fileName, Game1 game, PersistentData persistantData)
         {

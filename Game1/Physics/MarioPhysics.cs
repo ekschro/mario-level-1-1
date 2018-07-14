@@ -21,7 +21,8 @@ namespace Game1
         private int runVelCap;
         private int walkVelCap;
 
-        public float XVelocity { get => xVelocity; }
+        public float XVelocity { get => xVelocity; set => xVelocity = value; }
+        public float YVelocity { get => yVelocity; set => yVelocity = value; }
 
         public MarioPhysics(Game1 game, Mario player, int velCap)
         {
