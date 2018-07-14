@@ -1,0 +1,8 @@
+Tim Regrut
+6/29/18
+Sprint 4
+PersistentData.cs
+Schroeter
+5
+
+The class overall is written very well. All of the variable names relate to a key property of the mario character in the game. They can also be clearly understood. However, there is a large amount of magic numbers that could be removed by creating a utility class. The current implementation could easily be changed to meet this suggestion.
