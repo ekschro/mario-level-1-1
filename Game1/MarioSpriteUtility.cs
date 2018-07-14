@@ -27,7 +27,7 @@ namespace Game1
         private int bigMarioLeftCrounchingEnd = 11;
         private int bigMarioRightCrounchingStart = 15;
         private int bigMarioRightCrounchingEnd = 16;
-
+        private int two = 2;
 
         private int turnSmallMario = 28;
 
@@ -81,11 +81,6 @@ namespace Game1
         public int FireMarioLeftCrounchingEnd { get => (bigMarioLeftCrounchingEnd + turnFireMario); }
         public int FireMarioRightCrounchingStart { get => (bigMarioRightCrounchingStart + turnFireMario); }
         public int FireMarioRightCrounchingEnd { get => (bigMarioRightCrounchingEnd + turnFireMario); }
-
-
-
-
-
-
+        public int Two { get => two; set => two = value; }
     }
 }

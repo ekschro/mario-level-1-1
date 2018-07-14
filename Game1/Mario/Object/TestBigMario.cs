@@ -20,21 +20,23 @@ namespace Game1
         public ITestMarioStateMachine GetStateMachine { get => stateMachine; }
         ITestMarioStateMachine ITestMario.GetStateMachine { get => stateMachine;}
 
-        private int cyclePosition = 0;
-        private int cycleLength = 8;
+        private int cyclePosition;
+        private int cycleLength;
 
         private bool dead = false;
-        
+        private MarioUtility utility;
         private Game1 myGame;
         Mario character;
 
         public TestBigMario(Game1 game, Vector2 location, Mario mario)
         {
-            
+            utility = new MarioUtility();
             myGame = game;
             marioSprite = new TestBigMarioSprite(game, this,mario);
             stateMachine = new TestBigMarioStateMachine(marioSprite);
             character = mario;
+            cyclePosition = utility.CyclePosition;
+            cycleLength = utility.CycleLength;
         }
 
         public void Upgrade()
@@ -97,7 +99,7 @@ namespace Game1
             {
                 stateMachine.Update();
                 MarioSprite.Update();
-                cyclePosition = 0;
+                cyclePosition = utility.CyclePosition;
             }
             else if (myGame.controllerHandler.MovingUp || (myGame.controllerHandler.MovingUp && myGame.controllerHandler.MovingLeft))
                 stateMachine.Jumping();

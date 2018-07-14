@@ -16,6 +16,7 @@ namespace Game1
         private int startFrame;
         private int endFrame;
         private IPlayer player;
+        private MarioSpriteUtility utility;
 
         public TestSmallMarioSprite(Game1 game, TestSmallMario Mario, IPlayer player)
         {
@@ -23,8 +24,9 @@ namespace Game1
             myGame = game;
             currentFrame = startFrame;
             this.player = player;
-            startFrame = 41;
-            endFrame = 42;
+            utility = new MarioSpriteUtility();
+            startFrame = utility.SmallMarioLeftIdleStart;
+            endFrame = utility.SmallMarioLeftIdleEnd;
         }
         public void ChangeFrame(int start, int end)
         {

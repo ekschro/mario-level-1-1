@@ -16,13 +16,14 @@ namespace Game1
         private int startFrame;
         private int endFrame;
         private IPlayer player;
-
+        private MarioSpriteUtility utility;
         public TestFireMarioSprite(Game1 game, TestFireMario Mario, IPlayer player)
         {
+            utility = new MarioSpriteUtility();
             marioObject = Mario;
             myGame = game;
-            startFrame = 42 + 28; //MarioFireIdleRight
-            endFrame = 2;
+            startFrame = utility.FireMarioRightIdleStart; //MarioFireIdleRight
+            endFrame = utility.Two;
             currentFrame = startFrame;
             this.player = player;
         }

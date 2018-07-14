@@ -18,10 +18,9 @@ namespace Game1
 
         private ITestMarioStateMachine stateMachine;
         public ITestMarioStateMachine GetStateMachine { get => stateMachine; }
-
-        private int cyclePosition = 0;
-        private int cycleLength = 8;
-        
+        private MarioUtility utility;
+        private int cyclePosition;
+        private int cycleLength;        
         //private bool dead = false;
        
         //private IPlayer player;
@@ -29,7 +28,9 @@ namespace Game1
         Game1 myGame;
         public TestSmallMario(Game1 game, Vector2 location, Mario mario)
         {
-            
+            utility = new MarioUtility();
+            cyclePosition = utility.CyclePosition;
+            cycleLength = utility.CycleLength;
             marioSprite = new TestSmallMarioSprite(game, this, mario);
             stateMachine = new TestSmallMarioStateMachine(marioSprite);
             character = mario;
@@ -78,7 +79,7 @@ namespace Game1
             {
                 stateMachine.Update();
                 MarioSprite.Update();
-                cyclePosition = 0;
+                cyclePosition = utility.CyclePosition;
             }
             else if (myGame.controllerHandler.MovingUp || (myGame.controllerHandler.MovingUp && myGame.controllerHandler.MovingLeft))
                 Jumping();

@@ -24,14 +24,16 @@ namespace Game1
         private float bounceGravity;
         private float bounceTimer;
 
-        private int cyclePosition = 0;
-        private int cycleLength = 8;
+        private int cyclePosition;
+        private int cycleLength;
         private Mario character;
         //private bool dead = false;
-        
-
+        private MarioUtility utility;
         public TestDeadMario(Game1 game, Vector2 location, Mario mario)
         {
+            utility = new MarioUtility();
+            cyclePosition = utility.CyclePosition;
+            cycleLength = utility.CycleLength;
             testMarioLocation = location;
             marioSprite = new TestDeadMarioSprite(game, this, mario);
             stateMachine = new TestDeadMarioStateMachine(marioSprite);
