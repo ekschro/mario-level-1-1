@@ -12,7 +12,7 @@ namespace Game1
         private Game1 game;
         private IPickup obj;
         private float delta;
-        private int velCap;
+        //private int velCap;
         private float xVelocity;
         private float yVelocity;
 
@@ -23,7 +23,7 @@ namespace Game1
             this.game = game;
             this.obj = obj;
 
-            this.velCap = velCap;
+            //this.velCap = velCap;
             xVelocity = (float)1;
             yVelocity = (float)-5;
 

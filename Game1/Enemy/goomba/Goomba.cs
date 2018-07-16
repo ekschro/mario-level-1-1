@@ -16,7 +16,7 @@ namespace Game1
         public bool IsFalling { get => falling; set => falling = value; }
         private IEnemySprite goombaSprite;
         public IEnemySprite GoombaSprite { get => goombaSprite; set => goombaSprite = value; }
-        public GoombaStateMachine stateMachine;
+        private GoombaStateMachine stateMachine;
         public IEnemyStateMachine GetStateMachine { get => stateMachine; }
         //private int cyclePosition = 0;
         //private int cycleLength = 8;

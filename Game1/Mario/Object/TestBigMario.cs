@@ -24,7 +24,7 @@ namespace Game1
         private int cycleLength;
 
         private int timer = 400;
-        private bool dead = false;
+        //private bool dead = false;
 
         private bool endSequence;
 

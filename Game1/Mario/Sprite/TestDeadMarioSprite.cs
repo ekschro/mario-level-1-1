@@ -26,9 +26,7 @@ namespace Game1
             spriteUtility = new MarioSpriteUtility();
             marioObject = Mario;
             myGame = game;
-            startFrame = 12 + 28; //MarioDead
             startFrame = spriteUtility.DeadMario;
-            //endFrame = ;
             currentFrame = startFrame;
             this.player = player;
             bouncePosition = 0f;

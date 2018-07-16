@@ -16,17 +16,11 @@ namespace Game1
         private int startFrame;
         private int endFrame;
         private IPlayer player;
-        private MarioSpriteUtility spriteUtility;
 
         public TestBigMarioSprite(Game1 game, TestBigMario Mario, IPlayer player)
         {
-            spriteUtility = new MarioSpriteUtility();
             marioObject = Mario;
             myGame = game;
-            //startFrame = 42 - 28; //MarioBigIdleRight
-            //endFrame = 43 - 28;
-            startFrame = spriteUtility.BigMarioLeftIdleStart;
-            endFrame = spriteUtility.BigMarioLeftIdleEnd;
             currentFrame = startFrame;
             this.player = player;
         }

@@ -8,6 +8,6 @@ public class MarioUtility
 	{
 	}
 
-    public int CycleLength { get => cycleLength; set => cycleLength = value; }
+    public int CycleLength { get => cycleLength; }
     public int CyclePosition { get => cyclePosition; set => cyclePosition = value; }
 }

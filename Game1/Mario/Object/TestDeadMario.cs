@@ -19,18 +19,17 @@ namespace Game1
         public ITestMarioStateMachine GetStateMachine { get => stateMachine;}
 
         private ITestMarioStateMachine stateMachine;
-        private float bouncePosition;
-        private float bounceVelocity;
-        private float bounceGravity;
-        private float bounceTimer;
+        //private float bouncePosition;
+        //private float bounceVelocity;
+        //private float bounceGravity;
+        //private float bounceTimer;
 
         private int cyclePosition;
         private int cycleLength;
         private Mario character;
-        //private bool dead = false;
         private MarioUtility utility;
 
-        private bool endSequence;
+        //private bool endSequence;
         
         public TestDeadMario(Game1 game, Vector2 location, Mario mario)
         {
@@ -42,7 +41,7 @@ namespace Game1
             stateMachine = new TestDeadMarioStateMachine(marioSprite);
             character = mario;
             game.Pause = true;
-            endSequence = false;
+            //endSequence = false;
         }
 
         public void Upgrade()
@@ -77,7 +76,7 @@ namespace Game1
 
         public void Flag()
         {
-            endSequence = true;
+            //endSequence = true;
         }
     }
 }

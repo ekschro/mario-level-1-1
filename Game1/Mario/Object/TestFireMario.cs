@@ -22,7 +22,7 @@ namespace Game1
         private int cyclePosition;
         private int cycleLength;
         private MarioUtility utility;
-        private bool dead = false;
+        //private bool dead = false;
 
         private int timer = 400;
         private bool endSequence;

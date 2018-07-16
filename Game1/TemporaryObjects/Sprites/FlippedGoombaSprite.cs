@@ -16,7 +16,7 @@ namespace Game1
         private float bouncePosition;
         private float bounceVelocity;
         private float bounceGravity;
-        private float bounceTimer;
+        //private float bounceTimer;
 
         public FlippedGoombaSprite(Game1 game, FlippedGoomba goomba)
         {
@@ -26,7 +26,7 @@ namespace Game1
             bouncePosition = 0f;
             bounceVelocity = -3.0f;
             bounceGravity = .07f;
-            bounceTimer = ((bounceVelocity * bounceVelocity) / bounceGravity);
+            //bounceTimer = ((bounceVelocity * bounceVelocity) / bounceGravity);
         }
 
         public void Update()

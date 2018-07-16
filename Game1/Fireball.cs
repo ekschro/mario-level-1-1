@@ -6,7 +6,7 @@ namespace Game1
     public class MarioFireBall : IEnemy
     {
         private Game1 myGame;
-        private IControllerHandler controllerHandler;
+        //private IControllerHandler controllerHandler;
         private IPlayer player;
         private bool falling;
 
@@ -15,7 +15,7 @@ namespace Game1
         public MarioFireBall(Game1 game)
         {
             myGame = game;
-            controllerHandler = game.controllerHandler;
+            //controllerHandler = game.controllerHandler;
             player = game.CurrentLevel.PlayerObject;
             falling = true;
             SoundWarehouse.fireball.Play();
@@ -80,12 +80,12 @@ namespace Game1
             myGame.SpriteBatch.Draw(TextureWarehouse.fireballs, destinationRectangle, sourceRectangle, Color.White);
             myGame.SpriteBatch.End();
         }
-
+        /*
         public Vector2 GameObjectLocation()
         {
             return new Vector2(xPos, yPos);
         }
-
+        */
         public void Update()
         {
             physics.Update();
@@ -137,12 +137,12 @@ namespace Game1
         {
             
         }
-
+        /*
         public void Running()
         {
             
         }
-
+        
         public void ReachGround()
         {
             
@@ -152,6 +152,7 @@ namespace Game1
         {
             
         }
+        */
         public void SetGameObjectLocation(Vector2 vector)
         {
             CurrentXPos = vector.X;
