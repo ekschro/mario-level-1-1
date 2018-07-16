@@ -305,15 +305,19 @@ namespace Game1
             if (enemy is MarioFireBall || otherEnemy is MarioFireBall)
             {
                 SoundWarehouse.stomp.Play();
+                objectLevel.EnemyObjects.Remove(enemy);
                 if (enemy is Goomba || otherEnemy is Goomba)
                 {
                     myGame.persistentData.EnemyStompedPoints(1);
+                    objectLevel.TemporaryObjects.Add(new FlippedGoomba(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
+
                 }
                 else if (enemy is Koopa || otherEnemy is Koopa)
                 {
                     myGame.persistentData.KoopaFireOrStarPoints();
+                    objectLevel.TemporaryObjects.Add(new FlippedKoopa(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
                 }
-                objectLevel.EnemyObjects.Remove(enemy);
+                
             }   
             else if (otherEnemy is KoopaShell)
             {
