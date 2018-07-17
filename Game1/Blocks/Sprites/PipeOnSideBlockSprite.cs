@@ -33,7 +33,7 @@ namespace Game1
         {
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(pipeOnSideBlockObject.GetGameObjectLocation().X);
 
-            Rectangle sourceRectangle = new Rectangle(utility.Zero1, utility.Zero1, TextureWarehouse.pipeOnSideBlockTexture.Width, TextureWarehouse.pipeOnSideBlockTexture.Height);
+            Rectangle sourceRectangle = new Rectangle(utility.InitialFrame, utility.InitialFrame, TextureWarehouse.pipeOnSideBlockTexture.Width, TextureWarehouse.pipeOnSideBlockTexture.Height);
             Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)pipeOnSideBlockObject.GetGameObjectLocation().Y, TextureWarehouse.pipeOnSideBlockTexture.Width, TextureWarehouse.pipeOnSideBlockTexture.Height);
 
             myGame.SpriteBatch.Begin();

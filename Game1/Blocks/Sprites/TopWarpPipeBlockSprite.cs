@@ -23,7 +23,7 @@ namespace Game1
             topWarpPipeBlockObject = (TopWarpPipeBlock)topPipe;
             myGame = game;
             utility = new BlockUtilityClass();
-            currentFrame = utility.Eight;
+            currentFrame = utility.CurrentFrame3;
         }
 
         public void Update()
@@ -37,7 +37,7 @@ namespace Game1
 
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(topWarpPipeBlockObject.GetGameObjectLocation().X);
 
-            Rectangle sourceRectangle = new Rectangle((width / utility.Two) * currentFrame, utility.Zero1, width, TextureWarehouse.blockTexture.Height);
+            Rectangle sourceRectangle = new Rectangle((width / utility.Two) * currentFrame, utility.InitialFrame, width, TextureWarehouse.blockTexture.Height);
             Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)topWarpPipeBlockObject.GetGameObjectLocation().Y, width, TextureWarehouse.blockTexture.Height);
 
             myGame.SpriteBatch.Begin();

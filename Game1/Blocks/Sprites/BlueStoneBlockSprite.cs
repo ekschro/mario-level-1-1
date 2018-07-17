@@ -23,7 +23,7 @@ namespace Game1
             myGame = game;
             
             utility = new BlockUtilityClass();
-            currentFrame = utility.Zero1;
+            currentFrame = utility.InitialFrame;
 
         }
 
@@ -33,7 +33,7 @@ namespace Game1
         {
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(blueStoneBlockObject.GetGameObjectLocation().X);
 
-            Rectangle sourceRectangle = new Rectangle(utility.Zero1,utility.Zero1,(int)blueStoneBlockObject.BlockSize.X,(int)blueStoneBlockObject.BlockSize.Y);
+            Rectangle sourceRectangle = new Rectangle(utility.InitialFrame,utility.InitialFrame,(int)blueStoneBlockObject.BlockSize.X,(int)blueStoneBlockObject.BlockSize.Y);
             Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)blueStoneBlockObject.GetGameObjectLocation().Y, (int)blueStoneBlockObject.BlockSize.X, (int)blueStoneBlockObject.BlockSize.Y);
 
             myGame.SpriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.LinearWrap, null, null);
