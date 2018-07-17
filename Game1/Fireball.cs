@@ -20,7 +20,7 @@ namespace Game1
             falling = true;
             SoundWarehouse.fireball.Play();
 
-            if (!player.TestMario.GetStateMachine.FacingLeft())
+            if (!player.TestMario.StateMachine.FacingLeft())
             {
                 currentFrame = 2;
                 MovingRight = true;
@@ -62,7 +62,7 @@ namespace Game1
 
         private FireballPhysics physics;
 
-        public IEnemyStateMachine GetStateMachine => throw new NotImplementedException();
+        public IEnemyStateMachine StateMachine => throw new NotImplementedException();
 
         public bool IsStomped { get => true; set => stomped = value; }
         private bool stomped;

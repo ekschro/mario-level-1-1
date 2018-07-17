@@ -9,7 +9,7 @@ namespace Game1
 {
     public interface IPickup : IGameObject
     {
-        //object GetStateMachine { get; set; }
+        //object StateMachine { get; set; }
         bool IsFalling { get; set; }
 
         //Vector2 GetGameObjectLocation();

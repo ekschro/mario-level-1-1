@@ -21,6 +21,7 @@ namespace Game1
         private IControllerHandler controllerHandler;
         private CollisionUtilityClass utility;
 
+
         public CollisionRespond(Game1 game, ILevel level)
         {
             utility = new CollisionUtilityClass();
@@ -38,8 +39,8 @@ namespace Game1
             if (block is TopWarpPipeBlock && controllerHandler.MovingDown)
             {
                 SoundWarehouse.pipe.Play();
-                player.CurrentXPos = block.CurrentXPos + 24;
-                ((PlatformerLevel)objectLevel).WarpToSecret();
+                player.CurrentXPos = block.GetGameObjectLocation().X + 8;
+                player.TestMario.Pipe(true, false);
             }
             else
             {
@@ -48,9 +49,9 @@ namespace Game1
                 player.CanJump = true;
                 player.Falling = false;
                 ((Mario)player).KilledNum = 0;
-                if (player.TestMario.GetStateMachine.IsJumping())
+                if (player.TestMario.StateMachine.IsJumping())
                 {
-                    player.TestMario.GetStateMachine.ChangeState();
+                    player.TestMario.StateMachine.ChangeState();
                 }
             }
         }
@@ -63,13 +64,13 @@ namespace Game1
                 player.Bump = true;
             }
 
-            if (player.TestMario.GetStateMachine is TestSmallMarioStateMachine && block is BrickBlock)
+            if (player.TestMario.StateMachine is TestSmallMarioStateMachine && block is BrickBlock)
             {
                 SoundWarehouse.bump.Play();
                 ((BrickBlock)block).Bounce();
             }
 
-            if (block is BrickBlock && !(player.TestMario.GetStateMachine is TestSmallMarioStateMachine))
+            if (block is BrickBlock && !(player.TestMario.StateMachine is TestSmallMarioStateMachine))
             {
                 SoundWarehouse.breakblock.Play();
                 objectLevel.BlockObjects.Remove(block);
@@ -80,7 +81,7 @@ namespace Game1
                 SoundWarehouse.powerup_appears.Play();
                 objectLevel.BlockObjects.Remove(block);
                 objectLevel.BlockObjects.Add(new UsedBlock(myGame, block.GetGameObjectLocation()));
-                if (player.TestMario.GetStateMachine is TestSmallMarioStateMachine)
+                if (player.TestMario.StateMachine is TestSmallMarioStateMachine)
                     objectLevel.PickupObjects.Add(new RedMushroom(myGame, block.GetGameObjectLocation()));
                 else
                     objectLevel.PickupObjects.Add(new Fireflower(myGame, block.GetGameObjectLocation()));
@@ -162,6 +163,8 @@ namespace Game1
         {
             if (block is FlagpoleBlock)
             {
+                MediaPlayer.Stop();
+                MediaPlayer.Play(SoundWarehouse.level_complete_theme);
                 FlagBlock temp = (FlagBlock)objectLevel.BlockObjects.Find(x => x is FlagBlock);
                 temp.Activate((int)(114 - (player.CurrentYPos - temp.GetGameObjectLocation().Y)));
                 player.TestMario.Flag();
@@ -170,16 +173,12 @@ namespace Game1
             }
             else if (block is PipeOnSideBlock && controllerHandler.MovingRight)
             {
-                ((PlatformerLevel)objectLevel).WarpFromSecret();
+                SoundWarehouse.pipe.Play();
+                player.TestMario.Pipe(true, true);
             }
             else if (!(block is HiddenGreenMushroomBlock) && !left)
             {
                 player.CurrentXPos -= width;
-            }
-            if (block is PipeOnSideBlock && controllerHandler.MovingRight)
-            {
-                SoundWarehouse.pipe.Play();
-                ((PlatformerLevel)objectLevel).WarpFromSecret();
             }
         }
 
@@ -226,7 +225,7 @@ namespace Game1
             {
                 if (!((KoopaShell)enemy).IsMoving)
                 {
-                    if (!enemy.GetStateMachine.GetDirection())
+                    if (!enemy.StateMachine.GetDirection())
                     {
                         enemy.ChangeDirection();
                     }
@@ -257,7 +256,7 @@ namespace Game1
             {
                 if (!((KoopaShell)enemy).IsMoving)
                 {
-                    if (enemy.GetStateMachine.GetDirection())
+                    if (enemy.StateMachine.GetDirection())
                     {
                         enemy.ChangeDirection();
                     }

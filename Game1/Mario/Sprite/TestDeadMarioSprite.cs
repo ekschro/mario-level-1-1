@@ -65,6 +65,11 @@ namespace Game1
                 myGame.SpriteBatch.End();
         }
 
+        public void Draw(int x, int y)
+        {
+            Draw();
+        }
+
         public void Bounce()
         {
             

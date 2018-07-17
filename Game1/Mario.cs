@@ -75,9 +75,9 @@ namespace Game1
             {
                 testMario.Update();
                 physics.Update();
-                if (physics.XVelocity == 0 && testMario.GetStateMachine.IsWalking())
+                if (physics.XVelocity == 0 && testMario.StateMachine.IsWalking())
                 {
-                    testMario.GetStateMachine.ChangeState();
+                    testMario.StateMachine.ChangeState();
                 }
                 testMario.Update();
             }

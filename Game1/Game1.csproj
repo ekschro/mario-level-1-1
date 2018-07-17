@@ -93,6 +93,8 @@
     <Compile Include="Enemy\EnemyUtilityClass.cs" />
     <Compile Include="MarioSpriteUtility.cs" />
     <Compile Include="Mario\Object\MarioUtility.cs" />
+    <Compile Include="Mario\Object\AbstractTestMario.cs" />
+    <Compile Include="Mario\Sprite\AbstractTestMarioSprite.cs" />
     <Compile Include="PickupItem\Object\Coin.cs" />
     <Compile Include="PickupItem\Object\Fireflower.cs" />
     <Compile Include="PickupItem\Object\GreenMushroom.cs" />

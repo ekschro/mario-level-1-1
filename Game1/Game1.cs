@@ -34,6 +34,8 @@ namespace Game1
         private int cyclePosition = 0;
         private int cycleLength = 100;
         private int hudCounter = 0;
+        private bool isEndSequence = false;
+        private bool isPipeSequence = false;
         public SpriteBatch SpriteBatch { get => spriteBatch; set => spriteBatch = value; }
         public SpriteFont SpriteFont { get => spriteFont; set => spriteFont = value; }
         public ILevel CurrentLevel { get => currentLevel; set => currentLevel = value; }
@@ -85,19 +87,23 @@ namespace Game1
         {
             GameState = GameScreenState.Transition;
             cyclePosition = 0;
-            LoadContent();
+            allowControllerResponse = true;
+            CurrentLevel = new PlatformerLevel("../../../../Content/LevelInfo.csv", this, persistentData);
             pause = false;
             currentLevel.PlayerObject.Invulnerability = false;
+            MediaPlayer.Play(SoundWarehouse.main_theme);
         }
 
         public void GameReset()
         {
             GameState = GameScreenState.Transition;
             cyclePosition = 0;
-            Initialize();
-            LoadContent();
+            allowControllerResponse = true;
+            persistentData = new PersistentData();
+            CurrentLevel = new PlatformerLevel("../../../../Content/LevelInfo.csv", this, persistentData);
             pause = false;
             currentLevel.PlayerObject.Invulnerability = false;
+            MediaPlayer.Play(SoundWarehouse.main_theme);
         }
 
         protected override void UnloadContent()

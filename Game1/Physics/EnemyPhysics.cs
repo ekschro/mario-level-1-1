@@ -37,7 +37,7 @@ namespace Game1
 
         public void NewPosX()
         {
-            if (obj.GetStateMachine.GetDirection())
+            if (obj.StateMachine.GetDirection())
                 obj.SetGameObjectLocation(new Vector2(obj.GetGameObjectLocation().X + xVelocity, obj.GetGameObjectLocation().Y));
             else
                 obj.SetGameObjectLocation(new Vector2(obj.GetGameObjectLocation().X - xVelocity, obj.GetGameObjectLocation().Y));

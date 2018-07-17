@@ -19,7 +19,7 @@ namespace Game1
         public bool IsStomped { get; set; }
 
         private KoopaSStateMachine stateMachine;
-        public IEnemyStateMachine GetStateMachine { get => stateMachine; }
+        public IEnemyStateMachine StateMachine { get => stateMachine; }
         public bool IsMoving { get => !dead; }
         private int killedNum = 0;
 

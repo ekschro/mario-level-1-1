@@ -24,7 +24,7 @@ namespace Game1
 
         public void Execute()
         {
-            if (!(player.TestMario.GetStateMachine is TestDeadMarioStateMachine))
+            if (!(player.TestMario.StateMachine is TestDeadMarioStateMachine))
                 player.TestMario = new TestDeadMario(myGame, new Vector2(player.TestMario.CurrentXPos, player.TestMario.CurrentYPos), (Mario)player);
             myGame.CurrentLevel.PlayerObject.IsStar = false;
         }

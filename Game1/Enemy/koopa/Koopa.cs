@@ -17,7 +17,7 @@ namespace Game1
         private static IEnemySprite koopaSprite;
         public static IEnemySprite KoopaSprite { get => koopaSprite; set => koopaSprite = value; }
         private KoopaStateMachine stateMachine;
-        public IEnemyStateMachine GetStateMachine { get => stateMachine; }
+        public IEnemyStateMachine StateMachine { get => stateMachine; }
         public bool IsStomped { get; set; }
         private EnemyUtilityClass utility;
 

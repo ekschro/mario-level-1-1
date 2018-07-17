@@ -16,10 +16,10 @@ namespace Game1
 
         private Rectangle GetMarioRectangle(ref int playerX, ref int playerY)
         {
-            if (player.TestMario.GetStateMachine.IsCrouching()||player.TestMario is TestSmallMario)
+            if (player.TestMario.StateMachine.IsCrouching()||player.TestMario is TestSmallMario)
                 playerY += utility.MainHeight;
 
-            if (player.TestMario.GetStateMachine is TestSmallMarioStateMachine || player.TestMario.GetStateMachine.IsCrouching())
+            if (player.TestMario.StateMachine is TestSmallMarioStateMachine || player.TestMario.StateMachine.IsCrouching())
                 return new Rectangle(playerX, playerY, utility.MainWidth, utility.MainHeight);
             else
                 return new Rectangle(playerX, playerY, utility.MainWidth, utility.BiggerHeight);
