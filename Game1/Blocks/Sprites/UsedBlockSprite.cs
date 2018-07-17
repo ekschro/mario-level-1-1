@@ -28,9 +28,9 @@ namespace Game1
             utility = new BlockUtilityClass();
             usedBlockObject = (UsedBlock)usedBlock;
             myGame = game;
-            jumpDistance = utility.Ten;
-            currentJumpLocation = utility.Zero1;
-            currentFrame = utility.Three;
+            jumpDistance = utility.jumpDistanceOrCurrentFrame;
+            currentJumpLocation = utility.InitialFrame;
+            currentFrame = utility.CurrentFrame4;
         }
 
         public void Update()
@@ -46,7 +46,7 @@ namespace Game1
                 { up = false; }
                 if (up == true)
                 { currentJumpLocation += utility.Two; }
-                else if ( currentJumpLocation > utility.Zero1)
+                else if ( currentJumpLocation > utility.InitialFrame)
                 { currentJumpLocation -= utility.Two; }
             }
 

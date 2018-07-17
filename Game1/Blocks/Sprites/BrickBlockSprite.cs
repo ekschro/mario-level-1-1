@@ -26,8 +26,8 @@ namespace Game1
         public BrickBlockSprite(Game1 game, IBlock brick)
         {
             utility = new BlockUtilityClass();
-            jumpDistance = utility.Ten;
-            currentJumpLocation = utility.Zero1;
+            jumpDistance = utility.jumpDistanceOrCurrentFrame;
+            currentJumpLocation = utility.InitialFrame;
             brickBlockObject = brick;
             myGame = game;
             currentFrame = utility.Two;
@@ -54,7 +54,7 @@ namespace Game1
 
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(brickBlockObject.GetGameObjectLocation().X);
 
-            Rectangle sourceRectangle = new Rectangle(width * currentFrame, utility.Zero1, width, TextureWarehouse.blockTexture.Height);
+            Rectangle sourceRectangle = new Rectangle(width * currentFrame, utility.InitialFrame, width, TextureWarehouse.blockTexture.Height);
             Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)brickBlockObject.GetGameObjectLocation().Y - currentJumpLocation, width, TextureWarehouse.blockTexture.Height);
 
             myGame.SpriteBatch.Begin();

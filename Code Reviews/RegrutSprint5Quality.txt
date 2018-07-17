@@ -1,0 +1,7 @@
+Author: Tim Regrut
+7/17/2018
+Sprint 5
+PersistentData.cs
+Ericsson
+
+Persistent data holds the data of mario that does not change during a pause. The one thing that sticks out to me is the extensive branching for points. That could be broken up into smaller methods to make the program run faster. A hypothetical change would be to break up the points into smaller methods. The code could easily be refactored to support that change.

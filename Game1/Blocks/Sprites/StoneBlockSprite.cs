@@ -23,7 +23,7 @@ namespace Game1
             utility = new BlockUtilityClass();
             stoneBlockObject = (StoneBlock)stoneBlock;
             myGame = game;
-            currentFrame = utility.Zero1;
+            currentFrame = utility.InitialFrame;
         }
 
         public void Update(){}
@@ -32,7 +32,7 @@ namespace Game1
         {
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(stoneBlockObject.GetGameObjectLocation().X);
 
-            Rectangle sourceRectangle = new Rectangle(utility.Zero1,utility.Zero1,(int)stoneBlockObject.BlockSize.X,(int)stoneBlockObject.BlockSize.Y);
+            Rectangle sourceRectangle = new Rectangle(utility.InitialFrame,utility.InitialFrame,(int)stoneBlockObject.BlockSize.X,(int)stoneBlockObject.BlockSize.Y);
             Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)stoneBlockObject.GetGameObjectLocation().Y, (int)stoneBlockObject.BlockSize.X, (int)stoneBlockObject.BlockSize.Y);
 
             myGame.SpriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.LinearWrap, null, null);
