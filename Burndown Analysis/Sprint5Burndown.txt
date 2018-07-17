@@ -1,0 +1,9 @@
+Sprint 5 Analysis
+Dorothy Chow
+
+In this sprint we decide to redo how Mario works, which we should have change earlier. As we have already implement lots of things with Mario already it require lots of time to merge using the new coding style. But with the new style for Mario, everythings turn out good. Luckly we do not have really much new task to finish.
+
+
+Overall the burndown chart was on the ideal trend. Multiple commits occurred every day and was decreasing as time goes. There is an increase on 7/9 as we got more ideas on how to implement the new coding style for Mario. On 7/12 we merge all the classes to use the new style for Mario so there is little increase. 
+
+During refactoring, a few features were add back. Such as the mario winning animation, while mario hit the block and there is enemy on top of it, the mario can kill the enemy. Overall, this Sprint was a success as we have finally refactor the mario and all the task were completed.
