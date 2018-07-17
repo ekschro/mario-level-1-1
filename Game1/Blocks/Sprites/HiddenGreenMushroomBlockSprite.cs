@@ -23,7 +23,7 @@ namespace Game1
             utility = new BlockUtilityClass();
             hiddenGreenMushroomBlockObject = (HiddenGreenMushroomBlock)hiddenGreenMushroomBlock;
             myGame = game;
-            currentFrame = utility.Zero1;
+            currentFrame = utility.InitialFrame;
         }
 
         public void Update()
@@ -37,7 +37,7 @@ namespace Game1
 
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(hiddenGreenMushroomBlockObject.GetGameObjectLocation().X);
 
-            Rectangle sourceRectangle = new Rectangle(width * currentFrame, utility.Zero1, width, TextureWarehouse.blockTexture.Height);
+            Rectangle sourceRectangle = new Rectangle(width * currentFrame, utility.InitialFrame, width, TextureWarehouse.blockTexture.Height);
             Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)hiddenGreenMushroomBlockObject.GetGameObjectLocation().Y, width, TextureWarehouse.blockTexture.Height);
 
             myGame.SpriteBatch.Begin();

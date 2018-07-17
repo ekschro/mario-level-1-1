@@ -34,14 +34,14 @@ public class BlockUtilityClass
     public int QuestionCycleLength { get => cycleLength; }
     public int QuestionCoinLength { get => questionCoinLength; }
     public int BlockColumn { get => blockColumn; }
-    public int Ten { get => ten; set => ten = value; }
-    public int Zero1 { get => zero; set => zero = value; }
-    public int Eleven { get => eleven; set => eleven = value; }
+    public int jumpDistanceOrCurrentFrame { get => ten; set => ten = value; }
+    public int InitialFrame { get => zero; set => zero = value; }
+    public int CurrentFrame { get => eleven; set => eleven = value; }
     public int Two { get => two; set => two = value; }
-    public int Four { get => four; set => four = value; }
-    public int Seven { get => seven; set => seven = value; }
+    public int StartFrame { get => four; set => four = value; }
+    public int EndFrame { get => seven; set => seven = value; }
     public int Thirteen { get => thirteen; set => thirteen = value; }
-    public int One { get => one; set => one = value; }
-    public int Eight { get => eight; set => eight = value; }
-    public int Three { get => three; set => three = value; }
+    public int CurrentFrame2 { get => one; set => one = value; }
+    public int CurrentFrame3 { get => eight; set => eight = value; }
+    public int CurrentFrame4 { get => three; set => three = value; }
 }

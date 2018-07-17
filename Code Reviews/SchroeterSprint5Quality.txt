@@ -1,0 +1,14 @@
+Ericsson Schroeter (.12)
+7/17/18
+Sprint 5
+HeadsUpDisplay.cs
+Time Regrut
+10
+
+There seems to be some things that are initialized for every call of draw that don't need to be
+recreated and initialized with every call.  The countdown HUD counter logic seems like it lowers
+the cohesion of the Draw method and could be moved to it's own method maybe in the PersistantData class. 
+There are a number of 'magic' numbers in this class that could be made into constants.  The Update method 
+seems to only handling some kind of animation logic.  I think that it should be responsible for updating 
+the diplay with persistant data that can found in the PersistantData class.  The animation logic could 
+then be moved to it's own private method within the class.
