@@ -49,17 +49,21 @@ namespace Game1
 
             none.Execute();
 
-            foreach (Keys key in pressedKeys)
+            if (myGame.AllowControllerResponse)
             {
-                if (controllerMappings.ContainsKey(key))
+
+                foreach (Keys key in pressedKeys)
                 {
-                    controllerMappings[key].Execute();
-                    //recentKeys.Add(key);
-                } else if (key.Equals(Keys.P)){
-                    controllerMappings[key].Execute();
+                    if (controllerMappings.ContainsKey(key))
+                    {
+                        controllerMappings[key].Execute();
+                        //recentKeys.Add(key);
+                    }
+                    else if (key.Equals(Keys.P))
+                    {
+                        controllerMappings[key].Execute();
+                    }
                 }
-                //else if (recentKeys.Contains(key))
-                //    recentKeys.Remove(key);
             }
         }
     }

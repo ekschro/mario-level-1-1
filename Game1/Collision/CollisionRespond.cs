@@ -126,7 +126,27 @@ namespace Game1
                 }
             }
 
-            player.CanJump = false;
+            if (!(block is UsedBlock))
+            {
+                int i = 0;
+                IEnemy[] flippyBoyes = new IEnemy[10];
+                foreach (IEnemy enemy in objectLevel.EnemyObjects)
+                {
+                    if (enemy.CurrentXPos > block.CurrentXPos - 15 && enemy.CurrentXPos < block.CurrentXPos + 15)
+                    {
+                        if(enemy.CurrentYPos < block.CurrentYPos && enemy.CurrentYPos > block.CurrentYPos - (16 + 15))
+                        {
+                            CreateFlippedEnemy(enemy);
+                            flippyBoyes[i] = enemy;
+                            i++;
+                        }
+                    }
+                }
+                foreach (IEnemy boyo in flippyBoyes)
+                    objectLevel.EnemyObjects.Remove(boyo);
+            }
+
+                player.CanJump = false;
             player.Falling = true;
             player.Jumping = false;
 
@@ -143,8 +163,9 @@ namespace Game1
             if (block is FlagpoleBlock)
             {
                 FlagBlock temp = (FlagBlock)objectLevel.BlockObjects.Find(x => x is FlagBlock);
-                temp.Activate((int)(player.CurrentYPos - temp.GetGameObjectLocation().Y));
+                temp.Activate((int)(114 - (player.CurrentYPos - temp.GetGameObjectLocation().Y)));
                 player.TestMario.Flag();
+                myGame.AllowControllerResponse = false;
                 objectLevel.PersistentData.KoopaFireOrStarPoints();             //CHANGE THIS LATER
             }
             else if (block is PipeOnSideBlock && controllerHandler.MovingRight)
@@ -194,16 +215,6 @@ namespace Game1
             if (player.IsStar)
             {
                 objectLevel.EnemyObjects.Remove(enemy);
-                if (enemy is Goomba)
-                {
-                    objectLevel.TemporaryObjects.Add(new FlippedGoomba(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
-                    objectLevel.PersistentData.EnemyStompedPoints(1);
-                }
-                else if (enemy is Koopa)
-                {
-                    objectLevel.TemporaryObjects.Add(new FlippedKoopa(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
-                    objectLevel.PersistentData.KoopaFireOrStarPoints();
-                }
             }
             MarioHit();
             
@@ -230,19 +241,9 @@ namespace Game1
             }
             else if (player.IsStar)
             {
-                objectLevel.EnemyObjects.Remove(enemy);
-                SoundWarehouse.stomp.Play();
-                if (enemy is Goomba)
-                {
-                    objectLevel.TemporaryObjects.Add(new FlippedGoomba(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
-                    objectLevel.PersistentData.EnemyStompedPoints(1);
-                }
-                else if (enemy is Koopa)
-                {
-                    objectLevel.TemporaryObjects.Add(new FlippedKoopa(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
-                    objectLevel.PersistentData.KoopaFireOrStarPoints();
-                }
-            } else if (enemy is MarioFireBall)
+                CreateFlippedEnemy(enemy);
+            }
+            else if (enemy is MarioFireBall)
             {
 
             }
@@ -273,16 +274,7 @@ namespace Game1
             {
                 objectLevel.EnemyObjects.Remove(enemy);
                 SoundWarehouse.stomp.Play();
-                if (enemy is Goomba)
-                {
-                    objectLevel.TemporaryObjects.Add(new FlippedGoomba(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
-                    objectLevel.PersistentData.EnemyStompedPoints(1);
-                }
-                else if (enemy is Koopa)
-                {
-                    objectLevel.TemporaryObjects.Add(new FlippedKoopa(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
-                    objectLevel.PersistentData.KoopaFireOrStarPoints();
-                }
+                CreateFlippedEnemy(enemy);
             }
             else if (enemy is MarioFireBall)
             {
@@ -306,18 +298,7 @@ namespace Game1
             {
                 SoundWarehouse.stomp.Play();
                 objectLevel.EnemyObjects.Remove(enemy);
-                if (enemy is Goomba || otherEnemy is Goomba)
-                {
-                    myGame.persistentData.EnemyStompedPoints(1);
-                    objectLevel.TemporaryObjects.Add(new FlippedGoomba(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
-
-                }
-                else if (enemy is Koopa || otherEnemy is Koopa)
-                {
-                    myGame.persistentData.KoopaFireOrStarPoints();
-                    objectLevel.TemporaryObjects.Add(new FlippedKoopa(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
-                }
-                
+                CreateFlippedEnemy(enemy);
             }   
             else if (otherEnemy is KoopaShell)
             {
@@ -339,16 +320,7 @@ namespace Game1
             }
             if (enemy is MarioFireBall || otherEnemy is MarioFireBall)
             {
-                SoundWarehouse.stomp.Play();
-                if (enemy is Goomba || otherEnemy is Goomba)
-                {
-                    myGame.persistentData.EnemyStompedPoints(1);
-                }
-                else if (enemy is Koopa || otherEnemy is Koopa)
-                {
-                    myGame.persistentData.KoopaFireOrStarPoints();
-                }
-                objectLevel.EnemyObjects.Remove(enemy);
+                CreateFlippedEnemy(enemy);
             }
             else if (otherEnemy is KoopaShell)
             {
@@ -602,6 +574,20 @@ namespace Game1
                 invulnerabilityTimer = invulnerabilityFrames;
                 player.Invulnerability = false;
                 objectLevel.PlayerObject.IsStar = false;
+            }
+        }
+
+        private void CreateFlippedEnemy(IEnemy enemy)
+        {
+            if (enemy is Goomba)
+            {
+                objectLevel.TemporaryObjects.Add(new FlippedGoomba(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
+                objectLevel.PersistentData.EnemyStompedPoints(1);
+            }
+            else if (enemy is Koopa)
+            {
+                objectLevel.TemporaryObjects.Add(new FlippedKoopa(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
+                objectLevel.PersistentData.KoopaFireOrStarPoints();
             }
         }
     }

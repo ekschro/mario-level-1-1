@@ -50,15 +50,19 @@ namespace Game1
         {
             Buttons[] pressedButtons = GetPressedButtons();
 
-            foreach (Buttons button in pressedButtons)
+            if (myGame.AllowControllerResponse)
             {
-                if (controllerMappings.ContainsKey(button))
+                foreach (Buttons button in pressedButtons)
                 {
-                    controllerMappings[button].Execute();
-                    //recentKeys.Add(key);
-                }
-                else if (button.Equals(Buttons.DPadUp)){
-                    controllerMappings[button].Execute();
+                    if (controllerMappings.ContainsKey(button))
+                    {
+                        controllerMappings[button].Execute();
+                        //recentKeys.Add(key);
+                    }
+                    else if (button.Equals(Buttons.DPadUp))
+                    {
+                        controllerMappings[button].Execute();
+                    }
                 }
             }
         }

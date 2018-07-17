@@ -28,6 +28,7 @@ namespace Game1
         private SpriteBatch spriteBatch;
         private SpriteFont spriteFont;
         private bool pause;
+        private bool allowControllerResponse;
         public enum GameScreenState { Transition, GamePlay }
         public GameScreenState GameState;
         private int cyclePosition = 0;
@@ -41,6 +42,7 @@ namespace Game1
         internal SoundWarehouse SoundWarehouse { get => soundWarehouse; set => soundWarehouse = value; }
         public bool Pause { get => pause; set => pause = value; }
         public int HudCounter { get => hudCounter; set => hudCounter = value; }
+        public bool AllowControllerResponse { get => allowControllerResponse; set => allowControllerResponse = value; }
 
         public Game1()
         {
@@ -59,6 +61,7 @@ namespace Game1
             controllerHandler = new ControllerHandler();
             controllerList.Add(new KeyboardController(this));
             controllerList.Add(new GamePadController(this));
+            allowControllerResponse = true;
             persistentData = new PersistentData();
             //mouseController = new MouseController(this);
             
