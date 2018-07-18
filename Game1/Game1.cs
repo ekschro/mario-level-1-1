@@ -127,7 +127,7 @@ namespace Game1
 
                 delta = gameTime;
                 PlatformerLevel level = (PlatformerLevel)currentLevel;
-                if (counter == 60)
+                if (counter == 60 && !level.TimerStop)
                 {
                     level.DockTime();
                     counter = 0;
