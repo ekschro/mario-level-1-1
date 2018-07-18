@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Media;
 
 namespace Game1
 {
@@ -13,7 +14,7 @@ namespace Game1
         public LevelGameOver(Game1 game)
         {
             myGame = game;
-
+            MediaPlayer.Play(SoundWarehouse.game_over_theme);
         }
         public void Draw()
         {           

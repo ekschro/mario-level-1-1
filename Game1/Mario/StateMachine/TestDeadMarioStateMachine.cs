@@ -8,7 +8,6 @@ namespace Game1
 {
     public class TestDeadMarioStateMachine : ITestMarioStateMachine
     {
-        private ITestMarioSprite marioSprite;
         private bool facingLeft = true;
         //private enum MarioSize { Small, Big, Fire, Dead };
         private enum MarioState { Idle, Walking, Jumping, Crouching };
@@ -19,7 +18,6 @@ namespace Game1
 
         public TestDeadMarioStateMachine(ITestMarioSprite sprite)
         {
-            marioSprite = sprite;
         }
         public void ChangeDirection(bool left)
         {
