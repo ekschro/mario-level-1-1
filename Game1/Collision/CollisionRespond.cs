@@ -163,11 +163,13 @@ namespace Game1
         {
             if (block is FlagpoleBlock)
             {
+
                 if (play_end_theme)
                 {
                     MediaPlayer.Play(SoundWarehouse.level_complete_theme);
                     play_end_theme = false;
                 }
+
                 FlagBlock temp = (FlagBlock)objectLevel.BlockObjects.Find(x => x is FlagBlock);
                 temp.Activate((int)(114 - (player.CurrentYPos - temp.GetGameObjectLocation().Y)));
                 player.TestMario.Flag();
