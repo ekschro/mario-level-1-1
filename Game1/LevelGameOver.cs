@@ -14,7 +14,6 @@ namespace Game1
         public LevelGameOver(Game1 game)
         {
             myGame = game;
-            MediaPlayer.Play(SoundWarehouse.game_over_theme);
         }
         public void Draw()
         {           
