@@ -7,45 +7,12 @@ using Microsoft.Xna.Framework;
 
 namespace Game1
 {
-    public class BrickBlockWithStar : IBlock
+    public class BrickBlockWithStar : AbstractBlock
     {
-        public float CurrentXPos { get => blockLocation.X; set => blockLocation.X = value; }
-        public float CurrentYPos { get => blockLocation.Y; set => blockLocation.Y = value; }
-
-        private IBlockSprite brickBlockSprite;
-        //private Game1 myGame;
-        private Vector2 blockLocation;
-        private Rectangle blockRectangle;
-        private BlockUtilityClass utility;
-        public BrickBlockWithStar(Game1 game, Vector2 location)
+        public BrickBlockWithStar(Game1 game, Vector2 location) : base(game, location)
         {
-            brickBlockSprite = new BrickBlockSprite(game, this);
-            //myGame = game;
-            blockLocation = location;
-            utility = new BlockUtilityClass();
+            blockSprite = new BrickBlockSprite(game, this);
             blockRectangle = new Rectangle((int)location.X, (int)location.Y, utility.Width, utility.Height);
         }
-
-        public void Draw()
-        {
-            brickBlockSprite.Draw();
-        }
-
-        public Vector2 GetGameObjectLocation()
-        {
-            return blockLocation;
-        }
-
-        public Rectangle BlockRectangle()
-        {
-            return blockRectangle;
-        }
-
-        public void Update()
-        {
-            brickBlockSprite.Update();
-            
-        }
-       
     }
 }
