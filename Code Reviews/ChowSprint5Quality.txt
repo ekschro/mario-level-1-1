@@ -1,0 +1,10 @@
+Dorothy Chow(.140)
+7/17/18
+Sprint 5
+CollisionRespond.cs
+William Freeman and Ericsson Schroeter
+30
+
+This class is a long class, it contains too much line. It contain the collision respond between enemy, block, mario, pickup. However the logic is clear and has include much case for different respond.
+
+It can be separate into different class. For example, EnemyCollisionRespondClass, BlockCollisionRespondClass, etc. By changing it into different class it is easier to manage and will be higher in cohesion.
