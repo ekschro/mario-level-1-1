@@ -9,18 +9,15 @@ namespace Game1
 {
     public abstract class AbstractBlockSprite : IBlockSprite
     {
-        protected IBlock blockObject;
+        internal IBlock blockObject;
         private Game1 myGame;
-        protected int currentFrame;
-        protected BlockUtilityClass utility;
+        internal int currentFrame;
+        internal BlockUtilityClass utility;
 
         protected AbstractBlockSprite(Game1 game, IBlock stairBlock)
         {
             utility = new BlockUtilityClass();
-            //blockObject = (StairBlock)stairBlock;
             myGame = game;
-            //currentFrame = utility.CurrentFrame2;
-            //blockLocation = location;
         }
 
         public void Update()
