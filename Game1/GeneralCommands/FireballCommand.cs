@@ -13,7 +13,8 @@ namespace Game1
 {
     public class FireballCommand : ICommand
     {
-        //private int timer;
+        //private int 
+        
         private Game1 myGame;
         private IPlayer player;
 

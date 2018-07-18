@@ -21,7 +21,7 @@ namespace Game1
         private List<IEnemy> enemies;
         private List<IPickup> pickups;
         private List<ITemporary> temporaries;
-
+        private bool timerStop = false;
         public Vector2 secretEntrance;
         public Vector2 secretExit;
 
@@ -37,6 +37,7 @@ namespace Game1
         public ICamera LevelCamera { get => currentCamera; set => currentCamera = value; }
         public PersistentData PersistentData { get => persistentData; }
         public int EndLocation { get => 3292; }
+        public bool TimerStop { get => timerStop; set => timerStop = value; }
 
         public PlatformerLevel(string fileName, Game1 game, PersistentData persistantData)
         {

@@ -22,6 +22,7 @@ namespace Game1
         private int fireballTimer;
         private bool isStar = false;
         private bool invulnerability = false;
+        //private bool fireBallTimerRun = true;
 
         //public ISprite MarioSprite { get => playerSprite; set => playerSprite = value; }
         public Color MarioColor { get => marioColor; set => marioColor = value; }
