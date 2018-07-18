@@ -13,7 +13,7 @@ namespace Game1
 {
     public class BottomRightPipeBlockSprite : AbstractBlockSprite
     {
-        public BottomRightPipeBlockSprite(Game1 game, IBlock bottomRightPipe):base(game,bottomRightPipe)
+        public BottomRightPipeBlockSprite(Game1 game, IBlock bottomRightPipe):base(game)
         {
             utility = new BlockUtilityClass();
             blockObject = (BottomRightPipeBlock)bottomRightPipe;
