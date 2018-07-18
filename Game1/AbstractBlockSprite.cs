@@ -14,7 +14,7 @@ namespace Game1
         internal int currentFrame;
         internal BlockUtilityClass utility;
 
-        protected AbstractBlockSprite(Game1 game, IBlock stairBlock)
+        internal AbstractBlockSprite(Game1 game, IBlock stairBlock)
         {
             utility = new BlockUtilityClass();
             myGame = game;

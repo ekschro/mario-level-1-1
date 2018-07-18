@@ -13,7 +13,7 @@ namespace Game1
         public float CurrentYPos { get; set; }
         internal IBlockSprite blockSprite;
         protected Vector2 blockLocation;
-        protected Vector2 blockSize;
+        internal Vector2 blockSize;
         internal Rectangle blockRectangle;
         protected BlockUtilityClass utility;
         public Vector2 BlockSize { get => blockSize; set => blockSize = value; }

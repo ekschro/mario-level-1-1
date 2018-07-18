@@ -35,8 +35,6 @@ namespace Game1
         private int cyclePosition = 0;
         private int cycleLength = 100;
         private int hudCounter = 0;
-        private bool isEndSequence = false;
-        private bool isPipeSequence = false;
         public SpriteBatch SpriteBatch { get => spriteBatch; set => spriteBatch = value; }
         public SpriteFont SpriteFont { get => spriteFont; set => spriteFont = value; }
         public ILevel CurrentLevel { get => currentLevel; set => currentLevel = value; }
@@ -106,7 +104,8 @@ namespace Game1
             CurrentLevel = new PlatformerLevel("../../../../Content/LevelInfo.csv", this, persistentData);
             pause = false;
             currentLevel.PlayerObject.Invulnerability = false;
-            MediaPlayer.Play(SoundWarehouse.main_theme);
+            if(persistentData.Lives != 0)
+                MediaPlayer.Play(SoundWarehouse.main_theme);
         }
 
         public void CheckGameOver()

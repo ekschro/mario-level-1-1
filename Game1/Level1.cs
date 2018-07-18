@@ -140,7 +140,6 @@ namespace Game1
 
         private void GetPlayerObject()
         {
-            playerObject = null;
             foreach(IGameObject player in levelObjects)
             {
                 if (player is IPlayer)
@@ -148,12 +147,9 @@ namespace Game1
                     playerObject = (IPlayer)player;
                 } 
             }
-
-            this.playerObject = playerObject;
         }
         private void GetBackgroundObject()
         {
-            IBackground backgroundObject = null;
             foreach (IGameObject background in levelObjects)
             {
                 if (background is IBackground)
@@ -161,8 +157,6 @@ namespace Game1
                     backgroundObject = (IBackground)background;
                 }
             }
-
-            this.backgroundObject = backgroundObject;
         }
         private void GetBlockObjects()
         {
