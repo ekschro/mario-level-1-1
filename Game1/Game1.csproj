@@ -93,6 +93,7 @@
     <Compile Include="Collision\CollisionDetectionLogic.cs" />
     <Compile Include="Controllers\ControllerUtilityClass.cs" />
     <Compile Include="Enemy\EnemyUtilityClass.cs" />
+    <Compile Include="LevelGameOver.cs" />
     <Compile Include="MarioSpriteUtility.cs" />
     <Compile Include="Mario\Object\MarioUtility.cs" />
     <Compile Include="Mario\Object\AbstractTestMario.cs" />
