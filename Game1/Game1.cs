@@ -92,7 +92,10 @@ namespace Game1
             CurrentLevel = new PlatformerLevel("../../../../Content/LevelInfo.csv", this, persistentData);
             pause = false;
             currentLevel.PlayerObject.Invulnerability = false;
-            MediaPlayer.Play(SoundWarehouse.main_theme);
+            if (persistentData.Lives > 1)
+                MediaPlayer.Play(SoundWarehouse.main_theme);
+            else
+                MediaPlayer.Play(SoundWarehouse.game_over_theme);
         }
 
         public void GameReset()
@@ -104,8 +107,7 @@ namespace Game1
             CurrentLevel = new PlatformerLevel("../../../../Content/LevelInfo.csv", this, persistentData);
             pause = false;
             currentLevel.PlayerObject.Invulnerability = false;
-            if(persistentData.Lives != 0)
-                MediaPlayer.Play(SoundWarehouse.main_theme);
+            MediaPlayer.Play(SoundWarehouse.main_theme);
         }
 
         public void CheckGameOver()
