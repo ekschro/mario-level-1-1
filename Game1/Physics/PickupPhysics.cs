@@ -14,7 +14,7 @@ namespace Game1
 
         public float XVelocity { get => xVelocity; }
 
-        public PickupPhysics(Game1 game, IPickup obj, int velCap)
+        public PickupPhysics(Game1 game, IPickup obj)
             {
                 this.game = game;
                 this.obj = obj;

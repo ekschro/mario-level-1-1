@@ -10,11 +10,11 @@ namespace Game1
 {
     public class TestDeadMarioSprite : ITestMarioSprite
     {
-        private TestDeadMario marioObject;
+        //private TestDeadMario marioObject;
         private Game1 myGame;
         private int currentFrame;
         private int startFrame;
-        private int endFrame;
+        //private int endFrame;
         private IPlayer player;
         private float bouncePosition;
         private float bounceVelocity;
@@ -24,7 +24,7 @@ namespace Game1
         public TestDeadMarioSprite(Game1 game, TestDeadMario Mario, IPlayer player)
         {
             spriteUtility = new MarioSpriteUtility();
-            marioObject = Mario;
+            //marioObject = Mario;
             myGame = game;
             startFrame = spriteUtility.DeadMario;
             currentFrame = startFrame;
@@ -39,7 +39,7 @@ namespace Game1
         public void ChangeFrame(int start, int end)
         {
             startFrame = start;
-            endFrame = end;
+            //endFrame = end;
         }
 
         public void Update()

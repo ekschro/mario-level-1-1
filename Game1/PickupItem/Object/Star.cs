@@ -33,7 +33,7 @@ namespace Game1
             myGame = game;
             pickupLocation = location;
             pickupOriginalLocation = location;
-            physics = new StarPhysics(myGame,this,0);
+            physics = new StarPhysics(myGame,this/*,0*/);
             utility = new PickupUtilityClass();
         }
 

@@ -11,7 +11,7 @@ namespace Game1
     {
         public float CurrentXPos { get => character.CurrentXPos; set => character.CurrentXPos = value; }
         public float CurrentYPos { get => character.CurrentYPos; set => character.CurrentYPos = value; }
-        protected Vector2 testMarioLocation;
+        internal Vector2 testMarioLocation;
         
         internal ITestMarioSprite marioSprite;
         public ITestMarioSprite MarioSprite { get => marioSprite; set => marioSprite = value; }
@@ -19,14 +19,14 @@ namespace Game1
         internal ITestMarioStateMachine stateMachine;
         public ITestMarioStateMachine StateMachine { get => stateMachine; set => stateMachine = value; }
 
-        protected int cyclePosition;
-        protected int cycleLength;
+        private int cyclePosition;
+        private int cycleLength;
 
-        protected int timer = 400;
-        protected float pipeDistance = 0;
+        private int timer = 400;
+        private float pipeDistance = 0;
         //internal bool dead = false;
 
-        protected bool isEndSequence = false;
+        private bool isEndSequence = false;
         protected bool isPipeSequence = false;
 
         protected bool pipeIsPositive;
