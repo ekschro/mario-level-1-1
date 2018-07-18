@@ -22,8 +22,8 @@ namespace Game1
         private List<IPickup> pickups;
         private List<ITemporary> temporaries;
         private bool timerStop = false;
-        public Vector2 secretEntrance;
-        public Vector2 secretExit;
+        private Vector2 secretEntrance;
+        private Vector2 secretExit;
 
         public IPlayer PlayerObject { get => playerObject; set => playerObject = value; }
         public IBackground BackgroundObject { get => backgroundObject; set => backgroundObject = value; }
