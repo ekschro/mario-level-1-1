@@ -163,7 +163,6 @@ namespace Game1
         {
             if (block is FlagpoleBlock)
             {
-                //MediaPlayer.Stop();
                 if (play_end_theme)
                 {
                     MediaPlayer.Play(SoundWarehouse.level_complete_theme);

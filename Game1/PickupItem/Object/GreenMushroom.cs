@@ -31,7 +31,7 @@ namespace Game1
             pickupLocation = location;
             pickupOriginalLocation = location;
 
-            physics = new PickupPhysics(myGame, this, 2);
+            physics = new PickupPhysics(myGame, this/*, 2*/);
             utility = new PickupUtilityClass();
         }
 

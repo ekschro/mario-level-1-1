@@ -24,12 +24,13 @@ namespace Game1
         private SoundWarehouse soundWarehouse;
         private ILevel currentLevel;
         private LevelTransition transitionLevel;
+        private LevelGameOver gameOverLevel;
         private HeadsUpDisplay headsUpDisplay;
         private SpriteBatch spriteBatch;
         private SpriteFont spriteFont;
         private bool pause;
         private bool allowControllerResponse;
-        public enum GameScreenState { Transition, GamePlay }
+        public enum GameScreenState { Transition, GamePlay, Dead }
         public GameScreenState GameState;
         private int cyclePosition = 0;
         private int cycleLength = 100;
@@ -40,6 +41,7 @@ namespace Game1
         public SpriteFont SpriteFont { get => spriteFont; set => spriteFont = value; }
         public ILevel CurrentLevel { get => currentLevel; set => currentLevel = value; }
         public HeadsUpDisplay HeadsUpDisplay { get => headsUpDisplay; set => headsUpDisplay = value; }
+        public LevelGameOver GameOverLevel { get => gameOverLevel; }
         public LevelTransition TransitionLevel { get => transitionLevel; set => transitionLevel = value; }
         internal SoundWarehouse SoundWarehouse { get => soundWarehouse; set => soundWarehouse = value; }
         public bool Pause { get => pause; set => pause = value; }
@@ -75,6 +77,7 @@ namespace Game1
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             TransitionLevel = new LevelTransition(this);
+            gameOverLevel = new LevelGameOver(this);
             HeadsUpDisplay = new HeadsUpDisplay(this);
             textureWarehouse = new TextureWarehouse(this);
             soundWarehouse = new SoundWarehouse(this);
@@ -104,6 +107,14 @@ namespace Game1
             pause = false;
             currentLevel.PlayerObject.Invulnerability = false;
             MediaPlayer.Play(SoundWarehouse.main_theme);
+        }
+
+        public void CheckGameOver()
+        {
+            if (persistentData.Lives == 0)
+            {
+                GameState = GameScreenState.Dead;
+            }
         }
 
         protected override void UnloadContent()
@@ -142,6 +153,7 @@ namespace Game1
                     currentLevel.PlayerObject.TestMario.Downgrade();
                     currentLevel.PlayerObject.TestMario.Downgrade();
                 }
+                CheckGameOver();
                 //CurrentLevel.Update();
                 HeadsUpDisplay.Update();
                 switch (GameState)
@@ -164,12 +176,17 @@ namespace Game1
             {
                 case GameScreenState.Transition:
                     transitionLevel.Draw();
+                    HeadsUpDisplay.Draw();
                     break;
                 case GameScreenState.GamePlay:
-                    CurrentLevel.Draw();
+                    currentLevel.Draw();
+                    HeadsUpDisplay.Draw();
+                    break;
+                case GameScreenState.Dead:
+                    gameOverLevel.Draw();
                     break;
             }
-            HeadsUpDisplay.Draw();
+            
             base.Draw(gameTime);
         }
     }
