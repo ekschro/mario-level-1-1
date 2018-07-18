@@ -13,7 +13,7 @@ namespace Game1
 {
     public class UsedBlockSprite : IBlockSprite
     {
-        private UsedBlock usedBlockObject;
+        private IBlock usedBlockObject;
         private Game1 myGame;
         private int currentFrame;
 

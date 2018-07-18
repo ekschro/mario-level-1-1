@@ -13,7 +13,7 @@ namespace Game1
 {
     public class FlagpoleBlockSprite : IBlockSprite
     {
-        private FlagpoleBlock flagpoleObject;
+        private IBlock flagpoleObject;
         private Game1 myGame;
         private BlockUtilityClass utility;
 

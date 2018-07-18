@@ -13,7 +13,7 @@ namespace Game1
 {
     public class TopWarpPipeBlockSprite : IBlockSprite
     {
-        private TopWarpPipeBlock topWarpPipeBlockObject;
+        private IBlock topWarpPipeBlockObject;
         private Game1 myGame;
         private int currentFrame;
         BlockUtilityClass utility;

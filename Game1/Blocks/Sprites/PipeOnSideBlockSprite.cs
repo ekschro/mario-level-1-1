@@ -13,7 +13,7 @@ namespace Game1
 {
     public class PipeOnSideBlockSprite : IBlockSprite
     {
-        private PipeOnSideBlock pipeOnSideBlockObject;
+        private IBlock pipeOnSideBlockObject;
         private Game1 myGame;
         BlockUtilityClass utility;
 
