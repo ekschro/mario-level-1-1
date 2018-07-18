@@ -34,7 +34,7 @@ namespace Game1
 
         internal MarioUtility utility;
         internal Game1 myGame;
-        private Mario character;
+        internal Mario character;
 
         protected AbstractTestMario(Game1 game, Vector2 location, Mario mario)
         {
