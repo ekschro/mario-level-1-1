@@ -186,7 +186,7 @@ namespace Game1
                 int offset = (int)pipeDistance;
 
                 if (!pipeIsPositive)
-                    offset = -offset;
+                    offset = -offset + 48;
 
                 if (pipeIsHorizontal)
                     marioSprite.Draw(offset, 0);

@@ -163,7 +163,6 @@ namespace Game1
         {
             if (block is FlagpoleBlock)
             {
-                MediaPlayer.Stop();
                 MediaPlayer.Play(SoundWarehouse.level_complete_theme);
                 FlagBlock temp = (FlagBlock)objectLevel.BlockObjects.Find(x => x is FlagBlock);
                 temp.Activate((int)(114 - (player.CurrentYPos - temp.GetGameObjectLocation().Y)));
