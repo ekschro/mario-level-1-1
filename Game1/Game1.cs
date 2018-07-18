@@ -13,7 +13,8 @@ namespace Game1
     public class Game1 : Game
     {
         GraphicsDeviceManager graphics;
-        public GameTime delta;
+        private GameTime delta;
+        public GameTime Delta { get => delta; }
         public IController mouseController;
         public IList<IController> controllerList;
         public IControllerHandler controllerHandler;
@@ -31,7 +32,8 @@ namespace Game1
         private bool pause;
         private bool allowControllerResponse;
         public enum GameScreenState { Transition, GamePlay, Dead }
-        public GameScreenState GameState;
+        private GameScreenState gameState;
+        public GameScreenState GameState { get=>gameState; }
         private int cyclePosition = 0;
         private int cycleLength = 100;
         private int hudCounter = 0;
@@ -41,7 +43,7 @@ namespace Game1
         public HeadsUpDisplay HeadsUpDisplay { get => headsUpDisplay; set => headsUpDisplay = value; }
         //public LevelGameOver GameOverLevel { get => gameOverLevel; }
         //public LevelTransition TransitionLevel { get => transitionLevel; set => transitionLevel = value; }
-        internal SoundWarehouse SoundWarehouse { get => soundWarehouse; set => soundWarehouse = value; }
+        //internal SoundWarehouse SoundWarehouse { get => soundWarehouse; set => soundWarehouse = value; }
         public bool Pause { get => pause; set => pause = value; }
         public int HudCounter { get => hudCounter; set => hudCounter = value; }
         public bool AllowControllerResponse { get => allowControllerResponse; set => allowControllerResponse = value; }
@@ -54,7 +56,7 @@ namespace Game1
             graphics.ApplyChanges();
             pause = false;
             Content.RootDirectory = "Content";
-            GameState = GameScreenState.Transition;
+            gameState = GameScreenState.Transition;
         }
       
         protected override void Initialize()
@@ -86,7 +88,7 @@ namespace Game1
 
         public void Reset()
         {
-            GameState = GameScreenState.Transition;
+            gameState = GameScreenState.Transition;
             cyclePosition = 0;
             allowControllerResponse = true;
             CurrentLevel = new PlatformerLevel("../../../../Content/LevelInfo.csv", this, persistentData);
@@ -100,7 +102,7 @@ namespace Game1
 
         public void GameReset()
         {
-            GameState = GameScreenState.Transition;
+            gameState = GameScreenState.Transition;
             cyclePosition = 0;
             allowControllerResponse = true;
             persistentData = new PersistentData();
@@ -114,7 +116,7 @@ namespace Game1
         {
             if (persistentData.Lives == 0)
             {
-                GameState = GameScreenState.Dead;
+                gameState = GameScreenState.Dead;
             }
         }
 
@@ -134,7 +136,7 @@ namespace Game1
                 cyclePosition++;
                 if (cyclePosition == cycleLength)
                 {
-                    GameState = GameScreenState.GamePlay;
+                    gameState = GameScreenState.GamePlay;
                 }
 
                 delta = gameTime;

@@ -11,7 +11,7 @@ namespace Game1
     {
         private int coinsLeft;
         public int CoinsLeft { get => coinsLeft; set => coinsLeft = value; }
-        public BrickBlockWithManyCoins(Game1 game, Vector2 location) : base(game, location)
+        public BrickBlockWithManyCoins(Game1 game, Vector2 location) : base(location)
         {
             blockSprite = new BrickBlockSprite(game, this);
             blockRectangle = new Rectangle((int)location.X, (int)location.Y, utility.Width, utility.Height);

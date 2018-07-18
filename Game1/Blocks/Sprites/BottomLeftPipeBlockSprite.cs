@@ -15,7 +15,7 @@ namespace Game1
     {
         
 
-        public BottomLeftPipeBlockSprite(Game1 game, IBlock bottomLeftPipe) : base(game,bottomLeftPipe)
+        public BottomLeftPipeBlockSprite(Game1 game, IBlock bottomLeftPipe) : base(game)
         {
             utility = new BlockUtilityClass();
             blockObject = (BottomLeftPipeBlock)bottomLeftPipe;

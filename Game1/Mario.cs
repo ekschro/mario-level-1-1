@@ -6,7 +6,7 @@ namespace Game1
     public class Mario : IPlayer
     {
         private IControllerHandler controllerHandler;
-        private Game1 myGame;
+        //private Game1 myGame;
         //private int animationTimer;
         private int killedNum = 0;
         private ITestMario testMario;
@@ -46,7 +46,7 @@ namespace Game1
 
         public Mario(Game1 game, Vector2 vector)
         {
-            myGame = game;
+            //myGame = game;
             controllerHandler = game.controllerHandler;
             physics = new MarioPhysics(game,this,2);
             CurrentXPos = vector.X;

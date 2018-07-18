@@ -11,7 +11,7 @@ namespace Game1
     {
         private float cameraPosition;
         private float cameraOffset;
-        private ILevel gameLevel;
+        //private ILevel gameLevel;
 
         public float CameraPosition { get => cameraPosition; set => cameraPosition = value; }
         public float CameraOffset { get => cameraOffset; set => cameraOffset = value; }
@@ -19,7 +19,7 @@ namespace Game1
         public CameraStatic(ILevel level, int position)
         {
             cameraPosition = position;
-            gameLevel = level;
+            //gameLevel = level;
         }
 
         public void Update()

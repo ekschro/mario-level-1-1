@@ -9,7 +9,7 @@ namespace Game1
 {
     public class BlueStoneBlock : AbstractBlock
     {
-        public BlueStoneBlock(Game1 game, Vector2 location, Vector2 size) : base(game, location, size)
+        public BlueStoneBlock(Game1 game, Vector2 location, Vector2 size) : base(location, size)
         {
             blockSprite = new BlueStoneBlockSprite(game, this);
             blockRectangle = new Rectangle((int)location.X, (int)location.Y, (int)size.X, (int)size.Y);

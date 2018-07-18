@@ -27,8 +27,7 @@ namespace Game1
         private int bigMarioLeftCrounchingEnd = 11;
         private int bigMarioRightCrounchingStart = 15;
         private int bigMarioRightCrounchingEnd = 16;
-        private int two = 2;
-
+        
         private int turnSmallMario = 28;
 
         private int turnFireMario = 56;

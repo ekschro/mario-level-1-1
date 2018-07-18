@@ -17,13 +17,13 @@ namespace Game1
         internal Rectangle blockRectangle;
         internal BlockUtilityClass utility;
         public Vector2 BlockSize { get => blockSize; set => blockSize = value; }
-        protected AbstractBlock(Game1 game, Vector2 location, Vector2 size)
+        protected AbstractBlock(Vector2 location, Vector2 size)
         {
             utility = new BlockUtilityClass();
             blockLocation = location;
             blockSize = size;
         }
-        protected AbstractBlock(Game1 game, Vector2 location)
+        protected AbstractBlock(Vector2 location)
         {
             utility = new BlockUtilityClass();
             blockLocation = location;
