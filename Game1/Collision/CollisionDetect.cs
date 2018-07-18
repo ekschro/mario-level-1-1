@@ -19,13 +19,13 @@ namespace Game1
         //private IControllerHandler controllerHandler;
         private CollisionUtilityClass utility = new CollisionUtilityClass();
         private Game1 mygame;
-        private int tileOffset;
+        //private int tileOffset;
 
 
         public CollisionDetect(Game1 game, ILevel PlatformerLevel)
         {
             mygame = game;
-            tileOffset = utility.TileOffset;
+            //tileOffset = utility.TileOffset;
             //controllerHandler = game.controllerHandler;
             level1 = PlatformerLevel;
             player = PlatformerLevel.PlayerObject;
@@ -105,12 +105,12 @@ namespace Game1
                 marioLogic.MarioPickupCollisionCheck(pickupArray[i]);
             }
         }
-
+        /*
         public void MarioFlagPoleDetect()
         {
 
         }
-
+        */
         public void BlockEnemyCollisionDetect()
         {
             Rectangle enemyBox;

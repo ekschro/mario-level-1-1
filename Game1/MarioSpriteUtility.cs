@@ -64,9 +64,7 @@ namespace Game1
         public int SmallMarioLeftJumpingEnd { get => ( bigMarioLeftJumpingEnd+ turnSmallMario); }
         public int SmallMarioRightJumpingStart { get => ( bigMarioRightJumpingStart+ turnSmallMario); }
         public int SmallMarioRightJumpingEnd { get => ( bigMarioRightJumpingEnd+ turnSmallMario); }
-        public int SmallMarioLeftCrounchingStart { get => ( bigMarioLeftCrounchingStart+ turnSmallMario); }
-        public int SmallMarioLeftCrounchingEnd { get => ( bigMarioLeftCrounchingEnd+ turnSmallMario); }
-
+        
         public int FireMarioLeftIdleStart { get => (bigMarioLeftIdleStart + turnFireMario); }
         public int FireMarioLeftIdleEnd { get => (bigMarioLeftIdleEnd + turnFireMario); }
         public int FireMarioRightIdleStart { get => (bigMarioRightIdleStart + turnFireMario); }

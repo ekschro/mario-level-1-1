@@ -200,20 +200,17 @@
     <Compile Include="MarioCommands\DeadMarioCommand.cs" />
     <Compile Include="GeneralCommands\DownCommand.cs" />
     <Compile Include="GeneralCommands\ExitGameCommand.cs" />
-    <Compile Include="MarioCommands\FireMarioCommand.cs" />
     <Compile Include="GeneralInterfaces\IBlockSprite.cs" />
     <Compile Include="GeneralInterfaces\ICommand.cs" />
     <Compile Include="GeneralInterfaces\IController.cs" />
     <Compile Include="GeneralInterfaces\ISprite.cs" />
     <Compile Include="Controllers\KeyboardController.cs" />
     <Compile Include="GeneralCommands\LeftCommand.cs" />
-    <Compile Include="MarioCommands\BigMarioCommand.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GeneralCommands\ResetCommand.cs" />
     <Compile Include="GeneralCommands\RightCommand.cs" />
-    <Compile Include="MarioCommands\SmallMarioCommand.cs" />
     <Compile Include="GeneralCommands\UpCommand.cs" />
     <Compile Include="TextureWarehouse.cs" />
   </ItemGroup>

@@ -12,10 +12,10 @@ namespace Game1
         public float CurrentXPos { get; set; }
         public float CurrentYPos { get; set; }
         internal IBlockSprite blockSprite;
-        protected Vector2 blockLocation;
+        internal Vector2 blockLocation;
         internal Vector2 blockSize;
         internal Rectangle blockRectangle;
-        protected BlockUtilityClass utility;
+        internal BlockUtilityClass utility;
         public Vector2 BlockSize { get => blockSize; set => blockSize = value; }
         protected AbstractBlock(Game1 game, Vector2 location, Vector2 size)
         {
