@@ -12,7 +12,6 @@ namespace Game1
         public float CurrentXPos { get; set; }
         public float CurrentYPos { get; set; }
         internal IBlockSprite blockSprite;
-        internal Vector2 blockLocation;
         internal Vector2 blockSize;
         internal Rectangle blockRectangle;
         internal BlockUtilityClass utility;
@@ -20,13 +19,12 @@ namespace Game1
         protected AbstractBlock(Vector2 location, Vector2 size)
         {
             utility = new BlockUtilityClass();
-            blockLocation = location;
             blockSize = size;
         }
         protected AbstractBlock(Vector2 location)
         {
             utility = new BlockUtilityClass();
-            blockLocation = location;
+            blockRectangle.Location = location.ToPoint();
         }
         
             public Rectangle BlockRectangle()
@@ -40,7 +38,7 @@ namespace Game1
 
         public Vector2 GetGameObjectLocation()
         {
-            return blockLocation;
+            return blockRectangle.Location.ToVector2();
         }
 
         public void Update()
