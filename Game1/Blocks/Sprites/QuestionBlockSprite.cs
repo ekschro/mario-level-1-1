@@ -13,7 +13,7 @@ namespace Game1
 {
     public class QuestionBlockSprite : IBlockSprite
     {
-        private QuestionBlock questionBlockObject;
+        private IBlock questionBlockObject;
         private Game1 myGame;
         private int currentFrame;
         private int startFrame;

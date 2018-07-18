@@ -57,8 +57,9 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="AbstractBlock.cs" />
+    <Compile Include="AbstractBlockSprite.cs" />
     <Compile Include="Blocks\BlockUtilityClass.cs" />
+    <Compile Include="Blocks\Object\AbstractBlock.cs" />
     <Compile Include="Blocks\Object\BlueBrickBlock.cs" />
     <Compile Include="Blocks\Object\BlueStoneBlock.cs" />
     <Compile Include="Blocks\Object\BottomLeftPipeBlock.cs" />

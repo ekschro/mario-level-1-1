@@ -12,19 +12,17 @@ namespace Game1
         public float CurrentXPos { get; set; }
         public float CurrentYPos { get; set; }
         internal IBlockSprite blockSprite;
-        public IBlockSprite StoneBlockSprite{get=>blockSprite;}
-        private Vector2 blockLocation;
-
-        private Vector2 blockSize;
+        //public IBlockSprite StoneBlockSprite{get=>blockSprite;}
+        protected Vector2 blockLocation;
+        protected Vector2 blockSize;
         internal Rectangle blockRectangle;
         //public Rectangle BlockRectangle { get=>blockRectangle; }
         protected BlockUtilityClass utility;
-        public BlockUtilityClass Utility { get => utility; }
+        //public BlockUtilityClass Utility { get => utility; }
         public Vector2 BlockSize { get => blockSize; set => blockSize = value; }
         protected AbstractBlock(Game1 game, Vector2 location, Vector2 size)
         {
             utility = new BlockUtilityClass();
-            //stoneBlockSprite = new StoneBlockSprite(game, this);
             blockLocation = location;
             blockSize = size;
             
@@ -32,7 +30,6 @@ namespace Game1
         protected AbstractBlock(Game1 game, Vector2 location)
         {
             utility = new BlockUtilityClass();
-            //stoneBlockSprite = new StoneBlockSprite(game, this);
             blockLocation = location;
             //blockRectangle = new Rectangle((int)location.X, (int)location.Y, utility.Width, utility.Height);
         }

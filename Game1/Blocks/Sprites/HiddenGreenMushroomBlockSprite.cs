@@ -13,7 +13,7 @@ namespace Game1
 {
     public class HiddenGreenMushroomBlockSprite : IBlockSprite
     {
-        private HiddenGreenMushroomBlock hiddenGreenMushroomBlockObject;
+        private IBlock hiddenGreenMushroomBlockObject;
         private Game1 myGame;
         private int currentFrame;
         private BlockUtilityClass utility;
