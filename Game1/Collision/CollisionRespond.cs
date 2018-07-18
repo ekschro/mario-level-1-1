@@ -20,7 +20,7 @@ namespace Game1
         private IPlayer player;
         private IControllerHandler controllerHandler;
         private CollisionUtilityClass utility;
-
+        private bool play_end_theme = true;
 
         public CollisionRespond(Game1 game, ILevel level)
         {
@@ -163,8 +163,12 @@ namespace Game1
         {
             if (block is FlagpoleBlock)
             {
-                MediaPlayer.Stop();
-                MediaPlayer.Play(SoundWarehouse.level_complete_theme);
+                //MediaPlayer.Stop();
+                if (play_end_theme)
+                {
+                    MediaPlayer.Play(SoundWarehouse.level_complete_theme);
+                    play_end_theme = false;
+                }
                 FlagBlock temp = (FlagBlock)objectLevel.BlockObjects.Find(x => x is FlagBlock);
                 temp.Activate((int)(114 - (player.CurrentYPos - temp.GetGameObjectLocation().Y)));
                 player.TestMario.Flag();
