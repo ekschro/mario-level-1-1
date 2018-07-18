@@ -11,7 +11,7 @@ namespace Game1
     {
         public TestDeadMario(Game1 game, Vector2 location, Mario mario) : base(game, location, mario)
         {
-            marioSprite = new TestDeadMarioSprite(game, this, mario);
+            marioSprite = new TestDeadMarioSprite(game, mario);
             stateMachine = new TestDeadMarioStateMachine(marioSprite);
         }
 

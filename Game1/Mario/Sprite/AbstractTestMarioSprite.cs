@@ -10,11 +10,11 @@ namespace Game1
 {
     public abstract class AbstractTestMarioSprite : ITestMarioSprite
     {
-        internal ITestMario marioObject;
-        internal Game1 myGame;
+        private ITestMario marioObject;
+        private Game1 myGame;
         internal int currentFrame;
         internal int startFrame;
-        internal int endFrame;
+        private int endFrame;
         internal IPlayer player;
 
         public AbstractTestMarioSprite(Game1 game, ITestMario Mario, IPlayer player)
