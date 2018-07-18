@@ -10,12 +10,12 @@ namespace Game1
 {
     public abstract class AbstractTestMarioSprite : ITestMarioSprite
     {
-        protected ITestMario marioObject;
-        protected Game1 myGame;
-        protected int currentFrame;
-        protected int startFrame;
-        protected int endFrame;
-        protected IPlayer player;
+        private ITestMario marioObject;
+        private Game1 myGame;
+        internal int currentFrame;
+        internal int startFrame;
+        private int endFrame;
+        internal IPlayer player;
 
         public AbstractTestMarioSprite(Game1 game, ITestMario Mario, IPlayer player)
         {

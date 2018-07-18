@@ -21,10 +21,9 @@ namespace Game1
         private float bounceGravity;
         private float bounceTimer;
         private MarioSpriteUtility spriteUtility;
-        public TestDeadMarioSprite(Game1 game, TestDeadMario Mario, IPlayer player)
+        public TestDeadMarioSprite(Game1 game, IPlayer player)
         {
             spriteUtility = new MarioSpriteUtility();
-            //marioObject = Mario;
             myGame = game;
             startFrame = spriteUtility.DeadMario;
             currentFrame = startFrame;

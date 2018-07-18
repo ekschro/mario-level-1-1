@@ -16,7 +16,7 @@ namespace Game1
         private IPickup[] pickupArray;
         private CollisionRespond collision;
         private MarioCollisionDetectionLogic marioLogic;
-        private IControllerHandler controllerHandler;
+        //private IControllerHandler controllerHandler;
         private CollisionUtilityClass utility = new CollisionUtilityClass();
         private Game1 mygame;
         private int tileOffset;
@@ -26,7 +26,7 @@ namespace Game1
         {
             mygame = game;
             tileOffset = utility.TileOffset;
-            controllerHandler = game.controllerHandler;
+            //controllerHandler = game.controllerHandler;
             level1 = PlatformerLevel;
             player = PlatformerLevel.PlayerObject;
 

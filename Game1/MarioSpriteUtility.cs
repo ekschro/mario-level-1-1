@@ -86,9 +86,5 @@ namespace Game1
 
         public int DeadMario { get => deadMario; }
 
-
-
-
-        public int Two { get => two; set => two = value; }
     }
 }

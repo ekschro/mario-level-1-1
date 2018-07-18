@@ -27,14 +27,14 @@ namespace Game1
         //internal bool dead = false;
 
         private bool isEndSequence = false;
-        protected bool isPipeSequence = false;
+        private bool isPipeSequence = false;
 
-        protected bool pipeIsPositive;
-        protected bool pipeIsHorizontal;
+        private bool pipeIsPositive;
+        private bool pipeIsHorizontal;
 
-        protected MarioUtility utility;
-        protected Game1 myGame;
-        protected Mario character;
+        internal MarioUtility utility;
+        internal Game1 myGame;
+        private Mario character;
 
         protected AbstractTestMario(Game1 game, Vector2 location, Mario mario)
         {
