@@ -9,7 +9,7 @@ namespace Game1
 {
     public class TopPipeBlock : AbstractBlock
     {
-        public TopPipeBlock(Game1 game, Vector2 location) : base(game, location)
+        public TopPipeBlock(Game1 game, Vector2 location) : base(location)
         {
             blockSprite = new TopPipeBlockSprite(game, this);
             blockRectangle = new Rectangle((int)location.X, (int)location.Y, utility.PipeHeight, utility.Height);
