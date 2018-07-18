@@ -18,6 +18,7 @@ namespace Game1
 
         private int koopaShellStartFrame = 4;
         private int koopaShellEndFrame = 6;
+        private int koopaShellStompStartFrame = 5;
         private int koopaLeftStartFrame = 2;
         private int koopaLeftEndFrame = 4;
         private int koopaRightStartFrame = 0;
@@ -42,6 +43,7 @@ namespace Game1
         public int KoopaColumn { get => koopaColumn; }
         public int KoopaShellStartFrame { get => koopaShellStartFrame; }
         public int KoopaShellEndFrame { get => koopaShellEndFrame; }
+        public int KoopaShellStompedStartFrame { get => koopaShellStompStartFrame; }
         public int KoopaLeftStartFrame { get => koopaLeftStartFrame; }
         public int KoopaLeftEndFrame { get => koopaLeftEndFrame; }
         public int KoopaRightStartFrame { get => koopaRightStartFrame; }
