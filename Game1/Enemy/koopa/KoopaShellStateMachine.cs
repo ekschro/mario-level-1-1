@@ -28,7 +28,7 @@ namespace Game1
 
         public void BeStomped()
         {
-            koopaSprite.ChangeFrame(5, 6);
+            koopaSprite.ChangeFrame(utility.KoopaShellStompedStartFrame, utility.KoopaShellEndFrame);
             if (health != KoopaHealth.Stomped) 
             {
                 health = KoopaHealth.Stomped;

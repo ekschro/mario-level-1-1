@@ -199,7 +199,7 @@ namespace Game1
             }
             this.temporaries = temporaryObjects;
         }
-
+        /*
         private void UpdateLevelObjects()
         {
             levelObjects = new List<IGameObject>();
@@ -210,7 +210,7 @@ namespace Game1
             levelObjects.AddRange(EnemyObjects);
             LevelObjects.AddRange(TemporaryObjects);
         }
-
+        */
         public void WarpToSecret()
         {
             playerObject.CurrentXPos = secretEntrance.X;

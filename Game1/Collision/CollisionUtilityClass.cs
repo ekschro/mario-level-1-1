@@ -20,6 +20,7 @@ namespace Game1
         private int twentyfour = 24;
         private int one = 1;
         private int invulnerabilityRespondFrames = 1000;
+        private int bowserSize = 32;
 
 
         public CollisionUtilityClass()
@@ -42,5 +43,6 @@ namespace Game1
         public int Twentyfour { get => twentyfour; }
         public int One { get => one; }
         public int InvulnerabilityRespondFrames { get => invulnerabilityRespondFrames; }
+        public int BowserSize { get => bowserSize; }
     }
 }

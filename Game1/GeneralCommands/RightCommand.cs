@@ -13,12 +13,12 @@ namespace Game1
 {
     public class RightCommand : ICommand
     {
-        private Game1 myGame;
+        //private Game1 myGame;
         private IControllerHandler controllerHandler;
         
         public RightCommand(Game1 game)
         {
-            myGame = game;
+            //myGame = game;
             controllerHandler = game.controllerHandler;
         }
 

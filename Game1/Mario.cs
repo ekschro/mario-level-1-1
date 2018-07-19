@@ -6,7 +6,7 @@ namespace Game1
     public class Mario : IPlayer
     {
         private IControllerHandler controllerHandler;
-        private Game1 myGame;
+        //private Game1 myGame;
         //private int animationTimer;
         private int killedNum = 0;
         private ITestMario testMario;
@@ -46,7 +46,7 @@ namespace Game1
 
         public Mario(Game1 game, Vector2 vector)
         {
-            myGame = game;
+            //myGame = game;
             controllerHandler = game.controllerHandler;
             physics = new MarioPhysics(game,this,2);
             CurrentXPos = vector.X;
@@ -100,76 +100,6 @@ namespace Game1
             if (fireballTimer > 0)
                 fireballTimer--;
         }
-
-        /*
-
-        private void RightAnimation()
-        {
-            if (animationTimer == 5)
-            {
-                //this.MarioSprite.RightCommandCalled();
-                this.TestMario.WalkRight();
-                animationTimer = 0;
-            } else
-            {
-                animationTimer++;
-            }
-        }
-
-        private void UpAnimation()
-        {
-            if (animationTimer == 5)
-            {
-                //this.MarioSprite.UpCommandCalled();
-                this.TestMario.Jumping();
-                animationTimer = 0;
-            }
-            else
-            {
-                animationTimer++;
-            }
-        }
-
-        private void DownAnimation()
-        {
-            if (animationTimer == 5)
-            {
-                //this.MarioSprite.DownCommandCalled();
-                this.TestMario.Crouching();
-                animationTimer = 0;
-            }
-            else
-            {
-                animationTimer++;
-            }
-        }
-
-        private void LeftAnimation()
-        {
-            if (animationTimer == 5)
-            {
-                //this.MarioSprite.LeftCommandCalled();
-                this.TestMario.WalkLeft();
-                animationTimer = 0;
-            }
-            else
-            {
-                animationTimer++;
-            }
-        }
-
-        */
-
-            /*
-        public void Pipe(bool enter)
-        {
-            testMario.Pipe(enter);
-        }
-        public void EnterSidePipe(bool left)
-        {
-            testMario.SidePipe(left);
-        }
-        */
 
         public Vector2 GetGameObjectLocation()
         {

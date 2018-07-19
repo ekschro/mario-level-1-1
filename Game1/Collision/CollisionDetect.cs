@@ -124,7 +124,7 @@ namespace Game1
 
                 if (enemyArray[j] is Koopa && !enemyArray[j].IsStomped)
                 {
-                    enemyBox = new Rectangle(enemyX, enemyY+8, utility.MainWidth, utility.MainHeight);
+                    enemyBox = new Rectangle(enemyX, enemyY + 8, utility.MainWidth, utility.MainHeight);
                 }
                 else if (enemyArray[j] is Koopa && enemyArray[j].IsStomped)
                 {
@@ -133,6 +133,10 @@ namespace Game1
                 else if (enemyArray[j] is MarioFireBall)
                 {
                     enemyBox = new Rectangle(enemyX, enemyY, utility.SmallWidth, utility.SmallHeight);
+                }
+                else if (enemyArray[j] is Bowser)
+                {
+                    enemyBox = new Rectangle(enemyX, enemyY, utility.BowserSize, utility.BowserSize);
                 }
                 else
                 {

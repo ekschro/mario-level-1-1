@@ -57,5 +57,10 @@ namespace Game1
             myGame.SpriteBatch.Draw(TextureWarehouse.koopaTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.SpriteBatch.End();
         }
+
+        public void ChangeDirectionSprite()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

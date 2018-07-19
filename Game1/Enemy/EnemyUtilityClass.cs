@@ -15,13 +15,17 @@ namespace Game1
         private int goombaStompedEndFrame = 3;
 
         private int koopaColumn = 6;
-
         private int koopaShellStartFrame = 4;
         private int koopaShellEndFrame = 6;
+        private int koopaShellStompStartFrame = 5;
         private int koopaLeftStartFrame = 2;
         private int koopaLeftEndFrame = 4;
         private int koopaRightStartFrame = 0;
         private int koopaRightEndFrame = 2;
+
+        private int boswerColumn = 4;
+        private int boswerStartFrame = 0;
+        private int boswerEndFrame = 4;
 
         private int cyclePosition = 0;
         private int cycleLength = 8;
@@ -42,10 +46,15 @@ namespace Game1
         public int KoopaColumn { get => koopaColumn; }
         public int KoopaShellStartFrame { get => koopaShellStartFrame; }
         public int KoopaShellEndFrame { get => koopaShellEndFrame; }
+        public int KoopaShellStompedStartFrame { get => koopaShellStompStartFrame; }
         public int KoopaLeftStartFrame { get => koopaLeftStartFrame; }
         public int KoopaLeftEndFrame { get => koopaLeftEndFrame; }
         public int KoopaRightStartFrame { get => koopaRightStartFrame; }
         public int KoopaRightEndFrame { get => koopaRightEndFrame; }
+
+        public int BoswerColumn { get => boswerColumn; }
+        public int BoswerStartFrame { get => boswerStartFrame; }
+        public int BoswerEndFrame { get => boswerEndFrame; }
 
         public int EnemyupCyclePosition { get => cyclePosition; set => cyclePosition = value; }
         public int EnemyCycleLength { get => cycleLength; }

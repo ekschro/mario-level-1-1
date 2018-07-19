@@ -26,7 +26,7 @@ namespace Game1
 
             public void Update()
             {
-                delta = game.delta.ElapsedGameTime.Milliseconds;
+                delta = game.Delta.ElapsedGameTime.Milliseconds;
                 NewPosX();
                 NewPosY();
             }

@@ -9,7 +9,7 @@ namespace Game1
 {
     public class FlagpoleBlock : AbstractBlock
     {
-        public FlagpoleBlock(Game1 game, Vector2 location) : base(game, location)
+        public FlagpoleBlock(Game1 game, Vector2 location) : base(location)
         {
             blockSprite = new FlagpoleBlockSprite(game, this);
             blockRectangle = new Rectangle((int)location.X, (int)location.Y, TextureWarehouse.flagpoleTexture.Width, TextureWarehouse.flagpoleTexture.Height);

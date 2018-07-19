@@ -9,7 +9,7 @@ namespace Game1
 {
     public class StairBlock : AbstractBlock
     {
-        public StairBlock(Game1 game, Vector2 location) : base(game, location)
+        public StairBlock(Game1 game, Vector2 location) : base(location)
         {
             blockSprite = new StairBlockSprite(game, this);
             blockRectangle = new Rectangle((int)location.X, (int)location.Y, utility.Width, utility.Height);
