@@ -41,7 +41,7 @@ namespace Game1
         public HeadsUpDisplay HeadsUpDisplay { get => headsUpDisplay; set => headsUpDisplay = value; }
         //public LevelGameOver GameOverLevel { get => gameOverLevel; }
         //public LevelTransition TransitionLevel { get => transitionLevel; set => transitionLevel = value; }
-        internal SoundWarehouse SoundWarehouse { get => soundWarehouse; set => soundWarehouse = value; }
+        
         public bool Pause { get => pause; set => pause = value; }
         public int HudCounter { get => hudCounter; set => hudCounter = value; }
         public bool AllowControllerResponse { get => allowControllerResponse; set => allowControllerResponse = value; }
