@@ -12,7 +12,6 @@ namespace Game1
     {
         private Game1 myGame;
 
-        //private int invulnerabilityFrames = 100;
         private int invulnerabilityFrames;
         private int invulnerabilityTimer;
 
@@ -21,7 +20,7 @@ namespace Game1
         private IControllerHandler controllerHandler;
         private CollisionUtilityClass utility;
         private bool play_end_theme = true;
-
+        
         public CollisionRespond(Game1 game, ILevel level)
         {
             utility = new CollisionUtilityClass();
@@ -550,6 +549,7 @@ namespace Game1
             if (!player.Invulnerability)
             {
                 SoundWarehouse.pipe.Play();
+                invulnerabilityTimer = utility.InvulnerabilityFrames;
                 player.TestMario.Downgrade();
                 player.Invulnerability = true;
             }
@@ -563,7 +563,6 @@ namespace Game1
             }
             if (invulnerabilityTimer == 0)
             {
-                invulnerabilityTimer = invulnerabilityFrames;
                 player.Invulnerability = false;
                 objectLevel.PlayerObject.IsStar = false;
             }
