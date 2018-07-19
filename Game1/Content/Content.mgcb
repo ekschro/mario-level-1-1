@@ -377,7 +377,7 @@
 /processorParam:TextureFormat=Color
 /build:Bowser.png
 
-#begin Open.png
+#begin movingPlatform.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -387,5 +387,5 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Open.png
+/build:movingPlatform.png
 
