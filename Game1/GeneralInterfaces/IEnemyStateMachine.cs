@@ -11,6 +11,7 @@ namespace Game1
         void ChangeDirection();
         void BeStomped();
         void BeFlipped();
+        void BeJump();
         void Update();
         bool GetDirection();
 

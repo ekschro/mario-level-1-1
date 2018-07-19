@@ -33,10 +33,11 @@ namespace Game1
             endFrame = end;
             currentFrame = startFrame;
         }
-        public void FlipSprite()
-        {
-        }
 
+        public void ChangeSpriteEffects(SpriteEffects effects)
+        {
+            //koopaShellSpriteEffects = effects;
+        }
         public void Update()
         {
             currentFrame++;

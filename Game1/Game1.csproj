@@ -103,6 +103,7 @@
     <Compile Include="Mario\Object\MarioUtility.cs" />
     <Compile Include="Mario\Object\AbstractTestMario.cs" />
     <Compile Include="Mario\Sprite\AbstractTestMarioSprite.cs" />
+    <Compile Include="LevelOpeningScreen.cs" />
     <Compile Include="PickupItem\Object\Coin.cs" />
     <Compile Include="PickupItem\Object\Fireflower.cs" />
     <Compile Include="PickupItem\Object\GreenMushroom.cs" />
@@ -197,7 +198,6 @@
     <Compile Include="TemporaryObjects\Sprites\FlippedKoopaSprite.cs" />
     <Compile Include="TemporaryObjects\Sprites\FlippedGoombaSprite.cs" />
     <Compile Include="TemporaryObjects\Sprites\CoinSprite.cs" />
-    <Compile Include="PickupItem\Sprites\EmptyPickupSprite.cs" />
     <Compile Include="PickupItem\Sprites\FireflowerSprite.cs" />
     <Compile Include="PickupItem\Sprites\GreenMushroomSprite.cs" />
     <Compile Include="PickupItem\Sprites\RedMushroonSprite.cs" />

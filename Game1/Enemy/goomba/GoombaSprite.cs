@@ -35,9 +35,10 @@ namespace Game1
             startFrame = start;
             endFrame = end;
         }
-        public void FlipSprite()
+
+        public void ChangeSpriteEffects(SpriteEffects effects)
         {
-            GoombaSpriteEffects = SpriteEffects.FlipVertically;
+            GoombaSpriteEffects = effects;
         }
         public void Update()
         {
@@ -60,9 +61,6 @@ namespace Game1
             myGame.SpriteBatch.End();
         }
 
-        public void ChangeDirectionSprite()
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

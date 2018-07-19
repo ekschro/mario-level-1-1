@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Game1
 {
@@ -10,8 +11,8 @@ namespace Game1
     {
         private IEnemySprite bowserSprite;
         private bool facingLeft = false;
-        private enum BowserHealth { Normal, Flipped, Jump, Fire };
-        private BowserHealth health = BowserHealth.Normal;
+        public enum BowserHealth { Normal, Flipped, Jump, Fire };
+        public BowserHealth health = BowserHealth.Normal;
         private EnemyUtilityClass utility;
 
         public BowserStateMachine(IEnemySprite sprite)
@@ -23,7 +24,10 @@ namespace Game1
         public void ChangeDirection()
         {
             facingLeft = !facingLeft;
-            bowserSprite.ChangeDirectionSprite();
+            if (facingLeft)
+                bowserSprite.ChangeSpriteEffects(SpriteEffects.FlipHorizontally);
+            else
+                bowserSprite.ChangeSpriteEffects(SpriteEffects.None);
         }
 
         public void BeStomped()
@@ -37,13 +41,20 @@ namespace Game1
             }
             */
         }
-
         public void BeFlipped()
         {
-            bowserSprite.FlipSprite();
+            //bowserSprite.FlipSprite();
+            bowserSprite.ChangeSpriteEffects(SpriteEffects.FlipVertically);
             if (health != BowserHealth.Flipped)
             {
                 health = BowserHealth.Flipped;
+            }
+        }
+        public void BeJump()
+        {
+            if (health != BowserHealth.Jump)
+            {
+                health = BowserHealth.Jump;
             }
         }
 

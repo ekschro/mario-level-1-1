@@ -26,23 +26,22 @@ namespace Game1
         private ILevel currentLevel;
         private LevelTransition transitionLevel;
         private LevelGameOver gameOverLevel;
+        private LevelOpeningScreen openingLevel;
         private HeadsUpDisplay headsUpDisplay;
         private SpriteBatch spriteBatch;
         private SpriteFont spriteFont;
         private bool pause;
         private bool allowControllerResponse;
-        public enum GameScreenState { Transition, GamePlay, Dead }
+        public enum GameScreenState { Transition, GamePlay, Dead, Opening }
         private GameScreenState gameState;
         public GameScreenState GameState { get=>gameState; }
         private int cyclePosition = 0;
-        private int cycleLength = 100;
+        private int cycleLength = 200;
         private int hudCounter = 0;
         public SpriteBatch SpriteBatch { get => spriteBatch; set => spriteBatch = value; }
         public SpriteFont SpriteFont { get => spriteFont; set => spriteFont = value; }
         public ILevel CurrentLevel { get => currentLevel; set => currentLevel = value; }
         public HeadsUpDisplay HeadsUpDisplay { get => headsUpDisplay; set => headsUpDisplay = value; }
-        //public LevelGameOver GameOverLevel { get => gameOverLevel; }
-        //public LevelTransition TransitionLevel { get => transitionLevel; set => transitionLevel = value; }
         //internal SoundWarehouse SoundWarehouse { get => soundWarehouse; set => soundWarehouse = value; }
         public bool Pause { get => pause; set => pause = value; }
         public int HudCounter { get => hudCounter; set => hudCounter = value; }
@@ -56,7 +55,7 @@ namespace Game1
             graphics.ApplyChanges();
             pause = false;
             Content.RootDirectory = "Content";
-            gameState = GameScreenState.Transition;
+            gameState = GameScreenState.Opening;
         }
       
         protected override void Initialize()
@@ -78,6 +77,7 @@ namespace Game1
             spriteBatch = new SpriteBatch(GraphicsDevice);
             transitionLevel = new LevelTransition(this);
             gameOverLevel = new LevelGameOver(this);
+            openingLevel = new LevelOpeningScreen(this);
             HeadsUpDisplay = new HeadsUpDisplay(this);
             textureWarehouse = new TextureWarehouse(this);
             soundWarehouse = new SoundWarehouse(this);
@@ -134,12 +134,17 @@ namespace Game1
             if (!Pause)
             {
                 cyclePosition++;
-                if (cyclePosition == cycleLength)
+                if (cyclePosition == cycleLength && gameState == GameScreenState.Opening)
+                {
+                    cyclePosition = 0;
+                    gameState = GameScreenState.Transition;
+                }
+                else if (cyclePosition == cycleLength && gameState == GameScreenState.Transition)
                 {
                     gameState = GameScreenState.GamePlay;
                 }
 
-                delta = gameTime;
+                    delta = gameTime;
                 PlatformerLevel level = (PlatformerLevel)currentLevel;
                 if (counter == 60 && !level.TimerStop)
                 {
@@ -157,9 +162,8 @@ namespace Game1
                     currentLevel.PlayerObject.TestMario.Downgrade();
                 }
                 CheckGameOver();
-                //CurrentLevel.Update();
                 HeadsUpDisplay.Update();
-                switch (GameState)
+                switch (gameState)
                 {
                     case GameScreenState.GamePlay:
                         CurrentLevel.Update();
@@ -175,8 +179,13 @@ namespace Game1
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
-            switch (GameState)
+            switch (gameState)
             {
+                case GameScreenState.Opening:
+                    HeadsUpDisplay.Draw();
+                    currentLevel.Draw();
+                    openingLevel.Draw();
+                    break;
                 case GameScreenState.Transition:
                     transitionLevel.Draw();
                     HeadsUpDisplay.Draw();

@@ -25,6 +25,7 @@ namespace Game1
         private bool dead = false;
         private IPhysics physics;
         private EnemyUtilityClass utility;
+        private int EnemyCyclePosition = 0;
 
         public Bowser(Game1 game, Vector2 location)
         {
@@ -46,9 +47,14 @@ namespace Game1
         {
             stateMachine.BeStomped();
         }
+        public void BeJumped()
+        {
+            stateMachine.BeJump();
+        }
 
         public void ChangeDirection()
         {
+            stateMachine.ChangeDirection();
         }
 
         public void Draw()
@@ -81,6 +87,14 @@ namespace Game1
                 BowserSprite.Update();
                 if (dead)
                 {
+                }
+                EnemyCyclePosition++;
+                if (EnemyCyclePosition == utility.EnemyCycleLength)
+                {
+                    EnemyCyclePosition = 0;
+                    //BeJumped();
+                    ChangeDirection();
+                    
                 }
             }
         }
