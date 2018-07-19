@@ -170,6 +170,9 @@ namespace Game1
                 case "Flag":
                     GameObject = new FlagBlock(myGame, Position);
                     break;
+                case "Bowser":
+                    GameObject = new Bowser(myGame, Position);
+                    break;
             }
             return GameObject;
         }

@@ -92,6 +92,9 @@
     <Compile Include="Collision\CollisionUtilityClass.cs" />
     <Compile Include="Collision\CollisionDetectionLogic.cs" />
     <Compile Include="Controllers\ControllerUtilityClass.cs" />
+    <Compile Include="Enemy\boswer\Boswer.cs" />
+    <Compile Include="Enemy\boswer\BowserSprite.cs" />
+    <Compile Include="Enemy\boswer\BowserStateMachine.cs" />
     <Compile Include="Enemy\EnemyUtilityClass.cs" />
     <Compile Include="LevelGameOver.cs" />
     <Compile Include="MarioSpriteUtility.cs" />
