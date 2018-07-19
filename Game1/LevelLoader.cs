@@ -158,6 +158,9 @@ namespace Game1
                 case "BottomRightPipeBlock":
                     GameObject = new BottomRightPipeBlock(myGame, Position);
                     break;
+                case "MovingPlatform":
+                    GameObject = new MovingBlock(Position, 10, myGame);
+                    break;
                 case "PipeOnSide":
                     GameObject = new PipeOnSideBlock(myGame, Position);
                     break;
