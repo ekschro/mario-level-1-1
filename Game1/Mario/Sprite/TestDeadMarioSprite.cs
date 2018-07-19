@@ -34,6 +34,8 @@ namespace Game1
             bounceTimer = 2 * ((bounceVelocity * bounceVelocity) / bounceGravity);
 
             Microsoft.Xna.Framework.Media.MediaPlayer.Play(SoundWarehouse.died_theme);
+
+            game.Pause = true;
         }
         public void ChangeFrame(int start, int end)
         {
