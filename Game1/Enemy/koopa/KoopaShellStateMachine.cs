@@ -48,5 +48,9 @@ namespace Game1
             return facingLeft;
         }
 
+        public void BeJump()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

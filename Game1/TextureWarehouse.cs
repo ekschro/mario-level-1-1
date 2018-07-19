@@ -21,6 +21,7 @@ namespace Game1 {
         public static Texture2D blueBrickBlockTexture;
         public static Texture2D pipeOnSideBlockTexture;
         public static Texture2D bowserTexture;
+        public static Texture2D openTexture;
 
 
         Game1 myGame;
@@ -45,6 +46,7 @@ namespace Game1 {
             blueBrickBlockTexture = myGame.Content.Load<Texture2D>("blueBrick");
             pipeOnSideBlockTexture = myGame.Content.Load<Texture2D>("pipeOnSide");
             bowserTexture = myGame.Content.Load<Texture2D>("Bowser");
+            openTexture = myGame.Content.Load<Texture2D>("Open");
         }
     }
 }

@@ -18,8 +18,6 @@ namespace Game1
         public IEnemySprite GoombaSprite { get => goombaSprite; set => goombaSprite = value; }
         private GoombaStateMachine stateMachine;
         public IEnemyStateMachine StateMachine { get => stateMachine; }
-        //private int cyclePosition = 0;
-        //private int cycleLength = 8;
         private Vector2 goombaLocation;
         private Vector2 goombaOriginalLocation;
         public bool IsStomped { get; set; }

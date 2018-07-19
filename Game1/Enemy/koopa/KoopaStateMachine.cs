@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Game1
 {
@@ -25,10 +26,8 @@ namespace Game1
             {
                 facingLeft = !facingLeft;
                 if (facingLeft == false)
-                    //koopaSprite.ChangeFrame(0, 2);
                     koopaSprite.ChangeFrame(utility.KoopaRightStartFrame, utility.KoopaRightEndFrame);
                 else
-                    //koopaSprite.ChangeFrame(2, 4);
                     koopaSprite.ChangeFrame(utility.KoopaLeftStartFrame, utility.KoopaLeftEndFrame);
                 health = KoopaHealth.Normal;
             }
@@ -40,9 +39,7 @@ namespace Game1
 
         public void BeStomped()
         {
-            //koopaSprite.ChangeFrame(4, 6);
             koopaSprite.ChangeFrame(utility.KoopaShellStartFrame, utility.KoopaShellEndFrame);
-            //koopaSprite.ChangeFrame(5, 6);
             koopaSprite.ChangeFrame(5, utility.KoopaShellEndFrame);
             if (health != KoopaHealth.Stomped) 
             {
@@ -52,7 +49,8 @@ namespace Game1
 
         public void BeFlipped()
         {
-            koopaSprite.FlipSprite();
+            //koopaSprite.FlipSprite();
+            koopaSprite.ChangeSpriteEffects(SpriteEffects.FlipVertically);
             if (health != KoopaHealth.Flipped)
             {
                 health = KoopaHealth.Flipped;
@@ -67,5 +65,9 @@ namespace Game1
             return facingLeft;
         }
 
+        public void BeJump()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
