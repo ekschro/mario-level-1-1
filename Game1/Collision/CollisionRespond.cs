@@ -553,20 +553,6 @@ namespace Game1
                 player.TestMario.Downgrade();
                 player.Invulnerability = true;
             }
-            /*if (player.TestMario is TestFireMario)
-            {
-                player.TestMario = new TestBigMario(myGame, new Vector2(player.CurrentXPos, player.CurrentYPos), (Mario)player);
-            }
-            else if (!(player.TestMario is TestSmallMario))
-            {
-                player.TestMario = new TestSmallMario(myGame, new Vector2(player.CurrentXPos, player.CurrentYPos), (Mario)player);
-                player.Invulnerability = true;
-            }
-            else
-            {
-                player.TestMario = new TestDeadMario(myGame, new Vector2(player.CurrentXPos, player.CurrentYPos), (Mario)player);
-            }
-            */
         }
 
         public void Update()
