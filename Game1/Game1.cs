@@ -65,7 +65,7 @@ namespace Game1
             controllerList.Add(new KeyboardController(this));
             controllerList.Add(new GamePadController(this));
             allowControllerResponse = true;
-            persistentData = new PersistentData();
+            persistentData = new PersistentData(this);
             //mouseController = new MouseController(this);
             
             base.Initialize();
@@ -105,7 +105,7 @@ namespace Game1
             gameState = GameScreenState.Transition;
             cyclePosition = 0;
             allowControllerResponse = true;
-            persistentData = new PersistentData();
+            persistentData = new PersistentData(this);
             CurrentLevel = new PlatformerLevel("../../../../Content/LevelInfo.csv", this, persistentData);
             pause = false;
             currentLevel.PlayerObject.Invulnerability = false;
@@ -179,6 +179,7 @@ namespace Game1
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
+
             switch (gameState)
             {
                 case GameScreenState.Opening:

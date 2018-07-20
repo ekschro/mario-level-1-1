@@ -6,5 +6,6 @@
         bool MovingUp { get; set; }
         bool MovingRight { get; set; }
         bool MovingLeft { get; set; }
+        bool FireBallHeld { get; set; }
     }
 }

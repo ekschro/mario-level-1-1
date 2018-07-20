@@ -46,6 +46,7 @@ namespace Game1
             myGame.SpriteBatch.Draw(TextureWarehouse.flippedGoomba, destinationRectangle, sourceRectangle, Color.White);
             myGame.SpriteBatch.End();
         }
+
         public void Bounce()
         {
             bounceVelocity += bounceGravity;
