@@ -9,7 +9,8 @@ namespace Game1
         //private IControllerHandler controllerHandler;
         private IPlayer player;
         private bool falling;
-
+        private bool jumping;
+        public bool IsJumping { get => jumping; }
         public bool IsFalling { get => falling; set => falling = value; }
         private int currentFrame;
         public MarioFireBall(Game1 game)

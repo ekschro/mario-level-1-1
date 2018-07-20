@@ -19,6 +19,7 @@ namespace Game1
         bool GetDead();
         IEnemyStateMachine StateMachine { get; }
         bool IsFalling { get; set; }
+        bool IsJumping { get; }
         bool IsStomped { get; set; }
     }
 }

@@ -12,8 +12,10 @@ namespace Game1
         public float CurrentXPos { get => bowserLocation.X; set => bowserLocation.X = value; }
         public float CurrentYPos { get => bowserLocation.Y; set => bowserLocation.Y = value; }
         private bool falling;
+        private bool jumping;
         public bool MovingRight { get; set; }
         public bool IsFalling { get => falling; set => falling = value; }
+        public bool IsJumping { get => jumping; }
         private IEnemySprite bowserSprite;
         public IEnemySprite BowserSprite { get => bowserSprite; set => bowserSprite = value; }
         private IEnemyStateMachine stateMachine;
@@ -36,6 +38,7 @@ namespace Game1
             stateMachine = new BowserStateMachine(BowserSprite);
             physics = new EnemyPhysics(game, this, 1);
             falling = true;
+            jumping = false;
         }
 
         public void BeFlipped()
@@ -50,6 +53,7 @@ namespace Game1
         public void BeJumped()
         {
             stateMachine.BeJump();
+            jumping = true;
         }
 
         public void ChangeDirection()
@@ -88,14 +92,16 @@ namespace Game1
                 if (dead)
                 {
                 }
+                /*
                 EnemyCyclePosition++;
                 if (EnemyCyclePosition == utility.EnemyCycleLength)
                 {
                     EnemyCyclePosition = 0;
-                    //BeJumped();
-                    ChangeDirection();
+                    BeJumped();
+                    //ChangeDirection();
                     
                 }
+                */
             }
         }
 
