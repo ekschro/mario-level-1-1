@@ -88,13 +88,14 @@
     <Compile Include="Blocks\Sprites\BlueStoneBlockSprite.cs" />
     <Compile Include="Blocks\Sprites\PipeOnSideBlockSprite.cs" />
     <Compile Include="Blocks\Sprites\TopWarpPipeBlockSprite.cs" />
+    <Compile Include="BowserThinking.cs" />
     <Compile Include="CameraStatic.cs" />
     <Compile Include="MovingBlockSprite.cs" />
     <Compile Include="MovingBlock.cs" />
     <Compile Include="Collision\CollisionUtilityClass.cs" />
     <Compile Include="Collision\CollisionDetectionLogic.cs" />
     <Compile Include="Controllers\ControllerUtilityClass.cs" />
-    <Compile Include="Enemy\boswer\Bowser.cs" />
+    <Compile Include="Enemy\boswer\Boswer.cs" />
     <Compile Include="Enemy\boswer\BowserSprite.cs" />
     <Compile Include="Enemy\boswer\BowserStateMachine.cs" />
     <Compile Include="Enemy\EnemyUtilityClass.cs" />
