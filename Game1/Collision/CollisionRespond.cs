@@ -72,8 +72,9 @@ namespace Game1
             if (block is BrickBlock && !(player.TestMario.StateMachine is TestSmallMarioStateMachine))
             {
                 SoundWarehouse.breakblock.Play();
+                objectLevel.PersistentData.BlockDestroyPoints(block.GetGameObjectLocation());
                 objectLevel.BlockObjects.Remove(block);
-                objectLevel.PersistentData.BlockDestroyPoints();
+                
             }
             else if (block is QuestionPowerUpBlock)
             {
@@ -88,10 +89,11 @@ namespace Game1
             else if (block is QuestionCoinBlock)
             {
                 SoundWarehouse.coin.Play();
+                objectLevel.PersistentData.CoinCollectedPoints(block.GetGameObjectLocation());
                 objectLevel.BlockObjects.Remove(block);
                 objectLevel.BlockObjects.Add(new UsedBlock(myGame, block.GetGameObjectLocation()));
                 objectLevel.TemporaryObjects.Add(new Coin(myGame, block.GetGameObjectLocation()));
-                objectLevel.PersistentData.CoinCollectedPoints();
+                
             }
             else if (block is BrickBlockWithStar)
             {
@@ -112,17 +114,17 @@ namespace Game1
                 if (((BrickBlockWithManyCoins)block).CoinsLeft > 1)
                 {
                     SoundWarehouse.coin.Play();
+                    objectLevel.PersistentData.CoinCollectedPoints(block.GetGameObjectLocation());
                     objectLevel.TemporaryObjects.Add(new Coin(myGame, block.GetGameObjectLocation()));
                     ((BrickBlockWithManyCoins)block).CoinsLeft--;
                     ((BrickBlockWithManyCoins)block).Bounce();
-                    objectLevel.PersistentData.CoinCollectedPoints();
                 }
                 else
                 {
                     objectLevel.TemporaryObjects.Add(new Coin(myGame, block.GetGameObjectLocation()));
+                    objectLevel.PersistentData.CoinCollectedPoints(block.GetGameObjectLocation());
                     objectLevel.BlockObjects.Remove(block);
                     objectLevel.BlockObjects.Add(new UsedBlock(myGame, block.GetGameObjectLocation()));
-                    objectLevel.PersistentData.CoinCollectedPoints();
                 }
             }
 
@@ -175,7 +177,7 @@ namespace Game1
                 myGame.AllowControllerResponse = false;
                 PlatformerLevel temp2 = (PlatformerLevel)myGame.CurrentLevel;
                 temp2.TimerStop = true;
-                objectLevel.PersistentData.KoopaFireOrStarPoints();             //CHANGE THIS LATER
+                objectLevel.PersistentData.KoopaFireOrStarPoints(block.GetGameObjectLocation());             //CHANGE THIS LATER
             }
             else if (block is PipeOnSideBlock && controllerHandler.MovingRight)
             {
@@ -193,7 +195,7 @@ namespace Game1
             enemy.BeStomped();
             SoundWarehouse.stomp.Play();
             ((Mario)player).KilledNum += 1;
-            objectLevel.PersistentData.EnemyStompedPoints(((Mario)player).KilledNum);
+            objectLevel.PersistentData.EnemyStompedPoints(((Mario)player).KilledNum,enemy.GetGameObjectLocation());
 
             if (enemy is Goomba)
             {
@@ -307,9 +309,9 @@ namespace Game1
             }   
             else if (otherEnemy is KoopaShell)
             {
+                myGame.persistentData.KoopaShell((KoopaShell)otherEnemy, enemy.GetGameObjectLocation());
                 objectLevel.EnemyObjects.Remove(enemy);
                 ((KoopaShell)otherEnemy).KilledNum += 1;
-                myGame.persistentData.KoopaShell((KoopaShell)otherEnemy);
             }
 
             //enemy.ChangeDirection();
@@ -323,17 +325,18 @@ namespace Game1
                 enemy.SetGameObjectLocation(new Vector2(x, y));
                 enemy.ChangeDirection(true);
             }
+
             if (enemy is MarioFireBall || otherEnemy is MarioFireBall)
             {
                 CreateFlippedEnemy(enemy);
             }
+
             else if (otherEnemy is KoopaShell)
             {
+                myGame.persistentData.KoopaShell((KoopaShell)otherEnemy, enemy.GetGameObjectLocation());
                 objectLevel.EnemyObjects.Remove(enemy);
                 ((KoopaShell)otherEnemy).KilledNum += 1;
-                myGame.persistentData.KoopaShell((KoopaShell)otherEnemy);
             }
-
             //enemy.ChangeDirection();
         }
 
@@ -367,28 +370,28 @@ namespace Game1
             if (pickup is Fireflower)
             {
                 player.TestMario = new TestFireMario(myGame, new Vector2(player.CurrentXPos, player.CurrentYPos), (Mario)player);
-                objectLevel.PersistentData.PowerUpCollectPoints();
+                objectLevel.PersistentData.PowerUpCollectPoints(pickup.GetGameObjectLocation());
                 SoundWarehouse.powerup.Play();
             }
             else if (pickup is GreenMushroom)
             {
-                objectLevel.PersistentData.OneUpLives();
+                objectLevel.PersistentData.OneUpLives(pickup.GetGameObjectLocation());
             }
             else if (pickup is RedMushroom)
             {
                 if (!(player.TestMario is TestFireMario))
                     player.TestMario = new TestBigMario(myGame, new Vector2(player.CurrentXPos, player.CurrentYPos), (Mario)player);
-                objectLevel.PersistentData.PowerUpCollectPoints();
+                objectLevel.PersistentData.PowerUpCollectPoints(pickup.GetGameObjectLocation());
                 SoundWarehouse.powerup.Play();
             }
             else if (pickup is CoinPickup)
             {
                 SoundWarehouse.coin.Play();
-                objectLevel.PersistentData.CoinCollectedPoints();
+                objectLevel.PersistentData.CoinCollectedPoints(pickup.GetGameObjectLocation());
             }
             else if (pickup is Star)
             {
-                objectLevel.PersistentData.PowerUpCollectPoints();
+                objectLevel.PersistentData.PowerUpCollectPoints(pickup.GetGameObjectLocation());
                 SoundWarehouse.powerup.Play();
                 MediaPlayer.Play(SoundWarehouse.star_theme);
                 objectLevel.PlayerObject.IsStar = true;
@@ -403,19 +406,19 @@ namespace Game1
         {
             if (pickup is Fireflower)
             {
-                objectLevel.PersistentData.PowerUpCollectPoints();
+                objectLevel.PersistentData.PowerUpCollectPoints(pickup.GetGameObjectLocation());
                 SoundWarehouse.powerup.Play();
                 player.TestMario = new TestFireMario(myGame, new Vector2(player.CurrentXPos, player.CurrentYPos), (Mario)player);
             }
             else if (pickup is GreenMushroom)
             {
-                objectLevel.PersistentData.PowerUpCollectPoints();
+                objectLevel.PersistentData.PowerUpCollectPoints(pickup.GetGameObjectLocation());
                 SoundWarehouse.powerup.Play();
-                objectLevel.PersistentData.OneUpLives();
+                objectLevel.PersistentData.OneUpLives(pickup.GetGameObjectLocation());
             }
             else if (pickup is RedMushroom)
             {
-                objectLevel.PersistentData.PowerUpCollectPoints();
+                objectLevel.PersistentData.PowerUpCollectPoints(pickup.GetGameObjectLocation());
                 SoundWarehouse.powerup.Play();
                 if (!(player.TestMario is TestFireMario))
                 {
@@ -426,11 +429,11 @@ namespace Game1
             else if (pickup is CoinPickup)
             {
                 SoundWarehouse.coin.Play();
-                objectLevel.PersistentData.CoinCollectedPoints();
+                objectLevel.PersistentData.CoinCollectedPoints(pickup.GetGameObjectLocation());
             }
             else if (pickup is Star)
             {
-                objectLevel.PersistentData.PowerUpCollectPoints();
+                objectLevel.PersistentData.PowerUpCollectPoints(pickup.GetGameObjectLocation());
                 SoundWarehouse.powerup.Play();
                 MediaPlayer.Play(SoundWarehouse.star_theme);
                 objectLevel.PlayerObject.IsStar = true;
@@ -453,19 +456,19 @@ namespace Game1
         {
             if (pickup is Fireflower)
             {
-                objectLevel.PersistentData.PowerUpCollectPoints();
+                objectLevel.PersistentData.PowerUpCollectPoints(pickup.GetGameObjectLocation());
                 SoundWarehouse.powerup.Play();
                 player.TestMario = new TestFireMario(myGame, new Vector2(player.CurrentXPos, player.CurrentYPos), (Mario)player);
             }
             else if (pickup is GreenMushroom)
             {
-                objectLevel.PersistentData.PowerUpCollectPoints();
+                objectLevel.PersistentData.PowerUpCollectPoints(pickup.GetGameObjectLocation());
                 SoundWarehouse.powerup.Play();
-                objectLevel.PersistentData.OneUpLives();
+                objectLevel.PersistentData.OneUpLives(pickup.GetGameObjectLocation());
             }
             else if (pickup is RedMushroom)
             {
-                objectLevel.PersistentData.PowerUpCollectPoints();
+                objectLevel.PersistentData.PowerUpCollectPoints(pickup.GetGameObjectLocation());
                 SoundWarehouse.powerup.Play();
                 if (!(player.TestMario is TestFireMario))
                     player.TestMario = new TestBigMario(myGame, new Vector2(player.CurrentXPos, player.CurrentYPos), (Mario)player);
@@ -473,11 +476,11 @@ namespace Game1
             else if (pickup is CoinPickup)
             {
                 SoundWarehouse.coin.Play();
-                objectLevel.PersistentData.CoinCollectedPoints();
+                objectLevel.PersistentData.CoinCollectedPoints(pickup.GetGameObjectLocation());
             }
             else if (pickup is Star)
             {
-                objectLevel.PersistentData.PowerUpCollectPoints();
+                objectLevel.PersistentData.PowerUpCollectPoints(pickup.GetGameObjectLocation());
                 SoundWarehouse.powerup.Play();
                 MediaPlayer.Play(SoundWarehouse.star_theme);
                 objectLevel.PlayerObject.IsStar = true;
@@ -493,19 +496,19 @@ namespace Game1
 
             if (pickup is Fireflower)
             {
-                objectLevel.PersistentData.PowerUpCollectPoints();
+                objectLevel.PersistentData.PowerUpCollectPoints(pickup.GetGameObjectLocation());
                 SoundWarehouse.powerup.Play();
                 player.TestMario = new TestFireMario(myGame, new Vector2(player.CurrentXPos, player.CurrentYPos), (Mario)player);
             }
             else if (pickup is GreenMushroom)
             {
-                objectLevel.PersistentData.PowerUpCollectPoints();
+                objectLevel.PersistentData.PowerUpCollectPoints(pickup.GetGameObjectLocation());
                 SoundWarehouse.powerup.Play();
-                objectLevel.PersistentData.OneUpLives();
+                objectLevel.PersistentData.OneUpLives(pickup.GetGameObjectLocation());
             }
             else if (pickup is RedMushroom)
             {
-                objectLevel.PersistentData.PowerUpCollectPoints();
+                objectLevel.PersistentData.PowerUpCollectPoints(pickup.GetGameObjectLocation());
                 SoundWarehouse.powerup.Play();
                 if (!(player.TestMario is TestFireMario))
                     player.TestMario = new TestBigMario(myGame, new Vector2(player.CurrentXPos, player.CurrentYPos), (Mario)player);
@@ -513,11 +516,11 @@ namespace Game1
             else if (pickup is CoinPickup)
             {
                 SoundWarehouse.coin.Play();
-                objectLevel.PersistentData.CoinCollectedPoints();
+                objectLevel.PersistentData.CoinCollectedPoints(pickup.GetGameObjectLocation());
             }
             else if (pickup is Star)
             {
-                objectLevel.PersistentData.PowerUpCollectPoints();
+                objectLevel.PersistentData.PowerUpCollectPoints(pickup.GetGameObjectLocation());
                 SoundWarehouse.powerup.Play();
                 MediaPlayer.Play(SoundWarehouse.star_theme);
                 objectLevel.PlayerObject.IsStar = true;
@@ -573,12 +576,12 @@ namespace Game1
             if (enemy is Goomba)
             {
                 objectLevel.TemporaryObjects.Add(new FlippedGoomba(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
-                objectLevel.PersistentData.EnemyStompedPoints(1);
+                objectLevel.PersistentData.EnemyStompedPoints(1,enemy.GetGameObjectLocation());
             }
             else if (enemy is Koopa)
             {
                 objectLevel.TemporaryObjects.Add(new FlippedKoopa(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
-                objectLevel.PersistentData.KoopaFireOrStarPoints();
+                objectLevel.PersistentData.KoopaFireOrStarPoints(enemy.GetGameObjectLocation());
             }
         }
     }

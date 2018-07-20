@@ -90,6 +90,7 @@
     <Compile Include="Blocks\Sprites\TopWarpPipeBlockSprite.cs" />
     <Compile Include="BowserThinking.cs" />
     <Compile Include="CameraStatic.cs" />
+    <Compile Include="HUDPoints.cs" />
     <Compile Include="MovingBlockSprite.cs" />
     <Compile Include="MovingBlock.cs" />
     <Compile Include="Collision\CollisionUtilityClass.cs" />
