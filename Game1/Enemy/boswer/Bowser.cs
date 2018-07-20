@@ -17,7 +17,6 @@ namespace Game1
         public bool IsFalling { get => falling; set => falling = value; }
         public bool IsJumping { get => jumping; }
         private IEnemySprite bowserSprite;
-        public IEnemySprite BowserSprite { get => bowserSprite; set => bowserSprite = value; }
         private IEnemyStateMachine stateMachine;
         public IEnemyStateMachine StateMachine { get => stateMachine; }
         private Vector2 bowserLocation;
@@ -27,7 +26,6 @@ namespace Game1
         private bool dead = false;
         private IPhysics physics;
         private EnemyUtilityClass utility;
-        private int EnemyCyclePosition = 0;
         //private IPlayer player;
         private Game1 myGame;
 
@@ -36,8 +34,8 @@ namespace Game1
             utility = new EnemyUtilityClass();
             bowserLocation = location;
             bowserOriginalLocation = location;
-            BowserSprite = new BowserSprite(game, this);
-            stateMachine = new BowserStateMachine(BowserSprite);
+            bowserSprite = new BowserSprite(game, this);
+            stateMachine = new BowserStateMachine(bowserSprite);
             physics = new EnemyPhysics(game, this, 1);
             falling = true;
             jumping = false;
@@ -66,7 +64,7 @@ namespace Game1
 
         public void Draw()
         {
-            BowserSprite.Draw();
+            bowserSprite.Draw();
         }
 
         public Vector2 GetGameObjectLocation()
@@ -87,34 +85,36 @@ namespace Game1
             physics.Update();
             falling = true;
             utility.EnemyupCyclePosition++;
-            if (utility.EnemyupCyclePosition == utility.EnemyCycleLength && dead!=true)
+            if (utility.EnemyupCyclePosition == utility.BowserCycleLength && dead!=true)
             {
                 utility.EnemyupCyclePosition = 0;
                 stateMachine.Update();
-                BowserSprite.Update();
-                
-            }
-            if (myGame.CurrentLevel.PlayerObject.CanJump && !myGame.CurrentLevel.PlayerObject.Falling)
-            {
-                BeJumped();
-            }
-            else if (myGame.CurrentLevel.PlayerObject.CurrentXPos > CurrentXPos)
-            {
-                ChangeDirection(true);
-            }
-            else if(myGame.CurrentLevel.PlayerObject.CurrentXPos < CurrentYPos)
-            {
-                ChangeDirection(false);
+                bowserSprite.Update();
+                BowserThinking();
             }
             
-
-
-
         }
 
         public bool GetDead()
         {
             return dead;
+        }
+        private void BowserThinking()
+        {
+            if (myGame.controllerHandler.MovingUp)
+            {
+                BeJumped();
+            }
+            else if (myGame.CurrentLevel.PlayerObject.CurrentXPos > CurrentXPos && !myGame.controllerHandler.MovingUp)
+            {
+                jumping = false;
+                ChangeDirection(true);
+            }
+            else if (myGame.CurrentLevel.PlayerObject.CurrentXPos < CurrentYPos && !myGame.controllerHandler.MovingUp)
+            {
+                jumping = false;
+                ChangeDirection(false);
+            }
         }
     }
 }
