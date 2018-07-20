@@ -21,6 +21,8 @@ namespace Game1
             controllerHandler.MovingUp = false;
             controllerHandler.MovingRight = false;
             controllerHandler.MovingLeft = false;
+            controllerHandler.FireBallHeld = false;
+
         }
     }
 }

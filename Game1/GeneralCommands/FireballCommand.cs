@@ -13,31 +13,33 @@ namespace Game1
 {
     public class FireballCommand : ICommand
     {
-        //private int 
-        
         private Game1 myGame;
+        private IControllerHandler controllerHandler;
         private IPlayer player;
+        private bool buttonDown = false;
 
         public FireballCommand(Game1 game)
         {
             myGame = game;
+            controllerHandler = game.controllerHandler;
         }
 
         public void Execute()
         {
-            player = myGame.CurrentLevel.PlayerObject;
-            if (myGame.CurrentLevel.PlayerObject is Mario)
-            {
-                ((MarioPhysics)(Mario.physics)).RunningCheck();
-            }
+            controllerHandler.FireBallHeld = true;
+            //if (myGame.CurrentLevel.PlayerObject is Mario)
+            //{
+            //    ((MarioPhysics)(Mario.physics)).RunningCheck();
+            //}
             
-            if (player.TestMario.StateMachine is TestFireMarioStateMachine)
-            {
-                if (((Mario)player).FireBallTimer == 0) {
-                    myGame.CurrentLevel.EnemyObjects.Add(new MarioFireBall(myGame));
-                    ((Mario)player).FireBallTimer = 30;
-                }
-            }
+            //if (player.TestMario.StateMachine is TestFireMarioStateMachine)
+            //{
+            //    if (((Mario)player).FireBallTimer == 0 && !buttonDown) {
+            //        myGame.CurrentLevel.EnemyObjects.Add(new MarioFireBall(myGame));
+            //        ((Mario)player).FireBallTimer = 10;
+            //        buttonDown = true;
+            //    }
+            //}
         }
 
     }

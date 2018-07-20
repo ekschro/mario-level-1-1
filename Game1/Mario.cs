@@ -6,7 +6,7 @@ namespace Game1
     public class Mario : IPlayer
     {
         private IControllerHandler controllerHandler;
-        //private Game1 myGame;
+        private Game1 myGame;
         //private int animationTimer;
         private int killedNum = 0;
         private ITestMario testMario;
@@ -34,6 +34,7 @@ namespace Game1
         public bool Bounce { get; set; }
         private bool play;
         private bool starStopped = false;
+        private bool buttonDown;
 
         public bool CanJump { get; set; }
         public bool IsStar { get => isStar; set => isStar = value; }
@@ -46,7 +47,7 @@ namespace Game1
 
         public Mario(Game1 game, Vector2 vector)
         {
-            //myGame = game;
+            myGame = game;
             controllerHandler = game.controllerHandler;
             physics = new MarioPhysics(game,this,2);
             CurrentXPos = vector.X;
@@ -97,8 +98,12 @@ namespace Game1
             if (CanJump)
                 play = true;
 
-            if (fireballTimer > 0)
-                fireballTimer--;
+            //if (fireballTimer > 0)
+            //    fireballTimer--;
+            if (controllerHandler.FireBallHeld)
+                fireBall();
+            else
+                buttonDown = false;
         }
 
         public Vector2 GetGameObjectLocation()
@@ -141,6 +146,24 @@ namespace Game1
             else
             {
                 MarioColor = Color.White;
+            }
+        }
+
+        private void fireBall()
+        {
+            //if (game.CurrentLevel.PlayerObject is Mario)
+            //{
+                physics.RunningCheck();
+            //}
+
+            if (this.TestMario.StateMachine is TestFireMarioStateMachine)
+            {
+                if (/*FireBallTimer == 0 &&*/ !buttonDown)
+                {
+                    myGame.CurrentLevel.EnemyObjects.Add(new MarioFireBall(myGame));
+                    //FireBallTimer = 10;
+                    buttonDown = true;
+                }
             }
         }
 
