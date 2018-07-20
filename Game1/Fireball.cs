@@ -124,7 +124,7 @@ namespace Game1
             return new Vector2(this.CurrentXPos, this.CurrentYPos);
         }
 
-        public void ChangeDirection()
+        public void ChangeDirection(bool left)
         {
            
         }

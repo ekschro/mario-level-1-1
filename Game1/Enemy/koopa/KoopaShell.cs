@@ -61,9 +61,9 @@ namespace Game1
             dead = !dead;
         }
 
-        public void ChangeDirection()
+        public void ChangeDirection(bool faceLeft)
         {
-            stateMachine.ChangeDirection();
+            stateMachine.ChangeDirection(true);
         }
 
         public void Draw()

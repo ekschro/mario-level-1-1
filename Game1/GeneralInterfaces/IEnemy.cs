@@ -10,7 +10,7 @@ namespace Game1
     public interface IEnemy : IGameObject
     {
         Vector2 GameOriginalLocation();
-        void ChangeDirection();
+        void ChangeDirection(bool faceLeft);
         void BeStomped();
         void BeFlipped();
         void SetGameObjectLocation(Vector2 x);

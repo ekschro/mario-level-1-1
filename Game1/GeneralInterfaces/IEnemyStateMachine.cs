@@ -8,7 +8,7 @@ namespace Game1
 {
     public interface IEnemyStateMachine
     {
-        void ChangeDirection();
+        void ChangeDirection(bool left);
         void BeStomped();
         void BeFlipped();
         void BeJump();
