@@ -27,6 +27,8 @@ namespace Game1
         public float CurrentXPos { get => location2.X; set => location2.X = value; }
         public float CurrentYPos { get => location2.Y; set => location2.Y = value; }
 
+        public bool IsJumping => throw new NotImplementedException();
+
         public void BeFlipped()
         {
             
@@ -73,6 +75,11 @@ namespace Game1
             {
                 fireEnemy[i].Update();
             }
+        }
+
+        public void ChangeDirection(bool faceLeft)
+        {
+            throw new NotImplementedException();
         }
     }
 }
