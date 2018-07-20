@@ -57,7 +57,6 @@ namespace Game1
                     if (controllerMappings.ContainsKey(key))
                     {
                         controllerMappings[key].Execute();
-                        //recentKeys.Add(key);
                     }
                     else if (key.Equals(Keys.P))
                     {

@@ -6,7 +6,7 @@ namespace Game1
     public class Mario : IPlayer
     {
         private IControllerHandler controllerHandler;
-        //private Game1 myGame;
+        private Game1 myGame;
         //private int animationTimer;
         private int killedNum = 0;
         private ITestMario testMario;
@@ -19,12 +19,8 @@ namespace Game1
         private static int totalMarioRows = 3;
         private static int colorStartingTime;
         private static int colorTimer;
-        private int fireballTimer;
         private bool isStar = false;
         private bool invulnerability = false;
-        //private bool fireBallTimerRun = true;
-
-        //public ISprite MarioSprite { get => playerSprite; set => playerSprite = value; }
         public Color MarioColor { get => marioColor; set => marioColor = value; }
         public float CurrentXPos { get => currentXPosition; set => currentXPosition = value; }
         public float CurrentYPos { get => currentYPosition; set => currentYPosition = value; }
@@ -34,34 +30,30 @@ namespace Game1
         public bool Bounce { get; set; }
         private bool play;
         private bool starStopped = false;
+        private bool fireButton;
 
         public bool CanJump { get; set; }
         public bool IsStar { get => isStar; set => isStar = value; }
         public bool Invulnerability { get => invulnerability; set => invulnerability = value; }
         public int TotalMarioRows { get => totalMarioRows; set => totalMarioRows = value; }
         public int TotalMarioColumns { get => totalMarioColumns; set => totalMarioColumns = value; }
-        public int FireBallTimer { get => fireballTimer; set => fireballTimer = value; }
         public int KilledNum { get => killedNum; set => killedNum = value; }
         public ITestMario TestMario { get => testMario; set => testMario = value; }
 
         public Mario(Game1 game, Vector2 vector)
         {
-            //myGame = game;
+            myGame = game;
             controllerHandler = game.controllerHandler;
             physics = new MarioPhysics(game,this,2);
             CurrentXPos = vector.X;
             CurrentYPos = vector.Y;
             MarioColor = Color.White;
-            
             colorStartingTime = 5;
             colorTimer = 0;
-            //animationTimer = 0;
-            fireballTimer = 0;
             testMario = new TestSmallMario(game, vector, this);
             CanJump = true;
             Falling = false;
             Bounce = false;
-            //play = true;
         }
 
         public void Draw()
@@ -97,8 +89,10 @@ namespace Game1
             if (CanJump)
                 play = true;
 
-            if (fireballTimer > 0)
-                fireballTimer--;
+            if (controllerHandler.FireBallHeld)
+                fireBall();
+            else
+                fireButton = false;
         }
 
         public Vector2 GetGameObjectLocation()
@@ -141,6 +135,20 @@ namespace Game1
             else
             {
                 MarioColor = Color.White;
+            }
+        }
+
+        private void fireBall()
+        {
+            physics.RunningCheck();
+
+            if (this.TestMario.StateMachine is TestFireMarioStateMachine)
+            {
+                if (!fireButton)
+                {
+                    myGame.CurrentLevel.EnemyObjects.Add(new MarioFireBall(myGame));
+                    fireButton = true;
+                }
             }
         }
 
