@@ -88,6 +88,7 @@
     <Compile Include="Blocks\Sprites\BlueStoneBlockSprite.cs" />
     <Compile Include="Blocks\Sprites\PipeOnSideBlockSprite.cs" />
     <Compile Include="Blocks\Sprites\TopWarpPipeBlockSprite.cs" />
+    <Compile Include="BowserThinking.cs" />
     <Compile Include="CameraStatic.cs" />
     <Compile Include="MovingBlockSprite.cs" />
     <Compile Include="MovingBlock.cs" />

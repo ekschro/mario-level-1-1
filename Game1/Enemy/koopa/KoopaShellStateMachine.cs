@@ -20,7 +20,7 @@ namespace Game1
             koopaSprite = sprite;
         }
 
-        public void ChangeDirection()
+        public void ChangeDirection(bool left)
         {
             facingLeft = !facingLeft;
             

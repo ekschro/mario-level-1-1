@@ -28,6 +28,8 @@ namespace Game1
         private IPhysics physics;
         private EnemyUtilityClass utility;
         private int EnemyCyclePosition = 0;
+        //private IPlayer player;
+        private Game1 myGame;
 
         public Bowser(Game1 game, Vector2 location)
         {
@@ -39,6 +41,7 @@ namespace Game1
             physics = new EnemyPhysics(game, this, 1);
             falling = true;
             jumping = false;
+            myGame=game;
         }
 
         public void BeFlipped()
@@ -56,9 +59,9 @@ namespace Game1
             jumping = true;
         }
 
-        public void ChangeDirection()
+        public void ChangeDirection(bool faceLeft)
         {
-            stateMachine.ChangeDirection();
+            stateMachine.ChangeDirection(faceLeft);
         }
 
         public void Draw()
@@ -84,25 +87,29 @@ namespace Game1
             physics.Update();
             falling = true;
             utility.EnemyupCyclePosition++;
-            if (utility.EnemyupCyclePosition == utility.EnemyCycleLength)
+            if (utility.EnemyupCyclePosition == utility.EnemyCycleLength && dead!=true)
             {
                 utility.EnemyupCyclePosition = 0;
                 stateMachine.Update();
                 BowserSprite.Update();
-                if (dead)
-                {
-                }
-                /*
-                EnemyCyclePosition++;
-                if (EnemyCyclePosition == utility.EnemyCycleLength)
-                {
-                    EnemyCyclePosition = 0;
-                    BeJumped();
-                    //ChangeDirection();
-                    
-                }
-                */
+                
             }
+            if (myGame.CurrentLevel.PlayerObject.CanJump && !myGame.CurrentLevel.PlayerObject.Falling)
+            {
+                BeJumped();
+            }
+            else if (myGame.CurrentLevel.PlayerObject.CurrentXPos > CurrentXPos)
+            {
+                ChangeDirection(true);
+            }
+            else if(myGame.CurrentLevel.PlayerObject.CurrentXPos < CurrentYPos)
+            {
+                ChangeDirection(false);
+            }
+            
+
+
+
         }
 
         public bool GetDead()

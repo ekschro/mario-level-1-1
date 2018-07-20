@@ -49,9 +49,9 @@ namespace Game1
             stateMachine.BeStomped();
         }
 
-        public void ChangeDirection()
+        public void ChangeDirection(bool faceLeft)
         {
-            stateMachine.ChangeDirection(); 
+            stateMachine.ChangeDirection(true); 
         }
 
         public void Draw()

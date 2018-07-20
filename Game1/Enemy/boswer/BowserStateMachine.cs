@@ -10,7 +10,7 @@ namespace Game1
     public class BowserStateMachine : IEnemyStateMachine
     {
         private IEnemySprite bowserSprite;
-        private bool facingLeft = false;
+        private bool facingRight = false;
         public enum BowserHealth { Normal, Flipped, Jump, Fire };
         public BowserHealth health = BowserHealth.Normal;
         private EnemyUtilityClass utility;
@@ -21,10 +21,10 @@ namespace Game1
             bowserSprite = sprite;
         }
 
-        public void ChangeDirection()
+        public void ChangeDirection(bool right)
         {
-            facingLeft = !facingLeft;
-            if (facingLeft)
+            facingRight = right;
+            if (facingRight)
                 bowserSprite.ChangeSpriteEffects(SpriteEffects.FlipHorizontally);
             else
                 bowserSprite.ChangeSpriteEffects(SpriteEffects.None);
@@ -63,7 +63,7 @@ namespace Game1
         }
         public bool GetDirection()
         {
-            return facingLeft;
+            return facingRight;
         }
     }
 }

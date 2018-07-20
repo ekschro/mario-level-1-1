@@ -233,7 +233,7 @@ namespace Game1
                 {
                     if (!enemy.StateMachine.GetDirection())
                     {
-                        enemy.ChangeDirection();
+                        enemy.ChangeDirection(true);
                     }
                     SoundWarehouse.stomp.Play();
                     enemy.BeStomped();
@@ -264,7 +264,7 @@ namespace Game1
                 {
                     if (enemy.StateMachine.GetDirection())
                     {
-                        enemy.ChangeDirection();
+                        enemy.ChangeDirection(true);
                     }
                     enemy.BeStomped();
                     SoundWarehouse.stomp.Play();
@@ -297,7 +297,7 @@ namespace Game1
                 var x = enemy.GetGameObjectLocation().X + width;
                 var y = enemy.GetGameObjectLocation().Y;
                 enemy.SetGameObjectLocation(new Vector2(x, y));
-                enemy.ChangeDirection();
+                enemy.ChangeDirection(true);
             }
             if (enemy is MarioFireBall || otherEnemy is MarioFireBall)
             {
@@ -321,7 +321,7 @@ namespace Game1
                 var x = enemy.GetGameObjectLocation().X - width;
                 var y = enemy.GetGameObjectLocation().Y;
                 enemy.SetGameObjectLocation(new Vector2(x, y));
-                enemy.ChangeDirection();
+                enemy.ChangeDirection(true);
             }
             if (enemy is MarioFireBall || otherEnemy is MarioFireBall)
             {

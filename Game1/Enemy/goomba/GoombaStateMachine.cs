@@ -21,7 +21,7 @@ namespace Game1
             goombaSprite = sprite;
         }
 
-        public void ChangeDirection()
+        public void ChangeDirection(bool left)
         {
             facingLeft = !facingLeft;
         }
