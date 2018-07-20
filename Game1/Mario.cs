@@ -34,7 +34,7 @@ namespace Game1
         public bool Bounce { get; set; }
         private bool play;
         private bool starStopped = false;
-        private bool buttonDown;
+        private bool fireButton;
 
         public bool CanJump { get; set; }
         public bool IsStar { get => isStar; set => isStar = value; }
@@ -98,12 +98,10 @@ namespace Game1
             if (CanJump)
                 play = true;
 
-            //if (fireballTimer > 0)
-            //    fireballTimer--;
             if (controllerHandler.FireBallHeld)
                 fireBall();
             else
-                buttonDown = false;
+                fireButton = false;
         }
 
         public Vector2 GetGameObjectLocation()
@@ -151,18 +149,14 @@ namespace Game1
 
         private void fireBall()
         {
-            //if (game.CurrentLevel.PlayerObject is Mario)
-            //{
-                physics.RunningCheck();
-            //}
+            physics.RunningCheck();
 
             if (this.TestMario.StateMachine is TestFireMarioStateMachine)
             {
-                if (/*FireBallTimer == 0 &&*/ !buttonDown)
+                if (!fireButton)
                 {
                     myGame.CurrentLevel.EnemyObjects.Add(new MarioFireBall(myGame));
-                    //FireBallTimer = 10;
-                    buttonDown = true;
+                    fireButton = true;
                 }
             }
         }

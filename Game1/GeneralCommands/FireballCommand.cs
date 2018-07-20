@@ -27,19 +27,6 @@ namespace Game1
         public void Execute()
         {
             controllerHandler.FireBallHeld = true;
-            //if (myGame.CurrentLevel.PlayerObject is Mario)
-            //{
-            //    ((MarioPhysics)(Mario.physics)).RunningCheck();
-            //}
-            
-            //if (player.TestMario.StateMachine is TestFireMarioStateMachine)
-            //{
-            //    if (((Mario)player).FireBallTimer == 0 && !buttonDown) {
-            //        myGame.CurrentLevel.EnemyObjects.Add(new MarioFireBall(myGame));
-            //        ((Mario)player).FireBallTimer = 10;
-            //        buttonDown = true;
-            //    }
-            //}
         }
 
     }
