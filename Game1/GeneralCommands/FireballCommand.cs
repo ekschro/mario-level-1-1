@@ -13,14 +13,10 @@ namespace Game1
 {
     public class FireballCommand : ICommand
     {
-        private Game1 myGame;
         private IControllerHandler controllerHandler;
-        private IPlayer player;
-        private bool buttonDown = false;
 
         public FireballCommand(Game1 game)
         {
-            myGame = game;
             controllerHandler = game.controllerHandler;
         }
 
@@ -28,7 +24,6 @@ namespace Game1
         {
             controllerHandler.FireBallHeld = true;
         }
-
     }
 }
  

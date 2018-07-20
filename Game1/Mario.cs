@@ -19,12 +19,8 @@ namespace Game1
         private static int totalMarioRows = 3;
         private static int colorStartingTime;
         private static int colorTimer;
-        private int fireballTimer;
         private bool isStar = false;
         private bool invulnerability = false;
-        //private bool fireBallTimerRun = true;
-
-        //public ISprite MarioSprite { get => playerSprite; set => playerSprite = value; }
         public Color MarioColor { get => marioColor; set => marioColor = value; }
         public float CurrentXPos { get => currentXPosition; set => currentXPosition = value; }
         public float CurrentYPos { get => currentYPosition; set => currentYPosition = value; }
@@ -41,7 +37,6 @@ namespace Game1
         public bool Invulnerability { get => invulnerability; set => invulnerability = value; }
         public int TotalMarioRows { get => totalMarioRows; set => totalMarioRows = value; }
         public int TotalMarioColumns { get => totalMarioColumns; set => totalMarioColumns = value; }
-        public int FireBallTimer { get => fireballTimer; set => fireballTimer = value; }
         public int KilledNum { get => killedNum; set => killedNum = value; }
         public ITestMario TestMario { get => testMario; set => testMario = value; }
 
@@ -53,16 +48,12 @@ namespace Game1
             CurrentXPos = vector.X;
             CurrentYPos = vector.Y;
             MarioColor = Color.White;
-            
             colorStartingTime = 5;
             colorTimer = 0;
-            //animationTimer = 0;
-            fireballTimer = 0;
             testMario = new TestSmallMario(game, vector, this);
             CanJump = true;
             Falling = false;
             Bounce = false;
-            //play = true;
         }
 
         public void Draw()
