@@ -26,7 +26,6 @@ namespace Game1
         private int boswerColumn = 4;
         private int boswerStartFrame = 0;
         private int boswerEndFrame = 4;
-        private int bowserCycleLength = 50;
 
         private int cyclePosition = 0;
         private int cycleLength = 8;
@@ -60,6 +59,5 @@ namespace Game1
         public int EnemyupCyclePosition { get => cyclePosition; set => cyclePosition = value; }
         public int EnemyCycleLength { get => cycleLength; }
         public int DisappearTime { get => disapperTime; }
-        public int BowserCycleLength { get => bowserCycleLength; }
     }
 }
