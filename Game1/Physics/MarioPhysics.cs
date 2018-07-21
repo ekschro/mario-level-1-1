@@ -51,18 +51,18 @@ namespace Game1
             {
                 if (xVelocity < velCap)
                 {
-                    xVelocity += (float)(0.5 * 0.001 * Math.Pow(delta, 2));
+                    xVelocity += (float)(0.5 * 0.0005 * Math.Pow(delta, 2));
                 }
                 else
                 {
                     xVelocity = velCap;
                 }
             }
-            else if (controllerHandler.MovingLeft && !controllerHandler.MovingDown)
+            if (controllerHandler.MovingLeft && !controllerHandler.MovingDown)
             {
-                if (Math.Abs(xVelocity) < velCap)
+                if (xVelocity > -1*velCap)
                 {
-                    xVelocity -= (float)(0.5 * 0.001 * Math.Pow(delta, 2));
+                    xVelocity -= (float)(0.5 * 0.0005 * Math.Pow(delta, 2));
                 }
                 else
                 {
@@ -70,9 +70,9 @@ namespace Game1
                 }
 
                 if (player.CurrentXPos < (game.CurrentLevel.LevelCamera.CameraPosition + 4))
-                    xVelocity = 0;
+                   xVelocity = 0;
             }
-            else
+            if (!controllerHandler.MovingRight && !controllerHandler.MovingLeft)
             {
                 if (Math.Abs(xVelocity) < 0.2)
                 {
@@ -88,6 +88,8 @@ namespace Game1
                 }
 
             }
+
+            Console.WriteLine(xVelocity);
 
             player.CurrentXPos += xVelocity;
         }
