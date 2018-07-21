@@ -12,7 +12,7 @@ namespace Game1
         private Game1 myGame;
         //private Texture2D buttonTexture;
         private TestButton button;
-        private enum ButtonState { None, Hoverd, Clicked}
+        //private enum ButtonState { None, Hoverd, Clicked}
 
         public LevelOpeningScreen(Game1 game)
         {
@@ -25,17 +25,12 @@ namespace Game1
         }
         public void Draw()
         {
-
+            
             Rectangle sourceRectangle = new Rectangle(TextureWarehouse.openTexture.Width * 0, 0, TextureWarehouse.openTexture.Width, TextureWarehouse.openTexture.Height);
             Rectangle destinationRectangle = new Rectangle(100, 50, TextureWarehouse.openTexture.Width, TextureWarehouse.openTexture.Height);
 
-            Rectangle enterSourceRectangle = new Rectangle(TextureWarehouse.enterTexture.Width * 0, 0, TextureWarehouse.enterTexture.Width, TextureWarehouse.enterTexture.Height);
-            Rectangle enterDestinationRectangle = new Rectangle(170, 150, TextureWarehouse.enterTexture.Width, TextureWarehouse.enterTexture.Height);
-
-            Rectangle levelSourceRectangle = new Rectangle(TextureWarehouse.levelSelectTexture.Width * 0, 0, TextureWarehouse.levelSelectTexture.Width, TextureWarehouse.levelSelectTexture.Height);
-            Rectangle levelDestinationRectangle = new Rectangle(150, 170, TextureWarehouse.levelSelectTexture.Width, TextureWarehouse.levelSelectTexture.Height);
-
             myGame.SpriteBatch.Begin();
+            myGame.SpriteBatch.Draw(TextureWarehouse.level11, new Vector2(0, 0), Color.White);
             myGame.SpriteBatch.Draw(TextureWarehouse.openTexture, destinationRectangle, sourceRectangle, Color.White);
             //myGame.SpriteBatch.Draw(TextureWarehouse.enterTexture, enterDestinationRectangle, enterSourceRectangle, Color.White);
             //myGame.SpriteBatch.Draw(TextureWarehouse.levelSelectTexture, levelDestinationRectangle, levelSourceRectangle, Color.White);

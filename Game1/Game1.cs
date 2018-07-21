@@ -27,12 +27,13 @@ namespace Game1
         private LevelTransition transitionLevel;
         private LevelGameOver gameOverLevel;
         private LevelOpeningScreen openingLevel;
+        private LevelSelect selectLevel;
         private HeadsUpDisplay headsUpDisplay;
         private SpriteBatch spriteBatch;
         private SpriteFont spriteFont;
         private bool pause;
         private bool allowControllerResponse;
-        public enum GameScreenState { Transition, GamePlay, Dead, Opening }
+        public enum GameScreenState { Transition, GamePlay, Dead, Opening, LevelSelect }
         private GameScreenState gameState;
         public GameScreenState GameState { get => gameState; set => gameState = value; }
         private int cyclePosition = 0;
@@ -76,6 +77,7 @@ namespace Game1
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             transitionLevel = new LevelTransition(this);
+            selectLevel = new LevelSelect(this);
             gameOverLevel = new LevelGameOver(this);
             openingLevel = new LevelOpeningScreen(this);
             HeadsUpDisplay = new HeadsUpDisplay(this);
@@ -119,7 +121,11 @@ namespace Game1
                 gameState = GameScreenState.Dead;
             }
         }
-
+        public void LoadTransition()
+        {
+            cyclePosition = 0;
+            gameState = GameScreenState.Transition;
+        }
         protected override void UnloadContent()
         {
         }
@@ -130,8 +136,17 @@ namespace Game1
             {
                controller.Update();
             }
-            openingLevel.Update();
-            if (!Pause&& gameState!=GameScreenState.Opening)
+            switch (gameState)
+            {
+                case GameScreenState.Opening:
+                    openingLevel.Update();
+                    break;
+                case GameScreenState.LevelSelect:
+                    selectLevel.Update();
+                    
+                    break;
+            }
+            if (!Pause&& gameState!=GameScreenState.Opening && gameState != GameScreenState.LevelSelect )
             {
                 cyclePosition++;
                 if (cyclePosition == cycleLength && gameState == GameScreenState.Transition)
@@ -158,13 +173,7 @@ namespace Game1
                 }
                 CheckGameOver();
                 HeadsUpDisplay.Update();
-                
-                switch (gameState)
-                {
-                    case GameScreenState.GamePlay:
-                        CurrentLevel.Update();
-                        break;
-                }
+                CurrentLevel.Update();
                 base.Update(gameTime);
 
             }
@@ -180,7 +189,6 @@ namespace Game1
             {
                 case GameScreenState.Opening:
                     HeadsUpDisplay.Draw();
-                    currentLevel.Draw();
                     openingLevel.Draw();
                     break;
                 case GameScreenState.Transition:
@@ -193,6 +201,9 @@ namespace Game1
                     break;
                 case GameScreenState.Dead:
                     gameOverLevel.Draw();
+                    break;
+                case GameScreenState.LevelSelect:
+                    selectLevel.Draw();
                     break;
             }
             

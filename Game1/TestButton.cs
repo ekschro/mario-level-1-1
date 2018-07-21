@@ -11,12 +11,16 @@ namespace Game1
     public class TestButton
     {
         private Game1 myGame;
-        private const int NumberOfButtons = 2,
+        private const int NumberOfButtons = 2,//4,
             EnterGame = 0,
-            LevelSelect = 1;
+            LevelSelect = 1/*,
+            Level11 = 2,
+            Level14 = 3*/;
+
         private Color[] buttonColor = new Color[NumberOfButtons];
         private Rectangle[] buttonRectangle = new Rectangle[NumberOfButtons];
         private KeyboardState keyBoardState, lastKeyBoardState;
+        private int i;
         public TestButton(Game1 game)
         {
             myGame = game;
@@ -28,9 +32,12 @@ namespace Game1
             switch (i)
             {
                 case EnterGame:
-                    myGame.GameState = Game1.GameScreenState.Transition;
+                    myGame.LoadTransition();
                     break;
                 case LevelSelect:
+                    buttonColor[0] = Color.Transparent;
+                    buttonColor[1] = Color.Transparent;
+                    myGame.GameState = Game1.GameScreenState.LevelSelect;
                     break;
                 default:
                     break;
@@ -43,6 +50,7 @@ namespace Game1
             Keys[] pressedKeys = keyBoardState.GetPressedKeys();
             foreach (Keys k in pressedKeys)
             {
+
                 switch (k)
                 {
                     case Keys.Down:
@@ -56,12 +64,11 @@ namespace Game1
                     case Keys.Enter:
                         if (buttonColor[EnterGame] == Color.Gray)
                             TakeAction(EnterGame);
-                        else
+                        else //if (buttonColor[LevelSelect] == Color.Gray)
                             TakeAction(LevelSelect);
                         break;
+                        
                     default:
-                        buttonColor[EnterGame] = Color.Gray;
-                        buttonColor[LevelSelect] = Color.White;
                         break;
                 }
             }
@@ -74,9 +81,11 @@ namespace Game1
         {
             Rectangle levelDestinationRectangle = new Rectangle(150, 170, TextureWarehouse.levelSelectTexture.Width, TextureWarehouse.levelSelectTexture.Height);
             Rectangle enterDestinationRectangle = new Rectangle(170, 150, TextureWarehouse.enterTexture.Width, TextureWarehouse.enterTexture.Height);
+            //Rectangle level11Rectangle = new Rectangle(50, 50, TextureWarehouse.level11.Width / 3, TextureWarehouse.level11.Height / 3);
 
             myGame.SpriteBatch.Draw(TextureWarehouse.enterTexture, enterDestinationRectangle, buttonColor[0]);
             myGame.SpriteBatch.Draw(TextureWarehouse.levelSelectTexture, levelDestinationRectangle, buttonColor[1]);
+            //myGame.SpriteBatch.Draw(TextureWarehouse.level11, level11Rectangle, buttonColor[2]);
             
         }
     }
