@@ -23,7 +23,6 @@ namespace Game1
             this.points = points;
             this.loc = loc;
             this.loc.X = game.CurrentLevel.LevelCamera.PositionRelativeToCamera(loc.X);
-
             alpha = 0f;
         }
 
