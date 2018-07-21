@@ -16,17 +16,12 @@ namespace Game1
         private IPickup[] pickupArray;
         private CollisionRespond collision;
         private MarioCollisionDetectionLogic marioLogic;
-        //private IControllerHandler controllerHandler;
         private CollisionUtilityClass utility = new CollisionUtilityClass();
         private Game1 mygame;
-        //private int tileOffset;
-
 
         public CollisionDetect(Game1 game, ILevel PlatformerLevel)
         {
             mygame = game;
-            //tileOffset = utility.TileOffset;
-            //controllerHandler = game.controllerHandler;
             level1 = PlatformerLevel;
             player = PlatformerLevel.PlayerObject;
 
@@ -36,43 +31,6 @@ namespace Game1
 
         public void MarioBlockCollisionDetect()
         {
-            /*
-             * 
-             * 
-             * 
-             * 
-             * 
-             * 
-             * 
-             * 
-             * 
-             * 
-             * 
-             * 
-             * 
-             * 
-             * 
-             * 
-             * 
-             * 
-             * WHAT IS THIS AND WHY ARE WE CHECKING MARIO AGAINST EVERY BLOCK (NUMBER OF ENEMIES) TIMES PER TICK????????????
-             * 
-             * 
-             * 
-             * 
-             * 
-             * 
-             * 
-             * 
-             * 
-             * 
-             * 
-             * 
-             * 
-             * 
-             * 
-             * 
-             */
             blockArray = level1.BlockObjects.ToArray();
             enemyArray = level1.EnemyObjects.ToArray();
             bool standing = false;
@@ -105,12 +63,7 @@ namespace Game1
                 marioLogic.MarioPickupCollisionCheck(pickupArray[i]);
             }
         }
-        /*
-        public void MarioFlagPoleDetect()
-        {
 
-        }
-        */
         public void BlockEnemyCollisionDetect()
         {
             Rectangle enemyBox;
@@ -221,24 +174,7 @@ namespace Game1
                     if (pickupBox.Intersects(blockBox))
                     {
                         Rectangle.Intersect(ref pickupBox, ref blockBox, out intersect);
-                        /*
-                        if (intersect.Height < intersect.Width && pickupY < blockY && enemyArray[j] is MarioFireBall)
-                        {
-                            MarioFireBall x = (MarioFireBall)pickupArray[j];
-                            x.Update();
-                        }
-                        else if (intersect.Height > intersect.Width && pickupX < blockX && enemyArray[j] is MarioFireBall)
-                        {
-                            level1.PickupObjects.RemoveAt(size);
-                            size--;
-
-                        }
-                        else if (intersect.Height > intersect.Width && pickupX > blockX && enemyArray[j] is MarioFireBall)
-                        {
-                            level1.PickupObjects.RemoveAt(size);
-                            size--;
-
-                        }*/
+   
                         if (intersect.Height < intersect.Width && pickupY < blockY)
                         {
                             collision.PickupCollisionBlockRespondBottom(pickupArray[j], intersect.Height, bottom);

@@ -51,7 +51,6 @@ namespace Game1
         }
         public void Jumping()
         {
-
             if (facingLeft)
                 //marioSprite.ChangeFrame(7 + 28, 7 + 28 - 1);
                 marioSprite.ChangeFrame(spriteUtility.SmallMarioLeftJumpingStart, spriteUtility.SmallMarioLeftJumpingEnd);

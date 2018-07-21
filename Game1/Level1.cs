@@ -103,6 +103,12 @@ namespace Game1
             {
                 if (temporaryObjectArray[i].GetGameObjectLocation().X > currentCamera.CameraPosition - 16 && temporaryObjectArray[i].GetGameObjectLocation().X < currentCamera.CameraPosition + 400)
                     temporaryObjectArray[i].Update();
+                else if (temporaryObjectArray[i] is HUDPoints)
+                {
+                    temporaryObjectArray[i].Update();
+                    if (temporaryObjectArray[i].GetGameObjectLocation().Y < 0)
+                        TemporaryObjects.Remove((ITemporary)temporaryObjectArray[i]);
+                }
             }
 
             currentCamera.Update();

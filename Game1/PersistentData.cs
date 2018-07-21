@@ -24,16 +24,9 @@ namespace Game1
             coins = 0;
         }
 
-        public void Draw(int value, Vector2 loc)
+        private void Draw(int value, Vector2 loc)
         {
-            Vector2 location = new Vector2(loc.X,loc.Y);
-            game.SpriteBatch.Begin();
-
-            //game.SpriteBatch.DrawString(game.SpriteFont, value.ToString(), location, Color.White); //need to update
-
-            //Not the way, create new HUD object and update draw from there... Will continue tomorrow
-
-            game.SpriteBatch.End();
+            game.CurrentLevel.TemporaryObjects.Add(new HUDPoints(game,value,loc));
         }
 
         public int Lives { get => lives;  }
