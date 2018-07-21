@@ -34,7 +34,7 @@ namespace Game1
         private bool allowControllerResponse;
         public enum GameScreenState { Transition, GamePlay, Dead, Opening }
         private GameScreenState gameState;
-        public GameScreenState GameState { get=>gameState; }
+        public GameScreenState GameState { get => gameState; set => gameState = value; }
         private int cyclePosition = 0;
         private int cycleLength = 200;
         private int hudCounter = 0;
@@ -130,16 +130,11 @@ namespace Game1
             {
                controller.Update();
             }
-
-            if (!Pause)
+            openingLevel.Update();
+            if (!Pause&& gameState!=GameScreenState.Opening)
             {
                 cyclePosition++;
-                if (cyclePosition == cycleLength && gameState == GameScreenState.Opening)
-                {
-                    cyclePosition = 0;
-                    gameState = GameScreenState.Transition;
-                }
-                else if (cyclePosition == cycleLength && gameState == GameScreenState.Transition)
+                if (cyclePosition == cycleLength && gameState == GameScreenState.Transition)
                 {
                     gameState = GameScreenState.GamePlay;
                 }
@@ -163,6 +158,7 @@ namespace Game1
                 }
                 CheckGameOver();
                 HeadsUpDisplay.Update();
+                
                 switch (gameState)
                 {
                     case GameScreenState.GamePlay:

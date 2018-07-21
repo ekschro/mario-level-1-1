@@ -23,6 +23,8 @@ namespace Game1 {
         public static Texture2D bowserTexture;
         public static Texture2D openTexture;
         public static Texture2D movingPlatform;
+        public static Texture2D enterTexture;
+        public static Texture2D levelSelectTexture;
 
 
         Game1 myGame;
@@ -49,6 +51,8 @@ namespace Game1 {
             bowserTexture = myGame.Content.Load<Texture2D>("Bowser");
             movingPlatform = myGame.Content.Load<Texture2D>("movingPlatform");
             openTexture = myGame.Content.Load<Texture2D>("Open");
+            enterTexture = myGame.Content.Load<Texture2D>("Enter");
+            levelSelectTexture = myGame.Content.Load<Texture2D>("LevelSelect");
         }
     }
 }
