@@ -51,7 +51,7 @@ namespace Game1
             {
                 if (xVelocity < velCap)
                 {
-                    xVelocity += (float)(0.5 * 0.0005 * Math.Pow(delta, 2));
+                    xVelocity += (float)(0.5 * 0.001 * Math.Pow(delta, 2));
                 }
                 else
                 {
@@ -62,7 +62,7 @@ namespace Game1
             {
                 if (xVelocity > -1*velCap)
                 {
-                    xVelocity -= (float)(0.5 * 0.0005 * Math.Pow(delta, 2));
+                    xVelocity -= (float)(0.5 * 0.001 * Math.Pow(delta, 2));
                 }
                 else
                 {
@@ -88,8 +88,6 @@ namespace Game1
                 }
 
             }
-
-            Console.WriteLine(xVelocity);
 
             player.CurrentXPos += xVelocity;
         }
