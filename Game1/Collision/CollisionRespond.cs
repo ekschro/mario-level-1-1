@@ -291,9 +291,34 @@ namespace Game1
                 MarioHit();
         }
 
-        public void EnemyCollisionBlockandEnemyRespondLeft(IEnemy enemy, IEnemy otherEnemy, int width)
+        public void EnemyCollisionBlockRespondLeft(IEnemy enemy, IEnemy otherEnemy, int width)
         {
 
+            //if (enemy.GetDead() == false && !(enemy is KoopaShell))
+            //{
+            //    var x = enemy.GetGameObjectLocation().X + width;
+            //    var y = enemy.GetGameObjectLocation().Y;
+            //    enemy.SetGameObjectLocation(new Vector2(x, y));
+            //    enemy.ChangeDirection(true);
+            //}
+            //if (enemy is MarioFireBall || otherEnemy is MarioFireBall)
+            //{
+            //    SoundWarehouse.stomp.Play();
+            //    objectLevel.EnemyObjects.Remove(enemy);
+            //    CreateFlippedEnemy(enemy);
+            //}   
+            //else if (otherEnemy is KoopaShell)
+            //{
+            //    myGame.persistentData.KoopaShell((KoopaShell)otherEnemy, enemy.GetGameObjectLocation());
+            //    objectLevel.EnemyObjects.Remove(enemy);
+            //    ((KoopaShell)otherEnemy).KilledNum += 1;
+            //}
+
+            enemy.ChangeDirection(true);
+        }
+
+        public void EnemyCollisionEnemyRespondLeft(IEnemy enemy, IEnemy otherEnemy, int width)
+        {
             if (enemy.GetDead() == false && !(enemy is KoopaShell))
             {
                 var x = enemy.GetGameObjectLocation().X + width;
@@ -306,17 +331,41 @@ namespace Game1
                 SoundWarehouse.stomp.Play();
                 objectLevel.EnemyObjects.Remove(enemy);
                 CreateFlippedEnemy(enemy);
-            }   
+            }
             else if (otherEnemy is KoopaShell)
             {
                 myGame.persistentData.KoopaShell((KoopaShell)otherEnemy, enemy.GetGameObjectLocation());
                 objectLevel.EnemyObjects.Remove(enemy);
                 ((KoopaShell)otherEnemy).KilledNum += 1;
             }
-
-            //enemy.ChangeDirection();
         }
-        public void EnemyCollisionBlockandEnemyRespondRight(IEnemy enemy, IEnemy otherEnemy, int width)
+
+        public void EnemyCollisionBlockRespondRight(IEnemy enemy, IEnemy otherEnemy, int width)
+        {
+            //if (enemy.GetDead() == false && !(enemy is KoopaShell))
+            //{
+            //    var x = enemy.GetGameObjectLocation().X - width;
+            //    var y = enemy.GetGameObjectLocation().Y;
+            //    enemy.SetGameObjectLocation(new Vector2(x, y));
+            //    enemy.ChangeDirection(true);
+            //}
+
+            //if (enemy is MarioFireBall || otherEnemy is MarioFireBall)
+            //{
+            //    CreateFlippedEnemy(enemy);
+            //}
+
+            //else if (otherEnemy is KoopaShell)
+            //{
+            //    myGame.persistentData.KoopaShell((KoopaShell)otherEnemy, enemy.GetGameObjectLocation());
+            //    objectLevel.EnemyObjects.Remove(enemy);
+            //    ((KoopaShell)otherEnemy).KilledNum += 1;
+            //}
+
+            enemy.ChangeDirection(true);
+        }
+
+        public void EnemyCollisionEnemyRespondRight(IEnemy enemy, IEnemy otherEnemy, int width)
         {
             if (enemy.GetDead() == false && !(enemy is KoopaShell))
             {
@@ -337,7 +386,6 @@ namespace Game1
                 objectLevel.EnemyObjects.Remove(enemy);
                 ((KoopaShell)otherEnemy).KilledNum += 1;
             }
-            //enemy.ChangeDirection();
         }
 
         public void EnemyCollisionBlockRespondYDirection(IEnemy enemy, int height,bool bottom)
