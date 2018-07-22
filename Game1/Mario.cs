@@ -75,7 +75,9 @@ namespace Game1
                 testMario.Update();
             }
 
-            if (controllerHandler.MovingUp)
+            Console.WriteLine(Falling);
+
+            if (controllerHandler.MovingUp && !Falling)
             {
                 if (play)
                 {
@@ -87,7 +89,9 @@ namespace Game1
             }
 
             if (CanJump)
+            {
                 play = true;
+            }
 
             if (controllerHandler.FireBallHeld)
                 fireBall();
