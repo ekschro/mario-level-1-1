@@ -94,7 +94,11 @@
     <Compile Include="FireEnemySprite.cs" />
     <Compile Include="FireEnemy.cs" />
     <Compile Include="HUDPoints.cs" />
-    <Compile Include="LevelSelect.cs" />
+    <Compile Include="Level\LevelGameOver.cs" />
+    <Compile Include="Level\LevelOpeningScreen.cs" />
+    <Compile Include="Level\LevelSelect.cs" />
+    <Compile Include="Level\LevelTransition.cs" />
+    <Compile Include="MarioLight.cs" />
     <Compile Include="MovingBlockSprite.cs" />
     <Compile Include="MovingBlock.cs" />
     <Compile Include="Collision\CollisionUtilityClass.cs" />
@@ -104,12 +108,10 @@
     <Compile Include="Enemy\boswer\BowserSprite.cs" />
     <Compile Include="Enemy\boswer\BowserStateMachine.cs" />
     <Compile Include="Enemy\EnemyUtilityClass.cs" />
-    <Compile Include="LevelGameOver.cs" />
     <Compile Include="MarioSpriteUtility.cs" />
     <Compile Include="Mario\Object\MarioUtility.cs" />
     <Compile Include="Mario\Object\AbstractTestMario.cs" />
     <Compile Include="Mario\Sprite\AbstractTestMarioSprite.cs" />
-    <Compile Include="LevelOpeningScreen.cs" />
     <Compile Include="PickupItem\Object\Coin.cs" />
     <Compile Include="PickupItem\Object\Fireflower.cs" />
     <Compile Include="PickupItem\Object\GreenMushroom.cs" />
@@ -145,7 +147,6 @@
     <Compile Include="Fireball.cs" />
     <Compile Include="GeneralCommands\FireballCommand.cs" />
     <Compile Include="GeneralCommands\NoCommand.cs" />
-    <Compile Include="LevelTransition.cs" />
     <Compile Include="PersistentData.cs" />
     <Compile Include="SoundWarehouse.cs" />
     <Compile Include="Mario\Interface\ITestMarioSprite.cs" />

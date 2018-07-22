@@ -18,7 +18,7 @@ namespace Game1
         public void Draw()
         {           
             myGame.SpriteBatch.Begin();
-            myGame.SpriteBatch.DrawString(myGame.SpriteFont, "GAME OVER", new Vector2(150, 100), Color.White);
+            myGame.SpriteBatch.DrawString(myGame.SpriteFont, "GAME OVER", new Vector2(myGame.Window.ClientBounds.Width/2, myGame.Window.ClientBounds.Height/2), Color.White);
             myGame.SpriteBatch.End();
         }
     }
