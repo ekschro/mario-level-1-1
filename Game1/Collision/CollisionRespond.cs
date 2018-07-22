@@ -334,9 +334,9 @@ namespace Game1
             }
             else if (otherEnemy is KoopaShell)
             {
+                ((KoopaShell)otherEnemy).KilledNum += 1;
                 myGame.persistentData.KoopaShell((KoopaShell)otherEnemy, enemy.GetGameObjectLocation());
                 objectLevel.EnemyObjects.Remove(enemy);
-                ((KoopaShell)otherEnemy).KilledNum += 1;
             }
         }
 
@@ -382,9 +382,9 @@ namespace Game1
 
             else if (otherEnemy is KoopaShell)
             {
+                ((KoopaShell)otherEnemy).KilledNum += 1;
                 myGame.persistentData.KoopaShell((KoopaShell)otherEnemy, enemy.GetGameObjectLocation());
                 objectLevel.EnemyObjects.Remove(enemy);
-                ((KoopaShell)otherEnemy).KilledNum += 1;
             }
         }
 
