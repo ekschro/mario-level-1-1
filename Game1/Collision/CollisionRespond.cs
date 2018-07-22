@@ -294,6 +294,15 @@ namespace Game1
         public void EnemyCollisionBlockRespondLeft(IEnemy enemy, IEnemy otherEnemy, int width)
         {
             enemy.ChangeDirection(true);
+
+            if (enemy is MarioFireBall)
+            {
+                objectLevel.EnemyObjects.Remove(enemy);
+            }
+            else if (otherEnemy is MarioFireBall)
+            {
+                objectLevel.EnemyObjects.Remove(otherEnemy);
+            }
         }
 
         public void EnemyCollisionEnemyRespondLeft(IEnemy enemy, IEnemy otherEnemy, int width)
@@ -305,11 +314,20 @@ namespace Game1
                 enemy.SetGameObjectLocation(new Vector2(x, y));
                 enemy.ChangeDirection(true);
             }
-            if (enemy is MarioFireBall || otherEnemy is MarioFireBall)
+
+            if (enemy is MarioFireBall)
             {
                 SoundWarehouse.stomp.Play();
+                CreateFlippedEnemy(otherEnemy);
                 objectLevel.EnemyObjects.Remove(enemy);
+                objectLevel.EnemyObjects.Remove(otherEnemy);
+            }
+            else if (otherEnemy is MarioFireBall)
+            {
+                SoundWarehouse.stomp.Play();
                 CreateFlippedEnemy(enemy);
+                objectLevel.EnemyObjects.Remove(enemy);
+                objectLevel.EnemyObjects.Remove(otherEnemy);
             }
             else if (otherEnemy is KoopaShell)
             {
@@ -322,6 +340,15 @@ namespace Game1
         public void EnemyCollisionBlockRespondRight(IEnemy enemy, IEnemy otherEnemy, int width)
         {
             enemy.ChangeDirection(true);
+
+            if (enemy is MarioFireBall)
+            {
+                objectLevel.EnemyObjects.Remove(enemy);
+            }
+            else if (otherEnemy is MarioFireBall)
+            {
+                objectLevel.EnemyObjects.Remove(otherEnemy);
+            }
         }
 
         public void EnemyCollisionEnemyRespondRight(IEnemy enemy, IEnemy otherEnemy, int width)
@@ -334,11 +361,20 @@ namespace Game1
                 enemy.ChangeDirection(true);
             }
 
-            if (enemy is MarioFireBall || otherEnemy is MarioFireBall)
+            if (enemy is MarioFireBall)
             {
-                CreateFlippedEnemy(enemy);
+                SoundWarehouse.stomp.Play();
+                CreateFlippedEnemy(otherEnemy);
+                objectLevel.EnemyObjects.Remove(enemy);
+                objectLevel.EnemyObjects.Remove(otherEnemy);
             }
-
+            else if (otherEnemy is MarioFireBall)
+            {
+                SoundWarehouse.stomp.Play();
+                CreateFlippedEnemy(enemy);
+                objectLevel.EnemyObjects.Remove(enemy);
+                objectLevel.EnemyObjects.Remove(otherEnemy);
+            }
             else if (otherEnemy is KoopaShell)
             {
                 ((KoopaShell)otherEnemy).KilledNum += 1;
@@ -357,18 +393,18 @@ namespace Game1
             }
             enemy.IsFalling = false;
 
-            if (enemy is MarioFireBall)
-            {
-                enemy.IsFalling = false;
-                MarioFireBall temp = (MarioFireBall)enemy;
-                if (temp.MovingUp)
-                {
-                    temp.MovingUp = false;
-                } else
-                {
-                    temp.MovingUp = true;
-                }
-            }
+            //if (enemy is MarioFireBall)
+            //{
+            //    enemy.IsFalling = false;
+            //    MarioFireBall temp = (MarioFireBall)enemy;
+            //    if (temp.MovingUp)
+            //    {
+            //        temp.MovingUp = false;
+            //    } else
+            //    {
+            //        temp.MovingUp = true;
+            //    }
+            //}
         }
 
         public void PickupCollisionRespondTop(IPickup pickup)
