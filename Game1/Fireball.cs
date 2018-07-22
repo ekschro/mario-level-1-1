@@ -30,7 +30,7 @@ namespace Game1
                 yPos = player.CurrentYPos + 8;
             } else
             {
-                currentFrame = 3;
+                currentFrame = 2;
                 MovingLeft = true;
                 MovingRight = false;
                 xPos = player.CurrentXPos - 4;
