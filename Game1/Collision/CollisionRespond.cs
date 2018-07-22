@@ -392,19 +392,6 @@ namespace Game1
                 enemy.SetGameObjectLocation(new Vector2(x, y));
             }
             enemy.IsFalling = false;
-
-            //if (enemy is MarioFireBall)
-            //{
-            //    enemy.IsFalling = false;
-            //    MarioFireBall temp = (MarioFireBall)enemy;
-            //    if (temp.MovingUp)
-            //    {
-            //        temp.MovingUp = false;
-            //    } else
-            //    {
-            //        temp.MovingUp = true;
-            //    }
-            //}
         }
 
         public void PickupCollisionRespondTop(IPickup pickup)
