@@ -75,8 +75,6 @@ namespace Game1
                 testMario.Update();
             }
 
-            Console.WriteLine(Falling);
-
             if (controllerHandler.MovingUp && !Falling)
             {
                 if (play)
