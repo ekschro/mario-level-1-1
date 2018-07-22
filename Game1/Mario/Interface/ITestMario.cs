@@ -14,6 +14,7 @@ namespace Game1
         void Crouching();
         void Upgrade();
         void Downgrade();
+        void GoDie();
         ITestMarioStateMachine StateMachine { get; }
         void Flag();
         void Pipe(bool isPositive, bool isHorizontal);

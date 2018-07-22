@@ -53,6 +53,10 @@ namespace Game1
 
         public abstract void Upgrade();
         public abstract void Downgrade();
+        public void GoDie()
+        {
+            character.TestMario = new TestDeadMario(myGame, new Vector2(character.CurrentXPos, character.CurrentYPos), character);
+        }
         public void ChangeDirection(bool left)
         {
             stateMachine.ChangeDirection(left);

@@ -25,6 +25,10 @@ namespace Game1 {
         public static Texture2D movingPlatform;
         public static Texture2D enterTexture;
         public static Texture2D levelSelectTexture;
+        public static Texture2D level11;
+        public static Texture2D light;
+        public static Texture2D darkMode;
+        public static Texture2D normalMode;
 
 
         Game1 myGame;
@@ -53,6 +57,10 @@ namespace Game1 {
             openTexture = myGame.Content.Load<Texture2D>("Open");
             enterTexture = myGame.Content.Load<Texture2D>("Enter");
             levelSelectTexture = myGame.Content.Load<Texture2D>("LevelSelect");
+            level11 = myGame.Content.Load<Texture2D>("level1");
+            light = myGame.Content.Load<Texture2D>("light");
+            darkMode = myGame.Content.Load<Texture2D>("DarkMode");
+            normalMode = myGame.Content.Load<Texture2D>("NormalMode");
         }
     }
 }

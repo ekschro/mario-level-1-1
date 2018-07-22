@@ -27,12 +27,14 @@ namespace Game1
         private LevelTransition transitionLevel;
         private LevelGameOver gameOverLevel;
         private LevelOpeningScreen openingLevel;
+        private LevelSelect selectLevel;
+        private MarioLight light;
         private HeadsUpDisplay headsUpDisplay;
         private SpriteBatch spriteBatch;
         private SpriteFont spriteFont;
         private bool pause;
         private bool allowControllerResponse;
-        public enum GameScreenState { Transition, GamePlay, Dead, Opening }
+        public enum GameScreenState { Transition, GamePlay, Dead, Opening, LevelSelect, DarkLevel11 }
         private GameScreenState gameState;
         public GameScreenState GameState { get => gameState; set => gameState = value; }
         private int cyclePosition = 0;
@@ -76,8 +78,10 @@ namespace Game1
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             transitionLevel = new LevelTransition(this);
+            selectLevel = new LevelSelect(this);
             gameOverLevel = new LevelGameOver(this);
             openingLevel = new LevelOpeningScreen(this);
+            light = new MarioLight(this);
             HeadsUpDisplay = new HeadsUpDisplay(this);
             textureWarehouse = new TextureWarehouse(this);
             soundWarehouse = new SoundWarehouse(this);
@@ -102,7 +106,7 @@ namespace Game1
 
         public void GameReset()
         {
-            gameState = GameScreenState.Transition;
+            LoadTransition();
             cyclePosition = 0;
             allowControllerResponse = true;
             persistentData = new PersistentData(this);
@@ -112,14 +116,27 @@ namespace Game1
             MediaPlayer.Play(SoundWarehouse.main_theme);
         }
 
-        public void CheckGameOver()
+        public void CheckGameOver(PlatformerLevel level)
         {
             if (persistentData.Lives == 0)
             {
                 gameState = GameScreenState.Dead;
             }
-        }
+            else if (level.Time == 0)
+            {
+                currentLevel.PlayerObject.TestMario.GoDie();
+            }
 
+        }
+        public void LoadTransition()
+        {
+            cyclePosition = 0;
+            gameState = GameScreenState.Transition;
+        }
+        public void DarkStage()
+        {
+            GameState = GameScreenState.DarkLevel11;
+        }
         protected override void UnloadContent()
         {
         }
@@ -130,16 +147,37 @@ namespace Game1
             {
                controller.Update();
             }
-            openingLevel.Update();
-            if (!Pause&& gameState!=GameScreenState.Opening)
+            switch (gameState)
+            {
+                case GameScreenState.Opening:
+                    openingLevel.Update();
+                    break;
+                case GameScreenState.LevelSelect:
+                    selectLevel.Update();   
+                    break;
+                case GameScreenState.GamePlay:
+                    if (!pause)
+                    {
+                        CurrentLevel.Update();
+                    }
+                    break;
+                case GameScreenState.DarkLevel11:
+                    if (!pause)
+                    {
+                        CurrentLevel.Update();
+                        light.Update();
+                    }
+                    break;
+            }
+            if (!Pause&& gameState!=GameScreenState.Opening && gameState != GameScreenState.LevelSelect )
             {
                 cyclePosition++;
                 if (cyclePosition == cycleLength && gameState == GameScreenState.Transition)
                 {
                     gameState = GameScreenState.GamePlay;
                 }
-
-                    delta = gameTime;
+                
+                delta = gameTime;
                 PlatformerLevel level = (PlatformerLevel)currentLevel;
                 if (counter == 60 && !level.TimerStop)
                 {
@@ -147,30 +185,12 @@ namespace Game1
                     counter = 0;
                 }
                 else
-                {
                     counter++;
-                }
-                if (level.Time == 0)
-                {
-                    currentLevel.PlayerObject.TestMario.Downgrade();
-                    currentLevel.PlayerObject.TestMario.Downgrade();
-                    currentLevel.PlayerObject.TestMario.Downgrade();
-                }
-                CheckGameOver();
+                CheckGameOver(level);
                 HeadsUpDisplay.Update();
-                
-                switch (gameState)
-                {
-                    case GameScreenState.GamePlay:
-                        CurrentLevel.Update();
-                        break;
-                }
                 base.Update(gameTime);
-
-            }
-            
+            }            
         }
-
        
         protected override void Draw(GameTime gameTime)
         {
@@ -180,7 +200,6 @@ namespace Game1
             {
                 case GameScreenState.Opening:
                     HeadsUpDisplay.Draw();
-                    currentLevel.Draw();
                     openingLevel.Draw();
                     break;
                 case GameScreenState.Transition:
@@ -193,6 +212,14 @@ namespace Game1
                     break;
                 case GameScreenState.Dead:
                     gameOverLevel.Draw();
+                    break;
+                case GameScreenState.LevelSelect:
+                    selectLevel.Draw();
+                    break;
+                case GameScreenState.DarkLevel11:
+                    currentLevel.Draw();
+                    light.Draw();
+                    HeadsUpDisplay.Draw();
                     break;
             }
             
