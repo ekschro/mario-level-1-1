@@ -96,6 +96,10 @@ namespace Game1
         {
             if (controllerHandler.MovingUp && player.CanJump && !player.Falling)
             {
+                var j = SoundWarehouse.jump.CreateInstance();
+                j.Volume = 0.07f;
+                j.Play();
+
                 yVelocity = (float)-6.5;
                 player.CanJump = false;
             }

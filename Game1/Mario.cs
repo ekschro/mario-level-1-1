@@ -75,21 +75,21 @@ namespace Game1
                 testMario.Update();
             }
 
-            if (controllerHandler.MovingUp && !Falling)
-            {
-                if (play)
-                {
-                    var j = SoundWarehouse.jump.CreateInstance();
-                    j.Volume = 0.07f;
-                    j.Play();
-                    play = false;
-                }
-            }
+            //if (controllerHandler.MovingUp && !Falling)
+            //{
+            //    if (play)
+            //    {
+            //        var j = SoundWarehouse.jump.CreateInstance();
+            //        j.Volume = 0.07f;
+            //        j.Play();
+            //        play = false;
+            //    }
+            //}
 
-            if (CanJump)
-            {
-                play = true;
-            }
+            //if (CanJump)
+            //{
+            //    play = true;
+            //}
 
             if (controllerHandler.FireBallHeld)
                 fireBall();
