@@ -114,7 +114,6 @@
     <Compile Include="Enemy\EnemyUtilityClass.cs" />
     <Compile Include="BossLevel.cs" />
     <Compile Include="BossLevelBackground.cs" />
-    <Compile Include="LevelGameOver.cs" />
     <Compile Include="MarioSpriteUtility.cs" />
     <Compile Include="Mario\Object\MarioUtility.cs" />
     <Compile Include="Mario\Object\AbstractTestMario.cs" />

@@ -36,7 +36,6 @@ namespace Game1
         private bool allowControllerResponse;
         public enum GameScreenState { Transition, GamePlay, Dead, Opening, LevelSelect, DarkLevel11 }
         private bool timerStop = false;
-        public enum GameScreenState { Transition, GamePlay, Dead }
         private GameScreenState gameState;
         private GameScreenState lastGameState;
         public GameScreenState GameState { get => gameState; set => gameState = value; }
@@ -91,8 +90,7 @@ namespace Game1
             textureWarehouse = new TextureWarehouse(this);
             soundWarehouse = new SoundWarehouse(this);
             spriteFont = Content.Load<SpriteFont>("arial");
-            //CurrentLevel = new PlatformerLevel("../../../../Content/LevelInfo.csv", this, persistentData);
-            CurrentLevel = new BossLevel("../../../../Content/BossLevelInfo.csv", this, persistentData);
+            CurrentLevel = new PlatformerLevel("../../../../Content/LevelInfo.csv", this, persistentData);
 
             MediaPlayer.Play(SoundWarehouse.main_theme);
         }
@@ -123,7 +121,7 @@ namespace Game1
             MediaPlayer.Play(SoundWarehouse.main_theme);
         }
 
-        public void CheckGameOver(PlatformerLevel level)
+        public void CheckGameOver(ILevel level)
         {
             if (persistentData.Lives == 0)
             {
@@ -194,7 +192,7 @@ namespace Game1
                 }
                 else
                     counter++;
-                CheckGameOver(level);
+                CheckGameOver(currentLevel);
                 HeadsUpDisplay.Update();
                 base.Update(gameTime);
             }            
