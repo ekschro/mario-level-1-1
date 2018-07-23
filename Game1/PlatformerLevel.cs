@@ -89,6 +89,10 @@ namespace Game1
             {
                 if (GameObject.GetGameObjectLocation().X > currentCamera.CameraPosition - 16 && GameObject.GetGameObjectLocation().X < currentCamera.CameraPosition + 400)
                     GameObject.Update();
+                else if (GameObject is KoopaShell)
+                {
+                    GameObject.Update();
+                }
             }
             IGameObject[] pickupObjectArray = PickupObjects.ToArray();
             for(int i = 0; i < pickupObjectArray.Length; i++)
@@ -101,6 +105,12 @@ namespace Game1
             {
                 if (temporaryObjectArray[i].GetGameObjectLocation().X > currentCamera.CameraPosition - 16 && temporaryObjectArray[i].GetGameObjectLocation().X < currentCamera.CameraPosition + 400)
                     temporaryObjectArray[i].Update();
+                else if (temporaryObjectArray[i] is HUDPoints)
+                {
+                    temporaryObjectArray[i].Update();
+                    if (temporaryObjectArray[i].GetGameObjectLocation().Y < 0)
+                        TemporaryObjects.Remove((ITemporary)temporaryObjectArray[i]);
+                }
             }
 
             currentCamera.Update();

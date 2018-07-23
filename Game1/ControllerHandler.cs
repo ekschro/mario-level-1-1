@@ -12,11 +12,14 @@ namespace Game1
         private bool movingUp;
         private bool movingRight;
         private bool movingLeft;
+        private bool fireBallHeld;
 
         public bool MovingDown { get => movingDown; set => movingDown = value; }
         public bool MovingUp { get => movingUp; set => movingUp = value; }
         public bool MovingRight { get => movingRight; set => movingRight = value; }
         public bool MovingLeft { get => movingLeft; set => movingLeft = value; }
+
+        public bool FireBallHeld { get => fireBallHeld; set => fireBallHeld = value; }
 
         public ControllerHandler()
         {

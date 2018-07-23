@@ -34,9 +34,9 @@ namespace Game1
             endFrame = end;
             currentFrame = startFrame;
         }
-        public void FlipSprite()
+        public void ChangeSpriteEffects(SpriteEffects effects)
         {
-            KoopaSpriteEffects = SpriteEffects.FlipVertically;
+            KoopaSpriteEffects = effects;
         }
 
         public void Update()
@@ -60,9 +60,5 @@ namespace Game1
             myGame.SpriteBatch.End();
         }
 
-        public void ChangeDirectionSprite()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

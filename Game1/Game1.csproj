@@ -92,11 +92,23 @@
     <Compile Include="Blocks\Sprites\BlueStoneBlockSprite.cs" />
     <Compile Include="Blocks\Sprites\PipeOnSideBlockSprite.cs" />
     <Compile Include="Blocks\Sprites\TopWarpPipeBlockSprite.cs" />
+    <Compile Include="ButtonForLevelSelect.cs" />
     <Compile Include="CameraStatic.cs" />
+    <Compile Include="FireEnemy - Copy.cs" />
+    <Compile Include="FireEnemySprite.cs" />
+    <Compile Include="FireEnemy.cs" />
+    <Compile Include="HUDPoints.cs" />
+    <Compile Include="Level\LevelGameOver.cs" />
+    <Compile Include="Level\LevelOpeningScreen.cs" />
+    <Compile Include="Level\LevelSelect.cs" />
+    <Compile Include="Level\LevelTransition.cs" />
+    <Compile Include="MarioLight.cs" />
+    <Compile Include="MovingBlockSprite.cs" />
+    <Compile Include="MovingBlock.cs" />
     <Compile Include="Collision\CollisionUtilityClass.cs" />
     <Compile Include="Collision\CollisionDetectionLogic.cs" />
     <Compile Include="Controllers\ControllerUtilityClass.cs" />
-    <Compile Include="Enemy\boswer\Boswer.cs" />
+    <Compile Include="Enemy\boswer\Bowser.cs" />
     <Compile Include="Enemy\boswer\BowserSprite.cs" />
     <Compile Include="Enemy\boswer\BowserStateMachine.cs" />
     <Compile Include="Enemy\EnemyUtilityClass.cs" />
@@ -142,7 +154,6 @@
     <Compile Include="Fireball.cs" />
     <Compile Include="GeneralCommands\FireballCommand.cs" />
     <Compile Include="GeneralCommands\NoCommand.cs" />
-    <Compile Include="LevelTransition.cs" />
     <Compile Include="PersistentData.cs" />
     <Compile Include="SoundWarehouse.cs" />
     <Compile Include="Mario\Interface\ITestMarioSprite.cs" />
@@ -201,7 +212,6 @@
     <Compile Include="TemporaryObjects\Sprites\FlippedKoopaSprite.cs" />
     <Compile Include="TemporaryObjects\Sprites\FlippedGoombaSprite.cs" />
     <Compile Include="TemporaryObjects\Sprites\CoinSprite.cs" />
-    <Compile Include="PickupItem\Sprites\EmptyPickupSprite.cs" />
     <Compile Include="PickupItem\Sprites\FireflowerSprite.cs" />
     <Compile Include="PickupItem\Sprites\GreenMushroomSprite.cs" />
     <Compile Include="PickupItem\Sprites\RedMushroonSprite.cs" />
@@ -221,6 +231,7 @@
     <Compile Include="GeneralCommands\ResetCommand.cs" />
     <Compile Include="GeneralCommands\RightCommand.cs" />
     <Compile Include="GeneralCommands\UpCommand.cs" />
+    <Compile Include="TestButton.cs" />
     <Compile Include="TextureWarehouse.cs" />
   </ItemGroup>
   <ItemGroup>

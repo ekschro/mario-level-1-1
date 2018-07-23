@@ -114,11 +114,11 @@ namespace Game1
             {
                 Rectangle.Intersect(ref playerBox, ref enemyBox, out intersect);
 
-                if (intersect.Height > intersect.Width && playerX < enemyX)
+                if (intersect.Height*utility.EnemyCollisionFudge > intersect.Width && playerX < enemyX)
                 {
                     collisionRes.EnemyCollisionRespondLeft(enemy);
                 }
-                else if (intersect.Height > intersect.Width && playerX > enemyX)
+                else if (intersect.Height*utility.EnemyCollisionFudge > intersect.Width && playerX > enemyX)
                 {
                     collisionRes.EnemyCollisionRespondRight(enemy);
                 }

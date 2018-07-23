@@ -34,13 +34,9 @@ namespace Game1
             startFrame = start;
             endFrame = end;
         }
-        public void ChangeDirectionSprite()
+        public void ChangeSpriteEffects(SpriteEffects effects)
         {
-            boswerSpriteEffects = SpriteEffects.FlipHorizontally;
-        }
-        public void FlipSprite()
-        {
-            boswerSpriteEffects = SpriteEffects.FlipVertically;
+            boswerSpriteEffects = effects;
         }
         public void Update()
         {
@@ -62,5 +58,6 @@ namespace Game1
             myGame.SpriteBatch.Draw(TextureWarehouse.bowserTexture, destinationRectangle, sourceRectangle, Color.White, 0, new Vector2(0, 0), boswerSpriteEffects, 0);
             myGame.SpriteBatch.End();
         }
+
     }
 }

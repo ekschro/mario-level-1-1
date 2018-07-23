@@ -21,6 +21,15 @@ namespace Game1 {
         public static Texture2D blueBrickBlockTexture;
         public static Texture2D pipeOnSideBlockTexture;
         public static Texture2D bowserTexture;
+        public static Texture2D openTexture;
+        public static Texture2D movingPlatform;
+        public static Texture2D enterTexture;
+        public static Texture2D levelSelectTexture;
+        public static Texture2D level11;
+        public static Texture2D light;
+        public static Texture2D darkMode;
+        public static Texture2D normalMode;
+
         public static Texture2D bossLevelBackgroundTexture;
         public static Texture2D grayBrickBlockTexture;
         public static Texture2D bridgeBlockTexture;
@@ -50,6 +59,14 @@ namespace Game1 {
             bossLevelBackgroundTexture = myGame.Content.Load<Texture2D>("1-4Background");
             grayBrickBlockTexture = myGame.Content.Load<Texture2D>("grayStone");
             bridgeBlockTexture = myGame.Content.Load<Texture2D>("bridge");
+            movingPlatform = myGame.Content.Load<Texture2D>("movingPlatform");
+            openTexture = myGame.Content.Load<Texture2D>("Open");
+            enterTexture = myGame.Content.Load<Texture2D>("Enter");
+            levelSelectTexture = myGame.Content.Load<Texture2D>("LevelSelect");
+            level11 = myGame.Content.Load<Texture2D>("level1");
+            light = myGame.Content.Load<Texture2D>("light");
+            darkMode = myGame.Content.Load<Texture2D>("DarkMode");
+            normalMode = myGame.Content.Load<Texture2D>("NormalMode");
         }
     }
 }

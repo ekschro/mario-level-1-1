@@ -9,7 +9,8 @@ namespace Game1
         //private IControllerHandler controllerHandler;
         private IPlayer player;
         private bool falling;
-
+        private bool jumping=false;
+        public bool IsJumping { get => jumping; }
         public bool IsFalling { get => falling; set => falling = value; }
         private int currentFrame;
         public MarioFireBall(Game1 game)
@@ -29,7 +30,7 @@ namespace Game1
                 yPos = player.CurrentYPos + 8;
             } else
             {
-                currentFrame = 3;
+                currentFrame = 2;
                 MovingLeft = true;
                 MovingRight = false;
                 xPos = player.CurrentXPos - 4;
@@ -49,8 +50,6 @@ namespace Game1
         private bool movingLeft;
         private bool movingUp;
         private bool movingDown;
-        //private int xVelocity;
-        //private int velCap;
         private float yPosMax;
 
         public float CurrentXPos { get => xPos; set => xPos = value; }
@@ -80,12 +79,7 @@ namespace Game1
             myGame.SpriteBatch.Draw(TextureWarehouse.fireballs, destinationRectangle, sourceRectangle, Color.White);
             myGame.SpriteBatch.End();
         }
-        /*
-        public Vector2 GameObjectLocation()
-        {
-            return new Vector2(xPos, yPos);
-        }
-        */
+
         public void Update()
         {
             physics.Update();
@@ -99,22 +93,6 @@ namespace Game1
                 MovingUp = false;
             else
                 MovingUp = true;
-            
-            /*if (MovingUp)
-            {
-                yPos = yPos - 1;
-            } else
-            {
-                yPos = yPos + 1;
-            }
-
-            if (movingRight)
-            {
-                xPos = xPos + 5;
-            } else
-            {
-                xPos = xPos - 5;
-            }*/
         }
         
 
@@ -123,7 +101,7 @@ namespace Game1
             return new Vector2(this.CurrentXPos, this.CurrentYPos);
         }
 
-        public void ChangeDirection()
+        public void ChangeDirection(bool left)
         {
            
         }
@@ -137,31 +115,18 @@ namespace Game1
         {
             
         }
-        /*
-        public void Running()
-        {
-            
-        }
-        
-        public void ReachGround()
-        {
-            
-        }
 
-        public void Falling()
-        {
-            
-        }
-        */
         public void SetGameObjectLocation(Vector2 vector)
         {
             CurrentXPos = vector.X;
             CurrentYPos = vector.Y;
         }
+
         public bool GetDead()
         {
             return false;
         }
+
         public Vector2 GetGameObjectLocation()
         {
             return new Vector2(CurrentXPos, CurrentYPos);

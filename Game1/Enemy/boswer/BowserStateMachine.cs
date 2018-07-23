@@ -3,27 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Game1
 {
     public class BowserStateMachine : IEnemyStateMachine
     {
         private IEnemySprite bowserSprite;
-        private bool facingLeft = false;
-        private enum BowserHealth { Normal, Flipped, Jump, Fire };
+        private bool facingRight = false;
+        public enum BowserHealth { Normal, Flipped, Jump, Fire };
         private BowserHealth health = BowserHealth.Normal;
-        private EnemyUtilityClass utility;
+        //private EnemyUtilityClass utility;
 
         public BowserStateMachine(IEnemySprite sprite)
         {
-            utility = new EnemyUtilityClass();
+            //utility = new EnemyUtilityClass();
             bowserSprite = sprite;
         }
 
-        public void ChangeDirection()
+        public void ChangeDirection(bool right)
         {
-            facingLeft = !facingLeft;
-            bowserSprite.ChangeDirectionSprite();
+            facingRight = right;
+            if (facingRight)
+                bowserSprite.ChangeSpriteEffects(SpriteEffects.FlipHorizontally);
+            else
+                bowserSprite.ChangeSpriteEffects(SpriteEffects.None);
         }
 
         public void BeStomped()
@@ -37,13 +41,20 @@ namespace Game1
             }
             */
         }
-
         public void BeFlipped()
         {
-            bowserSprite.FlipSprite();
+            //bowserSprite.FlipSprite();
+            bowserSprite.ChangeSpriteEffects(SpriteEffects.FlipVertically);
             if (health != BowserHealth.Flipped)
             {
                 health = BowserHealth.Flipped;
+            }
+        }
+        public void BeJump()
+        {
+            if (health != BowserHealth.Jump)
+            {
+                health = BowserHealth.Jump;
             }
         }
 
@@ -52,7 +63,7 @@ namespace Game1
         }
         public bool GetDirection()
         {
-            return facingLeft;
+            return facingRight;
         }
     }
 }

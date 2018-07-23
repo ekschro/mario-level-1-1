@@ -47,6 +47,11 @@ namespace Game1
         {
             if (obj.IsFalling)
                 yVelocity += (float)(0.5 * 0.002 * Math.Pow(delta, 2));
+            else if (obj.IsJumping)
+            {
+                yVelocity=(float) - 6.5;
+                yVelocity -= (float)(0.5 * 0.002 * Math.Pow(delta, 2));
+            }
             else
                 yVelocity = (float)0;
 

@@ -12,11 +12,13 @@ namespace Game1
         public float CurrentXPos { get => koopaLocation.X; set => koopaLocation.X = value; }
         public float CurrentYPos { get => koopaLocation.Y; set => koopaLocation.Y = value; }
         private bool falling;
+        private bool jumping=false;
         public bool IsFalling { get => falling; set => falling = value; }
         public bool MovingRight { get; set; }
         private static IEnemySprite koopaSprite;
         public static IEnemySprite KoopaSprite { get => koopaSprite; set => koopaSprite = value; }
         public bool IsStomped { get; set; }
+        public bool IsJumping { get => jumping; }
 
         private KoopaSStateMachine stateMachine;
         public IEnemyStateMachine StateMachine { get => stateMachine; }
@@ -59,9 +61,9 @@ namespace Game1
             dead = !dead;
         }
 
-        public void ChangeDirection()
+        public void ChangeDirection(bool faceLeft)
         {
-            stateMachine.ChangeDirection();
+            stateMachine.ChangeDirection(true);
         }
 
         public void Draw()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Game1
 {
@@ -20,7 +21,7 @@ namespace Game1
             goombaSprite = sprite;
         }
 
-        public void ChangeDirection()
+        public void ChangeDirection(bool left)
         {
             facingLeft = !facingLeft;
         }
@@ -39,7 +40,8 @@ namespace Game1
 
         public void BeFlipped()
         {
-            goombaSprite.FlipSprite();
+            //goombaSprite.FlipSprite();
+            goombaSprite.ChangeSpriteEffects(SpriteEffects.FlipVertically);
             if (health != GoombaHealth.Flipped) 
             {
                 health = GoombaHealth.Flipped;
@@ -54,5 +56,9 @@ namespace Game1
             return facingLeft;
         }
 
+        public void BeJump()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
