@@ -91,6 +91,10 @@ namespace Game1
             {
                 if (GameObject.GetGameObjectLocation().X > currentCamera.CameraPosition - 16 && GameObject.GetGameObjectLocation().X < currentCamera.CameraPosition + 400)
                     GameObject.Update();
+                else if (GameObject is KoopaShell)
+                {
+                    GameObject.Update();
+                }
             }
             IGameObject[] pickupObjectArray = PickupObjects.ToArray();
             for(int i = 0; i < pickupObjectArray.Length; i++)
