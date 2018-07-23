@@ -28,7 +28,6 @@ namespace Game1
         public bool Falling { get; set; }
         public bool Bump { get; set; }
         public bool Bounce { get; set; }
-        private bool play;
         private bool starStopped = false;
         private bool fireButton;
 
@@ -74,22 +73,6 @@ namespace Game1
                 }
                 testMario.Update();
             }
-
-            //if (controllerHandler.MovingUp && !Falling)
-            //{
-            //    if (play)
-            //    {
-            //        var j = SoundWarehouse.jump.CreateInstance();
-            //        j.Volume = 0.07f;
-            //        j.Play();
-            //        play = false;
-            //    }
-            //}
-
-            //if (CanJump)
-            //{
-            //    play = true;
-            //}
 
             if (controllerHandler.FireBallHeld)
                 fireBall();
