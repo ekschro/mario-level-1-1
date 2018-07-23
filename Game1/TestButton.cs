@@ -20,7 +20,6 @@ namespace Game1
         private Color[] buttonColor = new Color[NumberOfButtons];
         private Rectangle[] buttonRectangle = new Rectangle[NumberOfButtons];
         private KeyboardState keyBoardState, lastKeyBoardState;
-        private int i;
         public TestButton(Game1 game)
         {
             myGame = game;

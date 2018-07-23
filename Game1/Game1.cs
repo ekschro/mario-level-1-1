@@ -18,9 +18,9 @@ namespace Game1
         public IController mouseController;
         public IList<IController> controllerList;
         public IControllerHandler controllerHandler;
-        public TextureWarehouse textureWarehouse;
+        private TextureWarehouse textureWarehouse;
         public PersistentData persistentData;
-        public GameTime temp;
+        //private GameTime temp;
         int counter = 0;
         private SoundWarehouse soundWarehouse;
         private ILevel currentLevel;
@@ -36,6 +36,7 @@ namespace Game1
         private bool allowControllerResponse;
         public enum GameScreenState { Transition, GamePlay, Dead, Opening, LevelSelect, DarkLevel11 }
         private GameScreenState gameState;
+        private GameScreenState lastGameState;
         public GameScreenState GameState { get => gameState; set => gameState = value; }
         private int cyclePosition = 0;
         private int cycleLength = 200;
@@ -58,6 +59,7 @@ namespace Game1
             pause = false;
             Content.RootDirectory = "Content";
             gameState = GameScreenState.Opening;
+            lastGameState = GameScreenState.GamePlay;
         }
       
         protected override void Initialize()
@@ -160,6 +162,7 @@ namespace Game1
                     {
                         CurrentLevel.Update();
                     }
+                    lastGameState = GameScreenState.GamePlay;
                     break;
                 case GameScreenState.DarkLevel11:
                     if (!pause)
@@ -167,6 +170,7 @@ namespace Game1
                         CurrentLevel.Update();
                         light.Update();
                     }
+                    lastGameState = GameScreenState.DarkLevel11;
                     break;
             }
             if (!Pause&& gameState!=GameScreenState.Opening && gameState != GameScreenState.LevelSelect )
@@ -174,7 +178,7 @@ namespace Game1
                 cyclePosition++;
                 if (cyclePosition == cycleLength && gameState == GameScreenState.Transition)
                 {
-                    gameState = GameScreenState.GamePlay;
+                    gameState = lastGameState;
                 }
                 
                 delta = gameTime;

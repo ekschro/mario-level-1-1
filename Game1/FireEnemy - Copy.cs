@@ -6,7 +6,7 @@ namespace Game1
     public class FireEnemyChain : IEnemy
     {
         Vector2 location2;
-        Game1 myGame;
+        //Game1 myGame;
         float radius2 = 0;
         IEnemy []fireEnemy = new IEnemy[5];
         public FireEnemyChain(Game1 game, Vector2 location)

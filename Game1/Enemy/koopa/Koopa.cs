@@ -12,7 +12,7 @@ namespace Game1
         public float CurrentXPos { get => koopaLocation.X; set => koopaLocation.X = value; }
         public float CurrentYPos { get => koopaLocation.Y; set => koopaLocation.Y = value; }
         private bool falling;
-        private bool jumping;
+        private bool jumping=false;
         public bool IsFalling { get => falling; set => falling = value; }
         public bool MovingRight { get; set; }
         public bool IsJumping { get => jumping; }

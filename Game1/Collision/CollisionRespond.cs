@@ -12,7 +12,7 @@ namespace Game1
     {
         private Game1 myGame;
 
-        private int invulnerabilityFrames;
+        //private int invulnerabilityFrames;
         private int invulnerabilityTimer;
 
         private ILevel objectLevel;
@@ -30,7 +30,7 @@ namespace Game1
             this.player = level.PlayerObject;
 
             invulnerabilityTimer = 0;
-            invulnerabilityFrames = utility.InvulnerabilityRespondFrames;
+            //invulnerabilityFrames = utility.InvulnerabilityRespondFrames;
         }
 
         public void BlockCollisionRespondTop(IBlock block,int height,bool standing)

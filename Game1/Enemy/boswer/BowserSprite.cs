@@ -59,9 +59,5 @@ namespace Game1
             myGame.SpriteBatch.End();
         }
 
-        public void ChangeSpriteEffects()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

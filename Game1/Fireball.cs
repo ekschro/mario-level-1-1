@@ -9,7 +9,7 @@ namespace Game1
         //private IControllerHandler controllerHandler;
         private IPlayer player;
         private bool falling;
-        private bool jumping;
+        private bool jumping=false;
         public bool IsJumping { get => jumping; }
         public bool IsFalling { get => falling; set => falling = value; }
         private int currentFrame;
