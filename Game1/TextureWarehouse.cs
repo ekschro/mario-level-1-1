@@ -21,7 +21,9 @@ namespace Game1 {
         public static Texture2D blueBrickBlockTexture;
         public static Texture2D pipeOnSideBlockTexture;
         public static Texture2D bowserTexture;
-
+        public static Texture2D bossLevelBackgroundTexture;
+        public static Texture2D grayBrickBlockTexture;
+        public static Texture2D bridgeBlockTexture;
 
         Game1 myGame;
         public TextureWarehouse(Game1 game)
@@ -45,6 +47,9 @@ namespace Game1 {
             blueBrickBlockTexture = myGame.Content.Load<Texture2D>("blueBrick");
             pipeOnSideBlockTexture = myGame.Content.Load<Texture2D>("pipeOnSide");
             bowserTexture = myGame.Content.Load<Texture2D>("Bowser");
+            bossLevelBackgroundTexture = myGame.Content.Load<Texture2D>("1-4Background");
+            grayBrickBlockTexture = myGame.Content.Load<Texture2D>("grayStone");
+            bridgeBlockTexture = myGame.Content.Load<Texture2D>("bridge");
         }
     }
 }

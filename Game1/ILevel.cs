@@ -18,5 +18,9 @@ namespace Game1
         ICamera LevelCamera { get; set; }
         PersistentData PersistentData { get; }
         int EndLocation { get; }
+        int Time { get; }
+
+        void DockTime();
+
     }
 }

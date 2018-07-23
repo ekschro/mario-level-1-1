@@ -174,9 +174,9 @@ namespace Game1
                 temp.Activate((int)(114 - (player.CurrentYPos - temp.GetGameObjectLocation().Y)));
                 player.TestMario.Flag();
                 myGame.AllowControllerResponse = false;
-                PlatformerLevel temp2 = (PlatformerLevel)myGame.CurrentLevel;
-                temp2.TimerStop = true;
+                myGame.TimerStop = true;
                 objectLevel.PersistentData.KoopaFireOrStarPoints();             //CHANGE THIS LATER
+                ((PlatformerLevel)objectLevel).nextLevel = true;
             }
             else if (block is PipeOnSideBlock && controllerHandler.MovingRight)
             {
@@ -247,6 +247,8 @@ namespace Game1
             }
             else if (player.IsStar)
             {
+                objectLevel.EnemyObjects.Remove(enemy);
+                SoundWarehouse.stomp.Play();
                 CreateFlippedEnemy(enemy);
             }
             else if (enemy is MarioFireBall)
@@ -326,6 +328,8 @@ namespace Game1
             }
             if (enemy is MarioFireBall || otherEnemy is MarioFireBall)
             {
+                SoundWarehouse.stomp.Play();
+                objectLevel.EnemyObjects.Remove(enemy);
                 CreateFlippedEnemy(enemy);
             }
             else if (otherEnemy is KoopaShell)

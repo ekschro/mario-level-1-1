@@ -47,7 +47,7 @@ namespace Game1
                 }
                 
 
-                if(GameObjectString != "StoneBlock" && GameObjectString != "BlueStoneBlock" && GameObjectString != "BlueBrickBlock")
+                if(GameObjectString != "StoneBlock" && GameObjectString != "BlueStoneBlock" && GameObjectString != "BlueBrickBlock" && GameObjectString != "GrayBrick" && GameObjectString != "BridgeBlock")
                 {
                     while (LoaderInput.Peek() >= 0 && (NextChar = (char)LoaderInput.Read()) != '\n')
                     {
@@ -169,6 +169,12 @@ namespace Game1
                     break;
                 case "Flag":
                     GameObject = new FlagBlock(myGame, Position);
+                    break;
+                case "GrayBrick":
+                    GameObject = new GrayBrickBlock(myGame, Position, Size);
+                    break;
+                case "BridgeBlock":
+                    GameObject = new BridgeBlock(myGame, Position, Size);
                     break;
                 case "Bowser":
                     GameObject = new Bowser(myGame, Position);

@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 namespace Game1
 {
-    public class PlatformerLevel : ILevel
+    public class BossLevel : ILevel
     {
-        private const int secretRoomLocation = 3408;
+        private const int bossRoomLocation = 800;
 
         private List<IGameObject> levelObjects;
         private ICollision collisionDetect;
@@ -22,8 +22,6 @@ namespace Game1
         private List<IPickup> pickups;
         private List<ITemporary> temporaries;
         private bool timerStop = false;
-        private Vector2 secretEntrance;
-        private Vector2 secretExit;
 
         public IPlayer PlayerObject { get => playerObject; set => playerObject = value; }
         public IBackground BackgroundObject { get => backgroundObject; set => backgroundObject = value; }
@@ -39,16 +37,12 @@ namespace Game1
         public int EndLocation { get => 3292; }
         public bool TimerStop { get => timerStop; set => timerStop = value; }
 
-        public PlatformerLevel(string fileName, Game1 game, PersistentData persistantData)
+        public BossLevel(string fileName, Game1 game, PersistentData persistantData)
         {
             myGame = game;
             this.persistentData = persistantData;
             levelObjects = new List<IGameObject>();
             ILoader loader = new LevelLoader(game);
-
-            secretEntrance = new Vector2(3432, 14);
-            secretExit = new Vector2(2616, 142);
-
         
             time = 365;
             loader.Load(fileName, levelObjects);
@@ -59,22 +53,15 @@ namespace Game1
             GetEnemyObjects();
             GetPickupObjects();
             GetTemporaryObjects();
-
-
+            
             collisionDetect = new CollisionDetect(game,this);
 
             currentCamera = movingCamera = new Camera(this);
-            staticCamera = new CameraStatic(this, secretRoomLocation);
+            staticCamera = new CameraStatic(this, bossRoomLocation);
+            
+            backgroundObject = new BossLevelBackground(myGame, new Vector2(0,0));
 
-            /*
-             * DEBUG
-             */
-            //currentCamera = staticCamera;
-            /*
-             * DEBUG
-             */
-
-            backgroundObject = new PlatformerLevelBackground(myGame, new Vector2(0,0));
+            myGame.AllowControllerResponse = true;
         }
 
         public void Update()
@@ -83,8 +70,6 @@ namespace Game1
             foreach (IGameObject GameObject in BlockObjects)
             {
                 if (GameObject.GetGameObjectLocation().X > currentCamera.CameraPosition - 16  && GameObject.GetGameObjectLocation().X < currentCamera.CameraPosition + 400)
-                    GameObject.Update();
-                else if (GameObject is StoneBlock)
                     GameObject.Update();
             }
             foreach (IGameObject GameObject in EnemyObjects)
@@ -118,7 +103,7 @@ namespace Game1
             {
                 if (GameObject.GetGameObjectLocation().X > currentCamera.CameraPosition - 16 && GameObject.GetGameObjectLocation().X < currentCamera.CameraPosition + 400)
                     GameObject.Draw();
-                else if (GameObject is StoneBlock)
+                else if (GameObject is StoneBlock || GameObject is GrayBrickBlock)
                     GameObject.Draw();
             }
             foreach (IGameObject GameObject in EnemyObjects)
@@ -199,31 +184,7 @@ namespace Game1
             }
             this.temporaries = temporaryObjects;
         }
-        /*
-        private void UpdateLevelObjects()
-        {
-            levelObjects = new List<IGameObject>();
-            levelObjects.Add(PlayerObject);
-            levelObjects.Add(BackgroundObject);
-            levelObjects.AddRange(BlockObjects);
-            levelObjects.AddRange(PickupObjects);
-            levelObjects.AddRange(EnemyObjects);
-            LevelObjects.AddRange(TemporaryObjects);
-        }
-        */
-        public void WarpToSecret()
-        {
-            playerObject.CurrentXPos = secretEntrance.X;
-            playerObject.CurrentYPos = secretEntrance.Y;
-            currentCamera = staticCamera;
-        }
 
-        public void WarpFromSecret()
-        {
-            playerObject.CurrentXPos = secretExit.X;
-            playerObject.CurrentYPos = secretExit.Y;
-            currentCamera = movingCamera;
-        }
         public void DockTime()
         {
             time--;

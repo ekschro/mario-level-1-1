@@ -54,12 +54,11 @@ namespace Game1
             myGame.SpriteBatch.DrawString(myGame.SpriteFont, "X", new Vector2(105, 25), Color.White);
             myGame.SpriteBatch.DrawString(myGame.SpriteFont, myGame.persistentData.Coins.ToString(), new Vector2(115, 25), Color.White); //need to update
             myGame.SpriteBatch.DrawString(myGame.SpriteFont, "1-1", new Vector2(205, 25), Color.White); //need to update
-            PlatformerLevel level = (PlatformerLevel)myGame.CurrentLevel;
             if (myGame.HudCounter == 100)
             {
                 myGame.SpriteBatch.DrawString(myGame.SpriteFont, "TIME", new Vector2(300, 10), Color.White);
                 if(myGame.GameState.Equals(Game1.GameScreenState.GamePlay))
-                    myGame.SpriteBatch.DrawString(myGame.SpriteFont, level.Time.ToString(), new Vector2(300, 25), Color.White); //need to update
+                    myGame.SpriteBatch.DrawString(myGame.SpriteFont, myGame.CurrentLevel.Time.ToString(), new Vector2(300, 25), Color.White); //need to update
             } else
             {
                 myGame.HudCounter++;

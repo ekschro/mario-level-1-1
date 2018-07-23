@@ -61,6 +61,8 @@
     <Compile Include="Blocks\BlockUtilityClass.cs" />
     <Compile Include="Blocks\Object\AbstractBlock.cs" />
     <Compile Include="Blocks\Object\BlueBrickBlock.cs" />
+    <Compile Include="Blocks\Object\GrayBrickBlock.cs" />
+    <Compile Include="Blocks\Object\BridgeBlock.cs" />
     <Compile Include="Blocks\Object\BlueStoneBlock.cs" />
     <Compile Include="Blocks\Object\BottomLeftPipeBlock.cs" />
     <Compile Include="Blocks\Object\BottomRightPipeBlock.cs" />
@@ -80,6 +82,8 @@
     <Compile Include="Blocks\Object\TopPipeBlock.cs" />
     <Compile Include="Blocks\Object\TopWarpPipeBlock.cs" />
     <Compile Include="Blocks\Object\UsedBlock.cs" />
+    <Compile Include="Blocks\Sprites\BridgeBlockSprite.cs" />
+    <Compile Include="Blocks\Sprites\GrayBrickBlockSprite.cs" />
     <Compile Include="Blocks\Sprites\BlueBrickBlockSprite.cs" />
     <Compile Include="Blocks\Sprites\FlagBlockSprite.cs" />
     <Compile Include="Blocks\Sprites\FlagpoleBlockSprite.cs" />
@@ -96,6 +100,8 @@
     <Compile Include="Enemy\boswer\BowserSprite.cs" />
     <Compile Include="Enemy\boswer\BowserStateMachine.cs" />
     <Compile Include="Enemy\EnemyUtilityClass.cs" />
+    <Compile Include="BossLevel.cs" />
+    <Compile Include="BossLevelBackground.cs" />
     <Compile Include="LevelGameOver.cs" />
     <Compile Include="MarioSpriteUtility.cs" />
     <Compile Include="Mario\Object\MarioUtility.cs" />
@@ -182,7 +188,7 @@
     <Compile Include="ICollision.cs" />
     <Compile Include="ILevel.cs" />
     <Compile Include="ILoader.cs" />
-    <Compile Include="Level1.cs" />
+    <Compile Include="PlatformerLevel.cs" />
     <Compile Include="MouseController.cs" />
     <Compile Include="Physics\StarPhysics.cs" />
     <Compile Include="Physics\PickupPhysics.cs" />
@@ -232,6 +238,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="app.manifest" />
+    <None Include="Content\BossLevelInfo.csv" />
     <None Include="Content\LevelInfo.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

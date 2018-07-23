@@ -31,6 +31,7 @@ namespace Game1
         private SpriteFont spriteFont;
         private bool pause;
         private bool allowControllerResponse;
+        private bool timerStop = false;
         public enum GameScreenState { Transition, GamePlay, Dead }
         private GameScreenState gameState;
         public GameScreenState GameState { get=>gameState; }
@@ -44,6 +45,7 @@ namespace Game1
         //public LevelGameOver GameOverLevel { get => gameOverLevel; }
         //public LevelTransition TransitionLevel { get => transitionLevel; set => transitionLevel = value; }
         //internal SoundWarehouse SoundWarehouse { get => soundWarehouse; set => soundWarehouse = value; }
+        public bool TimerStop { get => timerStop; set => timerStop = value; }
         public bool Pause { get => pause; set => pause = value; }
         public int HudCounter { get => hudCounter; set => hudCounter = value; }
         public bool AllowControllerResponse { get => allowControllerResponse; set => allowControllerResponse = value; }
@@ -82,7 +84,9 @@ namespace Game1
             textureWarehouse = new TextureWarehouse(this);
             soundWarehouse = new SoundWarehouse(this);
             spriteFont = Content.Load<SpriteFont>("arial");
-            CurrentLevel = new PlatformerLevel("../../../../Content/LevelInfo.csv", this, persistentData);
+            //CurrentLevel = new PlatformerLevel("../../../../Content/LevelInfo.csv", this, persistentData);
+            CurrentLevel = new BossLevel("../../../../Content/BossLevelInfo.csv", this, persistentData);
+
             MediaPlayer.Play(SoundWarehouse.main_theme);
         }
 
@@ -91,7 +95,7 @@ namespace Game1
             gameState = GameScreenState.Transition;
             cyclePosition = 0;
             allowControllerResponse = true;
-            CurrentLevel = new PlatformerLevel("../../../../Content/LevelInfo.csv", this, persistentData);
+            CurrentLevel = GetNewLevel();
             pause = false;
             currentLevel.PlayerObject.Invulnerability = false;
             if (persistentData.Lives > 1)
@@ -106,7 +110,7 @@ namespace Game1
             cyclePosition = 0;
             allowControllerResponse = true;
             persistentData = new PersistentData();
-            CurrentLevel = new PlatformerLevel("../../../../Content/LevelInfo.csv", this, persistentData);
+            CurrentLevel = GetNewLevel();
             pause = false;
             currentLevel.PlayerObject.Invulnerability = false;
             MediaPlayer.Play(SoundWarehouse.main_theme);
@@ -140,17 +144,16 @@ namespace Game1
                 }
 
                 delta = gameTime;
-                PlatformerLevel level = (PlatformerLevel)currentLevel;
-                if (counter == 60 && !level.TimerStop)
+                if (counter == 60 && !TimerStop)
                 {
-                    level.DockTime();
+                    currentLevel.DockTime();
                     counter = 0;
                 }
                 else
                 {
                     counter++;
                 }
-                if (level.Time == 0)
+                if (currentLevel.Time == 0)
                 {
                     currentLevel.PlayerObject.TestMario.Downgrade();
                     currentLevel.PlayerObject.TestMario.Downgrade();
@@ -191,6 +194,21 @@ namespace Game1
             }
             
             base.Draw(gameTime);
+        }
+
+        public void NextLevel()
+        {
+            if (currentLevel is PlatformerLevel)
+                currentLevel = new BossLevel("../../../../Content/BossLevelInfo.csv", this, persistentData);
+
+        }
+
+        private ILevel GetNewLevel()
+        {
+            if (currentLevel is PlatformerLevel)
+                return new PlatformerLevel("../../../../Content/LevelInfo.csv", this, persistentData);
+            else
+                return new BossLevel("../../../../Content/BossLevelInfo.csv", this, persistentData);
         }
     }
 }
