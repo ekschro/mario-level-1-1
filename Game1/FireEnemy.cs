@@ -6,6 +6,7 @@ namespace Game1
     public class FireEnemy : IEnemy
     {
         Vector2 location2;
+        Vector2 originalLocation;
         Game1 myGame;
         float radius2;
         double angle;
@@ -13,6 +14,7 @@ namespace Game1
         public FireEnemy(Game1 game, Vector2 location, float radius)
         {
             location2 = location;
+            originalLocation = location;
             location2.X = location2.X + radius;
             myGame = game;
             radius2 = radius;
@@ -76,6 +78,11 @@ namespace Game1
             angle = angle + 0.01;
             location2.X = (float)(location2.X + radius2 * Math.Cos(angle));
             location2.Y = (float)(location2.Y + radius2 * Math.Sin(angle));
+            if (angle > 2 * Math.PI)
+            {
+                angle = 0;
+                location2 = originalLocation;
+            }
             fireEnemySprite.Update();
 
         }
