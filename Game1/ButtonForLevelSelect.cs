@@ -22,6 +22,7 @@ namespace Game1
         //private Rectangle[] buttonRectangle = new Rectangle[NumberOfButtons];
         private KeyboardState keyBoardState, lastKeyBoardState;
         private bool chooseLevel;
+        private bool chooseMode;
         public ButtonForLevelSelect(Game1 game)
         {
             myGame = game;
@@ -40,6 +41,8 @@ namespace Game1
                     myGame.LoadTransition();
                     break;
                 case Level14:
+                    myGame.NextLevel();
+                    myGame.LoadTransition();
                     break;
                 case LevelDark:
                     myGame.DarkStage();
@@ -86,10 +89,11 @@ namespace Game1
                         }
                         break;
                     case Keys.Down:
-                        if (chooseLevel)
+                        if (chooseLevel && chooseMode!=true)
                         {
                             buttonColor[LevelNormal] = Color.White;
                             chooseLevel = false;
+                            chooseMode = true;
                         }
                         break;
                     case Keys.Up:
@@ -101,10 +105,15 @@ namespace Game1
                     case Keys.Enter:
                         if (buttonColor[Level11] == Color.White && buttonColor[LevelNormal] == Color.White)
                             TakeAction(Level11);
-                        else if (buttonColor[Level11] == Color.White && buttonColor[LevelDark] == Color.White )
+                        else if (buttonColor[Level11] == Color.White && buttonColor[LevelDark] == Color.White)
                             TakeAction(LevelDark);
-                        else if (buttonColor[Level14] == Color.White)
+                        else if (buttonColor[Level14] == Color.White && buttonColor[LevelNormal] == Color.White)
                             TakeAction(Level14);
+                        else if (buttonColor[Level14] == Color.White && buttonColor[LevelDark] == Color.White)
+                        {
+                            TakeAction(Level14);
+                            TakeAction(LevelDark);
+                        }
                         break;
                     default:
                         break;
