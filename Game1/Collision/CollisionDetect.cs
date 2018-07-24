@@ -95,10 +95,14 @@ namespace Game1
                 {
                     enemyBox = new Rectangle(enemyX, enemyY, utility.MainWidth, utility.MainWidth);
                 }
-
+                bool fireEnemy = false;
+                if (enemyArray[j] is FireEnemy)
+                {
+                    fireEnemy = true;
+                }
                 blockArray = level1.BlockObjects.ToArray();
                 
-                for (int i = 0; i < blockArray.Length; i++)
+                for (int i = 0; i < blockArray.Length && !fireEnemy; i++)
                 {
                     Rectangle blockBox;
 
@@ -116,7 +120,7 @@ namespace Game1
 
                     Rectangle intersect;
 
-                    if (enemyBox.Intersects(blockBox) && !(enemyArray[j] is FireEnemyChain))
+                    if (enemyBox.Intersects(blockBox))
                     {
                         Rectangle.Intersect(ref enemyBox, ref blockBox, out intersect);
                         if (intersect.Height < intersect.Width && enemyY < blockY)

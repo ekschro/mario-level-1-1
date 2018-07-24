@@ -105,7 +105,16 @@ namespace Game1
                     GameObject = new GreenMushroom(myGame, Position);
                     break;
                 case "Star":
+                
                     GameObject = new Star(myGame, Position);
+                    break;
+                case "FireEnemy":
+                    float radius = 0;
+                    for (int i = 0; i < 5; i++)
+                    {
+                        GameObject = new FireEnemy(myGame, Position, radius);
+                        radius += 2;
+                    }
                     break;
                 case "Goomba":
                     GameObject = new Goomba(myGame, Position);
