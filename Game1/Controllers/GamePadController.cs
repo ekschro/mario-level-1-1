@@ -15,7 +15,7 @@ namespace Game1
     public class GamePadController : IController
     {
         private Dictionary<Buttons, ICommand> controllerMappings;
-        //private List<Buttons> recentKeys;
+        
         private Game1 myGame;
         private ControllerUtilityClass utility = new ControllerUtilityClass();
         private float xSensitivity;
@@ -57,7 +57,7 @@ namespace Game1
                     if (controllerMappings.ContainsKey(button))
                     {
                         controllerMappings[button].Execute();
-                        //recentKeys.Add(key);
+                        
                     }
                     else if (button.Equals(Buttons.DPadUp))
                     {

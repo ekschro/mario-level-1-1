@@ -13,7 +13,7 @@ namespace Game1
         public float CurrentYPos { get => blockLocation.Y; set => blockLocation.Y = value; }
 
         private IBlockSprite questionPowerUpBlockSprite;
-        //private Game1 myGame;
+        
         private Vector2 blockLocation;
         private Rectangle blockRectangle;
         private int cyclePosition;

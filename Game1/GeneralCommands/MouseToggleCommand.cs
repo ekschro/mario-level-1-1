@@ -14,7 +14,7 @@ namespace Game1
     public class MouseToggleCommand : ICommand
     {
         private Game1 myGame;
-        //private IList<IController> temporaryControllerList;
+        
 
         public MouseToggleCommand(Game1 game)
         {

@@ -28,8 +28,7 @@ namespace Game1
 
         public void BeStomped()
         {
-            //goombaSprite.ChangeFrame(2, 3);
-            // goombaSprite.ChangeFrame(3, 4);
+           
             goombaSprite.ChangeFrame(utility.GoombaStompedStartFrame, utility.GoombaStompedEndFrame);
             if (health != GoombaHealth.Stomped) 
             {
@@ -40,7 +39,7 @@ namespace Game1
 
         public void BeFlipped()
         {
-            //goombaSprite.FlipSprite();
+           
             goombaSprite.ChangeSpriteEffects(SpriteEffects.FlipVertically);
             if (health != GoombaHealth.Flipped) 
             {

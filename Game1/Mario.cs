@@ -7,10 +7,9 @@ namespace Game1
     {
         private IControllerHandler controllerHandler;
         private Game1 myGame;
-        //private int animationTimer;
+        
         private int killedNum = 0;
         private ITestMario testMario;
-        //private static ISprite playerSprite;
         public static MarioPhysics physics;
         private static Color marioColor;
         private static float currentXPosition;

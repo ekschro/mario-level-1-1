@@ -30,7 +30,7 @@ namespace Game1
             myGame = game;
             pickupLocation = location;
             pickupOriginalLocation = location;
-            physics = new PickupPhysics(myGame, this/*, 1*/);
+            physics = new PickupPhysics(myGame, this);
         }
 
         public void Draw()

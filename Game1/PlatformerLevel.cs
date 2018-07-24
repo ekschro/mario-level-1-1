@@ -66,13 +66,7 @@ namespace Game1
             currentCamera = movingCamera = new Camera(this);
             staticCamera = new CameraStatic(this, secretRoomLocation);
 
-            /*
-             * DEBUG
-             */
-            //currentCamera = staticCamera;
-            /*
-             * DEBUG
-             */
+           
 
             backgroundObject = new PlatformerLevelBackground(myGame, new Vector2(0,0));
         }
@@ -210,18 +204,7 @@ namespace Game1
             }
             this.temporaries = temporaryObjects;
         }
-        /*
-        private void UpdateLevelObjects()
-        {
-            levelObjects = new List<IGameObject>();
-            levelObjects.Add(PlayerObject);
-            levelObjects.Add(BackgroundObject);
-            levelObjects.AddRange(BlockObjects);
-            levelObjects.AddRange(PickupObjects);
-            levelObjects.AddRange(EnemyObjects);
-            LevelObjects.AddRange(TemporaryObjects);
-        }
-        */
+        
         public void WarpToSecret()
         {
             playerObject.CurrentXPos = secretEntrance.X;

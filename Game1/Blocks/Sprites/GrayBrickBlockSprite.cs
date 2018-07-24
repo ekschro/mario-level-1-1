@@ -15,14 +15,14 @@ namespace Game1
     {
         private GrayBrickBlock grayBrickBlockObject;
         private Game1 myGame;
-        //private int currentFrame;
+        
         private BlockUtilityClass utility;
         public GrayBrickBlockSprite(Game1 game, IBlock grayBrickBlock)
         {
             utility = new BlockUtilityClass();
             grayBrickBlockObject = (GrayBrickBlock)grayBrickBlock;
             myGame = game;
-            //currentFrame = utility.InitialFrame;
+            
         }
 
         public void Update(){}
