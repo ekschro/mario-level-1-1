@@ -14,7 +14,7 @@ namespace Game1
         private int currentFrame;
         private int startFrame;
         private int endFrame;
-        //private int pickupColumn = 15;
+        
         private PickupUtilityClass utility;
 
         public CoinPickupSprite(Game1 game, CoinPickup coinPickup)
@@ -22,8 +22,7 @@ namespace Game1
             utility = new PickupUtilityClass();
             coinPickupObject = coinPickup;
             myGame = game;
-            //startFrame = 10;
-            //endFrame = 14;
+            
             startFrame = utility.CoinStartFrame;
             endFrame = utility.CoinEndFrame;
             currentFrame = startFrame;   

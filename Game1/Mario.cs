@@ -7,10 +7,9 @@ namespace Game1
     {
         private IControllerHandler controllerHandler;
         private Game1 myGame;
-        //private int animationTimer;
+        
         private int killedNum = 0;
         private ITestMario testMario;
-        //private static ISprite playerSprite;
         public static MarioPhysics physics;
         private static Color marioColor;
         private static float currentXPosition;
@@ -39,7 +38,7 @@ namespace Game1
         public int KilledNum { get => killedNum; set => killedNum = value; }
         public ITestMario TestMario { get => testMario; set => testMario = value; }
 
-        public Mario(Game1 game, Vector2 vector)
+        public Mario(Game1 game, Vector2 vector,int state)
         {
             myGame = game;
             controllerHandler = game.controllerHandler;
@@ -49,7 +48,12 @@ namespace Game1
             MarioColor = Color.White;
             colorStartingTime = 5;
             colorTimer = 0;
-            testMario = new TestSmallMario(game, vector, this);
+            if (state == 1)
+                testMario = new TestSmallMario(game, vector, this);
+            else if (state == 2)
+                testMario = new TestBigMario(game, vector, this);
+            else if (state == 3)
+                testMario = new TestFireMario(game, vector, this);
             CanJump = true;
             Falling = false;
             Bounce = false;

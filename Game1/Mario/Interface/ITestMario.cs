@@ -15,7 +15,7 @@ namespace Game1
         void Upgrade();
         void Downgrade();
         void GoDie();
-        ITestMarioStateMachine StateMachine { get; }
+        ITestMarioStateMachine StateMachine { get; set; }
         void Flag();
         void Pipe(bool isPositive, bool isHorizontal);
     }

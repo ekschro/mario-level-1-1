@@ -10,11 +10,11 @@ namespace Game1
 {
     public class TestDeadMarioSprite : ITestMarioSprite
     {
-        //private TestDeadMario marioObject;
+        
         private Game1 myGame;
         private int currentFrame;
         private int startFrame;
-        //private int endFrame;
+        
         private IPlayer player;
         private float bouncePosition;
         private float bounceVelocity;
@@ -40,7 +40,7 @@ namespace Game1
         public void ChangeFrame(int start, int end)
         {
             startFrame = start;
-            //endFrame = end;
+           
         }
 
         public void Update()
@@ -83,11 +83,6 @@ namespace Game1
             }
             
         }
-        /*
-        public Vector2 GetGameObjectLocation()
-        {
-            throw new NotImplementedException();
-        }
-        */
+        
     }
 }

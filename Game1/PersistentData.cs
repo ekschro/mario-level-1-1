@@ -14,6 +14,9 @@ namespace Game1
         private int lives;
         private int points;
         private int coins;
+        private int playerState;
+
+        public int PlayerState { get => playerState; set => playerState = value; }
 
         public PersistentData(Game1 game)
         {
@@ -22,6 +25,7 @@ namespace Game1
             lives = 3;
             points = 0;
             coins = 0;
+            playerState = 1;
         }
 
         private void Draw(int value, Vector2 loc)

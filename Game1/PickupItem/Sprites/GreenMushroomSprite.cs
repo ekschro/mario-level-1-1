@@ -17,7 +17,7 @@ namespace Game1
         {
             greenMushroomOject = greenMushroom;
             myGame = game;
-            //currentFrame = 1;
+           
             utility = new PickupUtilityClass();
             currentFrame = utility.GreenMushroomFrame;
         }

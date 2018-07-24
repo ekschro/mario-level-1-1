@@ -10,9 +10,9 @@ namespace Game1
     {
         private ITestMarioSprite marioSprite;
         private bool facingLeft = false;
-        //private enum MarioSize { Small, Big, Fire, Dead};
+        
         private enum MarioState {Idle, Walking, Jumping, Crouching};
-        //private MarioSize size = MarioSize.Small;
+       
         private MarioState state = MarioState.Idle;
         private MarioSpriteUtility spriteUtility;
 
@@ -26,16 +26,16 @@ namespace Game1
         }
         public void ChangeDirection(bool left)
         {
-            //facingLeft = !facingLeft;
+           
             facingLeft = left;
         }
         public void Idle()
         {
             if (facingLeft)
-                //marioSprite.ChangeFrame(41, 40);
+                
                 marioSprite.ChangeFrame(spriteUtility.SmallMarioLeftIdleStart, spriteUtility.SmallMarioLeftIdleEnd);
             else
-                //marioSprite.ChangeFrame(42, 43);
+                
                 marioSprite.ChangeFrame(spriteUtility.SmallMarioRightIdleStart, spriteUtility.SmallMarioRightIdleEnd);
             State = MarioState.Idle;
         }
@@ -43,19 +43,19 @@ namespace Game1
         {
             State = MarioState.Walking;
             if (facingLeft)
-                //marioSprite.ChangeFrame(11 + 28, 8 + 28);
+                
                 marioSprite.ChangeFrame(spriteUtility.SmallMarioLeftWalkingStart, spriteUtility.SmallMarioLeftWalkingEnd);
             else
-                //marioSprite.ChangeFrame(16 + 28, 19 + 28);
+                
                 marioSprite.ChangeFrame(spriteUtility.SmallMarioRightWalkingStart, spriteUtility.SmallMarioRightWalkingEnd);
         }
         public void Jumping()
         {
             if (facingLeft)
-                //marioSprite.ChangeFrame(7 + 28, 7 + 28 - 1);
+                
                 marioSprite.ChangeFrame(spriteUtility.SmallMarioLeftJumpingStart, spriteUtility.SmallMarioLeftJumpingEnd);
             else
-                //marioSprite.ChangeFrame(20 + 28, 20 + 28 + 1);
+                
                 marioSprite.ChangeFrame(spriteUtility.SmallMarioRightJumpingStart, spriteUtility.SmallMarioRightJumpingEnd);
                 State = MarioState.Jumping;
         }

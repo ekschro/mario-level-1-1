@@ -49,7 +49,7 @@ namespace Game1
 
         public void BeFlipped()
         {
-            //koopaSprite.FlipSprite();
+           
             koopaSprite.ChangeSpriteEffects(SpriteEffects.FlipVertically);
             if (health != KoopaHealth.Flipped)
             {

@@ -13,7 +13,7 @@ namespace Game1
         public float CurrentYPos { get => blockLocation.Y; set => blockLocation.Y = value; }
 
         private IBlockSprite questionCoinBlockSprite;
-        //private Game1 myGame;
+       
         private Vector2 blockLocation;
         private BlockUtilityClass utility = new BlockUtilityClass();
         private Rectangle blockRectangle;
@@ -25,7 +25,7 @@ namespace Game1
             cyclePosition = utility.QuestionCyclePosition;
             cycleLength = utility.QuestionCoinLength;
             questionCoinBlockSprite = new QuestionCoinBlockSprite(game, this);
-            //myGame = game;
+            
             blockLocation = location;
             blockRectangle = new Rectangle((int)location.X, (int)location.Y, utility.Width, utility.Height);
         }

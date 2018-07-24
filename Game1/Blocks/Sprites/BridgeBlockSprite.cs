@@ -15,14 +15,14 @@ namespace Game1
     {
         private BridgeBlock bridgeBlockObject;
         private Game1 myGame;
-        //private int currentFrame;
+        
         private BlockUtilityClass utility;
         public BridgeBlockSprite(Game1 game, IBlock bridgeBlock)
         {
             utility = new BlockUtilityClass();
             bridgeBlockObject = (BridgeBlock)bridgeBlock;
             myGame = game;
-            //currentFrame = utility.InitialFrame;
+            
         }
 
         public void Update(){}

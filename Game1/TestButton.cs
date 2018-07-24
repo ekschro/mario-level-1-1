@@ -80,11 +80,11 @@ namespace Game1
         {
             Rectangle levelDestinationRectangle = new Rectangle(150, 170, TextureWarehouse.levelSelectTexture.Width, TextureWarehouse.levelSelectTexture.Height);
             Rectangle enterDestinationRectangle = new Rectangle(170, 150, TextureWarehouse.enterTexture.Width, TextureWarehouse.enterTexture.Height);
-            //Rectangle level11Rectangle = new Rectangle(50, 50, TextureWarehouse.level11.Width / 3, TextureWarehouse.level11.Height / 3);
+            
 
             myGame.SpriteBatch.Draw(TextureWarehouse.enterTexture, enterDestinationRectangle, buttonColor[0]);
             myGame.SpriteBatch.Draw(TextureWarehouse.levelSelectTexture, levelDestinationRectangle, buttonColor[1]);
-            //myGame.SpriteBatch.Draw(TextureWarehouse.level11, level11Rectangle, buttonColor[2]);
+           
             
         }
     }

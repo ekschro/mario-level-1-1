@@ -9,9 +9,9 @@ namespace Game1
     public class TestDeadMarioStateMachine : ITestMarioStateMachine
     {
         private bool facingLeft = true;
-        //private enum MarioSize { Small, Big, Fire, Dead };
+       
         private enum MarioState { Idle, Walking, Jumping, Crouching };
-        //private MarioSize size = MarioSize.Dead;
+        
         private MarioState state = MarioState.Idle;
 
         private MarioState State { get => state; set => state = value; }
@@ -21,7 +21,7 @@ namespace Game1
         }
         public void ChangeDirection(bool left)
         {
-            //facingLeft = !facingLeft;
+           
             facingLeft = left;
         }
         public void Idle()

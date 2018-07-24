@@ -24,7 +24,7 @@ namespace Game1
             myGame = game;
             goombaOriginalLocation = location;
             GoombaSprite = new FlattenedGoombaSprite(game, this);
-            //timeBeforeDisappearing = 10;
+           
             timeBeforeDisappearing = utility.DisappearTime;
         }
        

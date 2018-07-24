@@ -15,6 +15,7 @@ namespace Game1
             
             marioSprite = new TestSmallMarioSprite(game, this, mario);
             stateMachine = new TestSmallMarioStateMachine(marioSprite);
+            game.persistentData.PlayerState = 1;
         }
 
         public override void Upgrade()

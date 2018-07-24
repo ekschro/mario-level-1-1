@@ -15,7 +15,7 @@ namespace Game1
     {
         private BlueStoneBlock blueStoneBlockObject;
         private Game1 myGame;
-        //private int currentFrame;
+        
         private BlockUtilityClass utility;
         public BlueStoneBlockSprite(Game1 game, IBlock blueStoneBlock)
         {
@@ -23,7 +23,7 @@ namespace Game1
             myGame = game;
             
             utility = new BlockUtilityClass();
-            //currentFrame = utility.InitialFrame;
+           
 
         }
 

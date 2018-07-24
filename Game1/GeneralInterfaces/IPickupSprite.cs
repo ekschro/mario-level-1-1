@@ -14,6 +14,6 @@ namespace Game1
     {
         void Update();
         void Draw();
-        //void Picked();
+        
     }
 }
