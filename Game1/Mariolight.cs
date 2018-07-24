@@ -28,7 +28,7 @@ namespace Game1
             Rectangle lightRectangle = new Rectangle(xPosition-436, yPosition-302, TextureWarehouse.light.Width, TextureWarehouse.light.Height);
             Rectangle lightSourceRectangle = new Rectangle(0, 0, TextureWarehouse.light.Width, TextureWarehouse.light.Height);
             myGame.SpriteBatch.Begin();
-            //myGame.SpriteBatch.Draw(TextureWarehouse.level11,new Vector2(0,0), Color.Black);
+           
             myGame.SpriteBatch.Draw(TextureWarehouse.light, lightRectangle, lightSourceRectangle,Color.White);
             myGame.SpriteBatch.End();
         }
