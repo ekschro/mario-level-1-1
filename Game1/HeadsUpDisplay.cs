@@ -53,7 +53,14 @@ namespace Game1
             myGame.SpriteBatch.Draw(TextureWarehouse.pickupTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.SpriteBatch.DrawString(myGame.SpriteFont, "X", new Vector2(105, 25), Color.White);
             myGame.SpriteBatch.DrawString(myGame.SpriteFont, myGame.persistentData.Coins.ToString(), new Vector2(115, 25), Color.White); //need to update
-            myGame.SpriteBatch.DrawString(myGame.SpriteFont, "1-1", new Vector2(205, 25), Color.White); //need to update
+            if (myGame.NextLevel1)
+            {
+                myGame.SpriteBatch.DrawString(myGame.SpriteFont, "1-4", new Vector2(205, 25), Color.White); //need to update
+            }
+            else
+            {
+                myGame.SpriteBatch.DrawString(myGame.SpriteFont, "1-1", new Vector2(205, 25), Color.White); //need to update
+            }
             if (myGame.HudCounter == 100)
             {
                 myGame.SpriteBatch.DrawString(myGame.SpriteFont, "TIME", new Vector2(300, 10), Color.White);

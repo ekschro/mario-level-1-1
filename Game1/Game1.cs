@@ -38,6 +38,7 @@ namespace Game1
         private bool timerStop = false;
         private GameScreenState gameState;
         private GameScreenState lastGameState;
+        private bool nextLevel = false;
         public GameScreenState GameState { get => gameState; set => gameState = value; }
         private int cyclePosition = 0;
         private int cycleLength = 200;
@@ -51,6 +52,7 @@ namespace Game1
         public bool Pause { get => pause; set => pause = value; }
         public int HudCounter { get => hudCounter; set => hudCounter = value; }
         public bool AllowControllerResponse { get => allowControllerResponse; set => allowControllerResponse = value; }
+        public bool NextLevel1 { get => nextLevel; set => nextLevel = value; }
 
         public Game1()
         {
@@ -235,16 +237,27 @@ namespace Game1
         public void NextLevel()
         {
             if (currentLevel is PlatformerLevel)
+            {
                 currentLevel = new BossLevel("../../../../Content/BossLevelInfo.csv", this, persistentData);
+                NextLevel1 = true;
+            }
 
         }
 
         private ILevel GetNewLevel()
         {
             if (currentLevel is PlatformerLevel)
+            {
+                NextLevel1 = false;
                 return new PlatformerLevel("../../../../Content/LevelInfo.csv", this, persistentData);
+                
+            }
             else
+            {
+                NextLevel1 = true;
                 return new BossLevel("../../../../Content/BossLevelInfo.csv", this, persistentData);
+                
+            }
         }
     }
 }
