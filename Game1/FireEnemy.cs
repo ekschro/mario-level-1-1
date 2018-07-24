@@ -60,7 +60,7 @@ namespace Game1
 
         public bool GetDead()
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public Vector2 GetGameObjectLocation()
@@ -75,7 +75,7 @@ namespace Game1
 
         public void Update()
         {
-            angle = angle + 0.01;
+            angle = angle + 0.015;
             location2.X = (float)(originalLocation.X + radius2 * Math.Cos(angle));
             location2.Y = (float)(originalLocation.Y + radius2 * Math.Sin(angle));
             if (angle > 2 * Math.PI)
