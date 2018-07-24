@@ -1,5 +1,5 @@
 Mario,0,98
-GrayBrick,0,40,2560,16
+GrayBrick,0,40,2654,16
 GrayBrick,0,56,376,32
 GrayBrick,360,88,16,16
 UsedBlock,360,104
@@ -36,4 +36,5 @@ BridgeBlock,2040,168,208,16
 Bowser,2184,136
 GrayBrick,2248,152,48,96
 GrayBrick,2264,56,32,48
-GrayBrick,2296,216,128,32
+AxePickup,2248,136
+GrayBrick,2296,216,360,32

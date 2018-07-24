@@ -396,7 +396,7 @@ namespace Game1
             enemy.IsFalling = false;
         }
 
-        public void PickupCollisionRespondTop(IPickup pickup)
+        public void PickupCollisionRespond(IPickup pickup)
         {
             
             if (pickup is Fireflower)
@@ -430,47 +430,10 @@ namespace Game1
                 invulnerabilityTimer = 1000;
                 player.Invulnerability = true;
             }
-
-            objectLevel.PickupObjects.Remove(pickup);
-        }
-
-        public void PickupCollisionRespondBottom(IPickup pickup)
-        {
-            if (pickup is Fireflower)
+            else if (pickup is AxePickup)
             {
-                objectLevel.PersistentData.PowerUpCollectPoints(pickup.GetGameObjectLocation());
-                SoundWarehouse.powerup.Play();
-                player.TestMario = new TestFireMario(myGame, new Vector2(player.CurrentXPos, player.CurrentYPos), (Mario)player);
-            }
-            else if (pickup is GreenMushroom)
-            {
-                objectLevel.PersistentData.PowerUpCollectPoints(pickup.GetGameObjectLocation());
-                SoundWarehouse.powerup.Play();
-                objectLevel.PersistentData.OneUpLives(pickup.GetGameObjectLocation());
-            }
-            else if (pickup is RedMushroom)
-            {
-                objectLevel.PersistentData.PowerUpCollectPoints(pickup.GetGameObjectLocation());
-                SoundWarehouse.powerup.Play();
-                if (!(player.TestMario is TestFireMario))
-                {
-                    player.TestMario = new TestBigMario(myGame, new Vector2(player.CurrentXPos, player.CurrentYPos), (Mario)player);
-                }
-               
-            }
-            else if (pickup is CoinPickup)
-            {
-                SoundWarehouse.coin.Play();
-                objectLevel.PersistentData.CoinCollectedPoints(pickup.GetGameObjectLocation());
-            }
-            else if (pickup is Star)
-            {
-                objectLevel.PersistentData.PowerUpCollectPoints(pickup.GetGameObjectLocation());
-                SoundWarehouse.powerup.Play();
-                MediaPlayer.Play(SoundWarehouse.star_theme);
-                objectLevel.PlayerObject.IsStar = true;
-                invulnerabilityTimer = 1000;
-                player.Invulnerability = true;
+                ((BossLevel)objectLevel).endSequence = true;
+                ((Mario)player).Stop();
             }
 
             objectLevel.PickupObjects.Remove(pickup);
@@ -482,85 +445,6 @@ namespace Game1
             float y = pickup.GetGameObjectLocation().Y;
             pickup.SetGameObjectLocation(new Vector2(x,y-height));
             pickup.IsFalling = false;
-        }
-
-        public void PickupCollisionRespondLeft(IPickup pickup)
-        {
-            if (pickup is Fireflower)
-            {
-                objectLevel.PersistentData.PowerUpCollectPoints(pickup.GetGameObjectLocation());
-                SoundWarehouse.powerup.Play();
-                player.TestMario = new TestFireMario(myGame, new Vector2(player.CurrentXPos, player.CurrentYPos), (Mario)player);
-            }
-            else if (pickup is GreenMushroom)
-            {
-                objectLevel.PersistentData.PowerUpCollectPoints(pickup.GetGameObjectLocation());
-                SoundWarehouse.powerup.Play();
-                objectLevel.PersistentData.OneUpLives(pickup.GetGameObjectLocation());
-            }
-            else if (pickup is RedMushroom)
-            {
-                objectLevel.PersistentData.PowerUpCollectPoints(pickup.GetGameObjectLocation());
-                SoundWarehouse.powerup.Play();
-                if (!(player.TestMario is TestFireMario))
-                    player.TestMario = new TestBigMario(myGame, new Vector2(player.CurrentXPos, player.CurrentYPos), (Mario)player);
-            }
-            else if (pickup is CoinPickup)
-            {
-                SoundWarehouse.coin.Play();
-                objectLevel.PersistentData.CoinCollectedPoints(pickup.GetGameObjectLocation());
-            }
-            else if (pickup is Star)
-            {
-                objectLevel.PersistentData.PowerUpCollectPoints(pickup.GetGameObjectLocation());
-                SoundWarehouse.powerup.Play();
-                MediaPlayer.Play(SoundWarehouse.star_theme);
-                objectLevel.PlayerObject.IsStar = true;
-                invulnerabilityTimer = 1000;
-                player.Invulnerability = true;
-            }
-
-            objectLevel.PickupObjects.Remove(pickup);
-        }
-
-        public void PickupCollisionRespondRight(IPickup pickup)
-        {
-
-            if (pickup is Fireflower)
-            {
-                objectLevel.PersistentData.PowerUpCollectPoints(pickup.GetGameObjectLocation());
-                SoundWarehouse.powerup.Play();
-                player.TestMario = new TestFireMario(myGame, new Vector2(player.CurrentXPos, player.CurrentYPos), (Mario)player);
-            }
-            else if (pickup is GreenMushroom)
-            {
-                objectLevel.PersistentData.PowerUpCollectPoints(pickup.GetGameObjectLocation());
-                SoundWarehouse.powerup.Play();
-                objectLevel.PersistentData.OneUpLives(pickup.GetGameObjectLocation());
-            }
-            else if (pickup is RedMushroom)
-            {
-                objectLevel.PersistentData.PowerUpCollectPoints(pickup.GetGameObjectLocation());
-                SoundWarehouse.powerup.Play();
-                if (!(player.TestMario is TestFireMario))
-                    player.TestMario = new TestBigMario(myGame, new Vector2(player.CurrentXPos, player.CurrentYPos), (Mario)player);
-            }
-            else if (pickup is CoinPickup)
-            {
-                SoundWarehouse.coin.Play();
-                objectLevel.PersistentData.CoinCollectedPoints(pickup.GetGameObjectLocation());
-            }
-            else if (pickup is Star)
-            {
-                objectLevel.PersistentData.PowerUpCollectPoints(pickup.GetGameObjectLocation());
-                SoundWarehouse.powerup.Play();
-                MediaPlayer.Play(SoundWarehouse.star_theme);
-                objectLevel.PlayerObject.IsStar = true;
-                invulnerabilityTimer = 1000;
-                player.Invulnerability = true;
-            }
-
-            objectLevel.PickupObjects.Remove(pickup);
         }
 
         public void PickupCollisionBlockRespondLeft(IPickup pickup, int width)

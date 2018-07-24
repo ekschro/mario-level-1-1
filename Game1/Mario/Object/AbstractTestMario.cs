@@ -22,11 +22,12 @@ namespace Game1
         private int cyclePosition;
         private int cycleLength;
 
-        private int timer = 400;
+        private int timer = -1;
         private float pipeDistance = 0;
         //internal bool dead = false;
 
-        private bool isEndSequence = false;
+        private bool isFlagSequence = false;
+        private bool isAxeSequence = false;
         private bool isPipeSequence = false;
 
         private bool pipeIsPositive;
@@ -103,9 +104,13 @@ namespace Game1
         }
         public void Update()
         {
-            if (isEndSequence)
+            if (isFlagSequence)
             {
-                EndSequence();
+                EndSequence(140, myGame.CurrentLevel.EndLocation);
+            }
+            else if (isAxeSequence)
+            {
+                EndSequence(0, myGame.CurrentLevel.EndLocation);
             }
             else
             {
@@ -159,10 +164,20 @@ namespace Game1
 
         public void Flag()
         {
-            isEndSequence = true;
+            isFlagSequence = true;
             character.Falling = false;
             character.Stop();
+
+            if(timer == -1)
+                timer = 400;
         }
+
+        public void Axe()
+        {
+            isAxeSequence = true;
+            timer = 0;
+        }
+
         public void Pipe(bool isPositive, bool isHorizontal)
         {
             myGame.AllowControllerResponse = false;
@@ -173,16 +188,16 @@ namespace Game1
             pipeIsHorizontal = isHorizontal;
         }
 
-        public void EndSequence()
+        public void EndSequence(int yConstraint, int xConstraint)
         {
-            if (timer != 0)
+            if (timer > 0)
             {
                 timer--;
             }
-            else if (character.CurrentYPos < 140)
+            else if (character.CurrentYPos < yConstraint)
             {
             }
-            else if (character.CurrentXPos < myGame.CurrentLevel.EndLocation)
+            else if (character.CurrentXPos < xConstraint)
             {
                 Walking();
                 cyclePosition++; if (cyclePosition == cycleLength)
@@ -192,6 +207,10 @@ namespace Game1
                     cyclePosition = 0;
                 }
                 character.CurrentXPos += 0.5f;
+            }
+            else
+            {
+                Idle();
             }
         }
 
@@ -219,6 +238,7 @@ namespace Game1
                 Warp(isPositive, isHorizontal);
             }
         }
+
         protected void Warp(bool isPositive, bool isHorizontal)
         {
             if (isPositive && !isHorizontal)

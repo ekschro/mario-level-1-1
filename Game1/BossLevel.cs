@@ -6,13 +6,14 @@ namespace Game1
 {
     public class BossLevel : ILevel
     {
-        private const int bossRoomLocation = 2064;
+        private const int bossRoomLocation = 2080;
         private const int finalLocation = 2264;
 
         private List<IGameObject> levelObjects;
         private ICollision collisionDetect;
         private ICamera movingCamera;
         private ICamera staticCamera;
+        private ICamera slidingCamera;
         private ICamera currentCamera;
         private Game1 myGame;
         private PersistentData persistentData;
@@ -23,6 +24,7 @@ namespace Game1
         private List<IPickup> pickups;
         private List<ITemporary> temporaries;
         private bool timerStop = false;
+        public bool endSequence = false;
 
         public IPlayer PlayerObject { get => playerObject; set => playerObject = value; }
         public IBackground BackgroundObject { get => backgroundObject; set => backgroundObject = value; }
@@ -35,7 +37,7 @@ namespace Game1
         public int Time { get => time; }
         public ICamera LevelCamera { get => currentCamera; set => currentCamera = value; }
         public PersistentData PersistentData { get => persistentData; }
-        public int EndLocation { get => 3292; }
+        public int EndLocation { get => 2440; }
         public bool TimerStop { get => timerStop; set => timerStop = value; }
 
         public BossLevel(string fileName, Game1 game, PersistentData persistantData)
@@ -59,6 +61,7 @@ namespace Game1
 
             currentCamera = movingCamera = new Camera(this);
             staticCamera = new CameraStatic(this, bossRoomLocation - 200);
+            slidingCamera = new CameraSliding(this, bossRoomLocation - 200, finalLocation);
             
             backgroundObject = new BossLevelBackground(myGame, new Vector2(0,0));
 
@@ -99,6 +102,9 @@ namespace Game1
 
             if (playerObject.CurrentXPos > bossRoomLocation)
                 currentCamera = staticCamera;
+
+            if (endSequence)
+                EndSequenceTriggered();
 
             currentCamera.Update();
 
@@ -200,5 +206,27 @@ namespace Game1
             time--;
         }
 
+        public void EndSequenceTriggered()
+        {
+            IBlock[] bridgeBlocks = new IBlock[13];
+            int i = 0;
+            foreach (IBlock block in BlockObjects)
+            {
+                if(block is BridgeBlock)
+                {
+                    bridgeBlocks[i] = block;
+                    i++;
+                }
+            }
+
+            foreach (IBlock block in bridgeBlocks)
+                BlockObjects.Remove(block);
+
+            currentCamera = slidingCamera;
+
+            myGame.AllowControllerResponse = false;
+
+            ((AbstractTestMario)playerObject.TestMario).Axe();
+        }
     }
 }

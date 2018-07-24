@@ -93,6 +93,7 @@
     <Compile Include="Blocks\Sprites\PipeOnSideBlockSprite.cs" />
     <Compile Include="Blocks\Sprites\TopWarpPipeBlockSprite.cs" />
     <Compile Include="ButtonForLevelSelect.cs" />
+    <Compile Include="CameraSliding.cs" />
     <Compile Include="CameraStatic.cs" />
     <Compile Include="FireEnemyChain.cs" />
     <Compile Include="FireEnemySprite.cs" />
@@ -118,6 +119,7 @@
     <Compile Include="Mario\Object\MarioUtility.cs" />
     <Compile Include="Mario\Object\AbstractTestMario.cs" />
     <Compile Include="Mario\Sprite\AbstractTestMarioSprite.cs" />
+    <Compile Include="PickupItem\Object\Axe.cs" />
     <Compile Include="PickupItem\Object\Coin.cs" />
     <Compile Include="PickupItem\Object\Fireflower.cs" />
     <Compile Include="PickupItem\Object\GreenMushroom.cs" />
@@ -154,6 +156,7 @@
     <Compile Include="GeneralCommands\FireballCommand.cs" />
     <Compile Include="GeneralCommands\NoCommand.cs" />
     <Compile Include="PersistentData.cs" />
+    <Compile Include="PickupItem\Sprites\AxeSprite.cs" />
     <Compile Include="SoundWarehouse.cs" />
     <Compile Include="Mario\Interface\ITestMarioSprite.cs" />
     <Compile Include="Mario\Interface\ITestMario.cs" />

@@ -144,28 +144,10 @@ namespace Game1
             int pickupY = (int)pickup.GetGameObjectLocation().Y;
 
             Rectangle pickupBox = new Rectangle(pickupX, pickupY, utility.MainWidth, utility.MainHeight);
-            Rectangle intersect;
 
             if (playerBox.Intersects(pickupBox))
             {
-                Rectangle.Intersect(ref playerBox, ref pickupBox, out intersect);
-
-                if (intersect.Height > intersect.Width && playerX < pickupX)
-                {
-                    collisionRes.PickupCollisionRespondLeft(pickup);
-                }
-                else if (intersect.Height > intersect.Width && playerX > pickupX)
-                {
-                    collisionRes.PickupCollisionRespondRight(pickup);
-                }
-                else if (intersect.Height < intersect.Width && playerY < pickupY)
-                {
-                    collisionRes.PickupCollisionRespondTop(pickup);
-                }
-                else if (intersect.Height < intersect.Width && playerY > pickupY)
-                {
-                    collisionRes.PickupCollisionRespondBottom(pickup);
-                }
+                collisionRes.PickupCollisionRespond(pickup);
             }
         }
     }

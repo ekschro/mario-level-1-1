@@ -185,6 +185,9 @@ namespace Game1
                 case "GrayBrick":
                     GameObject = new GrayBrickBlock(myGame, Position, Size);
                     break;
+                case "AxePickup":
+                    GameObject = new AxePickup(myGame, Position);
+                    break;
                 case "BridgeBlock":
                     GameObject = new BridgeBlock(myGame, Position, Size);
                     break;

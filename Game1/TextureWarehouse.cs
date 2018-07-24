@@ -21,6 +21,7 @@ namespace Game1 {
         public static Texture2D blueBrickBlockTexture;
         public static Texture2D pipeOnSideBlockTexture;
         public static Texture2D bowserTexture;
+        public static Texture2D axeTexture;
         public static Texture2D openTexture;
         public static Texture2D movingPlatform;
         public static Texture2D enterTexture;
@@ -69,6 +70,7 @@ namespace Game1 {
             light = myGame.Content.Load<Texture2D>("light");
             darkMode = myGame.Content.Load<Texture2D>("DarkMode");
             normalMode = myGame.Content.Load<Texture2D>("NormalMode");
+            axeTexture = myGame.Content.Load<Texture2D>("axe");
         }
     }
 }
