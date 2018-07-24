@@ -116,7 +116,7 @@ namespace Game1
 
                     Rectangle intersect;
 
-                    if (enemyBox.Intersects(blockBox) && !(enemyArray[j] is FireEnemyChain))
+                    if (enemyBox.Intersects(blockBox) && !(enemyArray[j] is FireEnemy))
                     {
                         Rectangle.Intersect(ref enemyBox, ref blockBox, out intersect);
                         if (intersect.Height < intersect.Width && enemyY < blockY)
