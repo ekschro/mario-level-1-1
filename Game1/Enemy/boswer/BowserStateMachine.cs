@@ -12,7 +12,8 @@ namespace Game1
         private IEnemySprite bowserSprite;
         private bool facingRight = false;
         public enum BowserHealth { Normal, Flipped, Jump, Fire };
-        private BowserHealth health = BowserHealth.Normal;
+        private
+            BowserHealth health = BowserHealth.Normal;
         //private EnemyUtilityClass utility;
 
         public BowserStateMachine(IEnemySprite sprite)

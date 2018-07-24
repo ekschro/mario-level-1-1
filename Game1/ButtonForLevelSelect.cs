@@ -21,14 +21,16 @@ namespace Game1
         private Color[] buttonColor = new Color[NumberOfButtons];
         //private Rectangle[] buttonRectangle = new Rectangle[NumberOfButtons];
         private KeyboardState keyBoardState, lastKeyBoardState;
+        private bool chooseLevel;
         public ButtonForLevelSelect(Game1 game)
         {
             myGame = game;
-            buttonColor[0] = Color.Gray;
-            buttonColor[1] = Color.White;
-            buttonColor[2] = Color.White;
-            buttonColor[3] = Color.White;
+            buttonColor[0] = Color.White;
+            buttonColor[1] = Color.Gray;
+            buttonColor[2] = Color.Gray;
+            buttonColor[3] = Color.Gray;
             buttonColor[4] = Color.White;
+            chooseLevel = true;
         }
         void TakeAction(int i)
         {
@@ -60,41 +62,48 @@ namespace Game1
                 switch (k)
                 {
                     case Keys.Right:
-                        if (buttonColor[LevelDark] == Color.White && buttonColor[LevelNormal] == Color.White)
-                        {
-                            buttonColor[Level14] = Color.Gray;
-                            buttonColor[Level11] = Color.White;
-                        }
-                        else
-                        {
-                            buttonColor[LevelDark] = Color.Gray;
-                            buttonColor[LevelNormal] = Color.White;
-                        }
-                        break;
-                    case Keys.Left:
-                        if (buttonColor[LevelDark] == Color.White && buttonColor[LevelNormal] == Color.White)
+                        if (chooseLevel==true)
                         {
                             buttonColor[Level11] = Color.Gray;
                             buttonColor[Level14] = Color.White;
                         }
                         else
                         {
-                            buttonColor[LevelNormal] = Color.Gray;
                             buttonColor[LevelDark] = Color.White;
+                            buttonColor[LevelNormal] = Color.Gray;
+                        }
+                        break;
+                    case Keys.Left:
+                        if (chooseLevel == true)
+                        {
+                            buttonColor[Level11] = Color.White;
+                            buttonColor[Level14] = Color.Gray;
+                        }
+                        else
+                        {
+                            buttonColor[LevelNormal] = Color.White;
+                            buttonColor[LevelDark] = Color.Gray;
                         }
                         break;
                     case Keys.Down:
-                        if (buttonColor[LevelDark] == Color.White && buttonColor[LevelNormal] == Color.White)
-                            buttonColor[LevelNormal] = Color.Gray;
-                        else if (buttonColor[LevelDark] == Color.Gray || buttonColor[LevelNormal] == Color.Gray)
-                            buttonColor[Enter] = Color.Gray;
+                        if (chooseLevel)
+                        {
+                            buttonColor[LevelNormal] = Color.White;
+                            chooseLevel = false;
+                        }
+                        break;
+                    case Keys.Up:
+                        if (chooseLevel == false)
+                        {
+                            chooseLevel = true;
+                        }
                         break;
                     case Keys.Enter:
-                        if (buttonColor[Level11] == Color.Gray && buttonColor[LevelNormal] == Color.Gray && buttonColor[Enter] == Color.Gray)
+                        if (buttonColor[Level11] == Color.White && buttonColor[LevelNormal] == Color.White)
                             TakeAction(Level11);
-                        else if (buttonColor[Level11] == Color.Gray && buttonColor[LevelDark] == Color.Gray && buttonColor[Enter] == Color.Gray)
+                        else if (buttonColor[Level11] == Color.White && buttonColor[LevelDark] == Color.White )
                             TakeAction(LevelDark);
-                        else if (buttonColor[Level14] == Color.Gray && buttonColor[Enter] == Color.Gray)
+                        else if (buttonColor[Level14] == Color.White)
                             TakeAction(Level14);
                         break;
                     default:
@@ -108,13 +117,15 @@ namespace Game1
         }
         public void Draw()
         {
-            Rectangle level11Rectangle = new Rectangle(50, 50, TextureWarehouse.level11.Width / 3, TextureWarehouse.level11.Height / 3);
+            Rectangle level11Rectangle = new Rectangle(myGame.Window.ClientBounds.Width / 2-150, 50, TextureWarehouse.level11.Width / 3, TextureWarehouse.level11.Height / 3);
+            Rectangle level14Rectangle = new Rectangle(myGame.Window.ClientBounds.Width / 2+50, 50, TextureWarehouse.level14.Width / 3, TextureWarehouse.level14.Height / 3);
             Rectangle enterRectangle = new Rectangle(myGame.Window.ClientBounds.Width / 2 - TextureWarehouse.enterTexture.Width / 2, 190, TextureWarehouse.enterTexture.Width, TextureWarehouse.enterTexture.Height);
             Rectangle lightRectangle = new Rectangle(myGame.Window.ClientBounds.Width / 2 -50- TextureWarehouse.normalMode.Width / 2, 150, TextureWarehouse.normalMode.Width, TextureWarehouse.normalMode.Height);
             Rectangle darkRectangle = new Rectangle(myGame.Window.ClientBounds.Width / 2 +50- TextureWarehouse.darkMode.Width / 2, 150, TextureWarehouse.darkMode.Width, TextureWarehouse.darkMode.Height);
 
 
             myGame.SpriteBatch.Draw(TextureWarehouse.level11, level11Rectangle, buttonColor[0]);
+            myGame.SpriteBatch.Draw(TextureWarehouse.level14, level14Rectangle, buttonColor[1]);
             myGame.SpriteBatch.Draw(TextureWarehouse.normalMode, lightRectangle, buttonColor[2]);
             myGame.SpriteBatch.Draw(TextureWarehouse.darkMode, darkRectangle, buttonColor[3]);
             myGame.SpriteBatch.Draw(TextureWarehouse.enterTexture, enterRectangle, buttonColor[4]);
