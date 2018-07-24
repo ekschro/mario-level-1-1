@@ -6,7 +6,8 @@ namespace Game1
 {
     public class BossLevel : ILevel
     {
-        private const int bossRoomLocation = 800;
+        private const int bossRoomLocation = 2064;
+        private const int finalLocation = 2264;
 
         private List<IGameObject> levelObjects;
         private ICollision collisionDetect;
@@ -57,7 +58,7 @@ namespace Game1
             collisionDetect = new CollisionDetect(game,this);
 
             currentCamera = movingCamera = new Camera(this);
-            staticCamera = new CameraStatic(this, bossRoomLocation);
+            staticCamera = new CameraStatic(this, bossRoomLocation - 200);
             
             backgroundObject = new BossLevelBackground(myGame, new Vector2(0,0));
 
@@ -90,6 +91,9 @@ namespace Game1
                     temporaryObjectArray[i].Update();
             }
 
+            if (playerObject.CurrentXPos > bossRoomLocation)
+                currentCamera = staticCamera;
+
             currentCamera.Update();
 
             collisionDetect.Update();
@@ -103,7 +107,7 @@ namespace Game1
             {
                 if (GameObject.GetGameObjectLocation().X > currentCamera.CameraPosition - 16 && GameObject.GetGameObjectLocation().X < currentCamera.CameraPosition + 400)
                     GameObject.Draw();
-                else if (GameObject is StoneBlock || GameObject is GrayBrickBlock)
+                else if (GameObject is StoneBlock || GameObject is GrayBrickBlock || GameObject is BridgeBlock)
                     GameObject.Draw();
             }
             foreach (IGameObject GameObject in EnemyObjects)

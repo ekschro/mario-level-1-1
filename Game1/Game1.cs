@@ -236,7 +236,6 @@ namespace Game1
         {
             if (currentLevel is PlatformerLevel)
                 currentLevel = new BossLevel("../../../../Content/BossLevelInfo.csv", this, persistentData);
-
         }
 
         private ILevel GetNewLevel()
