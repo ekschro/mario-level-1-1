@@ -26,6 +26,7 @@ namespace Game1 {
         public static Texture2D enterTexture;
         public static Texture2D levelSelectTexture;
         public static Texture2D level11;
+        public static Texture2D level14;
         public static Texture2D light;
         public static Texture2D darkMode;
         public static Texture2D normalMode;
@@ -64,6 +65,7 @@ namespace Game1 {
             enterTexture = myGame.Content.Load<Texture2D>("Enter");
             levelSelectTexture = myGame.Content.Load<Texture2D>("LevelSelect");
             level11 = myGame.Content.Load<Texture2D>("level1");
+            level14 = myGame.Content.Load<Texture2D>("Level14");
             light = myGame.Content.Load<Texture2D>("light");
             darkMode = myGame.Content.Load<Texture2D>("DarkMode");
             normalMode = myGame.Content.Load<Texture2D>("NormalMode");
