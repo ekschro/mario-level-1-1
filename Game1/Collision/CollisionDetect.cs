@@ -227,21 +227,21 @@ namespace Game1
                         {
                             collision.EnemyCollisionEnemyRespondRight(enemyArray[j], enemyArray[i], intersect.Width);
                             collision.EnemyCollisionEnemyRespondLeft(enemyArray[i], enemyArray[j], intersect.Width);
-                            //collision.EnemyCollisionBlockandEnemyRespondXDirection(enemyArray[i], intersect.Width, true); ;
+                            
                         }
                         else if (intersect.Height > intersect.Width && enemyX > enemyArrayX)
                         {
                             collision.EnemyCollisionEnemyRespondLeft(enemyArray[j], enemyArray[i], intersect.Width);
                             collision.EnemyCollisionEnemyRespondRight(enemyArray[i], enemyArray[j], intersect.Width);
-                            //collision.EnemyCollisionBlockandEnemyRespondXDirection(enemyArray[i], intersect.Width, true);
+                            
                         }
                         else if (intersect.Height < intersect.Width && enemyY < enemyArrayY)
                         {
-                            //collision.EnemyCollisionRespondTop(enemyArray[i]);
+                           
                         }
                         else if (intersect.Height < intersect.Width && enemyY > enemyArrayY)
                         {
-                            //collision.EnemyCollisionRespondBottom(enemyArray[i]);
+                            
                         }
                     }
                 }

@@ -12,7 +12,7 @@ namespace Game1
         private RedMushroom redMushroomObject;
         private Game1 myGame;
         private int currentFrame;
-        //private int pickupColumn = 15;
+       
         private PickupUtilityClass utility;
 
         public RedMushroomSprite(Game1 game, RedMushroom redMushroom)
@@ -20,7 +20,7 @@ namespace Game1
             utility = new PickupUtilityClass();
             redMushroomObject = redMushroom;
             myGame = game;
-            //currentFrame = 0;
+            
             currentFrame = utility.RedMushroomFrame;
         }
         public void Update()

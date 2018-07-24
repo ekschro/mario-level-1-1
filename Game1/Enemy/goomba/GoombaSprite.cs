@@ -16,7 +16,7 @@ namespace Game1
         private int startFrame;
         private int endFrame;
         private SpriteEffects GoombaSpriteEffects;
-        //private const int goombaColumn = 4;
+        
         private EnemyUtilityClass utility;
         public GoombaSprite(Game1 game,Goomba goomba)
         {
@@ -25,8 +25,7 @@ namespace Game1
             myGame = game;
             startFrame = utility.GoombaStartFrame;
             endFrame = utility.GoombaEndFrame;
-            //startFrame = 0;
-            //endFrame = 2;
+            
             currentFrame = startFrame;
             GoombaSpriteEffects = SpriteEffects.None;
         }

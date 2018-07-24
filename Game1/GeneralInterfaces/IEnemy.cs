@@ -14,7 +14,7 @@ namespace Game1
         void BeStomped();
         void BeFlipped();
         void SetGameObjectLocation(Vector2 x);
-        //Vector2 GetGameObjectLocation();
+        
         bool MovingRight { get; set; }
         bool GetDead();
         IEnemyStateMachine StateMachine { get; }

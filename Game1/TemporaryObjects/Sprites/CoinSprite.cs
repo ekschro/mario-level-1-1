@@ -14,8 +14,7 @@ namespace Game1
         private int currentFrame;
         private int startFrame;
         private int endFrame;
-        //private int cyclePosition = 0;
-        //private int cycleLength = 16;
+        
         private PickupUtilityClass utility;
 
         public CoinSprite(Game1 game, Coin coin)

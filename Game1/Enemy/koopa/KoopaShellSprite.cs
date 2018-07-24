@@ -21,8 +21,7 @@ namespace Game1
             utility = new EnemyUtilityClass();
             koopaObject = koopa;
             myGame = game;
-            //startFrame = 4;
-            //endFrame = 6;
+            
             startFrame = utility.KoopaShellStartFrame;
             endFrame = utility.KoopaShellEndFrame;
             currentFrame = startFrame;
@@ -36,7 +35,7 @@ namespace Game1
 
         public void ChangeSpriteEffects(SpriteEffects effects)
         {
-            //koopaShellSpriteEffects = effects;
+           
         }
         public void Update()
         {

@@ -6,7 +6,7 @@ namespace Game1
     public class MarioFireBall : IEnemy
     {
         private Game1 myGame;
-        //private IControllerHandler controllerHandler;
+        
         private IPlayer player;
         private bool falling;
         private bool jumping=false;
@@ -16,7 +16,7 @@ namespace Game1
         public MarioFireBall(Game1 game)
         {
             myGame = game;
-            //controllerHandler = game.controllerHandler;
+           
             player = game.CurrentLevel.PlayerObject;
             falling = true;
             SoundWarehouse.fireball.Play();

@@ -11,12 +11,14 @@ namespace Game1
     public class LevelLoader : ILoader
     {
         Game1 myGame;
+
         //private IGameObject mario;
+        PersistentData ps;
        
         public LevelLoader(Game1 game)
         {
             myGame = game;
-            
+            ps = game.persistentData;
         }
 
         public void Load(string fileName, List<IGameObject> gameObjects)
@@ -90,7 +92,7 @@ namespace Game1
             IGameObject GameObject = new Coin(myGame,Position);
             switch (objectName) {
                 case "Mario" :
-                    GameObject = new Mario(myGame, Position);
+                    GameObject = new Mario(myGame, Position, ps.PlayerState);
                     break;
                 case "FireFlower":
                     GameObject = new Fireflower(myGame, Position);

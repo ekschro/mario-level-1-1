@@ -13,12 +13,12 @@ namespace Game1
 {
     public class DownCommand : ICommand
     {
-        //private Game1 myGame;
+        
         private IControllerHandler controllerHandler;
 
         public DownCommand(Game1 game)
         {
-            //myGame = game;
+            
             controllerHandler = game.controllerHandler;
         }
 

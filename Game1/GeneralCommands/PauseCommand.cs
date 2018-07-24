@@ -14,12 +14,12 @@ namespace Game1
     public class PauseCommand : ICommand
     {
         private Game1 myGame;
-        //private IControllerHandler controllerHandler;
+       
 
         public PauseCommand(Game1 game)
         {
             myGame = game;
-            //controllerHandler = game.controllerHandler;
+            
         }
 
         public void Execute()

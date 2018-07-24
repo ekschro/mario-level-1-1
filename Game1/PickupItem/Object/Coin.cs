@@ -15,17 +15,17 @@ namespace Game1
         public bool IsFalling { get; set; }
 
         private IPickupSprite coinPickupSprite;
-        //private Game1 myGame;
+        
         private Vector2 pickupLocation;
-        //private Vector2 pickupOriginalLocation;
+       
         private PickupUtilityClass utility;
 
         public CoinPickup(Game1 game, Vector2 location)
         {
             coinPickupSprite = new CoinPickupSprite(game, this);
-            //myGame = game;
+            
             pickupLocation = location;
-            //pickupOriginalLocation = location;
+            
             utility = new PickupUtilityClass();
         }
 

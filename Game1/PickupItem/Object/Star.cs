@@ -15,8 +15,7 @@ namespace Game1
         private bool falling;
         public bool IsFalling { get => falling; set => falling = value; }
 
-        //private int cyclePosition = 0;
-        //private int cycleLength = 16;
+       
 
         private IPickupSprite starSprite;
         private Game1 myGame;
@@ -55,11 +54,11 @@ namespace Game1
         public void Update()
         {
             utility.PickpupCyclePosition++;
-            //cyclePosition++;
+           
             if (utility.PickpupCyclePosition == utility.PickpupCycleLength)
             {
                 starSprite.Update();
-                //cyclePosition = 0;
+               
                 utility.PickpupCyclePosition = 0;
             }
             if (pickupLocation.Y > pickupOriginalLocation.Y - /*17*/utility.BlockSize && !moving)
