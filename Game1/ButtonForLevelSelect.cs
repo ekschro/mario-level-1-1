@@ -19,7 +19,7 @@ namespace Game1
             Enter = 4;
 
         private Color[] buttonColor = new Color[NumberOfButtons];
-        //private Rectangle[] buttonRectangle = new Rectangle[NumberOfButtons];
+        
         private KeyboardState keyBoardState, lastKeyBoardState;
         private bool chooseLevel;
         public ButtonForLevelSelect(Game1 game)

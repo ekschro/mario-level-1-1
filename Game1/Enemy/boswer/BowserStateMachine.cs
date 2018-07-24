@@ -14,11 +14,11 @@ namespace Game1
         public enum BowserHealth { Normal, Flipped, Jump, Fire };
         private
             BowserHealth health = BowserHealth.Normal;
-        //private EnemyUtilityClass utility;
+       
 
         public BowserStateMachine(IEnemySprite sprite)
         {
-            //utility = new EnemyUtilityClass();
+            
             bowserSprite = sprite;
         }
 
@@ -33,18 +33,11 @@ namespace Game1
 
         public void BeStomped()
         {
-            /*
-            bowserSprite.ChangeFrame(utility.BowserStompedStartFrame, utility.BowserStompedEndFrame);
-            if (health != BowserHealth.Stomped)
-            {
-                health = BowserHealth.Stomped;
-
-            }
-            */
+        
         }
         public void BeFlipped()
         {
-            //bowserSprite.FlipSprite();
+            
             bowserSprite.ChangeSpriteEffects(SpriteEffects.FlipVertically);
             if (health != BowserHealth.Flipped)
             {

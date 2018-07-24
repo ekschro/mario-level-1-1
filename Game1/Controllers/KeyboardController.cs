@@ -15,14 +15,14 @@ namespace Game1
     public class KeyboardController : IController
     {
         private Dictionary<Keys, ICommand> controllerMappings;
-        //private List<Keys> recentKeys;
+       
         private ICommand none;
         Game1 myGame;
         public KeyboardController(Game1 game)
         {
             none = new NoCommand(game);
             controllerMappings = new Dictionary<Keys, ICommand>();
-            //recentKeys = new List<Keys>();
+           
             myGame = game;
             controllerMappings.Add(Keys.Q, new ExitGameCommand(game));
             controllerMappings.Add(Keys.Z, new UpCommand(game));

@@ -29,10 +29,10 @@ namespace Game1
         public void Idle()
         {
             if (facingLeft)
-                //marioSprite.ChangeFrame(41 - 28, 40 - 28);
+                
                 marioSprite.ChangeFrame(spriteUtility.BigMarioLeftIdleStart,spriteUtility.BigMarioLeftIdleEnd);
             else
-                //marioSprite.ChangeFrame(42 - 28, 43 - 28);
+                
                 marioSprite.ChangeFrame(spriteUtility.BigMarioRightIdleStart, spriteUtility.BigMarioRightIdleEnd);
             State = MarioState.Idle;
         }

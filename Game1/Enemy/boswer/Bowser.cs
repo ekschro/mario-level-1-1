@@ -26,7 +26,7 @@ namespace Game1
         private bool dead = false;
         private IPhysics physics;
         private EnemyUtilityClass utility;
-        //private IPlayer player;
+        
         private Game1 myGame;
 
         public Bowser(Game1 game, Vector2 location)

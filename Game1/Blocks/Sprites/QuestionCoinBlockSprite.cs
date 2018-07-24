@@ -18,7 +18,7 @@ namespace Game1
         private int currentFrame;
         private int startFrame;
         private int endFrame;
-        //private int numberOfFrame;
+        
         private BlockUtilityClass utility;
 
         public QuestionCoinBlockSprite(Game1 game, IBlock questionCoinBlock)
@@ -29,8 +29,7 @@ namespace Game1
             startFrame = utility.StartFrame;
             endFrame = utility.EndFrame;
             currentFrame = startFrame;
-            //numberOfFrame = utility.Thirteen;
-            //jumpig = true;
+            
         }
 
         public void Update()
@@ -53,11 +52,6 @@ namespace Game1
             myGame.SpriteBatch.Draw(TextureWarehouse.blockTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.SpriteBatch.End();
         }
-        /*
-        public bool isJumping()
-        {
-            throw new NotImplementedException();
-        }
-        */
+       
     }
 }

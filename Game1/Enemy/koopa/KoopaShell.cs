@@ -33,7 +33,7 @@ namespace Game1
         private Vector2 koopaOriginalLocation;
         private EnemyPhysics physics;
 
-        //private Game1 myGame;
+        
 
         public KoopaShell(Game1 game, Vector2 location)
         {
@@ -41,7 +41,7 @@ namespace Game1
             koopaLocation = location;
             koopaOriginalLocation = location;
 
-            //myGame = game;
+            
             stateMachine = new KoopaSStateMachine(koopaSprite);
 
             physics = new EnemyPhysics(game, this, 4);

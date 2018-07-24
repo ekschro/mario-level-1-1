@@ -20,7 +20,7 @@ namespace Game1
         public IControllerHandler controllerHandler;
         private TextureWarehouse textureWarehouse;
         public PersistentData persistentData;
-        //private GameTime temp;
+        
         int counter = 0;
         private SoundWarehouse soundWarehouse;
         private ILevel currentLevel;
@@ -47,7 +47,7 @@ namespace Game1
         public SpriteFont SpriteFont { get => spriteFont; set => spriteFont = value; }
         public ILevel CurrentLevel { get => currentLevel; set => currentLevel = value; }
         public HeadsUpDisplay HeadsUpDisplay { get => headsUpDisplay; set => headsUpDisplay = value; }
-        //internal SoundWarehouse SoundWarehouse { get => soundWarehouse; set => soundWarehouse = value; }
+        
         public bool TimerStop { get => timerStop; set => timerStop = value; }
         public bool Pause { get => pause; set => pause = value; }
         public int HudCounter { get => hudCounter; set => hudCounter = value; }
@@ -74,7 +74,7 @@ namespace Game1
             controllerList.Add(new GamePadController(this));
             allowControllerResponse = true;
             persistentData = new PersistentData(this);
-            //mouseController = new MouseController(this);
+            
             
             base.Initialize();
         }

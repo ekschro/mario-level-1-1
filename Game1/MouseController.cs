@@ -31,20 +31,7 @@ namespace Game1
         {
             var mouseState = Mouse.GetState();
 
-            /*if(Mario.CurrentXPosition -  mouseState.X > 3)
-            {
-                left.Execute();
-            } else if (Mario.CurrentXPosition - mouseState.X < -3)
-            {
-                right.Execute();
-            }
-            if (Mario.CurrentYPosition - mouseState.Y > 3)
-            {
-                up.Execute();
-            } else if (Mario.CurrentYPosition - mouseState.Y < -3)
-            {
-                down.Execute();
-            }*/
+           
         }
     }
 }

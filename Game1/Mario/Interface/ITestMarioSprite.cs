@@ -1,6 +1,6 @@
 ﻿using System;
 namespace Game1 {
-    public interface ITestMarioSprite //: IGameObject
+    public interface ITestMarioSprite
     {
         void ChangeFrame(int startFrame, int endFrame);
         void Update();

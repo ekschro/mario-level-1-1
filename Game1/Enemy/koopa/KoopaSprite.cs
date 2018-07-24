@@ -16,7 +16,7 @@ namespace Game1
         private int startFrame;
         private int endFrame;
         private SpriteEffects KoopaSpriteEffects;
-        //private int koopaColumn = 6;
+       
         private EnemyUtilityClass utility;
         public KoopaSprite(Game1 game, IEnemy koopa)
         {

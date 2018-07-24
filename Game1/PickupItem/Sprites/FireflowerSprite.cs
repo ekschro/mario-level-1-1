@@ -14,15 +14,14 @@ namespace Game1
         private int currentFrame;
         private int startFrame;
         private int endFrame;
-        //private int pickupColumn = 15;
+        
         private PickupUtilityClass utility;
         public FireflowerSprite(Game1 game, Fireflower fireflower)
         {
             utility = new PickupUtilityClass();
             fireflowerObject = fireflower;
             myGame = game;
-            //startFrame = 2;
-            //endFrame = 6;
+           
             startFrame = utility.FireflowerStartFrame;
             endFrame = utility.FireflowerEndFrame;
             currentFrame = startFrame;

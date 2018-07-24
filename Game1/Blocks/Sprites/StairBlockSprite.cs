@@ -24,7 +24,7 @@ namespace Game1
             stairBlockObject = (StairBlock)stairBlock;
             myGame = game;
             currentFrame = utility.CurrentFrame2;
-            //blockLocation = location;
+            
         }
 
         public void Update()
