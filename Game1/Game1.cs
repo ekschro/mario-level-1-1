@@ -113,7 +113,7 @@ namespace Game1
 
         public void GameReset()
         {
-            LoadTransition();
+            gameState = GameScreenState.Opening;
             cyclePosition = 0;
             allowControllerResponse = true;
             persistentData = new PersistentData(this);
@@ -142,7 +142,8 @@ namespace Game1
         }
         public void DarkStage()
         {
-            GameState = GameScreenState.DarkLevel11;
+            gameState = GameScreenState.DarkLevel11;
+            lastGameState = gameState;
         }
         protected override void UnloadContent()
         {

@@ -45,7 +45,9 @@ namespace Game1
                     myGame.LoadTransition();
                     break;
                 case LevelDark:
+                    
                     myGame.DarkStage();
+                    myGame.LoadTransition();
                     break;
                 case LevelNormal:
                     myGame.LoadTransition();
