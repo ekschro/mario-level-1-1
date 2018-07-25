@@ -324,14 +324,14 @@ namespace Game1
                 enemy.ChangeDirection(true);
             }
 
-            if (enemy is MarioFireBall)
+            if (enemy is MarioFireBall && !(otherEnemy is FireEnemy))
             {
                 SoundWarehouse.stomp.Play();
                 CreateFlippedEnemy(otherEnemy);
                 objectLevel.EnemyObjects.Remove(enemy);
                 objectLevel.EnemyObjects.Remove(otherEnemy);
             }
-            else if (otherEnemy is MarioFireBall)
+            else if (otherEnemy is MarioFireBall && !(enemy is FireEnemy))
             {
                 SoundWarehouse.stomp.Play();
                 CreateFlippedEnemy(enemy);
@@ -370,14 +370,14 @@ namespace Game1
                 enemy.ChangeDirection(true);
             }
 
-            if (enemy is MarioFireBall)
+            if (enemy is MarioFireBall && !(otherEnemy is FireEnemy))
             {
                 SoundWarehouse.stomp.Play();
                 CreateFlippedEnemy(otherEnemy);
                 objectLevel.EnemyObjects.Remove(enemy);
                 objectLevel.EnemyObjects.Remove(otherEnemy);
             }
-            else if (otherEnemy is MarioFireBall)
+            else if (otherEnemy is MarioFireBall && !(enemy is FireEnemy))
             {
                 SoundWarehouse.stomp.Play();
                 CreateFlippedEnemy(enemy);
