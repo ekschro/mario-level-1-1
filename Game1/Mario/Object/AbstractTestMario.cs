@@ -63,16 +63,6 @@ namespace Game1
         {
             stateMachine.ChangeDirection(left);
         }
-        /*
-        public void WalkLeft()
-        {
-            testMarioLocation.X -= 1;
-        }
-        public void WalkRight()
-        {
-            testMarioLocation.X = +1;
-        }
-        */
         public Vector2 GetGameObjectLocation()
         {
             return testMarioLocation;
@@ -81,12 +71,6 @@ namespace Game1
         {
             testMarioLocation = newPos;
         }
-        /*
-        public bool GetDead()
-        {
-            return dead;
-        }
-        */
         public void Idle()
         {
             stateMachine.Idle();
@@ -111,7 +95,7 @@ namespace Game1
             }
             else if (isAxeSequence)
             {
-                MediaPlayer.Play(SoundWarehouse.castle_complete_theme);
+
                 EndSequence(0, myGame.CurrentLevel.EndLocation);
             }
             else
@@ -176,6 +160,8 @@ namespace Game1
 
         public void Axe()
         {
+            Console.WriteLine("Complete");
+            MediaPlayer.Play(SoundWarehouse.castle_complete_theme);
             isAxeSequence = true;
             timer = 0;
         }

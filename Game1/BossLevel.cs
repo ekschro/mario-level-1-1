@@ -35,6 +35,8 @@ namespace Game1
         public List<ITemporary> TemporaryObjects { get => temporaries; }
         public List<IGameObject> LevelObjects { get => levelObjects; }
         private int time;
+        private bool axe = true;
+
         public int Time { get => time; }
         public ICamera LevelCamera { get => currentCamera; set => currentCamera = value; }
         public PersistentData PersistentData { get => persistentData; }
@@ -68,6 +70,7 @@ namespace Game1
             backgroundObject = new BossLevelBackground(myGame, new Vector2(0,0));
 
             MediaPlayer.Play(SoundWarehouse.castle_theme);
+            //MediaPlayer.Play(SoundWarehouse.castle_complete_theme);
 
             myGame.AllowControllerResponse = true;
         }
@@ -212,11 +215,9 @@ namespace Game1
 
         public void EndSequenceTriggered()
         {
+            
             IBlock[] bridgeBlocks = new IBlock[13];
             int i = 0;
-
-            
-
             foreach (IBlock block in BlockObjects)
             {
                 if(block is BridgeBlock)
@@ -233,7 +234,11 @@ namespace Game1
 
             myGame.AllowControllerResponse = false;
 
-            ((AbstractTestMario)playerObject.TestMario).Axe();
+            if (axe)
+            {
+                ((AbstractTestMario)playerObject.TestMario).Axe();
+                axe = false;
+            }
         }
     }
 }
