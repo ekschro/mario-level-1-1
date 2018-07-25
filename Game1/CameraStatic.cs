@@ -16,7 +16,7 @@ namespace Game1
         public float CameraPosition { get => cameraPosition; set => cameraPosition = value; }
         public float CameraOffset { get => cameraOffset; set => cameraOffset = value; }
 
-        public CameraStatic(ILevel level, int position)
+        public CameraStatic(int position)
         {
             cameraPosition = position;
             

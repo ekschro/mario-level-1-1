@@ -26,7 +26,7 @@ namespace Game1 {
 
         public Rectangle BlockRectangle()
         {
-            return new Rectangle((int) start.X, (int)start.Y, TextureWarehouse.movingPlatform.Width, TextureWarehouse.movingPlatform.Height);
+            return new Rectangle((int) start.X, (int)start.Y, TextureWarehouse.MovingPlatform.Width, TextureWarehouse.MovingPlatform.Height);
         }
 
         public void Draw()

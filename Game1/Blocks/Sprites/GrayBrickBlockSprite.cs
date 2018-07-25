@@ -35,7 +35,7 @@ namespace Game1
             Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)grayBrickBlockObject.GetGameObjectLocation().Y, (int)grayBrickBlockObject.BlockSize.X, (int)grayBrickBlockObject.BlockSize.Y);
 
             myGame.SpriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.LinearWrap, null, null);
-            myGame.SpriteBatch.Draw(TextureWarehouse.grayBrickBlockTexture, destinationRectangle, sourceRectangle, Color.White);
+            myGame.SpriteBatch.Draw(TextureWarehouse.GrayBrickBlockTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.SpriteBatch.End();
         }
     }

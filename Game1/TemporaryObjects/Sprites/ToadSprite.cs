@@ -28,11 +28,11 @@ namespace Game1
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(toadObject.CurrentXPos);
             int drawLocationY = (int)(toadObject.CurrentYPos);
 
-            Rectangle sourceRectangle = new Rectangle(0, 0, TextureWarehouse.toadTexture.Width, TextureWarehouse.toadTexture.Height);
-            Rectangle destinationRectangle = new Rectangle(drawLocationX, drawLocationY, TextureWarehouse.toadTexture.Width, TextureWarehouse.toadTexture.Height);
+            Rectangle sourceRectangle = new Rectangle(0, 0, TextureWarehouse.ToadTexture.Width, TextureWarehouse.ToadTexture.Height);
+            Rectangle destinationRectangle = new Rectangle(drawLocationX, drawLocationY, TextureWarehouse.ToadTexture.Width, TextureWarehouse.ToadTexture.Height);
 
             myGame.SpriteBatch.Begin();
-            myGame.SpriteBatch.Draw(TextureWarehouse.toadTexture, destinationRectangle, sourceRectangle, Color.White);
+            myGame.SpriteBatch.Draw(TextureWarehouse.ToadTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.SpriteBatch.End();
         }
     }

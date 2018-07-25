@@ -40,17 +40,17 @@ namespace Game1
 
         public void Draw()
         {
-            int width = TextureWarehouse.pickupTexture.Width / 15;
+            int width = TextureWarehouse.PickupTexture.Width / 15;
             
-            Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, TextureWarehouse.pickupTexture.Height);
-            Rectangle destinationRectangle = new Rectangle(90, 25, width, TextureWarehouse.pickupTexture.Height);
+            Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, TextureWarehouse.PickupTexture.Height);
+            Rectangle destinationRectangle = new Rectangle(90, 25, width, TextureWarehouse.PickupTexture.Height);
 
             myGame.SpriteBatch.Begin();
             myGame.SpriteBatch.DrawString(myGame.SpriteFont, "MARIO", new Vector2(10, 10), Color.White);
             myGame.SpriteBatch.DrawString(myGame.SpriteFont, "WORLD", new Vector2(200, 10), Color.White);
             
             myGame.SpriteBatch.DrawString(myGame.SpriteFont, myGame.persistentData.Points.ToString(), new Vector2(10, 25), Color.White); //need to update
-            myGame.SpriteBatch.Draw(TextureWarehouse.pickupTexture, destinationRectangle, sourceRectangle, Color.White);
+            myGame.SpriteBatch.Draw(TextureWarehouse.PickupTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.SpriteBatch.DrawString(myGame.SpriteFont, "X", new Vector2(105, 25), Color.White);
             myGame.SpriteBatch.DrawString(myGame.SpriteFont, myGame.persistentData.Coins.ToString(), new Vector2(115, 25), Color.White); //need to update
             if (myGame.NextLevel1)

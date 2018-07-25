@@ -35,7 +35,7 @@ namespace Game1
             Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)bridgeBlockObject.GetGameObjectLocation().Y, (int)bridgeBlockObject.BlockSize.X, (int)bridgeBlockObject.BlockSize.Y);
 
             myGame.SpriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.LinearWrap, null, null);
-            myGame.SpriteBatch.Draw(TextureWarehouse.bridgeBlockTexture, destinationRectangle, sourceRectangle, Color.White);
+            myGame.SpriteBatch.Draw(TextureWarehouse.BridgeBlockTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.SpriteBatch.End();
         }
     }
