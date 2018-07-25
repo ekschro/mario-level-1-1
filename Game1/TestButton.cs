@@ -78,12 +78,12 @@ namespace Game1
         }
         public void Draw()
         {
-            Rectangle levelDestinationRectangle = new Rectangle(150, 170, TextureWarehouse.levelSelectTexture.Width, TextureWarehouse.levelSelectTexture.Height);
-            Rectangle enterDestinationRectangle = new Rectangle(170, 150, TextureWarehouse.enterTexture.Width, TextureWarehouse.enterTexture.Height);
+            Rectangle levelDestinationRectangle = new Rectangle(150, 170, TextureWarehouse.LevelSelectTexture.Width, TextureWarehouse.LevelSelectTexture.Height);
+            Rectangle enterDestinationRectangle = new Rectangle(170, 150, TextureWarehouse.EnterTexture.Width, TextureWarehouse.EnterTexture.Height);
             
 
-            myGame.SpriteBatch.Draw(TextureWarehouse.enterTexture, enterDestinationRectangle, buttonColor[0]);
-            myGame.SpriteBatch.Draw(TextureWarehouse.levelSelectTexture, levelDestinationRectangle, buttonColor[1]);
+            myGame.SpriteBatch.Draw(TextureWarehouse.EnterTexture, enterDestinationRectangle, buttonColor[0]);
+            myGame.SpriteBatch.Draw(TextureWarehouse.LevelSelectTexture, levelDestinationRectangle, buttonColor[1]);
            
             
         }

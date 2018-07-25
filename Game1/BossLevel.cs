@@ -62,8 +62,8 @@ namespace Game1
             collisionDetect = new CollisionDetect(game,this);
 
             currentCamera = movingCamera = new Camera(this);
-            staticCamera = new CameraStatic(this, bossRoomLocation - 200);
-            slidingCamera = new CameraSliding(this, bossRoomLocation - 200, finalLocation);
+            staticCamera = new CameraStatic(bossRoomLocation - 200);
+            slidingCamera = new CameraSliding(bossRoomLocation - 200, finalLocation);
             
             backgroundObject = new BossLevelBackground(myGame, new Vector2(0,0));
 

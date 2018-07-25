@@ -28,7 +28,7 @@ namespace Game1
         private LevelGameOver gameOverLevel;
         private LevelOpeningScreen openingLevel;
         private LevelSelect selectLevel;
-        private MarioLight light;
+        private MarioLight Light;
         private HeadsUpDisplay headsUpDisplay;
         private SpriteBatch spriteBatch;
         private SpriteFont spriteFont;
@@ -87,7 +87,7 @@ namespace Game1
             selectLevel = new LevelSelect(this);
             gameOverLevel = new LevelGameOver(this);
             openingLevel = new LevelOpeningScreen(this);
-            light = new MarioLight(this);
+            Light = new MarioLight(this);
             HeadsUpDisplay = new HeadsUpDisplay(this);
             textureWarehouse = new TextureWarehouse(this);
             soundWarehouse = new SoundWarehouse(this);
@@ -174,7 +174,7 @@ namespace Game1
                     if (!pause)
                     {
                         CurrentLevel.Update();
-                        light.Update();
+                        Light.Update();
                     }
                     lastGameState = GameScreenState.DarkLevel11;
                     break;
@@ -227,7 +227,7 @@ namespace Game1
                     break;
                 case GameScreenState.DarkLevel11:
                     currentLevel.Draw();
-                    light.Draw();
+                    Light.Draw();
                     HeadsUpDisplay.Draw();
                     break;
             }

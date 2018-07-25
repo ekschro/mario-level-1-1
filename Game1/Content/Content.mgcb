@@ -196,7 +196,7 @@
 /processorParam:TextureFormat=Color
 /build:stone.png
 
-#begin flippedGoomba.png
+#begin FlippedGoomba.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -206,9 +206,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:flippedGoomba.png
+/build:FlippedGoomba.png
 
-#begin flippedKoopa.png
+#begin FlippedKoopa.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -218,7 +218,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:flippedKoopa.png
+/build:FlippedKoopa.png
 
 #begin 01-main-theme-overworld.mp3
 /importer:Mp3Importer
@@ -377,7 +377,7 @@
 /processorParam:TextureFormat=Color
 /build:Bowser.png
 
-#begin movingPlatform.png
+#begin MovingPlatform.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -387,7 +387,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:movingPlatform.png
+/build:MovingPlatform.png
 
 #begin Open.png
 /importer:TextureImporter
@@ -437,7 +437,7 @@
 /processorParam:TextureFormat=Color
 /build:Level1.png
 
-#begin light.png
+#begin Light.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -447,7 +447,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:light.png
+/build:Light.png
 
 #begin DarkMode.png
 /importer:TextureImporter
@@ -574,3 +574,14 @@
 /processorParam:Quality=Best
 /build:07-castle-complete.mp3
 
+#begin bowserFire.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:bowserFire.png

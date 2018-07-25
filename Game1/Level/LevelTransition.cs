@@ -17,9 +17,9 @@ namespace Game1
         }
         public void Draw()
         {
-            int width = TextureWarehouse.marioTexture.Width / 28;
+            int width = TextureWarehouse.MarioTexture.Width / 28;
 
-            int height = TextureWarehouse.marioTexture.Height / 3;
+            int height = TextureWarehouse.MarioTexture.Height / 3;
             int row = (int)((float)(14+28) / (float)28);
             int column = (14+28) % 28;
 
@@ -41,7 +41,7 @@ namespace Game1
 
             myGame.SpriteBatch.DrawString(myGame.SpriteFont, "X", new Vector2(180, 120), Color.White);
             myGame.SpriteBatch.DrawString(myGame.SpriteFont, myGame.persistentData.Lives.ToString(), new Vector2(200, 120), Color.White); //need to update
-            myGame.SpriteBatch.Draw(TextureWarehouse.marioTexture, destinationRectangle, sourceRectangle, Color.White);
+            myGame.SpriteBatch.Draw(TextureWarehouse.MarioTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.SpriteBatch.End();
         }
     }

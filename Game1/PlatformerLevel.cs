@@ -64,7 +64,7 @@ namespace Game1
             collisionDetect = new CollisionDetect(game,this);
 
             currentCamera = movingCamera = new Camera(this);
-            staticCamera = new CameraStatic(this, secretRoomLocation);
+            staticCamera = new CameraStatic(secretRoomLocation);
 
            
 
