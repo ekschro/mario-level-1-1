@@ -194,6 +194,9 @@ namespace Game1
                 case "GrayBrick":
                     GameObject = new GrayBrickBlock(myGame, Position, Size);
                     break;
+                case "PreUsedBlock":
+                    GameObject = new PreUsedBlock(myGame, Position);
+                    break;
                 case "AxePickup":
                     GameObject = new AxePickup(myGame, Position);
                     break;
@@ -202,6 +205,12 @@ namespace Game1
                     break;
                 case "Bowser":
                     GameObject = new Bowser(myGame, Position);
+                    break;
+                case "Toad":
+                    GameObject = new Toad(myGame, Position);
+                    break;
+                case "AnotherCastle":
+                    GameObject = new AnotherCastle(myGame, Position);
                     break;
             }
             return GameObject;

@@ -21,6 +21,8 @@ namespace Game1 {
         public static Texture2D blueBrickBlockTexture;
         public static Texture2D pipeOnSideBlockTexture;
         public static Texture2D bowserTexture;
+        public static Texture2D toadTexture;
+        public static Texture2D anotherCastleTexture;
         public static Texture2D axeTexture;
         public static Texture2D openTexture;
         public static Texture2D movingPlatform;
@@ -58,6 +60,8 @@ namespace Game1 {
             blueBrickBlockTexture = myGame.Content.Load<Texture2D>("blueBrick");
             pipeOnSideBlockTexture = myGame.Content.Load<Texture2D>("pipeOnSide");
             bowserTexture = myGame.Content.Load<Texture2D>("Bowser");
+            toadTexture = myGame.Content.Load<Texture2D>("toad");
+            anotherCastleTexture = myGame.Content.Load<Texture2D>("toadText");
             bossLevelBackgroundTexture = myGame.Content.Load<Texture2D>("1-4Background");
             grayBrickBlockTexture = myGame.Content.Load<Texture2D>("grayStone");
             bridgeBlockTexture = myGame.Content.Load<Texture2D>("bridge");
