@@ -48,11 +48,11 @@ namespace Game1
             MarioColor = Color.White;
             colorStartingTime = 5;
             colorTimer = 0;
-            if (state == 1)
+            if (state == 1 && game.CurrentLevel is BossLevel)
                 testMario = new TestSmallMario(game, vector, this);
-            else if (state == 2)
+            else if (state == 2 && game.CurrentLevel is BossLevel)
                 testMario = new TestBigMario(game, vector, this);
-            else if (state == 3)
+            else if (state == 3 && game.CurrentLevel is BossLevel)
                 testMario = new TestFireMario(game, vector, this);
             CanJump = true;
             Falling = false;

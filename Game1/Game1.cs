@@ -105,8 +105,8 @@ namespace Game1
             CurrentLevel = GetNewLevel();
             pause = false;
             currentLevel.PlayerObject.Invulnerability = false;
-            if (persistentData.Lives > 1)
-                MediaPlayer.Play(SoundWarehouse.main_theme);
+            if (persistentData.Lives > 1) { }
+                //MediaPlayer.Play(SoundWarehouse.main_theme);
             else
                 MediaPlayer.Play(SoundWarehouse.game_over_theme);
         }
@@ -117,10 +117,12 @@ namespace Game1
             cyclePosition = 0;
             allowControllerResponse = true;
             persistentData = new PersistentData(this);
-            CurrentLevel = GetNewLevel();
+            CurrentLevel = new PlatformerLevel("../../../../Content/LevelInfo.csv", this, persistentData);
             pause = false;
             currentLevel.PlayerObject.Invulnerability = false;
             MediaPlayer.Play(SoundWarehouse.main_theme);
+            selectLevel = new LevelSelect(this);
+            openingLevel = new LevelOpeningScreen(this);
         }
 
         public void CheckGameOver(ILevel level)
@@ -208,8 +210,9 @@ namespace Game1
             switch (gameState)
             {
                 case GameScreenState.Opening:
-                    HeadsUpDisplay.Draw();
+                    
                     openingLevel.Draw();
+                    HeadsUpDisplay.Draw();
                     break;
                 case GameScreenState.Transition:
                     transitionLevel.Draw();
@@ -250,12 +253,14 @@ namespace Game1
             if (currentLevel is PlatformerLevel)
             {
                 NextLevel1 = false;
+                MediaPlayer.Play(SoundWarehouse.main_theme);
                 return new PlatformerLevel("../../../../Content/LevelInfo.csv", this, persistentData);
                 
             }
             else
             {
                 NextLevel1 = true;
+                MediaPlayer.Play(SoundWarehouse.castle_theme);
                 return new BossLevel("../../../../Content/BossLevelInfo.csv", this, persistentData);
                 
             }

@@ -91,12 +91,18 @@ namespace Game1
                         }
                         break;
                     case Keys.Down:
-                        if (chooseLevel && chooseMode!=true)
+                        if (chooseLevel && buttonColor[LevelDark] == Color.Gray && buttonColor[LevelDark] == Color.Gray)
                         {
                             buttonColor[LevelNormal] = Color.White;
                             chooseLevel = false;
                             chooseMode = true;
                         }
+                        else if (chooseLevel)
+                        {
+                            chooseLevel = false;
+                            chooseMode = true;
+                        }
+
                         break;
                     case Keys.Up:
                         if (chooseLevel == false)

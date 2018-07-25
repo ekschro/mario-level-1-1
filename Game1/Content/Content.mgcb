@@ -562,6 +562,18 @@
 /processorParam:TextureFormat=Color
 /build:toadText.png
 
+#begin 04-castle.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:04-castle.mp3
+
+#begin 07-castle-complete.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:07-castle-complete.mp3
+
 #begin bowserFire.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -573,4 +585,3 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:bowserFire.png
-

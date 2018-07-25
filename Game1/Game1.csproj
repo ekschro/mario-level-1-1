@@ -97,6 +97,8 @@
     <Compile Include="ButtonForLevelSelect.cs" />
     <Compile Include="CameraSliding.cs" />
     <Compile Include="CameraStatic.cs" />
+    <Compile Include="BowserFireBall.cs" />
+    <Compile Include="BowserFireEnemySprite.cs" />
     <Compile Include="FireEnemySprite.cs" />
     <Compile Include="FireEnemy.cs" />
     <Compile Include="HUDPoints.cs" />

@@ -37,7 +37,6 @@ namespace Game1 {
         private static Texture2D grayBrickBlockTexture;
         private static Texture2D bridgeBlockTexture;
         private static Texture2D bowserFireballTexture;
-
         public static Texture2D MarioTexture { get => marioTexture; }
         public static Texture2D PickupTexture { get => pickupTexture; }
         public static Texture2D KoopaTexture { get => koopaTexture; }

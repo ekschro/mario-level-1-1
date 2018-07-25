@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Media;
 using System.Collections.Generic;
 
 namespace Game1
@@ -65,6 +66,8 @@ namespace Game1
             slidingCamera = new CameraSliding(bossRoomLocation - 200, finalLocation);
             
             backgroundObject = new BossLevelBackground(myGame, new Vector2(0,0));
+
+            MediaPlayer.Play(SoundWarehouse.castle_theme);
 
             myGame.AllowControllerResponse = true;
         }
@@ -211,6 +214,9 @@ namespace Game1
         {
             IBlock[] bridgeBlocks = new IBlock[13];
             int i = 0;
+
+            
+
             foreach (IBlock block in BlockObjects)
             {
                 if(block is BridgeBlock)
