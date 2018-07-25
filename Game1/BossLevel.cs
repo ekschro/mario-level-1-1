@@ -78,7 +78,7 @@ namespace Game1
             }
             foreach (IGameObject GameObject in EnemyObjects)
             {
-                if (GameObject.GetGameObjectLocation().X > currentCamera.CameraPosition - 16 && GameObject.GetGameObjectLocation().X < currentCamera.CameraPosition + 400)
+                //if (GameObject.GetGameObjectLocation().X > currentCamera.CameraPosition - 16 && GameObject.GetGameObjectLocation().X < currentCamera.CameraPosition + 400)
                     GameObject.Update();
             }
             IGameObject[] pickupObjectArray = PickupObjects.ToArray();

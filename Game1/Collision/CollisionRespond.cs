@@ -192,27 +192,35 @@ namespace Game1
 
         public void EnemyCollisionRespondTop(IEnemy enemy)
         {
-            enemy.BeStomped();
-            SoundWarehouse.stomp.Play();
-            ((Mario)player).KilledNum += 1;
-            objectLevel.PersistentData.EnemyStompedPoints(((Mario)player).KilledNum,enemy.GetGameObjectLocation());
-
-            if (enemy is Goomba)
+            if (enemy is FireEnemy)
             {
-                objectLevel.TemporaryObjects.Add(new FlattenedGoomba(myGame, enemy.GetGameObjectLocation()));
-                objectLevel.EnemyObjects.Remove(enemy);
+                MarioHit();
             }
-            else if (enemy is Koopa)
+            else
             {
-                objectLevel.EnemyObjects.Remove(enemy);
-                objectLevel.EnemyObjects.Add(new KoopaShell(myGame, enemy.GetGameObjectLocation()));
-            }
-            if (enemy is MarioFireBall)
-            {
+                enemy.BeStomped();
+                SoundWarehouse.stomp.Play();
+                ((Mario)player).KilledNum += 1;
+                objectLevel.PersistentData.EnemyStompedPoints(((Mario)player).KilledNum, enemy.GetGameObjectLocation());
 
-            } else
-            {
-                player.Bounce = true;
+                if (enemy is Goomba)
+                {
+                    objectLevel.TemporaryObjects.Add(new FlattenedGoomba(myGame, enemy.GetGameObjectLocation()));
+                    objectLevel.EnemyObjects.Remove(enemy);
+                }
+                else if (enemy is Koopa)
+                {
+                    objectLevel.EnemyObjects.Remove(enemy);
+                    objectLevel.EnemyObjects.Add(new KoopaShell(myGame, enemy.GetGameObjectLocation()));
+                }
+                if (enemy is MarioFireBall)
+                {
+
+                }
+                else
+                {
+                    player.Bounce = true;
+                }
             }
             
         }
