@@ -25,11 +25,11 @@ namespace Game1
         public void Draw()
         {
             
-            Rectangle LightRectangle = new Rectangle(xPosition-436, yPosition-302, TextureWarehouse.Light.Width, TextureWarehouse.Light.Height);
-            Rectangle LightSourceRectangle = new Rectangle(0, 0, TextureWarehouse.Light.Width, TextureWarehouse.Light.Height);
+            Rectangle lightRectangle = new Rectangle(xPosition-436, yPosition-302, TextureWarehouse.Light.Width, TextureWarehouse.Light.Height);
+            Rectangle lightSourceRectangle = new Rectangle(0, 0, TextureWarehouse.Light.Width, TextureWarehouse.Light.Height);
             myGame.SpriteBatch.Begin();
            
-            myGame.SpriteBatch.Draw(TextureWarehouse.Light, LightRectangle, LightSourceRectangle,Color.White);
+            myGame.SpriteBatch.Draw(TextureWarehouse.Light, lightRectangle, lightSourceRectangle,Color.White);
             myGame.SpriteBatch.End();
         }
     }
