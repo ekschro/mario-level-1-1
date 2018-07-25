@@ -39,7 +39,7 @@ namespace Game1
         {
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(axePickupObject.GetGameObjectLocation().X);
 
-            Rectangle sourceRectangle = new Rectangle(utility.BlockSize, 0, utility.BlockSize, utility.BlockSize);
+            Rectangle sourceRectangle = new Rectangle(0, 0, utility.BlockSize, utility.BlockSize);
             Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)axePickupObject.GetGameObjectLocation().Y, utility.BlockSize, utility.BlockSize);
 
             myGame.SpriteBatch.Begin();

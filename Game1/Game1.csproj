@@ -57,7 +57,8 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="AbstractBlockSprite.cs" />
+    <Compile Include="Blocks\Object\PreUsedBlock.cs" />
+    <Compile Include="Blocks\Sprites\AbstractBlockSprite.cs" />
     <Compile Include="Blocks\BlockUtilityClass.cs" />
     <Compile Include="Blocks\Object\AbstractBlock.cs" />
     <Compile Include="Blocks\Object\BlueBrickBlock.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="Blocks\Sprites\BlueStoneBlockSprite.cs" />
     <Compile Include="Blocks\Sprites\PipeOnSideBlockSprite.cs" />
     <Compile Include="Blocks\Sprites\TopWarpPipeBlockSprite.cs" />
+    <Compile Include="Blocks\Sprites\PreUsedBlockSprite.cs" />
     <Compile Include="ButtonForLevelSelect.cs" />
     <Compile Include="CameraSliding.cs" />
     <Compile Include="CameraStatic.cs" />
@@ -206,6 +208,10 @@
     <Compile Include="Physics\PickupPhysics.cs" />
     <Compile Include="PickupItem\Sprites\CoinSprite.cs" />
     <Compile Include="TemporaryObjects\Coin.cs" />
+    <Compile Include="TemporaryObjects\Sprites\AnotherCastleSprite.cs" />
+    <Compile Include="TemporaryObjects\Sprites\ToadSprite.cs" />
+    <Compile Include="TemporaryObjects\AnotherCastle.cs" />
+    <Compile Include="TemporaryObjects\Toad.cs" />
     <Compile Include="TemporaryObjects\FlattenedGoomba.cs" />
     <Compile Include="TemporaryObjects\FlippedKoopa.cs" />
     <Compile Include="TemporaryObjects\FlippedGoomba.cs" />
