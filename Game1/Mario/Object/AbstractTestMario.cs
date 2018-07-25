@@ -160,7 +160,6 @@ namespace Game1
 
         public void Axe()
         {
-            Console.WriteLine("Complete");
             MediaPlayer.Play(SoundWarehouse.castle_complete_theme);
             isAxeSequence = true;
             timer = 0;
