@@ -214,6 +214,9 @@ namespace Game1
         {
             IBlock[] bridgeBlocks = new IBlock[13];
             int i = 0;
+
+            
+
             foreach (IBlock block in BlockObjects)
             {
                 if(block is BridgeBlock)
