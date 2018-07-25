@@ -47,15 +47,15 @@ namespace Game1
 
         public void Draw()
         {
-            int width = TextureWarehouse.bowserTexture.Width / utility.BoswerColumn;
+            int width = TextureWarehouse.BowserTexture.Width / utility.BoswerColumn;
 
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(boswerObject.GetGameObjectLocation().X);
 
-            Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, TextureWarehouse.bowserTexture.Height);
-            Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)boswerObject.GetGameObjectLocation().Y, width, TextureWarehouse.bowserTexture.Height);
+            Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, TextureWarehouse.BowserTexture.Height);
+            Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)boswerObject.GetGameObjectLocation().Y, width, TextureWarehouse.BowserTexture.Height);
 
             myGame.SpriteBatch.Begin();
-            myGame.SpriteBatch.Draw(TextureWarehouse.bowserTexture, destinationRectangle, sourceRectangle, Color.White, 0, new Vector2(0, 0), boswerSpriteEffects, 0);
+            myGame.SpriteBatch.Draw(TextureWarehouse.BowserTexture, destinationRectangle, sourceRectangle, Color.White, 0, new Vector2(0, 0), boswerSpriteEffects, 0);
             myGame.SpriteBatch.End();
         }
 

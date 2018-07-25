@@ -50,15 +50,15 @@ namespace Game1
                 { currentJumpLocation -= 2; }
             }
 
-            int width = TextureWarehouse.blockTexture.Width / utility.BlockColumn;
+            int width = TextureWarehouse.BlockTexture.Width / utility.BlockColumn;
 
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(brickBlockObject.GetGameObjectLocation().X);
 
-            Rectangle sourceRectangle = new Rectangle(width * currentFrame, utility.InitialFrame, width, TextureWarehouse.blockTexture.Height);
-            Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)brickBlockObject.GetGameObjectLocation().Y - currentJumpLocation, width, TextureWarehouse.blockTexture.Height);
+            Rectangle sourceRectangle = new Rectangle(width * currentFrame, utility.InitialFrame, width, TextureWarehouse.BlockTexture.Height);
+            Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)brickBlockObject.GetGameObjectLocation().Y - currentJumpLocation, width, TextureWarehouse.BlockTexture.Height);
 
             myGame.SpriteBatch.Begin();
-            myGame.SpriteBatch.Draw(TextureWarehouse.blockTexture, destinationRectangle, sourceRectangle, Color.White);
+            myGame.SpriteBatch.Draw(TextureWarehouse.BlockTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.SpriteBatch.End();
         }
 
