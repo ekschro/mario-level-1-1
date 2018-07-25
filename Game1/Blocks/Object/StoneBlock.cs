@@ -12,7 +12,7 @@ namespace Game1
         public StoneBlock(Game1 game, Vector2 location, Vector2 size) : base(location, size)
         {
             blockSprite = new StoneBlockSprite(game, this);
-            blockRectangle = new Rectangle((int)location.X, (int)location.Y, utility.Width, utility.Height);
+            blockRectangle = new Rectangle((int)location.X, (int)location.Y, (int)size.X, (int)size.Y);
         }
     }
 }

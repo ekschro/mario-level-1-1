@@ -104,21 +104,11 @@ namespace Game1
                 
                 for (int i = 0; i < blockArray.Length && !fireEnemy; i++)
                 {
-                    Rectangle blockBox;
-
                     int blockX = (int)blockArray[i].GetGameObjectLocation().X;
                     int blockY = (int)blockArray[i].GetGameObjectLocation().Y;
 
-
-                    if (!(blockArray[i] is StoneBlock))
-                        blockBox = new Rectangle(blockX, blockY, utility.MainWidth, utility.MainHeight);
-                    else
-                    {
-                        StoneBlock block = (StoneBlock)blockArray[i];
-                        blockBox = new Rectangle(blockX, blockY, (int)block.BlockSize.X, (int)block.BlockSize.Y);
-                    }
-
                     Rectangle intersect;
+                    Rectangle blockBox = blockArray[i].BlockRectangle();
 
                     if (enemyBox.Intersects(blockBox))
                     {
