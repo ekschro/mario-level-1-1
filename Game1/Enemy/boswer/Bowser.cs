@@ -13,6 +13,7 @@ namespace Game1
         public float CurrentYPos { get => bowserLocation.Y; set => bowserLocation.Y = value; }
         private bool falling;
         private bool jumping;
+        private bool moving;
         int counter = 0;
         public bool MovingRight { get; set; }
         public bool IsFalling { get => falling; set => falling = value; }
@@ -40,6 +41,7 @@ namespace Game1
             physics = new EnemyPhysics(game, this, 1);
             falling = true;
             jumping = false;
+            moving = false;
             myGame=game;
         }
 
@@ -81,11 +83,22 @@ namespace Game1
         {
             return bowserOriginalLocation;
         }
+        private void CheckMoving()
+        {
+            if ((bowserLocation.X - myGame.CurrentLevel.PlayerObject.GetGameObjectLocation().X) <= 150)
+                moving = true;
+        }
         public void Update()
         {
-            physics.Update();
+            CheckMoving();
+            if (moving)
+            {
+                physics.Update();
+                utility.EnemyupCyclePosition++;
+            }
             falling = true;
-            utility.EnemyupCyclePosition++;
+            
+
             if (utility.EnemyupCyclePosition == utility.BowserCycleLength && dead!=true)
             {
                 utility.EnemyupCyclePosition = 0;
