@@ -11,7 +11,7 @@ namespace Game1
     public class LevelLoader : ILoader
     {
         Game1 myGame;
-
+        float radius = 0;
         //private IGameObject mario;
         PersistentData ps;
        
@@ -37,8 +37,8 @@ namespace Game1
                 int PositionY = 0;
                 int SizeX = 16;
                 int SizeY = 16;
-                
-                while(LoaderInput.Peek() >= 0 && (NextChar = (char)LoaderInput.Read()) != ',')
+
+                while (LoaderInput.Peek() >= 0 && (NextChar = (char)LoaderInput.Read()) != ',')
                 {
                     GameObjectString = GameObjectString + NextChar;
                 }
@@ -47,9 +47,9 @@ namespace Game1
                 {
                     PositionXString = PositionXString + NextChar;
                 }
-                
 
-                if(GameObjectString != "StoneBlock" && GameObjectString != "BlueStoneBlock" && GameObjectString != "BlueBrickBlock" && GameObjectString != "GrayBrick" && GameObjectString != "BridgeBlock")
+
+                if (GameObjectString != "StoneBlock" && GameObjectString != "BlueStoneBlock" && GameObjectString != "BlueBrickBlock" && GameObjectString != "GrayBrick" && GameObjectString != "BridgeBlock")
                 {
                     while (LoaderInput.Peek() >= 0 && (NextChar = (char)LoaderInput.Read()) != '\n')
                     {
@@ -79,8 +79,13 @@ namespace Game1
 
                 PositionX = Convert.ToInt32(PositionXString);
                 PositionY = Convert.ToInt32(PositionYString);
-
-                gameObjects.Add(GenerateObject(GameObjectString, PositionX, PositionY, SizeX, SizeY));
+                if (GameObjectString.Equals("FireEnemy")){
+                    for (int i = 0; i < 5; i++)
+                    {
+                        gameObjects.Add(GenerateObject(GameObjectString, PositionX, PositionY, SizeX, SizeY));
+                    }
+                } else
+                    gameObjects.Add(GenerateObject(GameObjectString, PositionX, PositionY, SizeX, SizeY));
             }
         }
 
@@ -89,7 +94,8 @@ namespace Game1
         {
             Vector2 Position = new Vector2((float)positionX, (float)positionY);
             Vector2 Size = new Vector2((float)sizeX, (float)sizeY);
-            IGameObject GameObject = new Coin(myGame,Position);
+           
+                IGameObject GameObject = new Coin(myGame, Position);
             switch (objectName) {
                 case "Mario" :
                     GameObject = new Mario(myGame, Position, ps.PlayerState);
@@ -111,11 +117,12 @@ namespace Game1
                     GameObject = new Star(myGame, Position);
                     break;
                 case "FireEnemy":
-                    float radius = 0;
-                    for (int i = 0; i < 5; i++)
+                    
+                    GameObject = new FireEnemy(myGame, Position, radius);
+                    radius = radius + 10;
+                    if (radius == 50)
                     {
-                        GameObject = new FireEnemy(myGame, Position, radius);
-                        radius += 2;
+                        radius = 0;
                     }
                     break;
                 case "Goomba":

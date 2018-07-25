@@ -28,7 +28,17 @@ namespace Game1
             Rectangle destinationRectangle = new Rectangle(160, 100, width, height);
             
             myGame.SpriteBatch.Begin();
-            myGame.SpriteBatch.DrawString(myGame.SpriteFont, "WORLD1-1", new Vector2(150, 80), Color.White);
+           
+            if (myGame.NextLevel1)
+            {
+                myGame.SpriteBatch.DrawString(myGame.SpriteFont, "WORLD1-4", new Vector2(150, 80), Color.White); //need to update
+            }
+            else
+            {
+                myGame.SpriteBatch.DrawString(myGame.SpriteFont, "WORLD1-1", new Vector2(150, 80), Color.White); //need to update
+            }
+
+
             myGame.SpriteBatch.DrawString(myGame.SpriteFont, "X", new Vector2(180, 120), Color.White);
             myGame.SpriteBatch.DrawString(myGame.SpriteFont, myGame.persistentData.Lives.ToString(), new Vector2(200, 120), Color.White); //need to update
             myGame.SpriteBatch.Draw(TextureWarehouse.marioTexture, destinationRectangle, sourceRectangle, Color.White);
