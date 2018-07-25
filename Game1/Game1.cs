@@ -105,8 +105,8 @@ namespace Game1
             CurrentLevel = GetNewLevel();
             pause = false;
             currentLevel.PlayerObject.Invulnerability = false;
-            if (persistentData.Lives > 1)
-                MediaPlayer.Play(SoundWarehouse.main_theme);
+            if (persistentData.Lives > 1) { }
+                //MediaPlayer.Play(SoundWarehouse.main_theme);
             else
                 MediaPlayer.Play(SoundWarehouse.game_over_theme);
         }
@@ -250,12 +250,14 @@ namespace Game1
             if (currentLevel is PlatformerLevel)
             {
                 NextLevel1 = false;
+                MediaPlayer.Play(SoundWarehouse.main_theme);
                 return new PlatformerLevel("../../../../Content/LevelInfo.csv", this, persistentData);
                 
             }
             else
             {
                 NextLevel1 = true;
+                MediaPlayer.Play(SoundWarehouse.castle_theme);
                 return new BossLevel("../../../../Content/BossLevelInfo.csv", this, persistentData);
                 
             }
