@@ -91,12 +91,18 @@ namespace Game1
                         }
                         break;
                     case Keys.Down:
-                        if (chooseLevel && chooseMode!=true)
+                        if (chooseLevel && buttonColor[LevelDark] == Color.Gray && buttonColor[LevelDark] == Color.Gray)
                         {
                             buttonColor[LevelNormal] = Color.White;
                             chooseLevel = false;
                             chooseMode = true;
                         }
+                        else if (chooseLevel)
+                        {
+                            chooseLevel = false;
+                            chooseMode = true;
+                        }
+
                         break;
                     case Keys.Up:
                         if (chooseLevel == false)
@@ -128,18 +134,18 @@ namespace Game1
         }
         public void Draw()
         {
-            Rectangle level11Rectangle = new Rectangle(myGame.Window.ClientBounds.Width / 2-150, 50, TextureWarehouse.level11.Width / 3, TextureWarehouse.level11.Height / 3);
-            Rectangle level14Rectangle = new Rectangle(myGame.Window.ClientBounds.Width / 2+50, 50, TextureWarehouse.level14.Width / 3, TextureWarehouse.level14.Height / 3);
-            Rectangle enterRectangle = new Rectangle(myGame.Window.ClientBounds.Width / 2 - TextureWarehouse.enterTexture.Width / 2, 190, TextureWarehouse.enterTexture.Width, TextureWarehouse.enterTexture.Height);
-            Rectangle lightRectangle = new Rectangle(myGame.Window.ClientBounds.Width / 2 -50- TextureWarehouse.normalMode.Width / 2, 150, TextureWarehouse.normalMode.Width, TextureWarehouse.normalMode.Height);
-            Rectangle darkRectangle = new Rectangle(myGame.Window.ClientBounds.Width / 2 +50- TextureWarehouse.darkMode.Width / 2, 150, TextureWarehouse.darkMode.Width, TextureWarehouse.darkMode.Height);
+            Rectangle Level11Rectangle = new Rectangle(myGame.Window.ClientBounds.Width / 2-150, 50, TextureWarehouse.Level11.Width / 3, TextureWarehouse.Level11.Height / 3);
+            Rectangle Level14Rectangle = new Rectangle(myGame.Window.ClientBounds.Width / 2+50, 50, TextureWarehouse.Level14.Width / 3, TextureWarehouse.Level14.Height / 3);
+            Rectangle enterRectangle = new Rectangle(myGame.Window.ClientBounds.Width / 2 - TextureWarehouse.EnterTexture.Width / 2, 190, TextureWarehouse.EnterTexture.Width, TextureWarehouse.EnterTexture.Height);
+            Rectangle LightRectangle = new Rectangle(myGame.Window.ClientBounds.Width / 2 -50- TextureWarehouse.NormalMode.Width / 2, 150, TextureWarehouse.NormalMode.Width, TextureWarehouse.NormalMode.Height);
+            Rectangle darkRectangle = new Rectangle(myGame.Window.ClientBounds.Width / 2 +50- TextureWarehouse.DarkMode.Width / 2, 150, TextureWarehouse.DarkMode.Width, TextureWarehouse.DarkMode.Height);
 
 
-            myGame.SpriteBatch.Draw(TextureWarehouse.level11, level11Rectangle, buttonColor[0]);
-            myGame.SpriteBatch.Draw(TextureWarehouse.level14, level14Rectangle, buttonColor[1]);
-            myGame.SpriteBatch.Draw(TextureWarehouse.normalMode, lightRectangle, buttonColor[2]);
-            myGame.SpriteBatch.Draw(TextureWarehouse.darkMode, darkRectangle, buttonColor[3]);
-            myGame.SpriteBatch.Draw(TextureWarehouse.enterTexture, enterRectangle, buttonColor[4]);
+            myGame.SpriteBatch.Draw(TextureWarehouse.Level11, Level11Rectangle, buttonColor[0]);
+            myGame.SpriteBatch.Draw(TextureWarehouse.Level14, Level14Rectangle, buttonColor[1]);
+            myGame.SpriteBatch.Draw(TextureWarehouse.NormalMode, LightRectangle, buttonColor[2]);
+            myGame.SpriteBatch.Draw(TextureWarehouse.DarkMode, darkRectangle, buttonColor[3]);
+            myGame.SpriteBatch.Draw(TextureWarehouse.EnterTexture, enterRectangle, buttonColor[4]);
 
         }
     }

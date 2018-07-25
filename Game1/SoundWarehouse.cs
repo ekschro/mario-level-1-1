@@ -15,6 +15,8 @@ namespace Game1
         public static Song level_complete_theme;
         public static Song game_over_theme;
         public static Song star_theme;
+        public static Song castle_theme;
+        public static Song castle_complete_theme;
         public static SoundEffect jump;
         public static SoundEffect stomp;
         public static SoundEffect bump;
@@ -34,6 +36,8 @@ namespace Game1
             level_complete_theme = game.Content.Load<Song>("06-level-complete");
             game_over_theme = game.Content.Load<Song>("10-game-over-2");
             star_theme = game.Content.Load<Song>("05-starman");
+            castle_theme = game.Content.Load<Song>("04-castle");
+            castle_complete_theme = game.Content.Load<Song>("07-castle-complete");
 
             jump = game.Content.Load<SoundEffect>("smb_jumpsmall");
             stomp = game.Content.Load<SoundEffect>("smb_stomp");

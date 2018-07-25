@@ -16,7 +16,7 @@ namespace Game1
         public float CameraPosition { get => cameraPosition; set => cameraPosition = value; }
         public float CameraOffset { get => cameraOffset; set => cameraOffset = value; }
 
-        public CameraSliding(ILevel level, int startPosition, int endPosition)
+        public CameraSliding(int startPosition, int endPosition)
         {
             cameraPosition = startPosition;
             finalPosition = endPosition;

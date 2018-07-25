@@ -39,11 +39,11 @@ namespace Game1
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(goombaObject.CurrentXPos);
             int drawLocationY = (int)(goombaObject.CurrentYPos + bouncePosition);
 
-            Rectangle sourceRectangle = new Rectangle(0,0,(int)TextureWarehouse.flippedGoomba.Width, (int)TextureWarehouse.flippedGoomba.Height);
-            Rectangle destinationRectangle = new Rectangle(drawLocationX, drawLocationY, (int)TextureWarehouse.flippedGoomba.Width, (int)TextureWarehouse.flippedGoomba.Height);
+            Rectangle sourceRectangle = new Rectangle(0,0,(int)TextureWarehouse.FlippedGoomba.Width, (int)TextureWarehouse.FlippedGoomba.Height);
+            Rectangle destinationRectangle = new Rectangle(drawLocationX, drawLocationY, (int)TextureWarehouse.FlippedGoomba.Width, (int)TextureWarehouse.FlippedGoomba.Height);
 
             myGame.SpriteBatch.Begin();
-            myGame.SpriteBatch.Draw(TextureWarehouse.flippedGoomba, destinationRectangle, sourceRectangle, Color.White);
+            myGame.SpriteBatch.Draw(TextureWarehouse.FlippedGoomba, destinationRectangle, sourceRectangle, Color.White);
             myGame.SpriteBatch.End();
         }
 

@@ -43,7 +43,7 @@ namespace Game1
             Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)axePickupObject.GetGameObjectLocation().Y, utility.BlockSize, utility.BlockSize);
 
             myGame.SpriteBatch.Begin();
-            myGame.SpriteBatch.Draw(TextureWarehouse.axeTexture, destinationRectangle, sourceRectangle, Color.White);
+            myGame.SpriteBatch.Draw(TextureWarehouse.AxeTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.SpriteBatch.End();
         }
 

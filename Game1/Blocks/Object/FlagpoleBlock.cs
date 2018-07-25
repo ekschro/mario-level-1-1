@@ -12,7 +12,7 @@ namespace Game1
         public FlagpoleBlock(Game1 game, Vector2 location) : base(location)
         {
             blockSprite = new FlagpoleBlockSprite(game, this);
-            blockRectangle = new Rectangle((int)location.X, (int)location.Y, TextureWarehouse.flagpoleTexture.Width, TextureWarehouse.flagpoleTexture.Height);
+            blockRectangle = new Rectangle((int)location.X, (int)location.Y, TextureWarehouse.FlagpoleTexture.Width, TextureWarehouse.FlagpoleTexture.Height);
         }
     }
 }

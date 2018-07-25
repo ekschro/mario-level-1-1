@@ -55,8 +55,8 @@ namespace Game1
 
         public void Draw(int xOffset, int yOffset)
         {
-            int width = TextureWarehouse.marioTexture.Width / player.TotalMarioColumns;
-            int height = TextureWarehouse.marioTexture.Height / player.TotalMarioRows;
+            int width = TextureWarehouse.MarioTexture.Width / player.TotalMarioColumns;
+            int height = TextureWarehouse.MarioTexture.Height / player.TotalMarioRows;
             int row = (int)((float)currentFrame / (float)player.TotalMarioColumns);
             int column = currentFrame % player.TotalMarioColumns;
 
@@ -66,7 +66,7 @@ namespace Game1
             Rectangle destinationRectangle = new Rectangle(drawLocationX + xOffset, (int)player.CurrentYPos + yOffset, width, height);
 
             myGame.SpriteBatch.Begin();
-            myGame.SpriteBatch.Draw(TextureWarehouse.marioTexture, destinationRectangle, sourceRectangle, player.MarioColor);
+            myGame.SpriteBatch.Draw(TextureWarehouse.MarioTexture, destinationRectangle, sourceRectangle, player.MarioColor);
             myGame.SpriteBatch.End();
         }
     }
