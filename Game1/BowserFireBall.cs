@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 
 namespace Game1
 {
-    public class FireEnemy : IEnemy
+    public class BowserFireBall : IEnemy
     {
         Vector2 location2;
         Vector2 originalLocation;
@@ -11,19 +11,18 @@ namespace Game1
         float radius2;
         double angle;
         IEnemySprite fireEnemySprite;
-        public FireEnemy(Game1 game, Vector2 location, float radius)
+        Bowser bowser2;
+        bool facingRight;
+        public BowserFireBall(Game1 game, Bowser bowser)
         {
-            location2 = location;
-            
-            location2.X = location2.X + radius + 6;
-            location2.Y = location2.Y + 6;
-            originalLocation = new Vector2(location.X, location.Y);
-            //originalLocation.X = originalLocation.X + 6 + radius;
-            //originalLocation.Y = originalLocation.Y + 6;
+            bowser2 = bowser;
+            location2 = new Vector2(bowser2.CurrentXPos, bowser2.CurrentYPos);
+            originalLocation = new Vector2(bowser2.CurrentXPos, bowser2.CurrentYPos);
+            facingRight = bowser2.StateMachine.GetDirection();           
             myGame = game;
-            radius2 = radius;
-            angle = 0;
-            fireEnemySprite = new FireEnemySprite(game, this);
+            
+            
+            fireEnemySprite = new BowserFireEnemySprite(game, this);
         }
         private bool movingRight = true;
         public bool MovingRight { get => movingRight; set => movingRight = value; }
@@ -39,17 +38,17 @@ namespace Game1
 
         public void BeFlipped()
         {
-            
+
         }
 
         public void BeStomped()
         {
-            
+
         }
 
         public void ChangeDirection()
         {
-            
+
         }
 
         public void Draw()
@@ -79,10 +78,14 @@ namespace Game1
 
         public void Update()
         {
-            angle = angle + 0.015;
-            location2.X = (float)(originalLocation.X + 4 + radius2 * Math.Cos(angle));
-            location2.Y = (float)(originalLocation.Y + 4 + radius2 * Math.Sin(angle));
-            
+            if (facingRight)
+            {
+                location2.X = location2.X + 1;
+            } else
+            {
+                location2.X = location2.X - 1;
+            }
+           
             fireEnemySprite.Update();
 
         }

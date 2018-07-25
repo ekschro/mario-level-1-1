@@ -13,6 +13,7 @@ namespace Game1
         public float CurrentYPos { get => bowserLocation.Y; set => bowserLocation.Y = value; }
         private bool falling;
         private bool jumping;
+        int counter = 0;
         public bool MovingRight { get; set; }
         public bool IsFalling { get => falling; set => falling = value; }
         public bool IsJumping { get => jumping; }
@@ -114,6 +115,14 @@ namespace Game1
             {
                 jumping = false;
                 ChangeDirection(false);
+            }
+            if (counter == 100)
+            {
+                myGame.CurrentLevel.EnemyObjects.Add(new BowserFireBall(myGame, this));
+                counter = 0;
+            } else
+            {
+                counter++;
             }
         }
     }
