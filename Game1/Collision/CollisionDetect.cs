@@ -205,8 +205,9 @@ namespace Game1
                 {
                     int enemyArrayX = (int)enemyArray[i].GetGameObjectLocation().X;
                     int enemyArrayY = (int)enemyArray[i].GetGameObjectLocation().Y;
-
                     Rectangle enemyBox = new Rectangle(enemyArrayX, enemyArrayY, utility.MainWidth, utility.MainHeight);
+                    if (enemyArray[i] is Bowser)
+                        enemyBox = new Rectangle(enemyX, enemyY, utility.BowserSize, utility.BowserSize);
                     Rectangle intersect;
 
                     if (playerBox.Intersects(enemyBox))

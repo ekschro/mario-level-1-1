@@ -201,17 +201,19 @@ namespace Game1
                 enemy.BeStomped();
                 SoundWarehouse.stomp.Play();
                 ((Mario)player).KilledNum += 1;
-                objectLevel.PersistentData.EnemyStompedPoints(((Mario)player).KilledNum, enemy.GetGameObjectLocation());
+                //objectLevel.PersistentData.EnemyStompedPoints(((Mario)player).KilledNum, enemy.GetGameObjectLocation());
 
                 if (enemy is Goomba)
                 {
                     objectLevel.TemporaryObjects.Add(new FlattenedGoomba(myGame, enemy.GetGameObjectLocation()));
                     objectLevel.EnemyObjects.Remove(enemy);
+                    objectLevel.PersistentData.EnemyStompedPoints(((Mario)player).KilledNum, enemy.GetGameObjectLocation());
                 }
                 else if (enemy is Koopa)
                 {
                     objectLevel.EnemyObjects.Remove(enemy);
                     objectLevel.EnemyObjects.Add(new KoopaShell(myGame, enemy.GetGameObjectLocation()));
+                    objectLevel.PersistentData.EnemyStompedPoints(((Mario)player).KilledNum, enemy.GetGameObjectLocation());
                 }
                 if (enemy is MarioFireBall)
                 {
@@ -348,7 +350,10 @@ namespace Game1
 
         public void EnemyCollisionBlockRespondRight(IEnemy enemy, IEnemy otherEnemy, int width)
         {
-            enemy.ChangeDirection(true);
+            if (enemy is Bowser)
+            { }
+            else
+                enemy.ChangeDirection(true);
 
             if (enemy is MarioFireBall)
             {
@@ -370,14 +375,14 @@ namespace Game1
                 enemy.ChangeDirection(true);
             }
 
-            if (enemy is MarioFireBall && !(otherEnemy is FireEnemy))
+            if (enemy is MarioFireBall && !(otherEnemy is FireEnemy) && !(otherEnemy is Bowser))
             {
                 SoundWarehouse.stomp.Play();
                 CreateFlippedEnemy(otherEnemy);
                 objectLevel.EnemyObjects.Remove(enemy);
                 objectLevel.EnemyObjects.Remove(otherEnemy);
             }
-            else if (otherEnemy is MarioFireBall && !(enemy is FireEnemy))
+            else if (otherEnemy is MarioFireBall && !(enemy is FireEnemy) && !(enemy is Bowser))
             {
                 SoundWarehouse.stomp.Play();
                 CreateFlippedEnemy(enemy);
@@ -389,6 +394,21 @@ namespace Game1
                 ((KoopaShell)otherEnemy).KilledNum += 1;
                 myGame.persistentData.KoopaShell((KoopaShell)otherEnemy, enemy.GetGameObjectLocation());
                 objectLevel.EnemyObjects.Remove(enemy);
+            }
+            else if ((enemy is Bowser && otherEnemy is MarioFireBall))
+            {
+                CreateFlippedEnemy(enemy);
+                objectLevel.EnemyObjects.Remove(enemy);
+                objectLevel.EnemyObjects.Remove(otherEnemy);
+
+            }
+            else if ((otherEnemy is Bowser && enemy is MarioFireBall))
+            {
+
+                CreateFlippedEnemy(enemy);
+                objectLevel.EnemyObjects.Remove(enemy);
+                objectLevel.EnemyObjects.Remove(otherEnemy);
+
             }
         }
 
@@ -499,12 +519,17 @@ namespace Game1
             if (enemy is Goomba)
             {
                 objectLevel.TemporaryObjects.Add(new FlippedGoomba(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
-                objectLevel.PersistentData.EnemyStompedPoints(1,enemy.GetGameObjectLocation());
+                objectLevel.PersistentData.EnemyStompedPoints(1, enemy.GetGameObjectLocation());
             }
             else if (enemy is Koopa)
             {
                 objectLevel.TemporaryObjects.Add(new FlippedKoopa(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
                 objectLevel.PersistentData.KoopaFireOrStarPoints(enemy.GetGameObjectLocation());
+            }
+            else if (enemy is Bowser)
+            {
+                objectLevel.TemporaryObjects.Add(new FlippedBowser(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
+
             }
         }
     }

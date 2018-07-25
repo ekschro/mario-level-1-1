@@ -210,7 +210,9 @@
     <Compile Include="Physics\PickupPhysics.cs" />
     <Compile Include="PickupItem\Sprites\CoinSprite.cs" />
     <Compile Include="TemporaryObjects\Coin.cs" />
+    <Compile Include="TemporaryObjects\FlippedBowser.cs" />
     <Compile Include="TemporaryObjects\Sprites\AnotherCastleSprite.cs" />
+    <Compile Include="TemporaryObjects\Sprites\FlippedBowserSprite.cs" />
     <Compile Include="TemporaryObjects\Sprites\ToadSprite.cs" />
     <Compile Include="TemporaryObjects\AnotherCastle.cs" />
     <Compile Include="TemporaryObjects\Toad.cs" />

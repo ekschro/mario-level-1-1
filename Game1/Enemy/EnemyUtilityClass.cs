@@ -26,7 +26,7 @@ namespace Game1
         private int boswerColumn = 4;
         private int boswerStartFrame = 0;
         private int boswerEndFrame = 4;
-        private int bowserCycleLength = 50;
+        private int bowserCycleLength = 90;
 
         private int cyclePosition = 0;
         private int cycleLength = 8;
