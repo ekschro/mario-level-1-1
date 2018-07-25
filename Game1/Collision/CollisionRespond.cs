@@ -439,7 +439,7 @@ namespace Game1
             }
             else if (pickup is AxePickup)
             {
-                ((BossLevel)objectLevel).endSequence = true;
+                ((BossLevel)objectLevel).EndSequence = true;
                 ((Mario)player).Stop();
             }
 

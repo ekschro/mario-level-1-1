@@ -26,12 +26,12 @@ namespace Game1
 
         public IEnemyStateMachine StateMachine => throw new NotImplementedException();
 
-        public bool IsFalling { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public bool IsStomped { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public bool IsFalling { get => false; set => throw new NotImplementedException(); }
+        public bool IsStomped { get => false; set => throw new NotImplementedException(); }
         public float CurrentXPos { get => location2.X; set => location2.X = value; }
         public float CurrentYPos { get => location2.Y; set => location2.Y = value; }
 
-        public bool IsJumping => throw new NotImplementedException();
+        public bool IsJumping => false;
 
         public void BeFlipped()
         {

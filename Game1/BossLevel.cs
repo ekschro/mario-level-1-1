@@ -24,7 +24,7 @@ namespace Game1
         private List<IPickup> pickups;
         private List<ITemporary> temporaries;
         private bool timerStop = false;
-        public bool endSequence = false;
+        private bool endSequence = false;
 
         public IPlayer PlayerObject { get => playerObject; set => playerObject = value; }
         public IBackground BackgroundObject { get => backgroundObject; set => backgroundObject = value; }
@@ -39,6 +39,7 @@ namespace Game1
         public PersistentData PersistentData { get => persistentData; }
         public int EndLocation { get => 2440; }
         public bool TimerStop { get => timerStop; set => timerStop = value; }
+        public bool EndSequence { get => endSequence; set => endSequence = value; }
 
         public BossLevel(string fileName, Game1 game, PersistentData persistantData)
         {

@@ -117,13 +117,7 @@ namespace Game1
                     GameObject = new Star(myGame, Position);
                     break;
                 case "FireEnemy":
-                    
-                    GameObject = new FireEnemy(myGame, Position, radius);
-                    radius = radius + 10;
-                    if (radius == 50)
-                    {
-                        radius = 0;
-                    }
+                    CreateFireEnemy(ref GameObject, Position);
                     break;
                 case "Goomba":
                     GameObject = new Goomba(myGame, Position);
@@ -214,6 +208,16 @@ namespace Game1
                     break;
             }
             return GameObject;
+        }
+
+        private void CreateFireEnemy(ref IGameObject GameObject, Vector2 Position)
+        {
+            GameObject = new FireEnemy(myGame, Position, radius);
+            radius = radius + 10;
+            if (radius == 50)
+            {
+                radius = 0;
+            }
         }
 
     }

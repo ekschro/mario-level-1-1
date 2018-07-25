@@ -14,8 +14,6 @@ namespace Game1
         
         private MarioState state = MarioState.Idle;
 
-        private MarioState State { get => state; set => state = value; }
-
         public TestDeadMarioStateMachine(ITestMarioSprite sprite)
         {
         }
@@ -82,7 +80,7 @@ namespace Game1
         }
         public void ChangeState()
         {
-            State = MarioState.Idle;
+            state = MarioState.Idle;
         }
     }
 }
