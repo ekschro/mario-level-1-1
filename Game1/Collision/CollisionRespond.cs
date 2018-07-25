@@ -227,6 +227,13 @@ namespace Game1
 
         public void EnemyCollisionRespondBottom(IEnemy enemy)
         {
+            if (enemy is FireEnemy)
+            {
+                player.TestMario.Downgrade();
+                player.TestMario.Downgrade();
+                player.TestMario.Downgrade();
+                return;
+            }
             if (player.IsStar)
             {
                 objectLevel.EnemyObjects.Remove(enemy);
@@ -237,6 +244,13 @@ namespace Game1
 
         public void EnemyCollisionRespondLeft(IEnemy enemy)
         {
+            if (enemy is FireEnemy)
+            {
+                player.TestMario.Downgrade();
+                player.TestMario.Downgrade();
+                player.TestMario.Downgrade();
+                return;
+            }
             if (enemy is KoopaShell)
             {
                 if (!((KoopaShell)enemy).IsMoving)
@@ -270,6 +284,13 @@ namespace Game1
 
         public void EnemyCollisionRespondRight(IEnemy enemy)
         {
+            if (enemy is FireEnemy)
+            {
+                player.TestMario.Downgrade();
+                player.TestMario.Downgrade();
+                player.TestMario.Downgrade();
+                return;
+            }
             if (enemy is KoopaShell)
             {
                 if (!((KoopaShell)enemy).IsMoving)
