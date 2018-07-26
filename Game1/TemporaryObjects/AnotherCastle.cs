@@ -10,7 +10,7 @@ namespace Game1
     public class AnotherCastle : ITemporary
     {
         private int timeBeforeAppearing;
-        private Game1 myGame;
+        //private Game1 myGame;
 
         private Vector2 position;
         private AnotherCastleSprite anotherCastleSprite;
@@ -20,7 +20,7 @@ namespace Game1
 
         public AnotherCastle(Game1 game, Vector2 location)
         {
-            myGame = game;
+           // myGame = game;
             position = location;
             anotherCastleSprite = new AnotherCastleSprite(game, this);
            

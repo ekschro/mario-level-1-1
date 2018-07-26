@@ -20,7 +20,7 @@ namespace Game1
         public RightCommand(Game1 game)
         {
            
-            controllerHandler = game.controllerHandler;
+            controllerHandler = game.ControllerHandler;
             myGame = game;
         }
 

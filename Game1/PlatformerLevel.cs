@@ -23,7 +23,7 @@ namespace Game1
         private List<ITemporary> temporaries;
         private Vector2 secretEntrance;
         private Vector2 secretExit;
-        public bool nextLevel = false;
+        private bool nextLevel = false;
         private int timeUntilLevelChange = 500;
 
         public IPlayer PlayerObject { get => playerObject; set => playerObject = value; }
@@ -38,6 +38,7 @@ namespace Game1
         public ICamera LevelCamera { get => currentCamera; set => currentCamera = value; }
         public PersistentData PersistentData { get => persistentData; }
         public int EndLocation { get => 3292; }
+        public bool NextLevel { get => nextLevel; set => nextLevel = value; }
 
         public PlatformerLevel(string fileName, Game1 game, PersistentData persistantData)
         {
@@ -124,7 +125,7 @@ namespace Game1
 
             collisionDetect.Update();
 
-            if (nextLevel)
+            if (NextLevel)
                 NextLevelCheck();
         }
 

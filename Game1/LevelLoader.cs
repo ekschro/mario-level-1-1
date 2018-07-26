@@ -18,7 +18,7 @@ namespace Game1
         public LevelLoader(Game1 game)
         {
             myGame = game;
-            ps = game.persistentData;
+            ps = game.PersistentData;
         }
 
         public void Load(string fileName, List<IGameObject> gameObjects)

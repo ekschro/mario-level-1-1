@@ -13,7 +13,7 @@ namespace Game1
         {
             marioSprite = new TestBigMarioSprite(game, this,mario);
             stateMachine = new TestBigMarioStateMachine(marioSprite);
-            game.persistentData.PlayerState = 2;
+            game.PersistentData.PlayerState = 2;
         }
 
         public override void Upgrade()

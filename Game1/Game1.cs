@@ -17,9 +17,9 @@ namespace Game1
         public GameTime Delta { get => delta; }
         public IController mouseController;
         public IList<IController> controllerList;
-        public IControllerHandler controllerHandler;
+        private IControllerHandler controllerHandler;
         private TextureWarehouse textureWarehouse;
-        public PersistentData persistentData;
+        private PersistentData persistentData;
         
         int counter = 0;
         private SoundWarehouse soundWarehouse;
@@ -53,6 +53,8 @@ namespace Game1
         public int HudCounter { get => hudCounter; set => hudCounter = value; }
         public bool AllowControllerResponse { get => allowControllerResponse; set => allowControllerResponse = value; }
         public bool NextLevel1 { get => nextLevel; set => nextLevel = value; }
+        public IControllerHandler ControllerHandler { get => controllerHandler; set => controllerHandler = value; }
+        public PersistentData PersistentData { get => persistentData; set => persistentData = value; }
 
         public Game1()
         {
@@ -69,11 +71,11 @@ namespace Game1
         protected override void Initialize()
         {
             controllerList = new List<IController>();
-            controllerHandler = new ControllerHandler();
+            ControllerHandler = new ControllerHandler();
             controllerList.Add(new KeyboardController(this));
             controllerList.Add(new GamePadController(this));
             allowControllerResponse = true;
-            persistentData = new PersistentData(this);
+            PersistentData = new PersistentData(this);
             
             
             base.Initialize();
@@ -92,7 +94,7 @@ namespace Game1
             textureWarehouse = new TextureWarehouse(this);
             soundWarehouse = new SoundWarehouse(this);
             spriteFont = Content.Load<SpriteFont>("arial");
-            CurrentLevel = new PlatformerLevel("../../../../Content/LevelInfo.csv", this, persistentData);
+            CurrentLevel = new PlatformerLevel("../../../../Content/LevelInfo.csv", this, PersistentData);
 
             MediaPlayer.Play(SoundWarehouse.main_theme);
         }
@@ -105,7 +107,7 @@ namespace Game1
             CurrentLevel = GetNewLevel();
             pause = false;
             currentLevel.PlayerObject.Invulnerability = false;
-            if (persistentData.Lives > 1) { }
+            if (PersistentData.Lives > 1) { }
                 //MediaPlayer.Play(SoundWarehouse.main_theme);
             else
                 MediaPlayer.Play(SoundWarehouse.game_over_theme);
@@ -118,8 +120,8 @@ namespace Game1
             NextLevel1 = false;
             cyclePosition = 0;
             allowControllerResponse = true;
-            persistentData = new PersistentData(this);
-            CurrentLevel = new PlatformerLevel("../../../../Content/LevelInfo.csv", this, persistentData);
+            PersistentData = new PersistentData(this);
+            CurrentLevel = new PlatformerLevel("../../../../Content/LevelInfo.csv", this, PersistentData);
             pause = false;
             currentLevel.PlayerObject.Invulnerability = false;
             MediaPlayer.Play(SoundWarehouse.main_theme);
@@ -129,7 +131,7 @@ namespace Game1
 
         public void CheckGameOver(ILevel level)
         {
-            if (persistentData.Lives == 0)
+            if (PersistentData.Lives == 0)
             {
                 gameState = GameScreenState.Dead;
             }
@@ -244,7 +246,7 @@ namespace Game1
         {
             if (currentLevel is PlatformerLevel)
             {
-                currentLevel = new BossLevel("../../../../Content/BossLevelInfo.csv", this, persistentData);
+                currentLevel = new BossLevel("../../../../Content/BossLevelInfo.csv", this, PersistentData);
                 NextLevel1 = true;
             }
 
@@ -256,14 +258,14 @@ namespace Game1
             {
                 NextLevel1 = false;
                 MediaPlayer.Play(SoundWarehouse.main_theme);
-                return new PlatformerLevel("../../../../Content/LevelInfo.csv", this, persistentData);
+                return new PlatformerLevel("../../../../Content/LevelInfo.csv", this, PersistentData);
                 
             }
             else
             {
                 NextLevel1 = true;
                 MediaPlayer.Play(SoundWarehouse.castle_theme);
-                return new BossLevel("../../../../Content/BossLevelInfo.csv", this, persistentData);
+                return new BossLevel("../../../../Content/BossLevelInfo.csv", this, PersistentData);
                 
             }
         }

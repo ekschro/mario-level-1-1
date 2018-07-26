@@ -110,28 +110,28 @@ namespace Game1
                     MarioSprite.Update();
                     cyclePosition = utility.CyclePosition;
                 }
-                else if (myGame.controllerHandler.MovingUp && myGame.controllerHandler.MovingLeft || (myGame.controllerHandler.MovingUp && myGame.controllerHandler.MovingLeft))
+                else if (myGame.ControllerHandler.MovingUp && myGame.ControllerHandler.MovingLeft || (myGame.ControllerHandler.MovingUp && myGame.ControllerHandler.MovingLeft))
                 {
                     stateMachine.ChangeDirection(true);
                     stateMachine.Jumping();
                 }
-                else if (myGame.controllerHandler.MovingUp && myGame.controllerHandler.MovingRight || (myGame.controllerHandler.MovingUp && myGame.controllerHandler.MovingLeft))
+                else if (myGame.ControllerHandler.MovingUp && myGame.ControllerHandler.MovingRight || (myGame.ControllerHandler.MovingUp && myGame.ControllerHandler.MovingLeft))
                 {
                     stateMachine.ChangeDirection(false);
                     stateMachine.Jumping();
                 }
-                else if (myGame.controllerHandler.MovingUp || (myGame.controllerHandler.MovingUp && myGame.controllerHandler.MovingLeft))
+                else if (myGame.ControllerHandler.MovingUp || (myGame.ControllerHandler.MovingUp && myGame.ControllerHandler.MovingLeft))
                 {
                     stateMachine.Jumping();
                 }
-                else if (myGame.controllerHandler.MovingDown || (myGame.controllerHandler.MovingDown && myGame.controllerHandler.MovingRight))
+                else if (myGame.ControllerHandler.MovingDown || (myGame.ControllerHandler.MovingDown && myGame.ControllerHandler.MovingRight))
                     stateMachine.Crouching();
-                else if (myGame.controllerHandler.MovingLeft)
+                else if (myGame.ControllerHandler.MovingLeft)
                 {
                     stateMachine.ChangeDirection(true);
                     stateMachine.Walking();
                 }
-                else if (myGame.controllerHandler.MovingRight)
+                else if (myGame.ControllerHandler.MovingRight)
                 {
                     stateMachine.ChangeDirection(false);
                     stateMachine.Walking();

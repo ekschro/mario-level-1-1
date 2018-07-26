@@ -151,7 +151,7 @@ namespace Game1
         }
         private void BowserThinking()
         {
-            if (myGame.controllerHandler.MovingUp)
+            if (myGame.ControllerHandler.MovingUp)
             {
                 BeJumped();
             }

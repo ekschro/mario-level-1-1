@@ -19,7 +19,7 @@ namespace Game1
         public Pause2Command(Game1 game)
         {
             myGame = game;
-            controllerHandler = game.controllerHandler;
+            controllerHandler = game.ControllerHandler;
         }
 
         public void Execute()

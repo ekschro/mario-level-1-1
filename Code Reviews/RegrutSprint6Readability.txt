@@ -1,0 +1,8 @@
+Tim Regrut
+7/26/18
+Sprint 6
+Bowser.cs
+Dorothy Chow
+5
+
+The class as a whole is extremely well written. However, some of the variable names such as jumping and dead could be more descriptive.
