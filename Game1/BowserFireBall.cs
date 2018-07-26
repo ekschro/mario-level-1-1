@@ -16,18 +16,18 @@ namespace Game1
         public BowserFireBall(Game1 game, Bowser bowser)
         {
             bowser2 = bowser;
-            location2 = new Vector2(bowser2.CurrentXPos-33, bowser2.CurrentYPos);
-            originalLocation = new Vector2(bowser2.CurrentXPos-33, bowser2.CurrentYPos);
+            location2 = new Vector2(bowser2.CurrentXPos, bowser2.CurrentYPos);
+            originalLocation = new Vector2(bowser2.CurrentXPos, bowser2.CurrentYPos);
             facingRight = bowser2.StateMachine.GetDirection();           
             myGame = game;
             CurrentFrame = 0;
             
             fireEnemySprite = new BowserFireEnemySprite(game, this);
-            if (bowser.MovingRight)
+            if (facingRight)
             {
                 fireEnemySprite.ChangeSpriteEffects(Microsoft.Xna.Framework.Graphics.SpriteEffects.FlipHorizontally);
-                location2 = new Vector2(bowser2.CurrentXPos + 33, bowser2.CurrentYPos);
-                originalLocation = new Vector2(bowser2.CurrentXPos + 33, bowser2.CurrentYPos);
+                location2 = new Vector2(bowser2.CurrentXPos + 32, bowser2.CurrentYPos);
+                originalLocation = new Vector2(bowser2.CurrentXPos + 32, bowser2.CurrentYPos);
             }
         }
         private bool movingRight = true;
