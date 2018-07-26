@@ -14,6 +14,8 @@ namespace Game1
             myGame = game;
             bowser = enemy;
             currentFrame = 0;
+
+            
         }
 
         public void ChangeFrame(int start, int endFrame)

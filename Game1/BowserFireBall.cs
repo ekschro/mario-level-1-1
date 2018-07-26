@@ -21,8 +21,10 @@ namespace Game1
             facingRight = bowser2.StateMachine.GetDirection();           
             myGame = game;
             CurrentFrame = 0;
-            
-            
+            Console.WriteLine("Fire!");
+
+            SoundWarehouse.bowserFire.Play();
+
             fireEnemySprite = new BowserFireEnemySprite(game, this);
         }
         private bool movingRight = true;
