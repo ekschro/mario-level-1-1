@@ -16,17 +16,22 @@ namespace Game1
     {
        
         private IControllerHandler controllerHandler;
+        Game1 myGame;
         
         public LeftCommand(Game1 game)
         {
             
-            controllerHandler = game.controllerHandler; 
+            controllerHandler = game.controllerHandler;
+            myGame = game;
         }
 
         public void Execute()
         {
-            controllerHandler.MovingLeft = true;
-            controllerHandler.MovingRight = false;
+            if (!myGame.CurrentLevel.PlayerObject.TestMario.StateMachine.IsCrouching())
+            {
+                controllerHandler.MovingLeft = true;
+                controllerHandler.MovingRight = false;
+            }
         }
     }
 }
