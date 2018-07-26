@@ -25,7 +25,7 @@ namespace Game1
         private Vector2 bowserOriginalLocation;
         public bool IsStomped { get; set; }
         private int bowserLife;
-        public int BowserLife { get => bowserLife; set => bowserLife = value; }
+        public int BowserLife { get => bowserLife; }
         private bool dead = false;
         private IPhysics physics;
         private EnemyUtilityClass utility;
@@ -44,7 +44,7 @@ namespace Game1
             jumping = false;
             moving = false;
             myGame=game;
-            bowserLife = 3;
+            bowserLife = 5;
         }
 
         public void BeFlipped()
@@ -90,9 +90,9 @@ namespace Game1
             if ((bowserLocation.X - myGame.CurrentLevel.PlayerObject.GetGameObjectLocation().X) <= 200)
                 moving = true;
         }
-        private void SetBowserLife( int x)
+        public void SetBowserLife( int x)
         {
-            
+            bowserLife = bowserLife + x;
         }
         public void Update()
         {

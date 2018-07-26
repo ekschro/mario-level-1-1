@@ -192,7 +192,7 @@ namespace Game1
 
         public void EnemyCollisionRespondTop(IEnemy enemy)
         {
-            if (enemy is FireEnemy)
+            if (enemy is FireEnemy || enemy is Bowser)
             {
                 MarioHit();
             }
@@ -397,17 +397,24 @@ namespace Game1
             }
             else if ((enemy is Bowser && otherEnemy is MarioFireBall))
             {
+                ((Bowser)enemy).SetBowserLife(-1);
                 CreateFlippedEnemy(enemy);
-                objectLevel.EnemyObjects.Remove(enemy);
-                objectLevel.EnemyObjects.Remove(otherEnemy);
+                if (((Bowser)enemy).BowserLife == 0)
+                {
+                    objectLevel.EnemyObjects.Remove(enemy);
+                    objectLevel.EnemyObjects.Remove(otherEnemy);
+                }
 
             }
             else if ((otherEnemy is Bowser && enemy is MarioFireBall))
             {
-
+                ((Bowser)otherEnemy).SetBowserLife(-1);
                 CreateFlippedEnemy(enemy);
-                objectLevel.EnemyObjects.Remove(enemy);
-                objectLevel.EnemyObjects.Remove(otherEnemy);
+                if (((Bowser)otherEnemy).BowserLife == 0)
+                {
+                    objectLevel.EnemyObjects.Remove(enemy);
+                    objectLevel.EnemyObjects.Remove(otherEnemy);
+                }
 
             }
         }
