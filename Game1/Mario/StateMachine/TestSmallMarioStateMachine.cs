@@ -61,7 +61,7 @@ namespace Game1
         }
         public void Crouching()
         {
-            State = MarioState.Crouching;
+            //State = MarioState.Crouching;
         }
         public void Update()
         {

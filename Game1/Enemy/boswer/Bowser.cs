@@ -39,6 +39,7 @@ namespace Game1
             bowserOriginalLocation = location;
             bowserSprite = new BowserSprite(game, this);
             stateMachine = new BowserStateMachine(bowserSprite);
+            stateMachine.ChangeDirection(false);
             physics = new EnemyPhysics(game, this, 1);
             falling = true;
             jumping = false;
@@ -62,9 +63,9 @@ namespace Game1
             jumping = true;
         }
 
-        public void ChangeDirection(bool faceLeft)
+        public void ChangeDirection(bool faceRight)
         {
-            stateMachine.ChangeDirection(faceLeft);
+            stateMachine.ChangeDirection(faceRight);
         }
 
         public void Draw()
@@ -143,15 +144,15 @@ namespace Game1
             {
                 BeJumped();
             }
-            else if (myGame.CurrentLevel.PlayerObject.CurrentXPos > CurrentXPos && !myGame.ControllerHandler.MovingUp)
-            {
-                jumping = false;
-                ChangeDirection(true);
-            }
-            else if (myGame.CurrentLevel.PlayerObject.CurrentXPos < CurrentYPos && !myGame.ControllerHandler.MovingUp)
+            else if (myGame.CurrentLevel.PlayerObject.CurrentXPos > CurrentXPos)
             {
                 jumping = false;
                 ChangeDirection(false);
+            }
+            else if (myGame.CurrentLevel.PlayerObject.CurrentXPos < CurrentYPos)
+            {
+                jumping = false;
+                ChangeDirection(true);
             }
         }
     }
