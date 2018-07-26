@@ -10,6 +10,7 @@ namespace Game1
         Game1 myGame;
         IEnemySprite fireEnemySprite;
         Bowser bowser2;
+        private int currentFrame;
         bool facingRight;
         private bool dummyBool;
         public BowserFireBall(Game1 game, Bowser bowser)
@@ -19,6 +20,7 @@ namespace Game1
             originalLocation = new Vector2(bowser2.CurrentXPos-33, bowser2.CurrentYPos);
             facingRight = bowser2.StateMachine.GetDirection();           
             myGame = game;
+            CurrentFrame = 0;
             
             
             fireEnemySprite = new BowserFireEnemySprite(game, this);
@@ -34,6 +36,8 @@ namespace Game1
         public float CurrentYPos { get => location2.Y; set => location2.Y = value; }
 
         public bool IsJumping => false;
+
+        public int CurrentFrame { get => currentFrame; set => currentFrame = value; }
 
         public void BeFlipped()
         {
@@ -75,6 +79,7 @@ namespace Game1
 
         public void Update()
         {
+
             if (facingRight)
             {
                 location2.X = location2.X + 1;
@@ -82,7 +87,11 @@ namespace Game1
             {
                 location2.X = location2.X - 1;
             }
-           
+            CurrentFrame++;
+            if (CurrentFrame == 2)
+            {
+                CurrentFrame = 0;
+            }
             fireEnemySprite.Update();
 
         }
