@@ -8,12 +8,11 @@ namespace Game1
         Vector2 location2;
         Vector2 originalLocation;
         Game1 myGame;
-        float radius2;
-        double angle;
         IEnemySprite fireEnemySprite;
         Bowser bowser2;
         private int currentFrame;
         bool facingRight;
+        private bool dummyBool;
         public BowserFireBall(Game1 game, Bowser bowser)
         {
             bowser2 = bowser;
@@ -31,8 +30,8 @@ namespace Game1
 
         public IEnemyStateMachine StateMachine => throw new NotImplementedException();
 
-        public bool IsFalling { get => false; set => throw new NotImplementedException(); }
-        public bool IsStomped { get => false; set => throw new NotImplementedException(); }
+        public bool IsFalling { get => false; set => dummyBool = value; }
+        public bool IsStomped { get => false; set => dummyBool = value; }
         public float CurrentXPos { get => location2.X; set => location2.X = value; }
         public float CurrentYPos { get => location2.Y; set => location2.Y = value; }
 
@@ -62,7 +61,7 @@ namespace Game1
 
         public Vector2 GameOriginalLocation()
         {
-            throw new NotImplementedException();
+            return originalLocation;
         }
 
         public bool GetDead()
@@ -101,7 +100,7 @@ namespace Game1
 
         public void ChangeDirection(bool faceLeft)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

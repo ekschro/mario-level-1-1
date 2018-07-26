@@ -26,6 +26,7 @@ namespace Game1
         private List<ITemporary> temporaries;
         private bool timerStop = false;
         private bool endSequence = false;
+        private bool createFireball = false;
 
         public IPlayer PlayerObject { get => playerObject; set => playerObject = value; }
         public IBackground BackgroundObject { get => backgroundObject; set => backgroundObject = value; }
@@ -36,6 +37,7 @@ namespace Game1
         public List<IGameObject> LevelObjects { get => levelObjects; }
         private int time;
         private bool axe = true;
+        public bool CreateFireball { get => createFireball; set => createFireball = value; }
 
         public int Time { get => time; }
         public ICamera LevelCamera { get => currentCamera; set => currentCamera = value; }
@@ -106,6 +108,13 @@ namespace Game1
                         TemporaryObjects.Remove((ITemporary)temporaryObjectArray[i]);
                 }
             }
+            if (createFireball)
+            {
+                IEnemy bowser = EnemyObjects.Find(x => x is Bowser);
+                if(bowser is Bowser)
+                    myGame.CurrentLevel.EnemyObjects.Add(new BowserFireBall(myGame, ((Bowser)bowser)));
+                createFireball = false;
+            }
 
             if (playerObject.CurrentXPos > bossRoomLocation)
                 currentCamera = staticCamera;
@@ -116,6 +125,7 @@ namespace Game1
             currentCamera.Update();
 
             collisionDetect.Update();
+
         }
 
         public void Draw()

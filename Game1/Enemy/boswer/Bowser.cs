@@ -96,6 +96,15 @@ namespace Game1
         }
         public void Update()
         {
+            if (counter == 100)
+            {
+                ((BossLevel)myGame.CurrentLevel).CreateFireball = true;
+                counter = 0;
+            }
+            else
+            {
+                counter++;
+            }
             CheckMoving();
             if (moving && bowserLocation.X >= 2040 && bowserLocation.X <= 2235 || (bowserLocation.X - myGame.CurrentLevel.PlayerObject.GetGameObjectLocation().X <= 0))
             {
@@ -138,14 +147,6 @@ namespace Game1
             {
                 jumping = false;
                 ChangeDirection(false);
-            }
-            if (counter == 100)
-            {
-                myGame.CurrentLevel.EnemyObjects.Add(new BowserFireBall(myGame, this));
-                counter = 0;
-            } else
-            {
-                counter++;
             }
         }
     }
