@@ -114,6 +114,8 @@ namespace Game1
         public void GameReset()
         {
             gameState = GameScreenState.Opening;
+            lastGameState = GameScreenState.GamePlay;
+            NextLevel1 = false;
             cyclePosition = 0;
             allowControllerResponse = true;
             persistentData = new PersistentData(this);

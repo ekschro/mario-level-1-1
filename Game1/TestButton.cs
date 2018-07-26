@@ -23,8 +23,8 @@ namespace Game1
         public TestButton(Game1 game)
         {
             myGame = game;
-            buttonColor[0] = Color.Gray;
-            buttonColor[1] = Color.White;
+            buttonColor[0] = Color.White;
+            buttonColor[1] = Color.Gray;
         }
         void TakeAction(int i)
         {
@@ -53,17 +53,17 @@ namespace Game1
                 switch (k)
                 {
                     case Keys.Down:
-                        buttonColor[LevelSelect] = Color.Gray;
-                        buttonColor[EnterGame] = Color.White;
+                        buttonColor[LevelSelect] = Color.White;
+                        buttonColor[EnterGame] = Color.Gray;
                         break;
                     case Keys.Up:
-                        buttonColor[EnterGame] = Color.Gray;
-                        buttonColor[LevelSelect] = Color.White;
+                        buttonColor[EnterGame] = Color.White;
+                        buttonColor[LevelSelect] = Color.Gray;
                         break;
                     case Keys.Enter:
-                        if (buttonColor[EnterGame] == Color.Gray)
+                        if (buttonColor[EnterGame] == Color.White)
                             TakeAction(EnterGame);
-                        else //if (buttonColor[LevelSelect] == Color.Gray)
+                        else //if (buttonColor[LevelSelect] == Color.White)
                             TakeAction(LevelSelect);
                         break;
                         
