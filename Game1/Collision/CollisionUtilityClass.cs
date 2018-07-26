@@ -8,6 +8,7 @@ namespace Game1
         private int mainHeight = 16;
         private int mainWidth = 16;
         private int smallWidth = 6;
+        private int fireWidth = 4;
         private int smallHeight = 6;
         private int two = 2;
         private int yMax = 800;
@@ -46,5 +47,6 @@ namespace Game1
         public int InvulnerabilityRespondFrames { get => invulnerabilityRespondFrames; }
         public int BowserSize { get => bowserSize; }
         public float EnemyCollisionFudge { get => enemyCollisionFudge; }
+        public int FireWidth { get => fireWidth; }
     }
 }

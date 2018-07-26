@@ -89,13 +89,17 @@ namespace Game1
 
             int enemyX = (int)enemy.GetGameObjectLocation().X;
             int enemyY = (int)enemy.GetGameObjectLocation().Y;
+            Rectangle enemyBox;
 
-            Rectangle enemyBox = new Rectangle(enemyX, enemyY, utility.MainWidth, utility.MainHeight);
             Rectangle intersect;
 
             if (enemy is Koopa)
             {
                 enemyBox = new Rectangle(enemyX, enemyY + utility.Eight, utility.MainWidth, utility.MainHeight);
+            }
+            else if (enemy is FireEnemy)
+            {
+                enemyBox = new Rectangle(enemyX, enemyY, utility.FireWidth, utility.FireWidth);
             }
             else
             {
