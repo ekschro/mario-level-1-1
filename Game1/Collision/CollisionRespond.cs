@@ -134,9 +134,9 @@ namespace Game1
                 IEnemy[] flippyBoyes = new IEnemy[10];
                 foreach (IEnemy enemy in objectLevel.EnemyObjects)
                 {
-                    if (enemy.CurrentXPos > block.CurrentXPos - 15 && enemy.CurrentXPos < block.CurrentXPos + 15)
+                    if (enemy.CurrentXPos > block.GameObjectLocation.X - 15 && enemy.CurrentXPos < block.GameObjectLocation.X + 15)
                     {
-                        if(enemy.CurrentYPos < block.CurrentYPos && enemy.CurrentYPos > block.CurrentYPos - (16 + 15))
+                        if(enemy.CurrentYPos < block.GameObjectLocation.Y && enemy.CurrentYPos > block.GameObjectLocation.Y - (16 + 15))
                         {
                             CreateFlippedEnemy(enemy);
                             flippyBoyes[i] = enemy;

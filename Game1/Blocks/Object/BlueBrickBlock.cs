@@ -14,5 +14,10 @@ namespace Game1
             blockSprite = new BlueBrickBlockSprite(game, this);
             blockRectangle = new Rectangle((int)location.X, (int)location.Y, (int)size.X, (int)size.Y);
         }
+
+        public override void Update()
+        {
+            blockSprite.Update();
+        }
     }
 }

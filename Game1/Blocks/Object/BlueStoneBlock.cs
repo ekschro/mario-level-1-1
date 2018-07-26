@@ -14,5 +14,9 @@ namespace Game1
             blockSprite = new BlueStoneBlockSprite(game, this);
             blockRectangle = new Rectangle((int)location.X, (int)location.Y, (int)size.X, (int)size.Y);
         }
+        public override void Update()
+        {
+            blockSprite.Update();
+        }
     }
 }

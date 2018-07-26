@@ -21,5 +21,9 @@ namespace Game1
         {
             ((BrickBlockSprite)blockSprite).Bounce();
         }
+        public override void Update()
+        {
+            blockSprite.Update();
+        }
     }
 }

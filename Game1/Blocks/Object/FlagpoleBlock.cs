@@ -14,5 +14,9 @@ namespace Game1
             blockSprite = new FlagpoleBlockSprite(game, this);
             blockRectangle = new Rectangle((int)location.X, (int)location.Y, TextureWarehouse.FlagpoleTexture.Width, TextureWarehouse.FlagpoleTexture.Height);
         }
+        public override void Update()
+        {
+            blockSprite.Update();
+        }
     }
 }

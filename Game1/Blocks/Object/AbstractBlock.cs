@@ -38,9 +38,9 @@ namespace Game1
 
         public Vector2 GameObjectLocation => blockRectangle.Location.ToVector2();
 
-        public void Update()
-        {
-            blockSprite.Update();
-        }
+        public abstract void Update();
+        /*{
+            //blockSprite.Update();
+        }*/
     }
 }
