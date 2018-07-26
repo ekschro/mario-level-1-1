@@ -111,7 +111,7 @@ namespace Game1
                 physics.Update();
                 utility.EnemyupCyclePosition++;
             }
-            else if (bowserLocation.X <= 2200 || (bowserLocation.X - myGame.CurrentLevel.PlayerObject.GetGameObjectLocation().X >= 0))
+            else if (moving && bowserLocation.X <= 2200 || (bowserLocation.X - myGame.CurrentLevel.PlayerObject.GetGameObjectLocation().X >= 0))
             {
                 physics.Update();
                 utility.EnemyupCyclePosition++;
