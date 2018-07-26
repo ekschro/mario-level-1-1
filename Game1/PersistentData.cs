@@ -173,5 +173,10 @@ namespace Game1
             points = 0;
             coins = 0;
         }
+
+        public void FlagPolePoints()
+        {
+            points += 50;
+        }
     }
 }

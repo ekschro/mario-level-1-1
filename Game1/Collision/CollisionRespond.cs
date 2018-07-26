@@ -177,7 +177,7 @@ namespace Game1
                 myGame.AllowControllerResponse = false;
                 myGame.TimerStop = true;
                 ((PlatformerLevel)objectLevel).NextLevel = true;
-                objectLevel.PersistentData.KoopaFireOrStarPoints(block.GameObjectLocation);             //CHANGE THIS LATER
+                objectLevel.PersistentData.FlagPolePoints();
             }
             else if (block is PipeOnSideBlock && controllerHandler.MovingRight)
             {
