@@ -106,12 +106,12 @@ namespace Game1
                 counter++;
             }
             CheckMoving();
-            if (moving && bowserLocation.X >= 2040 || (bowserLocation.X - myGame.CurrentLevel.PlayerObject.GetGameObjectLocation().X <= 0))
+            if (moving && bowserLocation.X >= 2040 && (bowserLocation.X - myGame.CurrentLevel.PlayerObject.GetGameObjectLocation().X <= 0))
             {
                 physics.Update();
                 utility.EnemyupCyclePosition++;
             }
-            else if (moving && bowserLocation.X <= 2200 || (bowserLocation.X - myGame.CurrentLevel.PlayerObject.GetGameObjectLocation().X >= 0))
+            else if (moving && bowserLocation.X <= 2200 && (bowserLocation.X - myGame.CurrentLevel.PlayerObject.GetGameObjectLocation().X >= 0))
             {
                 physics.Update();
                 utility.EnemyupCyclePosition++;
