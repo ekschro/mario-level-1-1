@@ -73,6 +73,8 @@ namespace Game1
 
         public void Update()
         {
+            List<IGameObject> offscreenFireballs = new List<IGameObject>();
+
             PlayerObject.Update();
             foreach (IGameObject GameObject in BlockObjects)
             {
@@ -81,12 +83,23 @@ namespace Game1
             }
             foreach (IGameObject GameObject in EnemyObjects)
             {
-                if (GameObject.GetGameObjectLocation().X > currentCamera.CameraPosition - 16 && GameObject.GetGameObjectLocation().X < currentCamera.CameraPosition + 400)
+                if (GameObject.GetGameObjectLocation().X > currentCamera.CameraPosition - 16 && GameObject.GetGameObjectLocation().X < currentCamera.CameraPosition + 400) {
                     GameObject.Update();
+                }
                 else if (GameObject is KoopaShell)
                 {
                     GameObject.Update();
                 }
+                else if (GameObject is MarioFireBall){
+                    if (GameObject.CurrentXPos > myGame.CurrentLevel.LevelCamera.CameraPosition + myGame.CurrentLevel.LevelCamera.CameraOffset * 1.8)
+                    {
+                        offscreenFireballs.Add(GameObject);
+                    }
+                }
+            }
+            foreach (IEnemy fireball in offscreenFireballs)
+            {
+                EnemyObjects.Remove(fireball);
             }
             IGameObject[] pickupObjectArray = PickupObjects.ToArray();
             for(int i = 0; i < pickupObjectArray.Length; i++)
