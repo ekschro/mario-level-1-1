@@ -112,7 +112,7 @@ namespace Game1
                 if (bowserLocation.X - myGame.CurrentLevel.PlayerObject.GetGameObjectLocation().X <= 0)
                 {
                     physics.Update();
-                    ChangeDirection(false);
+                    ChangeDirection(true);
                 }
                 else
                     ((EnemyPhysics)physics).UpdateYPosition();
@@ -124,7 +124,7 @@ namespace Game1
                 if (bowserLocation.X - myGame.CurrentLevel.PlayerObject.GetGameObjectLocation().X >= 0)
                 {
                     physics.Update();
-                    ChangeDirection(true);
+                    ChangeDirection(false);
                 }
                 else
                     ((EnemyPhysics)physics).UpdateYPosition();
