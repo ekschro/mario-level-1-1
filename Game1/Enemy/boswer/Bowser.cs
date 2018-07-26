@@ -106,7 +106,7 @@ namespace Game1
                 counter++;
             }
             CheckMoving();
-            if (moving && bowserLocation.X >= 2040 || (bowserLocation.X - myGame.CurrentLevel.PlayerObject.GetGameObjectLocation().X <= 0))
+            if (moving && bowserLocation.X >= 2040 && bowserLocation.X <= 2246 || (bowserLocation.X - myGame.CurrentLevel.PlayerObject.GetGameObjectLocation().X <= 0))
             {
                 physics.Update();
                 utility.EnemyupCyclePosition++;
@@ -116,7 +116,8 @@ namespace Game1
                 utility.EnemyupCyclePosition++;
             }
             
-            falling = true;
+
+                falling = true;
             if (utility.EnemyupCyclePosition == utility.BowserCycleLength && dead!=true)
             {
                 utility.EnemyupCyclePosition = 0;
