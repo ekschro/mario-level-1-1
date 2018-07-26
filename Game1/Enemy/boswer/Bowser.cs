@@ -106,8 +106,10 @@ namespace Game1
             {
                 utility.EnemyupCyclePosition++;
                 BowserThinking();
+                bowserLocation.X = bowserLocation.X + 2;
                 if (bowserLocation.X - myGame.CurrentLevel.PlayerObject.GameObjectLocation.X <= 0)
                 {
+                    
                     physics.Update();
                     ChangeDirection(true);
                 }
@@ -118,6 +120,7 @@ namespace Game1
             {
                 utility.EnemyupCyclePosition++;
                 BowserThinking();
+                bowserLocation.X = bowserLocation.X - 2;
                 if (bowserLocation.X - myGame.CurrentLevel.PlayerObject.GameObjectLocation.X >= 0)
                 {
                     physics.Update();
