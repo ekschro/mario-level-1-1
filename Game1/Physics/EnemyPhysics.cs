@@ -34,6 +34,11 @@ namespace Game1
             NewPosX();
             NewPosY();
         }
+        public void UpdateYPosition()
+        {
+            delta = game.Delta.ElapsedGameTime.Milliseconds;
+            NewPosY();
+        }
 
         public void NewPosX()
         {
