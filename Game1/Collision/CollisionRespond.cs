@@ -349,7 +349,7 @@ namespace Game1
             }
         }
 
-        public void EnemyCollisionBlockRespondRight(IEnemy enemy, IEnemy otherEnemy, int width)
+        public void EnemyCollisionBlockRespondRight(IEnemy enemy, IEnemy otherEnemy)
         {
             if (enemy is Bowser)
             { }

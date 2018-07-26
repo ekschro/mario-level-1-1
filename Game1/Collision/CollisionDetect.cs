@@ -120,7 +120,7 @@ namespace Game1
                         }
                         else if (intersect.Height > intersect.Width && enemyX < blockX)
                         {
-                            collision.EnemyCollisionBlockRespondRight(enemyArray[j], enemyArray[j], intersect.Width);
+                            collision.EnemyCollisionBlockRespondRight(enemyArray[j], enemyArray[j]);
                         }
                         else if (intersect.Height > intersect.Width && enemyX > blockX)
                         {
