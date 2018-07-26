@@ -23,8 +23,12 @@ namespace Game1
             CurrentFrame = 0;
             
             fireEnemySprite = new BowserFireEnemySprite(game, this);
-            if(bowser.MovingRight)
+            if (bowser.MovingRight)
+            {
                 fireEnemySprite.ChangeSpriteEffects(Microsoft.Xna.Framework.Graphics.SpriteEffects.FlipHorizontally);
+                location2 = new Vector2(bowser2.CurrentXPos + 33, bowser2.CurrentYPos);
+                originalLocation = new Vector2(bowser2.CurrentXPos + 33, bowser2.CurrentYPos);
+            }
         }
         private bool movingRight = true;
         public bool MovingRight { get => movingRight; set => movingRight = value; }
