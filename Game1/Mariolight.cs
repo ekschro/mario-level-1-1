@@ -18,8 +18,11 @@ namespace Game1
         }
         public void Update()
         {
-            xPosition = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(myGame.CurrentLevel.PlayerObject.TestMario.CurrentXPos);
-            yPosition = (int)myGame.CurrentLevel.PlayerObject.TestMario.CurrentYPos;
+            if (myGame.CurrentLevel.PlayerObject.TestMario.CurrentYPos < 240)
+            {
+                xPosition = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(myGame.CurrentLevel.PlayerObject.TestMario.CurrentXPos);
+                yPosition = (int)myGame.CurrentLevel.PlayerObject.TestMario.CurrentYPos;
+            }
             
         }
         public void Draw()

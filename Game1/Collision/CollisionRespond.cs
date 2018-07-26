@@ -192,7 +192,7 @@ namespace Game1
 
         public void EnemyCollisionRespondTop(IEnemy enemy)
         {
-            if (enemy is FireEnemy || enemy is Bowser)
+            if (enemy is FireEnemy || enemy is Bowser || enemy is BowserFireBall)
             {
                 MarioHit();
             }
