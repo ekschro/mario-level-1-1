@@ -37,7 +37,8 @@ namespace Game1
         public void UpdateYPosition()
         {
             delta = game.Delta.ElapsedGameTime.Milliseconds;
-            NewPosY();
+            if (obj.IsFalling)
+                yVelocity += (float)(0.5 * 0.002 * Math.Pow(delta, 2));
         }
 
         public void NewPosX()
