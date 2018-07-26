@@ -7,7 +7,7 @@ namespace Game1
     {
         Vector2 location2;
         Vector2 originalLocation;
-        Game1 myGame;
+        //Game1 myGame;
         IEnemySprite fireEnemySprite;
         Bowser bowser2;
         private int currentFrame;
@@ -19,7 +19,7 @@ namespace Game1
             location2 = new Vector2(bowser2.CurrentXPos, bowser2.CurrentYPos);
             originalLocation = new Vector2(bowser2.CurrentXPos, bowser2.CurrentYPos);
             facingRight = bowser2.StateMachine.GetDirection();           
-            myGame = game;
+           // myGame = game;
             CurrentFrame = 0;
             
             fireEnemySprite = new BowserFireEnemySprite(game, this);

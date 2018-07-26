@@ -79,7 +79,7 @@ namespace Game1
             if (--bounceTimer < 0)
             {
                 myGame.Reset();
-                myGame.persistentData.DockLife();
+                myGame.PersistentData.DockLife();
             }
             
         }

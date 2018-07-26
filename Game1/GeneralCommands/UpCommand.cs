@@ -17,7 +17,7 @@ namespace Game1
         
         public UpCommand(Game1 game)
         {
-            controllerHandler = game.controllerHandler;
+            controllerHandler = game.ControllerHandler;
         }
 
         public void Execute()

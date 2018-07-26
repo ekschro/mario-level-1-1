@@ -139,16 +139,16 @@ namespace Game1
         }
         private void BowserThinking()
         {
-            if (myGame.controllerHandler.MovingUp)
+            if (myGame.ControllerHandler.MovingUp)
             {
                 BeJumped();
             }
-            else if (myGame.CurrentLevel.PlayerObject.CurrentXPos > CurrentXPos && !myGame.controllerHandler.MovingUp)
+            else if (myGame.CurrentLevel.PlayerObject.CurrentXPos > CurrentXPos && !myGame.ControllerHandler.MovingUp)
             {
                 jumping = false;
                 ChangeDirection(true);
             }
-            else if (myGame.CurrentLevel.PlayerObject.CurrentXPos < CurrentYPos && !myGame.controllerHandler.MovingUp)
+            else if (myGame.CurrentLevel.PlayerObject.CurrentXPos < CurrentYPos && !myGame.ControllerHandler.MovingUp)
             {
                 jumping = false;
                 ChangeDirection(false);

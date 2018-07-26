@@ -41,7 +41,7 @@ namespace Game1
         public Mario(Game1 game, Vector2 vector,int state)
         {
             myGame = game;
-            controllerHandler = game.controllerHandler;
+            controllerHandler = game.ControllerHandler;
             physics = new MarioPhysics(game,this,2);
             CurrentXPos = vector.X;
             CurrentYPos = vector.Y;

@@ -25,7 +25,7 @@ namespace Game1
         {
             utility = new CollisionUtilityClass();
             myGame = game;
-            controllerHandler = game.controllerHandler;
+            controllerHandler = game.ControllerHandler;
             objectLevel = level;
             this.player = level.PlayerObject;
 
@@ -176,7 +176,7 @@ namespace Game1
                 player.TestMario.Flag();
                 myGame.AllowControllerResponse = false;
                 myGame.TimerStop = true;
-                ((PlatformerLevel)objectLevel).nextLevel = true;
+                ((PlatformerLevel)objectLevel).NextLevel = true;
                 objectLevel.PersistentData.KoopaFireOrStarPoints(block.GetGameObjectLocation());             //CHANGE THIS LATER
             }
             else if (block is PipeOnSideBlock && controllerHandler.MovingRight)
@@ -343,7 +343,7 @@ namespace Game1
             else if (otherEnemy is KoopaShell)
             {
                 ((KoopaShell)otherEnemy).KilledNum += 1;
-                myGame.persistentData.KoopaShell((KoopaShell)otherEnemy, enemy.GetGameObjectLocation());
+                myGame.PersistentData.KoopaShell((KoopaShell)otherEnemy, enemy.GetGameObjectLocation());
                 objectLevel.EnemyObjects.Remove(enemy);
             }
         }
@@ -394,7 +394,7 @@ namespace Game1
                 else if (otherEnemy is KoopaShell)
                 {
                     ((KoopaShell)otherEnemy).KilledNum += 1;
-                    myGame.persistentData.KoopaShell((KoopaShell)otherEnemy, enemy.GetGameObjectLocation());
+                    myGame.PersistentData.KoopaShell((KoopaShell)otherEnemy, enemy.GetGameObjectLocation());
                     objectLevel.EnemyObjects.Remove(enemy);
                 }
                 else if ((enemy is Bowser && otherEnemy is MarioFireBall))

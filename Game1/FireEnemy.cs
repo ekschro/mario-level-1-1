@@ -7,7 +7,7 @@ namespace Game1
     {
         Vector2 location2;
         Vector2 originalLocation;
-        Game1 myGame;
+        //Game1 myGame;
         float radius2;
         double angle;
         IEnemySprite fireEnemySprite;
@@ -20,7 +20,7 @@ namespace Game1
             originalLocation = new Vector2(location.X, location.Y);
             //originalLocation.X = originalLocation.X + 6 + radius;
             //originalLocation.Y = originalLocation.Y + 6;
-            myGame = game;
+            //myGame = game;
             radius2 = radius;
             angle = 0;
             fireEnemySprite = new FireEnemySprite(game, this);
