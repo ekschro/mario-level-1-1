@@ -96,7 +96,7 @@ namespace Game1
         }
         public void Update()
         {
-            if (counter == 100)
+            if (counter == 300)
             {
                 ((BossLevel)myGame.CurrentLevel).CreateFireball = true;
                 counter = 0;
