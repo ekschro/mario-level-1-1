@@ -37,17 +37,17 @@ namespace Game1
 
         public void BeFlipped()
         {
-
+            throw new NotImplementedException();
         }
 
         public void BeStomped()
         {
-
+            throw new NotImplementedException();
         }
 
         public void ChangeDirection()
         {
-
+            throw new NotImplementedException();
         }
 
         public void Draw()
@@ -62,7 +62,7 @@ namespace Game1
 
         public bool GetDead()
         {
-            return true;
+            throw new NotImplementedException();
         }
 
         public Vector2 GetGameObjectLocation()
@@ -72,7 +72,7 @@ namespace Game1
 
         public void SetGameObjectLocation(Vector2 x)
         {
-            location2 = x;
+            throw new NotImplementedException();
         }
 
         public void Update()
