@@ -241,7 +241,10 @@ namespace Game1
             collision.Update();
 
             if (player.CurrentYPos > utility.YMax)
+            {
                 player.TestMario = new TestDeadMario(mygame, new Vector2(player.TestMario.CurrentXPos, player.TestMario.CurrentYPos), (Mario)player);
+                mygame.PersistentData.PlayerState = 1;
+            }
         }
     }
 }
