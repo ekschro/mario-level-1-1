@@ -97,11 +97,16 @@ namespace Game1
         public void Update()
         {
             CheckMoving();
-            if (moving)
+            if (moving && bowserLocation.X >= 2040 || (bowserLocation.X - myGame.CurrentLevel.PlayerObject.GetGameObjectLocation().X <= 0))
             {
                 physics.Update();
                 utility.EnemyupCyclePosition++;
             }
+            else if (moving)
+            {
+                utility.EnemyupCyclePosition++;
+            }
+            
             falling = true;
             if (utility.EnemyupCyclePosition == utility.BowserCycleLength && dead!=true)
             {

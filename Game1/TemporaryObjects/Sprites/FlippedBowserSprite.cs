@@ -39,11 +39,11 @@ namespace Game1
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(koopaObject.CurrentXPos);
             int drawLocationY = (int)(koopaObject.CurrentYPos + bouncePosition);
 
-            Rectangle sourceRectangle = new Rectangle(0,0,(int)TextureWarehouse.FlippedGoomba.Width, (int)TextureWarehouse.FlippedGoomba.Height);
-            Rectangle destinationRectangle = new Rectangle(drawLocationX, drawLocationY, (int)TextureWarehouse.FlippedGoomba.Width, (int)TextureWarehouse.FlippedGoomba.Height);
+            Rectangle sourceRectangle = new Rectangle(0,0,(int)TextureWarehouse.BowserTexture.Width/4, (int)TextureWarehouse.BowserTexture.Height);
+            Rectangle destinationRectangle = new Rectangle(drawLocationX, drawLocationY, (int)TextureWarehouse.BowserTexture.Width / 4, (int)TextureWarehouse.BowserTexture.Height);
 
             myGame.SpriteBatch.Begin();
-            myGame.SpriteBatch.Draw(TextureWarehouse.GoombaTexture, destinationRectangle, sourceRectangle, Color.Gray, 0, new Vector2(0, 0), SpriteEffects.FlipVertically, 0);
+            myGame.SpriteBatch.Draw(TextureWarehouse.BowserTexture, destinationRectangle, sourceRectangle, Color.Gray, 0, new Vector2(0, 0), SpriteEffects.FlipVertically, 0);
             myGame.SpriteBatch.End();
         }
         public void Bounce()
