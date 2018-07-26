@@ -304,7 +304,8 @@ namespace Game1
 
         public void EnemyCollisionBlockRespondLeft(IEnemy enemy, IEnemy otherEnemy, int width)
         {
-            enemy.ChangeDirection(true);
+            if( !(enemy is Bowser))
+                enemy.ChangeDirection(true);
 
             if (enemy is MarioFireBall)
             {

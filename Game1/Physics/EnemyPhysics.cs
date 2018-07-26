@@ -39,6 +39,7 @@ namespace Game1
             delta = game.Delta.ElapsedGameTime.Milliseconds;
             if (obj.IsFalling)
                 yVelocity += (float)(0.5 * 0.002 * Math.Pow(delta, 2));
+            obj.SetGameObjectLocation(new Vector2(obj.GetGameObjectLocation().X, obj.GetGameObjectLocation().Y));
         }
 
         public void NewPosX()
