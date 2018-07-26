@@ -11,8 +11,8 @@ namespace Game1
     {
         public float CurrentXPos { get => koopaOriginalLocation.X; set => koopaOriginalLocation.X = value; }
         public float CurrentYPos { get => koopaOriginalLocation.Y; set => koopaOriginalLocation.Y = value; }
-        private ITemporarySprite koopaSprite;
-        public ITemporarySprite BowserSprite { get => koopaSprite; set => koopaSprite = value; }
+        private ITemporarySprite bowserSprite;
+        public ITemporarySprite BowserSprite { get => bowserSprite; set => bowserSprite = value; }
         private Vector2 koopaOriginalLocation;
 
         public FlippedBowser(Game1 game, Vector2 location)
@@ -29,12 +29,12 @@ namespace Game1
 
         public void Update()
         {
-            BowserSprite.Update();
+            bowserSprite.Update();
         }
 
         public void Draw()
         {
-            BowserSprite.Draw();
+            bowserSprite.Draw();
         }
     }
 }

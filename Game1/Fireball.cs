@@ -71,6 +71,9 @@ namespace Game1
 
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(CurrentXPos);
 
+            if(drawLocationX > myGame.CurrentLevel.LevelCamera.CameraOffset*2)
+                myGame.CurrentLevel.EnemyObjects.Remove(this);
+
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, TextureWarehouse.FireballTexture.Height);
             Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)CurrentYPos, width, TextureWarehouse.FireballTexture.Height);
 

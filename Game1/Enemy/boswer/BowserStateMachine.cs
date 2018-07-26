@@ -18,7 +18,6 @@ namespace Game1
 
         public BowserStateMachine(IEnemySprite sprite)
         {
-            
             bowserSprite = sprite;
         }
 
@@ -37,7 +36,6 @@ namespace Game1
         }
         public void BeFlipped()
         {
-            
             bowserSprite.ChangeSpriteEffects(SpriteEffects.FlipVertically);
             if (health != BowserHealth.Flipped)
             {

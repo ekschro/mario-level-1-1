@@ -43,15 +43,7 @@ namespace Game1
             int blockX = (int)block.GetGameObjectLocation().X;
             int blockY = (int)block.GetGameObjectLocation().Y;
 
-            Rectangle blockBox;
-
-            if (!(block is StoneBlock))
-                blockBox = block.BlockRectangle();
-            else
-            {
-                StoneBlock sblock = (StoneBlock)block;
-                blockBox = new Rectangle(blockX, blockY, (int)sblock.BlockSize.X, (int)sblock.BlockSize.Y);
-            }
+            Rectangle blockBox = block.BlockRectangle();
 
             Rectangle intersect;
 
