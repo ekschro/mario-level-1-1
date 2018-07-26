@@ -15,8 +15,8 @@ namespace Game1
         public BowserFireBall(Game1 game, Bowser bowser)
         {
             bowser2 = bowser;
-            location2 = new Vector2(bowser2.CurrentXPos, bowser2.CurrentYPos);
-            originalLocation = new Vector2(bowser2.CurrentXPos, bowser2.CurrentYPos);
+            location2 = new Vector2(bowser2.CurrentXPos-33, bowser2.CurrentYPos);
+            originalLocation = new Vector2(bowser2.CurrentXPos-33, bowser2.CurrentYPos);
             facingRight = bowser2.StateMachine.GetDirection();           
             myGame = game;
             
@@ -37,17 +37,15 @@ namespace Game1
 
         public void BeFlipped()
         {
-            throw new NotImplementedException();
         }
 
         public void BeStomped()
         {
-            throw new NotImplementedException();
         }
 
         public void ChangeDirection()
         {
-            throw new NotImplementedException();
+            
         }
 
         public void Draw()
@@ -62,7 +60,7 @@ namespace Game1
 
         public bool GetDead()
         {
-            throw new NotImplementedException();
+            return false;
         }
 
         public Vector2 GetGameObjectLocation()
@@ -72,7 +70,7 @@ namespace Game1
 
         public void SetGameObjectLocation(Vector2 x)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void Update()

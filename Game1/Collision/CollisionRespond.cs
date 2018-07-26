@@ -367,55 +367,58 @@ namespace Game1
 
         public void EnemyCollisionEnemyRespondRight(IEnemy enemy, IEnemy otherEnemy, int width)
         {
-            if (enemy.GetDead() == false && !(enemy is KoopaShell))
+            if (!(enemy is BowserFireBall || otherEnemy is BowserFireBall))
             {
-                var x = enemy.GetGameObjectLocation().X - width;
-                var y = enemy.GetGameObjectLocation().Y;
-                enemy.SetGameObjectLocation(new Vector2(x, y));
-                enemy.ChangeDirection(true);
-            }
-
-            if (enemy is MarioFireBall && !(otherEnemy is FireEnemy) && !(otherEnemy is Bowser))
-            {
-                SoundWarehouse.stomp.Play();
-                CreateFlippedEnemy(otherEnemy);
-                objectLevel.EnemyObjects.Remove(enemy);
-                objectLevel.EnemyObjects.Remove(otherEnemy);
-            }
-            else if (otherEnemy is MarioFireBall && !(enemy is FireEnemy) && !(enemy is Bowser))
-            {
-                SoundWarehouse.stomp.Play();
-                CreateFlippedEnemy(enemy);
-                objectLevel.EnemyObjects.Remove(enemy);
-                objectLevel.EnemyObjects.Remove(otherEnemy);
-            }
-            else if (otherEnemy is KoopaShell)
-            {
-                ((KoopaShell)otherEnemy).KilledNum += 1;
-                myGame.persistentData.KoopaShell((KoopaShell)otherEnemy, enemy.GetGameObjectLocation());
-                objectLevel.EnemyObjects.Remove(enemy);
-            }
-            else if ((enemy is Bowser && otherEnemy is MarioFireBall))
-            {
-                ((Bowser)enemy).SetBowserLife(-1);
-                CreateFlippedEnemy(enemy);
-                if (((Bowser)enemy).BowserLife == 0)
+                if (enemy.GetDead() == false && !(enemy is KoopaShell))
                 {
+                    var x = enemy.GetGameObjectLocation().X - width;
+                    var y = enemy.GetGameObjectLocation().Y;
+                    enemy.SetGameObjectLocation(new Vector2(x, y));
+                    enemy.ChangeDirection(true);
+                }
+
+                if (enemy is MarioFireBall && !(otherEnemy is FireEnemy) && !(otherEnemy is Bowser))
+                {
+                    SoundWarehouse.stomp.Play();
+                    CreateFlippedEnemy(otherEnemy);
                     objectLevel.EnemyObjects.Remove(enemy);
                     objectLevel.EnemyObjects.Remove(otherEnemy);
                 }
-
-            }
-            else if ((otherEnemy is Bowser && enemy is MarioFireBall))
-            {
-                ((Bowser)otherEnemy).SetBowserLife(-1);
-                CreateFlippedEnemy(enemy);
-                if (((Bowser)otherEnemy).BowserLife == 0)
+                else if (otherEnemy is MarioFireBall && !(enemy is FireEnemy) && !(enemy is Bowser))
                 {
+                    SoundWarehouse.stomp.Play();
+                    CreateFlippedEnemy(enemy);
                     objectLevel.EnemyObjects.Remove(enemy);
                     objectLevel.EnemyObjects.Remove(otherEnemy);
                 }
+                else if (otherEnemy is KoopaShell)
+                {
+                    ((KoopaShell)otherEnemy).KilledNum += 1;
+                    myGame.persistentData.KoopaShell((KoopaShell)otherEnemy, enemy.GetGameObjectLocation());
+                    objectLevel.EnemyObjects.Remove(enemy);
+                }
+                else if ((enemy is Bowser && otherEnemy is MarioFireBall))
+                {
+                    ((Bowser)enemy).SetBowserLife(-1);
+                    CreateFlippedEnemy(enemy);
+                    if (((Bowser)enemy).BowserLife == 0)
+                    {
+                        objectLevel.EnemyObjects.Remove(enemy);
+                        objectLevel.EnemyObjects.Remove(otherEnemy);
+                    }
 
+                }
+                else if ((otherEnemy is Bowser && enemy is MarioFireBall))
+                {
+                    ((Bowser)otherEnemy).SetBowserLife(-1);
+                    CreateFlippedEnemy(enemy);
+                    if (((Bowser)otherEnemy).BowserLife == 0)
+                    {
+                        objectLevel.EnemyObjects.Remove(enemy);
+                        objectLevel.EnemyObjects.Remove(otherEnemy);
+                    }
+
+                }
             }
         }
 
