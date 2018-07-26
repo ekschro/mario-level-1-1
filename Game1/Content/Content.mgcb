@@ -585,3 +585,10 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:bowserFire.png
+
+#begin smb_bowserfire.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:smb_bowserfire.wav
+
