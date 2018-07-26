@@ -37,7 +37,9 @@ namespace Game1
         public void UpdateYPosition()
         {
             delta = game.Delta.ElapsedGameTime.Milliseconds;
-            NewPosY();
+            if (obj.IsFalling)
+                yVelocity += (float)(0.5 * 0.002 * Math.Pow(delta, 2));
+            obj.SetGameObjectLocation(new Vector2(obj.GetGameObjectLocation().X, obj.GetGameObjectLocation().Y));
         }
 
         public void NewPosX()
@@ -54,7 +56,7 @@ namespace Game1
                 yVelocity += (float)(0.5 * 0.002 * Math.Pow(delta, 2));
             else if (obj.IsJumping)
             {
-                yVelocity=(float) - 6.5;
+                yVelocity=(float) - 4.5;
                 yVelocity -= (float)(0.5 * 0.002 * Math.Pow(delta, 2));
             }
             else

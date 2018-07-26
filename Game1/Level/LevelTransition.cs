@@ -40,7 +40,7 @@ namespace Game1
 
 
             myGame.SpriteBatch.DrawString(myGame.SpriteFont, "X", new Vector2(180, 120), Color.White);
-            myGame.SpriteBatch.DrawString(myGame.SpriteFont, myGame.persistentData.Lives.ToString(), new Vector2(200, 120), Color.White); //need to update
+            myGame.SpriteBatch.DrawString(myGame.SpriteFont, myGame.PersistentData.Lives.ToString(), new Vector2(200, 120), Color.White); //need to update
             myGame.SpriteBatch.Draw(TextureWarehouse.MarioTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.SpriteBatch.End();
         }

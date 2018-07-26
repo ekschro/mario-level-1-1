@@ -27,7 +27,7 @@ namespace Game1
         public MarioPhysics(Game1 game, Mario player, int velCap)
         {
             this.game = game;
-            controllerHandler = game.controllerHandler;
+            controllerHandler = game.ControllerHandler;
             this.velCap = velCap;
             this.player = player;
             xVelocity = 0;

@@ -12,7 +12,7 @@ namespace Game1
 
         public NoCommand(Game1 game)
         {
-            controllerHandler = game.controllerHandler;
+            controllerHandler = game.ControllerHandler;
         }
 
         public void Execute()

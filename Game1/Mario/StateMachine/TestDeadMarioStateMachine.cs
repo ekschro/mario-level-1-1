@@ -12,7 +12,7 @@ namespace Game1
        
         private enum MarioState { Idle, Walking, Jumping, Crouching };
         
-        private MarioState state = MarioState.Idle;
+        //private MarioState state = MarioState.Idle;
 
         public TestDeadMarioStateMachine(ITestMarioSprite sprite)
         {
@@ -80,7 +80,7 @@ namespace Game1
         }
         public void ChangeState()
         {
-            state = MarioState.Idle;
+            //state = MarioState.Idle;
         }
     }
 }

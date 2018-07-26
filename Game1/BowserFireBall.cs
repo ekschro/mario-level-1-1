@@ -7,7 +7,7 @@ namespace Game1
     {
         Vector2 location2;
         Vector2 originalLocation;
-        Game1 myGame;
+        //Game1 myGame;
         IEnemySprite fireEnemySprite;
         Bowser bowser2;
         private int currentFrame;
@@ -16,16 +16,23 @@ namespace Game1
         public BowserFireBall(Game1 game, Bowser bowser)
         {
             bowser2 = bowser;
-            location2 = new Vector2(bowser2.CurrentXPos-33, bowser2.CurrentYPos);
-            originalLocation = new Vector2(bowser2.CurrentXPos-33, bowser2.CurrentYPos);
+            location2 = new Vector2(bowser2.CurrentXPos - 34, bowser2.CurrentYPos);
+            originalLocation = new Vector2(bowser2.CurrentXPos - 34, bowser2.CurrentYPos);
             facingRight = bowser2.StateMachine.GetDirection();           
-            myGame = game;
+           // myGame = game;
             CurrentFrame = 0;
+
             Console.WriteLine("Fire!");
 
             SoundWarehouse.bowserFire.Play();
 
             fireEnemySprite = new BowserFireEnemySprite(game, this);
+            if (facingRight)
+            {
+                fireEnemySprite.ChangeSpriteEffects(Microsoft.Xna.Framework.Graphics.SpriteEffects.FlipHorizontally);
+                location2 = new Vector2(bowser2.CurrentXPos + 67, bowser2.CurrentYPos);
+                originalLocation = new Vector2(bowser2.CurrentXPos + 67, bowser2.CurrentYPos);
+            }
         }
         private bool movingRight = true;
         public bool MovingRight { get => movingRight; set => movingRight = value; }

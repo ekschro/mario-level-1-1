@@ -49,10 +49,10 @@ namespace Game1
             myGame.SpriteBatch.DrawString(myGame.SpriteFont, "MARIO", new Vector2(10, 10), Color.White);
             myGame.SpriteBatch.DrawString(myGame.SpriteFont, "WORLD", new Vector2(200, 10), Color.White);
             
-            myGame.SpriteBatch.DrawString(myGame.SpriteFont, myGame.persistentData.Points.ToString(), new Vector2(10, 25), Color.White); //need to update
+            myGame.SpriteBatch.DrawString(myGame.SpriteFont, myGame.PersistentData.Points.ToString(), new Vector2(10, 25), Color.White); //need to update
             myGame.SpriteBatch.Draw(TextureWarehouse.PickupTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.SpriteBatch.DrawString(myGame.SpriteFont, "X", new Vector2(105, 25), Color.White);
-            myGame.SpriteBatch.DrawString(myGame.SpriteFont, myGame.persistentData.Coins.ToString(), new Vector2(115, 25), Color.White); //need to update
+            myGame.SpriteBatch.DrawString(myGame.SpriteFont, myGame.PersistentData.Coins.ToString(), new Vector2(115, 25), Color.White); //need to update
             if (myGame.NextLevel1)
             {
                 myGame.SpriteBatch.DrawString(myGame.SpriteFont, "1-4", new Vector2(205, 25), Color.White); //need to update

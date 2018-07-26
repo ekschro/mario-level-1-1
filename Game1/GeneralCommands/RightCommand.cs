@@ -15,17 +15,23 @@ namespace Game1
     {
        
         private IControllerHandler controllerHandler;
+        private Game1 myGame;
         
         public RightCommand(Game1 game)
         {
            
-            controllerHandler = game.controllerHandler;
+            controllerHandler = game.ControllerHandler;
+            myGame = game;
         }
 
         public void Execute()
         {
-            controllerHandler.MovingRight = true;
-            controllerHandler.MovingLeft = false;
+            if (!(myGame.CurrentLevel.PlayerObject.TestMario.StateMachine.IsCrouching()) )
+            {
+                controllerHandler.MovingRight = true;
+                controllerHandler.MovingLeft = false;
+            }
+            
         }
     }
 }
