@@ -43,10 +43,7 @@ namespace Game1
         public void Update()
         {
         }
-        public bool GetDirection()
-        {
-            return facingLeft;
-        }
+        public bool Direction => facingLeft;
 
         public void BeJump()
         {

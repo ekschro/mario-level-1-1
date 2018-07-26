@@ -36,10 +36,7 @@ namespace Game1
             blockSprite.Draw();
         }
 
-        public Vector2 GetGameObjectLocation()
-        {
-            return blockRectangle.Location.ToVector2();
-        }
+        public Vector2 GameObjectLocation => blockRectangle.Location.ToVector2();
 
         public void Update()
         {

@@ -34,10 +34,7 @@ namespace Game1 {
             sprite.Draw();
         }
 
-        public Vector2 GetGameObjectLocation()
-        {
-            return new Vector2(start.X, start.Y);
-        }
+        public Vector2 GameObjectLocation => new Vector2(start.X, start.Y);
 
         public void Update()
         {

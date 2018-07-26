@@ -23,11 +23,8 @@ namespace Game1
             position = location;
             toadSprite = new ToadSprite(game, this);
         }
-       
-        public Vector2 GetGameObjectLocation()
-        {
-            return position;
-        }
+
+        public Vector2 GameObjectLocation => position;
 
         public void Update()
         {

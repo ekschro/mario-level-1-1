@@ -61,7 +61,7 @@ namespace Game1
 
         private FireballPhysics physics;
 
-        public IEnemyStateMachine StateMachine => throw new NotImplementedException();
+        public IEnemyStateMachine StateMachine { get; }
 
         public bool IsStomped { get => true; set => stomped = value; }
         private bool stomped;
@@ -122,14 +122,8 @@ namespace Game1
             CurrentYPos = vector.Y;
         }
 
-        public bool GetDead()
-        {
-            return false;
-        }
+        public bool Dead => false;
 
-        public Vector2 GetGameObjectLocation()
-        {
-            return new Vector2(CurrentXPos, CurrentYPos);
-        }
+        public Vector2 GameObjectLocation => new Vector2(CurrentXPos, CurrentYPos);
     }
 }

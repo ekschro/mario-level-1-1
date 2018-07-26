@@ -35,10 +35,7 @@ namespace Game1
             questionCoinBlockSprite.Draw();
         }
 
-        public Vector2 GetGameObjectLocation()
-        {
-            return blockLocation;
-        }
+        public Vector2 GameObjectLocation => blockLocation;
 
         public Rectangle BlockRectangle()
         {

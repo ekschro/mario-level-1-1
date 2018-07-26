@@ -18,9 +18,6 @@ namespace Game1
             location2.X = location2.X + radius + 6;
             location2.Y = location2.Y + 6;
             originalLocation = new Vector2(location.X, location.Y);
-            //originalLocation.X = originalLocation.X + 6 + radius;
-            //originalLocation.Y = originalLocation.Y + 6;
-            //myGame = game;
             radius2 = radius;
             angle = 0;
             fireEnemySprite = new FireEnemySprite(game, this);
@@ -28,7 +25,7 @@ namespace Game1
         private bool movingRight = true;
         public bool MovingRight { get => movingRight; set => movingRight = value; }
 
-        public IEnemyStateMachine StateMachine => throw new NotImplementedException();
+        public IEnemyStateMachine StateMachine { get; }
 
         public bool IsFalling { get => false; set => throw new NotImplementedException(); }
         public bool IsStomped { get => false; set => throw new NotImplementedException(); }
@@ -62,15 +59,9 @@ namespace Game1
             throw new NotImplementedException();
         }
 
-        public bool GetDead()
-        {
-            return true;
-        }
+        public bool Dead => true;
 
-        public Vector2 GetGameObjectLocation()
-        {
-            return new Vector2(CurrentXPos, CurrentYPos);
-        }
+        public Vector2 GameObjectLocation => new Vector2(CurrentXPos, CurrentYPos);
 
         public void SetGameObjectLocation(Vector2 x)
         {

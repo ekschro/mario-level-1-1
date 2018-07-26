@@ -63,10 +63,7 @@ namespace Game1
         {
             stateMachine.ChangeDirection(left);
         }
-        public Vector2 GetGameObjectLocation()
-        {
-            return testMarioLocation;
-        }
+        public Vector2 GameObjectLocation => testMarioLocation;
         public void SetGameObjectLocation(Vector2 newPos)
         {
             testMarioLocation = newPos;

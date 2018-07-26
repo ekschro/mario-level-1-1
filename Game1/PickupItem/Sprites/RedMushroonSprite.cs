@@ -30,10 +30,10 @@ namespace Game1
         {
             int width = TextureWarehouse.PickupTexture.Width / utility.PickupColumn;
 
-            int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(redMushroomObject.GetGameObjectLocation().X);
+            int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(redMushroomObject.GameObjectLocation.X);
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, TextureWarehouse.PickupTexture.Height);
-            Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)redMushroomObject.GetGameObjectLocation().Y, width, TextureWarehouse.PickupTexture.Height);
+            Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)redMushroomObject.GameObjectLocation.Y, width, TextureWarehouse.PickupTexture.Height);
 
             myGame.SpriteBatch.Begin();
             myGame.SpriteBatch.Draw(TextureWarehouse.PickupTexture, destinationRectangle, sourceRectangle, Color.White);

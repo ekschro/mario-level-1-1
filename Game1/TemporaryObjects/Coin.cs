@@ -40,9 +40,6 @@ namespace Game1
                 myGame.CurrentLevel.TemporaryObjects.Remove(this);
         }
 
-        public Vector2 GetGameObjectLocation()
-        {
-            return objectLocation;
-        }
+        public Vector2 GameObjectLocation => objectLocation;
     }
 }

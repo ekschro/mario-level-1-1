@@ -20,12 +20,9 @@ namespace Game1
             koopaOriginalLocation = location;
             BowserSprite = new FlippedBowserSprite(game, this);
         }
-        
 
-        public Vector2 GetGameObjectLocation()
-        {
-            return koopaOriginalLocation;
-        }
+
+        public Vector2 GameObjectLocation => koopaOriginalLocation;
 
         public void Update()
         {

@@ -59,10 +59,7 @@ namespace Game1
             GoombaSprite.Draw();
         }
 
-        public Vector2 GetGameObjectLocation()
-        {
-            return goombaLocation;
-        }
+        public Vector2 GameObjectLocation => goombaLocation;
         public void SetGameObjectLocation(Vector2 newPos)
         {
             goombaLocation = newPos;
@@ -88,10 +85,7 @@ namespace Game1
             }
         }
 
-        public bool GetDead()
-        {
-            return dead;
-        }
+        public bool Dead => dead;
 
     }
 }

@@ -26,17 +26,14 @@ namespace Game1
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(CurrentXPos);
 
             Rectangle sourceRectangle = new Rectangle(0, 0, TextureWarehouse.BackgroundTexture.Width, TextureWarehouse.BackgroundTexture.Height);
-            Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)GetGameObjectLocation().Y, TextureWarehouse.BackgroundTexture.Width, TextureWarehouse.BackgroundTexture.Height);
+            Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)GameObjectLocation.Y, TextureWarehouse.BackgroundTexture.Width, TextureWarehouse.BackgroundTexture.Height);
 
             myGame.SpriteBatch.Begin();
             myGame.SpriteBatch.Draw(TextureWarehouse.BackgroundTexture, destinationRectangle, sourceRectangle, Color.White);
             myGame.SpriteBatch.End();
         }
 
-        public Vector2 GetGameObjectLocation()
-        {
-            return backgroundLocation;
-        }
+        public Vector2 GameObjectLocation => backgroundLocation;
 
         public void Update()
         {

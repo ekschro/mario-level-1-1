@@ -31,10 +31,10 @@ namespace Game1
 
         public void Draw()
         {
-            int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(blueStoneBlockObject.GetGameObjectLocation().X);
+            int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(blueStoneBlockObject.GameObjectLocation.X);
 
             Rectangle sourceRectangle = new Rectangle(utility.InitialFrame,utility.InitialFrame,(int)blueStoneBlockObject.BlockSize.X,(int)blueStoneBlockObject.BlockSize.Y);
-            Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)blueStoneBlockObject.GetGameObjectLocation().Y, (int)blueStoneBlockObject.BlockSize.X, (int)blueStoneBlockObject.BlockSize.Y);
+            Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)blueStoneBlockObject.GameObjectLocation.Y, (int)blueStoneBlockObject.BlockSize.X, (int)blueStoneBlockObject.BlockSize.Y);
 
             myGame.SpriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.LinearWrap, null, null);
             myGame.SpriteBatch.Draw(TextureWarehouse.BlueStoneBlockTexture, destinationRectangle, sourceRectangle, Color.White);

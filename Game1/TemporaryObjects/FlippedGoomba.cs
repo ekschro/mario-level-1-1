@@ -20,12 +20,9 @@ namespace Game1
             goombaOriginalLocation = location;
             GoombaSprite = new FlippedGoombaSprite(game, this);
         }
-        
 
-        public Vector2 GetGameObjectLocation()
-        {
-            return goombaOriginalLocation;
-        }
+
+        public Vector2 GameObjectLocation => goombaOriginalLocation;
 
         public void Update()
         {

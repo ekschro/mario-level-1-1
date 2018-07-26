@@ -11,7 +11,7 @@ namespace Game1
     {
         void Update();
         void Draw();
-        Vector2 GetGameObjectLocation();
+        Vector2 GameObjectLocation { get; }
         float CurrentXPos { get; set; }
         float CurrentYPos { get; set; }
     }

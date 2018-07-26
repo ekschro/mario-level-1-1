@@ -48,10 +48,10 @@ namespace Game1
         {
             int width = TextureWarehouse.KoopaTexture.Width / utility.KoopaColumn;
 
-            int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(koopaObject.GetGameObjectLocation().X);
+            int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(koopaObject.GameObjectLocation.X);
 
             Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, TextureWarehouse.KoopaTexture.Height);
-            Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)koopaObject.GetGameObjectLocation().Y, width, TextureWarehouse.KoopaTexture.Height);
+            Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)koopaObject.GameObjectLocation.Y, width, TextureWarehouse.KoopaTexture.Height);
 
             myGame.SpriteBatch.Begin();
             myGame.SpriteBatch.Draw(TextureWarehouse.KoopaTexture, destinationRectangle, sourceRectangle, Color.White);

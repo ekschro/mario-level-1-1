@@ -22,7 +22,8 @@ namespace Game1
         
         private KeyboardState keyBoardState, lastKeyBoardState;
         private bool chooseLevel;
-        private bool chooseMode;
+        //private bool chooseMode;
+
         public ButtonForLevelSelect(Game1 game)
         {
             myGame = game;
@@ -95,12 +96,12 @@ namespace Game1
                         {
                             buttonColor[LevelNormal] = Color.White;
                             chooseLevel = false;
-                            chooseMode = true;
+                            //chooseMode = true;
                         }
                         else if (chooseLevel)
                         {
                             chooseLevel = false;
-                            chooseMode = true;
+                            //chooseMode = true;
                         }
 
                         break;
