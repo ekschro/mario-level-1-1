@@ -27,11 +27,13 @@ namespace Game1
 
         public void Execute()
         {
-            if (!myGame.CurrentLevel.PlayerObject.TestMario.StateMachine.IsCrouching() || myGame.CurrentLevel.PlayerObject.TestMario.StateMachine is TestSmallMarioStateMachine)
+            if (!(myGame.CurrentLevel.PlayerObject.TestMario.StateMachine.IsCrouching()))
             {
-                controllerHandler.MovingLeft = true;
                 controllerHandler.MovingRight = false;
+                controllerHandler.MovingLeft = true;
             }
+           
+
         }
     }
 }

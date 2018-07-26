@@ -85,7 +85,9 @@ namespace Game1
         }
         public void Crouching()
         {
-            stateMachine.Crouching();
+           
+                stateMachine.Crouching();
+
         }
         public void Update()
         {
