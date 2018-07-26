@@ -32,7 +32,7 @@ namespace Game1
 
             int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(bowser.CurrentXPos);
 
-            Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, width, TextureWarehouse.BowserFireballTexture.Height);
+            Rectangle sourceRectangle = new Rectangle(width * bowser.CurrentFrame, 0, width, TextureWarehouse.BowserFireballTexture.Height);
             Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)bowser.CurrentYPos, width, TextureWarehouse.BowserFireballTexture.Height);
 
 
@@ -43,11 +43,7 @@ namespace Game1
 
         public void Update()
         {
-            currentFrame++;
-            if (currentFrame == 2)
-            {
-                currentFrame = 0;
-            }
+           
         }
     }
 }
