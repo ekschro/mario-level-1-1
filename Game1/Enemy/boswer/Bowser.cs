@@ -108,10 +108,11 @@ namespace Game1
             if (moving && bowserLocation.X <= 2040)
             {
                 utility.EnemyupCyclePosition++;
+                BowserThinking();
                 if (bowserLocation.X - myGame.CurrentLevel.PlayerObject.GetGameObjectLocation().X <= 0)
                 {
                     physics.Update();
-                    ChangeDirection(false);
+                    ChangeDirection(true);
                 }
                 else
                     ((EnemyPhysics)physics).UpdateYPosition();
@@ -119,10 +120,11 @@ namespace Game1
             else if (moving && bowserLocation.X >= 2200)
             {
                 utility.EnemyupCyclePosition++;
+                BowserThinking();
                 if (bowserLocation.X - myGame.CurrentLevel.PlayerObject.GetGameObjectLocation().X >= 0)
                 {
                     physics.Update();
-                    ChangeDirection(true);
+                    ChangeDirection(false);
                 }
                 else
                     ((EnemyPhysics)physics).UpdateYPosition();
@@ -132,9 +134,6 @@ namespace Game1
                 utility.EnemyupCyclePosition++;
                 physics.Update();
             }
-            else
-            { }
-
             falling = true;
             if (utility.EnemyupCyclePosition == utility.BowserCycleLength && dead!=true)
             {
