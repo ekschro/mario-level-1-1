@@ -88,9 +88,9 @@ namespace Game1
             if ((bowserLocation.X - myGame.CurrentLevel.PlayerObject.GameObjectLocation.X) <= 300)
                 moving = true;
         }
-        public void SetBowserLife( int x)
+        public void SetBowserLife()
         {
-            bowserLife = bowserLife + x;
+            bowserLife --;
         }
         public void Update()
         {
