@@ -1,0 +1,16 @@
+Sprint 6 
+William Freeman
+
+This Sprint was by far the most consistent in terms of work done over time. Looking at the Burndown chart,
+it is somewhat misleading, since the days roll over at 8 PM. All tasks were completed at 10:19 PM, despite 
+the chart saying otherwise. With this in mind, the tasks completed form almost a perfect slope, ideal for
+the project.
+
+This Sprint saw a significant amount of time spent cleaning up code that was either unneccesarily coupled
+or simply just inefficient. However, tasks were performed at regular intervals, allowing plenty of time
+to refactor as time allotted.
+
+The communication in this group was the best it has ever been. People got all of their work done when they
+said they would, everyone met up every day the week leading up to the submission, and there was never any
+confusion as to what needed to be done or who was doing what. Overall, this Sprint showed just about the 
+best that this group has to offer.
