@@ -18,7 +18,7 @@ namespace Game1
         //ICommand left;
         //ICommand down;
         //ICommand up;
-        public MouseController(Game1 game)
+        public MouseController()
         {
             //right = new RightCommand(game);
             //left = new LeftCommand(game);

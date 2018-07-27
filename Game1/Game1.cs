@@ -154,20 +154,15 @@ namespace Game1
         protected override void UnloadContent()
         {
         }
-        
-        protected override void Update(GameTime gameTime)
+        private void CheckScreenState()
         {
-            foreach (IController controller in controllerList.ToArray())
-            {
-               controller.Update();
-            }
             switch (gameState)
             {
                 case GameScreenState.Opening:
                     openingLevel.Update();
                     break;
                 case GameScreenState.LevelSelect:
-                    selectLevel.Update();   
+                    selectLevel.Update();
                     break;
                 case GameScreenState.GamePlay:
                     if (!pause)
@@ -185,6 +180,14 @@ namespace Game1
                     lastGameState = GameScreenState.DarkLevel11;
                     break;
             }
+        }
+        protected override void Update(GameTime gameTime)
+        {
+            foreach (IController controller in controllerList.ToArray())
+            {
+               controller.Update();
+            }
+            CheckScreenState();
             if (!Pause&& gameState!=GameScreenState.Opening && gameState != GameScreenState.LevelSelect )
             {
                 cyclePosition++;
@@ -214,7 +217,6 @@ namespace Game1
             switch (gameState)
             {
                 case GameScreenState.Opening:
-                    
                     openingLevel.Draw();
                     HeadsUpDisplay.Draw();
                     break;
@@ -248,6 +250,7 @@ namespace Game1
             {
                 currentLevel = new BossLevel("../../../../Content/BossLevelInfo.csv", this, PersistentData);
                 NextLevel1 = true;
+                LoadTransition();
             }
 
         }

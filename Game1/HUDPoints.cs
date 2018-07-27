@@ -39,9 +39,6 @@ namespace Game1
             game.SpriteBatch.End();
         }
 
-        public Vector2 GetGameObjectLocation()
-        {
-            return loc;
-        }
+        public Vector2 GameObjectLocation => loc;
     }
 }

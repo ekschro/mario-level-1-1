@@ -7,54 +7,26 @@ using Microsoft.Xna.Framework;
 
 namespace Game1
 {
-    public class QuestionCoinBlock : IBlock
+    public class QuestionCoinBlock : AbstractBlock
     {
-        public float CurrentXPos { get => blockLocation.X; set => blockLocation.X = value; }
-        public float CurrentYPos { get => blockLocation.Y; set => blockLocation.Y = value; }
-
-        private IBlockSprite questionCoinBlockSprite;
-       
-        private Vector2 blockLocation;
-        private BlockUtilityClass utility = new BlockUtilityClass();
-        private Rectangle blockRectangle;
         private int cyclePosition;
         private int cycleLength;
-
-        public QuestionCoinBlock(Game1 game, Vector2 location)
+        public QuestionCoinBlock(Game1 game, Vector2 location) : base(location)
         {
-            cyclePosition = utility.QuestionCyclePosition;
-            cycleLength = utility.QuestionCoinLength;
-            questionCoinBlockSprite = new QuestionCoinBlockSprite(game, this);
-            
-            blockLocation = location;
+            blockSprite = new QuestionCoinBlockSprite(game, this);
             blockRectangle = new Rectangle((int)location.X, (int)location.Y, utility.Width, utility.Height);
+            utility = new BlockUtilityClass();
+            cyclePosition = utility.QuestionCyclePosition;
+            cycleLength = utility.QuestionCycleLength;
         }
-
-        public void Draw()
-        {
-            questionCoinBlockSprite.Draw();
-        }
-
-        public Vector2 GetGameObjectLocation()
-        {
-            return blockLocation;
-        }
-
-        public Rectangle BlockRectangle()
-        {
-            return blockRectangle;
-        }
-
-        public void Update()
+        public override void Update()
         {
             cyclePosition++;
             if (cyclePosition == cycleLength)
             {
-                
-                questionCoinBlockSprite.Update();
+                blockSprite.Update();
                 cyclePosition = utility.QuestionCyclePosition;
             }
-
         }
 
     }

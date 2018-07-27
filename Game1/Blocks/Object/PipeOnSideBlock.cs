@@ -14,5 +14,9 @@ namespace Game1
             blockSprite = new PipeOnSideBlockSprite(game, this);
             blockRectangle = new Rectangle((int)location.X, (int)location.Y, utility.PipeWidth, utility.PipeHeight);
         }
+        public override void Update()
+        {
+            blockSprite.Update();
+        }
     }
 }

@@ -12,7 +12,7 @@ namespace Game1
 
         private List<IGameObject> levelObjects;
         private ICollision collisionDetect;
-        private ICamera movingCamera;
+        //private ICamera movingCamera;
         private ICamera staticCamera;
         private ICamera slidingCamera;
         private ICamera currentCamera;
@@ -65,7 +65,7 @@ namespace Game1
             
             collisionDetect = new CollisionDetect(game,this);
 
-            currentCamera = movingCamera = new Camera(this);
+            currentCamera = new Camera(this);
             staticCamera = new CameraStatic(bossRoomLocation - 200);
             slidingCamera = new CameraSliding(bossRoomLocation - 200, finalLocation);
             
@@ -82,7 +82,7 @@ namespace Game1
             PlayerObject.Update();
             foreach (IGameObject GameObject in BlockObjects)
             {
-                if (GameObject.GetGameObjectLocation().X > currentCamera.CameraPosition - 16  && GameObject.GetGameObjectLocation().X < currentCamera.CameraPosition + 400)
+                if (GameObject.GameObjectLocation.X > currentCamera.CameraPosition - 16  && GameObject.GameObjectLocation.X < currentCamera.CameraPosition + 400)
                     GameObject.Update();
             }
             foreach (IGameObject GameObject in EnemyObjects)
@@ -93,18 +93,18 @@ namespace Game1
             IGameObject[] pickupObjectArray = PickupObjects.ToArray();
             for(int i = 0; i < pickupObjectArray.Length; i++)
             {
-                if (pickupObjectArray[i].GetGameObjectLocation().X > currentCamera.CameraPosition - 16 && pickupObjectArray[i].GetGameObjectLocation().X < currentCamera.CameraPosition + 400)
+                if (pickupObjectArray[i].GameObjectLocation.X > currentCamera.CameraPosition - 16 && pickupObjectArray[i].GameObjectLocation.X < currentCamera.CameraPosition + 400)
                     pickupObjectArray[i].Update();
             }
             IGameObject[] temporaryObjectArray = TemporaryObjects.ToArray();
             for (int i = 0; i < temporaryObjectArray.Length; i++)
             {
-                if (temporaryObjectArray[i].GetGameObjectLocation().X > currentCamera.CameraPosition - 16 && temporaryObjectArray[i].GetGameObjectLocation().X < currentCamera.CameraPosition + 400)
+                if (temporaryObjectArray[i].GameObjectLocation.X > currentCamera.CameraPosition - 16 && temporaryObjectArray[i].GameObjectLocation.X < currentCamera.CameraPosition + 400)
                     temporaryObjectArray[i].Update();
                 else if (temporaryObjectArray[i] is HUDPoints)
                 {
                     temporaryObjectArray[i].Update();
-                    if (temporaryObjectArray[i].GetGameObjectLocation().Y < 0)
+                    if (temporaryObjectArray[i].GameObjectLocation.Y < 0)
                         TemporaryObjects.Remove((ITemporary)temporaryObjectArray[i]);
                 }
             }
@@ -134,19 +134,19 @@ namespace Game1
             PlayerObject.Draw();
             foreach (IGameObject GameObject in BlockObjects)
             {
-                if (GameObject.GetGameObjectLocation().X > currentCamera.CameraPosition - 16 && GameObject.GetGameObjectLocation().X < currentCamera.CameraPosition + 400)
+                if (GameObject.GameObjectLocation.X > currentCamera.CameraPosition - 16 && GameObject.GameObjectLocation.X < currentCamera.CameraPosition + 400)
                     GameObject.Draw();
                 else if (GameObject is StoneBlock || GameObject is GrayBrickBlock || GameObject is BridgeBlock)
                     GameObject.Draw();
             }
             foreach (IGameObject GameObject in EnemyObjects)
             {
-                if (GameObject.GetGameObjectLocation().X > currentCamera.CameraPosition - 16 && GameObject.GetGameObjectLocation().X < currentCamera.CameraPosition + 400)
+                if (GameObject.GameObjectLocation.X > currentCamera.CameraPosition - 16 && GameObject.GameObjectLocation.X < currentCamera.CameraPosition + 400)
                     GameObject.Draw();
             }
             foreach (IGameObject GameObject in PickupObjects)
             {
-                if (GameObject.GetGameObjectLocation().X > currentCamera.CameraPosition - 16 && GameObject.GetGameObjectLocation().X < currentCamera.CameraPosition + 400)
+                if (GameObject.GameObjectLocation.X > currentCamera.CameraPosition - 16 && GameObject.GameObjectLocation.X < currentCamera.CameraPosition + 400)
                     GameObject.Draw();
             }
             IGameObject[] temporaryObjectArray = TemporaryObjects.ToArray();

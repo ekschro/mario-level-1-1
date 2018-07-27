@@ -18,10 +18,14 @@ namespace Game1
             bowser2 = bowser;
             location2 = new Vector2(bowser2.CurrentXPos - 34, bowser2.CurrentYPos);
             originalLocation = new Vector2(bowser2.CurrentXPos - 34, bowser2.CurrentYPos);
-            facingRight = bowser2.StateMachine.GetDirection();           
+            facingRight = bowser2.StateMachine.Direction;           
            // myGame = game;
             CurrentFrame = 0;
-            
+
+            Console.WriteLine("Fire!");
+
+            SoundWarehouse.bowserFire.Play();
+
             fireEnemySprite = new BowserFireEnemySprite(game, this);
             if (facingRight)
             {
@@ -33,7 +37,7 @@ namespace Game1
         private bool movingRight = true;
         public bool MovingRight { get => movingRight; set => movingRight = value; }
 
-        public IEnemyStateMachine StateMachine => throw new NotImplementedException();
+        public IEnemyStateMachine StateMachine { get; }
 
         public bool IsFalling { get => false; set => dummyBool = value; }
         public bool IsStomped { get => false; set => dummyBool = value; }
@@ -67,15 +71,9 @@ namespace Game1
             return originalLocation;
         }
 
-        public bool GetDead()
-        {
-            return false;
-        }
+        public bool Dead => false;
 
-        public Vector2 GetGameObjectLocation()
-        {
-            return new Vector2(CurrentXPos, CurrentYPos);
-        }
+        public Vector2 GameObjectLocation => new Vector2(CurrentXPos, CurrentYPos);
 
         public void SetGameObjectLocation(Vector2 x)
         {

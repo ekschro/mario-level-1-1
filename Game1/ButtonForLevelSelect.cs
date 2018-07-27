@@ -19,10 +19,11 @@ namespace Game1
             Enter = 4;
 
         private Color[] buttonColor = new Color[NumberOfButtons];
-        
-        private KeyboardState keyBoardState, lastKeyBoardState;
+
+        private KeyboardState keyBoardState;
         private bool chooseLevel;
-        private bool chooseMode;
+        //private bool chooseMode;
+
         public ButtonForLevelSelect(Game1 game)
         {
             myGame = game;
@@ -58,7 +59,7 @@ namespace Game1
         }
         public void KeyboardControl()
         {
-            lastKeyBoardState = keyBoardState;
+            //lastKeyBoardState = keyBoardState;
             keyBoardState = Keyboard.GetState();
             Keys[] pressedKeys = keyBoardState.GetPressedKeys();
             foreach (Keys k in pressedKeys)
@@ -95,12 +96,12 @@ namespace Game1
                         {
                             buttonColor[LevelNormal] = Color.White;
                             chooseLevel = false;
-                            chooseMode = true;
+                            //chooseMode = true;
                         }
                         else if (chooseLevel)
                         {
                             chooseLevel = false;
-                            chooseMode = true;
+                            //chooseMode = true;
                         }
 
                         break;

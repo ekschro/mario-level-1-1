@@ -26,11 +26,8 @@ namespace Game1
            
             timeBeforeAppearing = 350;
         }
-       
-        public Vector2 GetGameObjectLocation()
-        {
-            return position;
-        }
+
+        public Vector2 GameObjectLocation => position;
 
         public void Update()
         {

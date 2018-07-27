@@ -17,6 +17,7 @@ namespace Game1
             myGame = game;
             bowser = enemy;
             currentFrame = 0;
+
             timer = 4;
         }
 

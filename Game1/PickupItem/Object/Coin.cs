@@ -34,10 +34,7 @@ namespace Game1
             coinPickupSprite.Draw();
         }
 
-        public Vector2 GetGameObjectLocation()
-        {
-            return pickupLocation;
-        }
+        public Vector2 GameObjectLocation => pickupLocation;
 
         public void SetGameObjectLocation(Vector2 value)
         {

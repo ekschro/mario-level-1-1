@@ -78,10 +78,7 @@ namespace Game1
             else if (state == MarioState.Walking)
                 Walking();
         }
-        public bool GetDirection()
-        {
-            return facingLeft;
-        }
+        public bool Direction => facingLeft;
 
         public bool FacingLeft()
         {

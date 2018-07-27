@@ -26,7 +26,7 @@ namespace Game1
         }
         
 
-        public MarioCollisionDetectionLogic(Game1 game,ILevel level,CollisionRespond res)
+        public MarioCollisionDetectionLogic(ILevel level,CollisionRespond res)
         {
             player = level.PlayerObject;
             collisionRes = res;
@@ -35,13 +35,13 @@ namespace Game1
 
         public void MarioBlockCollisionCheck(IBlock block, bool head, bool standing, bool right, bool left)
         {
-            var playerY = (int)player.GetGameObjectLocation().Y;
-            var playerX = (int)player.GetGameObjectLocation().X;
+            var playerY = (int)player.GameObjectLocation.Y;
+            var playerX = (int)player.GameObjectLocation.X;
 
             Rectangle playerBox = GetMarioRectangle(ref playerX, ref playerY);
 
-            int blockX = (int)block.GetGameObjectLocation().X;
-            int blockY = (int)block.GetGameObjectLocation().Y;
+            int blockX = (int)block.GameObjectLocation.X;
+            int blockY = (int)block.GameObjectLocation.Y;
 
             Rectangle blockBox = block.BlockRectangle();
 
@@ -82,13 +82,13 @@ namespace Game1
 
         public void MarioEnemyCollisionCheck(IEnemy enemy)
         {
-            var playerY = (int)player.GetGameObjectLocation().Y;
-            var playerX = (int)player.GetGameObjectLocation().X;
+            var playerY = (int)player.GameObjectLocation.Y;
+            var playerX = (int)player.GameObjectLocation.X;
 
             Rectangle playerBox = GetMarioRectangle(ref playerX, ref playerY);
 
-            int enemyX = (int)enemy.GetGameObjectLocation().X;
-            int enemyY = (int)enemy.GetGameObjectLocation().Y;
+            int enemyX = (int)enemy.GameObjectLocation.X;
+            int enemyY = (int)enemy.GameObjectLocation.Y;
             Rectangle enemyBox;
 
             Rectangle intersect;
@@ -131,13 +131,13 @@ namespace Game1
 
         public void MarioPickupCollisionCheck(IPickup pickup)
         {
-            var playerY = (int)player.GetGameObjectLocation().Y;
-            var playerX = (int)player.GetGameObjectLocation().X;
+            var playerY = (int)player.GameObjectLocation.Y;
+            var playerX = (int)player.GameObjectLocation.X;
 
             Rectangle playerBox = GetMarioRectangle(ref playerX, ref playerY);
 
-            int pickupX = (int)pickup.GetGameObjectLocation().X;
-            int pickupY = (int)pickup.GetGameObjectLocation().Y;
+            int pickupX = (int)pickup.GameObjectLocation.X;
+            int pickupY = (int)pickup.GameObjectLocation.Y;
 
             Rectangle pickupBox = new Rectangle(pickupX, pickupY, utility.MainWidth, utility.MainHeight);
 

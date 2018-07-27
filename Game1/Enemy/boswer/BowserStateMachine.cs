@@ -53,9 +53,6 @@ namespace Game1
         public void Update()
         {
         }
-        public bool GetDirection()
-        {
-            return facingRight;
-        }
+        public bool Direction => facingRight;
     }
 }

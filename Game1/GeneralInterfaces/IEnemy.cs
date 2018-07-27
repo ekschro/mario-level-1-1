@@ -16,7 +16,7 @@ namespace Game1
         void SetGameObjectLocation(Vector2 x);
         
         bool MovingRight { get; set; }
-        bool GetDead();
+        bool Dead { get; }
         IEnemyStateMachine StateMachine { get; }
         bool IsFalling { get; set; }
         bool IsJumping { get; }

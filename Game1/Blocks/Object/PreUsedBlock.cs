@@ -14,5 +14,9 @@ namespace Game1
             blockSprite = new PreUsedBlockSprite(game, this);
             blockRectangle = new Rectangle((int)location.X, (int)location.Y, utility.Width, utility.Height);
         }
+        public override void Update()
+        {
+            blockSprite.Update();
+        }
     }
 }

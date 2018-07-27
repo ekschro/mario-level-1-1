@@ -9,7 +9,7 @@ namespace Game1
 {
     public class Toad : ITemporary
     {
-        private Game1 myGame;
+        //private Game1 myGame;
 
         private Vector2 position;
         private ToadSprite toadSprite;
@@ -19,15 +19,12 @@ namespace Game1
 
         public Toad(Game1 game, Vector2 location)
         {
-            myGame = game;
+            //myGame = game;
             position = location;
             toadSprite = new ToadSprite(game, this);
         }
-       
-        public Vector2 GetGameObjectLocation()
-        {
-            return position;
-        }
+
+        public Vector2 GameObjectLocation => position;
 
         public void Update()
         {

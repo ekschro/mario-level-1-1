@@ -13,8 +13,7 @@ namespace Game1
         void BeFlipped();
         void BeJump();
         void Update();
-        bool GetDirection();
-
+        bool Direction { get; }
     }
     
     

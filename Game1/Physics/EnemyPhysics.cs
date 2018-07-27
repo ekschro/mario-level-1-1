@@ -39,14 +39,15 @@ namespace Game1
             delta = game.Delta.ElapsedGameTime.Milliseconds;
             if (obj.IsFalling)
                 yVelocity += (float)(0.5 * 0.002 * Math.Pow(delta, 2));
+            obj.SetGameObjectLocation(new Vector2(obj.GameObjectLocation.X, obj.GameObjectLocation.Y));
         }
 
         public void NewPosX()
         {
-            if (obj.StateMachine.GetDirection())
-                obj.SetGameObjectLocation(new Vector2(obj.GetGameObjectLocation().X + xVelocity, obj.GetGameObjectLocation().Y));
+            if (obj.StateMachine.Direction)
+                obj.SetGameObjectLocation(new Vector2(obj.GameObjectLocation.X + xVelocity, obj.GameObjectLocation.Y));
             else
-                obj.SetGameObjectLocation(new Vector2(obj.GetGameObjectLocation().X - xVelocity, obj.GetGameObjectLocation().Y));
+                obj.SetGameObjectLocation(new Vector2(obj.GameObjectLocation.X - xVelocity, obj.GameObjectLocation.Y));
         }
 
         public void NewPosY()
@@ -61,7 +62,7 @@ namespace Game1
             else
                 yVelocity = (float)0;
 
-            obj.SetGameObjectLocation(new Vector2(obj.GetGameObjectLocation().X,obj.GetGameObjectLocation().Y + yVelocity));
+            obj.SetGameObjectLocation(new Vector2(obj.GameObjectLocation.X,obj.GameObjectLocation.Y + yVelocity));
         }
     }
 }

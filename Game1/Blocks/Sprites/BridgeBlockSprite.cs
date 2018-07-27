@@ -29,10 +29,10 @@ namespace Game1
 
         public void Draw()
         {
-            int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(bridgeBlockObject.GetGameObjectLocation().X);
+            int drawLocationX = (int)myGame.CurrentLevel.LevelCamera.PositionRelativeToCamera(bridgeBlockObject.GameObjectLocation.X);
 
             Rectangle sourceRectangle = new Rectangle(utility.InitialFrame,utility.InitialFrame,(int)bridgeBlockObject.BlockSize.X,(int)bridgeBlockObject.BlockSize.Y);
-            Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)bridgeBlockObject.GetGameObjectLocation().Y, (int)bridgeBlockObject.BlockSize.X, (int)bridgeBlockObject.BlockSize.Y);
+            Rectangle destinationRectangle = new Rectangle(drawLocationX, (int)bridgeBlockObject.GameObjectLocation.Y, (int)bridgeBlockObject.BlockSize.X, (int)bridgeBlockObject.BlockSize.Y);
 
             myGame.SpriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.LinearWrap, null, null);
             myGame.SpriteBatch.Draw(TextureWarehouse.BridgeBlockTexture, destinationRectangle, sourceRectangle, Color.White);

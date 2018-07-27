@@ -10,7 +10,7 @@ namespace Game1
         
         private int killedNum = 0;
         private ITestMario testMario;
-        public static MarioPhysics physics;
+        private static MarioPhysics physics;
         private static Color marioColor;
         private static float currentXPosition;
         private static float currentYPosition;
@@ -87,10 +87,7 @@ namespace Game1
                 fireButton = false;
         }
 
-        public Vector2 GetGameObjectLocation()
-        {
-            return new Vector2(currentXPosition, currentYPosition);
-        }
+        public Vector2 GameObjectLocation => new Vector2(currentXPosition, currentYPosition);
 
         public void ColorSelect()
         {

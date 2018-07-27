@@ -40,9 +40,9 @@ namespace Game1
         public void NewPosX()
         {
             if (obj.MovingRight())
-                obj.SetGameObjectLocation(new Vector2(obj.GetGameObjectLocation().X - xVelocity, obj.GetGameObjectLocation().Y));
+                obj.SetGameObjectLocation(new Vector2(obj.GameObjectLocation.X - xVelocity, obj.GameObjectLocation.Y));
             else
-                obj.SetGameObjectLocation(new Vector2(obj.GetGameObjectLocation().X + xVelocity, obj.GetGameObjectLocation().Y));
+                obj.SetGameObjectLocation(new Vector2(obj.GameObjectLocation.X + xVelocity, obj.GameObjectLocation.Y));
         }
 
         public void NewPosY()
@@ -57,7 +57,7 @@ namespace Game1
                 obj.IsFalling = true;
             }
 
-            obj.SetGameObjectLocation(new Vector2(obj.GetGameObjectLocation().X, obj.GetGameObjectLocation().Y + yVelocity));
+            obj.SetGameObjectLocation(new Vector2(obj.GameObjectLocation.X, obj.GameObjectLocation.Y + yVelocity));
         }
     }
 }

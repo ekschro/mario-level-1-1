@@ -61,10 +61,7 @@ namespace Game1
             KoopaSprite.Draw();
         }
 
-        public Vector2 GetGameObjectLocation()
-        {
-            return koopaLocation;
-        }
+        public Vector2 GameObjectLocation => koopaLocation;
 
         public void SetGameObjectLocation(Vector2 newPos)
         {
@@ -88,10 +85,7 @@ namespace Game1
                 KoopaSprite.Update();
             }
         }
-        public bool GetDead()
-        {
-            return dead;
-        }
+        public bool Dead => dead;
 
     }
 }

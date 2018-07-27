@@ -24,8 +24,6 @@ namespace Game1
         private Vector2 bowserLocation;
         private Vector2 bowserOriginalLocation;
         public bool IsStomped { get; set; }
-        private int bowserLife;
-        public int BowserLife { get => bowserLife; }
         private bool dead = false;
         private IPhysics physics;
         private EnemyUtilityClass utility;
@@ -45,7 +43,6 @@ namespace Game1
             jumping = false;
             moving = false;
             myGame=game;
-            bowserLife = 5;
         }
 
         public void BeFlipped()
@@ -73,10 +70,7 @@ namespace Game1
             bowserSprite.Draw();
         }
 
-        public Vector2 GetGameObjectLocation()
-        {
-            return bowserLocation;
-        }
+        public Vector2 GameObjectLocation => bowserLocation;
         public void SetGameObjectLocation(Vector2 newPos)
         {
             bowserLocation = newPos;
@@ -88,12 +82,8 @@ namespace Game1
         }
         private void CheckMoving()
         {
-            if ((bowserLocation.X - myGame.CurrentLevel.PlayerObject.GetGameObjectLocation().X) <= 200)
+            if ((bowserLocation.X - myGame.CurrentLevel.PlayerObject.GameObjectLocation.X) <= 300)
                 moving = true;
-        }
-        public void SetBowserLife( int x)
-        {
-            bowserLife = bowserLife + x;
         }
         public void Update()
         {
@@ -103,28 +93,41 @@ namespace Game1
                 counter = 0;
             }
             else
-            {
-                counter++;
-            }
+            {counter++;}
             CheckMoving();
-            if (moving && bowserLocation.X >= 2040 && (bowserLocation.X - myGame.CurrentLevel.PlayerObject.GetGameObjectLocation().X <= 0))
+            if (moving && bowserLocation.X <= 2040)
             {
-                physics.Update();
                 utility.EnemyupCyclePosition++;
+                BowserThinking();
+                bowserLocation.X = bowserLocation.X + 2;
+                if (bowserLocation.X - myGame.CurrentLevel.PlayerObject.GameObjectLocation.X <= 0)
+                {
+                    
+                    physics.Update();
+                    ChangeDirection(true);
+                }
+                else
+                    ((EnemyPhysics)physics).UpdateYPosition();
             }
-            else if (moving && bowserLocation.X <= 2200 && (bowserLocation.X - myGame.CurrentLevel.PlayerObject.GetGameObjectLocation().X >= 0))
+            else if (moving && bowserLocation.X >= 2200)
             {
-                physics.Update();
                 utility.EnemyupCyclePosition++;
+                BowserThinking();
+                bowserLocation.X = bowserLocation.X - 2;
+                if (bowserLocation.X - myGame.CurrentLevel.PlayerObject.GameObjectLocation.X >= 0)
+                {
+                    physics.Update();
+                    ChangeDirection(false);
+                }
+                else
+                    ((EnemyPhysics)physics).UpdateYPosition();
             }
             else if (moving)
             {
-                //utility.EnemyupCyclePosition++;
-                ((EnemyPhysics)physics).UpdateYPosition();
+                utility.EnemyupCyclePosition++;
+                physics.Update();
             }
-            
-
-                falling = true;
+            falling = true;
             if (utility.EnemyupCyclePosition == utility.BowserCycleLength && dead!=true)
             {
                 utility.EnemyupCyclePosition = 0;
@@ -134,22 +137,19 @@ namespace Game1
             }
         }
 
-        public bool GetDead()
-        {
-            return dead;
-        }
+        public bool Dead => dead;
         private void BowserThinking()
         {
             if (myGame.ControllerHandler.MovingUp)
             {
                 BeJumped();
             }
-            else if (myGame.CurrentLevel.PlayerObject.CurrentXPos > CurrentXPos)
+            else if (bowserLocation.X - myGame.CurrentLevel.PlayerObject.GameObjectLocation.X >= 0)
             {
                 jumping = false;
                 ChangeDirection(false);
             }
-            else if (myGame.CurrentLevel.PlayerObject.CurrentXPos < CurrentYPos)
+            else if (bowserLocation.X - myGame.CurrentLevel.PlayerObject.GameObjectLocation.X <= 0)
             {
                 jumping = false;
                 ChangeDirection(true);
