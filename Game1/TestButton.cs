@@ -18,8 +18,8 @@ namespace Game1
             Level14 = 3*/;
 
         private Color[] buttonColor = new Color[NumberOfButtons];
-        private Rectangle[] buttonRectangle = new Rectangle[NumberOfButtons];
-        private KeyboardState keyBoardState, lastKeyBoardState;
+        //private Rectangle[] buttonRectangle = new Rectangle[NumberOfButtons];
+        private KeyboardState keyBoardState;
         public TestButton(Game1 game)
         {
             myGame = game;
@@ -44,7 +44,7 @@ namespace Game1
         }
         public void KeyboardControl()
         {
-            lastKeyBoardState = keyBoardState;
+            //lastKeyBoardState = keyBoardState;
             keyBoardState = Keyboard.GetState();
             Keys[] pressedKeys = keyBoardState.GetPressedKeys();
             foreach (Keys k in pressedKeys)
