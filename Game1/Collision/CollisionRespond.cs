@@ -517,7 +517,6 @@ namespace Game1
             else if (enemy is Bowser)
             {
                 objectLevel.TemporaryObjects.Add(new FlippedBowser(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
-
             }
         }
     }
