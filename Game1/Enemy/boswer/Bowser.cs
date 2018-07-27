@@ -28,12 +28,14 @@ namespace Game1
         public int BowserLife { get => bowserLife; }
         private bool dead = false;
         private IPhysics physics;
+        private Game1 game;
         private EnemyUtilityClass utility;
         
         private Game1 myGame;
 
         public Bowser(Game1 game, Vector2 location)
         {
+            this.game = game;
             utility = new EnemyUtilityClass();
             bowserLocation = location;
             bowserOriginalLocation = location;
@@ -50,11 +52,15 @@ namespace Game1
 
         public void BeFlipped()
         {
+            Console.WriteLine("DEAD");
+            game.PersistentData.BowserStomped(new Vector2(CurrentXPos, CurrentYPos));
             stateMachine.BeFlipped();
             dead = true;
         }
         public void BeStomped()
         {
+            Console.WriteLine("DEAD");
+            game.PersistentData.BowserStomped(new Vector2(CurrentXPos, CurrentYPos));
             stateMachine.BeStomped();
         }
         public void BeJumped()
@@ -142,6 +148,7 @@ namespace Game1
         }
 
         public bool Dead => dead;
+
         private void BowserThinking()
         {
             if (myGame.ControllerHandler.MovingUp)
