@@ -448,6 +448,7 @@ namespace Game1
             {
                 ((BossLevel)objectLevel).EndSequence = true;
                 ((Mario)player).Stop();
+                myGame.TimerStop = true;
             }
 
             objectLevel.PickupObjects.Remove(pickup);
