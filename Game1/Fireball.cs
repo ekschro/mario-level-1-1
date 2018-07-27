@@ -40,7 +40,7 @@ namespace Game1
             MovingUp = true;
             MovingDown = false;
 
-            physics = new FireballPhysics(game, this, 0);
+            physics = new FireballPhysics(game, this);
            
         }
        

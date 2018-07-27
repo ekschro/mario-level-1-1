@@ -9,7 +9,7 @@ namespace Game1
 {
     public class TestFireMario : AbstractTestMario
     {
-        public TestFireMario(Game1 game, Vector2 location, Mario mario) : base(game, location, mario)
+        public TestFireMario(Game1 game, Mario mario) : base(game,  mario)
         {
             marioSprite = new TestFireMarioSprite(game, this, mario);
             stateMachine = new TestFireMarioStateMachine(marioSprite);
@@ -21,7 +21,7 @@ namespace Game1
         }
         public override void Downgrade()
         {
-            character.TestMario = new TestBigMario(myGame, testMarioLocation, character);
+            character.TestMario = new TestBigMario(myGame, character);
         }
     }
 }

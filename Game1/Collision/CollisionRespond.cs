@@ -432,7 +432,7 @@ namespace Game1
             
             if (pickup is Fireflower)
             {
-                player.TestMario = new TestFireMario(myGame, new Vector2(player.CurrentXPos, player.CurrentYPos), (Mario)player);
+                player.TestMario = new TestFireMario(myGame, (Mario)player);
                 objectLevel.PersistentData.PowerUpCollectPoints(pickup.GameObjectLocation);
                 SoundWarehouse.powerup.Play();
             }
@@ -443,7 +443,7 @@ namespace Game1
             else if (pickup is RedMushroom)
             {
                 if (!(player.TestMario is TestFireMario))
-                    player.TestMario = new TestBigMario(myGame, new Vector2(player.CurrentXPos, player.CurrentYPos), (Mario)player);
+                    player.TestMario = new TestBigMario(myGame, (Mario)player);
                 objectLevel.PersistentData.PowerUpCollectPoints(pickup.GameObjectLocation);
                 SoundWarehouse.powerup.Play();
             }

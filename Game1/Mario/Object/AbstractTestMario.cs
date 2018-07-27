@@ -38,7 +38,7 @@ namespace Game1
         internal Game1 myGame;
         internal Mario character;
 
-        protected AbstractTestMario(Game1 game, Vector2 location, Mario mario)
+        protected AbstractTestMario(Game1 game, Mario mario)
         {
             utility = new MarioUtility();
             myGame = game;
@@ -57,7 +57,7 @@ namespace Game1
         public abstract void Downgrade();
         public void GoDie()
         {
-            character.TestMario = new TestDeadMario(myGame, new Vector2(character.CurrentXPos, character.CurrentYPos), character);
+            character.TestMario = new TestDeadMario(myGame, character);
         }
         public void ChangeDirection(bool left)
         {

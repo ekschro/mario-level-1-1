@@ -49,13 +49,13 @@ namespace Game1
             colorStartingTime = 5;
             colorTimer = 0;
             if (state == 1)
-                testMario = new TestSmallMario(game, vector, this);
+                testMario = new TestSmallMario(game, this);
             else if (state == 2)
-                testMario = new TestBigMario(game, vector, this);
+                testMario = new TestBigMario(game, this);
             else if (state == 3)
-                testMario = new TestFireMario(game, vector, this);
+                testMario = new TestFireMario(game, this);
             else
-                testMario = new TestSmallMario(game, vector, this);
+                testMario = new TestSmallMario(game, this);
 
             CanJump = true;
             Falling = false;
