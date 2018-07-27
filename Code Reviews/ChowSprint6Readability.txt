@@ -1,0 +1,11 @@
+Dorothy Chow (.140)
+7/26/18
+Sprint 6
+BossLevel.cs
+William Freeman
+20
+
+This class is clear and readable. It have meaningful names for both variable and methods. 
+Although it is a long class but it use different methods to load differnt object like enemy, block, pickups, camera settings.
+However, there are some magic numbers in the methods. It is hard to understand what the number mean. For example, staticCamera = new CameraStatic(bossRoomLocation - 200); 
+If all number are put in a utility class it will make the number be more meaningful when with variable names.

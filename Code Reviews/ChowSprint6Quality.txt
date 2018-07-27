@@ -1,0 +1,12 @@
+Dorothy Chow (.140)
+7/26/18
+Sprint 6
+BossLevel.cs
+William Freeman
+20
+
+This class is using the interface of Ilevel so it also make it more maintanable.
+The cycilic complexity of this class is not bad, the maximum is two, which making sense.
+Except from the Update and Draw method, others are relatively short and cohesive. It can use some method to check some logic before passing it to the Update.
+
+In terms of length, this class is long. However, this class loads all different gameobject, so it might be hard to reduce more lines. In addition, there are some magic numbers in the method, which if it can be all put inside a utility class, it will be better and will make it more maintainable.
