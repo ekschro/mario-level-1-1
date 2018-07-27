@@ -1,0 +1,26 @@
+William Freeman (.694)
+7/26/18
+Sprint 6
+FireEnemy.cs
+Tim Regrut
+
+The FireEnemy class is in charge of creating a single fireball in the chains that appear in Level 1-4.
+This is one of few enemies that doesn't collide with blocks and doesn't conform to normal enemy physics,
+so there are a number of fields, properties, and functions that do nothing at all and simply clutter the 
+class, namely:
+        public IEnemyStateMachine StateMachine { get; }
+        public bool IsFalling { get => false; set => throw new NotImplementedException(); }
+        public bool IsStomped { get => false; set => throw new NotImplementedException(); }
+        public bool IsJumping => false;
+        public void BeFlipped()
+        public void BeStomped()
+        public void ChangeDirection()
+        public Vector2 GameOriginalLocation()
+        public bool Dead => true;
+        public void ChangeDirection(bool faceLeft)
+
+The inclusion of all this dead code hampers the readability, since the class is incredibly simple,
+thus much of the functionality is contained in just a few lines out of the entire class. A different
+object type or an abstract class would have significantly improved this code's readability. However,
+the class does use straightforward and self-explanitory naming conventions, so just by looking at the
+fields, it is almost immediately apparent what the class does.

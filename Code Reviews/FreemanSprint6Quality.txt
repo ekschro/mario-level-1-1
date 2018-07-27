@@ -1,0 +1,15 @@
+William Freeman (.694)
+7/26/18
+Sprint 6
+FireEnemy.cs
+Tim Regrut
+22
+
+This class has a few problems. First of all, it doesn't tag any of its fields as private, despite
+them only being meant for use internally. Further, there are a significant number of magic
+numbers, which may cause problems in maintainability. Just like in the Readability code review,
+the class contains a lot of dead code which throws numerous NotImplementedExceptions, which may
+cause problems. However, the actual code that is used is simple, straightforward, and low on 
+cyclomatic complexity. It has dependenies on IEnemySprite, Game1, and FireEnemySprite, but only
+uses Game1 to pass onto the FireEnemySprite, and the other two to call its Draw method, so 
+coupling and cohesion for the useful code is low and high, respectively.
