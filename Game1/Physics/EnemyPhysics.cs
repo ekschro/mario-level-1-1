@@ -53,11 +53,27 @@ namespace Game1
         public void NewPosY()
         {
             if (obj.IsFalling)
+            {
+                if (obj is Bowser)
+                {
+                    yVelocity += (float)(0.5 * 0.001 * Math.Pow(delta, 2));
+                }
+                else
+                {
                 yVelocity += (float)(0.5 * 0.002 * Math.Pow(delta, 2));
+                }
+            }
             else if (obj.IsJumping)
             {
-                yVelocity=(float) - 4.5;
-                yVelocity -= (float)(0.5 * 0.002 * Math.Pow(delta, 2));
+                if (obj is Bowser)
+                {
+                    yVelocity = (float)-3;
+                }
+                else
+                {
+                    yVelocity = (float)-4.5;
+                    yVelocity -= (float)(0.5 * 0.002 * Math.Pow(delta, 2));
+                }
             }
             else
                 yVelocity = (float)0;

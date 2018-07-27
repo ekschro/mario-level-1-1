@@ -107,8 +107,8 @@
     <Compile Include="Level\LevelSelect.cs" />
     <Compile Include="Level\LevelTransition.cs" />
     <Compile Include="MarioLight.cs" />
-    <Compile Include="MovingBlockSprite.cs" />
-    <Compile Include="MovingBlock.cs" />
+    <Compile Include="Blocks\Sprites\MovingBlockSprite.cs" />
+    <Compile Include="Blocks\Object\MovingBlock.cs" />
     <Compile Include="Collision\CollisionUtilityClass.cs" />
     <Compile Include="Collision\CollisionDetectionLogic.cs" />
     <Compile Include="Controllers\ControllerUtilityClass.cs" />

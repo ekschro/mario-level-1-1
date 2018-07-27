@@ -171,7 +171,7 @@ namespace Game1
                     GameObject = new BottomRightPipeBlock(myGame, Position);
                     break;
                 case "MovingPlatform":
-                    GameObject = new MovingBlock(Position, 10, myGame);
+                    GameObject = new MovingBlock(myGame, Position);
                     break;
                 case "PipeOnSide":
                     GameObject = new PipeOnSideBlock(myGame, Position);

@@ -45,6 +45,7 @@ BridgeBlock,2040,168,208,16
 QuestionBlockWithPowerUp,1800,114
 QuestionBlockWithPowerUp,1700,114
 Bowser,2184,133
+MovingPlatform,2136,96
 GrayBrick,2248,152,48,96
 GrayBrick,2264,56,32,48
 AxePickup,2248,136
