@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework;
 namespace Game1 {
     public class MovingBlock : IBlock
     {
-        Game1 myGame;
+        //Game1 myGame;
         Vector2 start;
         float max;
         float min;
@@ -17,7 +17,7 @@ namespace Game1 {
             start = startLocation;
             max = startLocation.X + length;
             min = startLocation.X - length;
-            myGame = game;
+            //myGame = game;
             forward = true;
             sprite = new MovingBlockSprite(game, this);
 

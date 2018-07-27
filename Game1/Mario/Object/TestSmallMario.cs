@@ -10,7 +10,7 @@ namespace Game1
     public class TestSmallMario : AbstractTestMario
     {
         
-        public TestSmallMario(Game1 game, Vector2 location, Mario mario) : base(game, location, mario)
+        public TestSmallMario(Game1 game, Vector2 location, Mario mario) : base(game,  mario)
         {
             
             marioSprite = new TestSmallMarioSprite(game, this, mario);
