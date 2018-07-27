@@ -57,7 +57,7 @@ namespace Game1
         public abstract void Downgrade();
         public void GoDie()
         {
-            character.TestMario = new TestDeadMario(myGame, new Vector2(character.CurrentXPos, character.CurrentYPos), character);
+            character.TestMario = new TestDeadMario(myGame, character);
         }
         public void ChangeDirection(bool left)
         {
