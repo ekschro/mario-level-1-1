@@ -124,7 +124,7 @@ namespace Game1
                         }
                         else if (intersect.Height > intersect.Width && enemyX > blockX)
                         {
-                            collision.EnemyCollisionBlockRespondLeft(enemyArray[j], enemyArray[j], intersect.Width);
+                            collision.EnemyCollisionBlockRespondLeft(enemyArray[j], enemyArray[j]);
                         }
                     }
                 }
