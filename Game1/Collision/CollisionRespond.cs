@@ -302,7 +302,7 @@ namespace Game1
                 MarioHit();
         }
 
-        public void EnemyCollisionBlockRespondLeft(IEnemy enemy, IEnemy otherEnemy, int width)
+        public void EnemyCollisionBlockRespondLeft(IEnemy enemy, IEnemy otherEnemy)
         {
             if( !(enemy is Bowser))
                 enemy.ChangeDirection(true);
@@ -351,11 +351,8 @@ namespace Game1
 
         public void EnemyCollisionBlockRespondRight(IEnemy enemy, IEnemy otherEnemy)
         {
-            if (enemy is Bowser)
-            { }
-            else
+            if (!(enemy is Bowser))
                 enemy.ChangeDirection(true);
-
             if (enemy is MarioFireBall)
             {
                 objectLevel.EnemyObjects.Remove(enemy);

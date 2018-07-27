@@ -250,10 +250,7 @@ namespace Game1
             {
                 currentLevel = new BossLevel("../../../../Content/BossLevelInfo.csv", this, PersistentData);
                 NextLevel1 = true;
-            }
-            if (lastGameState is GameScreenState.DarkLevel11)
-            {
-                gameState = GameScreenState.DarkLevel11;
+                LoadTransition();
             }
 
         }

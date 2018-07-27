@@ -12,7 +12,7 @@ namespace Game1
 
         private List<IGameObject> levelObjects;
         private ICollision collisionDetect;
-        private ICamera movingCamera;
+        //private ICamera movingCamera;
         private ICamera staticCamera;
         private ICamera slidingCamera;
         private ICamera currentCamera;
@@ -65,7 +65,7 @@ namespace Game1
             
             collisionDetect = new CollisionDetect(game,this);
 
-            currentCamera = movingCamera = new Camera(this);
+            currentCamera = new Camera(this);
             staticCamera = new CameraStatic(bossRoomLocation - 200);
             slidingCamera = new CameraSliding(bossRoomLocation - 200, finalLocation);
             
