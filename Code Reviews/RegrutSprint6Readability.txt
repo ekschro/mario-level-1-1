@@ -5,4 +5,14 @@ Bowser.cs
 Dorothy Chow
 5
 
-The class as a whole is extremely well written. However, some of the variable names such as jumping and dead could be more descriptive.
+The class as a whole is written well. However, some of the variable names such as jumping and dead could be more descriptive. Also, the method names could be more descriptive such as bowser thinking. What does it mean? I have no idea
+
+Tim Regrut
+7/26/18
+Sprint 6
+Bowser.cs
+Dorothy Chow
+
+The code is working. That is a good thing to say about the code. However, it could be improved. There are if statements inside of if statements. This is a potential code smell because while easy to write it can cause unforseen bugs. I would like to see the code changed into just one layer of if else if statements.
+
+While it would take a significant amount of time to fix this issue, it would save a lot of time 6 months later when someone opens up the code, and has a hard time figuring out what it does. This would make the new programmer spend time on fixing the code instead of adding new features.
