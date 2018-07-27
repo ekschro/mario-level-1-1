@@ -178,5 +178,11 @@ namespace Game1
         {
             points += 50;
         }
+
+        public void BowserStomped(Vector2 loc)
+        {
+            points += 5000;
+            Draw(5000, loc);
+        }
     }
 }

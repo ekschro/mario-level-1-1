@@ -22,7 +22,6 @@ namespace Game1
            // myGame = game;
             CurrentFrame = 0;
 
-            Console.WriteLine("Fire!");
 
             SoundWarehouse.bowserFire.Play();
 

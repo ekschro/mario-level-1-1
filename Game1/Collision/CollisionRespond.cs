@@ -215,6 +215,10 @@ namespace Game1
                     objectLevel.EnemyObjects.Add(new KoopaShell(myGame, enemy.GameObjectLocation));
                     objectLevel.PersistentData.EnemyStompedPoints(((Mario)player).KilledNum, enemy.GameObjectLocation);
                 }
+                else if (enemy is Bowser)
+                {
+                    objectLevel.PersistentData.BowserStomped(enemy.GameObjectLocation);
+                }
                 if (enemy is MarioFireBall)
                 {
 
@@ -396,6 +400,19 @@ namespace Game1
                     myGame.PersistentData.KoopaShell((KoopaShell)otherEnemy, enemy.GameObjectLocation);
                     objectLevel.EnemyObjects.Remove(enemy);
                 }
+
+                else if ((enemy is Bowser && otherEnemy is MarioFireBall))
+                {
+                    objectLevel.PersistentData.BowserStomped(enemy.GameObjectLocation);
+                    CreateFlippedEnemy(enemy);
+
+                }
+                else if ((otherEnemy is Bowser && enemy is MarioFireBall))
+                {
+                    objectLevel.PersistentData.BowserStomped(otherEnemy.GameObjectLocation);
+                    CreateFlippedEnemy(otherEnemy);
+
+                }
             }
         }
 
@@ -517,7 +534,6 @@ namespace Game1
             else if (enemy is Bowser)
             {
                 objectLevel.TemporaryObjects.Add(new FlippedBowser(myGame, new Vector2(enemy.CurrentXPos, enemy.CurrentYPos)));
-
             }
         }
     }

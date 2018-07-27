@@ -5,6 +5,9 @@ FireEnemySprite.cs
 Tim Regrut
 10
 
+All methods are clearly and descriptively named.  All methods are small and to the the point.  Some lines are pretty long.  
+I recommend that some parameters are assigned to temporary variables to shorten line length.
+
 All methods are relatively short and cohesive.  The Cycilic complexity of this class never exceeds one degree. There are some 
 empty classes that are required by the extended interface but this is acceptable because these classes make sense in the general 
 sprite class case.  'Magic' numbers could be moved to a utility class in the futrue. 
