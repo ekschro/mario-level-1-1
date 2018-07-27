@@ -9,7 +9,7 @@ namespace Game1
 {
     public class TestDeadMario : AbstractTestMario
     {
-        public TestDeadMario(Game1 game, Vector2 location, Mario mario) : base(game,  mario)
+        public TestDeadMario(Game1 game, Mario mario) : base(game,  mario)
         {
             marioSprite = new TestDeadMarioSprite(game, mario);
             stateMachine = new TestDeadMarioStateMachine(marioSprite);
