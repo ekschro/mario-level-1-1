@@ -63,8 +63,8 @@ namespace Game1
 
         public IEnemyStateMachine StateMachine { get; }
 
-        public bool IsStomped { get => true; set => stomped = value; }
-        private bool stomped;
+        public bool IsStomped { get => true; set => throw new NotImplementedException(); }
+        //private bool stomped;
         public void Draw()
         {
             int width = TextureWarehouse.FireballTexture.Width / 4;

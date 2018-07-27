@@ -7,50 +7,27 @@ using Microsoft.Xna.Framework;
 
 namespace Game1
 {
-    public class QuestionPowerUpBlock : IBlock
+    public class QuestionPowerUpBlock : AbstractBlock
     {
-        public float CurrentXPos { get => blockLocation.X; set => blockLocation.X = value; }
-        public float CurrentYPos { get => blockLocation.Y; set => blockLocation.Y = value; }
-
-        private IBlockSprite questionPowerUpBlockSprite;
-        
-        private Vector2 blockLocation;
-        private Rectangle blockRectangle;
         private int cyclePosition;
         private int cycleLength;
-        private BlockUtilityClass utility;
-
-        public QuestionPowerUpBlock(Game1 game, Vector2 location)
+        public QuestionPowerUpBlock(Game1 game, Vector2 location) : base(location)
         {
+            blockSprite = new QuestionPowerUpBlockSprite(game, this);
+            blockRectangle = new Rectangle((int)location.X, (int)location.Y, utility.Width, utility.Height);
             utility = new BlockUtilityClass();
             cyclePosition = utility.QuestionCyclePosition;
-            cycleLength = utility.QuestionCoinLength;
-            questionPowerUpBlockSprite = new QuestionPowerUpBlockSprite(game, this);
-            blockLocation = location;
-            blockRectangle = new Rectangle((int)location.X, (int)location.Y, utility.Width, utility.Height);
+            cycleLength = utility.QuestionCycleLength;
         }
-
-        public void Draw()
-        {
-            questionPowerUpBlockSprite.Draw();
-        }
-
-        public Vector2 GameObjectLocation => blockLocation;
-
-        public Rectangle BlockRectangle()
-        {
-            return blockRectangle;
-        }
-
-        public void Update()
+        public override void Update()
         {
             cyclePosition++;
             if (cyclePosition == cycleLength)
             {
-                questionPowerUpBlockSprite.Update();
+                blockSprite.Update();
                 cyclePosition = utility.QuestionCyclePosition;
             }
-
         }
+
     }
 }

@@ -24,8 +24,6 @@ namespace Game1
         private Vector2 bowserLocation;
         private Vector2 bowserOriginalLocation;
         public bool IsStomped { get; set; }
-        private int bowserLife;
-        public int BowserLife { get => bowserLife; }
         private bool dead = false;
         private IPhysics physics;
         private Game1 game;
@@ -47,7 +45,6 @@ namespace Game1
             jumping = false;
             moving = false;
             myGame=game;
-            bowserLife = 5;
         }
 
         public void BeFlipped()
@@ -94,10 +91,6 @@ namespace Game1
             if ((bowserLocation.X - myGame.CurrentLevel.PlayerObject.GameObjectLocation.X) <= 300)
                 moving = true;
         }
-        public void SetBowserLife( int x)
-        {
-            bowserLife = bowserLife + x;
-        }
         public void Update()
         {
             if (counter == 300)
@@ -112,8 +105,10 @@ namespace Game1
             {
                 utility.EnemyupCyclePosition++;
                 BowserThinking();
+                bowserLocation.X = bowserLocation.X + 2;
                 if (bowserLocation.X - myGame.CurrentLevel.PlayerObject.GameObjectLocation.X <= 0)
                 {
+                    
                     physics.Update();
                     ChangeDirection(true);
                 }
@@ -124,6 +119,7 @@ namespace Game1
             {
                 utility.EnemyupCyclePosition++;
                 BowserThinking();
+                bowserLocation.X = bowserLocation.X - 2;
                 if (bowserLocation.X - myGame.CurrentLevel.PlayerObject.GameObjectLocation.X >= 0)
                 {
                     physics.Update();

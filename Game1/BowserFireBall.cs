@@ -30,8 +30,8 @@ namespace Game1
             if (facingRight)
             {
                 fireEnemySprite.ChangeSpriteEffects(Microsoft.Xna.Framework.Graphics.SpriteEffects.FlipHorizontally);
-                location2 = new Vector2(bowser2.CurrentXPos + 67, bowser2.CurrentYPos);
-                originalLocation = new Vector2(bowser2.CurrentXPos + 67, bowser2.CurrentYPos);
+                location2 = new Vector2(bowser2.CurrentXPos + 47, bowser2.CurrentYPos);
+                originalLocation = new Vector2(bowser2.CurrentXPos + 47, bowser2.CurrentYPos);
             }
         }
         private bool movingRight = true;

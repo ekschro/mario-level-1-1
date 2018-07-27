@@ -10,7 +10,9 @@ namespace Game1 {
         float min;
         bool forward;
         IBlockSprite sprite;
-        public MovingBlock(Vector2 startLocation,int length, Game1 game)
+        int length = 24;
+
+        public MovingBlock(Game1 game, Vector2 startLocation)
         {
             start = startLocation;
             max = startLocation.X + length;

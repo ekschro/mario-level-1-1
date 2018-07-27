@@ -7,48 +7,27 @@ using Microsoft.Xna.Framework;
 
 namespace Game1
 {
-    public class QuestionBlock : IBlock
+    public class QuestionBlock : AbstractBlock
     {
-        public float CurrentXPos { get => blockLocation.X; set => blockLocation.X = value; }
-        public float CurrentYPos { get => blockLocation.Y; set => blockLocation.Y = value; }
-
-        private IBlockSprite questionBlockSprite;
-        private Vector2 blockLocation;
-        private Rectangle blockRectangle;
         private int cyclePosition;
         private int cycleLength;
-        private BlockUtilityClass utility;
-        public QuestionBlock(Game1 game, Vector2 location)
+        public QuestionBlock(Game1 game, Vector2 location) : base(location)
         {
-            questionBlockSprite = new QuestionBlockSprite(game, this);
-            blockLocation = location;
+            blockSprite = new QuestionBlockSprite(game, this);
+            blockRectangle = new Rectangle((int)location.X, (int)location.Y, utility.Width, utility.Height);
             utility = new BlockUtilityClass();
             cyclePosition = utility.QuestionCyclePosition;
             cycleLength = utility.QuestionCycleLength;
-            blockRectangle = new Rectangle((int)location.X, (int)location.Y, utility.Width, utility.Height);
         }
-
-        public void Draw()
-        {
-            questionBlockSprite.Draw();
-        }
-
-        public Vector2 GameObjectLocation => blockLocation;
-
-        public Rectangle BlockRectangle()
-        {
-            return blockRectangle;
-        }
-
-        public void Update()
+        public override void Update()
         {
             cyclePosition++;
             if (cyclePosition == cycleLength)
             {
-                questionBlockSprite.Update();
+                blockSprite.Update();
                 cyclePosition = utility.QuestionCyclePosition;
-                blockLocation.Y -= 1;
             }
         }
+        
     }
 }
